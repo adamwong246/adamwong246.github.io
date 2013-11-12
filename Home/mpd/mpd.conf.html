@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Your New Jekyll Site</title>
+        <title>my mpd configuration file</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -22,38 +22,32 @@
               <a class="extra" href="/">home</a>
             </div>
 
-                <div id="home">
-    <h1>Pages</h1>
-    <ul class="posts">
-        
-        <p>
-            <a href="/Home/mpd/mpd.conf.html">my mpd configuration file</a>
-        </p>
-        
-        <p>
-            <a href="/Home/ncmpcpp/config.html">my ncmpcpp configuration file</a>
-        </p>
-        
-        <p>
-            <a href="/Home/.vimrc.html">my .vimrc file</a>
-        </p>
-        
-        <p>
-            <a href="/index.html">Your New Jekyll Site</a>
-        </p>
-        
-    </ul>
+                  <div>
+    <pre><code class='ruby'>Created for Shuri
 
-
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    
-      <li><span>10 Nov 2013</span> &raquo; <a href="/jekyll/update/2013/11/10/welcome-to-jekyll.html">Welcome to Jekyll!</a></li>
-    
-  </ul>
-</div>
-
-
+music_directory &quot;~/Music&quot;
+playlist_directory &quot;~/.mpd/playlists&quot;
+db_file &quot;~/.mpd/database&quot;
+log_file &quot;~/.mpd/log&quot;
+pid_file &quot;~/.mpd/pid&quot;
+state_file &quot;~/.mpd/state&quot;
+sticker_file &quot;~/.mpd/sticker.sql&quot;
+auto_update &quot;yes&quot;
+auto_update_depth &quot;2&quot;
+follow_outside_symlinks &quot;yes&quot;
+follow_inside_symlinks &quot;yes&quot;
+audio_output {
+    type &quot;osx&quot;
+    name &quot;CoreAudio&quot;
+    mixer_type &quot;software&quot;
+}
+audio_output {
+    type &quot;fifo&quot;
+    name &quot;my_fifo&quot;
+    path &quot;/tmp/mpd.fifo&quot;
+    format &quot;44100:16:2&quot;
+}</code></pre>
+  </div>
 
 
             <div class="footer">

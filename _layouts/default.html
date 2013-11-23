@@ -12,7 +12,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css">
 
-        {% javascript main %}
+        {% javascript application %}
         {% javascript vendor/jquery-2.0.3 %}
 
     </head>
@@ -20,11 +20,12 @@
 
         <div class="site">
           <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
+            <h1 class="title"><a href="/" data-push="true" >{{ site.name }}</a></h1>
           </div>
 
-          {{ content }}
+          <div id="content_wrapper">
+            {{ content }}
+          </div>
 
           <div class="footer">
             <div class="contact">

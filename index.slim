@@ -1,0 +1,28 @@
+---
+layout: default
+title: Index
+---
+
+#home
+  h1
+    | Blog Posts
+  ul.posts
+    {% for post in site.posts %}
+      li
+        span
+          | {{ post.date | date_to_string }}
+
+        a href="{{ post.url }}" data-push="true"  
+          | {{ post.title }}          
+    {% endfor %}
+    
+
+  h1
+    | Pages
+  ul.posts
+    {% for post in site.pages %}
+      li
+        a href="{{ post.url }}" data-push="true"  
+          | {{ post.title }}
+    {% endfor %}
+

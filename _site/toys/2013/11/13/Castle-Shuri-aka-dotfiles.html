@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Castle Shuri aka dotfiles</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/assets/syntax-d69cef829c92bb463cedef8150582352.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/assets/main-525a15d1d5b66449139f9bfd6761661d.css">
+
+        <link rel="stylesheet" href="/assets/custom-5f0dbc852bfc1ddbf2153b3e975f9d7d.css">
+
+        <script src="/assets/application-d3dfea8457f1eab65838f0051de68cfa.js"></script>
+        <script src="/assets/vendor/jquery-2.0-cd2b3724c079b0d286797fc92b81ce85.3"></script>
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/" data-push="true" >Adam Wong's As-of-yet-unnamed blog</a></h1>
+          </div>
+
+          <div id="content_wrapper">
+            <h2>Castle Shuri aka dotfiles</h2><p class="meta">13 Nov 2013</p></p><div class="post"><p>Dotfiles are important fundamental to any unix-like system. Dotfiles are usually prepended with a dot but not necessarily- dot files are really <em>any</em> configuration file for any application. You&#39;re probably most familiar with your .bashrc and .vimrc files.  By managing these files properly, you can really customize your experience. Too bad, then, that dotfiles have been somewhat neglected. My dotfiles were always messy, haphazard and disorganized and they were different between my mac and my 2 ubuntu machines. Confusion abounded. Clearly, there&#39;s room for improvement.</p>
+
+<p>I&#39;ve noticed a trend on github- managing configuration files via git. Here&#39;s the <a href="http://dotfiles.github.io">primer on the subject</a> but be forewarned- there are many paths to choose from. I decided to go with <a href="https://github.com/technicalpickles/homesick">Homesick</a> and it works like this: Homesick manages git repositories, called &quot;Castles&quot; which are collections of configurations. It&#39;s a very thin interface over git but it works very well. Once you have cloned a Castle, Homesick will symlink all the files into place. Any modifications you make to these files can be committed to the repo- it&#39;s just plain old git after all! (Did I mention I love git?!) Now your configuration files are as well maintained as my code. You can even maintain separate branches for separate environments!</p>
+
+<p>Be careful! Though the rationale for the whole exercise is backing up your configurations, I accidentally clobered my files before I got the hang of it. Here&#39;s a tip: use the Homesick commands when you can, not git because Homesick performs some magic when tracking files that aren&#39;t in the Home directory. Also be careful not to commit sensitive data.</p>
+
+<p>Ok, that&#39; enough for now. I&#39;ll leave you with <a href="https://github.com/adamwong246/Castle-Shuri/">my dotfiles, which I call Castle Shuri</a></p>
+</div>
+          </div>
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Adam Wong<br />
+                Bitsmith<br />
+                http://adamwong246.github.io/
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/adamwong246">github.com/adamwong246</a><br />
+                <a href="mailto:adamwong246#gmail.com">adamwong246@gmail.com</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+    </body>
+</html>

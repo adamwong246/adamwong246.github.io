@@ -12606,6 +12606,8 @@ if (typeof JSON !== 'object') {
 
 })(window);
 (function() {
-
+  $(document).ready(function() {
+    return window.wiselinks = new Wiselinks();
+  });
 
 }).call(this);

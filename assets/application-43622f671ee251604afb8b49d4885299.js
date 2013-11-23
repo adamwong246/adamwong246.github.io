@@ -12610,4 +12610,12 @@ if (typeof JSON !== 'object') {
     return window.wiselinks = new Wiselinks();
   });
 
+  $(document).on('page:fetch', function() {
+    return $('body').fadeOut('slow');
+  });
+
+  $(document).on('page:restore', function() {
+    return $('body').fadeIn('slow');
+  });
+
 }).call(this);

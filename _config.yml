@@ -1,4 +1,0 @@
-name: Adam Wong's As-of-yet-unnamed blog
-markdown: redcarpet
-pygments: true
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']

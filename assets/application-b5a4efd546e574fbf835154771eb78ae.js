@@ -3776,11 +3776,8 @@ if (typeof JSON !== 'object') {
 
 })(window);
 (function() {
-  requirejs(["jquery/jquery"], function(Jquery) {
-    return $(document).ready(function() {
-      console.log("READY");
-      return window.wiselinks = new Wiselinks('body');
-    });
+  $(document).ready(function() {
+    return window.wiselinks = new Wiselinks('body');
   });
 
 }).call(this);

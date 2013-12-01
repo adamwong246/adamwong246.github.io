@@ -1,17 +1,28 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
-body {
-  font-family: 'Quicksand', sans-serif; }
+html, body {
+  height: 100%; }
 
 body {
+  /*background:top left no-repeat;*/
+  /*background-image:url('/images/snowAndStars.jpg');
+  background-position: top left;
+  background-repeat: repeat;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/ }
+
+body {
+  font-family: 'Quicksand', sans-serif;
   background-image: url("http://placekitten.com/1920/1120");
   background-position: center bottom;
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
-  font-size: 100%; }
-
-body {
-  margin: 0; }
+  font-size: 100%;
+  margin: 0;
+  font-size: small;
+  text-align: center; }
 
 .tile {
   position: relative;
@@ -68,27 +79,12 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;*/
-  color: cyan; }
+  color: black; }
 
 /* Global Reset */
 * {
   margin: 0;
   padding: 0; }
-
-html, body {
-  height: 100%; }
-
-body {
-  /*background:top left no-repeat;*/
-  /*background-image:url('/images/snowAndStars.jpg');
-  background-position: top left;
-  background-repeat: repeat;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
-  font-size: small;
-  text-align: center; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
@@ -98,15 +94,6 @@ h1 {
 
 p {
   margin: 1em 0; }
-
-a {
-  color: #00a; }
-
-a:hover {
-  color: #000; }
-
-a:visited {
-  color: #a0a; }
 
 /*****************************************************************************/
 /*
@@ -121,7 +108,6 @@ a:visited {
   line-height: 1.75em; }
 
 .posts span {
-  color: #aaa;
   /*font-family: Monaco, "Courier New", monospace;*/
   font-size: 80%; }
 
@@ -145,35 +131,17 @@ a:visited {
   display: inline-block;
   margin-bottom: 2em; }
 
-.title a {
-  color: white; }
-
-.title a:hover {
-  color: #000; }
-
 .header a.extra {
-  color: #aaa;
   margin-left: 1em; }
-
-.header a.extra:hover {
-  color: #000; }
-
-.meta {
-  color: #aaa; }
 
 .footer {
   font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden; }
 
 .footer .contact {
   float: left;
   margin-right: 3em; }
-
-.footer .contact a {
-  color: #8085C1; }
 
 .footer .rss {
   margin-top: 1.1em;
@@ -190,7 +158,6 @@ a:visited {
 /*****************************************************************************/
 /* standard */
 .post pre {
-  border: 1px solid #ddd;
   background-color: black;
   padding: 0 .4em; }
 
@@ -198,17 +165,15 @@ a:visited {
   margin-left: 1.35em; }
 
 .post code {
-  border: 1px solid #ddd;
   background-color: black;
   padding: 0 .2em; }
 
 .post pre code {
-  border: none; }
+  border: none;
+  color: white; }
 
 /* terminal */
 .post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
   color: #FFF; }
 
 .post pre.terminal code {

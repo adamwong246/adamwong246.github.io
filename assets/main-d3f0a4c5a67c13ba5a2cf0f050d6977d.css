@@ -91,6 +91,9 @@ ul {
 /* Posts
 /*
 /*****************************************************************************/
+pre {
+  margin: 1em; }
+
 /* standard */
 .post pre {
   background-color: black;

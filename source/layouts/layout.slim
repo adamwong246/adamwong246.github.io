@@ -8,33 +8,11 @@ html
     = stylesheet_link_tag "normalize", "all", "monokai"
     = javascript_include_tag  "all"
   body
-    header
-      h3 
-        a href="/"My umpteenth attempt at a blog.
-    nav
-         
-    aside
-      / ol
-      /   - blog.articles.sort{|a, b| b.date <=> a.date}.each do |article|
-      /     li
-      /       = link_to article.title, article
-            / span= article.date.strftime('%b %e')
-      / h2 Tags
-      ul
-        - blog.tags.each do |tag, articles|
-          li
-            = link_to tag, tag_path(tag)
-            / | (#{articles.size})
-      / h2 By Year
-      / ol
-      /   - blog.articles.group_by {|a| a.date.year }.each do |year, articles|
-      /     li
-      /       = link_to year, blog_year_path(year)
-      /       | (#{articles.size})
-
+    ul
+      - blog.tags.each do |tag, articles|
+        li
+          = link_to tag, tag_path(tag)
     #main role="main"
       = yield
-
-    
     footer
       | 2014 Adam Wong adamwong246@gmail.com

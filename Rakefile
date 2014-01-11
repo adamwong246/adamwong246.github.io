@@ -20,9 +20,8 @@ desc "Generate and publish blog to gh-pages"
 task :publish  do
   Dir.mktmpdir do |tmp|
     system "bundle exec middleman build"
-
     system "shopt -s dotglob"
-    system "mv _site/* #{tmp}"
+    system "mv build/* #{tmp}"
     system "git checkout master"
     system "rm -rf *"
     system "mv #{tmp}/* ."
@@ -30,7 +29,6 @@ task :publish  do
     system "git add ."
     system "git commit -am #{message.shellescape}"
     system "git push origin master --force"
-    system "git checkout master-edit"
-    system "echo yolo"
+    system "echo NOW MAKE SURE YOU SWITCH BACK TO YOUR WORKING BRANCH!"
   end
 end

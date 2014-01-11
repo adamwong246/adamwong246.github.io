@@ -3,6 +3,20 @@ require 'date'
 require 'titleize'
 require 'tmpdir'
 
+def x(command, description)
+    
+    puts description if description
+
+    case system(command)
+    when "Success"
+        return
+    when "Failed"
+        raise "HALT"
+    else
+        raise "wtf?"
+    end
+end
+
 desc "Generate a blog file"
 task :new_log, :subject do|t, args|
     puts args
@@ -16,39 +30,28 @@ task :new_log, :subject do|t, args|
     end
 end
 
-desc "Generate and publish blog to gh-pages"
-task :publish  do
-  Dir.mktmpdir do |tmp|
-    system "bundle exec middleman build"
-    system "shopt -s dotglob"
-    # system "mv build/* #{tmp}"
-    # system "git checkout master"
-    # system "rm -rf *"
-    # system "mv #{tmp}/* ."
-    # message = "Site updated at #{Time.now.utc}"
-    # system "git add ."
-    # system "git commit -am #{message.shellescape}"
-    # system "git push origin master --force"
-    # system "echo NOW MAKE SURE YOU SWITCH BACK TO YOUR WORKING BRANCH!"
-  end
-end
+# desc "Generate and publish blog to gh-pages"
+# task :publish  do
+#   Dir.mktmpdir do |tmp|
+#     system "bundle exec middleman build"
+#     system "shopt -s dotglob"
+#     # system "mv build/* #{tmp}"
+#     # system "git checkout master"
+#     # system "rm -rf *"
+#     # system "mv #{tmp}/* ."
+#     # message = "Site updated at #{Time.now.utc}"
+#     # system "git add ."
+#     # system "git commit -am #{message.shellescape}"
+#     # system "git push origin master --force"
+#     # system "echo NOW MAKE SURE YOU SWITCH BACK TO YOUR WORKING BRANCH!"
+#   end
+# end
 
 desc "Deploy build to master branch"
 task :deploy do
-  puts "\n## Deleting master branch"
-  status = system("git branch -D master")
-  puts status ? "Success" : "Failed"
-  puts "\n## Creating new master branch and switching to it"
-  status = system("git checkout -b master")
-  puts status ? "Success" : "Failed"
-  puts "\n## Forcing the build subdirectory to be project root"
-  status = system("git filter-branch --subdirectory-filter build/ -f")
-  puts status ? "Success" : "Failed"
-  # puts "\n## Switching back to source branch"
-  # status = system("git checkout source")
-  # puts status ? "Success" : "Failed"
-  puts "\n## Pushing branch to origin"
-  status = system("git push origin master")
-  puts status ? "Success" : "Failed"
-  system "echo NOW MAKE SURE YOU SWITCH BACK TO YOUR WORKING BRANCH!"
+  x("git branch -D master",                              "Deleting master branch")
+  x("git checkout -b master",                            "Creating new master branch and switching to it")
+  x("git filter-branch --subdirectory-filter build/ -f", "Forcing the build subdirectory to be project root")
+  x("git checkout -",                                    "Switching back to previous branch")
+  x("git push origin master",                            "Pushing branch to origin")
 end

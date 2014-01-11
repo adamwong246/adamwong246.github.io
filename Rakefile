@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'date'
 require 'titleize'
+require 'tmpdir'
 
 desc "Generate a blog file"
 task :new_log, :subject do|t, args|
@@ -13,4 +14,23 @@ task :new_log, :subject do|t, args|
     else
         raise "You need to pass an argument like this: bundle exec 'rake new_log[Derp]'"
     end
+end
+
+desc "Generate and publish blog to gh-pages"
+task :publish  do
+  Dir.mktmpdir do |tmp|
+    system "bundle exec middleman build"
+
+    system "shopt -s dotglob"
+    system "mv _site/* #{tmp}"
+    system "git checkout master"
+    system "rm -rf *"
+    system "mv #{tmp}/* ."
+    message = "Site updated at #{Time.now.utc}"
+    system "git add ."
+    system "git commit -am #{message.shellescape}"
+    system "git push origin master --force"
+    system "git checkout master-edit"
+    system "echo yolo"
+  end
 end

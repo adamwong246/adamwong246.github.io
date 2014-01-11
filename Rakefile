@@ -3,15 +3,19 @@ require 'date'
 require 'titleize'
 require 'tmpdir'
 
-def x(command, description)
+def x(command, description, halt_on_fail=true)
     
-    puts description if description
-
-    case system(command)
+    puts "-- #{description} --" if description
+    status = system(command)
+    puts status
+    
+    case status
     when "Success"
         return
     when "Failed"
-        raise "HALT"
+        if halt_on_fail
+          raise "HALT"
+        end
     else
         raise "wtf?"
     end
@@ -49,7 +53,7 @@ end
 
 desc "Deploy build to master branch"
 task :deploy do
-  x("git branch -D master",                              "Deleting master branch")
+  x("git branch -D master",                              "Deleting master branch", false)
   x("git checkout -b master",                            "Creating new master branch and switching to it")
   x("git filter-branch --subdirectory-filter build/ -f", "Forcing the build subdirectory to be project root")
   x("git checkout -",                                    "Switching back to previous branch")

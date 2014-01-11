@@ -1,5 +1,4 @@
 ---
-layout: layout
 title:  "Jekyll and the asset pipeline"
 date:   2013-11-22 23:21:52
 tags: posts

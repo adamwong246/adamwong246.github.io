@@ -1,5 +1,4 @@
 ---
-layout: layout
 title:  "Wiselinks"
 date:   2013-11-22
 tags: posts

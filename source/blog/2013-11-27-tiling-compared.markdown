@@ -1,5 +1,4 @@
 ---
-layout: layout
 title:  "Tilers galore"
 date: 2013-11-27
 tags: posts

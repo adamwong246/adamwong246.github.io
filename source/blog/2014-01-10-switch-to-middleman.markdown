@@ -1,6 +1,5 @@
 ---
 date: 2014-01-10
-layout: layout
 title:  'Switch to Middleman'
 tags: posts
 ---

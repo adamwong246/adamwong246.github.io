@@ -1,5 +1,4 @@
 ---
-layout: layout
 title:  "Castle Shuri aka dotfiles"
 date:   2013-11-13 09:21:52
 tags: posts

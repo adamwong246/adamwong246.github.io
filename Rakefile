@@ -57,5 +57,5 @@ task :deploy do
   x("git checkout -b master",                            "Creating new master branch and switching to it")
   x("git filter-branch --subdirectory-filter build/ -f", "Forcing the build subdirectory to be project root")
   x("git checkout -",                                    "Switching back to previous branch")
-  x("git push origin master",                            "Pushing branch to origin")
+  x("git push -f origin master",                            "Pushing branch to origin")
 end

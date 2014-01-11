@@ -10,9 +10,9 @@ def x(command, description, halt_on_fail=true)
     puts status
     
     case status
-    when "Success"
+    when "Success", true
         return
-    when "Failed"
+    when "Failed", false
         if halt_on_fail
           raise "HALT"
         end

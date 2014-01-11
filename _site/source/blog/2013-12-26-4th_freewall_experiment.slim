@@ -1,0 +1,69 @@
+css:
+  .post{
+    background-image: url('/assets/images/background1.jpg');
+  }
+  .free-wall {margin: 25px;}
+
+  .brick{
+    color: white;
+    border-bottom: 1px solid #ccc;
+    border-right: 3px solid #ccc;
+    box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.3);
+    text-shadow: 0.1em 0.1em 0.1em black;
+    $br: 5px;
+    -webkit-border-radius:$br;
+    -moz-border-radius:$br;
+    border-radius:$br;
+
+    overflow:hidden;
+
+    image{
+      width:  90%;
+      height: 90%;
+    }
+
+    p {
+      margin: 1em 1em 1em 1em;
+    }
+
+  }
+
+#freewall.free-wall
+  -(1..10).each do |i|
+    - w = 100 + Random.rand(300)
+    - h = 100 + Random.rand(300)
+    .brick style="width:#{w}px;"
+      img src="/assets/images/pixels/#{Random.rand(6)}_pixel.jpg" width="100%"
+    .brick style="width: #{Random.rand(20) + 25}em;"
+      p
+        = 10.sentences
+
+<script type="text/javascript" src="/assets/js/vendor/bower_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://vnjs.net/www/project/freewall/freewall.js"></script>
+
+javascript:
+  var wall = new freewall("#freewall");
+  wall.reset({
+    selector: '.brick',
+    animate: true,
+    cellW: 200,
+    cellH: 'auto',
+    onResize: function() {
+      wall.fitWidth();
+    }
+  });
+
+  wall.fitWidth();
+
+  var images = wall.container.find('.brick');
+  var length = images.length;
+
+  images.find('img').load(function() {
+    -- length;
+    if (!length) {
+      setTimeout(function() {
+        images.css({visibility: 'visible'});
+        wall.fitWidth();
+      }, 505);
+    }
+  });

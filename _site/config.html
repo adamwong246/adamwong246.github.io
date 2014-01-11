@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>config.rb</title>
+  <link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th class=docs><h1>config.rb</h1></th>
+      <th class=code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='section-1'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-1">&#182;</a>
+        </div>
+        
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;slim&#39;</span>
+
+<span class="n">activate</span> <span class="ss">:bower</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-2'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-2">&#182;</a>
+        </div>
+        <p>Blog settings</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-3'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-3">&#182;</a>
+        </div>
+        <p>Time.zone = &ldquo;UTC&rdquo;</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">activate</span> <span class="ss">:blog</span> <span class="k">do</span> <span class="o">|</span><span class="n">blog</span><span class="o">|</span>
+  <span class="n">blog</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;blog&quot;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-4'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>blog.permalink = &ldquo;:year/:month/:day/:title.html&rdquo;
+blog.sources = &ldquo;:year-:month-:day-:title.html&rdquo;
+blog.taglink = &ldquo;tags/:tag.html&rdquo;
+blog.layout = &ldquo;layout&rdquo;
+blog.summary_separator = /(READMORE)/
+blog.summary_length = 250
+blog.year_link = &ldquo;:year.html&rdquo;
+blog.month_link = &ldquo;:year/:month.html&rdquo;
+blog.day_link = &ldquo;:year/:month/:day.html&rdquo;
+blog.default_extension = &ldquo;.markdown&rdquo;</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  <span class="n">blog</span><span class="o">.</span><span class="n">tag_template</span> <span class="o">=</span> <span class="s2">&quot;tag.html&quot;</span>
+  <span class="n">blog</span><span class="o">.</span><span class="n">calendar_template</span> <span class="o">=</span> <span class="s2">&quot;calendar.html&quot;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-5'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-5">&#182;</a>
+        </div>
+        <p>blog.paginate = true
+blog.per_page = 10
+blog.page_link = &ldquo;page/:num&rdquo;</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="k">end</span>
+
+<span class="n">page</span> <span class="s2">&quot;/feed.xml&quot;</span><span class="p">,</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="kp">false</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-6'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-6">&#182;</a>
+        </div>
+        <p>Compass</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-7'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-7">&#182;</a>
+        </div>
+        <p>Susy grids in Compass
+First: gem install susy
+require &lsquo;susy&rsquo;</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-8'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-8">&#182;</a>
+        </div>
+        <p>Change Compass configuration
+compass_config do |config|
+  config.output_style = :compact
+end</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-9'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-9">&#182;</a>
+        </div>
+        <p>Page options, layouts, aliases and proxies</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-10'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-10">&#182;</a>
+        </div>
+        <p>Per-page layout changes:</p>
+
+<p>With no layout
+page &ldquo;/path/to/file.html&rdquo;, :layout =&gt; false</p>
+
+<p>With alternative layout
+page &ldquo;/path/to/file.html&rdquo;, :layout =&gt; :otherlayout</p>
+
+<p>A path which all have the same layout
+with_layout :admin do
+  page &ldquo;/admin/*&ldquo;
+end</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-11'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-11">&#182;</a>
+        </div>
+        <p>Proxy (fake) files
+page &ldquo;/this-page-has-no-template.html&rdquo;, :proxy =&gt; &ldquo;/template-file.html&rdquo; do
+  @which_fake_page = &ldquo;Rendering a fake page with a variable&rdquo;
+end</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-12'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-12">&#182;</a>
+        </div>
+        <p>Helpers</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-13'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-13">&#182;</a>
+        </div>
+        <p>Automatic image dimensions on image_tag helper
+activate :automatic_image_sizes</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-14'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-14">&#182;</a>
+        </div>
+        <p>Methods defined in the helpers block are available in templates
+helpers do
+  def some_helper
+    &ldquo;Helping&rdquo;
+  end
+end</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">set</span> <span class="ss">:css_dir</span><span class="p">,</span> <span class="s1">&#39;assets/css&#39;</span>
+
+<span class="n">set</span> <span class="ss">:js_dir</span><span class="p">,</span> <span class="s1">&#39;assets/js&#39;</span>
+
+<span class="n">set</span> <span class="ss">:images_dir</span><span class="p">,</span> <span class="s1">&#39;assets/images&#39;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-15'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-15">&#182;</a>
+        </div>
+        <p>Build-specific configuration</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">configure</span> <span class="ss">:build</span> <span class="k">do</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-16'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-16">&#182;</a>
+        </div>
+        <p>For example, change the Compass output style for deployment
+activate :minify_css</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  </pre></div>
+      </td>
+    </tr>
+    <tr id='section-17'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-17">&#182;</a>
+        </div>
+        <p>Minify Javascript on build
+activate :minify_javascript</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  </pre></div>
+      </td>
+    </tr>
+    <tr id='section-18'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-18">&#182;</a>
+        </div>
+        <p>Enable cache buster
+activate :cache_buster</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  </pre></div>
+      </td>
+    </tr>
+    <tr id='section-19'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-19">&#182;</a>
+        </div>
+        <p>Use relative URLs
+activate :relative_assets</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  </pre></div>
+      </td>
+    </tr>
+    <tr id='section-20'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-20">&#182;</a>
+        </div>
+        <p>Compress PNGs after build
+First: gem install middleman-smusher
+require &ldquo;middleman-smusher&rdquo;
+activate :smusher</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  </pre></div>
+      </td>
+    </tr>
+    <tr id='section-21'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-21">&#182;</a>
+        </div>
+        <p>Or use a different image path
+set :http_path, &ldquo;/Content/images/&rdquo;</p>
+
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="k">end</span>
+
+<span class="n">activate</span> <span class="ss">:livereload</span></pre></div>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>

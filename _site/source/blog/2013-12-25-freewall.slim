@@ -1,0 +1,47 @@
+p 
+  | You can't invoke 
+  code
+    | wall.fitWidth()
+  | until all the images are loaded. 
+
+#freewall.free-wall
+  -(1..50).each do |i|
+    - w = 100 + Random.rand(500)
+    - h = 100 + Random.rand(500)
+    .brick style="width:#{w}px;"
+      img src="/assets/images/pixels/#{Random.rand(6)}_pixel.jpg" width="100%"
+
+<script type="text/javascript" src="/assets/js/vendor/bower_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://vnjs.net/www/project/freewall/freewall.js"></script>
+
+css:
+  .free-wall {margin: 15px;}
+
+javascript:
+
+  var wall = new freewall("#freewall");
+  wall.reset({
+    selector: '.brick',
+    animate: true,
+    cellW: 100,
+    cellH: 'auto',
+    onResize: function() {
+      wall.fitWidth();
+    }
+  });
+
+  var images = wall.container.find('.brick');
+  var length = images.length;
+
+  images.find('img').load(function() {
+    -- length;
+    if (!length) {
+      setTimeout(function() {
+        images.css({visibility: 'visible'});
+        wall.fitWidth();
+      }, 505);
+    }
+  });
+
+  wall.fitWidth();
+

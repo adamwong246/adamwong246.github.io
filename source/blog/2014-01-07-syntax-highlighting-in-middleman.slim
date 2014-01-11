@@ -1,0 +1,53 @@
+---
+date: 2014-01-07
+layout: layout
+title:  'Syntax Highlighting in Middleman'
+tags: 'experiments'
+---
+
+pre
+  code
+    erb:
+      <%= <<-"CODE".chomp
+
+        // create a panel using a GridBagLayout
+        JPanel panel = new JPanel (new GridBagLayout());
+
+        // three labels on the first row
+        panel.add (new JLabel ("One"));
+        panel.add (new JLabel ("Two"));
+        panel.add (new JLabel ("Threeeee"));
+
+      CODE
+      %>
+pre
+  code
+    erb:
+      <% code = <<-"CODE".chomp
+
+        // create a panel using a GridBagLayout
+        JPanel panel = new JPanel (new GridBagLayout());
+
+        // three labels on the first row
+        panel.add (new JLabel ("One"));
+        panel.add (new JLabel ("Two"));
+        panel.add (new JLabel ("Threeeee"));
+
+      CODE
+      %>
+      <%= code %>
+pre
+  code
+    erb:
+      <%= (<<-"CODE".chomp).capitalize
+
+        // create a panel using a GridBagLayout
+        JPanel panel = new JPanel (new GridBagLayout());
+
+        // three labels on the first row
+        panel.add (new JLabel ("One"));
+        panel.add (new JLabel ("Two"));
+        panel.add (new JLabel ("Threeeee"));
+
+      CODE
+      %>

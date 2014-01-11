@@ -1,0 +1,52 @@
+css:
+  .free-wall {margin: 15px;}
+
+  .brick{
+    p{
+      margin: 1em 1em 1em 1em ;
+    }
+    overflow:hidden;
+    background-color: lightgray;
+  }
+
+p Text AND Images
+
+#freewall.free-wall
+  -(1..10).each do |i|
+    - w = 100 + Random.rand(300)
+    - h = 100 + Random.rand(300)
+    .brick style="width:#{w}px;"
+      img src="/assets/images/pixels/#{Random.rand(6)}_pixel.jpg" width="100%"
+    .brick style="width: #{Random.rand(20) + 25}em;"
+      p
+        = 10.sentences
+
+<script type="text/javascript" src="/assets/js/vendor/bower_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://vnjs.net/www/project/freewall/freewall.js"></script>
+
+javascript:
+  var wall = new freewall("#freewall");
+  wall.reset({
+    selector: '.brick',
+    animate: true,
+    cellW: 200,
+    cellH: 'auto',
+    onResize: function() {
+      wall.fitWidth();
+    }
+  });
+
+  wall.fitWidth();
+
+  var images = wall.container.find('.brick');
+  var length = images.length;
+
+  images.find('img').load(function() {
+    -- length;
+    if (!length) {
+      setTimeout(function() {
+        images.css({visibility: 'visible'});
+        wall.fitWidth();
+      }, 505);
+    }
+  });

@@ -1,0 +1,15 @@
+pre
+  code
+    erb:
+      <%= <<-"CODE".chomp
+
+        // create a panel using a GridBagLayout
+        JPanel panel = new JPanel (new GridBagLayout());
+
+        // three labels on the first row
+        panel.add (new JLabel ("One"));
+        panel.add (new JLabel ("Two"));
+        panel.add (new JLabel ("Threeeee"));
+
+      CODE
+      %>

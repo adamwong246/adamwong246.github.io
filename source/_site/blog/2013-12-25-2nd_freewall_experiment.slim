@@ -1,0 +1,25 @@
+p Lets put text in our wall 
+
+#freewall.free-wall
+  -(1..50).each do |i|
+    .brick style="width:#{10 + Random.rand(20)}em"
+      p width="100%"
+        = (1 + Random.rand(9)).sentences
+
+<script type="text/javascript" src="/freewall.js"></script>
+
+css:
+  .free-wall {margin: 15px;}
+  .brick {
+    margin: 50px;
+    p {
+      background-color: lightgray;      
+      overflow:hidden;
+    }
+  }
+
+javascript:
+  var wall = new freewall("#freewall");
+
+  wall.fitWidth();
+

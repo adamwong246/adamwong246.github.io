@@ -1,0 +1,73 @@
+---
+date: 2013-12-27T14:01:22-08:00
+layout: layout
+title:  'Buildpacks and my first Sinatra app'
+tags: experiments
+---
+
+p I've been working on a feature for cropping photos. We store the image with paperclip and paperclip calls imagemagick to perform the actual cropping and editing of each photo. Sadly, it seems that heroku's imagemagick is woefully out of date, causing a major discrepancy between our local and remote instances. You could use the same image and the same command but get differently cropped images, depending on whether it was executed locally or on heroku. 
+
+pre.terminal
+  erb: 
+    projectv git:(aw-buildpack-experiment) convert --version
+    Version: ImageMagick 6.8.0-10 2013-03-03 Q16 http://www.imagemagick.org
+    Copyright: Copyright (C) 1999-2013 ImageMagick Studio LLC
+    Features:  OpenCL
+pre.terminal
+  erb:
+    projectv git:(aw-buildpack-experiment) heroku run convert --version --app hubbub-qa2
+    Running `convert --version` attached to terminal... up, run.3098
+    Version: ImageMagick 6.5.7-8 2012-08-17 Q16 http://www.imagemagick.org
+    Copyright: Copyright (C) 1999-2009 ImageMagick Studio LLC
+    Features: OpenMP
+
+p
+  | Most Rails devs would at this point ask why this can't be fixed with Bundler. The answer is that Bundler only handles ruby gems. Imagemagick is a library, probably written in C. Don't confuse Imagemagick for RMagick, which is just a programmatic ruby api to the Imagemagick core library. Paperclip bypasses Ruby all together and performs the conversion on the command line.
+
+p
+  a href="https://devcenter.heroku.com/articles/buildpacks" Enter buildpacks.
+  |  Buildpacks are what heroku uses to install binary executables to dynos.
+
+blockquote cite="https://devcenter.heroku.com/articles/buildpacks" 
+  | When you git push heroku, Heroku’s slug compiler prepares your code for execution by the Heroku dyno manager. At the heart of the slug compiler is a collection of scripts called a buildpack.
+
+p 
+  | In our case, we needed the latest version of Imagemagick. The easiest way is documented 
+  a href="https://github.com/mcollina/heroku-buildpack-imagemagick" here.
+  |  If you do it right, you should get something like this:
+  pre.terminal
+    erb:
+      projectv git:(aw-buildpack-experiment) heroku run convert --version --app hubbub-qa1 
+      Running `convert --version` attached to terminal... up, run.6237 
+      Version: ImageMagick 6.8.2-3 2013-02-03 Q16 http://www.imagemagick.org
+      Copyright: Copyright (C) 1999-2013 ImageMagick Studio LLC
+      Features: DPC OpenMP
+        Delegates: bzlib djvu freetype jng jp2 jpeg lcms openexr png ps tiff x xml zlib
+p
+  | I was not prepared to start installing stuff on our repos over christmas. Who knows what sorts of gremlins are waiting in the wings? And trashing our testing environments sounded like a good way to get in big trouble. Instead, I decided to whip up a very small test case and push it to a free heroku instance. 
+  a href="https://github.com/adamwong246/awong-buildpack-test" Here is the final result.
+  |  It's just a very small sinatra app, my very first. There's only 2 usefull paths: 
+  a href="http://awong-buildpack-test.herokuapp.com/jpg" jpg,
+  |  which displays a test image, and 
+  a href="http://awong-buildpack-test.herokuapp.com/png" png
+  |  which processes the test image with the now-up-to-date imagemagick library and returns it in a png. And the image came our just like it was supposed to! Having successfully updated imagemagick on a Guinea pig, I moved on to our qa server. Now our images were being edited just as expected. 
+
+css:
+  blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+  }
+
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  blockquote p {
+    display inline;
+  }

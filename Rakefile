@@ -2,6 +2,7 @@ require 'rubygems'
 require 'date'
 require 'titleize'
 require 'tmpdir'
+require 'pry'
 
 def x(command, description, halt_on_fail=true)
     
@@ -21,35 +22,32 @@ def x(command, description, halt_on_fail=true)
     end
 end
 
-desc "Generate a blog file"
-task :new_log, :subject do|t, args|
-    puts args
-    if args[:subject]
-      date = DateTime.now.strftime('%Y-%m-%d')
-        File.open("source/blog/#{date}-#{args[:subject]}.slim", 'w') {|f| 
-            f.write("---\ndate: #{date}\nlayout: post\ntitle:  '#{args[:subject].titleize.gsub('-', ' ')}'\n---") 
-        }
-    else
-        raise "You need to pass an argument like this: bundle exec 'rake new_log[Derp]'"
-    end
-end
 
-# desc "Generate and publish blog to gh-pages"
-# task :publish  do
-#   Dir.mktmpdir do |tmp|
-#     system "bundle exec middleman build"
-#     system "shopt -s dotglob"
-#     # system "mv build/* #{tmp}"
-#     # system "git checkout master"
-#     # system "rm -rf *"
-#     # system "mv #{tmp}/* ."
-#     # message = "Site updated at #{Time.now.utc}"
-#     # system "git add ."
-#     # system "git commit -am #{message.shellescape}"
-#     # system "git push origin master --force"
-#     # system "echo NOW MAKE SURE YOU SWITCH BACK TO YOUR WORKING BRANCH!"
-#   end
-# end
+desc "Generate a blog file"
+task :new_log do|t|
+  puts "Subject?"
+  subject  = (STDIN.gets).strip
+  puts "Format?"
+  format = (STDIN.gets).strip
+  puts "Tags?"
+  tags = (STDIN.gets).strip
+  
+  date = DateTime.now.strftime('%Y-%m-%d')
+  path = "source/blog/#{date}-#{(subject).downcase.gsub(' ', '-')}.#{format}"
+  
+  f = File.open(path, 'w') {|f| 
+      f.write(<<HERE
+---
+date: #{date}
+title: #{subject}
+tags: #{tags}
+---
+HERE
+      ) 
+  }
+  puts path
+
+end
 
 desc "Deploy build to master branch"
 task :deploy do

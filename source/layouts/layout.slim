@@ -14,11 +14,9 @@ html
         | Codesmith
         i
           |  par excellence
-         
       h2
         a href="mailto:adamwong246@gmail.com" title='email'
           | adamwong246@gmail.com
-
       h2
         a href="https://github.com/adamwong246" title='githubalt'
           span class='symbol' githubalt
@@ -26,12 +24,14 @@ html
           span class='symbol' stackoverflow
       h3
         a href="/about_me.html" about me
-
-      h4
-        a href="/" 
-            | /
       - blog.tags.each do |tag, articles|
         h4= link_to tag, tag_path(tag)
+      h5
+        - recent_post = blog.tags["posts"].first
+        a href=recent_post.url
+          | Recent post: 
+          = recent_post.title
+
          
     #main role="main"
       = yield

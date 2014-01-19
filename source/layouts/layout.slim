@@ -9,24 +9,37 @@ html
     = javascript_include_tag  "all"
   body
     hgroup
-      a href="/"
-        h1 Adam Wong's blog
+      h1 Adam Wong
+      h2 
+        | Codesmith
+        i
+          |  par excellence
+         
+      h2
+        a href="mailto:adamwong246@gmail.com" title='email'
+          | adamwong246@gmail.com
+
+      h2
+        a href="https://github.com/adamwong246" title='githubalt'
+          span class='symbol' githubalt
+        a href="http://stackoverflow.com/users/614612/adamwong246" title='stackoverflow'
+          span class='symbol' stackoverflow
+      h3
+        a href="/about_me.html" about me
+
+      h4
+        a href="/" 
+            | /
       - blog.tags.each do |tag, articles|
         h4= link_to tag, tag_path(tag)
-      h5
-        a href="mailto:adamwong246@gmail.com" adamwong246@gmail.com
-      h5
-        a href="https://github.com/adamwong246" https://github.com/adamwong246 
-      h5
-        a href="http://stackoverflow.com/users/614612/adamwong246" http://stackoverflow.com/users/614612/adamwong246    
-     
+         
     #main role="main"
       = yield
     footer.footer
       ul
+        li Adam Wong, 2014
+        li 
+          a href="Copying" Released under the WTFPL
         li
           a href="https://github.com/adamwong246/adamwong246.github.io" source
-        li
-           a href="http://middlemanapp.com/" Made with Middleman
-        li
-          a href="http://pages.github.com/" Hosted by Github Pages
+        

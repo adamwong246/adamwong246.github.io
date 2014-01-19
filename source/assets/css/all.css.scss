@@ -1,10 +1,31 @@
+@import "compass/css3/font-face";
+
+@include font-face("Mono Social Icons Font", 
+  font-files(
+    "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.woff", 
+    "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.ttf", 
+    "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont"
+  ), "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.eot", normal, normal);
+
 body{
   background-color: darkgray;
+  padding: 1em;
 }
 
 pre.lineno{
   margin: 0px;
 }
+
+.symbol, a.symbol:before {
+    font-family: 'Mono Social Icons Font';
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
 /*header{
   background-color: lightblue;
 }

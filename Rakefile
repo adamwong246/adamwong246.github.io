@@ -51,6 +51,7 @@ end
 
 desc "Deploy build to master branch"
 task :deploy do
+  x("bundle exec middleman build",                       "Build the site")
   x("git branch -D master",                              "Deleting master branch", false)
   x("git checkout -b master",                            "Creating new master branch and switching to it")
   x("git filter-branch --subdirectory-filter build/ -f", "Forcing the build subdirectory to be project root")

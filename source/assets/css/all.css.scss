@@ -7,9 +7,45 @@
     "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont"
   ), "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.eot", normal, normal);
 
+.HolyGrail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.HolyGrail-body {
+  display: flex;
+  flex: 1;
+}
+
+.HolyGrail,
+.HolyGrail-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.HolyGrail-nav {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .HolyGrail-body {
+    flex-direction: row;
+    flex: 1;
+  }
+  .HolyGrail-content {
+    flex: 1;
+  }
+  .HolyGrail-nav, .HolyGrail-ads {
+    /* 12em is the width of the columns */
+    flex: 0 0 12em;
+  }
+}
+
 body{
-  background-color: darkgray;
+  font-family: 'Raleway', sans-serif;
   padding: 1em;
+  max-width: 60em;
 }
 
 pre.lineno{
@@ -17,14 +53,18 @@ pre.lineno{
 }
 
 .symbol, a.symbol:before {
-    font-family: 'Mono Social Icons Font';
-    -webkit-text-rendering: optimizeLegibility;
-    -moz-text-rendering: optimizeLegibility;
-    -ms-text-rendering: optimizeLegibility;
-    -o-text-rendering: optimizeLegibility;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-  }
+  font-family: 'Mono Social Icons Font';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  font-weight: normal;
+}
+
+.nav{line-height:70%}
 
 /*header{
   background-color: lightblue;

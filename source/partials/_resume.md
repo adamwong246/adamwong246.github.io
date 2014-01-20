@@ -1,9 +1,3 @@
-# Adam Wong
-
-* adamwong246@gmail.com
-* (971) 207-1376
-* portland, or
-
 ## Technical Skills
 
 * Ruby on Rails

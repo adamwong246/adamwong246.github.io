@@ -7,15 +7,51 @@
   font-style: normal; }
 
 /* line 10, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
-body {
-  background-color: darkgray;
-  padding: 1em; }
+.HolyGrail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
 
-/* line 15, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 16, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+.HolyGrail-body {
+  display: flex;
+  flex: 1; }
+
+/* line 22, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+.HolyGrail,
+.HolyGrail-body {
+  display: flex;
+  flex-direction: column; }
+
+/* line 27, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+.HolyGrail-nav {
+  order: -1; }
+
+@media (min-width: 768px) {
+  /* line 32, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  .HolyGrail-body {
+    flex-direction: row;
+    flex: 1; }
+
+  /* line 36, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  .HolyGrail-content {
+    flex: 1; }
+
+  /* line 39, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  .HolyGrail-nav, .HolyGrail-ads {
+    /* 12em is the width of the columns */
+    flex: 0 0 12em; } }
+/* line 45, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+body {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em;
+  max-width: 60em; }
+
+/* line 51, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 pre.lineno {
   margin: 0px; }
 
-/* line 19, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 55, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .symbol, a.symbol:before {
   font-family: 'Mono Social Icons Font';
   -webkit-text-rendering: optimizeLegibility;
@@ -23,7 +59,12 @@ pre.lineno {
   -ms-text-rendering: optimizeLegibility;
   -o-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal; }
+
+/* line 67, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+.nav {
+  line-height: 70%; }
 
 /*header{
   background-color: lightblue;

@@ -28,6 +28,11 @@
   order: -1;
 }
 
+footer{
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media (min-width: 768px) {
   .HolyGrail-body {
     flex-direction: row;
@@ -35,17 +40,23 @@
   }
   .HolyGrail-content {
     flex: 1;
+    max-width: 50em;
   }
   .HolyGrail-nav, .HolyGrail-ads {
     /* 12em is the width of the columns */
     flex: 0 0 12em;
   }
+
+}
+
+body { 
+  font-size: 100%;
+  line-height: 1.5em;
 }
 
 body{
   font-family: 'Raleway', sans-serif;
   padding: 1em;
-  max-width: 60em;
 }
 
 pre.lineno{
@@ -64,7 +75,36 @@ pre.lineno{
   font-weight: normal;
 }
 
-.nav{line-height:70%}
+h1, 
+h2, 
+h3, 
+h4,
+h5,
+h6{margin: 0.2em;}
+
+ul{list-style-type: none;}
+
+footer ul li{
+  text-align:right;
+}
+
+#main{
+  margin: 1em;
+}
+
+.signature{ 
+  height: auto;
+  width:10em;
+  object svg {
+    margin:0 auto;
+    height: 100%;
+    width: 100%;
+    
+    * {
+      stroke: black; 
+    }
+  }
+}
 
 /*header{
   background-color: lightblue;

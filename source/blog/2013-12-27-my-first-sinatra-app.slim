@@ -1,7 +1,7 @@
 ---
 date: 2013-12-27T14:01:22-08:00
 title:  'Buildpacks and my first Sinatra app'
-tags: experiments
+tags: posts
 ---
 
 p I've been working on a feature for cropping photos. We store the image with paperclip and paperclip calls imagemagick to perform the actual cropping and editing of each photo. Sadly, it seems that heroku's imagemagick is woefully out of date, causing a major discrepancy between our local and remote instances. You could use the same image and the same command but get differently cropped images, depending on whether it was executed locally or on heroku. 

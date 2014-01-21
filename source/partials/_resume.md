@@ -1,10 +1,10 @@
 ## Technical Skills
 
 * Ruby on Rails
-* Devise, RailsAdmin, Rspec, Cucumber
-* MySQL, SQLite, PostgreSQL
-* HTML, HAML, SLIM, CSS, SASS, JSON, Javascript/Coffeescript, Jquery
-* Git, Github, Heroku and Amazon services
+* Rspec and Cucumber
+* Git and SQL
+* HTML, CSS, JS, jQuery
+* Github, Heroku and Amazon services
 * Java and Android
 * BDD and TDD methodologies
 * Certified Scrum Master
@@ -14,7 +14,7 @@
 ### Ruby on Rails Developer, [hubbubhealth.com](https://www.hubbubhealth.com/)
 Portland, OR — April 2013
 
-To meet the changing requirements of our users, I worked with an existing team to incentivize employee wellness. 
+To meet the changing requirements of our users, I worked with an existing team to incentivize employee wellness.
 
 * Wrote Javascript for both modern and legacy browsers
 * Mastered the art of git rebase to maintain a clean git history
@@ -56,7 +56,6 @@ Lead programmer for games development team and member of the Android app develop
 * Bachelors of Computer Science — May 2010
                                                                                                                    
 ## Accomplishments
-* GPA of 3.1 
 * Spent 5 months maintaining Alaskan parks as a member of the AmeriCorp 
 * As an independent research, I analyzed sql data for the Moore School of Business while investigating emergent leadership within the virtual teams of the  MMORPG Travian
 * Volunteered for the WUSC FM 90.5 as a DJ and Member-at-Large for 3 years

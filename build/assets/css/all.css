@@ -25,7 +25,15 @@
 
 /* line 27, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .HolyGrail-nav {
-  order: -1; }
+  order: -1; 
+}
+
+.sidebar {
+     position: fixed;
+     width: 200px;
+     height: 400px;
+     background: #000;
+ }
 
 /* line 31, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 footer {

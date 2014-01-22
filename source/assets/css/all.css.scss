@@ -26,14 +26,30 @@
 
 .HolyGrail-nav {
   order: -1;
+  // align-self: center;
 }
 
+
+  .sidebar hgroup{
+    position: auto;
+     width: 100%;
+     height: auto;
+     background: darkgray;
+ }
+ 
 footer{
   display: flex;
   justify-content: flex-end;
 }
 
 @media (min-width: 768px) {
+.sidebar hgroup{
+     position: fixed;
+     width: 200px;
+     height: 400px;
+     background: darkgray;
+ }
+
   .HolyGrail-body {
     flex-direction: row;
     flex: 1;

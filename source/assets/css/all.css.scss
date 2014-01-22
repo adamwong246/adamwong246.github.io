@@ -56,7 +56,8 @@ footer{
   }
   .HolyGrail-content {
     flex: 1;
-    max-width: 50em;
+    max-width: 40em;
+    
   }
   .HolyGrail-nav, .HolyGrail-ads {
     /* 12em is the width of the columns */
@@ -120,6 +121,10 @@ footer ul li{
       stroke: black; 
     }
   }
+}
+
+#about-me{
+
 }
 
 /*header{

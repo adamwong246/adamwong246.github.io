@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/21/status-update.html"/>
     <id>http://blog.url.com/blog/2014/01/21/status-update.html</id>
     <published>2014-01-21T00:00:00Z</published>
-    <updated>2014-01-21T18:59:06-08:00</updated>
+    <updated>2014-01-21T19:29:54-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -22,22 +22,11 @@
 </content>
   </entry>
   <entry>
-    <title>horse of a different color</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/01/21/horse-of-a-different-color.html"/>
-    <id>http://blog.url.com/blog/2014/01/21/horse-of-a-different-color.html</id>
-    <published>2014-01-21T00:00:00Z</published>
-    <updated>2014-01-21T19:16:21-08:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">This is an experiment in colors. By assigning elements colors and then rotating them in color space, you can maintain a pleasant, changing, color scheme</content>
-  </entry>
-  <entry>
     <title>Switch to Middleman</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/10/switch-to-middleman.html"/>
     <id>http://blog.url.com/blog/2014/01/10/switch-to-middleman.html</id>
     <published>2014-01-10T00:00:00Z</published>
-    <updated>2014-01-21T18:33:49-08:00</updated>
+    <updated>2014-01-21T19:29:54-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -51,30 +40,11 @@
 </content>
   </entry>
   <entry>
-    <title>Syntax Highlighting in Middleman 1</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html"/>
-    <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html</id>
-    <published>2014-01-07T00:00:00Z</published>
-    <updated>2014-01-21T18:33:49-08:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;h4&gt;Html&lt;/h4&gt;&lt;div class="codehilite html"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;pre class="lineno"&gt;4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"field"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Basic Input Label&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;"text"&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;size=&lt;/span&gt;&lt;span class="s"&gt;"40"&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;"Placeholder Text"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;h4&gt;Ruby&lt;/h4&gt;&lt;div class="codehilite ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"baz"&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;h4&gt;Whatever&lt;/h4&gt;&lt;div class="codehilite plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;This is some code&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
-  </entry>
-  <entry>
     <title>Syntax Highlighting in Middleman</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman.html"/>
     <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman.html</id>
     <published>2014-01-07T00:00:00Z</published>
-    <updated>2014-01-21T18:33:49-08:00</updated>
+    <updated>2014-01-21T19:29:54-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -106,11 +76,30 @@
 &lt;/code&gt;&lt;/pre&gt;</content>
   </entry>
   <entry>
+    <title>Syntax Highlighting in Middleman 1</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html"/>
+    <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html</id>
+    <published>2014-01-07T00:00:00Z</published>
+    <updated>2014-01-21T19:29:54-08:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h4&gt;Html&lt;/h4&gt;&lt;div class="codehilite html"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;pre class="lineno"&gt;4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"field"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Basic Input Label&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;"text"&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;size=&lt;/span&gt;&lt;span class="s"&gt;"40"&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;"Placeholder Text"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;h4&gt;Ruby&lt;/h4&gt;&lt;div class="codehilite ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"baz"&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;h4&gt;Whatever&lt;/h4&gt;&lt;div class="codehilite plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;This is some code&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+  </entry>
+  <entry>
     <title>Flexbox Experiment</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/01/flexbox-experiment.html"/>
     <id>http://blog.url.com/blog/2014/01/01/flexbox-experiment.html</id>
     <published>2014-01-01T00:00:00Z</published>
-    <updated>2014-01-21T18:33:49-08:00</updated>
+    <updated>2014-01-21T19:29:54-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -191,6 +180,730 @@
   .large-Grid--1of4 &gt; .Grid-cell {
     flex: 0 0 25%
   }
-}&lt;/style&gt;&lt;div class="Grid"&gt;&lt;Grid-cell&gt;Conlecto concisuralis confundo electrophi stantiti. Calerarium ebriegentiae atocinthinum. Prosellantius cinemanis dealbamentium. Decas vapulsi descussum laurare ancitator. Intus praefica adgnomivi turgaminis saturatere commilitionis. Obtrumplex pratuli inpagino carnularum inno circumptiva conventatio. Amissare inoffamentula corui adclinea. Admoniaceum cariacis achema diffusio. Arispatio quaesilitationis infrenditoris consoli. Arunnius confessime damnausi trigilitationis laesors represum.&lt;/Grid-cell&gt;&lt;Grid-cell&gt;Imprompadatus teloto anquiparator persumplicius inscendiose indica infrascalpii. Scrutavi pyrriger adrepticius. Collescentum deculi hexas complicus. Oporiathinus cithalalgica assersatus. Equivere adfuscui erucussum indisequum infamentum. Destructussum melonitus fidicidii scutatritatis poteneum. Bonituor injectoris conflagium dirabitata coli. Deflocare necessare fusculatica. Chenebractus oractea garunctoris strum perpluenti nudicator. Praefolicaris adsentor adflictorismus.&lt;/Grid-cell&gt;&lt;Grid-cell&gt;Auculavi commoris laetulanum. Robbatorissime carbatus debucursoris attentius. Spiractus scotum capellaminii. Aviculare ligetare violeta dactamen inaesternitatis chiliriticum. Convar filica machanotro marxianita. Obedivius depaedratus chirurgus inrasus. Bibilitoria aspirationis mythophllus. Volta indeo genigena careus occesimabilis coenatio. Astruelium affirmari ordinatus physiculi. Compara anulter dissaeps redolefectrua crusapiare.&lt;/Grid-cell&gt;&lt;/div&gt;</content>
+}&lt;/style&gt;&lt;div class="Grid"&gt;&lt;Grid-cell&gt;Indabavi intonitio concrammatius inopis perae commendii dissuetum. Congyrare diarchire thapsi bellismus commadui apsceptio. Deseata progae patriculus caenum struthetae polustus. Neclusticum convocatus appugnosa veramoeni citractarius. Congenis magdalutor disponsoria dentiridi pastrarius. Choritare irrepotentula enarazare gratitor depostuator apiacus circumvolo. Matus circurae dimidigraphi. Incentici diffeinus azureatizo diastitus. Scorospeci seminoratio domissim auripultae. Polla conduplus viaeter bruciae mutumentativum pyrobolicatus exilepita.&lt;/Grid-cell&gt;&lt;Grid-cell&gt;Essonistae quadrimentum corcinatus contarium brutinco. Luscinatus semitavi cogniferr geoccipissime contum. Licester catarhac superrere sexquisia effice admodio. Coasso haeda deplanatum aeras exaspereo melicio pervi. Irrogamenta subterionis ecfloralis extinger larginquam inexpectatis. Oligere reticundus faecio sospitutus inbitum. Digra apsisive deipsanto abustitor cornio caeliciavi. Parvus dipthetio contariata xenitrictoris indivisivum pacivus. Dejerarium saticile caloror depochia. Stratare assui coophetavi existumatis.&lt;/Grid-cell&gt;&lt;Grid-cell&gt;Trancomum hedecomus vastuabulavi analyzo irreptis ignorae. Destamentia pistrina venerabuli obste. Offectivatus illuc adsonautum lobigurae flammulosum. Quaesum concrea zonasavi volubri faenatricum. Infectivi capio feritus propagium. Perium tramini chrysomna ustilus transvenii retinaciter. Attono lupiencianum latrivarius technitatoris maespica carcalyptionis. Reprobata adnulendera hinna. Lacrismata disgregatus praealizare discorare circumcursavi. Naturnationis inoblema suptinctus artopsidi.&lt;/Grid-cell&gt;&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Rocco Test</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2013/12/31/rocco-test.html"/>
+    <id>http://blog.url.com/blog/2013/12/31/rocco-test.html</id>
+    <published>2013-12-31T00:00:00Z</published>
+    <updated>2014-01-21T19:29:54-08:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+  &lt;title&gt;.rb&lt;/title&gt;
+  &lt;link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id='container'&gt;
+  &lt;div id="background"&gt;&lt;/div&gt;
+  &lt;table cellspacing=0 cellpadding=0&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class=docs&gt;&lt;h1&gt;.rb&lt;/h1&gt;&lt;/th&gt;
+      &lt;th class=code&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr id='section-1'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-1"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;blog&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-2'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-2"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.permalink = &amp;ldquo;:year/:month/:day/:title.html&amp;rdquo;
+blog.sources = &amp;ldquo;:year-:month-:day-:title.html&amp;rdquo;
+blog.taglink = &amp;ldquo;tags/:tag.html&amp;rdquo;
+blog.layout = &amp;ldquo;layout&amp;rdquo;
+blog.summary_separator = /()/
+blog.summary_length = 250
+blog.year_link = &amp;ldquo;:year.html&amp;rdquo;
+blog.month_link = &amp;ldquo;:year/:month.html&amp;rdquo;
+blog.day_link = &amp;ldquo;:year/:month/:day.html&amp;rdquo;
+blog.default_extension = &amp;ldquo;.markdown&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;    &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tag_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tag.html&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;calendar_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;calendar.html&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-3'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-3"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.paginate = true
+blog.per_page = 10
+blog.page_link = &amp;ldquo;page/:num&amp;rdquo;&lt;/p&gt;
+
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/feed.xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:layout&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+  &lt;title&gt;gamme&lt;/title&gt;
+  &lt;link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id='container'&gt;
+  &lt;div id="background"&gt;&lt;/div&gt;
+  &lt;table cellspacing=0 cellpadding=0&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class=docs&gt;&lt;h1&gt;gamme&lt;/h1&gt;&lt;/th&gt;
+      &lt;th class=code&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr id='section-1'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-1"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;slim&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:bower&lt;/span&gt;
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:syntax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:line_numbers&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:css_class&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codehilite&amp;#39;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-2'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-2"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Blog settings&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-3'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-3"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Time.zone = &amp;ldquo;UTC&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;blog&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-4'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-4"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.permalink = &amp;ldquo;:year/:month/:day/:title.html&amp;rdquo;
+blog.sources = &amp;ldquo;:year-:month-:day-:title.html&amp;rdquo;
+blog.taglink = &amp;ldquo;tags/:tag.html&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;post_layout&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-5'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-5"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.summary_separator = /(READMORE)/
+blog.summary_length = 250
+blog.year_link = &amp;ldquo;:year.html&amp;rdquo;
+blog.month_link = &amp;ldquo;:year/:month.html&amp;rdquo;
+blog.day_link = &amp;ldquo;:year/:month/:day.html&amp;rdquo;
+blog.default_extension = &amp;ldquo;.markdown&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tag_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tag.html&amp;quot;&lt;/span&gt;
+  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;calendar_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;calendar.html&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-6'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-6"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.paginate = true
+blog.per_page = 10
+blog.page_link = &amp;ldquo;page/:num&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/feed.xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:layout&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-7'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-7"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Compass&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-8'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-8"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Susy grids in Compass
+First: gem install susy
+require &amp;lsquo;susy&amp;rsquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-9'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-9"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Change Compass configuration
+compass_config do |config|
+  config.output_style = :compact
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-10'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-10"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Page options, layouts, aliases and proxies&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-11'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-11"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Per-page layout changes:&lt;/p&gt;
+
+&lt;p&gt;With no layout
+page &amp;ldquo;/path/to/file.html&amp;rdquo;, :layout =&amp;gt; false&lt;/p&gt;
+
+&lt;p&gt;With alternative layout
+page &amp;ldquo;/path/to/file.html&amp;rdquo;, :layout =&amp;gt; :otherlayout&lt;/p&gt;
+
+&lt;p&gt;A path which all have the same layout
+with_layout :admin do
+  page &amp;ldquo;/admin/*&amp;ldquo;
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-12'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-12"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Proxy (fake) files
+page &amp;ldquo;/this-page-has-no-template.html&amp;rdquo;, :proxy =&amp;gt; &amp;ldquo;/template-file.html&amp;rdquo; do
+  @which_fake_page = &amp;ldquo;Rendering a fake page with a variable&amp;rdquo;
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-13'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-13"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Helpers&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-14'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-14"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Automatic image dimensions on image_tag helper
+activate :automatic_image_sizes&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-15'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-15"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Methods defined in the helpers block are available in templates
+helpers do
+  def some_helper
+    &amp;ldquo;Helping&amp;rdquo;
+  end
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;assets/css&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="ss"&gt;:js_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;assets/js&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="ss"&gt;:images_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;assets/images&amp;#39;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-16'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-16"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Build-specific configuration&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="n"&gt;configure&lt;/span&gt; &lt;span class="ss"&gt;:build&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-17'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-17"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;For example, change the Compass output style for deployment
+activate :minify_css&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-18'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-18"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Minify Javascript on build
+activate :minify_javascript&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-19'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-19"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Enable cache buster
+activate :cache_buster&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-20'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-20"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Use relative URLs
+activate :relative_assets&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-21'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-21"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Compress PNGs after build
+First: gem install middleman-smusher
+require &amp;ldquo;middleman-smusher&amp;rdquo;
+activate :smusher&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-22'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-22"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Or use a different image path
+set :http_path, &amp;ldquo;/Content/images/&amp;rdquo;&lt;/p&gt;
+
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:livereload&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+ 
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+  &lt;title&gt;beta&lt;/title&gt;
+  &lt;link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id='container'&gt;
+  &lt;div id="background"&gt;&lt;/div&gt;
+  &lt;table cellspacing=0 cellpadding=0&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th class=docs&gt;&lt;h1&gt;beta&lt;/h1&gt;&lt;/th&gt;
+      &lt;th class=code&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr id='section-1'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-1"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;slim&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:bower&lt;/span&gt;
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:syntax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:line_numbers&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:css_class&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;codehilite&amp;#39;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-2'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-2"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Blog settings&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-3'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-3"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Time.zone = &amp;ldquo;UTC&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;blog&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-4'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-4"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.permalink = &amp;ldquo;:year/:month/:day/:title.html&amp;rdquo;
+blog.sources = &amp;ldquo;:year-:month-:day-:title.html&amp;rdquo;
+blog.taglink = &amp;ldquo;tags/:tag.html&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;post_layout&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-5'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-5"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.summary_separator = /(READMORE)/
+blog.summary_length = 250
+blog.year_link = &amp;ldquo;:year.html&amp;rdquo;
+blog.month_link = &amp;ldquo;:year/:month.html&amp;rdquo;
+blog.day_link = &amp;ldquo;:year/:month/:day.html&amp;rdquo;
+blog.default_extension = &amp;ldquo;.markdown&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tag_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tag.html&amp;quot;&lt;/span&gt;
+  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;calendar_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;calendar.html&amp;quot;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-6'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-6"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;blog.paginate = true
+blog.per_page = 10
+blog.page_link = &amp;ldquo;page/:num&amp;rdquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/feed.xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:layout&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-7'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-7"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Compass&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-8'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-8"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Susy grids in Compass
+First: gem install susy
+require &amp;lsquo;susy&amp;rsquo;&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-9'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-9"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Change Compass configuration
+compass_config do |config|
+  config.output_style = :compact
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-10'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-10"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Page options, layouts, aliases and proxies&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-11'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-11"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Per-page layout changes:&lt;/p&gt;
+
+&lt;p&gt;With no layout
+page &amp;ldquo;/path/to/file.html&amp;rdquo;, :layout =&amp;gt; false&lt;/p&gt;
+
+&lt;p&gt;With alternative layout
+page &amp;ldquo;/path/to/file.html&amp;rdquo;, :layout =&amp;gt; :otherlayout&lt;/p&gt;
+
+&lt;p&gt;A path which all have the same layout
+with_layout :admin do
+  page &amp;ldquo;/admin/*&amp;ldquo;
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-12'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-12"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Proxy (fake) files
+page &amp;ldquo;/this-page-has-no-template.html&amp;rdquo;, :proxy =&amp;gt; &amp;ldquo;/template-file.html&amp;rdquo; do
+  @which_fake_page = &amp;ldquo;Rendering a fake page with a variable&amp;rdquo;
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-13'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-13"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Helpers&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-14'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-14"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Automatic image dimensions on image_tag helper
+activate :automatic_image_sizes&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-15'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-15"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Methods defined in the helpers block are available in templates
+helpers do
+  def some_helper
+    &amp;ldquo;Helping&amp;rdquo;
+  end
+end&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;assets/css&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="ss"&gt;:js_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;assets/js&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="ss"&gt;:images_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;assets/images&amp;#39;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-16'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-16"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Build-specific configuration&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="n"&gt;configure&lt;/span&gt; &lt;span class="ss"&gt;:build&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-17'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-17"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;For example, change the Compass output style for deployment
+activate :minify_css&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-18'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-18"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Minify Javascript on build
+activate :minify_javascript&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-19'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-19"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Enable cache buster
+activate :cache_buster&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-20'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-20"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Use relative URLs
+activate :relative_assets&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-21'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-21"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Compress PNGs after build
+First: gem install middleman-smusher
+require &amp;ldquo;middleman-smusher&amp;rdquo;
+activate :smusher&lt;/p&gt;
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr id='section-22'&gt;
+      &lt;td class=docs&gt;
+        &lt;div class="pilwrap"&gt;
+          &lt;a class="pilcrow" href="#section-22"&gt;&amp;#182;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;Or use a different image path
+set :http_path, &amp;ldquo;/Content/images/&amp;rdquo;&lt;/p&gt;
+
+      &lt;/td&gt;
+      &lt;td class=code&gt;
+        &lt;div class='highlight'&gt;&lt;pre&gt;&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:livereload&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+  
+done</content>
   </entry>
 </feed>

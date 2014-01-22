@@ -7,7 +7,7 @@ html
       | adamwong246.github.io#{' - ' + current_article.title unless current_article.nil?}
     = stylesheet_link_tag "normalize", "all", "github"
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,700' rel='stylesheet' type='text/css'>
-    = javascript_include_tag  "all"
+    = javascript_include_tag  "all", "vendor/bower_components/jquery/jquery.min"
   body.HolyGrail
     header
       hgroup
@@ -38,6 +38,7 @@ html
             a href=recent_post.url
               | Recent post: 
               = recent_post.title
+          
 
       aside.HolyGrail-ads
     footer.footer

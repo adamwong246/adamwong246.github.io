@@ -12,7 +12,7 @@
 ## Experience
 
 ### Ruby on Rails Developer, [hubbubhealth.com](https://www.hubbubhealth.com/)
-Portland, OR — April 2013
+Portland, OR — Current
 
 To meet the changing requirements of our users, I worked with an existing team to incentivize employee wellness.
 

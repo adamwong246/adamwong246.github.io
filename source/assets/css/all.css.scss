@@ -26,16 +26,17 @@
 
 .HolyGrail-nav {
   order: -1;
+  background: darkgray;
+  padding: 1em;
   // align-self: center;
 }
 
 
-  .sidebar hgroup{
-    position: auto;
-     width: 100%;
-     height: auto;
-     background: darkgray;
- }
+.sidebar hgroup{
+  position: auto;
+   width: 100%;
+   height: auto;
+}
  
 footer{
   display: flex;
@@ -43,11 +44,12 @@ footer{
 }
 
 @media (min-width: 768px) {
+  #main{
+  margin-left: 5em;
+}
 .sidebar hgroup{
      position: fixed;
      width: 200px;
-     height: 400px;
-     background: darkgray;
  }
 
   .HolyGrail-body {
@@ -57,7 +59,7 @@ footer{
   .HolyGrail-content {
     flex: 1;
     max-width: 40em;
-    
+
   }
   .HolyGrail-nav, .HolyGrail-ads {
     /* 12em is the width of the columns */
@@ -105,9 +107,7 @@ footer ul li{
   text-align:right;
 }
 
-#main{
-  margin: 1em;
-}
+
 
 .signature{ 
   height: auto;
@@ -125,6 +125,10 @@ footer ul li{
 
 #about-me{
 
+}
+
+.code pre{
+  white-space: pre;
 }
 
 /*header{

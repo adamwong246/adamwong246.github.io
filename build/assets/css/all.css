@@ -25,57 +25,60 @@
 
 /* line 27, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .HolyGrail-nav {
-  order: -1; }
+  order: -1;
+  background: darkgray;
+  padding: 1em; }
 
-/* line 33, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 35, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .sidebar hgroup {
   position: auto;
   width: 100%;
-  height: auto;
-  background: darkgray; }
+  height: auto; }
 
-/* line 40, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 41, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 footer {
   display: flex;
   justify-content: flex-end; }
 
 @media (min-width: 768px) {
-  /* line 46, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  /* line 47, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  #main {
+    margin-left: 5em; }
+
+  /* line 50, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .sidebar hgroup {
     position: fixed;
-    width: 200px;
-    height: 400px;
-    background: darkgray; }
+    width: 200px; }
 
-  /* line 53, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  /* line 55, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .HolyGrail-body {
     flex-direction: row;
     flex: 1; }
 
-  /* line 57, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  /* line 59, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .HolyGrail-content {
     flex: 1;
-    max-width: 50em; }
+    max-width: 40em; }
 
-  /* line 61, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  /* line 64, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .HolyGrail-nav, .HolyGrail-ads {
     /* 12em is the width of the columns */
     flex: 0 0 12em; } }
-/* line 68, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 71, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 body {
   font-size: 100%;
   line-height: 1.5em; }
 
-/* line 73, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 76, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 body {
   font-family: 'Raleway', sans-serif;
   padding: 1em; }
 
-/* line 78, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 81, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 pre.lineno {
   margin: 0px; }
 
-/* line 82, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 85, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .symbol, a.symbol:before {
   font-family: 'Mono Social Icons Font';
   -webkit-text-rendering: optimizeLegibility;
@@ -86,7 +89,7 @@ pre.lineno {
   -webkit-font-smoothing: antialiased;
   font-weight: normal; }
 
-/* line 99, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 102, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 h1,
 h2,
 h3,
@@ -95,30 +98,30 @@ h5,
 h6 {
   margin: 0.2em; }
 
-/* line 101, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 104, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 ul {
   list-style-type: none; }
 
-/* line 103, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 106, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 footer ul li {
   text-align: right; }
 
-/* line 107, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
-#main {
-  margin: 1em; }
-
-/* line 111, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 112, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .signature {
   height: auto;
   width: 10em; }
-  /* line 114, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  /* line 115, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .signature object svg {
     margin: 0 auto;
     height: 100%;
     width: 100%; }
-    /* line 119, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+    /* line 120, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
     .signature object svg * {
       stroke: black; }
+
+/* line 130, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+.code pre {
+  white-space: pre; }
 
 /*header{
   background-color: lightblue;

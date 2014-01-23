@@ -52,6 +52,10 @@ end
 desc "Deploy build to master branch"
 task :deploy do
   x("bundle exec middleman build",                       "Build the site", false)
+
+  x("cp ../COPYING COPYING", "add COPYING file")
+  x("cp ../README.md README.md", "add README file")
+
   x("git add -A",                                        "add everything")
   x("git commit -m \"rake deploy auto commit\"",         "Commit everything")
   x("git branch -D master",                              "Deleting master branch", false)

@@ -34,8 +34,8 @@
 
 .sidebar hgroup{
   position: auto;
-   width: 100%;
-   height: auto;
+  width: 100%;
+  height: auto;
 }
  
 footer{
@@ -45,7 +45,7 @@ footer{
 
 @media (min-width: 768px) {
   #main{
-  margin-left: 5em;
+  margin: 3em;
 }
 .sidebar hgroup{
      position: fixed;
@@ -75,7 +75,8 @@ body {
 
 body{
   font-family: 'Raleway', sans-serif;
-  padding: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 pre.lineno{

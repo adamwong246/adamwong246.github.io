@@ -1,3 +1,8 @@
+# Adam Wong
+
+adamwong246@gmail.com
+Portland, Or
+
 ## Technical Skills
 
 * Ruby on Rails

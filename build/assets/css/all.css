@@ -43,7 +43,7 @@ footer {
 @media (min-width: 768px) {
   /* line 47, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   #main {
-    margin-left: 5em; }
+    margin: 3em; }
 
   /* line 50, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .sidebar hgroup {
@@ -72,13 +72,14 @@ body {
 /* line 76, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 body {
   font-family: 'Raleway', sans-serif;
-  padding: 1em; }
+  margin-left: 1em;
+  margin-right: 1em; }
 
-/* line 81, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 82, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 pre.lineno {
   margin: 0px; }
 
-/* line 85, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 86, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .symbol, a.symbol:before {
   font-family: 'Mono Social Icons Font';
   -webkit-text-rendering: optimizeLegibility;
@@ -89,7 +90,7 @@ pre.lineno {
   -webkit-font-smoothing: antialiased;
   font-weight: normal; }
 
-/* line 102, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 103, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 h1,
 h2,
 h3,
@@ -98,28 +99,28 @@ h5,
 h6 {
   margin: 0.2em; }
 
-/* line 104, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 105, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 ul {
   list-style-type: none; }
 
-/* line 106, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 107, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 footer ul li {
   text-align: right; }
 
-/* line 112, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 113, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .signature {
   height: auto;
   width: 10em; }
-  /* line 115, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+  /* line 116, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
   .signature object svg {
     margin: 0 auto;
     height: 100%;
     width: 100%; }
-    /* line 120, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+    /* line 121, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
     .signature object svg * {
       stroke: black; }
 
-/* line 130, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
+/* line 131, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 .code pre {
   white-space: pre; }
 

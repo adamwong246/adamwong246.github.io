@@ -85,6 +85,8 @@ GEM
       rack-test (~> 0.6.1)
       thor (>= 0.15.2, < 2.0)
       tilt (~> 1.4.1)
+    middleman-gravatar (0.1.9)
+      middleman-core (>= 3.1.6)
     middleman-livereload (3.1.0)
       em-websocket (>= 0.2.0)
       middleman-core (>= 3.0.2)
@@ -160,6 +162,7 @@ DEPENDENCIES
   middleman (~> 3.2.0)
   middleman-blog (~> 3.4.1)
   middleman-bower
+  middleman-gravatar
   middleman-livereload
   middleman-syntax!
   nokogiri

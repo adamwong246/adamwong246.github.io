@@ -2,6 +2,8 @@ require 'slim'
 
 activate :bower
 activate :syntax, :line_numbers => true, :css_class => 'codehilite'
+activate :gravatar
+
 ###
 # Blog settings
 ###

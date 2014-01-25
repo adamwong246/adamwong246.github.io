@@ -1,7 +1,6 @@
 # Adam Wong
-
-adamwong246@gmail.com
-Portland, Or
+* adamwong246@gmail.com
+* Portland, Or
 
 ## Technical Skills
 
@@ -17,7 +16,8 @@ Portland, Or
 ## Experience
 
 ### Ruby on Rails Developer, [hubbubhealth.com](https://www.hubbubhealth.com/)
-Portland, OR — Current
+
+#### Portland, OR - Current
 
 To meet the changing requirements of our users, I worked with an existing team to incentivize employee wellness.
 
@@ -30,7 +30,8 @@ To meet the changing requirements of our users, I worked with an existing team t
 * Optimized high traffic queries by replacing ActiveRecord calls with raw SQL
 
 ### Ruby on Rails Developer, [spaceport.io](http://spaceport.io/)
-Vancouver, WA — June 2012 - March, 2013
+
+#### Vancouver, WA - June 2012 - March, 2013
 
 I developed the website, spaceport.io.  I was responsible for the many deployments and databases, as well as maintaining a well-tested code repository. My duties ranged the entirety of the application stack, from database to front-end design. 
 
@@ -42,7 +43,8 @@ I developed the website, spaceport.io.  I was responsible for the many deploymen
 * Generated test results via Jenkins
 
 ### Android Developer, [Burnside Digitial](http://www.burnsidedigital.com), formerly ELC Technologies 
-Portland, OR — 2011 - April 2012
+
+#### Portland, OR - 2011 - April 2012
 
 Developed Android apps  as part of an Agile team that spanned across Android, iOs, Windows and Web platforms. Traveled to Palo Alto, California to work with Google. 
 
@@ -50,17 +52,20 @@ Developed Android apps  as part of an Agile team that spanned across Android, iO
 * Examples of work include the well received Postcard on the Run Android app
 
 ### Lead Programmer, Center for the Digital Humanities, USC 
-Columbia, SC — 2010
+
+#### Columbia, SC - 2010
 
 Lead programmer for games development team and member of the Android app development team.‭ Worked with artists and designers to produce novel uses of technology.
 
 * Worked as a programmer to bring the artistic vision of humanities students to life
 
 ## Education
+
 * University of South Carolina 
-* Bachelors of Computer Science — May 2010
+* Bachelors of Computer Science - May 2010
                                                                                                                    
 ## Accomplishments
+
 * Spent 5 months maintaining Alaskan parks as a member of the AmeriCorp 
 * As an independent research, I analyzed sql data for the Moore School of Business while investigating emergent leadership within the virtual teams of the  MMORPG Travian
 * Volunteered for the WUSC FM 90.5 as a DJ and Member-at-Large for 3 years

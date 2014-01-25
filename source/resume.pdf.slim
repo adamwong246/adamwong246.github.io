@@ -1,0 +1,12 @@
+- kit = PDFKit.new(partial("partials/resume"),
+  :margin_top => 10,
+  :margin_bottom => 10,
+  :margin_left => 10,
+  :margin_right => 10,
+  :disable_smart_shrinking => false,
+  :print_media_type => true,
+  :dpi => 96)
+
+- kit.stylesheets << 'source/assets/css/all.css.scss'
+- kit.stylesheets << 'source/assets/css/normalize.css'
+= kit.to_pdf

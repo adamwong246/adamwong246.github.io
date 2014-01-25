@@ -98,6 +98,7 @@ GEM
     multi_json (1.8.2)
     mustache (0.99.5)
     nokogiri (1.5.10)
+    pdfkit (0.5.4)
     posix-spawn (0.3.6)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
@@ -146,6 +147,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    wkhtmltopdf-binary (0.9.9.1)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -161,6 +163,7 @@ DEPENDENCIES
   middleman-livereload
   middleman-syntax!
   nokogiri
+  pdfkit
   pry
   pygments.rb
   rake
@@ -168,3 +171,4 @@ DEPENDENCIES
   rocco
   slim
   titleize
+  wkhtmltopdf-binary

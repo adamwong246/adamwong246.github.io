@@ -7,6 +7,10 @@
     "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont"
   ), "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.eot", normal, normal);
 
+p, li{
+  max-width: 45em;
+}
+
 .HolyGrail {
   display: flex;
   min-height: 100vh;
@@ -26,7 +30,7 @@
 
 .HolyGrail-nav {
   order: -1;
-  background: darkgray;
+  
   padding: 1em;
   // align-self: center;
 }
@@ -41,6 +45,10 @@
 footer{
   display: flex;
   justify-content: flex-end;
+}
+
+.HolyGrail-nav, .HolyGrail-ads {
+  background: darkgray;
 }
 
 @media (min-width: 768px) {
@@ -58,8 +66,7 @@ footer{
   }
   .HolyGrail-content {
     flex: 1;
-    max-width: 40em;
-
+    
   }
   .HolyGrail-nav, .HolyGrail-ads {
     /* 12em is the width of the columns */
@@ -134,6 +141,12 @@ footer ul li{
 
 .code pre{
   white-space: pre;
+}
+
+aside.HolyGrail-ads{
+  align-self: flex-end;
+
+  div ul, div .signature  {padding: 1em;}
 }
 
 /*header{

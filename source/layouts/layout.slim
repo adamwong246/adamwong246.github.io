@@ -14,8 +14,9 @@ html
       #main.HolyGrail-content role="main"
         = yield
       nav.HolyGrail-nav.sidebar
-        = image_tag(gravatar_for('adamwong246@gmail.com')) 
+        
         hgroup
+
 
           h2 
             | Codesmithery
@@ -24,11 +25,14 @@ html
           h5
             a href="mailto:adamwong246@gmail.com" title='email'
               | adamwong246@gmail.com
-          h2
+
+          = image_tag(gravatar_for('adamwong246@gmail.com')) 
+
+          h1
             a href="https://github.com/adamwong246" title='githubalt'
-              span class='symbol' githubalt
+              span class='symbol' circlegithubalt
             a href="http://stackoverflow.com/users/614612/adamwong246" title='stackoverflow'
-              span class='symbol' stackoverflow
+              span class='symbol' circlestackoverflow
             h3
               a href="/about_me.html" about me
             - blog.tags.each do |tag, articles|

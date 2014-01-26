@@ -34,11 +34,15 @@
   padding: 1em;
 }
 
-.sidebar hgroup{
+.sidebar .hgroup{
   position: auto;
   text-align: center;
   width: 100%;
   height: auto;
+
+  .socials a{
+    padding: 0.1em;
+  }
 
   img{
     display:block;
@@ -53,15 +57,10 @@
 
   }
 }
- 
-
-footer{
-  display: flex;
-  justify-content: flex-end;
-}
 
 aside.HolyGrail-ads{
   align-self: flex-end;
+  text-align: center;
 
   div ul, div .signature  {padding: 1em;}
 }
@@ -70,7 +69,7 @@ aside.HolyGrail-ads{
   #main{
   margin: 3em;
   }
-.sidebar hgroup{
+.sidebar .hgroup{
      position: fixed;
      width: 200px;
  }
@@ -95,29 +94,26 @@ nav.HolyGrail-nav.sidebar{
 
 }
 
-p, li{max-width: 45em;}
+p, li, h1, h2, h3, h4, h5, h6{ margin:0.5em }
+p, li, {max-width: 45em;}
 
+p{
+  line-height: 1.5em;
+}
 body{
   font-size: 100%;
-  line-height: 1.5em;
   font-family: 'Raleway', sans-serif;
   margin-left: 1em;
   margin-right: 1em;
 }
 
-h1, 
-h2, 
-h3, 
-h4,
-h5,
-h6{margin: 0.2em;}
-
 pre.lineno{margin: 0px;}
+
 pre { 
-  max-width: 50em;
   white-space: pre; overflow: scroll; width:inherit;
   word-wrap: normal;
 }
+
 .code pre{
   white-space: pre;
 }
@@ -134,8 +130,6 @@ a{text-decoration:none;}
   -webkit-font-smoothing: antialiased;
   font-weight: normal;
 }
-
-ul{list-style-type: none;}
 
 .signature{ 
   height: auto;

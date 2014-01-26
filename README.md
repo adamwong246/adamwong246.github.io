@@ -10,5 +10,7 @@ You might be interested in forking this project if...
 * you don't need a database, just static files
 * you think that jekyll is a bit too restrictive
 * you want to write html, css and js with the templating language of your own choice
+* you only want to target modern browsers
+* you want to play with Flexbox
 * you want to hack *fast*
 * you want to learn a flexible workflow for any job, not just a personal blog.

@@ -14,42 +14,55 @@ html
       #main.HolyGrail-content role="main"
         = yield
       nav.HolyGrail-nav.sidebar
-         
-
-        hgroup
+        .hgroup
           h2 
             | Codesmithery
             i  par excellence
-          = image_tag(gravatar_for('adamwong246@gmail.com'))
+          a href="/"
+            = image_tag(gravatar_for('adamwong246@gmail.com'))
           h5
             a href="mailto:adamwong246@gmail.com" title='email'
               | adamwong246@gmail.com
-        
-
-          h1
+          h1.socials
             a href="https://github.com/adamwong246" title='githubalt'
-              span class='symbol' circlegithubalt
+              span.symbol circlegithubalt
             a href="http://stackoverflow.com/users/614612/adamwong246" title='stackoverflow'
-              span class='symbol' circlestackoverflow
-            h3
-              a href="/about_me.html" about me
-            - blog.tags.each do |tag, articles|
-              h4= link_to tag, tag_path(tag)
-            h6
-              - recent_post = blog.tags["posts"].first
-              a href=recent_post.url
-                | Recent post: 
-                = recent_post.title
+              span.symbol circlestackoverflow
+          h1.socials
+            a href="http://www.linkedin.com/profile/view?id=69760011&trk=nav_responsive_tab_profile" title='linkedin'
+              span.symbol circlelinkedin
+            a href="https://plus.google.com/104202656400776521456/posts?partnerid=gplp0" title='g_plus'
+              span.symbol circlegoogleplus
+            a href="https://twitter.com/adamwong246" title='twitter'
+              span.symbol circletwitter
+            a href="http://www.reddit.com/user/adamwong246/" title="reddit"
+              span.symbol circlereddit
+            a href="https://www.facebook.com/adamwong246" title="facebook"  
+              span.symbol circlefacebook
+          h1.socials
+            a href="http://grooveshark.com/#!/adamwong246" title="grooveshark"
+              span.symbol circlegrooveshark
+            a href="https://soundcloud.com/adamwong246" title="soundcloud"
+              span.symbol  circlesoundcloud
+            a 
+          h3
+            a href="/about_me.html" about me
+          - blog.tags.each do |tag, articles|
+            h4= link_to tag, tag_path(tag)
+          h6
+            - recent_post = blog.tags["posts"].first
+            a href=recent_post.url
+              | Recent post: 
+              = recent_post.title
       aside.HolyGrail-ads
         .footer-asider
-          ul
-            li 
-              | Adam Wong, 
-              = Date.today.year
-            li 
-              a href="http://www.wtfpl.net/" Released under the WTFPL
-            li
-              a href="https://github.com/adamwong246/adamwong246.github.io" source
+          p
+            | Adam Wong, 
+            = Date.today.year 
+          p
+            a href="http://www.wtfpl.net/" Released under the WTFPL
+          p
+            a href="https://github.com/adamwong246/adamwong246.github.io" source
           .signature
             = partial("partials/signature")
     footer.footer

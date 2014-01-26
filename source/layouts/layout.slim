@@ -14,14 +14,18 @@ html
       #main.HolyGrail-content role="main"
         = yield
       nav.HolyGrail-nav.sidebar
+         
+
         hgroup
           h2 
             | Codesmithery
             i  par excellence
+          = image_tag(gravatar_for('adamwong246@gmail.com'))
           h5
             a href="mailto:adamwong246@gmail.com" title='email'
               | adamwong246@gmail.com
-          = image_tag(gravatar_for('adamwong246@gmail.com')) 
+        
+
           h1
             a href="https://github.com/adamwong246" title='githubalt'
               span class='symbol' circlegithubalt

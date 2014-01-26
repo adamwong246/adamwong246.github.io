@@ -1,9 +1,17 @@
-.hll { background-color: #ffffcc }
-.c { color: #999988; font-style: italic } /* Comment */
+$github_blue: #4183c4;
+$charmander:  #ffffcc;
+$charmeleon:  #999988;
+$charizard:   #0086B3;
+
+
+a {color: $github_blue}
+
+.hll { background-color: $charmander }
+.c { color: $charmeleon; font-style: italic } /* Comment */
 .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .k { color: #000000; font-weight: bold } /* Keyword */
 .o { color: #000000; font-weight: bold } /* Operator */
-.cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.cm { color: $charmeleon; font-style: italic } /* Comment.Multiline */
 .cp { color: #999999; font-weight: bold; font-style: italic } /* Comment.Preproc */
 .c1 { color: #999988; font-style: italic } /* Comment.Single */
 .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
@@ -26,7 +34,7 @@
 .m { color: #009999 } /* Literal.Number */
 .s { color: #d01040 } /* Literal.String */
 .na { color: #008080 } /* Name.Attribute */
-.nb { color: #0086B3 } /* Name.Builtin */
+.nb { color: $charizard } /* Name.Builtin */
 .nc { color: #445588; font-weight: bold } /* Name.Class */
 .no { color: #008080 } /* Name.Constant */
 .nd { color: #3c5d5d; font-weight: bold } /* Name.Decorator */

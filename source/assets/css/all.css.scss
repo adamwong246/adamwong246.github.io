@@ -1,5 +1,7 @@
-@import "compass/css3/font-face";
+@charset "utf-8";
 
+// install the Mono social icons
+@import "compass/css3/font-face";
 @include font-face("Mono Social Icons Font", 
   font-files(
     "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.woff", 
@@ -7,10 +9,9 @@
     "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont"
   ), "/assets/fonts/MonoSocialFont/MonoSocialIconsFont-1.10.eot", normal, normal);
 
-p, li{
-  max-width: 45em;
-}
 
+// Basic flexbox structure
+///////////////////////////////
 .HolyGrail {
   display: flex;
   min-height: 100vh;
@@ -30,31 +31,45 @@ p, li{
 
 .HolyGrail-nav {
   order: -1;
-  
   padding: 1em;
-  // align-self: center;
 }
-
 
 .sidebar hgroup{
   position: auto;
+  text-align: center;
   width: 100%;
   height: auto;
+
+  img{
+    display:block;
+    margin:auto;
+
+    // width: 300px;
+    // height: 300px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+
+
+  }
 }
  
+
 footer{
   display: flex;
   justify-content: flex-end;
 }
 
-.HolyGrail-nav, .HolyGrail-ads {
-  background: darkgray;
+aside.HolyGrail-ads{
+  align-self: flex-end;
+
+  div ul, div .signature  {padding: 1em;}
 }
 
 @media (min-width: 768px) {
   #main{
   margin: 3em;
-}
+  }
 .sidebar hgroup{
      position: fixed;
      width: 200px;
@@ -74,36 +89,20 @@ footer{
   }
 
 }
+///////////////////////////////
 
-a{
-  text-decoration:none;
+nav.HolyGrail-nav.sidebar{
+
 }
 
-body { 
-  font-size: 100%;
-  line-height: 1.5em;
-}
+p, li{max-width: 45em;}
 
 body{
+  font-size: 100%;
+  line-height: 1.5em;
   font-family: 'Raleway', sans-serif;
   margin-left: 1em;
   margin-right: 1em;
-}
-
-pre.lineno{
-  margin: 0px;
-}
-
-.symbol, a.symbol:before {
-  font-family: 'Mono Social Icons Font';
-  -webkit-text-rendering: optimizeLegibility;
-  -moz-text-rendering: optimizeLegibility;
-  -ms-text-rendering: optimizeLegibility;
-  -o-text-rendering: optimizeLegibility;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-
-  font-weight: normal;
 }
 
 h1, 
@@ -113,13 +112,30 @@ h4,
 h5,
 h6{margin: 0.2em;}
 
-ul{list-style-type: none;}
-
-footer ul li{
-  text-align:right;
+pre.lineno{margin: 0px;}
+pre { 
+  max-width: 50em;
+  white-space: pre; overflow: scroll; width:inherit;
+  word-wrap: normal;
+}
+.code pre{
+  white-space: pre;
 }
 
+a{text-decoration:none;}
 
+.symbol, a.symbol:before {
+  font-family: 'Mono Social Icons Font';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+}
+
+ul{list-style-type: none;}
 
 .signature{ 
   height: auto;
@@ -135,82 +151,6 @@ footer ul li{
   }
 }
 
-#about-me{
-
+.HolyGrail-nav, .HolyGrail-ads {
+  background: darkgray;
 }
-
-.code pre{
-  white-space: pre;
-}
-
-aside.HolyGrail-ads{
-  align-self: flex-end;
-
-  div ul, div .signature  {padding: 1em;}
-}
-
-/*header{
-  background-color: lightblue;
-}
-aside{
-  background-color: yellow;
-}
-footer{
-  background-color: lightgreen;
-}*/
-
-/*@charset "utf-8";
-
-body {
-  background: #d4d4d4 url("../images/background.png");
-  text-align: center;
-  font-family: sans-serif; }
-
-h1 {
-  color: rgba(0, 0, 0, .3);
-  font-weight: bold;
-  font-size: 32px;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-  background: url("../images/middleman.png") no-repeat center 100px;
-  padding: 350px 0 10px;
-  margin: 0; }
-
-.doc {
-  font-size: 14px;
-  margin: 0; }
-  .doc:before,
-  .doc:after {
-    opacity: .2;
-    padding: 6px;
-    font-style: normal;
-    position: relative;
-    content: "•"; }
-  .doc a {
-    color: rgba(0, 0, 0, 0.3); }
-    .doc a:hover {
-      color: #666; }
-
-.welcome {
-  -webkit-animation-name: welcome;
-  -webkit-animation-duration: .9s; }
-
-@-webkit-keyframes welcome {
-  from {
-    -webkit-transform: scale(0);
-    opacity: 0;
-  }
-  50% {
-   -webkit-transform: scale(0);
-   opacity: 0;
-  }
-  82.5% {
-    -webkit-transform: scale(1.03);
-    -webkit-animation-timing-function: ease-out;
-    opacity: 1;
-  }
-  to {
-    -webkit-transform: scale(1);
-  }
-}*/

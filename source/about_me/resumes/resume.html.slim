@@ -1,0 +1,42 @@
+---
+layout: layout
+---
+
+css:
+  @media (max-width: 600px) {
+    .sticky-note{display:none;}
+  }
+
+  .sticky-note{
+
+    background-color: yellow;
+    height:9em;  
+    width:9em; 
+    padding: 2em;
+
+    position:absolute; 
+    right:0;
+    margin-right: 0em;
+
+    -webkit-transform:rotate(6deg);  
+    -o-transform:rotate(6deg);  
+    -moz-transform:rotate(6deg);  
+
+    /* Firefox */  
+    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);  
+    /* Safari+Chrome */  
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);  
+    /* Opera */  
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+
+
+
+  }
+
+.sticky-note
+  | Also available as 
+  a href="/about_me/resumes/resume.pdf" pdf
+  |  and  
+  a href="/about_me/resumes/resume.txt" unstyled markdown!
+
+.resume= partial("assets/markdown/resume")

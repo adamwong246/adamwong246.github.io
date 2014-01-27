@@ -59,13 +59,15 @@
 }
 
 aside.HolyGrail-ads{
-  align-self: flex-end;
+  display: flex;
   text-align: center;
 
   div ul, div .signature  {padding: 1em;}
+
+  .footer-asider{align-self: flex-end}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   #main{
   margin: 3em;
   }
@@ -90,16 +92,22 @@ aside.HolyGrail-ads{
 }
 ///////////////////////////////
 
-nav.HolyGrail-nav.sidebar{
+#main{position:relative;}
 
-}
+p, li, h1, h2, h3, h4, h5, h6 { margin:0.5em }
 
-p, li, h1, h2, h3, h4, h5, h6{ margin:0.5em }
-p, li, {max-width: 45em;}
+p, li, { max-width: 45em; }
 
-p{
-  line-height: 1.5em;
-}
+p { line-height: 1.5em; }
+
+pre.lineno{ margin: 0px;}
+
+.code pre{ white-space: pre; }
+
+a { text-decoration:none;}
+
+.HolyGrail-nav, .HolyGrail-ads { background: darkgray; }
+
 body{
   font-size: 100%;
   font-family: 'Raleway', sans-serif;
@@ -107,18 +115,10 @@ body{
   margin-right: 1em;
 }
 
-pre.lineno{margin: 0px;}
-
 pre { 
   white-space: pre; overflow: scroll; width:inherit;
   word-wrap: normal;
 }
-
-.code pre{
-  white-space: pre;
-}
-
-a{text-decoration:none;}
 
 .symbol, a.symbol:before {
   font-family: 'Mono Social Icons Font';
@@ -129,6 +129,9 @@ a{text-decoration:none;}
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-weight: normal;
+
+  width: 10em;
+  height: auto;
 }
 
 .signature{ 
@@ -145,6 +148,3 @@ a{text-decoration:none;}
   }
 }
 
-.HolyGrail-nav, .HolyGrail-ads {
-  background: darkgray;
-}

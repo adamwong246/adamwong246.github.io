@@ -96,14 +96,22 @@ aside.HolyGrail-ads{
 
 p, li, h1, h2, h3, h4, h5, h6 { margin:0.5em }
 
-p, li, { max-width: 45em; }
+p, li, { max-width: 35em; }
 
 p { line-height: 1.5em; }
 
 pre.lineno{ margin: 0px;}
 
-.code pre{ white-space: pre; }
+pre.codehilite{
+  white-space: pre;
+  
+  // border: 1px solid black;
+}
 
+.titled-code-block{
+  padding: 1em;
+  background-color: lightgray;
+}
 a { text-decoration:none;}
 
 .HolyGrail-nav, .HolyGrail-ads { background: darkgray; }

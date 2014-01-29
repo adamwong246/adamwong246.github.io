@@ -5,20 +5,42 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-01-25T00:00:00Z</updated>
+  <updated>2014-01-26T00:00:00Z</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>How I manage my resume</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html"/>
+    <id>http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html</id>
+    <published>2014-01-26T00:00:00Z</published>
+    <updated>2014-01-29T11:17:00-08:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;As any professional knows, the resume is your first impression- you really ought to make it count. A younger me would have undertaken the task of writing my curriculum vitae with dread and boredom. Fortunately, my resume has only gotten better. &lt;/p&gt;&lt;p&gt;It started as the absolute worst- the Microsoft World document. There's really nothing uglier, fatter, more inconsistent and more expensive and yet, this seems to be the most common format for resumes. When my friends who come to me for help with their resumes in .docx documents, I won't even open the attachment. I point them to google docs and send them on their way, but more on that later.&lt;/p&gt;&lt;p&gt;My next attempt was with the venerable LaTeX. My friend Jim was in grad school and he loved writing his papers in LaTeX. Jim's papers looked ok, but really boring and I didn't need to express mathematics, I just needed nice looking printable documents. LaTeX's learning curve was prohibitively high and everything came out looking so textbook-y, so I abandoned it quickly.&lt;/p&gt;&lt;p&gt;My last attempt is what I recommend for the average user- Google docs. Google docs is great, easy and free. There are templates to get you started and collaborative tools. Sharing, editing and annotating the documents all come baked in. You can share the document itself, display it in an html frame and even convert and send it to pdf, rtf and even the dreaded docx. For most people, this is the correct answer.&lt;/p&gt;&lt;hr /&gt;&lt;p&gt;Finally, the hacker solution: The resume is defined in a &lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/assets/markdown/_resume.md"&gt;markdown file.&lt;/a&gt; From there, it can be converted into an &lt;a href="/about_me/resumes/resume.html"&gt;html &lt;/a&gt;partial for the web...&lt;/p&gt;&lt;div class="titled-code-block"&gt;&lt;h6&gt;&lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/571995acdbf881e459647528ea1bdcc63f463d77/source/about_me/resumes/resume.html.slim#L42"&gt;resume.html.slim#L42&lt;/a&gt;&lt;/h6&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;resume&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"assets/markdown/resume"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;a &lt;a href="/about_me/resumes/resume.pdf"&gt;pdf&lt;/a&gt; for print... &lt;/p&gt;&lt;div class="titled-code-block"&gt;&lt;h6&gt;&lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim"&gt;resume.pdf.slim&lt;/a&gt;&lt;/h6&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PDFKit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"assets/markdown/resume"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_top&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_bottom&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_left&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_right&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:disable_smart_shrinking&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:print_media_type&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:dpi&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;96&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;stylesheets&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;'source/assets/css/all.css.scss'&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;stylesheets&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;'source/assets/css/normalize.css'&lt;/span&gt;
+&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_pdf&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or even &lt;a href="https://raw.github.com/adamwong246/adamwong246.github.io/middleman/source/assets/markdown/_resume.md"&gt;as-is. &lt;/a&gt;&lt;/p&gt;&lt;p&gt;This as all thanks to Middleman, which, unlike Jekyll, allows you to execute arbitrary ruby code right in a view. There are Middleman extensions but truth be told, extensions are overrated. &lt;i&gt;The ability to mix code and markup is far more powerful than any extension or plugin. &lt;/i&gt;No need to download some gem and register it in a config file- just hack out some ruby logic and drop it in a partial. This is really powerful of looking at html- not as a document or a tree, but a functional, living data structure that can be extended with just a little bit of ruby code.&lt;/p&gt;&lt;p&gt;Sadly, this approach has distinct drawbacks. While you have complete stylistic freedom, some of us are better off working from a tasteful template rather than allow our inner css artiste to run wild. You also lose the ability to export your document in to anything MS Office or OpenOffice might be able to read. For a web programmer like myself, that's not a big deal but for almost anybody else, it's a deal breaker. This isn't for everyone but it's a great way to show just the flexibility and fun of working with Middleman&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>syntax highlighting 2</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html"/>
     <id>http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html</id>
     <published>2014-01-25T00:00:00Z</published>
-    <updated>2014-01-26T16:18:02-08:00</updated>
+    <updated>2014-01-26T16:27:47-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;div class="codehilite ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;pre class="lineno"&gt;4&lt;/pre&gt;&lt;pre class="lineno"&gt;5&lt;/pre&gt;&lt;pre class="lineno"&gt;6&lt;/pre&gt;&lt;pre class="lineno"&gt;7&lt;/pre&gt;&lt;pre class="lineno"&gt;8&lt;/pre&gt;&lt;pre class="lineno"&gt;9&lt;/pre&gt;&lt;pre class="lineno"&gt;10&lt;/pre&gt;&lt;pre class="lineno"&gt;11&lt;/pre&gt;&lt;pre class="lineno"&gt;12&lt;/pre&gt;&lt;pre class="lineno"&gt;13&lt;/pre&gt;&lt;pre class="lineno"&gt;14&lt;/pre&gt;&lt;pre class="lineno"&gt;15&lt;/pre&gt;&lt;pre class="lineno"&gt;16&lt;/pre&gt;&lt;pre class="lineno"&gt;17&lt;/pre&gt;&lt;pre class="lineno"&gt;18&lt;/pre&gt;&lt;pre class="lineno"&gt;19&lt;/pre&gt;&lt;pre class="lineno"&gt;20&lt;/pre&gt;&lt;pre class="lineno"&gt;21&lt;/pre&gt;&lt;pre class="lineno"&gt;22&lt;/pre&gt;&lt;pre class="lineno"&gt;23&lt;/pre&gt;&lt;pre class="lineno"&gt;24&lt;/pre&gt;&lt;pre class="lineno"&gt;25&lt;/pre&gt;&lt;pre class="lineno"&gt;26&lt;/pre&gt;&lt;pre class="lineno"&gt;27&lt;/pre&gt;&lt;pre class="lineno"&gt;28&lt;/pre&gt;&lt;pre class="lineno"&gt;29&lt;/pre&gt;&lt;pre class="lineno"&gt;30&lt;/pre&gt;&lt;pre class="lineno"&gt;31&lt;/pre&gt;&lt;pre class="lineno"&gt;32&lt;/pre&gt;&lt;pre class="lineno"&gt;33&lt;/pre&gt;&lt;pre class="lineno"&gt;34&lt;/pre&gt;&lt;pre class="lineno"&gt;35&lt;/pre&gt;&lt;pre class="lineno"&gt;36&lt;/pre&gt;&lt;pre class="lineno"&gt;37&lt;/pre&gt;&lt;pre class="lineno"&gt;38&lt;/pre&gt;&lt;pre class="lineno"&gt;39&lt;/pre&gt;&lt;pre class="lineno"&gt;40&lt;/pre&gt;&lt;pre class="lineno"&gt;41&lt;/pre&gt;&lt;pre class="lineno"&gt;42&lt;/pre&gt;&lt;pre class="lineno"&gt;43&lt;/pre&gt;&lt;pre class="lineno"&gt;44&lt;/pre&gt;&lt;pre class="lineno"&gt;45&lt;/pre&gt;&lt;pre class="lineno"&gt;46&lt;/pre&gt;&lt;pre class="lineno"&gt;47&lt;/pre&gt;&lt;pre class="lineno"&gt;48&lt;/pre&gt;&lt;pre class="lineno"&gt;49&lt;/pre&gt;&lt;pre class="lineno"&gt;50&lt;/pre&gt;&lt;pre class="lineno"&gt;51&lt;/pre&gt;&lt;pre class="lineno"&gt;52&lt;/pre&gt;&lt;pre class="lineno"&gt;53&lt;/pre&gt;&lt;pre class="lineno"&gt;54&lt;/pre&gt;&lt;pre class="lineno"&gt;55&lt;/pre&gt;&lt;pre class="lineno"&gt;56&lt;/pre&gt;&lt;pre class="lineno"&gt;57&lt;/pre&gt;&lt;pre class="lineno"&gt;58&lt;/pre&gt;&lt;pre class="lineno"&gt;59&lt;/pre&gt;&lt;pre class="lineno"&gt;60&lt;/pre&gt;&lt;pre class="lineno"&gt;61&lt;/pre&gt;&lt;pre class="lineno"&gt;62&lt;/pre&gt;&lt;pre class="lineno"&gt;63&lt;/pre&gt;&lt;pre class="lineno"&gt;64&lt;/pre&gt;&lt;pre class="lineno"&gt;65&lt;/pre&gt;&lt;pre class="lineno"&gt;66&lt;/pre&gt;&lt;pre class="lineno"&gt;67&lt;/pre&gt;&lt;pre class="lineno"&gt;68&lt;/pre&gt;&lt;pre class="lineno"&gt;69&lt;/pre&gt;&lt;pre class="lineno"&gt;70&lt;/pre&gt;&lt;pre class="lineno"&gt;71&lt;/pre&gt;&lt;pre class="lineno"&gt;72&lt;/pre&gt;&lt;pre class="lineno"&gt;73&lt;/pre&gt;&lt;pre class="lineno"&gt;74&lt;/pre&gt;&lt;pre class="lineno"&gt;75&lt;/pre&gt;&lt;pre class="lineno"&gt;76&lt;/pre&gt;&lt;pre class="lineno"&gt;77&lt;/pre&gt;&lt;pre class="lineno"&gt;78&lt;/pre&gt;&lt;pre class="lineno"&gt;79&lt;/pre&gt;&lt;pre class="lineno"&gt;80&lt;/pre&gt;&lt;pre class="lineno"&gt;81&lt;/pre&gt;&lt;pre class="lineno"&gt;82&lt;/pre&gt;&lt;pre class="lineno"&gt;83&lt;/pre&gt;&lt;pre class="lineno"&gt;84&lt;/pre&gt;&lt;pre class="lineno"&gt;85&lt;/pre&gt;&lt;pre class="lineno"&gt;86&lt;/pre&gt;&lt;pre class="lineno"&gt;87&lt;/pre&gt;&lt;pre class="lineno"&gt;88&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Middleman&lt;/span&gt;
+    <content type="html">&lt;pre class="codehilite ruby"&gt;&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Middleman&lt;/span&gt;
   &lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Syntax&lt;/span&gt;
     &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;self&lt;/span&gt;
 
@@ -106,14 +128,14 @@
     &lt;span class="k"&gt;end&lt;/span&gt;
   &lt;span class="k"&gt;end&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
+&lt;/pre&gt;</content>
   </entry>
   <entry>
     <title>status update</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/21/status-update.html"/>
     <id>http://blog.url.com/blog/2014/01/21/status-update.html</id>
     <published>2014-01-21T00:00:00Z</published>
-    <updated>2014-01-26T16:18:02-08:00</updated>
+    <updated>2014-01-26T16:27:47-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -125,7 +147,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/10/switch-to-middleman.html"/>
     <id>http://blog.url.com/blog/2014/01/10/switch-to-middleman.html</id>
     <published>2014-01-10T00:00:00Z</published>
-    <updated>2014-01-26T16:18:02-08:00</updated>
+    <updated>2014-01-26T16:27:47-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -139,30 +161,11 @@
 </content>
   </entry>
   <entry>
-    <title>Syntax Highlighting in Middleman 1</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html"/>
-    <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html</id>
-    <published>2014-01-07T00:00:00Z</published>
-    <updated>2014-01-26T16:18:02-08:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;h4&gt;Html&lt;/h4&gt;&lt;div class="codehilite html"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;pre class="lineno"&gt;4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"field"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Basic Input Label&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
-  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;"text"&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;size=&lt;/span&gt;&lt;span class="s"&gt;"40"&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;"Placeholder Text"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;h4&gt;Ruby&lt;/h4&gt;&lt;div class="codehilite ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;pre class="lineno"&gt;2&lt;/pre&gt;&lt;pre class="lineno"&gt;3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"baz"&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;h4&gt;Whatever&lt;/h4&gt;&lt;div class="codehilite plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;This is some code&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</content>
-  </entry>
-  <entry>
     <title>Syntax Highlighting in Middleman</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman.html"/>
     <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman.html</id>
     <published>2014-01-07T00:00:00Z</published>
-    <updated>2014-01-26T16:18:02-08:00</updated>
+    <updated>2014-01-26T16:27:47-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -194,91 +197,19 @@
 &lt;/code&gt;&lt;/pre&gt;</content>
   </entry>
   <entry>
-    <title>Flexbox Experiment</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/01/01/flexbox-experiment.html"/>
-    <id>http://blog.url.com/blog/2014/01/01/flexbox-experiment.html</id>
-    <published>2014-01-01T00:00:00Z</published>
-    <updated>2014-01-26T16:18:02-08:00</updated>
+    <title>Syntax Highlighting in Middleman 1</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html"/>
+    <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html</id>
+    <published>2014-01-07T00:00:00Z</published>
+    <updated>2014-01-26T16:27:47-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;style type="text/css"&gt;.Grid {
-  display: flex;
-}
-
-.Grid-cell {
-  flex: 1;
-}
-/* Base classes for all media */
-.Grid--fit &gt; .Grid-cell {
-  flex: 1;
-}
-.Grid--full &gt; .Grid-cell {
-  flex: 0 0 100%;
-}
-.Grid--1of2 &gt; .Grid-cell {
-  flex: 0 0 50%
-}
-.Grid--1of3 &gt; .Grid-cell {
-  flex: 0 0 33.3333%
-}
-.Grid--1of4 &gt; .Grid-cell {
-  flex: 0 0 25%
-}
-
-/* Base classes for all media */
-.Grid--fit &gt; .Grid-cell {
-  flex: 1;
-}
-.Grid--full &gt; .Grid-cell {
-  flex: 0 0 100%;
-}
-.Grid--1of2 &gt; .Grid-cell {
-  flex: 0 0 50%
-}
-.Grid--1of3 &gt; .Grid-cell {
-  flex: 0 0 33.3333%
-}
-.Grid--1of4 &gt; .Grid-cell {
-  flex: 0 0 25%
-}
-
-/* Small to medium screens */
-@media (min-width: 24em) {
-  .small-Grid--fit &gt; .Grid-cell {
-    flex: 1;
-  }
-  .small-Grid--full &gt; .Grid-cell {
-    flex: 0 0 100%;
-  }
-  .small-Grid--1of2 &gt; .Grid-cell {
-    flex: 0 0 50%
-  }
-  .small-Grid--1of3 &gt; .Grid-cell {
-    flex: 0 0 33.3333%
-  }
-  .small-Grid--1of4 &gt; .Grid-cell {
-    flex: 0 0 25%
-  }
-}
-
-/* Large screens */
-@media (min-width: 48em) {
-  .large-Grid--fit &gt; .Grid-cell {
-    flex: 1;
-  }
-  .large-Grid--full &gt; .Grid-cell {
-    flex: 0 0 100%;
-  }
-  .large-Grid--1of2 &gt; .Grid-cell {
-    flex: 0 0 50%
-  }
-  .large-Grid--1of3 &gt; .Grid-cell {
-    flex: 0 0 33.3333%
-  }
-  .large-Grid--1of4 &gt; .Grid-cell {
-    flex: 0 0 25%
-  }
-}&lt;/style&gt;&lt;div class="Grid"&gt;&lt;Grid-cell&gt;Bucclamo contermisco deligabilire diaphea praetexo praeaceo. Insequatis bedundulum biaeterata personissibilis sospicula. Retus paragia amphinatus requilatus. Despoli adorogatorium barba et simico foversus. Aprugivi adsenescere cateficativi. Gossicientius pedilito cusiccatussum immadulae critine. Dissita illuctio senatorizaticum cornifici impliciabile vocillaculi. Persae praedus depletiana. Contoriator lutitare adscredis credrantiae alligavi. Recessus deligare valeoptaticis treutificare clareo.&lt;/Grid-cell&gt;&lt;Grid-cell&gt;Genefactionis praedicare insticini frixavi expondedifica. Pallarcitii anticia colupertorium obstrucifer. Jurefodinis incentaminis cornoscopoles. Protravi operitatis aura confragito dotatus. Inaugerum electrotavi caliptitaria cini honoravi congero bellavi. Litiginqueatus eburnavi applemen hedeo. Industatus inopinquartnaria depula elimati cateripti. Cura cathritussum illuditatus matere impelis inprugo camius. Captor collio fumilionismus carmicere. Collula athletis pacificum.&lt;/Grid-cell&gt;&lt;Grid-cell&gt;Permen dissopitha tripeus podicationis. Aristologicus circumposi renunctus conaritum oporteus adstrum. Excussale caudatulus derodiae. Meliosus tripatum tundidavi aurisomatoria offectorius settuari. Eruditator velibui conlucarii faediatussus. Discreo ferrata cymbacchorus puerna conteum hormissio armifer. Strigenationis concorpo superontos matti dilatornus. Contrens pinis quademi anxificium abfugerum decipitionis condinae. Bonographicere cistrire praenotia incravatus. Zonauli carpyrii circumtoto cinctilo severci socaturae.&lt;/Grid-cell&gt;&lt;/div&gt;</content>
+    <content type="html">&lt;h4&gt;Html&lt;/h4&gt;&lt;pre class="codehilite html"&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"field"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Basic Input Label&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;"text"&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"basic-input"&lt;/span&gt; &lt;span class="na"&gt;size=&lt;/span&gt;&lt;span class="s"&gt;"40"&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;"Placeholder Text"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/pre&gt;&lt;h4&gt;Ruby&lt;/h4&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"baz"&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;&lt;/pre&gt;&lt;h4&gt;Whatever&lt;/h4&gt;&lt;pre class="codehilite plaintext"&gt;This is some code&lt;/pre&gt;</content>
   </entry>
 </feed>

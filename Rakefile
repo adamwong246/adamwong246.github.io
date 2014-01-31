@@ -33,7 +33,7 @@ task :new_log do|t|
   tags = (STDIN.gets).strip
   
   date = DateTime.now.strftime('%Y-%m-%d')
-  path = "source/blog/#{date}-#{(subject).downcase.gsub(' ', '-')}.#{format}"
+  path = "source/blog/#{date}-#{(subject).downcase.gsub(' ', '-').gsub('\'', '').gsub('.', '_')}.#{format}"
   
   f = File.open(path, 'w') {|f| 
       f.write(<<HERE

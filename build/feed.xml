@@ -5,20 +5,51 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-01-26T00:00:00Z</updated>
+  <updated>2014-01-29T00:00:00Z</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Post-mortem for ifailedtheturingtest.herokuapp.com</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2014/01/29/post-mortem-for-ifailedtheturingtest_herokuapp_com.html"/>
+    <id>http://blog.url.com/blog/2014/01/29/post-mortem-for-ifailedtheturingtest_herokuapp_com.html</id>
+    <published>2014-01-29T00:00:00Z</published>
+    <updated>2014-01-30T18:24:37-08:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h3 id="here-lies-another-halfbaked-idea"&gt;Here lies another halfbaked idea&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://ifailedtheturingtest.herokuapp.com"&gt;ifailedtheturingtest.herokuapp.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="screenshot" title="A screenshot" src="/assets/images/blog/ifailedtheturingtest_capture.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;I'm completely abandoning my old blog. It was a good try but perhaps too ambitious. Sadly, it's not well tested and a lot of stuff is totally half-baked, thought there were a lot of really good ideas.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bootstrap&lt;/li&gt;
+  &lt;li&gt;Sass&lt;/li&gt;
+  &lt;li&gt;RailsAdmin&lt;/li&gt;
+  &lt;li&gt;Nested, reddit-style comments&lt;/li&gt;
+  &lt;li&gt;tumblr integeration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="what-did-i-learn"&gt;What did I learn?&lt;/h3&gt;
+
+&lt;p&gt;Don't aim too &lt;em&gt;far.&lt;/em&gt; By all means, aim high but don't try to accomplish everything because, frankly, it's a hell of a lot of work and this wheel has been invented before. In truth, it failed because &lt;em&gt;I never wrote any content.&lt;/em&gt; I just hacked on the app itself. &lt;/p&gt;
+
+&lt;p&gt;This time around, I'm going the the much simpler, but satisfyingly hackable, Middleman. Static files are an order of magnitude easier to develop and deploy. &lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>How I manage my resume</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html"/>
     <id>http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html</id>
     <published>2014-01-26T00:00:00Z</published>
-    <updated>2014-01-29T11:27:17-08:00</updated>
+    <updated>2014-01-30T17:58:25-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;As any professional knows, the resume is your first impression- you really ought to make it count. A younger me would have undertaken the task of writing my curriculum vitae with dread and boredom. Fortunately, my resume has only gotten better. &lt;/p&gt;&lt;p&gt;It started as the absolute worst- the Microsoft World document. There's really nothing uglier, fatter, more inconsistent and more expensive and yet, this seems to be the most common format for resumes. When my friends who come to me for help with their resumes in .docx documents, I won't even open the attachment. I point them to google docs and send them on their way, but more on that later.&lt;/p&gt;&lt;p&gt;My next attempt was with the venerable LaTeX. My friend Jim was in grad school and he loved writing his papers in LaTeX. Jim's papers looked ok, but really boring and I didn't need to express mathematics, I just needed nice looking printable documents. LaTeX's learning curve was prohibitively high and everything came out looking so textbook-y, so I abandoned it quickly.&lt;/p&gt;&lt;p&gt;My last attempt is what I recommend for the average user- Google docs. Google docs is great, easy and free. There are templates to get you started and collaborative tools. Sharing, editing and annotating the documents all come baked in. You can share the document itself, display it in an html frame and even convert and send it to pdf, rtf and even the dreaded docx. For most people, this is the correct answer.&lt;/p&gt;&lt;hr /&gt;&lt;p&gt;Finally, the hacker solution: The resume is defined in a &lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/assets/markdown/_resume.md"&gt;markdown file.&lt;/a&gt; From there, it can be converted into an &lt;a href="/about_me/resumes/resume.html"&gt;html &lt;/a&gt;partial for the web...&lt;/p&gt;&lt;div class="titled-code-block"&gt;&lt;h6&gt;&lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/571995acdbf881e459647528ea1bdcc63f463d77/source/about_me/resumes/resume.html.slim#L42"&gt;resume.html.slim#L42&lt;/a&gt;&lt;/h6&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;resume&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"assets/markdown/resume"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;a &lt;a href="/about_me/resumes/resume.pdf"&gt;pdf&lt;/a&gt; for print... &lt;/p&gt;&lt;div class="titled-code-block"&gt;&lt;h6&gt;&lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim"&gt;resume.pdf.slim&lt;/a&gt;&lt;/h6&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PDFKit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"assets/markdown/resume"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    <content type="html">&lt;p&gt;As any professional knows, the resume is your first impression- you really ought to make it count. A younger me would have undertaken the task of writing my curriculum vitae with dread and boredom. Fortunately, my resume has only gotten better. &lt;/p&gt;&lt;p&gt;It started as the absolute worst- the Microsoft World document. They require expensive software, are often inconsistent and yet, this seems to be the most common format for resumes. When my friends who come to me for help with their resumes in .docx documents, I won't even open the attachment. I point them to google docs and send them on their way, but more on that later.&lt;/p&gt;&lt;p&gt;My next attempt was with the venerable LaTeX. My friend Jim was in grad school and he loved writing his papers in LaTeX. Jim's papers looked ok, but really boring and I didn't need to express mathematics, I just needed nice looking printable documents. LaTeX's learning curve was prohibitively high and everything came out looking so textbook-y, so I abandoned it quickly.&lt;/p&gt;&lt;p&gt;My last attempt is what I recommend for the average user- Google docs. Google docs is great, easy and free. There are templates to get you started and collaborative tools. Sharing, editing and annotating the documents all come baked in. You can share the document itself, display it in an html frame and even convert and send it to pdf, rtf and even the dreaded docx. For most people, this is the correct answer.&lt;/p&gt;&lt;hr /&gt;&lt;p&gt;Finally, the hacker solution: The resume is defined in a &lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/assets/markdown/_resume.md"&gt;markdown file.&lt;/a&gt; From there, it can be converted into an &lt;a href="/about_me/resumes/resume.html"&gt;html &lt;/a&gt;partial for the web...&lt;/p&gt;&lt;div class="titled-code-block"&gt;&lt;h6&gt;&lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/571995acdbf881e459647528ea1bdcc63f463d77/source/about_me/resumes/resume.html.slim#L42"&gt;resume.html.slim#L42&lt;/a&gt;&lt;/h6&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;resume&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"assets/markdown/resume"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;a &lt;a href="/about_me/resumes/resume.pdf"&gt;pdf&lt;/a&gt; for print... &lt;/p&gt;&lt;div class="titled-code-block"&gt;&lt;h6&gt;&lt;a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim"&gt;resume.pdf.slim&lt;/a&gt;&lt;/h6&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;PDFKit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"assets/markdown/resume"&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 &lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_top&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_bottom&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="ss"&gt;:margin_left&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -29,14 +60,14 @@
 
 &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;stylesheets&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;'source/assets/css/all.css.scss'&lt;/span&gt;
 &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;stylesheets&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;'source/assets/css/normalize.css'&lt;/span&gt;
-&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_pdf&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or even &lt;a href="https://raw.github.com/adamwong246/adamwong246.github.io/middleman/source/assets/markdown/_resume.md"&gt;as-is. &lt;/a&gt;&lt;/p&gt;&lt;p&gt;This as all thanks to Middleman, which, unlike Jekyll, allows you to execute arbitrary ruby code right in a view. There are Middleman extensions but truth be told, extensions are overrated. &lt;i&gt;The ability to mix code and markup is far more powerful than any extension or plugin. &lt;/i&gt;No need to download some gem and register it in a config file- just hack out some ruby logic and drop it in a partial. This is really powerful of looking at html- not as a document or a tree, but a functional, living data structure that can be extended with just a little bit of ruby code.&lt;/p&gt;&lt;p&gt;Sadly, this approach has distinct drawbacks. While you have complete stylistic freedom, some of us are better off working from a tasteful template rather than allow our inner css artiste to run wild. You also lose the ability to export your document in to anything MS Office or OpenOffice might be able to read. For a web programmer like myself, that's not a big deal but for almost anybody else, it's a deal breaker. This isn't for everyone but it's a great way to show just the flexibility and fun of working with Middleman&lt;/p&gt;</content>
+&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_pdf&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or even &lt;a href="https://raw.github.com/adamwong246/adamwong246.github.io/middleman/source/assets/markdown/_resume.md"&gt;as-is. &lt;/a&gt;&lt;/p&gt;&lt;p&gt;This as all thanks to Middleman, which, unlike Jekyll, allows you to execute arbitrary ruby code right in a view. There are Middleman extensions but truth be told, extensions are overrated. &lt;i&gt;The ability to mix code and markup is far more powerful than any extension or plugin. &lt;/i&gt;No need to download some gem and register it in a config file- just hack out the ruby logic and drop it in a partial. This is really powerful way of looking at html- not as a document or a tree, but a functional, living data structure that can be extended with just a little bit of ruby code.&lt;/p&gt;&lt;p&gt;Sadly, this approach has distinct drawbacks. While you have complete stylistic freedom, some of us are better off working from a tasteful template rather than allow our inner css artiste to run wild. You also lose the ability to export your document in to anything MS Office or OpenOffice might be able to read. For a web programmer like myself, that's not a big deal but for almost anybody else, it's a deal breaker. This isn't for everyone but it's a great way to show just the flexibility and fun of working with Middleman&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>syntax highlighting 2</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html"/>
     <id>http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html</id>
     <published>2014-01-25T00:00:00Z</published>
-    <updated>2014-01-29T11:27:17-08:00</updated>
+    <updated>2014-01-29T11:35:08-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -135,7 +166,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/21/status-update.html"/>
     <id>http://blog.url.com/blog/2014/01/21/status-update.html</id>
     <published>2014-01-21T00:00:00Z</published>
-    <updated>2014-01-29T11:27:17-08:00</updated>
+    <updated>2014-01-29T11:35:08-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -147,7 +178,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/10/switch-to-middleman.html"/>
     <id>http://blog.url.com/blog/2014/01/10/switch-to-middleman.html</id>
     <published>2014-01-10T00:00:00Z</published>
-    <updated>2014-01-29T11:27:17-08:00</updated>
+    <updated>2014-01-29T11:35:08-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -161,47 +192,11 @@
 </content>
   </entry>
   <entry>
-    <title>Syntax Highlighting in Middleman</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman.html"/>
-    <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman.html</id>
-    <published>2014-01-07T00:00:00Z</published>
-    <updated>2014-01-29T11:27:17-08:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;pre&gt;&lt;code&gt;
-  // create a panel using a GridBagLayout
-  JPanel panel = new JPanel (new GridBagLayout());
-
-  // three labels on the first row
-  panel.add (new JLabel ("One"));
-  panel.add (new JLabel ("Two"));
-  panel.add (new JLabel ("Threeeee"));
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;
-
-  // create a panel using a GridBagLayout
-  JPanel panel = new JPanel (new GridBagLayout());
-
-  // three labels on the first row
-  panel.add (new JLabel ("One"));
-  panel.add (new JLabel ("Two"));
-  panel.add (new JLabel ("Threeeee"));
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;
-  // create a panel using a gridbaglayout
-  jpanel panel = new jpanel (new gridbaglayout());
-
-  // three labels on the first row
-  panel.add (new jlabel ("one"));
-  panel.add (new jlabel ("two"));
-  panel.add (new jlabel ("threeeee"));
-&lt;/code&gt;&lt;/pre&gt;</content>
-  </entry>
-  <entry>
     <title>Syntax Highlighting in Middleman 1</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html"/>
     <id>http://blog.url.com/blog/2014/01/07/syntax-highlighting-in-middleman-1.html</id>
     <published>2014-01-07T00:00:00Z</published>
-    <updated>2014-01-29T11:27:17-08:00</updated>
+    <updated>2014-01-29T11:35:08-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>

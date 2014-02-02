@@ -100,7 +100,7 @@ pre.lineno {
 
 /* line 105, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */
 img {
-  width: 100%;
+  max-width: 100%;
   height: auto; }
 
 /* line 107, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/all.css.scss */

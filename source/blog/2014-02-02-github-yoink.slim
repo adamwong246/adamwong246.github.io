@@ -36,5 +36,11 @@ p
 = partial('partials/gh_yoink', locals: {link: 'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/partials/gh_yoink.html.slim'}) 
 
 p
-  | How cool is that? 
+  | How cool is that? Notice how this isn't a helper method, it's a partial!  You call it like this (in slim)...
+
+- code('ruby') do
+  | = partial('partials/gh_yoink', locals: {link: 'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim'})
+
+p
+  | I've said it before and I'll say it again: Helper methods are for suckers. Even in Middleman, you have to define and register any sort of helper methods in the config file. What a hassle! Meanwhile, partials make great method substitutes.
 

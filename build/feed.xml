@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/02/02/github-yoink.html"/>
     <id>http://blog.url.com/blog/2014/02/02/github-yoink.html</id>
     <published>2014-02-02T00:00:00Z</published>
-    <updated>2014-02-02T19:52:49-08:00</updated>
+    <updated>2014-02-02T20:03:03-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -56,14 +56,14 @@
 &lt;span class="err"&gt;    &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'/'&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;last&lt;/span&gt;
 &lt;span class="err"&gt;  &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'ruby'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
 &lt;span class="err"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How cool is that? &lt;/p&gt;</content>
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How cool is that? Notice how this isn't a helper method, it's a partial!  You call it like this (in slim)...&lt;/p&gt;&lt;pre class="codehilite ruby"&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'partials/gh_yoink'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;locals: &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;link: &lt;/span&gt;&lt;span class="s1"&gt;'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim'&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;I've said it before and I'll say it again: Helper methods are for suckers. Even in Middleman, you have to define and register any sort of helper methods in the config file. What a hassle! Meanwhile, partials make great method substitutes.&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Post-mortem for ifailedtheturingtest.herokuapp.com</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/29/post-mortem-for-ifailedtheturingtest_herokuapp_com.html"/>
     <id>http://blog.url.com/blog/2014/01/29/post-mortem-for-ifailedtheturingtest_herokuapp_com.html</id>
     <published>2014-01-29T00:00:00Z</published>
-    <updated>2014-02-02T14:46:25-08:00</updated>
+    <updated>2014-02-02T19:54:29-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -94,7 +94,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html"/>
     <id>http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html</id>
     <published>2014-01-26T00:00:00Z</published>
-    <updated>2014-02-02T14:46:25-08:00</updated>
+    <updated>2014-02-02T19:54:29-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -116,7 +116,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html"/>
     <id>http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html</id>
     <published>2014-01-25T00:00:00Z</published>
-    <updated>2014-02-02T14:46:25-08:00</updated>
+    <updated>2014-02-02T19:54:29-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -215,7 +215,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/21/status-update.html"/>
     <id>http://blog.url.com/blog/2014/01/21/status-update.html</id>
     <published>2014-01-21T00:00:00Z</published>
-    <updated>2014-02-02T14:46:25-08:00</updated>
+    <updated>2014-02-02T19:54:29-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -227,7 +227,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/10/switch-to-middleman.html"/>
     <id>http://blog.url.com/blog/2014/01/10/switch-to-middleman.html</id>
     <published>2014-01-10T00:00:00Z</published>
-    <updated>2014-02-02T14:46:25-08:00</updated>
+    <updated>2014-02-02T19:54:29-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>

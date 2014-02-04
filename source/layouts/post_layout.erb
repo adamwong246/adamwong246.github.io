@@ -1,6 +1,9 @@
 <% wrap_layout :layout do %>
   <article>
-    <h2><%= link_to current_article.title, current_article %> <span><%= current_article.date.strftime('%b %e') %></span></h2>
+    <h2>
+      <%= link_to current_article.title, current_article %> <span><%= current_article.date.strftime('%b %e') %></span>
+    </h2>
+    <%= partial("partials/social_share") %>
     <%= yield %>
   </article>
 <% end %>

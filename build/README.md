@@ -14,3 +14,10 @@ You might be interested in forking this project if...
 * you want to play with Flexbox
 * you want to hack *fast*
 * you want to learn a flexible workflow for any job, not just a personal blog.
+
+### Credits
+
+* anybody who contributed to anything in my gemfile.lock file
+* the creators of the MonoSocial font
+
+Did I forget you in my credits? If I did, please let me know!

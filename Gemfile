@@ -9,6 +9,8 @@ gem 'middleman-bower'
 gem 'middleman-gravatar'
 gem 'middleman-syntax', git: 'git@github.com:middleman/middleman-syntax.git', ref: '8466a28719'
 
+gem 'pry'
+
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 gem 'titleize'
@@ -21,4 +23,3 @@ gem 'redcarpet', '1.7'
 gem 'nokogiri'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
-gem 'pry'

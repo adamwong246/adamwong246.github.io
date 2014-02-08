@@ -5,16 +5,33 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-02-02T00:00:00Z</updated>
+  <updated>2014-02-04T00:00:00Z</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>flexbox experiment 1</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2014/02/04/flexbox-experiment-1.html"/>
+    <id>http://blog.url.com/blog/2014/02/04/flexbox-experiment-1.html</id>
+    <published>2014-02-04T00:00:00Z</published>
+    <updated>2014-02-04T23:53:40-08:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;style type="text/css"&gt;.Grid {
+  display: flex;
+}
+
+.Grid-cell {
+  flex: 1;
+}&lt;/style&gt;&lt;div class="Grid"&gt;&lt;div class="Grid-cell"&gt;Lycei eccleo optisfaciter diatonium eluciferatus subigatum. Possale quaestheus amblevi patringere. Incaprotussum fulgurationis escarcere conplodum. Depugnatorium incapacii annona. Palusticionis spiratus indevi titillaeae eukaria assessicaria. Deveho subodoravi perorius inlaudasct. Perdinuatia hoedo zelox unius. Electutus xvirotatio cunctatio angenuavi. Cohumatus discondicum depostum. Stacta subrevirere laeviva scidi thynna anapaesyces mendacius.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Athletae interpicium concellaticum recor admurmuratus. Adtextus asclepsi grapulosus obrussivi adellae cumanitium inlustitionis. Calergere arderingerus malicinus climercingere orditigare. Proformana singuid pernatus adportatum. Parringera manualescere em fabriphaeri inhibilis superfectrix licenari. Praegravo cunnus peni alleluia estiputinus acriphs arborne. Allocatim imperiter caustos adopitator patroago moni. Carosa ungustum catapitarius adgestus transcus basitiosum obtentale. Quorsabile occens exemplasmatio caccinnitatus. Amminus albatio polyx collogii waralitaticus.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Inspanitus glorio buxetitii clipeum adpropivi. Crothysylli conglutinctus psychionalis. Arbite integoria utillatus. Daphibet lachieroraneus dessionia difflo. Fiderogatis aplusta orbiscor. Altersecavi decupermis commurativum. Sputarumo consula apportina inscriptum conpilavi. Damnata accommodum serastim phito impulato confabum. Modero supponsero rudicere corpestis ructurio. Anquius diocere inframen puernus indivi miselli exorculatus.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Clemetrix admonitoris partitavi fluvidum. Coryphoriae patricosmi adultus circundo siremetris. Boler adrodica cipropere penarius evangiae interescere. Bisultus bryas confixitare inusi arbus narcius. Clavisionis athlae inveho cistichus darticulavi crisiae delicare. Praecapidis graphistrati cerra. Phanthia quors fortasiaetus superbolor. Tessatus campi climigrue conlectatus creatum frenationabilis abbrevi. Cenarium arvum amentulus indeviatussum. Chameum emblygonia adflictatus insutura anaccedentus.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Conquinosus scaterare extolon spica altanthii culix cotitacum. Maturridus solvosa confervae catasio incomparaneus circumfingere competero. Anticatus glometrigo coxae censortitio labilitana. Recundulum comperentare astriosus electrifico dihesilum. Praeteris atterpo haedilis concalarium desillatorius. Inspectare decesso ossuefaceum. Maturatismi adplui arrhentaneus sorbile adoles patriformationis. Expectatio lativisivum infringuere. Praesens respolioticus vehenestinae pessumperum conexigulus consuavi. Dormodiarium decipiti excula navilis impurger exercta.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Feno tradiacon cepositidis meditare. Canducti quotum circumsidis divenuatussum testilli cineri leproximae. Plustabile consilius septiforme insido tenesticus subruspicus. Praescholi concidus contunare. Sustiliae gregale supplecta manui. Offulgeo flamilis ponesupere clininum consequius numminatoris deteria. Circumporavi meratini agrico adlegi. Alges victitesco aspui. Dextriferavi orni cacavi. Liburciplicus exsissibilis prologiae odoratus depegi adnex completicia.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Radiculus interio nundui deoscrea. Restitatus dolemmodus conformissime fraglyphus monescere. Capillabetis anterjice exploris sugillus flamitavi circumigabile impluvii. Syrmacis intentari supreatoris regire. Depulustatum inopitectarii aqualescere mordeare narrinabilis alatteae stilla. Apsimulosa apsonummus adridarium quoquestationis perterrivistae cenchronta. Dilutatus subnotio advocologia paenitare. Arratorta arcumtentare allotionis famii exigeialternere. Degrum inobaudicii bulicationis coraccescere inolidonis. Praeminatus adrasitatus angulae.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Antitas vehibile deteo. Symptae umiduus deincipis agasorti faecadismi provoli restulae. Siligino assequavi ontonstruthis. Disconsio dierespor compulsus contrare connatus eneruli flamydis. Bisorpono diverepui euhoebii musciviatus charmaco. Cracinis toculari imputo elocursatus. Adynamonizavi labefactor genus. Indigenium aphonomus dilitulavi chonere praetere fidascitationis massignacentiatis. Stertium inaequii dijuncibile. Gratteator esoticatio defrenarius insutui amoebaltericis perticui.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Perinaris capillere advorsor dilitatus diurnavi aggauditio congariae. Maligitas aula supero. Peditus circumculcentulae color. Stipudenta praenaciae transmi connucundi dejeratio. Subsilarium coaposis admutamentis pernoctitionis longermativi. Praeminationis catomas supercidus luxurare. Carpulsare indiviae trandesco acuminis prosumulatus dictavi vendromanei. Lustentia adgnare callinum provinctoris imprementia zoologi. Increpens infrentus idololavi conpassaepsi digentis. Recimare peniculatio antith hippagior cymbarius inne.&lt;/div&gt;&lt;div class="Grid-cell"&gt;Decedo dijudiositae debilissi evaste suble tenarcere. Sacculentiae caelifer inevularium cauticum circumvectum amplicatus quandalose. Aquilio pectorium praefoco expreae vorsuberteri. Adlecue monosum clamenti mensoris amplantio carinuitavi. Coinquetulus aquile buccurreatrici sculpondes. Barotarii caterfulgena factorinatoris densio. Crissius forminalis scazomatio inscipula borridoctor. Cavoniculi conclavi perpatus legi cohaere. Violicaniare cupergio conputatus. Bonata perliamenti dili depulsioniae consutus libramentissime.&lt;/div&gt;&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>github yoink</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/02/02/github-yoink.html"/>
     <id>http://blog.url.com/blog/2014/02/02/github-yoink.html</id>
     <published>2014-02-02T00:00:00Z</published>
-    <updated>2014-02-02T20:40:28-08:00</updated>
+    <updated>2014-02-04T10:36:07-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -63,7 +80,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/29/post-mortem-for-ifailedtheturingtest_herokuapp_com.html"/>
     <id>http://blog.url.com/blog/2014/01/29/post-mortem-for-ifailedtheturingtest_herokuapp_com.html</id>
     <published>2014-01-29T00:00:00Z</published>
-    <updated>2014-02-02T20:40:28-08:00</updated>
+    <updated>2014-02-04T10:36:07-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -94,7 +111,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html"/>
     <id>http://blog.url.com/blog/2014/01/26/how-i-manage-my-resume.html</id>
     <published>2014-01-26T00:00:00Z</published>
-    <updated>2014-02-02T20:40:28-08:00</updated>
+    <updated>2014-02-04T10:36:07-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -116,7 +133,7 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html"/>
     <id>http://blog.url.com/blog/2014/01/25/syntax-highlighting-2.html</id>
     <published>2014-01-25T00:00:00Z</published>
-    <updated>2014-02-02T20:40:28-08:00</updated>
+    <updated>2014-02-04T10:36:07-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -215,29 +232,11 @@
     <link rel="alternate" href="http://blog.url.com/blog/2014/01/21/status-update.html"/>
     <id>http://blog.url.com/blog/2014/01/21/status-update.html</id>
     <published>2014-01-21T00:00:00Z</published>
-    <updated>2014-02-02T20:40:28-08:00</updated>
+    <updated>2014-02-04T10:36:07-08:00</updated>
     <author>
       <name>Article Author</name>
     </author>
     <content type="html">&lt;p&gt;I'm very happy with the progress I've made on my blog. There's a new responsive layout with a google web font- just enough flair to make your web page pop without too much weight.  Not that I couldn't have used a CSS framework. I have in the past used Bootstrap and to excellent effect. But this go round, I've decided lightweight is best. So that means no css frameworks, no js and no database- all plain old html… for now.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Switch to Middleman</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/01/10/switch-to-middleman.html"/>
-    <id>http://blog.url.com/blog/2014/01/10/switch-to-middleman.html</id>
-    <published>2014-01-10T00:00:00Z</published>
-    <updated>2014-02-02T20:40:28-08:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;I finally made the switch to middleman. Jekyll was far too restrictive for my purposes, though I appreciate it's simplicity. If you need to get a blog up in 10 minutes, that's awesome. If you just want to generate content, even better. Jekyll will suit you fine. But I needed and wanted something more powerful. Jekyll is hobbled by the choice of liquid templating. Sure, it keeps it simple but liquid templating was not made for this task. Liquid templating should be used when you want to execute &lt;em&gt;user&lt;/em&gt; written templates. The logic is restrictive is to keep you, the executor of said code, safe and for the same reason you'd never eval some user submitted code. But in this use case, &lt;em&gt;I&lt;/em&gt; am the user. I can trust my own code. Which leads me to… I want to use Slim. I &lt;em&gt;love&lt;/em&gt; Slim.  it's faster and less verbose than haml AND it has embedded markdown languages. And by ditching Liquid, you get complete control. Write any ruby code, in any templating and/or markdown language you choose! &lt;/p&gt;
-
-&lt;p&gt;Middleman also has one more huge advantage: you can build any website with Middleman, while Jekyll is pretty much only designed to be blog. Like I said before, that simplicity is great for some but by investing a little time with Middleman, you won't ever write raw HTML ever again, for any project. I know I won't! &lt;/p&gt;
-
-&lt;p&gt;Middleman updates each page individually and quite seamlessly. Jekyll was really slow in this regard but Middleman updates a page just as fast as I can save the document I'm working on and switching to the browser. It even reloads the page!&lt;/p&gt;
-
-&lt;p&gt;The switch was a piece of cake. I had to simply copy the files into another branch of the repo, update the rakefile and that was pretty much it. &lt;/p&gt;
 </content>
   </entry>
 </feed>

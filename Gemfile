@@ -26,3 +26,5 @@ gem 'pry'
 gem 'pry-stack_explorer'
 gem 'pry-debugger'
 # gem 'pry-rescue'Not working! Why?
+
+gem 'rspec' 

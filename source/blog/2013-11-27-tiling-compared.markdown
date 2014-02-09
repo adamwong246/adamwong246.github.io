@@ -2,6 +2,7 @@
 title:  "Tilers galore"
 date: 2013-11-27
 tags: posts
+sub_title: Theres a bunch of tiling solutions out there for making Metro-like interfaces. Here are my initial impressions.
 ---
 
 Theres a bunch of tiling solutions out there for making Metro-like interfaces. Here are my initial impressions.

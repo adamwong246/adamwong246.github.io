@@ -53,15 +53,12 @@
               
       aside.HolyGrail-ads
         .footer-asider
-          p
-            | Adam Wong, 
-            = Date.today.year 
-          p
-            | The thoughts and words expressed herein are mine alone and do not reflect upon my employer nor any other organization or individual. 
-          p
+          h4 Adam Wong, 
+          h5 = DateTime.now.strftime('%Y-%m-%d %l:%M:%S')
+          h5 The thoughts and words expressed herein are mine alone and do not reflect upon my employer nor any other organization or individual. 
+          h4
             a href="http://www.wtfpl.net/" Released under the WTFPL
-          p
+          h4
             a href="https://github.com/adamwong246/adamwong246.github.io" source
-          .signature
-            = partial("partials/signature")
+          .signature= partial("partials/signature")
     footer.footer

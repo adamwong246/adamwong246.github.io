@@ -2,9 +2,8 @@
   body.HolyGrail
     header
     .HolyGrail-body
-      #main.HolyGrail-content role="main"
-        = yield
       nav.HolyGrail-nav.sidebar
+
         .hgroup
           
           h2 
@@ -50,7 +49,10 @@
           h1.socials
             a href="/feed.xml" title="rss"
               span.symbol circlerss
-              
+         
+      #main.HolyGrail-content role="main"
+        = yield
+             
       aside.HolyGrail-ads
         .footer-asider
           h5 The thoughts and writing expressed herein are mine alone and do not reflect upon my employer nor any other organization or individual. 

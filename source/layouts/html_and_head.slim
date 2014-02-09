@@ -6,4 +6,6 @@ html
     title= current_article.title rescue 'adamwong246.github.io'
     = stylesheet_link_tag "normalize", "all", "github", 'http://fonts.googleapis.com/css?family=Raleway:400,200,700'
     = javascript_include_tag  "all", "vendor/bower_components/jquery/jquery.min"
+    = javascript_include_tag "google_analytics"
+
   = yield

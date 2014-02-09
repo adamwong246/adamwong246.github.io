@@ -13,9 +13,12 @@ ruby:
     }.join("\n")
   end
 
+  @display_name = link.split('/').last
+  @render_as = link.split('.').last
+
 .titled-code-block  
   h6
-    a href=link = link.split('/').last
-  - code('ruby') do
+    a href=link = @display_name
+  - code(@render_as) do
     = output
 

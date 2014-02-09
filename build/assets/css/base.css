@@ -50,7 +50,8 @@ aside.HolyGrail-ads {
   text-align: center; }
   /* line 65, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/base.css.scss */
   aside.HolyGrail-ads div ul, aside.HolyGrail-ads div .signature {
-    padding: 1em; }
+    padding-left: 1em;
+    padding-right: 1em; }
   /* line 67, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/base.css.scss */
   aside.HolyGrail-ads .footer-asider {
     align-self: flex-end; }

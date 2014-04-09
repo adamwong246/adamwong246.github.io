@@ -63,14 +63,28 @@ module.exports = function(grunt) {
     },
 
     assemble: {
+      options: {
+        assets: '<%= config.dist %>/assets',
+        layout: '<%= config.src %>/templates/layouts/default.hbs',
+        data: '<%= config.src %>/data/*.{json,yml}',
+        partials: '<%= config.src %>/templates/partials/*.hbs',
+        plugins: ['assemble-contrib-anchors','assemble-contrib-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
+      },
+
+      blog: {
+        options: {
+          permalinks: {
+            structure: ':year/:month/:day/:basename:ext'
+          }
+        },
+        src: 'blog/*.hbs',
+        dest: './dist/'
+      },
+
       pages: {
         options: {
           flatten: true,
-          assets: '<%= config.dist %>/assets',
-          layout: '<%= config.src %>/templates/layouts/default.hbs',
-          data: '<%= config.src %>/data/*.{json,yml}',
-          partials: '<%= config.src %>/templates/partials/*.hbs',
-          plugins: ['assemble-contrib-anchors','assemble-contrib-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
+          posts: ['README.md', 'package.json', './src/content/markdown.md']
         },
         files: {
           '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']

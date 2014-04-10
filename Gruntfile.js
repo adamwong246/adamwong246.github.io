@@ -77,14 +77,16 @@ module.exports = function(grunt) {
             structure: ':year/:month/:day/:basename:ext'
           }
         },
-        src: 'blog/*.hbs',
-        dest: './dist/'
+        expand: true,
+        cwd: '<%= config.src %>/blog',
+        src: '*.hbs',
+        dest: '<%= config.dist %>/blog/'
       },
 
       pages: {
         options: {
           flatten: true,
-          posts: ['README.md', 'package.json', './src/content/markdown.md']
+          posts: ['<%= config.src %>/blog/*.hbs']
         },
         files: {
           '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']

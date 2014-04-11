@@ -94,35 +94,73 @@ module.exports = function(grunt) {
       }
     },
 
+    markdownpdf: {
+      options: {},
+      files: {
+        src: "<%= config.src %>/content/resume.md",
+        dest: "dist/about_me/resumes"
+      }
+    },
+
     // Before generating any new files,
     // remove any previously-created files.
     clean: ['<%= config.dist %>/**/*.{html,xml}'],
 
+
+    // overlay: {
+    //     archive: {
+    //         src: ['archive/**/*'], // source file search path
+    //         dest: 'dist',      // the destination folder
+    //         options: {            // options can be omitted
+    //             overwrite: true,  // overwrite existing files (default to false)
+    //             base_path: 'archive'  // path segment to ignore in src (default is empty
+    //                               // or the directories prior to '**' if found).
+    //         }
+    //     }
+    // }
+
     copy: {
-      main: {
-        src: 'archive/*',
+      archive: {
+        expand: true,
+        cwd: 'archive_dist',
+        src: ['assets/**','blog/**', 'about_me/resumes/resume.html', 'about_me.html'],
         dest: 'dist/',
       },
-    },
+      assets: {
+        expand: true,
+        cwd: '<%= config.src %>/assets',
+        src: '**',
+        dest: '<%= config.dist %>/assets',
+      },
+    }
 
   });
 
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-markdown-pdf');
+  // grunt.loadNpmTasks('grunt-overlay');
+
 
   grunt.registerTask('server', [
     'clean',
     'assemble',
+    // 'overlay',
+    'markdownpdf',
+    'copy',
     'connect:livereload',
     'watch'
   ]);
 
   grunt.registerTask('build', [
     'clean',
-    'assemble'
+    'assemble',
+    // 'overlay',
+    'markdownpdf',
+    'copy',
   ]);
 
   grunt.registerTask('default', [

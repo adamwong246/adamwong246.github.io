@@ -32,7 +32,8 @@
     "assemble-contrib-permalinks": "*",
     "assemble-contrib-sitemap": "*",
     "assemble-contrib-toc": "*",
-    "grunt-contrib-copy": "^0.5.0"
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-markdown-pdf": "^2.1.1"
   },
   "licenses": [
     {

@@ -1,0 +1,16 @@
+| <!doctype html>
+html
+  head
+    meta charset="utf-8"
+    meta content="IE=edge;chrome=1" http-equiv="X-UA-Compatible"
+    
+    title= current_article.title rescue 'adamwong246.github.io'
+
+    = stylesheet_link_tag 'normalize'
+    = stylesheet_link_tag 'github'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Raleway:400,200,700'
+    = stylesheet_link_tag 'base'
+
+    = javascript_include_tag "google_analytics"
+
+  = yield

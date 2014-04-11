@@ -1,0 +1,333 @@
+/* line 7, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+a {
+  color: #4183c4; }
+
+/* line 9, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.hll {
+  background-color: #ffffcc; }
+
+/* line 10, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.c {
+  color: #999988;
+  font-style: italic; }
+
+/* Comment */
+/* line 11, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.err {
+  color: #a61717;
+  background-color: #e3d2d2; }
+
+/* Error */
+/* line 12, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.k {
+  color: #000000;
+  font-weight: bold; }
+
+/* Keyword */
+/* line 13, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.o {
+  color: #000000;
+  font-weight: bold; }
+
+/* Operator */
+/* line 14, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.cm {
+  color: #999988;
+  font-style: italic; }
+
+/* Comment.Multiline */
+/* line 15, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.cp {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic; }
+
+/* Comment.Preproc */
+/* line 16, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.c1 {
+  color: #999988;
+  font-style: italic; }
+
+/* Comment.Single */
+/* line 17, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic; }
+
+/* Comment.Special */
+/* line 18, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gd {
+  color: #000000;
+  background-color: #ffdddd; }
+
+/* Generic.Deleted */
+/* line 19, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.ge {
+  color: #000000;
+  font-style: italic; }
+
+/* Generic.Emph */
+/* line 20, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gr {
+  color: #aa0000; }
+
+/* Generic.Error */
+/* line 21, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gh {
+  color: #999999; }
+
+/* Generic.Heading */
+/* line 22, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gi {
+  color: #000000;
+  background-color: #ddffdd; }
+
+/* Generic.Inserted */
+/* line 23, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.go {
+  color: #888888; }
+
+/* Generic.Output */
+/* line 24, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gp {
+  color: #555555; }
+
+/* Generic.Prompt */
+/* line 25, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gs {
+  font-weight: bold; }
+
+/* Generic.Strong */
+/* line 26, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gu {
+  color: #aaaaaa; }
+
+/* Generic.Subheading */
+/* line 27, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.gt {
+  color: #aa0000; }
+
+/* Generic.Traceback */
+/* line 28, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.kc {
+  color: #000000;
+  font-weight: bold; }
+
+/* Keyword.Constant */
+/* line 29, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.kd {
+  color: #000000;
+  font-weight: bold; }
+
+/* Keyword.Declaration */
+/* line 30, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.kn {
+  color: #000000;
+  font-weight: bold; }
+
+/* Keyword.Namespace */
+/* line 31, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.kp {
+  color: #000000;
+  font-weight: bold; }
+
+/* Keyword.Pseudo */
+/* line 32, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.kr {
+  color: #000000;
+  font-weight: bold; }
+
+/* Keyword.Reserved */
+/* line 33, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.kt {
+  color: #445588;
+  font-weight: bold; }
+
+/* Keyword.Type */
+/* line 34, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.m {
+  color: #009999; }
+
+/* Literal.Number */
+/* line 35, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.s {
+  color: #d01040; }
+
+/* Literal.String */
+/* line 36, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.na {
+  color: teal; }
+
+/* Name.Attribute */
+/* line 37, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nb {
+  color: #0086b3; }
+
+/* Name.Builtin */
+/* line 38, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nc {
+  color: #445588;
+  font-weight: bold; }
+
+/* Name.Class */
+/* line 39, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.no {
+  color: teal; }
+
+/* Name.Constant */
+/* line 40, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nd {
+  color: #3c5d5d;
+  font-weight: bold; }
+
+/* Name.Decorator */
+/* line 41, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.ni {
+  color: purple; }
+
+/* Name.Entity */
+/* line 42, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.ne {
+  color: #990000;
+  font-weight: bold; }
+
+/* Name.Exception */
+/* line 43, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nf {
+  color: #990000;
+  font-weight: bold; }
+
+/* Name.Function */
+/* line 44, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nl {
+  color: #990000;
+  font-weight: bold; }
+
+/* Name.Label */
+/* line 45, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nn {
+  color: #555555; }
+
+/* Name.Namespace */
+/* line 46, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nt {
+  color: navy; }
+
+/* Name.Tag */
+/* line 47, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.nv {
+  color: teal; }
+
+/* Name.Variable */
+/* line 48, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.ow {
+  color: #000000;
+  font-weight: bold; }
+
+/* Operator.Word */
+/* line 49, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.w {
+  color: #bbbbbb; }
+
+/* Text.Whitespace */
+/* line 50, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.mf {
+  color: #009999; }
+
+/* Literal.Number.Float */
+/* line 51, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.mh {
+  color: #009999; }
+
+/* Literal.Number.Hex */
+/* line 52, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.mi {
+  color: #009999; }
+
+/* Literal.Number.Integer */
+/* line 53, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.mo {
+  color: #009999; }
+
+/* Literal.Number.Oct */
+/* line 54, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.sb {
+  color: #d01040; }
+
+/* Literal.String.Backtick */
+/* line 55, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.sc {
+  color: #d01040; }
+
+/* Literal.String.Char */
+/* line 56, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.sd {
+  color: #d01040; }
+
+/* Literal.String.Doc */
+/* line 57, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.s2 {
+  color: #d01040; }
+
+/* Literal.String.Double */
+/* line 58, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.se {
+  color: #d01040; }
+
+/* Literal.String.Escape */
+/* line 59, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.sh {
+  color: #d01040; }
+
+/* Literal.String.Heredoc */
+/* line 60, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.si {
+  color: #d01040; }
+
+/* Literal.String.Interpol */
+/* line 61, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.sx {
+  color: #d01040; }
+
+/* Literal.String.Other */
+/* line 62, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.sr {
+  color: #009926; }
+
+/* Literal.String.Regex */
+/* line 63, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.s1 {
+  color: #d01040; }
+
+/* Literal.String.Single */
+/* line 64, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.ss {
+  color: #990073; }
+
+/* Literal.String.Symbol */
+/* line 65, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.bp {
+  color: #999999; }
+
+/* Name.Builtin.Pseudo */
+/* line 66, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.vc {
+  color: teal; }
+
+/* Name.Variable.Class */
+/* line 67, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.vg {
+  color: teal; }
+
+/* Name.Variable.Global */
+/* line 68, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.vi {
+  color: teal; }
+
+/* Name.Variable.Instance */
+/* line 69, /Users/r625503/Programming/adamwong246.github.io/source/assets/css/github.css.scss */
+.il {
+  color: #009999; }
+
+/* Literal.Number.Integer.Long */

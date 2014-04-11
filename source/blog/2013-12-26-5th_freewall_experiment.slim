@@ -1,0 +1,138 @@
+---
+date: 2013-12-26
+title:  '5th_freewall_experiment'
+tags: experiments
+---
+
+css:
+  .header, .post-title {
+    background-color: white;
+  }
+
+  #content_wrapper *{
+    font-family: myFirstFont;
+    text-transform:uppercase;
+  }
+
+  @font-face {
+    font-family: myFirstFont;
+    src: url('/Veger(light).ttf');
+  }
+
+  .free-wall {margin: 25px;}
+
+  body {
+    background-image: url("http://placekitten.com/1920/1120");
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .brick::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("/assets/xml/kitten_filter.svg"), url("http://placekitten.com/1920/1120");
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    content: "";
+    filter: url("/assets/xml/glass_filter.svg");
+  }
+
+  .brick .legacy-ie-fix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=20)";
+  }
+
+  .brick{
+    color: white;
+    border-bottom: 1px solid #ccc;
+    border-right: 2px solid #ccc;
+    box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.3);
+    text-shadow: 0.1em 0.1em 0.1em black;
+    $br: 5px;
+    -webkit-border-radius:$br;
+    -moz-border-radius:$br;
+    border-radius:$br;
+
+    overflow:hidden;
+
+    image{
+      width:  90%;
+      height: 90%;
+    }
+
+    h1 {
+      line-height: 40px;
+    }
+
+    p, h1 {
+      margin: 1em 1em 1em 1em;
+    }
+
+  }
+
+#freewall.free-wall
+  .brick
+    h1 Header 1
+  .brick
+    h2 Header 2
+  .brick
+    h3 Header 3
+  .brick
+    h4 Header 4
+  .brick
+    h5 Header 5
+  .brick
+    h6 Header 6
+  -(1..10).each do |i|
+    - w = 100 + Random.rand(300)
+    - h = 100 + Random.rand(300)
+    .brick style="width:#{w}px;"
+      img src="/assets/images/pixels/#{Random.rand(6)}_pixel.jpg" width="100%"
+    .brick style="max-width: 50em;"
+      p
+        = (Random.rand(7) + 1).sentences
+    .brick 
+      h1 = (Random.rand(2) + 1).sentences
+
+<script type="text/javascript" src="/assets/js/vendor/bower_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://vnjs.net/www/project/freewall/freewall.js"></script>
+
+javascript:
+  var wall = new freewall("#freewall");
+  wall.reset({
+    selector: '.brick',
+    animate: true,
+    cellW: 300,
+    cellH: 'auto',
+    onResize: function() {
+      wall.fitWidth();
+    }
+  });
+
+  wall.fitWidth();
+
+  var images = wall.container.find('.brick');
+  var length = images.length;
+
+  images.find('img').load(function() {
+    -- length;
+    if (!length) {
+      setTimeout(function() {
+        images.css({visibility: 'visible'});
+        wall.fitWidth();
+      }, 505);
+    }
+  });

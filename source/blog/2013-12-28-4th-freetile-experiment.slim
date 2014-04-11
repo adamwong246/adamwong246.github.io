@@ -1,0 +1,35 @@
+---
+date: 2013-12-28T10:34:52-08:00
+title:  '4th Freetile Experiment'
+tags: experiments
+---
+
+css:
+  .freetile{
+    background-color: lightgray;
+    padding: 1em;
+    margin: 1em;
+  }
+
+#freetile-container
+  -(1..20).each do |i|
+    - w = 100 + Random.rand(300)
+    - h = 100 + Random.rand(300)
+    .freetile style="width:#{w}px;"
+      img src="/assets/images/pixels/#{Random.rand(6)}_pixel.jpg" width="100%"
+    .freetile style="min-width: 5em; max-width: 10em;"
+      p.something
+        = 10.sentences
+
+<script type="text/javascript" src="/assets/js/vendor/bower_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://apex.yconst.com/freetile-demo/jquery.freetile.js"></script>
+
+javascript:
+  $('#freetile-container').freetile({
+    selector: '.freetile',
+    animate: true,
+    elementDelay: 30
+  })
+
+coffee:
+  square = (x) -> x * x

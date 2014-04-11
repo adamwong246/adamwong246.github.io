@@ -1,0 +1,27 @@
+---
+date: 2014-02-08
+title: How I manage my layouts
+tags: posts
+published: true
+preview_characters: 230
+---
+
+- html_and_head = 'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/layouts/html_and_head.slim'
+- body = 'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/layouts/body.slim'
+- post = 'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/layouts/post.erb'
+
+p I took a closer inspection of my routes today and then overhauled most of it. My layouts are a nested parallel of an html document. 
+
+p First the droll details of the html head. Anything rendered within this layout is at least styled.
+= partial('partials/gh_yoink', locals: {link: html_and_head}) 
+a href=="/blog/2014/02/08/style-guide-in-html-and-head.html" an example
+
+p Then the body. This is where the overall layout of the entire site is defined.
+= partial('partials/gh_yoink', locals: {link: body}) 
+a href=="/blog/2014/02/08/style-guild-in-body.html" an example
+
+p Finally, the post layout. This is what individual blog posts are rendered within. It really just outputs some yaml frontmatter like the date and title.
+= partial('partials/gh_yoink', locals: {link: post}) 
+a href=="/blog/2014/02/08/style-guide-in-post.html" an example
+
+p Notice the separation of concerns. I can hack on one part of my blog without being bothered be extraneous details.

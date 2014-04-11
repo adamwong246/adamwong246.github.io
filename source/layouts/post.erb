@@ -1,0 +1,11 @@
+<% wrap_layout :body do %>
+  <article>
+    <h2>
+      <%= link_to current_article.title, current_article %> <span><%= current_article.date.strftime('%b %e') %></span>
+    </h2>
+    
+    <%= yield %>
+
+    <%= partial("partials/social_share") %>
+  </article>
+<% end %>

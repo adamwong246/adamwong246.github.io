@@ -1,0 +1,64 @@
+= wrap_layout :html_and_head do
+  body.HolyGrail
+    header
+    .HolyGrail-body
+      #main.HolyGrail-content role="main"
+        = yield
+      nav.HolyGrail-nav.sidebar
+
+        .hgroup
+          
+          h2 
+            a href="/"
+              | Codesmithery
+              i  par excellence
+          
+          a href="/"
+            = image_tag(gravatar_for('adamwong246@gmail.com'))
+          
+          h5
+            a href="mailto:adamwong246@gmail.com" title='email'
+              | adamwong246@gmail.com 
+
+          h1.socials
+            a.github href="https://github.com/adamwong246" title='githubalt'
+              span.symbol circlegithubalt
+            a.stackoverflow href="http://stackoverflow.com/users/614612/adamwong246" title='stackoverflow'
+              span.symbol circlestackoverflow
+
+          h1.socials
+            a href="http://www.linkedin.com/profile/view?id=69760011&trk=nav_responsive_tab_profile" title='linkedin'
+              span.symbol circlelinkedin
+            a href="https://plus.google.com/104202656400776521456/posts?partnerid=gplp0" title='g_plus'
+              span.symbol circlegoogleplus
+            a href="https://twitter.com/adamwong246" title='twitter'
+              span.symbol circletwitter
+            a href="https://www.facebook.com/adamwong246" title="facebook"  
+              span.symbol circlefacebook
+
+          h3
+            a href="/about_me.html" about me
+
+          - blog.tags.each do |tag, articles|
+            h4= link_to tag, tag_path(tag)
+
+          h6
+            - recent_post = blog.tags["posts"].first
+            a href=recent_post.url
+              | Recent post: 
+              = recent_post.title
+
+          h1.socials
+            a href="/feed.xml" title="rss"
+              span.symbol circlerss
+              
+      aside.HolyGrail-ads
+        .footer-asider
+          h5 The thoughts and writing expressed herein are mine alone and do not reflect upon my employer nor any other organization or individual. 
+          h5 = DateTime.now.strftime('%Y-%m-%d %l:%M:%S')
+          h5
+            a href="http://www.wtfpl.net/" Released under the WTFPL
+          h5
+            a href="https://github.com/adamwong246/adamwong246.github.io" source
+          .signature= partial("partials/signature")
+    footer.footer

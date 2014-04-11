@@ -1,0 +1,17 @@
+---
+pageable: true
+per_page: 10
+---
+
+<% blog.tags["posts"].each do |article| %>
+  
+  <h2>
+    <%= link_to article.title, article %>
+    <span><%= article.date.strftime('%b %e') %></span>
+  </h2>
+
+  <!-- use article.summary(250) if you have Nokogiri available to show just
+       the first 250 characters -->
+  <%= article.data["sub_title"] || article.summary(article.data["preview_characters"] || 250) %>
+  <hr>
+<% end %>

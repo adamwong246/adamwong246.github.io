@@ -1,0 +1,42 @@
+---
+date: 2014-01-26
+title: How I manage my resume
+tags: posts
+---
+
+p
+  | As any professional knows, the resume is your first impression- you really ought to make it count. A younger me would have undertaken the task of writing my curriculum vitae with dread and boredom. Fortunately, my resume has only gotten better. 
+p
+  | It started as the absolute worst- the Microsoft World document. They require expensive software, are often inconsistent and yet, this seems to be the most common format for resumes. When my friends who come to me for help with their resumes in .docx documents, I won't even open the attachment. I point them to google docs and send them on their way, but more on that later.
+p
+  | My next attempt was with the venerable LaTeX. My friend Jim was in grad school and he loved writing his papers in LaTeX. Jim's papers looked ok, but really boring and I didn't need to express mathematics, I just needed nice looking printable documents. LaTeX's learning curve was prohibitively high and everything came out looking so textbook-y, so I abandoned it quickly.
+p
+  | My last attempt is what I recommend for the average user- Google docs. Google docs is great, easy and free. There are templates to get you started and collaborative tools. Sharing, editing and annotating the documents all come baked in. You can share the document itself, display it in an html frame and even convert and send it to pdf, rtf and even the dreaded docx. For most people, this is the correct answer.
+
+hr
+
+p
+  | Finally, the hacker solution: The resume is defined in a 
+  a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/assets/markdown/_resume.md" markdown file.
+  |  From there, it can be converted into an 
+  a href="/about_me/resumes/resume.html" html 
+  | partial for the web...
+
+= partial('partials/gh_yoink', locals: {link: "https://github.com/adamwong246/adamwong246.github.io/blob/571995acdbf881e459647528ea1bdcc63f463d77/source/about_me/resumes/resume.html.slim#L42"})
+
+p
+  | a 
+  a href="/about_me/resumes/resume.pdf" pdf
+  |  for print... 
+= partial('partials/gh_yoink', locals: {link: "https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim"})
+
+p
+  | or even 
+  a href="https://raw.github.com/adamwong246/adamwong246.github.io/middleman/source/assets/markdown/_resume.md" as-is. 
+
+p
+  | This as all thanks to Middleman, which, unlike Jekyll, allows you to execute arbitrary ruby code right in a view. There are Middleman extensions but truth be told, extensions are overrated. 
+  i The ability to mix code and markup is far more powerful than any extension or plugin. 
+  | No need to download some gem and register it in a config file- just hack out the ruby logic and drop it in a partial. This is really powerful way of looking at html- not as a document or a tree, but a functional, living data structure that can be extended with just a little bit of ruby code.
+p
+  | Sadly, this approach has distinct drawbacks. While you have complete stylistic freedom, some of us are better off working from a tasteful template rather than allow our inner css artiste to run wild. You also lose the ability to export your document in to anything MS Office or OpenOffice might be able to read. For a web programmer like myself, that's not a big deal but for almost anybody else, it's a deal breaker. This isn't for everyone but it's a great way to show just the flexibility and fun of working with Middleman

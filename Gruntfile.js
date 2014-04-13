@@ -79,7 +79,7 @@ module.exports = function(grunt) {
         },
         expand: true,
         cwd: '<%= config.src %>/blog',
-        src: '*.hbs',
+        src: '*.md',
         dest: '<%= config.dist %>/blog/'
       },
 

@@ -15,12 +15,7 @@ component: navbar
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <!-- you can exclude pages using \{{#isnt}} helper: \{{#isnt data.title 'Blog'}} -->
-        {{#each pages}}
-        <li{{#if this.isCurrentPage}} class="active"{{/if}}>
-          <a href="{{relative dest this.dest}}">{{ data.title }}</a>
-        </li>
-        {{/each}}
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

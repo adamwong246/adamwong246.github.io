@@ -73,6 +73,7 @@ module.exports = function(grunt) {
 
       blog: {
         options: {
+          layout: '<%= config.src %>/templates/layouts/blog-layout.hbs',
           permalinks: {
             structure: ':year/:month/:day/:basename:ext'
           }

@@ -85,10 +85,11 @@ module.exports = function(grunt) {
       },
 
       pages: {
-        options: {
-          flatten: true,
-          posts: ['<%= config.src %>/blog/*.hbs']
-        },
+        flatten: false,
+        expand: true,
+        cwd: '<%= config.src %>/templates/pages',
+        src: '*.hbs',
+        dest: '<%= config.dist %>',
         files: {
           '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']
         }
@@ -96,7 +97,9 @@ module.exports = function(grunt) {
     },
 
     markdownpdf: {
-      options: {},
+      options: {
+        expand: true
+      },
       files: {
         src: "<%= config.src %>/content/resume.md",
         dest: "dist/about_me/resumes"
@@ -105,7 +108,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files,
     // remove any previously-created files.
-    clean: ['<%= config.dist %>/**/*.{html,xml}'],
+    clean: ['<%= config.dist %>/**'],
 
 
     // overlay: {
@@ -143,15 +146,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-markdown-pdf');
-  // grunt.loadNpmTasks('grunt-overlay');
-
 
   grunt.registerTask('server', [
     'clean',
     'assemble',
-    // 'overlay',
-    'markdownpdf',
-    'copy',
+    // 'markdownpdf',
+    // 'copy',
     'connect:livereload',
     'watch'
   ]);
@@ -159,9 +159,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'assemble',
-    // 'overlay',
-    'markdownpdf',
-    'copy',
+    // 'markdownpdf',
+    // 'copy',
   ]);
 
   grunt.registerTask('default', [

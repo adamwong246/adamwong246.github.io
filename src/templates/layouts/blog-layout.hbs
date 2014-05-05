@@ -27,7 +27,15 @@
 
     <div class="container theme-showcase" role="main">
 
-    <h1>{{title}}</h1>
+    
+
+<ul > 
+  {{#each  pages }} 
+    <li > <a  href ="#" > {{basename }} </a > </li > 
+  {{/each  }} 
+</ul > 
+
+<h1>{{title}}</h1>
 
     {{#markdown}}
       {{> body }}

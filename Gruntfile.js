@@ -65,6 +65,7 @@ module.exports = function(grunt) {
         partials: '<%= config.src %>/templates/partials/*.hbs',
         plugins: ['assemble-contrib-anchors','assemble-contrib-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
       },
+      
       blog: {
         options: {
           layout: '<%= config.src %>/templates/layouts/blog-layout.hbs',
@@ -73,10 +74,11 @@ module.exports = function(grunt) {
           }
         },
         expand: true,
-        cwd: '<%= config.src %>/blog',
+        cwd: '<%= config.src %>/content/blog',
         src: '*.md',
         dest: '<%= config.dist %>/blog/',
       },
+
       pages: {
         flatten: false,
         expand: true,

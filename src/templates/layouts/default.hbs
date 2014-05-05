@@ -25,6 +25,12 @@
 
     {{> navbar-fixed-top }}
 
+<ul > 
+  {{#each  pages }} 
+    <li > <a  href ="#" > {{basename }} </a > </li > 
+  {{/each  }} 
+</ul > 
+
     <div class="container theme-showcase" role="main">
       {{> body }}
     </div>

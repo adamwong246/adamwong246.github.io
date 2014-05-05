@@ -19,14 +19,11 @@ module.exports = function(grunt) {
 
   require('time-grunt')(grunt);
 
-  // Project configuration.
   grunt.initConfig({
-
     config: {
       src: 'src',
       dist: 'dist'
     },
-
     watch: {
       assemble: {
         files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
@@ -44,7 +41,6 @@ module.exports = function(grunt) {
         ]
       }
     },
-
     connect: {
       options: {
         port: 9000,
@@ -61,7 +57,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     assemble: {
       options: {
         assets: '<%= config.dist %>/assets',
@@ -70,7 +65,6 @@ module.exports = function(grunt) {
         partials: '<%= config.src %>/templates/partials/*.hbs',
         plugins: ['assemble-contrib-anchors','assemble-contrib-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
       },
-
       blog: {
         options: {
           layout: '<%= config.src %>/templates/layouts/blog-layout.hbs',
@@ -81,9 +75,8 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= config.src %>/blog',
         src: '*.md',
-        dest: '<%= config.dist %>/blog/'
+        dest: '<%= config.dist %>/blog/',
       },
-
       pages: {
         flatten: false,
         expand: true,
@@ -92,7 +85,6 @@ module.exports = function(grunt) {
         dest: '<%= config.dist %>'
       }
     },
-
     markdownpdf: {
       options: {
         expand: true
@@ -102,24 +94,7 @@ module.exports = function(grunt) {
         dest: "dist/about_me/resumes"
       }
     },
-
-    // Before generating any new files,
-    // remove any previously-created files.
     clean: ['<%= config.dist %>/**'],
-
-
-    // overlay: {
-    //     archive: {
-    //         src: ['archive/**/*'], // source file search path
-    //         dest: 'dist',      // the destination folder
-    //         options: {            // options can be omitted
-    //             overwrite: true,  // overwrite existing files (default to false)
-    //             base_path: 'archive'  // path segment to ignore in src (default is empty
-    //                               // or the directories prior to '**' if found).
-    //         }
-    //     }
-    // }
-
     copy: {
       archive: {
         expand: true,
@@ -134,7 +109,6 @@ module.exports = function(grunt) {
         dest: '<%= config.dist %>/assets',
       },
     }
-
   });
 
   grunt.loadNpmTasks('assemble');
@@ -146,18 +120,18 @@ module.exports = function(grunt) {
 
   grunt.registerTask('server', [
     'clean',
-    'assemble',
-    // 'markdownpdf',
     'copy',
+    'assemble',
+    'markdownpdf',
     'connect:livereload',
     'watch'
   ]);
 
   grunt.registerTask('build', [
     'clean',
-    'assemble',
-    // 'markdownpdf',
     'copy',
+    'assemble',
+    'markdownpdf'
   ]);
 
   grunt.registerTask('default', [

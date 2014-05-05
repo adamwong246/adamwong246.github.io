@@ -2,10 +2,13 @@
 title: Blog
 ---
 
-{{#each posts}}
-  <div class="well">
-    {{md this}}
-  </div>
-{{/each}}
+<ul > 
+  {{#each pages }} 
 
+    {{#each this}}
+      Key: {{@key}} Value = {{this}}
+    {{/each}}
 
+    <li > <a  href ="{{relativeLink}}" > {{basename}} </a > </li > 
+  {{/each  }} 
+</ul > 

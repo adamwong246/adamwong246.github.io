@@ -88,11 +88,8 @@ module.exports = function(grunt) {
         flatten: false,
         expand: true,
         cwd: '<%= config.src %>/templates/pages',
-        src: '*.hbs',
-        dest: '<%= config.dist %>',
-        files: {
-          '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']
-        }
+        src: '**/*.hbs',
+        dest: '<%= config.dist %>'
       }
     },
 
@@ -151,7 +148,7 @@ module.exports = function(grunt) {
     'clean',
     'assemble',
     // 'markdownpdf',
-    // 'copy',
+    'copy',
     'connect:livereload',
     'watch'
   ]);
@@ -160,7 +157,7 @@ module.exports = function(grunt) {
     'clean',
     'assemble',
     // 'markdownpdf',
-    // 'copy',
+    'copy',
   ]);
 
   grunt.registerTask('default', [

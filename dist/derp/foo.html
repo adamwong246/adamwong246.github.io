@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>foobar | adamwong246.github.io</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!-- Bootstrap theme -->
+    <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/theme.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">adamwong246.github.io</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Github <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://github.com/assemble/assemble">Assemble</a></li>
+            <li><a href="https://github.com/assemble/generator-assemble">Generator Assemble</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Plugins</li>
+            <li><a href="https://github.com/assemble/assemble-contrib-anchors">assemble-contrib-anchors</a></li>
+            <li><a href="https://github.com/assemble/assemble-contrib-permalinks">assemble-contrib-permalinks</a></li>
+            <li><a href="https://github.com/assemble/assemble-contrib-sitemap">assemble-contrib-sitemap</a></li>
+            <li><a href="https://github.com/assemble/assemble-contrib-toc">assemble-contrib-toc</a></li>
+            
+          </ul>
+        </li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+
+<ul> 
+   
+    <li> <a href="#"> about_me </a> </li> 
+   
+    <li> <a href="#"> foo </a> </li> 
+   
+    <li> <a href="#"> index </a> </li> 
+   
+</ul> 
+
+    <div class="container theme-showcase" role="main">
+      
+
+function (params, callback) {
+  &#x27;use strict&#x27;;
+
+  var opts = params.assemble.options.anchors || {};
+
+  // load current page content
+  var $ = cheerio.load(params.content);
+
+  var tmpl = require(&#x27;./lib/template.js&#x27;);
+
+  // If a template is specified in the options, use that instead.
+  if(opts &amp;&amp; opts.template) {
+    opts.template = path.resolve(opts.template);
+    tmpl = require(opts.template);
+  }
+
+  // get all the h tags with an id
+  var headings = $(&#x27;h1[id],h2[id],h3[id],h4[id]&#x27;);
+  headings.map(function(i, e) {
+    if(e.attribs.id) {
+      var anchor = template(tmpl, {id: e.attribs.id});
+
+      $(this).append(anchor);
+      $(this).removeAttr(&#x27;id&#x27;).addClass(&#x27;docs-heading&#x27;);
+    }
+  });
+
+  params.content = $.html();
+  callback();
+},function (params, callback) {
+
+  &#x27;use strict&#x27;;
+
+  var assemble       = params.assemble;
+  var grunt          = params.grunt;
+
+  var options        = assemble.options.permalinks;
+  var pages          = assemble.options.pages;
+  var originalAssets = assemble.options.originalAssets;
+
+  // Skip over the plugin if it isn&#x27;t defined in the options.
+  if(!_.isUndefined(options)) {
+
+    var i = 0;
+    var len = pages.length;
+
+    async.forEach(pages, function(page, next) {
+
+      i++;
+
+      // Slugify basenames by default.
+      options.slugify = true;
+
+      // Get the permalink pattern to use from options.permalinks.structure.
+      // If one isn&#x27;t defined, don&#x27;t change anything.
+      var structure = options.structure;
+
+      // Convenience variable for YAML front matter.
+      var yfm  = page.data;
+
+      /**
+       * EXCLUSION PATTERNS OPTION
+       * Properties to omit from the params object.
+       */
+      var exclusions = [&#x27;_page&#x27;, &#x27;data&#x27;, &#x27;filePair&#x27;, &#x27;page&#x27;, &#x27;pageName&#x27;];
+          exclusions = _.union([], exclusions, options.exclusions || []);
+
+
+      /**
+       * &#x60;slugify&#x60; option
+       * Ensure that basenames are suitable to be used as URLs.
+       */
+      if(options.slugify) {
+        if(!yfm.slug) {
+          page.slug = _str.slugify(page.basename);
+        }
+        page.basename = _str.slugify(page.basename);
+      }
+
+      /**
+       * Strip leading numbers from pages
+       * Works well with &#x60;:num&#x60; pattern
+       * @examples
+       *   010foo.html,011bar.html =&gt; foo.html,bar.html
+       */
+      if(options.stripnumber === true) {
+        page.basename = page.basename.replace(/^\d+\-?/, &#x27;&#x27;);
+      }
+
+
+      // Best guesses at some useful patterns
+      var specialPatterns = {
+        &#x27;category&#x27;: new strings.Pattern(/:\bcategory\b/, _str.slugify(_.first(yfm.categories))),
+        &#x27;num&#x27;: new strings.Pattern(/:\bnum\b/, digits.pad(i, {auto: len})),
+        &#x27;digits&#x27;: new strings.Pattern(/:(0)+/, function (match) {
+            var matchLen = String(match).length - 1;
+            return digits.pad(i, {digits: matchLen});
+          }),
+        &#x27;random&#x27;: new strings.Pattern(/:random\(([^)]+)\)/, function (a, b) {
+            var len, chars;
+            if(b.match(/,/)) {
+              len = parseInt(b.split(&#x27;,&#x27;)[1], 10);
+              chars = b.split(&#x27;,&#x27;)[0];
+              return utils.randomize(chars, len);
+            } else {
+              var len = b.length;
+              return utils.randomize(b, len);
+            }
+          })
+      };
+
+      // register the replacements as middleware
+      strings
+        .use(specialPatterns) // specialPatterns
+
+        // expose page data to Strings
+        .use(page)
+
+        // expose yfm data to Strings
+        .use(yfm)
+
+        // use the yfm.date for dates
+        .use(strings.dates(yfm.date, _.pick(options, &#x27;lang&#x27;))) // datePatterns
+
+        // wrap any additional patterns
+        .use(wrapper(options.patterns || []))
+
+        // exclude some fields
+        .exclude(exclusions)
+      ;
+
+      /**
+       * PRESETS
+       * Pre-formatted permalink structures. If a preset is defined, append
+       * it to the user-defined structure.
+       */
+      if(options.preset &amp;&amp; String(options.preset).length !== 0) {
+
+        // The preset
+        var presets = {
+          numbered:  path.join((structure || &#x27;&#x27;), &#x27;:num-:basename:ext&#x27;),
+          pretty:    path.join((structure || &#x27;&#x27;), &#x27;:basename/index:ext&#x27;),
+          dayname:   path.join((structure || &#x27;&#x27;), &#x27;:YYYY/:MM/:DD/:basename/index:ext&#x27;),
+          monthname: path.join((structure || &#x27;&#x27;), &#x27;:YYYY/:MM/:basename/index:ext&#x27;)
+        };
+        // Presets are joined to structures, so if a preset is specified
+        // use the preset the new structure.
+        structure = String(_.values(_.pick(presets, options.preset)));
+      }
+
+
+      // Generate a javascript file with all non-function replacement patterns
+      if(options.debug) {
+        if(typeof(options.debug) === &#x27;string&#x27;) {
+          //grunt.file.write(options.debug, require(&#x27;util&#x27;).inspect(replacements));
+        } else {
+          throw console.error(&#x27;&quot;options.debug&quot; must be a file path.&#x27;);
+        }
+      }
+
+      /**
+       * CREATE PERMALINKS
+       * Construct the permalink string. Modifies string with an array
+       * of replacement patterns passed into options.patterns
+       */
+      var permalink = strings.run(structure || page.dest);
+
+      /**
+       * WRITE PERMALINKS
+       * Append the permalink to the dest path defined in the target.
+       */
+      if(_.isUndefined(options.structure) &amp;&amp; _.isUndefined(options.preset)) {
+        page.dest = page.dest;
+      } else {
+        if (page.basename === &#x27;index&#x27;) {
+          page.dest = page.dest;
+        } else {
+          page.dest = utils.normalizePath(path.join(page.dirname, permalink));
+        }
+      }
+
+      page.assets = utils.calculatePath(page.dest, originalAssets, originalAssets);
+
+      grunt.verbose.ok(&#x27;page&#x27;.yellow, page);
+      grunt.verbose.ok(&#x27;page.dest&#x27;.yellow, page.dest);
+      grunt.verbose.ok(&#x27;page.assets&#x27;.yellow, page.assets);
+      grunt.verbose.ok(&#x27;Generated permalink for:&#x27;.yellow, page.dest);
+      next();
+    });
+
+  } callback();
+},function (params, callback) {
+
+  var assemble  = params.assemble;
+  var grunt     = params.grunt;
+  var pages     = assemble.options.pages;
+  var options   = assemble.options.sitemap || {};
+  var sitemap   = [];
+  var robots    = [];
+  var exclusion = [&#x27;404&#x27;];
+  var pkg       = grunt.file.readJSON(&#x27;package.json&#x27;);
+
+  options.homepage = options.homepage || pkg.homepage;
+  options.robot = options.robot !== false;
+  options.changefreq = options.changefreq || &#x27;weekly&#x27;;
+  options.priority = (options.priority || 0.5).toString();
+  options.dest = options.dest || path.dirname(pages[0].dest);
+
+
+  // Only write if it actually changed.
+  var write = function (file, content) {
+    var msg;
+    var old = grunt.file.exists(file) ? grunt.file.read(file) : &#x27;&#x27;;
+
+    if (old !== content) {
+      grunt.file.write(file, content);
+      msg = &#x27;Created &#x27;.yellow + file.cyan;
+    } else {
+      msg = &#x27;Keeping &#x27;.yellow + file.cyan;
+    }
+    return grunt.verbose.ok(msg);
+  };
+
+  // Return the relative destination if the option is enabled
+  var getExternalFilePath = function (relativedest, file) {
+    return (relativedest ? file.dest.replace(options.dest + &quot;/&quot;, &quot;&quot;) : file.dest );
+  };
+
+  async.forEach(pages, function (file, next) {
+
+    if (!_.isUndefined(options.exclude)) {
+      exclusion = _.union([], exclusion, options.exclude || []);
+    }
+
+    var url = options.homepage;
+    var date = file.data.updated || file.data.date || new Date();
+    var changefreq = file.data.changefreq || options.changefreq;
+    var priority = file.data.priority || options.priority;
+    var relativedest = options.relativedest;
+
+    if (exclusion.indexOf(file.basename) !== -1 ||
+        grunt.file.isMatch({srcBase: options.dest}, exclusion, file.dest)) {
+      robots.push(&#x27;Disallow: /&#x27; + getExternalFilePath(relativedest, file));
+      return;
+    }
+
+    sitemap.push({
+      url: {
+        loc: url + &#x27;/&#x27; + getExternalFilePath(relativedest, file),
+        lastmod: date.toISOString(),
+        changefreq: changefreq,
+        priority: priority
+      }
+    });
+
+    next();
+  }, callback());
+
+  var result = xml.toXML({
+    _name: &#x27;urlset&#x27;,
+    _attrs: {
+      xmlns: &#x27;http://www.sitemaps.org/schemas/sitemap/0.9&#x27;
+    },
+    _content: sitemap
+  }, {header: true, indent: &#x27;  &#x27;});
+
+
+
+  var sitemapDest = options.dest + &#x27;/sitemap.xml&#x27;;
+  write(sitemapDest, result);
+
+  if (options.robot) {
+    var robot = &quot;User-agent: *\n\n&quot;;
+
+    robot += robots.join(&#x27;\n&#x27;) + &#x27;\n&#x27;;
+
+    var robotpDest = options.dest + &#x27;/robots.txt&#x27;;
+    write(robotpDest, robot);
+  }
+
+},function (params, callback) {
+  &#x27;use strict&#x27;;
+
+  var opts = params.assemble.options;
+  opts.toc = opts.toc || {};
+
+  // id to use to append TOC
+  var id = &#x27;#&#x27; + (opts.toc.id || &#x27;toc&#x27;);
+  var modifier = opts.toc.modifier || &#x27;&#x27;;
+  var li = opts.toc.li ? (&#x27; class=&quot;&#x27; + opts.toc.li + &#x27;&quot;&#x27;) : &#x27;&#x27;;
+
+  // load current page content
+  var $ = cheerio.load(params.content);
+  var toc = cheerio.load(&#x27;&lt;ul id=&quot;toc-list&quot; class=&quot;&#x27; + modifier + &#x27;&quot;&gt;&lt;/ul&gt;&#x27;);
+
+  // get all the anchor tags from inside the headers
+  var anchors = $(&#x27;h1 a[name],h2 a[name],h3 a[name],h4 a[name]&#x27;);
+  anchors.map(function(i, e) {
+    var text  = $(e.parent).text().trim();
+    var link  = e.attribs.name
+    var depth = parseInt(e.parent.name.replace(/h/gi, &#x27;&#x27;), 10);
+
+    var arr = new Array(depth);
+    var level = arr.join(&#x27;&lt;li&gt;&lt;ul&gt;&#x27;) + &#x27;&lt;li&gt;&lt;a href=&quot;#&#x27; + link + &#x27;&quot;&gt;&#x27; + text + &#x27;&lt;/a&gt;&lt;/li&gt;&#x27; + arr.join(&#x27;&lt;/ul&gt;&lt;/li&gt;&#x27;);
+    toc(&#x27;#toc-list&#x27;).append(level);
+  });
+  $(id).append(toc.html()
+       .replace(/(&lt;li&gt;\s*&lt;ul&gt;\s*)+/g, &#x27;&lt;li&gt;&lt;ul&gt;&#x27;)
+       .replace(/(&lt;\/ul&gt;\s*&lt;\/li&gt;\s*)+/g, &#x27;&lt;/ul&gt;&lt;/li&gt;&#x27;)
+       .replace( /(&lt;\/li&gt;\s*&lt;\/ul&gt;\s*&lt;\/li&gt;\s*&lt;li&gt;\s*&lt;ul&gt;\s*&lt;li&gt;)/g, &#x27;&lt;/li&gt;&lt;li&gt;&#x27;));
+
+  params.content = $.html();
+  callback();
+},function (params, next) {
+  var options = params.assemble.options;
+  var pageCollectionOpts = options.pageCollection || {};
+  var callbacks = pageCollectionOpts.preprocess || [];
+
+  if (!_.isArray(callbacks)) {
+    callbacks = [callbacks];
+  }
+
+  callbacks = _.union(callbacks, defaults);
+
+  _.map(params.context.pages, function(page) {
+    _.map(callbacks, function(callback) {
+      callback(page, params.context);
+    });
+  });
+
+  next();
+},function (params, next) {
+
+  var buildPaginationInfo = function() {
+    var pages = params.assemble.options.pages;
+
+    var i = 0;
+    var prevPage = null;
+
+    for (var j = pages.length; i &lt; j; i++) {
+      var page = pages[i];
+
+      // Index and actual page number
+      page.index = i;
+      page.number = i + 1;
+
+      // First page
+      page.first = (i === 0);
+
+      // Previous page
+      if (prevPage !== null) {
+        page.prev = prevPage;
+      }
+
+      // Middle pages
+      page.middle = i &gt; 0 &amp;&amp; i &lt; (j - 1);
+
+      // Next page
+      if (i &lt; pages.length - 1) {
+        page.next = i + 1;
+      }
+
+      // Last page
+      page.last = i === (j - 1);
+      prevPage = i;
+    }
+  };
+
+
+  var addPaginationInfoToContext = function() {
+    var context     = params.context;
+    var pages       = context.pages;
+    var currentPage = context.page;
+
+    params.context.pagination = {
+      first      : pages[currentPage.first  || 0],
+      prev       : pages[currentPage.prev   || 0],
+      middle     : pages[currentPage.middle],
+      next       : pages[currentPage.next   || (pages.length - 1)],
+      last       : pages[currentPage.last   || (pages.length - 1)],
+
+      index      : pages[currentPage.index],
+      number     : currentPage.index + 1,
+      currentPage: currentPage.index + 1,
+      totalPages : pages.length
+    };
+  };
+
+
+  if (params.stage === &#x27;render:pre:pages&#x27;) {
+    buildPaginationInfo();
+  } else if (params.stage === &#x27;render:pre:page&#x27;) {
+    addPaginationInfoToContext();
+  }
+  next();
+},function (params, callback) {
+  &#x27;use strict&#x27;;
+
+  var grunt = params.grunt;
+
+  grunt.verbose.subhead(&#x27;Running:&#x27;.bold, &#x27;&quot;assemble-contrib-postprocess&quot;&#x27;);
+  grunt.verbose.writeln(&#x27;Stage:  &#x27;.bold, &#x27;&quot;render:post:page&quot;\n&#x27;);
+
+  var content = params.content;
+  var p = params.assemble.options.postprocess;
+
+  function postprocess(src, fn) {return fn(src);}
+  var processFn = function(src) {return src;};
+
+  params.content = postprocess(content, p || processFn);
+  callback();
+}
+
+<ul> 
+
+  
+    <li>Key: layoutdir Value = </li>
+  
+    <li>Key: layout Value = </li>
+  
+    <li>Key: layoutext Value = </li>
+  
+    <li>Key: partials Value = src/templates/partials/*.hbs</li>
+  
+    <li>Key: data Value = true</li>
+  
+    <li>Key: assets Value = ../assets</li>
+  
+    <li>Key: ext Value = .html</li>
+  
+    <li>Key: plugins Value = function (params, callback) {
+  &#x27;use strict&#x27;;
+
+  var opts = params.assemble.options.anchors || {};
+
+  // load current page content
+  var $ = cheerio.load(params.content);
+
+  var tmpl = require(&#x27;./lib/template.js&#x27;);
+
+  // If a template is specified in the options, use that instead.
+  if(opts &amp;&amp; opts.template) {
+    opts.template = path.resolve(opts.template);
+    tmpl = require(opts.template);
+  }
+
+  // get all the h tags with an id
+  var headings = $(&#x27;h1[id],h2[id],h3[id],h4[id]&#x27;);
+  headings.map(function(i, e) {
+    if(e.attribs.id) {
+      var anchor = template(tmpl, {id: e.attribs.id});
+
+      $(this).append(anchor);
+      $(this).removeAttr(&#x27;id&#x27;).addClass(&#x27;docs-heading&#x27;);
+    }
+  });
+
+  params.content = $.html();
+  callback();
+},function (params, callback) {
+
+  &#x27;use strict&#x27;;
+
+  var assemble       = params.assemble;
+  var grunt          = params.grunt;
+
+  var options        = assemble.options.permalinks;
+  var pages          = assemble.options.pages;
+  var originalAssets = assemble.options.originalAssets;
+
+  // Skip over the plugin if it isn&#x27;t defined in the options.
+  if(!_.isUndefined(options)) {
+
+    var i = 0;
+    var len = pages.length;
+
+    async.forEach(pages, function(page, next) {
+
+      i++;
+
+      // Slugify basenames by default.
+      options.slugify = true;
+
+      // Get the permalink pattern to use from options.permalinks.structure.
+      // If one isn&#x27;t defined, don&#x27;t change anything.
+      var structure = options.structure;
+
+      // Convenience variable for YAML front matter.
+      var yfm  = page.data;
+
+      /**
+       * EXCLUSION PATTERNS OPTION
+       * Properties to omit from the params object.
+       */
+      var exclusions = [&#x27;_page&#x27;, &#x27;data&#x27;, &#x27;filePair&#x27;, &#x27;page&#x27;, &#x27;pageName&#x27;];
+          exclusions = _.union([], exclusions, options.exclusions || []);
+
+
+      /**
+       * &#x60;slugify&#x60; option
+       * Ensure that basenames are suitable to be used as URLs.
+       */
+      if(options.slugify) {
+        if(!yfm.slug) {
+          page.slug = _str.slugify(page.basename);
+        }
+        page.basename = _str.slugify(page.basename);
+      }
+
+      /**
+       * Strip leading numbers from pages
+       * Works well with &#x60;:num&#x60; pattern
+       * @examples
+       *   010foo.html,011bar.html =&gt; foo.html,bar.html
+       */
+      if(options.stripnumber === true) {
+        page.basename = page.basename.replace(/^\d+\-?/, &#x27;&#x27;);
+      }
+
+
+      // Best guesses at some useful patterns
+      var specialPatterns = {
+        &#x27;category&#x27;: new strings.Pattern(/:\bcategory\b/, _str.slugify(_.first(yfm.categories))),
+        &#x27;num&#x27;: new strings.Pattern(/:\bnum\b/, digits.pad(i, {auto: len})),
+        &#x27;digits&#x27;: new strings.Pattern(/:(0)+/, function (match) {
+            var matchLen = String(match).length - 1;
+            return digits.pad(i, {digits: matchLen});
+          }),
+        &#x27;random&#x27;: new strings.Pattern(/:random\(([^)]+)\)/, function (a, b) {
+            var len, chars;
+            if(b.match(/,/)) {
+              len = parseInt(b.split(&#x27;,&#x27;)[1], 10);
+              chars = b.split(&#x27;,&#x27;)[0];
+              return utils.randomize(chars, len);
+            } else {
+              var len = b.length;
+              return utils.randomize(b, len);
+            }
+          })
+      };
+
+      // register the replacements as middleware
+      strings
+        .use(specialPatterns) // specialPatterns
+
+        // expose page data to Strings
+        .use(page)
+
+        // expose yfm data to Strings
+        .use(yfm)
+
+        // use the yfm.date for dates
+        .use(strings.dates(yfm.date, _.pick(options, &#x27;lang&#x27;))) // datePatterns
+
+        // wrap any additional patterns
+        .use(wrapper(options.patterns || []))
+
+        // exclude some fields
+        .exclude(exclusions)
+      ;
+
+      /**
+       * PRESETS
+       * Pre-formatted permalink structures. If a preset is defined, append
+       * it to the user-defined structure.
+       */
+      if(options.preset &amp;&amp; String(options.preset).length !== 0) {
+
+        // The preset
+        var presets = {
+          numbered:  path.join((structure || &#x27;&#x27;), &#x27;:num-:basename:ext&#x27;),
+          pretty:    path.join((structure || &#x27;&#x27;), &#x27;:basename/index:ext&#x27;),
+          dayname:   path.join((structure || &#x27;&#x27;), &#x27;:YYYY/:MM/:DD/:basename/index:ext&#x27;),
+          monthname: path.join((structure || &#x27;&#x27;), &#x27;:YYYY/:MM/:basename/index:ext&#x27;)
+        };
+        // Presets are joined to structures, so if a preset is specified
+        // use the preset the new structure.
+        structure = String(_.values(_.pick(presets, options.preset)));
+      }
+
+
+      // Generate a javascript file with all non-function replacement patterns
+      if(options.debug) {
+        if(typeof(options.debug) === &#x27;string&#x27;) {
+          //grunt.file.write(options.debug, require(&#x27;util&#x27;).inspect(replacements));
+        } else {
+          throw console.error(&#x27;&quot;options.debug&quot; must be a file path.&#x27;);
+        }
+      }
+
+      /**
+       * CREATE PERMALINKS
+       * Construct the permalink string. Modifies string with an array
+       * of replacement patterns passed into options.patterns
+       */
+      var permalink = strings.run(structure || page.dest);
+
+      /**
+       * WRITE PERMALINKS
+       * Append the permalink to the dest path defined in the target.
+       */
+      if(_.isUndefined(options.structure) &amp;&amp; _.isUndefined(options.preset)) {
+        page.dest = page.dest;
+      } else {
+        if (page.basename === &#x27;index&#x27;) {
+          page.dest = page.dest;
+        } else {
+          page.dest = utils.normalizePath(path.join(page.dirname, permalink));
+        }
+      }
+
+      page.assets = utils.calculatePath(page.dest, originalAssets, originalAssets);
+
+      grunt.verbose.ok(&#x27;page&#x27;.yellow, page);
+      grunt.verbose.ok(&#x27;page.dest&#x27;.yellow, page.dest);
+      grunt.verbose.ok(&#x27;page.assets&#x27;.yellow, page.assets);
+      grunt.verbose.ok(&#x27;Generated permalink for:&#x27;.yellow, page.dest);
+      next();
+    });
+
+  } callback();
+},function (params, callback) {
+
+  var assemble  = params.assemble;
+  var grunt     = params.grunt;
+  var pages     = assemble.options.pages;
+  var options   = assemble.options.sitemap || {};
+  var sitemap   = [];
+  var robots    = [];
+  var exclusion = [&#x27;404&#x27;];
+  var pkg       = grunt.file.readJSON(&#x27;package.json&#x27;);
+
+  options.homepage = options.homepage || pkg.homepage;
+  options.robot = options.robot !== false;
+  options.changefreq = options.changefreq || &#x27;weekly&#x27;;
+  options.priority = (options.priority || 0.5).toString();
+  options.dest = options.dest || path.dirname(pages[0].dest);
+
+
+  // Only write if it actually changed.
+  var write = function (file, content) {
+    var msg;
+    var old = grunt.file.exists(file) ? grunt.file.read(file) : &#x27;&#x27;;
+
+    if (old !== content) {
+      grunt.file.write(file, content);
+      msg = &#x27;Created &#x27;.yellow + file.cyan;
+    } else {
+      msg = &#x27;Keeping &#x27;.yellow + file.cyan;
+    }
+    return grunt.verbose.ok(msg);
+  };
+
+  // Return the relative destination if the option is enabled
+  var getExternalFilePath = function (relativedest, file) {
+    return (relativedest ? file.dest.replace(options.dest + &quot;/&quot;, &quot;&quot;) : file.dest );
+  };
+
+  async.forEach(pages, function (file, next) {
+
+    if (!_.isUndefined(options.exclude)) {
+      exclusion = _.union([], exclusion, options.exclude || []);
+    }
+
+    var url = options.homepage;
+    var date = file.data.updated || file.data.date || new Date();
+    var changefreq = file.data.changefreq || options.changefreq;
+    var priority = file.data.priority || options.priority;
+    var relativedest = options.relativedest;
+
+    if (exclusion.indexOf(file.basename) !== -1 ||
+        grunt.file.isMatch({srcBase: options.dest}, exclusion, file.dest)) {
+      robots.push(&#x27;Disallow: /&#x27; + getExternalFilePath(relativedest, file));
+      return;
+    }
+
+    sitemap.push({
+      url: {
+        loc: url + &#x27;/&#x27; + getExternalFilePath(relativedest, file),
+        lastmod: date.toISOString(),
+        changefreq: changefreq,
+        priority: priority
+      }
+    });
+
+    next();
+  }, callback());
+
+  var result = xml.toXML({
+    _name: &#x27;urlset&#x27;,
+    _attrs: {
+      xmlns: &#x27;http://www.sitemaps.org/schemas/sitemap/0.9&#x27;
+    },
+    _content: sitemap
+  }, {header: true, indent: &#x27;  &#x27;});
+
+
+
+  var sitemapDest = options.dest + &#x27;/sitemap.xml&#x27;;
+  write(sitemapDest, result);
+
+  if (options.robot) {
+    var robot = &quot;User-agent: *\n\n&quot;;
+
+    robot += robots.join(&#x27;\n&#x27;) + &#x27;\n&#x27;;
+
+    var robotpDest = options.dest + &#x27;/robots.txt&#x27;;
+    write(robotpDest, robot);
+  }
+
+},function (params, callback) {
+  &#x27;use strict&#x27;;
+
+  var opts = params.assemble.options;
+  opts.toc = opts.toc || {};
+
+  // id to use to append TOC
+  var id = &#x27;#&#x27; + (opts.toc.id || &#x27;toc&#x27;);
+  var modifier = opts.toc.modifier || &#x27;&#x27;;
+  var li = opts.toc.li ? (&#x27; class=&quot;&#x27; + opts.toc.li + &#x27;&quot;&#x27;) : &#x27;&#x27;;
+
+  // load current page content
+  var $ = cheerio.load(params.content);
+  var toc = cheerio.load(&#x27;&lt;ul id=&quot;toc-list&quot; class=&quot;&#x27; + modifier + &#x27;&quot;&gt;&lt;/ul&gt;&#x27;);
+
+  // get all the anchor tags from inside the headers
+  var anchors = $(&#x27;h1 a[name],h2 a[name],h3 a[name],h4 a[name]&#x27;);
+  anchors.map(function(i, e) {
+    var text  = $(e.parent).text().trim();
+    var link  = e.attribs.name
+    var depth = parseInt(e.parent.name.replace(/h/gi, &#x27;&#x27;), 10);
+
+    var arr = new Array(depth);
+    var level = arr.join(&#x27;&lt;li&gt;&lt;ul&gt;&#x27;) + &#x27;&lt;li&gt;&lt;a href=&quot;#&#x27; + link + &#x27;&quot;&gt;&#x27; + text + &#x27;&lt;/a&gt;&lt;/li&gt;&#x27; + arr.join(&#x27;&lt;/ul&gt;&lt;/li&gt;&#x27;);
+    toc(&#x27;#toc-list&#x27;).append(level);
+  });
+  $(id).append(toc.html()
+       .replace(/(&lt;li&gt;\s*&lt;ul&gt;\s*)+/g, &#x27;&lt;li&gt;&lt;ul&gt;&#x27;)
+       .replace(/(&lt;\/ul&gt;\s*&lt;\/li&gt;\s*)+/g, &#x27;&lt;/ul&gt;&lt;/li&gt;&#x27;)
+       .replace( /(&lt;\/li&gt;\s*&lt;\/ul&gt;\s*&lt;\/li&gt;\s*&lt;li&gt;\s*&lt;ul&gt;\s*&lt;li&gt;)/g, &#x27;&lt;/li&gt;&lt;li&gt;&#x27;));
+
+  params.content = $.html();
+  callback();
+},function (params, next) {
+  var options = params.assemble.options;
+  var pageCollectionOpts = options.pageCollection || {};
+  var callbacks = pageCollectionOpts.preprocess || [];
+
+  if (!_.isArray(callbacks)) {
+    callbacks = [callbacks];
+  }
+
+  callbacks = _.union(callbacks, defaults);
+
+  _.map(params.context.pages, function(page) {
+    _.map(callbacks, function(callback) {
+      callback(page, params.context);
+    });
+  });
+
+  next();
+},function (params, next) {
+
+  var buildPaginationInfo = function() {
+    var pages = params.assemble.options.pages;
+
+    var i = 0;
+    var prevPage = null;
+
+    for (var j = pages.length; i &lt; j; i++) {
+      var page = pages[i];
+
+      // Index and actual page number
+      page.index = i;
+      page.number = i + 1;
+
+      // First page
+      page.first = (i === 0);
+
+      // Previous page
+      if (prevPage !== null) {
+        page.prev = prevPage;
+      }
+
+      // Middle pages
+      page.middle = i &gt; 0 &amp;&amp; i &lt; (j - 1);
+
+      // Next page
+      if (i &lt; pages.length - 1) {
+        page.next = i + 1;
+      }
+
+      // Last page
+      page.last = i === (j - 1);
+      prevPage = i;
+    }
+  };
+
+
+  var addPaginationInfoToContext = function() {
+    var context     = params.context;
+    var pages       = context.pages;
+    var currentPage = context.page;
+
+    params.context.pagination = {
+      first      : pages[currentPage.first  || 0],
+      prev       : pages[currentPage.prev   || 0],
+      middle     : pages[currentPage.middle],
+      next       : pages[currentPage.next   || (pages.length - 1)],
+      last       : pages[currentPage.last   || (pages.length - 1)],
+
+      index      : pages[currentPage.index],
+      number     : currentPage.index + 1,
+      currentPage: currentPage.index + 1,
+      totalPages : pages.length
+    };
+  };
+
+
+  if (params.stage === &#x27;render:pre:pages&#x27;) {
+    buildPaginationInfo();
+  } else if (params.stage === &#x27;render:pre:page&#x27;) {
+    addPaginationInfoToContext();
+  }
+  next();
+},function (params, callback) {
+  &#x27;use strict&#x27;;
+
+  var grunt = params.grunt;
+
+  grunt.verbose.subhead(&#x27;Running:&#x27;.bold, &#x27;&quot;assemble-contrib-postprocess&quot;&#x27;);
+  grunt.verbose.writeln(&#x27;Stage:  &#x27;.bold, &#x27;&quot;render:post:page&quot;\n&#x27;);
+
+  var content = params.content;
+  var p = params.assemble.options.postprocess;
+
+  function postprocess(src, fn) {return fn(src);}
+  var processFn = function(src) {return src;};
+
+  params.content = postprocess(content, p || processFn);
+  callback();
+}</li>
+  
+    <li>Key: originalAssets Value = dist/assets</li>
+  
+    <li>Key: originalLayout Value = src/templates/layouts/default.hbs</li>
+  
+    <li>Key: collections Value = </li>
+  
+    <li>Key: _plugins Value = assemble-contrib-anchors,assemble-contrib-permalinks,assemble-contrib-sitemap,assemble-contrib-toc,node_modules/assemble/lib/plugins/**/*.js</li>
+  
+    <li>Key: engine Value = handlebars</li>
+  
+    <li>Key: pages Value = [object Object],[object Object],[object Object]</li>
+  
+    <li>Key: tags Value = </li>
+  
+    <li>Key: categories Value = </li>
+  
+    <li>Key: toc Value = [object Object]</li>
+  
+    <li>Key: navbar-fixed-top Value = [object Object]</li>
+  
+    <li>Key: site Value = [object Object]</li>
+  
+    <li>Key: title Value = foobar</li>
+  
+    <li>Key: page Value = [object Object]</li>
+  
+    <li>Key: dirname Value = dist/derp</li>
+  
+    <li>Key: absolute Value = dist/derp/foo.html</li>
+  
+    <li>Key: filename Value = foo.html</li>
+  
+    <li>Key: pageName Value = foo.html</li>
+  
+    <li>Key: pagename Value = foo.html</li>
+  
+    <li>Key: basename Value = foo</li>
+  
+    <li>Key: extname Value = .html</li>
+  
+    <li>Key: pagination Value = [object Object]</li>
+  
+    <li>Key: knownHelpers Value = [object Object]</li>
+  
+ 
+</ul> 
+
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -2,13 +2,8 @@
   title: foobar
 ---
 
-{{this.plugins}}
+GR {{grunt}} GR
 
-<ul> 
-
-  {{#each this}}
-    <li>Key: {{@key}} Value = {{this}}</li>
-  {{/each}}
- 
-</ul> 
-
+{{#each all_pages}}
+  <li>Key: {{@key}} Value = {{this}}</li>
+{{/each}}

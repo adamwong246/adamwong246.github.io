@@ -63,14 +63,14 @@ module.exports = function(grunt) {
         layout: '<%= config.src %>/templates/layouts/default.hbs',
         data: '<%= config.src %>/data/*.{json,yml}',
         partials: '<%= config.src %>/templates/partials/*.hbs',
-        plugins: ['assemble-contrib-anchors','assemble-contrib-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
+        plugins: ['assemble-contrib-anchors','assemble-middleware-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
       },
-      
       blog: {
         options: {
           layout: '<%= config.src %>/templates/layouts/blog-layout.hbs',
           permalinks: {
-            structure: ':year/:month/:day/:basename:ext'
+            structure: ':year/:month/:day/:basename:ext',
+            dateFormats: ["YYYY-MM-DD"]
           }
         },
         expand: true,
@@ -78,7 +78,6 @@ module.exports = function(grunt) {
         src: '*.md',
         dest: '<%= config.dist %>/blog/',
       },
-
       pages: {
         flatten: false,
         expand: true,

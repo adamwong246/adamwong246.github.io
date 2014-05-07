@@ -27,11 +27,17 @@
 
     <div class="container theme-showcase" role="main">
 
-    
-
 <ul > 
   {{#each  pages }} 
-    <li > <a  href ="#" > {{basename }} </a > </li > 
+    <li>
+        {{#each this}}
+    <li>Key: {{@key}} Value = {{this}}</li>
+  {{/each}}
+
+      <a href="{{this.relativeLink}}">
+        {{this.relativeLink}}
+      </a>
+    </li>
   {{/each  }} 
 </ul > 
 
@@ -42,6 +48,15 @@
     {{/markdown}}
 
     </div>
+
+
+<ul> 
+
+  {{#each this}}
+    <li>Key: {{@key}} Value = {{this}}</li>
+  {{/each}}
+ 
+</ul> 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>

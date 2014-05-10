@@ -107,7 +107,8 @@ Because, believe it or not, a banana is not a friend.&lt;/p&gt;
       <pubDate>Mon, 01 Oct 2012 15:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://localhost:4747/articles/another-test/</guid>
       <author></author>
-      <description>&lt;p&gt;Syntax highlighting with &lt;a href=&quot;http://softwaremaniacs.org/soft/highlight/en/&quot;&gt;highlight.js&lt;/a&gt;.
+      <description>&lt;p&gt;Test
+Syntax highlighting with &lt;a href=&quot;http://softwaremaniacs.org/soft/highlight/en/&quot;&gt;highlight.js&lt;/a&gt;.
 The theme used is tomorrow, you can find more themes &lt;a href=&quot;http://jmblog.github.io/color-themes-for-highlightjs/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&quot;javascript&quot;&gt;JavaScript&lt;/h3&gt;

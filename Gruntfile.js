@@ -22,13 +22,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     config: {
       src: 'src',
-      dist: 'dist'
+      dist: 'build'
     },
     watch: {
-      assemble: {
-        files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
-        tasks: ['assemble']
-      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -57,51 +53,32 @@ module.exports = function(grunt) {
         }
       }
     },
-    assemble: {
-      options: {
-        assets: '<%= config.dist %>/assets',
-        layout: '<%= config.src %>/templates/layouts/default.hbs',
-        data: '<%= config.src %>/data/*.{json,yml}',
-        partials: '<%= config.src %>/templates/partials/*.hbs',
-        plugins: ['assemble-contrib-anchors','assemble-middleware-permalinks','assemble-contrib-sitemap','assemble-contrib-toc'],
-      },
-      blog: {
-        options: {
-          layout: '<%= config.src %>/templates/layouts/blog-layout.hbs',
-          permalinks: {
-            structure: ':year/:month/:day/:basename:ext',
-            dateFormats: ["YYYY-MM-DD"]
-          }
-        },
-        expand: true,
-        cwd: '<%= config.src %>/content/blog',
-        src: '*.md',
-        dest: '<%= config.dist %>/blog/',
-      },
-      pages: {
-        flatten: false,
-        expand: true,
-        cwd: '<%= config.src %>/templates/pages',
-        src: '**/*.hbs',
-        dest: '<%= config.dist %>'
-      }
+    wintersmith: {
+      build: {},
+      // preview: {
+      //   options: {
+      //     action: "preview"
+      //   }
+      // }
     },
     markdownpdf: {
       options: {
         expand: true
       },
       files: {
-        src: "<%= config.src %>/content/resume.md",
-        dest: "dist/about_me/resumes"
+        src: "resume.md",
+        dest: "build/about_me/resumes"
       }
     },
+    
     clean: ['<%= config.dist %>/**'],
+    
     copy: {
       archive: {
         expand: true,
         cwd: 'archive_dist',
         src: ['assets/**','blog/**', 'about_me/resumes/resume.html', 'about_me.html'],
-        dest: 'dist/',
+        dest: 'build/',
       },
       assets: {
         expand: true,
@@ -112,7 +89,8 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('assemble');
+  // grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-wintersmith');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -122,7 +100,7 @@ module.exports = function(grunt) {
   grunt.registerTask('server', [
     'clean',
     'copy',
-    'assemble',
+    'wintersmith',
     'markdownpdf',
     'connect:livereload',
     'watch'
@@ -131,7 +109,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'copy',
-    'assemble',
+    'wintersmith',
     'markdownpdf'
   ]);
 

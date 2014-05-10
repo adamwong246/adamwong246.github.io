@@ -89,25 +89,41 @@ module.exports = function(grunt) {
       },
     },
 
-    // shell: {                                // Task
-    //   listFolders: {                      // Target
-    //     options: {                      // Options
-    //         stderr: false
+    shell: {        
+      delete_master: {
+        command: 'git branch -D master'
+      },
+      checkout_master: {
+        command: 'git checkout -b master'
+      },
+      filter: {
+        command: 'git filter-branch --subdirectory-filter build/ -f'
+      },
+      go_back_one_branch: {
+        command: 'git checkout -'
+      },
+      push: {
+        command: 'git push -f origin master'
+      }
+                              // Task
+      // listFolders: {                      // Target
+      //   options: {                      // Options
+      //       stderr: false
+      //   },
+      //   command: 'ls'
+      // }
+    }
+  
+    // githubPages: {
+    //   target: {
+    //     options: {
+    //       // The default commit message for the gh-pages branch
+    //       commitMessage: 'push'
     //     },
-    //     command: 'ls'
+    //     // The folder where your gh-pages repo is
+    //     src: 'build'
     //   }
     // }
-  
-    githubPages: {
-      target: {
-        options: {
-          // The default commit message for the gh-pages branch
-          commitMessage: 'push'
-        },
-        // The folder where your gh-pages repo is
-        src: 'build'
-      }
-    }
     
 });
 
@@ -119,10 +135,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-markdown-pdf');
   grunt.loadNpmTasks('grunt-github-pages');
-  // grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-shell');
 
-  // grunt.registerTask('ship_it', ['shell']);
-  grunt.registerTask('deploy', ['githubPages:target']);
+  grunt.registerTask('ship_it', ['shell:delete_master', 'shell:checkout_master', 'shell:filter', 'shell:go_back_one_branch', 'shell:push']);
+  // grunt.registerTask('deploy', ['githubPages:target']);
   
   grunt.registerTask('server', [
     'clean',

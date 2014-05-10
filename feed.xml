@@ -111,6 +111,15 @@ Because, believe it or not, a banana is not a friend.&lt;/p&gt;
 </description>
     </item>
     <item>
+      <title>first</title>
+      <link>http://localhost:4747/articles/1/</link>
+      <pubDate>Mon, 01 Oct 2012 15:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:4747/articles/1/</guid>
+      <author></author>
+      <description>&lt;p&gt;second&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Code and stuff!</title>
       <link>http://localhost:4747/articles/another-test/</link>
       <pubDate>Mon, 01 Oct 2012 15:00:00 -0700</pubDate>

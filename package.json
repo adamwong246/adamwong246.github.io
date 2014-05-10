@@ -6,6 +6,8 @@
   },
   "repository": "none",
   "devDependencies": {
-    "grunt-wintersmith": "0.0.2"
+    "grunt-wintersmith": "0.0.2",
+    "grunt-shell": "^0.7.0",
+    "grunt-github-pages": "0.0.4"
   }
 }

@@ -67,18 +67,19 @@ module.exports = function(grunt) {
       },
       files: {
         src: "resume.md",
-        dest: "build/about_me/resumes"
+        dest: "<%= config.dist %>/about_me/resumes"
       }
     },
     
     clean: ['<%= config.dist %>/**'],
     
     copy: {
+      //       copy over all website first to avoid 404
       archive: {
         expand: true,
         cwd: 'archive_dist',
         src: ['assets/**','blog/**', 'about_me/resumes/resume.html', 'about_me.html'],
-        dest: 'build/',
+        dest: '<%= config.dist %>/',
       },
       assets: {
         expand: true,
@@ -86,8 +87,29 @@ module.exports = function(grunt) {
         src: '**',
         dest: '<%= config.dist %>/assets',
       },
+    },
+
+    // shell: {                                // Task
+    //   listFolders: {                      // Target
+    //     options: {                      // Options
+    //         stderr: false
+    //     },
+    //     command: 'ls'
+    //   }
+    // }
+  
+    githubPages: {
+      target: {
+        options: {
+          // The default commit message for the gh-pages branch
+          commitMessage: 'push'
+        },
+        // The folder where your gh-pages repo is
+        src: 'build'
+      }
     }
-  });
+    
+});
 
   // grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-wintersmith');
@@ -96,7 +118,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-markdown-pdf');
+  grunt.loadNpmTasks('grunt-github-pages');
+  // grunt.loadNpmTasks('grunt-shell');
 
+  // grunt.registerTask('ship_it', ['shell']);
+  grunt.registerTask('deploy', ['githubPages:target']);
+  
   grunt.registerTask('server', [
     'clean',
     'copy',

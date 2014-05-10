@@ -84,6 +84,12 @@ module.exports = function(grunt) {
         src: '**',
         dest: '<%= config.dist %>/assets',
       },
+      docs: {
+        expand: true,
+        cwd: '.',
+        src: ['AUTHORS', 'CHANGELONG', 'LICENSE_MIT', 'readme.md'],
+        dest: '<%= config.dist %>',
+      },
     },
 
     shell: {        

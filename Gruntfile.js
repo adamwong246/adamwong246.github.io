@@ -87,7 +87,7 @@ module.exports = function(grunt) {
       docs: {
         expand: true,
         cwd: '.',
-        src: ['AUTHORS', 'CHANGELONG', 'LICENSE_MIT', 'readme.md'],
+        src: ['AUTHORS', 'CHANGELOG', 'LICENSE-MIT', 'readme.md'],
         dest: '<%= config.dist %>',
       },
     },

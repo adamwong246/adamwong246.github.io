@@ -53,14 +53,11 @@ module.exports = function(grunt) {
         }
       }
     },
+    
     wintersmith: {
-      build: {},
-      // preview: {
-      //   options: {
-      //     action: "preview"
-      //   }
-      // }
+      build: {}
     },
+    
     markdownpdf: {
       options: {
         expand: true
@@ -105,29 +102,9 @@ module.exports = function(grunt) {
       push: {
         command: 'git push -f origin master'
       }
-                              // Task
-      // listFolders: {                      // Target
-      //   options: {                      // Options
-      //       stderr: false
-      //   },
-      //   command: 'ls'
-      // }
-    }
-  
-    // githubPages: {
-    //   target: {
-    //     options: {
-    //       // The default commit message for the gh-pages branch
-    //       commitMessage: 'push'
-    //     },
-    //     // The folder where your gh-pages repo is
-    //     src: 'build'
-    //   }
-    // }
-    
+    }  
 });
 
-  // grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-wintersmith');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -138,7 +115,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('ship_it', ['shell:delete_master', 'shell:checkout_master', 'shell:filter', 'shell:go_back_one_branch', 'shell:push']);
-  // grunt.registerTask('deploy', ['githubPages:target']);
   
   grunt.registerTask('server', [
     'clean',

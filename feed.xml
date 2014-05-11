@@ -14,7 +14,44 @@
       <pubDate>Sat, 10 May 2014 15:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://localhost:4747/articles/0/</guid>
       <author></author>
-      <description>&lt;p&gt;I’m pleased to debut my &lt;em&gt;new&lt;/em&gt; blog, which is made with Grunt and Wintersmith, as opposed to Middleman. Much construction and a lot of churn. &lt;/p&gt;
+      <description>&lt;p&gt;I’m pleased to debut my &lt;em&gt;new&lt;/em&gt; blog, which is made with Grunt and Wintersmith, as opposed to Middleman. I’ve decided for a while now that I want to move away from Ruby and do more Javascript. So lets talk about how I made the migration. &lt;/p&gt;
+&lt;p&gt;I think it’s helpful, firstly, to understand the analogy between my old site and the new. &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Software&lt;/th&gt;
+&lt;th&gt;Old&lt;/th&gt;
+&lt;th&gt;New&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Language&lt;/td&gt;
+&lt;td&gt;Ruby&lt;/td&gt;
+&lt;td&gt;JS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Package manager&lt;/td&gt;
+&lt;td&gt;Bundle&lt;/td&gt;
+&lt;td&gt;Npm&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;make tool&lt;/td&gt;
+&lt;td&gt;Rake&lt;/td&gt;
+&lt;td&gt;Grunt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;static site generator&lt;/td&gt;
+&lt;td&gt;Middleman&lt;/td&gt;
+&lt;td&gt;Wintersmith&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;template engine&lt;/td&gt;
+&lt;td&gt;Slim&lt;/td&gt;
+&lt;td&gt;Jade&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
     </item>
   </channel>

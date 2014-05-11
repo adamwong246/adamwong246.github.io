@@ -1,12 +1,3 @@
-/*
- * Generated on 2014-04-05
- * generator-assemble v0.4.11
- * https://github.com/assemble/generator-assemble
- *
- * Copyright (c) 2014 Hariadi Hinta
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 // # Globbing
@@ -16,32 +7,25 @@
 // '<%= config.src %>/templates/pages/**/*.hbs'
 
 module.exports = function(grunt) {
-
   require('time-grunt')(grunt);
-
   grunt.initConfig({
     config: {
       src: 'src',
       dist: 'build'
     },
     watch: {
-      livereload: {
+      wintersmith: {
+        files: ['./contents/**/*', './templates/**/*'],
+        tasks: ['wintersmith'],
         options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= config.dist %>/{,*/}*.html',
-          '<%= config.dist %>/assets/{,*/}*.css',
-          '<%= config.dist %>/assets/{,*/}*.js',
-          '<%= config.dist %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
+          livereload: true,
+        }
       }
     },
     connect: {
       options: {
         port: 9000,
         livereload: 35729,
-        // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
       livereload: {
@@ -53,11 +37,9 @@ module.exports = function(grunt) {
         }
       }
     },
-    
     wintersmith: {
       build: {}
     },
-    
     markdownpdf: {
       options: {
         expand: true
@@ -67,11 +49,9 @@ module.exports = function(grunt) {
         dest: "<%= config.dist %>/about_me/resumes"
       }
     },
-    
     clean: ['<%= config.dist %>/**'],
-    
     copy: {
-      //       copy over all website first to avoid 404
+      // copy over old website first to avoid 404's
       archive: {
         expand: true,
         cwd: 'archive_dist',
@@ -91,7 +71,6 @@ module.exports = function(grunt) {
         dest: '<%= config.dist %>',
       },
     },
-
     shell: {        
       delete_master: {
         command: 'git branch -D master'
@@ -120,26 +99,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-github-pages');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('ship_it', ['shell:delete_master', 'shell:checkout_master', 'shell:filter', 'shell:go_back_one_branch', 'shell:push']);
+  grunt.registerTask('ship_it', 
+    ['shell:delete_master', 'shell:checkout_master', 'shell:filter', 'shell:go_back_one_branch', 'shell:push']
+  );
   
-  grunt.registerTask('server', [
-    'clean',
-    'copy',
-    'wintersmith',
-    'markdownpdf',
-    'connect:livereload',
-    'watch'
-  ]);
+  grunt.registerTask('server', 
+    ['clean','copy','wintersmith','markdownpdf','connect:livereload','watch']
+  );
 
-  grunt.registerTask('build', [
-    'clean',
-    'copy',
-    'wintersmith',
-    'markdownpdf'
-  ]);
+  grunt.registerTask('build', 
+    ['clean','copy','wintersmith','markdownpdf']
+  );
 
-  grunt.registerTask('default', [
-    'build'
-  ]);
+  grunt.registerTask('default', 
+    ['build']
+  );
 
 };

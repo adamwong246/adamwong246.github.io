@@ -19,8 +19,14 @@ html(lang='en')
         block header
           div.logo
             h1
-              a(href=locals.url)= locals.name
+              a(href='/')= locals.name
             p.description= locals.description
+            ul
+              li
+                a(href='/about_me.html') about me
+              li
+                a(href='/about_me/resumes/resume.html') my resume
+
     div#content
       div.content-wrap
         block content

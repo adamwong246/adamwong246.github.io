@@ -15,7 +15,10 @@ module.exports = function(grunt) {
     },
     watch: {
       wintersmith: {
-        files: ['./contents/**/*', './templates/**/*'],
+        files: [
+          './contents/**/*', 
+          './templates/**/*'
+        ],
         tasks: ['wintersmith'],
         options: {
           livereload: true,
@@ -38,14 +41,16 @@ module.exports = function(grunt) {
       }
     },
     wintersmith: {
-      build: {}
+      build: {
+        
+      }
     },
     markdownpdf: {
       options: {
         expand: true
       },
       files: {
-        src: "resume.md",
+        src: "contents/resume.md",
         dest: "<%= config.dist %>/about_me/resumes"
       }
     },
@@ -55,7 +60,7 @@ module.exports = function(grunt) {
       archive: {
         expand: true,
         cwd: 'archive_dist',
-        src: ['assets/**','blog/**', 'about_me/resumes/resume.html', 'about_me.html'],
+        src: ['assets/**','blog/**', 'about_me/resumes/resume.html'],
         dest: '<%= config.dist %>/',
       },
       assets: {

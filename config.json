@@ -6,7 +6,7 @@
     "description": "My little blog. Perpetual work-in-progress"
   },
   "plugins": [
-    "./plugins/paginator.coffee"
+    "./plugins/paginator.coffee", "wintersmith-jade"
   ],
   "require": {
     "moment": "moment",

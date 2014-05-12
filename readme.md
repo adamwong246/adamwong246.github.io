@@ -11,6 +11,3 @@ You might be interested in forking this project if...
 * you think that jekyll is a bit too restrictive
 * you want to write html, css and js with the templating language of your own choice
 * you want a flexible workflow for any job, not just a personal blog.
-
-### Credits
-Coming soon...

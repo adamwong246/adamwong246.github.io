@@ -50,8 +50,8 @@ module.exports = function(grunt) {
         expand: true
       },
       files: {
-        src: "contents/resume.md",
-        dest: "<%= config.dist %>/about_me/resumes"
+        src: "contents/about/resumes/resume.md",
+        dest: "<%= config.dist %>/about/resumes/"
       }
     },
     clean: ['<%= config.dist %>/**'],
@@ -60,14 +60,8 @@ module.exports = function(grunt) {
       archive: {
         expand: true,
         cwd: 'archive_dist',
-        src: ['assets/**','blog/**', 'about_me/resumes/resume.html'],
+        src: ['assets/**','blog/**', 'about/resumes/resume.html'],
         dest: '<%= config.dist %>/',
-      },
-      assets: {
-        expand: true,
-        cwd: '<%= config.src %>/assets',
-        src: '**',
-        dest: '<%= config.dist %>/assets',
       },
       docs: {
         expand: true,
@@ -75,6 +69,9 @@ module.exports = function(grunt) {
         src: ['AUTHORS', 'CHANGELOG', 'LICENSE-MIT', 'readme.md'],
         dest: '<%= config.dist %>',
       },
+      resume_as_markdown: {
+        expand: true, cwd: './about/resumes/', src: 'resume.md', dest: './build/about/resumes/',
+      }
     },
     shell: {        
       delete_master: {

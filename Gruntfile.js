@@ -73,7 +73,13 @@ module.exports = function(grunt) {
         expand: true, cwd: './about/resumes/', src: 'resume.md', dest: './build/about/resumes/',
       }
     },
-    shell: {        
+    shell: {
+      add_everything:{
+        command: 'git add --all'
+      },
+      commit:{
+        command: "git commit -m 'auto commit with deploy'"
+      },
       delete_master: {
         command: 'git branch -D master'
       },
@@ -102,7 +108,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('ship_it', 
-    ['shell:delete_master', 'shell:checkout_master', 'shell:filter', 'shell:go_back_one_branch', 'shell:push']
+    ['build', 
+    'shell:add_everything', 'shell:commit', 'shell:delete_master', 'shell:checkout_master', 'shell:filter', 'shell:go_back_one_branch', 'shell:push']
   );
   
   grunt.registerTask('server', 

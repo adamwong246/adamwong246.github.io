@@ -9,10 +9,14 @@
 module.exports = function(grunt) {
   require('time-grunt')(grunt);
   grunt.initConfig({
+
+    pkg: grunt.file.readJSON('package.json'),
+
     config: {
       src: 'src',
       dist: 'build'
     },
+
     watch: {
       wintersmith: {
         files: [
@@ -25,6 +29,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     connect: {
       options: {
         port: 9000,
@@ -40,11 +45,13 @@ module.exports = function(grunt) {
         }
       }
     },
+
     wintersmith: {
       build: {
         
       }
     },
+
     markdownpdf: {
       options: {
         expand: true
@@ -54,7 +61,9 @@ module.exports = function(grunt) {
         dest: "<%= config.dist %>/about/resumes/"
       }
     },
+
     clean: ['<%= config.dist %>/**'],
+
     copy: {
       // copy over old website first to avoid 404's
       archive: {
@@ -73,6 +82,7 @@ module.exports = function(grunt) {
         expand: true, cwd: './about/resumes/', src: 'resume.md', dest: './build/about/resumes/',
       }
     },
+
     shell: {
       add_everything:{
         command: 'git add --all'
@@ -95,7 +105,7 @@ module.exports = function(grunt) {
       push: {
         command: 'git push -f origin master'
       }
-    }  
+    }
 });
 
   grunt.loadNpmTasks('grunt-wintersmith');

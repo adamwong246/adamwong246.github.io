@@ -1,8 +1,3 @@
----
-title: 'resume'
-template: plain.jade
----
-
 # Adam Wong
 * adamwong246@gmail.com
 * Portland, Or

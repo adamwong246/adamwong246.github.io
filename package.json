@@ -18,6 +18,7 @@
     "wintersmith-jade": "^0.1.0",
     "wintersmith-coffee": "^0.2.1",
     "assemble": "^0.4.37",
-    "assemble-middleware-permalinks": "^0.5.2"
+    "assemble-middleware-permalinks": "^0.5.2",
+    "assemble-middleware-contextual": "^0.2.2"
   }
 }

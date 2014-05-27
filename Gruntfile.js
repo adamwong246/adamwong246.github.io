@@ -12,13 +12,13 @@ module.exports = function(grunt) {
     
     config: {src: 'src', dist: 'build'},
     
-    watch: {
-      wintersmith: {
-        files: ['./contents/**/*', './templates/**/*'],
-        tasks: ['wintersmith'],
-        options: {livereload: true}
-      }
-    },
+    // watch: {
+    //   wintersmith: {
+    //     files: ['./contents/**/*', './templates/**/*'],
+    //     tasks: ['wintersmith'],
+    //     options: {livereload: true}
+    //   }
+    // },
     
     connect: {
       options: {port: 9000, livereload: 35729, hostname: 'localhost'},
@@ -27,20 +27,18 @@ module.exports = function(grunt) {
     
     assemble: {
       options: {
-        layout: 'layouts/default.hbs',
-        plugins: ['assemble-contrib-permalinks', 'plugins/**'],
+        layout: '<%= config.src %>/layouts/default.hbs',
+        plugins: ['assemble-middleware-permalinks', 'assemble-middleware-contextual']
       },
 
       blog: {
         options: {
           permalinks: {
-            structure: ':basename/:index.html'
-          }
+            structure: ':title:ext'
+          } 
         },
-        expand:true,
-        cwd: 'blog_posts/',
-        dest: 'blog/',
-        src: ['*.hbs']
+        src: ['<%= config.src %>/blog/*/*.hbs'],
+        dest: './build'
       }
     },
 

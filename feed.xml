@@ -5,9 +5,25 @@
     <atom:link href="http://localhost:4747/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:4747</link>
     <description>My little blog. Perpetual work-in-progress</description>
-    <pubDate>Sat, 10 May 2014 15:00:00 -0700</pubDate>
+    <pubDate>Tue, 10 Jun 2014 15:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>bucket list</title>
+      <link>http://localhost:4747/articles/1/</link>
+      <pubDate>Tue, 10 Jun 2014 15:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:4747/articles/1/</guid>
+      <author></author>
+      <description>&lt;ul&gt;
+&lt;li&gt;commute via flying motorcycle&lt;/li&gt;
+&lt;li&gt;live on a boat&lt;/li&gt;
+&lt;li&gt;go to Brazil&lt;/li&gt;
+&lt;li&gt;get in shape&lt;/li&gt;
+&lt;li&gt;be my own boss&lt;/li&gt;
+&lt;li&gt;contribute to the Linux kernel&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     <item>
       <title>re-write</title>
       <link>http://localhost:4747/articles/0/</link>

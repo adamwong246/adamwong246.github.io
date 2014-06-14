@@ -14,8 +14,9 @@
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-markdown-pdf": "^2.1.1",
-    "assemble": "git://github.com/assemble/assemble.git#v0.5.0",
     "assemble-middleware-permalinks": "^0.5.2",
-    "assemble-middleware-contextual": "^0.2.2"
+    "assemble-middleware-contextual": "^0.2.2",
+    "handlebars-helpers": "^0.5.5",
+    "grunt-assemble": "^0.1.15"
   }
 }

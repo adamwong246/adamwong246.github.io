@@ -20,62 +20,66 @@ module.exports = function(grunt) {
     //   }
     // },
     
-    connect: {
-      options: {port: 9000, livereload: 35729, hostname: 'localhost'},
-      livereload: {options: {open: true, base: ['<%= config.dist %>']}}
-    },
+    // connect: {
+    //   options: {port: 9000, livereload: 35729, hostname: 'localhost'},
+    //   livereload: {options: {open: true, base: ['<%= config.dist %>']}}
+    // },
     
     assemble: {
       options: {
-        layout: '<%= config.src %>/layouts/default.hbs',
-        plugins: ['assemble-middleware-permalinks', 'assemble-middleware-contextual']
+        layout:    '<%= config.src %>/layouts/default.hbs',
+        data:     ['<%= config.src %>/data/*.{json,yml}'],
+        partials: ['<%= config.src %>/partials/*.hbs'],
+        assets:    '<%= config.src %>/assets',
+
+        middleware: ['assemble-middleware-permalinks'],
+        permalinks: {
+          structure: ':basename-:title:ext'
+        },
+
+        helpers: ['handlebars-helpers']
       },
 
       blog: {
-        options: {
-          permalinks: {
-            structure: ':title:ext'
-          } 
-        },
-        src: ['<%= config.src %>/blog/*/*.hbs'],
-        dest: './build'
+        src: ['<%= config.src %>/blog/0.hbs'],
+        dest: './build/'
       }
     },
 
-    markdownpdf: {
-      options: {expand: true},
-      files: {src: "contents/about/resumes/resume.md", dest: "<%= config.dist %>/about/resumes/"}
-    },
+    // markdownpdf: {
+    //   options: {expand: true},
+    //   files: {src: "contents/about/resumes/resume.md", dest: "<%= config.dist %>/about/resumes/"}
+    // },
     
     clean: ['<%= config.dist %>/**'],
     
-    copy: {
-      // copy over old website first to avoid 404's
-      archive: {
-        expand: true, cwd: 'archive_dist', src: ['assets/**','blog/**', 'about/resumes/resume.html'], dest: '<%= config.dist %>/',
-      },
+    // copy: {
+    //   // copy over old website first to avoid 404's
+    //   archive: {
+    //     expand: true, cwd: 'archive_dist', src: ['assets/**','blog/**', 'about/resumes/resume.html'], dest: '<%= config.dist %>/',
+    //   },
       
-      docs: {
-        expand: true,
-        cwd: '.',
-        src: ['AUTHORS', 'CHANGELOG', 'LICENSE-MIT', 'readme.md'],
-        dest: '<%= config.dist %>',
-      },
+    //   docs: {
+    //     expand: true,
+    //     cwd: '.',
+    //     src: ['AUTHORS', 'CHANGELOG', 'LICENSE-MIT', 'readme.md'],
+    //     dest: '<%= config.dist %>',
+    //   },
       
-      resume_as_markdown: {
-        expand: true, cwd: './about/resumes/', src: 'resume.md', dest: './build/about/resumes/',
-      }
-    },
-    shell: {        
-      delete_master:      {command: 'git branch -D master'},
-      checkout_master:    {command: 'git checkout -b master'},
-      filter:             {command: 'git filter-branch --subdirectory-filter build/ -f'},
-      go_back_one_branch: {command: 'git checkout -'},
-      push:               {command: 'git push -f origin master'}
-    }  
+    //   resume_as_markdown: {
+    //     expand: true, cwd: './about/resumes/', src: 'resume.md', dest: './build/about/resumes/',
+    //   }
+    // },
+    // shell: {        
+    //   delete_master:      {command: 'git branch -D master'},
+    //   checkout_master:    {command: 'git checkout -b master'},
+    //   filter:             {command: 'git filter-branch --subdirectory-filter build/ -f'},
+    //   go_back_one_branch: {command: 'git checkout -'},
+    //   push:               {command: 'git push -f origin master'}
+    // }  
   });
 
-  grunt.loadNpmTasks('assemble' );
+  grunt.loadNpmTasks('grunt-assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');

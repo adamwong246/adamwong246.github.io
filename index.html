@@ -1,119 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width">
-    <title>Codesmithery par Excellence
-    </title>
-    <link rel="alternate" href="http://localhost:4747/feed.xml" type="application/rss+xml" title="My little blog. Perpetual work-in-progress">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
-    <link rel="stylesheet" href="/css/main.css">
-  </head>
-  <body>
-    <header class="header">
-      <div class="content-wrap">
-        <div class="logo">
-          <h1><a href="/">Codesmithery par Excellence</a></h1>
-          <p class="description">My little blog. Perpetual work-in-progress</p>
-          <ul>
-            <li><a href="/about">about</a></li>
-            <li><a href="http://www.github.com/adamwong246/adamwong246.github.io">github</a></li>
-            <li><a href="/about/resumes/resume.pdf">resume.pdf</a></li>
-            <li><a href="/about/resumes/resume.md">resume.md</a></li>
-          </ul>
-        </div>
-      </div>
-    </header>
-    <div id="content">
-      <div class="content-wrap">
-        <article class="article intro">
-          <header>
-            <p class="date"><span>10. June 2014</span></p>
-            <h2><a href="/articles/1/">bucket list</a></h2>
-          </header>
-          <section class="content"><ul>
-<li>commute via flying&nbsp;motorcycle</li>
-<li>live on a&nbsp;boat</li>
-<li>go to&nbsp;Brazil</li>
-<li>get in&nbsp;shape</li>
-<li>be my own&nbsp;boss</li>
-<li>contribute to the Linux&nbsp;kernel</li>
-</ul>
+<head>
+  <meta charset="utf-8">
+  <title>adamwong246.github.io</title>
 
-          </section>
-        </article>
-        <article class="article intro">
-          <header>
-            <p class="date"><span>10. May 2014</span></p>
-            <h2><a href="/articles/0/">re-write</a></h2>
-          </header>
-          <section class="content"><p>I’m pleased to debut my <em>new</em> blog, which is made with Grunt and Wintersmith, as opposed to Middleman. I’ve decided for a while now that I want to move away from Ruby and do more Javascript. So lets talk about how I made the&nbsp;migration. </p>
-<p>I think it’s helpful, firstly, to understand the analogy between my old site and the&nbsp;new. </p>
-<table>
-<thead>
-<tr>
-<th>Software</th>
-<th>Old</th>
-<th>New</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>language</td>
-<td>Ruby</td>
-<td><span class="caps">JS</span></td>
-</tr>
-<tr>
-<td>package manager</td>
-<td>Bundle</td>
-<td>Npm</td>
-</tr>
-<tr>
-<td>make tool</td>
-<td>Rake</td>
-<td>Grunt</td>
-</tr>
-<tr>
-<td>static site generator</td>
-<td>Middleman</td>
-<td>Wintersmith</td>
-</tr>
-<tr>
-<td>template engine</td>
-<td>Slim</td>
-<td>Jade</td>
-</tr>
-</tbody>
-</table>
-<h4 id="from-ruby-to-javascript">from Ruby to&nbsp;Javascript</h4>
-<p>Ruby is nice and all- it’s my daily craft after all. But I can’t help but feel that Ruby (and Rails) is on the slow decline. There seems to me, an inevitable destiny that <span class="caps">JS</span> will rule the world. But I find that with Javascript comes a lot of extra baggage in my code. Ruby gets right to the point with it’s sweet DSL’s but with Javascript usually has a more distracting bits. It’s nearly as nice as Ruby, but it is ultimately more flexible and can be made into a much more pleasant language with extensions such as&nbsp;underscore.js. </p>
-<h4 id="from-bundle-to-npm">from Bundle to&nbsp;Npm</h4>
-<p>Not much to say here. Just some slightly difference commands to&nbsp;learn. </p>
-<h4 id="from-rake-to-grunt">from Rake to&nbsp;Grunt</h4>
-<p>Rake and Grunt are very different. Grunt seems more “focused” than Rake- Rake is fundamentally script whereas Grunt is fundamentally configuration. Grunt definetly lays down rails for you to make things easy where Rake is just a thin layer between you and some Ruby. I like Grunt a lot and, truth be told, I never really liked Rake to begin&nbsp;with. </p>
-<h4 id="from-middleman-to-wintersmith">from Middleman to&nbsp;Wintersmith</h4>
-<p>This was the hardest tool to pick but I’m <em>loving</em> wintersmith. It takes a bunch of files, some configurations and plugins and outputs a website. I started with something like Jekyll but frankly, Jekyll was way to restrictive for me, which was why I switched to Middleman. Heckle would be the <span class="caps">JS</span> equivelant to Jeckle but like I said, I was looking for something more robust than a straight blog generator. Wintersmith also lets you embed code right in your html which I think is very cool. I really don’t understand the appeal of logic-less html. Sure, keep you business logic in the model but a view can have it’s own logic. And the ability to call upon the entirety of Javascript right in your html is just too&nbsp;tempting!</p>
-<h4 id="from-slim-to-jade">from Slim to&nbsp;Jade</h4>
-<p>Slim as another of my favorite Ruby pieces and I’m glad an equivelant exist in the <span class="caps">JS</span> world. Jade is is just groovy- real JS mixed with minimal html markup. Just remember that in contrast to Haml, you must escape the content of your&nbsp;html.</p>
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
 
-          </section>
-        </article>
-      </div>
-    </div>
-    <footer>
-      <div class="content-wrap">
-        <div class="nav"><a href="/archive.html">« Archives</a>
-        </div>
-        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com/">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.</p>
-<p>The thoughts and writing expressed herein are mine alone and do not reflect upon my employer nor any other organization or individual.</p>
+<body>
 
-        </section>
-        <section class="copy">
-          <p>&copy; Adam Wong &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
-          </p>
-        </section>
-      </div>
-    </footer>
-  </body>
+  <h1>Adam Wong</h1>
+
+  <ul>
+  <li>adamwong246@gmail.com</li>
+  <li>Portland, Or</li>
+  </ul>
+
+  <h2>Technical Skills</h2>
+
+  <ul>
+  <li>Ruby on Rails</li>
+  <li>Rspec and Cucumber</li>
+  <li>Git and SQL</li>
+  <li>HTML, CSS, JS, jQuery</li>
+  <li>Github, Heroku and Amazon services</li>
+  <li>Java and Android</li>
+  <li>BDD and TDD methodologies</li>
+  <li>Certified Scrum Master</li>
+  </ul>
+
+  <h2>Experience</h2>
+
+  <h3>Ruby on Rails Developer, <a href="https://www.hubbubhealth.com/">hubbubhealth.com</a></h3>
+
+  <h4>Portland, OR - Current</h4>
+
+  <p>To meet the changing requirements of our users, I worked with an existing team to incentivize employee wellness.</p>
+
+  <ul>
+  <li>Wrote Javascript for both modern and legacy browsers</li>
+  <li>Mastered the art of git rebase to maintain a clean git history</li>
+  <li>Deployed upwards of twice a week to heroku</li>
+  <li>Debugged user-submitted errors with New Relic and Papertrail</li>
+  <li>Managed assets via Amazon S3</li>
+  <li>Revived an out of date Rspec and Cucumber test suite for continuous integration</li>
+  <li>Optimized high traffic queries by replacing ActiveRecord calls with raw SQL</li>
+  </ul>
+
+  <h3>Ruby on Rails Developer, <a href="http://spaceport.io/">spaceport.io</a></h3>
+
+  <h4>Vancouver, WA - June 2012 - March, 2013</h4>
+
+  <p>I developed the website, spaceport.io.  I was responsible for the many deployments and databases, as well as maintaining a well-tested code repository. My duties ranged the entirety of the application stack, from database to front-end design. </p>
+
+  <ul>
+  <li>Designed and implemented layouts and styles</li>
+  <li>Integrated the simple_navigation gem into the core of the website for efficient, testable navigational elements</li>
+  <li>Created responsive/fluid designs with Twitter Bootstrap which could adapt to mobile browsers</li>
+  <li>Developed according to BDD methodologies using Cucumber</li>
+  <li>Leveraged the Chargify API to enable payments</li>
+  <li>Generated test results via Jenkins</li>
+  </ul>
+
+  <h3>Android Developer, <a href="http://www.burnsidedigital.com">Burnside Digitial</a>, formerly ELC Technologies</h3>
+
+  <h4>Portland, OR - 2011 - April 2012</h4>
+
+  <p>Developed Android apps  as part of an Agile team that spanned across Android, iOs, Windows and Web platforms. Traveled to Palo Alto, California to work with Google. </p>
+
+  <ul>
+  <li>Formally trained in Agile and Scrum methods and practices</li>
+  <li>Examples of work include the well received Postcard on the Run Android app</li>
+  </ul>
+
+  <h3>Lead Programmer, Center for the Digital Humanities, USC</h3>
+
+  <h4>Columbia, SC - 2010</h4>
+
+  <p>Lead programmer for games development team and member of the Android app development team.‭ Worked with artists and designers to produce novel uses of technology.</p>
+
+  <ul>
+  <li>Worked as a programmer to bring the artistic vision of humanities students to life</li>
+  </ul>
+
+  <h2>Education</h2>
+
+  <ul>
+  <li>University of South Carolina </li>
+  <li>Bachelors of Computer Science - May 2010</li>
+  </ul>
+
+  <h2>Accomplishments</h2>
+
+  <ul>
+  <li>Spent 5 months maintaining Alaskan parks as a member of the AmeriCorp </li>
+  <li>As an independent research, I analyzed sql data for the Moore School of Business while investigating emergent leadership within the virtual teams of the  MMORPG Travian</li>
+  <li>Volunteered for the WUSC FM 90.5 as a DJ and Member-at-Large for 3 years</li>
+  <li>Vice-President and founding member of American Computing Machinery Society, Columbia chapter</li>
+  </ul>
+
+
+  <a href="/resumes/resume.md">resume.md</a>
+  <a href="/resumes/resume.pdf">resume.pdf</a>
+
+</body>
 </html>

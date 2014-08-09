@@ -1,6 +1,13 @@
 /* Base */
 /* ----------------------------------------------------------*/
 
+svg.signature path{
+  stroke: black;
+  preserveAspectRatio: xMinYMin meet;
+  visibilityiewBox: 0 0 100 100;
+}
+
+
 * {
   margin: 0;
   padding: 0;

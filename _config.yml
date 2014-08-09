@@ -1,0 +1,12 @@
+# Site settings
+title: adamwong246.github.io
+email: adamwong246@gmail.com
+description: ""
+baseurl: ""
+url: "http://www.adamwong246.github.io"
+twitter_username: adamwong246
+github_username:  adamwong246
+
+# Build settings
+markdown: kramdown
+permalink: pretty

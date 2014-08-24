@@ -4,6 +4,10 @@ activate :bower
 activate :syntax, :line_numbers => false, :css_class => 'codehilite'
 activate :gravatar
 
+activate :google_analytics do |ga|
+  ga.tracking_id = 'UA-47887894-1' # Replace with your property ID.
+end
+
 ###
 # Blog settings
 ###

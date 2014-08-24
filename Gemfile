@@ -8,6 +8,7 @@ gem "middleman-livereload"
 gem 'middleman-bower'
 gem 'middleman-gravatar'
 gem 'middleman-syntax', git: 'git@github.com:middleman/middleman-syntax.git', ref: '8466a28719'
+gem "middleman-google-analytics"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"

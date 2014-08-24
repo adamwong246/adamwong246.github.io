@@ -4,5 +4,6 @@ html
     meta charset="utf-8"
     meta content="IE=edge;chrome=1" http-equiv="X-UA-Compatible"    
     title= current_article.title rescue 'adamwong246.github.io'
+    = google_analytics_universal_tag
     = stylesheet_link_tag 'base'
   = yield

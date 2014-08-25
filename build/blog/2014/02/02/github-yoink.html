@@ -10,57 +10,14 @@
       <a href="/blog/2014/02/02/github-yoink.html">github yoink</a> <span>Feb  2</span>
     </h3>
     
-    <p>I made a neat thing today which I call 'github-yoink' and which generates a block of code from a url to gihub. </p><p>Because my app is so tightly wed to github, I often want to link to my own source code. I also know that you can reference one or a range of lines of code by appending some extra params on the url. You can link to an entire document <a href="full_doc">resume.pdf.slim</a>,  a line in a document <a href="one_line">resume.pdf.slim#L1</a>, or a block of code. <a href="block">resume.pdf.slim#L1#L8</a></p><p>github-yoink takes this a step further- when Middleman compiles the page, the page is Get'ted, parsed and then syntax highlighted. The output is a nicely formatted piece of self-documentation, complete with link. </p><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim">resume.pdf.slim</a></h6><pre class="codehilite plaintext">- kit = PDFKit.new(partial("assets/markdown/resume"),
-  :margin_top =&gt; 10,
-  :margin_bottom =&gt; 10,
-  :margin_left =&gt; 10,
-  :margin_right =&gt; 10,
-  :disable_smart_shrinking =&gt; false,
-  :print_media_type =&gt; true,
-  :dpi =&gt; 96)
-
-
-- kit.stylesheets &lt;&lt; 'source/assets/css/normalize.css'
-= kit.to_pdf</pre></div><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim#L1">resume.pdf.slim#L1</a></h6><pre class="codehilite plaintext">- kit = PDFKit.new(partial("assets/markdown/resume"),</pre></div><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim#L1#L8">resume.pdf.slim#L1#L8</a></h6><pre class="codehilite plaintext">- kit = PDFKit.new(partial("assets/markdown/resume"),
-  :margin_top =&gt; 10,
-  :margin_bottom =&gt; 10,
-  :margin_left =&gt; 10,
-  :margin_right =&gt; 10,
-  :disable_smart_shrinking =&gt; false,
-  :print_media_type =&gt; true,
-  :dpi =&gt; 96)</pre></div><p>That's sort of meta but *we need to go deeper.* Let's use this technique on itself.</p><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/partials/gh_yoink.html.slim">gh_yoink.html.slim</a></h6><pre class="codehilite plaintext">ruby:
-  matches = link.scan(/#L(\d+){0,2}/).flatten
-
-
-  doc = Nokogiri::HTML(
-    open(
-      link.gsub(/#L(\d+){0,2}/, '')
-    )
-  )
-
-
-  if matches.length == 0
-    output = doc.css(".highlight td.blob-line-code").map(&amp;:content).join("\n")
-  elsif matches.length == 1
-    output = doc.css(".highlight td.blob-line-code#LC#{matches[0]}").map(&amp;:content).join("\n")
-  elsif matches.length == 2
-    output = (matches[0]..matches[1]).map{ |m|
-      doc.css(".highlight td.blob-line-code#LC#{m.to_i}").map(&amp;:content)
-    }.join("\n")
-  end
-
-
-  @display_name = link.split('/').last
-  @render_as = link.split('.').last
+    <p>I made a neat thing today which I call 'github-yoink' and which generates a block of code from a url to gihub. </p><p>Because my app is so tightly wed to github, I often want to link to my own source code. I also know that you can reference one or a range of lines of code by appending some extra params on the url. You can link to an entire document <a href="full_doc">resume.pdf.slim</a>,  a line in a document <a href="one_line">resume.pdf.slim#L1</a>, or a block of code. <a href="block">resume.pdf.slim#L1#L8</a></p><p>github-yoink takes this a step further- when Middleman compiles the page, the page is Get'ted, parsed and then syntax highlighted. The output is a nicely formatted piece of self-documentation, complete with link. </p><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim">resume.pdf.slim</a></h6><pre class="codehilite plaintext"></pre></div><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim#L1">resume.pdf.slim#L1</a></h6><pre class="codehilite plaintext"></pre></div><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim#L1#L8">resume.pdf.slim#L1#L8</a></h6><pre class="codehilite plaintext">
 
 
 
 
-.titled-code-block  
-  h6
-    a href=link = @display_name
-  - code(@render_as) do
-    = output</pre></div><p>How cool is that? Notice how this isn't a helper method, it's a partial!  You call it like this (in slim)...</p><pre class="codehilite ruby"><span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="s1">'partials/gh_yoink'</span><span class="p">,</span> <span class="ss">locals: </span><span class="p">{</span><span class="ss">link: </span><span class="s1">'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim'</span><span class="p">})</span></pre><p>I've said it before and I'll say it again: Helper methods are for suckers. Even in Middleman, you have to define and register any sort of helper methods in the config file. What a hassle! Meanwhile, partials make great method substitutes.</p>
+
+
+</pre></div><p>That's sort of meta but *we need to go deeper.* Let's use this technique on itself.</p><div class="titled-code-block"><h6><a href="https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/partials/gh_yoink.html.slim">gh_yoink.html.slim</a></h6><pre class="codehilite plaintext"></pre></div><p>How cool is that? Notice how this isn't a helper method, it's a partial!  You call it like this (in slim)...</p><pre class="codehilite ruby"><span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="s1">'partials/gh_yoink'</span><span class="p">,</span> <span class="ss">locals: </span><span class="p">{</span><span class="ss">link: </span><span class="s1">'https://github.com/adamwong246/adamwong246.github.io/blob/middleman/source/about_me/resumes/resume.pdf.slim'</span><span class="p">})</span></pre><p>I've said it before and I'll say it again: Helper methods are for suckers. Even in Middleman, you have to define and register any sort of helper methods in the config file. What a hassle! Meanwhile, partials make great method substitutes.</p>
 
     
   </article>

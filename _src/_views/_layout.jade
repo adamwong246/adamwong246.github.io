@@ -1,0 +1,10 @@
+doctype html
+html(lang="en")
+  body
+    h1 Exact Change Only
+    h2 the blog of Adam Wong
+    h3 blogs
+    ul
+      each blog in blogs
+        li= blog.route_to
+    div!= body

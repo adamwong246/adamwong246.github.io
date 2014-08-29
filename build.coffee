@@ -27,27 +27,24 @@ writeFileWithIndifferentWrite = (dest, content) ->
 # execute model tree
 
 buildContent = (path_to_data_file) ->
-  js_hash = glob.sync(path_to_data_file).map((e) ->
+  deepMerge path.relative(".", path_to_data_file).split("/").reduceRight(((p, c) ->
+    b = undefined
+    b = {}
+    b[c] = p
+    b
+  ), require(path_to_data_file)), glob.sync(path_to_data_file.split("/").slice(0, -1).concat("**/*.md").join("/")).map((e) ->
     path.relative(".", e).split("/").reduceRight ((p, c) ->
+      b = undefined
       b = {}
       b[c] = p
       b
-    ), deepMerge(require(path_to_data_file), {foo: 'bar'})
-  ).reduce((p,c,i,a) ->
-    deepMerge(p,c)
+    ), merge(frontMatter.loadFront(e),
+      path: e
+    )
+  ).reduce((p, c, i, a) ->
+    deepMerge p, c
   )
 
-  fmh_hash = glob.sync(path_to_data_file.split('/').slice(0,-1).concat("**/*.md").join('/')).map((e) ->
-    path.relative(".", e).split("/").reduceRight ((p, c) ->
-      b = {}
-      b[c] = p
-      b
-    ), merge(frontMatter.loadFront(e), path: e)
-  ).reduce((p,c,i,a) ->
-    deepMerge(p,c)
-  )
-
-  deepMerge(js_hash,fmh_hash)
 
 content = buildContent("./_src/_blog/_.js")
 console.log('##############################')

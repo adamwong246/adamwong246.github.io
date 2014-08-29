@@ -22,10 +22,6 @@ writeFileWithIndifferentWrite = (dest, content) ->
 
   return
 
-myMerge = () ->
-  console.log(arguments)
-  merge(arguments)
-
 # Build content tree from yaml files
 # add js object literals
 # execute model tree
@@ -54,9 +50,7 @@ js_array = glob.sync("./_src/_blog/_.js").map((e) ->
   ), require('./_src/_blog/_.js')
 )
 
-js_and_fmh_array = fmh_array.concat(js_array)
-
-merged = js_and_fmh_array.reduce((p,c,i,a) ->
+merged = (fmh_array.concat(js_array)).reduce((p,c,i,a) ->
   deepMerge(p,c)
 )
 eyes.inspect(merged)

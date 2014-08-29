@@ -3,11 +3,13 @@ dir = require("node-dir")
 path = require("path")
 frontMatter = require("yaml-front-matter")
 markdown = require("markdown").markdown
-merge = require("deepmerge")
+merge = require('merge')
+deepMerge = require('deepmerge')
 beautify_html = require("js-beautify").html
 mkdirp = require("mkdirp")
 glob = require("glob")
 util = require("util")
+eyes = require('eyes')
 
 # Write a file, making dirs as needed.
 writeFileWithIndifferentWrite = (dest, content) ->
@@ -20,12 +22,15 @@ writeFileWithIndifferentWrite = (dest, content) ->
 
   return
 
+myMerge = () ->
+  console.log(arguments)
+  merge(arguments)
 
 # Build content tree from yaml files
 # add js object literals
 # execute model tree
 
-content_tree = merge.apply({}, glob.sync("./_src/_blog/**/*.md").map((e) ->
+fmh_array = glob.sync("./_src/_blog/**/*.md").map((e) ->
   path
   .relative("./_src/", e)
   .split("/")
@@ -36,8 +41,22 @@ content_tree = merge.apply({}, glob.sync("./_src/_blog/**/*.md").map((e) ->
   ), merge(frontMatter.loadFront(e),
     path: e
   )
-))
+)
 
-console.log JSON.stringify(content_tree)
-console.log content_tree._blog["0"]["index.md"].title
+js_array = glob.sync("./_src/_blog/_.js").map((e) ->
+  path
+  .relative("./_src/", e)
+  .split("/")
+  .reduceRight ((p, c) ->
+    b = {}
+    b[c] = p
+    b
+  ), require('./_src/_blog/_.js')
+)
 
+js_and_fmh_array = fmh_array.concat(js_array)
+
+merged = js_and_fmh_array.reduce((p,c,i,a) ->
+  deepMerge(p,c)
+)
+eyes.inspect(merged)

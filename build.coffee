@@ -26,31 +26,31 @@ writeFileWithIndifferentWrite = (dest, content) ->
 # add js object literals
 # execute model tree
 
-fmh_array = glob.sync("./_src/_blog/**/*.md").map((e) ->
-  path
-  .relative("./_src/", e)
-  .split("/")
-  .reduceRight ((p, c) ->
-    b = {}
-    b[c] = p
-    b
-  ), merge(frontMatter.loadFront(e),
-    path: e
+buildContent = (path_to_data_file) ->
+  js_array = glob.sync(path_to_data_file).map((e) ->
+    path.relative("./_src/", e).split("/").reduceRight ((p, c) ->
+      b = {}
+      b[c] = p
+      b
+    ), deepMerge(require(path_to_data_file), {foo: 'bar'})
   )
-)
+  
+  eyes.inspect(js_array)
 
-js_array = glob.sync("./_src/_blog/_.js").map((e) ->
-  path
-  .relative("./_src/", e)
-  .split("/")
-  .reduceRight ((p, c) ->
-    b = {}
-    b[c] = p
-    b
-  ), require('./_src/_blog/_.js')
-)
+  fmh_array = glob.sync(path_to_data_file.split('/').slice(0,-1).concat("**/*.md").join('/')).map((e) ->
+    path.relative("./_src/", e).split("/").reduceRight ((p, c) ->
+      b = {}
+      b[c] = p
+      b
+    ), merge(frontMatter.loadFront(e), path: e)
+  )
 
-merged = (fmh_array.concat(js_array)).reduce((p,c,i,a) ->
-  deepMerge(p,c)
-)
-eyes.inspect(merged)
+  eyes.inspect(fmh_array)
+
+  (js_array.concat(fmh_array)).reduce((p,c,i,a) ->
+    deepMerge(p,c)
+  )
+
+content = buildContent("./_src/_blog/_.js")
+console.log('##############################')
+eyes.inspect(content)

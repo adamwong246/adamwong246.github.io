@@ -7,6 +7,8 @@ var path          = require('path');
 
 module.exports = {
 
+  filer: "**/*.md",
+
   route_to: function(o) {
 
     if (typeof o.title != "undefined"){

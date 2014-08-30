@@ -7,9 +7,7 @@ var path          = require('path');
 
 module.exports = {
 
-  blogs: function(){
-    return glob.sync("./_src/_blog/**/*.md");
-  },
+  blogs: "**/*.md",
 
   route_to: function(o) {
 

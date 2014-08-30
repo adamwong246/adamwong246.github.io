@@ -7,8 +7,6 @@ var path          = require('path');
 
 module.exports = {
 
-  blogs: "**/*.md",
-
   route_to: function(o) {
 
     if (typeof o.title != "undefined"){

@@ -1,11 +1,12 @@
 var assert = require("assert");
 var should = require('should');
-
+var fs = require('fs');
 var eyes = require('eyes');
 
 var wongoloid = require("../lib/wongoloid.js");
 
 var universe;
+var underscore;
 
 describe('Wongoloid', function(){
   describe('#crunch(:underscore_file)', function(){
@@ -22,10 +23,6 @@ describe('Wongoloid', function(){
 
       it("has 2nd key: 'blog'", function(){
         universe.src.should.have.property('blog');
-      });
-
-      it("has 3rd key: '.js'", function(){
-        universe.src.blog.should.have.property('.js');
       });
 
     });
@@ -49,7 +46,27 @@ describe('Wongoloid', function(){
       it('appends the yaml frontmatter', function(){
         (typeof universe.src.blog.files[0]).should.equal('object');
       });
+
+      it('appends path to the yaml frontmatter', function(){
+        universe.src.blog.files[0].path.should.equal("./_src/_blog/0/index.md");
+      });
     });
+  });
+
+  describe('#render(:underscore)', function(){
+    
+    before(function(){
+      underscore = wongoloid.crunch('../_src/_blog/_.js').src.blog;
+      eyes.inspect(underscore);
+
+      wongoloid.render(underscore);
+    });
+
+    it('creates files', function(){
+      fs.existsSync('blogs/first-posts.html').should.be.true;
+    });
+
+
 
   });
 });

@@ -4,29 +4,29 @@ var glob          = require("glob");
 var jade          = require('jade');
 var markdown      = require("markdown").markdown;
 var path          = require('path');
+var eyes          = require('eyes');
 
 module.exports = {
 
-  filer: "**/*.md",
+  inputs: "**/*.md",
 
-  route_to: function(o) {
+  pre_process: function(file){
+    frontMatter.loadFront(file);
+  },
 
-    if (typeof o.title != "undefined"){
-      return "./blog/" + o.title.replace(' ', '-')  + '.html';
+  outputs: function(file) {
+    if (typeof file.title != "undefined"){
+      return "./blog/" + file.title.replace(' ', '-')  + '.html';
     } else {
-      return "./blog/" + path.relative('./_src/_blog', o.path).replace('.md', '.html');
+      return "./blog/" + path.relative('./_src/_blog', file.path).replace('.md', '.html');
     }
     
   },
 
-  process_content:  function(o){
+  post_process: function(file){
     return beautify_html(
-      jade.compileFile('./_src/_views/_layout.jade')({'body': markdown.toHTML(
-        o['__content']
-      ),
-      'blogs': this.blogs()})
+      jade.compileFile('./_src/_views/_layout.jade')(file)
     );
-
   }
 
 };

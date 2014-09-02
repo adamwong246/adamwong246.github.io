@@ -1,6 +1,6 @@
 ---
 date: 2014-08-25
-title: log 2
+title: first-post
 tags: log
 ---
 

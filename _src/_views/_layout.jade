@@ -1,16 +1,20 @@
 doctype html
 html(lang="en")
   head
-    link(type='text/css', rel='stylesheet', href=assets.css)
-
   body
     h1 Exact Change Only
     h2 the blog of Adam Wong
-    h3 blogs
     ul
-      each blog in blogs
-        li= route_to(blog)
-    h2= title
-    div!= body
+      li
+        a(href=global.index.inputs[0].final_filename)
+          | index
+      li
+        a(href=global.about_me.inputs[0].final_filename)
+          | about me
 
-  script(type='text/css')
+      each val in global.blogs.inputs
+        li
+          a(href=val.final_filename)
+            = val.meta.title
+    div!= local.html
+

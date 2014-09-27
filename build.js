@@ -71,7 +71,8 @@ var crunch = function(chunks){
 //     files: "a file or glob pattern of files to read",
 //     input: function(opts){
 //       // return a hash which are appended to the objects 'self'
-//       // if you do not return a value for key 'url', a url will be provided for you
+//       // if you do not return a value for key 'url', the value will be provided for you
+//       // if you do not return a value for key 'html', the value will be provided for you
 //     },
 //     output:  function(universe){
 //        // create output hash describing how a file should be saved
@@ -89,8 +90,7 @@ var config = {
     },
 
     output: function(universe){
-      universe.self.html = jade.compileFile(universe.self.path)(universe);
-      return jade.compileFile('./_src/_views/_layout.jade')(universe);
+      return jade.compileFile(universe.self.path)(universe);
     }
   },
 
@@ -100,7 +100,7 @@ var config = {
     input: function(opts){
       var m = meta_marked(opts.file);
 
-      return {markdown: m, url: '/about_me.html', html: m.html};
+      return {markdown: m, url: '/about_me.html', content: m.html};
     },
 
     output: function(universe){
@@ -125,7 +125,7 @@ var config = {
         m.meta.title = filename;
       }
 
-      return {markdown: m, html: m.html, url: filename};
+      return {markdown: m, content: m.html, url: filename};
     },
 
     output: function(universe){

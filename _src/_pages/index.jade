@@ -1,5 +1,8 @@
-each blog in blogs()
-  li
-    a(href=blog.url)
-      = blog.markdown.meta.title
-    p!= blog.markdown.html
+extends ./../_views/_layout.jade
+
+block content
+  each blog in blogs()
+    li
+      a(href=blog.url)
+        = blog.markdown.meta.title
+      p!= blog.markdown.html

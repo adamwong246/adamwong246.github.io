@@ -24,14 +24,8 @@ var config = {
 
   index: {
     files: "./_src/_pages/index.jade",
-
-    input: function(opts){
-      return {url: '/index.html'};
-    },
-
-    output: function(universe){
-      return jade.compileFile(universe.self.path)(universe);
-    }
+    input: function(opts){ return {url: '/index.html'}; },
+    output: function(universe){ return jade.compileFile(universe.self.path)(universe); }
   },
 
   about_me: {
@@ -39,13 +33,10 @@ var config = {
 
     input: function(opts){
       var m = meta_marked(opts.file);
-
       return {markdown: m, url: '/about_me.html', content: m.html};
     },
 
-    output: function(universe){
-      return jade.compileFile('./_src/_views/_layout.jade')(universe);
-    }
+    output: function(universe){return jade.compileFile('./_src/_views/_layout.jade')(universe);}
   },
 
   blogs: {
@@ -53,24 +44,28 @@ var config = {
 
     input: function(opts){
       var m = meta_marked(opts.file);
-      var filename = '';
+      var url = '';
 
       if (typeof m.meta.title != "undefined"){
-        filename = "/blog/" + m.meta.title.replace(' ', '-')  + '.html';
+        url = "/blog/" + m.meta.title.replace(' ', '-')  + '.html';
       } else {
-        filename = "/blog/" + path.relative('./_src/_blog', opts.path).replace('.md', '.html');
+        url = "/blog/" + path.relative('./_src/_blog', opts.path).replace('.md', '.html');
       }
 
       if (typeof m.meta.title === "undefined"){
-        m.meta.title = filename;
+        m.meta.title = url;
       }
 
-      return {markdown: m, content : m.html, url: filename};
+      return {markdown: m, content : m.html, url: url};
     },
 
-    output: function(universe){
-      return jade.compileFile('./_src/_views/_layout.jade')(universe);
-    }
+    output: function(universe){ return jade.compileFile('./_src/_views/_layout.jade')(universe); }
+  },
+
+  css:{
+    files: ["./_src/_assets/bower_components/normalize.css/*.css", "./_src/_assets/_css/*.css"],
+    input_all: function(files){ return {url: '/main.css'}; },
+    output_all: function(universe){ return universe.self.inputs.map(function(input){ return input.file; }).join("\n");}
   }
 };
 

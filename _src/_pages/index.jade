@@ -1,2 +1,5 @@
-each val in global.blogs.inputs
-  p!= val.html
+each blog in blogs()
+  li
+    a(href=blog.url)
+      = blog.meta.title
+    p!= blog.html

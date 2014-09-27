@@ -2,19 +2,16 @@ doctype html
 html(lang="en")
   head
   body
-    h1 Exact Change Only
-    h2 the blog of Adam Wong
+    a(href='/')
+      h1 Exact Change Only
     ul
       li
-        a(href=global.index.inputs[0].final_filename)
-          | index
-      li
-        a(href=global.about_me.inputs[0].final_filename)
-          | about me
-
-      each val in global.blogs.inputs
+        a(href=about_me().url)
+          | about_me
+      each blog in blogs()
         li
-          a(href=val.final_filename)
-            = val.meta.title
-    div!= local.html
+          a(href=blog.url)
+            = blog.meta.title
+
+    div!= self.html
 

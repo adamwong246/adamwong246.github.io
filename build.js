@@ -24,10 +24,12 @@ var indifferentWriteFile = function(dest, content) {
 
 var crunch = function(chunks){
 
-  Object.keys(chunks).forEach(function(chunkKey){
-    chunks[chunkKey].inputs = glob.sync(chunks[chunkKey].files).map(
+  var universe = {config: chunks};
+
+  Object.keys(universe.config).forEach(function(chunkKey){
+    universe.config[chunkKey].inputs = glob.sync(universe.config[chunkKey].files).map(
       function(file){
-        return chunks[chunkKey].input(
+        return universe.config[chunkKey].input(
           deepMerge(
             {file: fs.readFileSync(file, 'utf8')},
             {path: file}
@@ -35,13 +37,22 @@ var crunch = function(chunks){
         );
       }
     );
+
+    universe[chunkKey] = function(){
+      if (universe.config[chunkKey].inputs.length > 1){
+        return universe.config[chunkKey].inputs;
+      } else {
+        return universe.config[chunkKey].inputs[0];
+      }
+    };
+
   });
 
-  eyes.inspect(chunks);
-
-  Object.keys(chunks).forEach(function(chunkKey){
-    chunks[chunkKey].inputs.forEach(function(input){
-      chunks[chunkKey].output(input, chunks);
+  Object.keys(universe.config).forEach(function(chunkKey){
+    universe.config[chunkKey].inputs.forEach(function(input){
+      universe.config[chunkKey].output(
+        deepMerge(universe, {self: input})
+      );
     });
   });
 
@@ -55,14 +66,14 @@ var config = {
     files: "./_src/_pages/index.jade",
 
     input: function(opts){
-      opts.final_filename = '/index.html';
+      opts.url = '/index.html';
       return opts;
     },
 
-    output: function(inputHash, universe){
-      inputHash.html = jade.compileFile(inputHash.path)({local: inputHash, global: universe});
-      indifferentWriteFile("./" + inputHash.final_filename, beautify_html(
-        jade.compileFile('./_src/_views/_layout.jade')({local: inputHash, global: universe})
+    output: function(universe){
+      universe.self.html = jade.compileFile(universe.self.path)(universe);
+      indifferentWriteFile("./" + universe.self.url, beautify_html(
+        jade.compileFile('./_src/_views/_layout.jade')(universe)
       ));
     }
   },
@@ -71,14 +82,12 @@ var config = {
     files: "./_src/_pages/about_me.md",
 
     input: function(opts){
-      // return meta_marked(opts.file);
-      var m = meta_marked(opts.file);
-      return deepMerge(m, {final_filename: '/about_me.html'});
+      return deepMerge(meta_marked(opts.file), {url: '/about_me.html'});
     },
 
-    output: function(inputHash, universe){
-      indifferentWriteFile("./" + inputHash.final_filename, beautify_html(
-        jade.compileFile('./_src/_views/_layout.jade')({local: inputHash, global: universe})
+    output: function(universe){
+      indifferentWriteFile("./" + universe.self.url, beautify_html(
+        jade.compileFile('./_src/_views/_layout.jade')(universe)
       ));
     }
   },
@@ -100,13 +109,13 @@ var config = {
         m.meta.title = filename;
       }
 
-      return deepMerge(m, {final_filename: filename});
+      return deepMerge(m, {url: filename});
     },
 
-    output: function(inputHash, universe){
+    output: function(universe){
 
-      indifferentWriteFile("./" + inputHash.final_filename, beautify_html(
-        jade.compileFile('./_src/_views/_layout.jade')({local: inputHash, global: universe})
+      indifferentWriteFile("./" + universe.self.url, beautify_html(
+        jade.compileFile('./_src/_views/_layout.jade')(universe)
       ));
     }
   }

@@ -6,26 +6,12 @@ var jade          = require('jade');
 
 var eyes = require('eyes');
 
-// config = {
-//   key: {
-//     files: "a file or glob pattern of files to read",
-//     input: function(opts){
-//       // return a hash which are appended to the objects 'self'
-//       // if you do not return a value for key 'url', the value will be provided for you
-//       // if you do not return a value for key 'html', the value will be provided for you
-//     },
-//     output:  function(universe){
-//        // create output hash describing how a file should be saved
-//     }
-//   }
-// };
-
 var config = {
 
   index: {
     files: "./_src/_pages/index.jade",
-    input: function(opts){ return {url: '/index.html'}; },
-    output: function(universe){ return jade.compileFile(universe.self.path)(universe); }
+    input_each: function(opts){ return {url: 'index.html'}; },
+    output_each: function(universe){ return jade.compileFile(universe.self.path)(universe); }
   },
 
   about_me: {

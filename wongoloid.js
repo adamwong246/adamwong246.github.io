@@ -6,7 +6,6 @@ var deepMerge = require('deepmerge');
 var extend    = require('extend');
 var mkdirp    = require("mkdirp");
 
-
 var eyes      = require('eyes');
 
 module.exports = {
@@ -21,7 +20,6 @@ module.exports = {
         }
       });
     };
-
 
     var universe = {config: chunks};
 
@@ -47,6 +45,7 @@ module.exports = {
           );
 
         if (typeof universe.config[chunkKey].input_each !== 'undefined' && universe.config[chunkKey].input_each ){
+          console.log("--- input_each: " + file);
           return deepMerge(universe.config[chunkKey].input_each(a), a);
         } else {
           return a;
@@ -66,11 +65,13 @@ module.exports = {
 
   });
 
+  //
   // console.log(JSON.stringify(universe.config.css.inputs, null, 2));
+  //
 
   Object.keys(universe.config).forEach(function(chunkKey){
     if (typeof universe.config[chunkKey].input_all !== 'undefined' && universe.config[chunkKey].input_all ){
-
+      console.log("--- input_all: " + chunkKey);
       extend(universe.config[chunkKey], universe.config[chunkKey].input_all(universe.config[chunkKey]));
     }
   });
@@ -78,24 +79,22 @@ module.exports = {
   Object.keys(universe.config).forEach(function(chunkKey){
     universe.config[chunkKey].inputs.forEach(function(input){
 
-      if (typeof universe.config[chunkKey].output !== 'undefined' && universe.config[chunkKey].output ){
-        indifferentWriteFile ("./" + input.url, universe.config[chunkKey].output(
+      if (typeof universe.config[chunkKey].output_each !== 'undefined' && universe.config[chunkKey].output_each ){
+        console.log("--- output_each: " + input.path);
+        indifferentWriteFile ("./" + input.url, universe.config[chunkKey].output_each(
           deepMerge(universe, {self: input})
         ));
       }
 
-
     });
 
     if (typeof universe.config[chunkKey].output_all !== 'undefined' && universe.config[chunkKey].output_all ){
-
+      console.log("--- output_all: " + chunkKey);
       indifferentWriteFile ("./" + universe.config[chunkKey].url, universe.config[chunkKey].output_all(
         deepMerge(universe, {self: universe.config[chunkKey]})
       ));
     }
 
   });
-
-
 
 }};

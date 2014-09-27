@@ -1,70 +1,10 @@
-var glob      = require("glob");
-var fs        = require('fs');
-var path      = require("path");
-var deepMerge = require('deepmerge');
-var mkdirp    = require("mkdirp");
+var wongoloid = require("./wongoloid.js");
 
+var path      = require("path");
 var meta_marked   = require('meta-marked');
 var jade          = require('jade');
-var beautify_html = require('js-beautify').html;
 
 var eyes = require('eyes');
-
-//////////
-
-var indifferentWriteFile = function(dest, content) {
-  mkdirp(dest.split("/").slice(0, -1).join("/"), function(err) {
-    if (err) {
-      console.error(err);
-    } else {
-      fs.writeFile(dest, content);
-    }
-  });
-};
-
-var crunch = function(chunks){
-
-  var universe = {config: chunks};
-
-  Object.keys(universe.config).forEach(function(chunkKey){
-    universe.config[chunkKey].inputs = glob.sync(universe.config[chunkKey].files).map(
-      function(file){
-
-        var a = deepMerge(
-            {file: fs.readFileSync(file, 'utf8')},
-            {path: file}
-          );
-
-        return deepMerge(universe.config[chunkKey].input(a), a);
-      }
-    );
-
-    universe[chunkKey] = function(){
-      if (universe.config[chunkKey].inputs.length > 1){
-        return universe.config[chunkKey].inputs;
-      } else {
-        return universe.config[chunkKey].inputs[0];
-      }
-    };
-
-  });
-
-  eyes.inspect(universe);
-
-  Object.keys(universe.config).forEach(function(chunkKey){
-    universe.config[chunkKey].inputs.forEach(function(input){
-
-      indifferentWriteFile ("./" + input.url, universe.config[chunkKey].output(
-        deepMerge(universe, {self: input})
-      ));
-
-
-    });
-  });
-
-};
-
-/////////////////
 
 // config = {
 //   key: {
@@ -125,7 +65,7 @@ var config = {
         m.meta.title = filename;
       }
 
-      return {markdown: m, content: m.html, url: filename};
+      return {markdown: m, content : m.html, url: filename};
     },
 
     output: function(universe){
@@ -134,4 +74,4 @@ var config = {
   }
 };
 
-crunch(config);
+wongoloid.crunch(config);

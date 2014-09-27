@@ -31,25 +31,25 @@ var config = {
   about_me: {
     files: "./_src/_pages/about_me.md",
 
-    input: function(opts){
-      var m = meta_marked(opts.file);
+    input_each: function(member){
+      var m = meta_marked(member.file);
       return {markdown: m, url: '/about_me.html', content: m.html};
     },
 
-    output: function(universe){return jade.compileFile('./_src/_views/_layout.jade')(universe);}
+    output_each: function(universe){return jade.compileFile('./_src/_views/_layout.jade')(universe);}
   },
 
   blogs: {
     files: "./_src/_blog/*/*.md",
 
-    input: function(opts){
-      var m = meta_marked(opts.file);
+    input_each: function(member){
+      var m = meta_marked(member.file);
       var url = '';
 
       if (typeof m.meta.title != "undefined"){
         url = "/blog/" + m.meta.title.replace(' ', '-')  + '.html';
       } else {
-        url = "/blog/" + path.relative('./_src/_blog', opts.path).replace('.md', '.html');
+        url = "/blog/" + path.relative('./_src/_blog', member.path).replace('.md', '.html');
       }
 
       if (typeof m.meta.title === "undefined"){
@@ -59,13 +59,15 @@ var config = {
       return {markdown: m, content : m.html, url: url};
     },
 
-    output: function(universe){ return jade.compileFile('./_src/_views/_layout.jade')(universe); }
+    output_each: function(universe){ return jade.compileFile('./_src/_views/_layout.jade')(universe); }
   },
 
   css:{
     files: ["./_src/_assets/bower_components/normalize.css/*.css", "./_src/_assets/_css/*.css"],
-    input_all: function(files){ return {url: '/main.css'}; },
-    output_all: function(universe){ return universe.self.inputs.map(function(input){ return input.file; }).join("\n");}
+    input_all: function(collection){ return {url: '/main.css'}; },
+    output_all: function(universe){
+      return universe.self.inputs.map(function(input){ return input.file; }).join("\n");
+    }
   }
 };
 

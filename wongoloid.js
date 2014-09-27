@@ -46,8 +46,8 @@ module.exports = {
             {path: file}
           );
 
-        if (typeof universe.config[chunkKey].input !== 'undefined' && universe.config[chunkKey].input ){
-          return deepMerge(universe.config[chunkKey].input(a), a);
+        if (typeof universe.config[chunkKey].input_each !== 'undefined' && universe.config[chunkKey].input_each ){
+          return deepMerge(universe.config[chunkKey].input_each(a), a);
         } else {
           return a;
         }

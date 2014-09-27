@@ -11,7 +11,6 @@ html(lang="en")
       each blog in blogs()
         li
           a(href=blog.url)
-            = blog.meta.title
-
+            = blog.markdown.meta.title
     div!= self.html
 

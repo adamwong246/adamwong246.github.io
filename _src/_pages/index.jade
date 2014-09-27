@@ -1,5 +1,5 @@
 each blog in blogs()
   li
     a(href=blog.url)
-      = blog.meta.title
-    p!= blog.html
+      = blog.markdown.meta.title
+    p!= blog.markdown.html

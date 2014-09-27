@@ -29,12 +29,13 @@ var crunch = function(chunks){
   Object.keys(universe.config).forEach(function(chunkKey){
     universe.config[chunkKey].inputs = glob.sync(universe.config[chunkKey].files).map(
       function(file){
-        return universe.config[chunkKey].input(
-          deepMerge(
+
+        var a = deepMerge(
             {file: fs.readFileSync(file, 'utf8')},
             {path: file}
-          )
-        );
+          );
+
+        return deepMerge(universe.config[chunkKey].input(a), a);
       }
     );
 
@@ -48,11 +49,16 @@ var crunch = function(chunks){
 
   });
 
+  eyes.inspect(universe);
+
   Object.keys(universe.config).forEach(function(chunkKey){
     universe.config[chunkKey].inputs.forEach(function(input){
-      universe.config[chunkKey].output(
+
+      indifferentWriteFile ("./" + input.url, universe.config[chunkKey].output(
         deepMerge(universe, {self: input})
-      );
+      ));
+
+
     });
   });
 
@@ -60,21 +66,31 @@ var crunch = function(chunks){
 
 /////////////////
 
+// config = {
+//   key: {
+//     files: "a file or glob pattern of files to read",
+//     input: function(opts){
+//       // return a hash which are appended to the objects 'self'
+//       // if you do not return a value for key 'url', a url will be provided for you
+//     },
+//     output:  function(universe){
+//        // create output hash describing how a file should be saved
+//     }
+//   }
+// };
+
 var config = {
 
   index: {
     files: "./_src/_pages/index.jade",
 
     input: function(opts){
-      opts.url = '/index.html';
-      return opts;
+      return {url: '/index.html'};
     },
 
     output: function(universe){
       universe.self.html = jade.compileFile(universe.self.path)(universe);
-      indifferentWriteFile("./" + universe.self.url, beautify_html(
-        jade.compileFile('./_src/_views/_layout.jade')(universe)
-      ));
+      return jade.compileFile('./_src/_views/_layout.jade')(universe);
     }
   },
 
@@ -82,13 +98,13 @@ var config = {
     files: "./_src/_pages/about_me.md",
 
     input: function(opts){
-      return deepMerge(meta_marked(opts.file), {url: '/about_me.html'});
+      var m = meta_marked(opts.file);
+
+      return {markdown: m, url: '/about_me.html', html: m.html};
     },
 
     output: function(universe){
-      indifferentWriteFile("./" + universe.self.url, beautify_html(
-        jade.compileFile('./_src/_views/_layout.jade')(universe)
-      ));
+      return jade.compileFile('./_src/_views/_layout.jade')(universe);
     }
   },
 
@@ -109,14 +125,11 @@ var config = {
         m.meta.title = filename;
       }
 
-      return deepMerge(m, {url: filename});
+      return {markdown: m, html: m.html, url: filename};
     },
 
     output: function(universe){
-
-      indifferentWriteFile("./" + universe.self.url, beautify_html(
-        jade.compileFile('./_src/_views/_layout.jade')(universe)
-      ));
+      return jade.compileFile('./_src/_views/_layout.jade')(universe);
     }
   }
 };

@@ -1,0 +1,60 @@
+[36m{
+    [1mconfig[22m: {
+        [1mindex[22m: {
+            [1mfiles[22m: [32m'./_src/_pages/index.jade'[36m,
+            [1minput[22m: Function,
+            [1moutput[22m: Function,
+            [1minputs[22m: [
+                {
+                    [1mfile[22m: [32m'each blog in blogs()\n  li\n    a(href=blog.url)\n      = blog.meta.title\n    p!= blog.html'[36m,
+                    [1mpath[22m: [32m'./_src/_pages/index.jade'[36m,
+                    [1murl[22m: [32m'/index.html'[36m
+                }
+            ]
+        },
+        [1mabout_me[22m: {
+            [1mfiles[22m: [32m'./_src/_pages/about_me.md'[36m,
+            [1minput[22m: Function,
+            [1moutput[22m: Function,
+            [1minputs[22m: [
+                {
+                    [1mmeta[22m: {
+                        [1mdate[22m: Mon, 25 Aug 2014 00:00:00 GMT,
+                        [1mtitle[22m: [32m'about me'[36m,
+                        [1mtags[22m: [32m'log'[36m
+                    },
+                    [1mhtml[22m: [32m'<h3 id="about-me">About me</h3>\n<h2 id="my-name-is-adam">My name is Adam</h2>\n'[36m,
+                    [1murl[22m: [32m'/about_me.html'[36m
+                }
+            ]
+        },
+        [1mblogs[22m: {
+            [1mfiles[22m: [32m'./_src/_blog/*/*.md'[36m,
+            [1minput[22m: Function,
+            [1moutput[22m: Function,
+            [1minputs[22m: [
+                {
+                    [1mmeta[22m: {
+                        [1mdate[22m: Mon, 25 Aug 2014 00:00:00 GMT,
+                        [1mtitle[22m: [32m'first-post'[36m,
+                        [1mtags[22m: [32m'log'[36m
+                    },
+                    [1mhtml[22m: [32m'<h3 id="foo">foo</h3>\n<h2 id="bar">Bar</h2>\n'[36m,
+                    [1murl[22m: [32m'/blog/first-post.html'[36m
+                },
+                {
+                    [1mmeta[22m: {
+                        [1mdate[22m: Mon, 25 Aug 2014 00:00:00 GMT,
+                        [1mtags[22m: [32m'log'[36m,
+                        [1mtitle[22m: [32m'/blog/1/index.html'[36m
+                    },
+                    [1mhtml[22m: [32m'<p>This is my first post</p>\n'[36m,
+                    [1murl[22m: [32m'/blog/1/index.html'[36m
+                }
+            ]
+        }
+    },
+    [1mindex[22m: Function,
+    [1mabout_me[22m: Function,
+    [1mblogs[22m: Function
+}[36m[0m

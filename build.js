@@ -51,43 +51,25 @@ var config = {
     glob_pattern: "_src/_pages/resume.md",
 
     input_each: function(member){
-      return {content : meta_marked(member.file).html, url: '/resumes/resume.html'};
+      return {content : meta_marked(member.file).html};
     },
 
     output_each: function(universe, output){
-      output(jade.compileFile('./_src/_views/_layout.jade')(universe));
+      output(jade.compileFile('./_src/_views/_layout.jade')(universe), '/resumes/resume.html');
     }
   },
 
-  resume_md: {
-    glob_pattern: "_src/_pages/resume.md",
+  resume_md: { "_src/_pages/resume.md":'./resumes/resume.md' },
 
-    input_each: function(member){
-      return {url: '/resumes/resume.md'};
-    },
-
-    output_each: function(universe, output){
-      output( universe.self.file );
-    }
-  },
-
-  resume_pdf: {
-    glob_pattern: "_src/_pages/resume.md",
-
-    input_each: function(member){
-     return {url: '/resumes/resume.pdf'};
-    },
-
-    output_each: function(universe, output){
-      markdownpdf().from(universe.self.path).to(universe.self.url);
-    }
+  resume_pdf: function(universe, output){
+    markdownpdf().from("./_src/_pages/resume.md").to('./resumes/resume.pdf');
   },
 
   css:{
     glob_pattern: ["./_src/_assets/bower_components/normalize.css/*.css", "./_src/_assets/_css/*.css"],
-    input_all: function(collection){ return {url: '/main.css'}; },
+
     output_all: function(universe, output){
-      output ( universe.self.inputs.map(function(input){ return input.file; }).join("\n") );
+      output ( universe.self.inputs.map(function(input){ return input.file; }).join("\n"), 'main.css' );
     }
   }
 };

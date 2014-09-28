@@ -10,13 +10,13 @@ html(lang="en")
         a(href=about_me().url)
           | about_me
       li
-        a(href=resume_html().url)
+        a(href='/resumes/resume.html')
           | resume.html
       li
-        a(href=resume_md().url)
+        a(href='/resumes/resume.md')
           | resume.md
       li
-        a(href=resume_pdf().url)
+        a(href='/resumes/resume.pdf')
           | resume.pdf
       each blog in blogs()
         li

@@ -11,6 +11,15 @@ var eyes      = require('eyes');
 module.exports = {
   crunch: function(chunks){
 
+    var reserved_keys = [
+      'glob_pattern',
+      'input_each',
+      'input_all',
+      'output_each',
+      'output_all',
+      'inputs'
+    ];
+
     var indifferentWriteFile = function(dest, content) {
       mkdirp(dest.split("/").slice(0, -1).join("/"), function(err) {
         if (err) {
@@ -21,13 +30,17 @@ module.exports = {
       });
     };
 
+    var isDefined = function(thing){
+      return (typeof thing !== 'undefined' && thing );
+    };
+
     var universe = {config: chunks};
 
     Object.keys(universe.config).forEach(function(chunkKey){
 
       console.log("- " + chunkKey);
 
-      if (typeof(universe.config[chunkKey]) !== 'function'){
+      if (typeof(universe.config[chunkKey]) !== 'function' && isDefined(universe.config[chunkKey].glob_pattern)){
 
         var globbing;
 
@@ -81,7 +94,7 @@ module.exports = {
     });
 
     Object.keys(universe.config).forEach(function(chunkKey){
-      if (typeof(universe.config[chunkKey]) !== 'function'){
+      if (typeof(universe.config[chunkKey]) !== 'function' && isDefined(universe.config[chunkKey].inputs) ){
         universe.config[chunkKey].inputs.forEach(function(input){
           if (typeof universe.config[chunkKey].output_each !== 'undefined' && universe.config[chunkKey].output_each ){
             console.log("--- output_each: " + input.path);
@@ -93,6 +106,11 @@ module.exports = {
       }
 
       if (typeof(universe.config[chunkKey]) !== 'function'){
+
+        var other_keys = Object.keys(universe.config[chunkKey]).filter(function(x) { return reserved_keys.indexOf(x) < 0; });
+
+        console.log(other_keys);
+
         if (typeof universe.config[chunkKey].output_all !== 'undefined' && universe.config[chunkKey].output_all ){
           console.log("--- output_all: " + chunkKey);
 
@@ -100,6 +118,14 @@ module.exports = {
               indifferentWriteFile ("./" + (url || universe.config[chunkKey].url), content);
           });
 
+        } else if (other_keys.length > 0){
+          var from = other_keys[0];
+          var to = universe.config[chunkKey][other_keys[0]];
+
+          console.log(from);
+          console.log(to);
+
+          fs.createReadStream(from).pipe(fs.createWriteStream(to));
         }
       } else {
         console.log("--- output: " + chunkKey);

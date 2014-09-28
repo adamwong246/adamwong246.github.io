@@ -15,6 +15,9 @@ html(lang="en")
       li
         a(href=resume_md().url)
           | resume.md
+      li
+        a(href=resume_pdf().url)
+          | resume.pdf
       each blog in blogs()
         li
           a(href=blog.url)

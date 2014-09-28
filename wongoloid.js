@@ -81,18 +81,22 @@ module.exports = {
 
       if (typeof universe.config[chunkKey].output_each !== 'undefined' && universe.config[chunkKey].output_each ){
         console.log("--- output_each: " + input.path);
-        indifferentWriteFile ("./" + input.url, universe.config[chunkKey].output_each(
-          deepMerge(universe, {self: input})
-        ));
+
+        universe.config[chunkKey].output_each(deepMerge(universe, {self: input}), function(content){
+          indifferentWriteFile ("./" + input.url, content);
+        });
+        
       }
 
     });
 
     if (typeof universe.config[chunkKey].output_all !== 'undefined' && universe.config[chunkKey].output_all ){
       console.log("--- output_all: " + chunkKey);
-      indifferentWriteFile ("./" + universe.config[chunkKey].url, universe.config[chunkKey].output_all(
-        deepMerge(universe, {self: universe.config[chunkKey]})
-      ));
+
+      universe.config[chunkKey].output_all(deepMerge(universe, {self: universe.config[chunkKey]}), function(content){
+          indifferentWriteFile ("./" + universe.config[chunkKey].url, content);
+      });
+
     }
 
   });

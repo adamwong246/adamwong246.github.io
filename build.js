@@ -48,6 +48,30 @@ var config = {
     output_each: function(universe){ return jade.compileFile('./_src/_views/_layout.jade')(universe); }
   },
 
+  resume_html: {
+    files: "_src/_pages/resume.md",
+
+    input_each: function(member){
+      return {content : meta_marked(member.file).html, url: 'resumes/resume.html'};
+    },
+
+    output_each: function(universe){
+      return jade.compileFile('./_src/_views/_layout.jade')(universe);
+    }
+  },
+
+  resume_md: {
+    files: "_src/_pages/resume.md",
+
+    input_each: function(member){
+      return {url: 'resumes/resume.md'};
+    },
+
+    output_each: function(universe){
+      return universe.self.file;
+    }
+  },
+
   css:{
     files: ["./_src/_assets/bower_components/normalize.css/*.css", "./_src/_assets/_css/*.css"],
     input_all: function(collection){ return {url: '/main.css'}; },

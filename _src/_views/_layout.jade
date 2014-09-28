@@ -9,6 +9,12 @@ html(lang="en")
       li
         a(href=about_me().url)
           | about_me
+      li
+        a(href=resume_html().url)
+          | resume.html
+      li
+        a(href=resume_md().url)
+          | resume.md
       each blog in blogs()
         li
           a(href=blog.url)

@@ -9,10 +9,8 @@ var eyes = require('eyes');
 
 var config = {
 
-  index: {
-    glob_pattern: "./_src/_pages/index.jade",
-    input_each: function(opts){ return {url: 'index.html'}; },
-    output_each: function(universe, output){ output( jade.compileFile(universe.self.path)(universe)); }
+  index: function(universe, output){
+    output( jade.compileFile("./_src/_pages/index.jade")(universe), 'index.html');
   },
 
   about_me: {
@@ -77,7 +75,7 @@ var config = {
     glob_pattern: "_src/_pages/resume.md",
 
     input_each: function(member){
-     return {url: 'resumes/resume.pdf'};
+     return {url: '/resumes/resume.pdf'};
     },
 
     output_each: function(universe, output){

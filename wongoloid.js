@@ -24,81 +24,91 @@ module.exports = {
     var universe = {config: chunks};
 
     Object.keys(universe.config).forEach(function(chunkKey){
+
       console.log("- " + chunkKey);
 
-      var globbing;
+      if (typeof(universe.config[chunkKey]) !== 'function'){
 
-      if (util.isArray(universe.config[chunkKey].glob_pattern)){
-        globbing = globArray.sync(universe.config[chunkKey].glob_pattern);
-      } else {
-        globbing = glob.sync(universe.config[chunkKey].glob_pattern);
-      }
+        var globbing;
 
-      console.log("-- globbed files: " + globbing);
-
-    universe.config[chunkKey].inputs = globbing.map(
-      function(file){
-
-        var a = deepMerge(
-            {file: fs.readFileSync(file, 'utf8')},
-            {path: file}
-          );
-
-        if (typeof universe.config[chunkKey].input_each !== 'undefined' && universe.config[chunkKey].input_each ){
-          console.log("--- input_each: " + file);
-          return deepMerge(universe.config[chunkKey].input_each(a), a);
+        if (util.isArray(universe.config[chunkKey].glob_pattern)){
+          globbing = globArray.sync(universe.config[chunkKey].glob_pattern);
         } else {
-          return a;
+          globbing = glob.sync(universe.config[chunkKey].glob_pattern);
         }
 
-      }
-    );
+        console.log("-- globbed files: " + globbing);
 
-    // helper functions
-    universe[chunkKey] = function(){
-      if (universe.config[chunkKey].inputs.length > 1){
-        return universe.config[chunkKey].inputs;
-      } else {
-        return universe.config[chunkKey].inputs[0];
-      }
-    };
+        universe.config[chunkKey].inputs = globbing.map(
+          function(file){
 
-  });
+            var a = deepMerge(
+                {file: fs.readFileSync(file, 'utf8')},
+                {path: file}
+              );
 
-  //
-  // console.log(JSON.stringify(universe.config.css.inputs, null, 2));
-  //
+            if (typeof universe.config[chunkKey].input_each !== 'undefined' && universe.config[chunkKey].input_each ){
+              console.log("--- input_each: " + file);
+              return deepMerge(universe.config[chunkKey].input_each(a), a);
+            } else {
+              return a;
+            }
 
-  Object.keys(universe.config).forEach(function(chunkKey){
-    if (typeof universe.config[chunkKey].input_all !== 'undefined' && universe.config[chunkKey].input_all ){
-      console.log("--- input_all: " + chunkKey);
-      extend(universe.config[chunkKey], universe.config[chunkKey].input_all(universe.config[chunkKey]));
-    }
-  });
+          }
+        );
 
-  Object.keys(universe.config).forEach(function(chunkKey){
-    universe.config[chunkKey].inputs.forEach(function(input){
-
-      if (typeof universe.config[chunkKey].output_each !== 'undefined' && universe.config[chunkKey].output_each ){
-        console.log("--- output_each: " + input.path);
-
-        universe.config[chunkKey].output_each(deepMerge(universe, {self: input}), function(content){
-          indifferentWriteFile ("./" + input.url, content);
-        });
-        
+        // helper functions
+        universe[chunkKey] = function(){
+          if (universe.config[chunkKey].inputs.length > 1){
+            return universe.config[chunkKey].inputs;
+          } else {
+            return universe.config[chunkKey].inputs[0];
+          }
+        };
       }
 
     });
 
-    if (typeof universe.config[chunkKey].output_all !== 'undefined' && universe.config[chunkKey].output_all ){
-      console.log("--- output_all: " + chunkKey);
+    //
+    // console.log(JSON.stringify(universe.config.css.inputs, null, 2));
+    //
 
-      universe.config[chunkKey].output_all(deepMerge(universe, {self: universe.config[chunkKey]}), function(content){
-          indifferentWriteFile ("./" + universe.config[chunkKey].url, content);
-      });
+    Object.keys(universe.config).forEach(function(chunkKey){
+      if (typeof universe.config[chunkKey].input_all !== 'undefined' && universe.config[chunkKey].input_all ){
+        console.log("--- input_all: " + chunkKey);
+        extend(universe.config[chunkKey], universe.config[chunkKey].input_all(universe.config[chunkKey]));
+      }
+    });
 
-    }
+    Object.keys(universe.config).forEach(function(chunkKey){
+      if (typeof(universe.config[chunkKey]) !== 'function'){
+        universe.config[chunkKey].inputs.forEach(function(input){
+          if (typeof universe.config[chunkKey].output_each !== 'undefined' && universe.config[chunkKey].output_each ){
+            console.log("--- output_each: " + input.path);
+            universe.config[chunkKey].output_each(deepMerge(universe, {self: input}), function(content, url){
+              indifferentWriteFile ("./" + (url || input.url), content);
+            });
+          }
+        });
+      }
 
-  });
+      if (typeof(universe.config[chunkKey]) !== 'function'){
+        if (typeof universe.config[chunkKey].output_all !== 'undefined' && universe.config[chunkKey].output_all ){
+          console.log("--- output_all: " + chunkKey);
 
-}};
+          universe.config[chunkKey].output_all(deepMerge(universe, {self: universe.config[chunkKey]}), function(content, url){
+              indifferentWriteFile ("./" + (url || universe.config[chunkKey].url), content);
+          });
+
+        }
+      } else {
+        console.log("--- output: " + chunkKey);
+        universe.config[chunkKey](deepMerge(universe, {self: universe.config[chunkKey]}), function(content, url){
+              indifferentWriteFile ("./" + (url || universe.config[chunkKey].url), content);
+          });
+      }
+
+    });
+
+  }
+};

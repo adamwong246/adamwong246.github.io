@@ -81,8 +81,6 @@ var config = {
     },
 
     output_each: function(universe, output){
-      console.log(universe.self.path);
-      console.log(JSON.stringify(markdownpdf().from(universe.self.path)));
       markdownpdf().from(universe.self.path).to(universe.self.url);
     }
   },

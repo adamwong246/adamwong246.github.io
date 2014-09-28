@@ -109,8 +109,6 @@ module.exports = {
 
         var other_keys = Object.keys(universe.config[chunkKey]).filter(function(x) { return reserved_keys.indexOf(x) < 0; });
 
-        console.log(other_keys);
-
         if (typeof universe.config[chunkKey].output_all !== 'undefined' && universe.config[chunkKey].output_all ){
           console.log("--- output_all: " + chunkKey);
 
@@ -122,8 +120,8 @@ module.exports = {
           var from = other_keys[0];
           var to = universe.config[chunkKey][other_keys[0]];
 
-          console.log(from);
-          console.log(to);
+
+          console.log("--- copying " + from + " to " + to);
 
           fs.createReadStream(from).pipe(fs.createWriteStream(to));
         }

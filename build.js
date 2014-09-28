@@ -7,11 +7,12 @@ var markdownpdf   = require("markdown-pdf");
 
 var eyes = require('eyes');
 
-var config = {
+wongoloid.crunch({
 
   index: function(universe, output){
     output( jade.compileFile("./_src/_pages/index.jade")(universe), 'index.html');
   },
+
 
   about_me: {
     glob_pattern: "./_src/_pages/about_me.md",
@@ -23,6 +24,7 @@ var config = {
 
     output_each: function(universe, output){output( jade.compileFile('./_src/_views/_layout.jade')(universe));}
   },
+
 
   blogs: {
     glob_pattern: "./_src/_blog/*/*.md",
@@ -47,6 +49,7 @@ var config = {
     output_each: function(universe, output){ output(jade.compileFile('./_src/_views/_layout.jade')(universe)); }
   },
 
+
   resume_html: {
     glob_pattern: "_src/_pages/resume.md",
 
@@ -59,11 +62,14 @@ var config = {
     }
   },
 
+
   resume_md: { "_src/_pages/resume.md":'./resumes/resume.md' },
+
 
   resume_pdf: function(universe, output){
     markdownpdf().from("./_src/_pages/resume.md").to('./resumes/resume.pdf');
   },
+
 
   css:{
     glob_pattern: ["./_src/_assets/bower_components/normalize.css/*.css", "./_src/_assets/_css/*.css"],
@@ -72,6 +78,4 @@ var config = {
       output ( universe.self.inputs.map(function(input){ return input.file; }).join("\n"), 'main.css' );
     }
   }
-};
-
-wongoloid.crunch(config);
+});

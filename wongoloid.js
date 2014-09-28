@@ -28,10 +28,10 @@ module.exports = {
 
       var globbing;
 
-      if (util.isArray(universe.config[chunkKey].files)){
-        globbing = globArray.sync(universe.config[chunkKey].files);
+      if (util.isArray(universe.config[chunkKey].glob_pattern)){
+        globbing = globArray.sync(universe.config[chunkKey].glob_pattern);
       } else {
-        globbing = glob.sync(universe.config[chunkKey].files);
+        globbing = glob.sync(universe.config[chunkKey].glob_pattern);
       }
 
       console.log("-- globbed files: " + globbing);

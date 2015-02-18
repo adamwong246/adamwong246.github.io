@@ -120,6 +120,16 @@ task 'build.assets.style', (options) ->
     console.log('style.css')
     return
 
+task 'build.assets.script', (options) ->
+  file_concat [
+    './node_modules/jquery/dist/jquery.js'
+    './node_modules/waypoints/lib/jquery.waypoints.js'
+    './node_modules/waypoints/lib/shortcuts/sticky.js'
+    './_src/script.js'
+  ], 'script.js', (error) ->
+    console.log('script.js')
+    return
+
 task 'build.assets.image', (options) ->
   _.forEach memo_universe().blog_entries, (blog_entry) ->
     _.each blog_entry.assets.jpgs, (jpg) ->
@@ -135,6 +145,7 @@ task 'build', (options) ->
   invoke('build.readme')
   invoke('build.resume.html')
   invoke('build.assets.style')
+  invoke('build.assets.script')
   invoke('build.assets.image')
   invoke('build.resume.pdf')
 

@@ -705,3 +705,8 @@ nav ul {
 nav .site_title{
   text-align: center;
 }
+
+.stuck {
+  position:fixed;
+  top:0;
+}

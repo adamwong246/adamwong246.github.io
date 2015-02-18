@@ -9,6 +9,8 @@ html(lang="en")
 
     link(href='/style.css', rel='stylesheet', type="text/css")
 
+    script(src="/script.js")
+
     block page_title
       title exact change only
 
@@ -26,36 +28,37 @@ html(lang="en")
       main.HolyGrail-content.Site-content
         block content
           != self.content
-      nav.HolyGrail-nav
-        a(href="/")
-          h1.site_title
-            | exact
-            <br/>
-            | change
-            <br/>
-            | only
-        ul.contacts
-          li
-            a(href="mailto:" + package.author.email)= package.author.email
-          li
-            a(href="https://twitter.com/adamwong246") twitter
-          li
-            a(href="github.com/adamwong246") github
-          li
-            a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange
-        ul.pages
-          li
-            a(href="/README.html") README.html
-          li
-            a(href="/resume.html") resume.html
-          li
-            a(href="/resume.pdf") resume.pdf
-          li
-            a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") resume.md
-        ul.blog_entries
-          - for entry in blog_entries
+      nav.HolyGrail-nav.basic-sticky-example
+        div
+          a(href="/")
+            h1.site_title
+              | exact
+              <br/>
+              | change
+              <br/>
+              | only
+          ul.contacts
             li
-              a(href=entry.url)= entry.meta.title
+              a(href="mailto:" + package.author.email)= package.author.email
+            li
+              a(href="https://twitter.com/adamwong246") twitter
+            li
+              a(href="github.com/adamwong246") github
+            li
+              a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange
+          ul.pages
+            li
+              a(href="/README.html") README.html
+            li
+              a(href="/resume.html") resume.html
+            li
+              a(href="/resume.pdf") resume.pdf
+            li
+              a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") resume.md
+          ul.blog_entries
+            - for entry in blog_entries
+              li
+                a(href=entry.url)= entry.meta.title
       //aside.HolyGrail-ads
 
     footer

@@ -7,7 +7,7 @@ Adam Wong
 Technical Skills
 ----------------
 
-- Node, Meteor
+-	Node, Meteor
 -	Ruby on Rails
 -	Rspec and Cucumber
 -	Git and SQL

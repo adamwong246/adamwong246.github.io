@@ -1,0 +1,7 @@
+{>"layout"/}
+
+{<content}
+  {#blog_entries}
+    {> blogPartial /}
+  {/blog_entries}
+{/content}

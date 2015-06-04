@@ -1,0 +1,7 @@
+<article>
+ <header>
+  <h2> {.meta.title} </h2>
+  <hr>
+  {.content|s}
+ </header>
+</article>

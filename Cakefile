@@ -1,171 +1,66 @@
-_ = require("lodash")
-file_concat = require('concat')
-filendir = require('filendir')
-fs = require("fs")
-fs_extra = require('fs-extra')
-glob = require("glob")
-http = require('http')
-jade = require("jade")
-markdownpdf = require("markdown-pdf")
-memoize = require('memoizee')
-mm = require("marky-mark")
-path = require('path')
-slug = require("slug")
+builder = require('./builder.coffee')
+
 sstatic = require('node-static')
-watch = require('watch')
 
-jade_opts =
-  pretty: true
+setOutputDirByOption = (opt) ->
+ if opt
+  builder.outputDir = opt
+  console.log "builder.outputDir is: #{builder.outputDir}"
 
-universe = ->
-  console.log("building the universe...")
+option '-o', '--output [DIR]', 'directory for compiled code'
 
-  return {"blog_entries":_.sortBy(_.map(glob.sync("_src/blog_entries/*"), (page) ->
-    m = mm.parseFileSync(page + "/index.md")
-
-    m.url = "/blog/#{path.basename(page)}-#{slug(m.meta.title)}"
-    m.dest = m.url + "/index.html"
-    m.src = page
-
-    m.assets = {"jpgs": glob.sync("#{m.src }/*.jpg")}
-
-    # filters and replaces instances of local assets with absolute paths
-    _.each m.assets.jpgs, (jpg) ->
-      m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
-    return m
-  ), (n) ->
-    return n.meta.publishedAt
-  ), "package": require("./package.json"),
-  "moment": moment = require("moment") }
-
-memo_universe = memoize(universe);
-
-task 'new.blog_entry', (options) ->
-  maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blog_entries/*'), (page) ->
-    parseInt(path.basename(page, '.md'))
-  )) + 1
-
-  newFile = "./_src/blog_entries/#{maxPlusOne}/index.md"
-  fs_extra.outputFile newFile, """
-  ---
-  title: CHANGE ME
-  publishedAt: #{new Date().toString()}
-  ---
-  """, (err) ->
-    if err
-      console.log err
-    else
-      console.log(newFile)
-    return
-
+task 'new.blog', (options) ->
+  console.log 'new.blog'
+  builder.new.blog()
 
 task 'build.index', (options) ->
-  fs.writeFile "./index.html", jade.renderFile("./_src/index.jade", _.merge(jade_opts, memo_universe() )), (err) ->
-    if err
-      console.log err
-    else
-      console.log "index.html"
-    return
-
-task 'build.blogs', (options) ->
-  _.forEach memo_universe().blog_entries, (blog_entry) ->
-    console.log(blog_entry.dest)
-    fs.writeFile('.' + blog_entry.dest, jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})))
-    (err) ->
-      if err
-        console.log err
-      else
-        console.log 'The file was saved!'
-      return
-    return
-
-task 'build.resume.html', (options) ->
-  fs.writeFile "./resume.html", jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./_src/resume.md")} )), (err) ->
-    if err
-      console.log err
-    else
-      console.log "resume.html"
-    return
-
-task 'build.resume.pdf', (options) ->
-  markdownpdf().from('_src/resume.md').to './resume.pdf', ->
-    console.log 'resume.pdf'
-    return
-
-task 'build.blogs', (options) ->
-  _.forEach memo_universe().blog_entries, (blog_entry) ->
-    console.log(blog_entry.dest)
-    filendir.wa('.' + blog_entry.dest, jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})))
-    (err) ->
-      if err
-        console.log err
-      else
-        console.log 'The file was saved!'
-      return
-    return
+  console.log 'build.index'
+  setOutputDirByOption options.output
+  builder.build.index()
 
 task 'build.readme', (options) ->
-  fs.writeFile "./README.html", jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./README.md")} )), (err) ->
-    if err
-      console.log err
-    else
-      console.log "README.html"
-    return
+   console.log 'build.readme'
+   setOutputDirByOption options.output
+   builder.build.readme()
+
+task 'build.resume.html', (options) ->
+   console.log 'build.resume.html'
+   setOutputDirByOption options.output
+   builder.build.resume.html()
+
+task 'build.blogs', (options) ->
+  console.log 'build.blogs'
+  setOutputDirByOption options.output
+  builder.build.blogs()
+
+task 'build.resume.pdf', (options) ->
+  console.log 'build.resume.pdf'
+  setOutputDirByOption options.output
+  builder.build.resume.pdf()
 
 task 'build.assets.style', (options) ->
-  file_concat [
-    './node_modules/normalize.css/normalize.css'
-    './_src/flexbox-holy-grail.css'
-    './_src/typebase.css'
-    './_src/style.css'
-  ], 'style.css', (error) ->
-    console.log('style.css')
-    return
+  setOutputDirByOption options.output
+  console.log 'build.assets.style'
+  builder.build.assets.style()
 
-task 'build.assets.image', (options) ->
-  _.forEach memo_universe().blog_entries, (blog_entry) ->
-    _.each blog_entry.assets.jpgs, (jpg) ->
-      dest = ".#{blog_entry.url}/#{path.basename(jpg)}"
-      fs_extra.copy jpg, dest, (err) ->
-        if (err)
-          return console.error(err)
-        console.log("#{jpg} -> #{dest}")
+task 'build.assets.images', (options) ->
+  setOutputDirByOption options.output
+  console.log 'build.assets.images'
+  builder.build.assets.images()
 
 task 'build', (options) ->
   invoke('build.index')
-  invoke('build.blogs')
   invoke('build.readme')
   invoke('build.resume.html')
-  invoke('build.assets.style')
-  invoke('build.assets.image')
+  invoke('build.blogs')
   invoke('build.resume.pdf')
+  invoke('build.assets.style')
+  invoke('build.assets.images')
 
 task 'server', (options) ->
-  console.log('server now running on port 8080...')
-  file = new (sstatic.Server)('.')
-  http.createServer((req, res) ->
-    file.serve req, res
-    return
-  ).listen 8080
+ console.log 'server'
+ builder.server()
 
-task 'build_serve_watch', (options) ->
+task 'build_serve', (options) ->
   invoke('build')
   invoke('server')
-
-  watch.createMonitor './_src', (monitor) ->
-    monitor.files['/**/*']
-
-    monitor.on 'created', (f, stat) ->
-      memo_universe.clear();
-      invoke('build')
-      return
-    monitor.on 'changed', (f, curr, prev) ->
-      memo_universe.clear();
-      invoke('build')
-      return
-    monitor.on 'removed', (f, stat) ->
-      memo_universe.clear();
-      invoke('build')
-      return
-    # monitor.stop()
-    return

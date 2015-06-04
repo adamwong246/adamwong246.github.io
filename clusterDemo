@@ -1,0 +1,24 @@
+// // Allows reload of build.js itself
+// if (cluster.isMaster) {
+//   cluster.fork();
+//   cluster.on('exit', function(worker, code, signal) {
+//     cluster.fork();
+//   });
+// }
+//
+// if (cluster.isWorker) {
+//   fs.watchFile('build.js', function(curr, prev) {
+//     console.log("build.js has changed, exiting!");
+//     process.exit()
+//   });
+//
+//   // The real program starts here
+//   app = function(req, res) {
+//     file.serve(req, res);
+//   }
+//
+//   var file = new sstatic.Server('.');
+//   http.createServer(app).listen(8080);
+//
+//   console.log('server now running on port 8080...');
+// }

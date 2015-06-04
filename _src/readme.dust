@@ -1,0 +1,7 @@
+{>"layout"/}
+
+{<content}
+  {#readme}
+    {content|s}
+  {/readme}
+{/content}

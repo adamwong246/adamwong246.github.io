@@ -18,23 +18,25 @@ jade_opts =
   pretty: true
 
 universe = ->
-  return {"blog_entries":_.sortBy(_.map(glob.sync("_src/blog_entries/*"), (page) ->
-    m = mm.parseFileSync(page + "/index.md")
+  "blog_entries":
+    _.sortBy(
+      _.map(
+        glob.sync("_src/blog_entries/*"), (page) ->
+          m = mm.parseFileSync(page + "/index.md")
 
-    m.url = "/blog/#{path.basename(page)}-#{slug(m.meta.title)}"
-    m.dest = m.url + "/index.html"
-    m.src = page
+          m.url = "/blog/#{path.basename(page)}-#{slug(m.meta.title)}"
+          m.dest = m.url + "/index.html"
+          m.src = page
+          m.assets = {"jpgs": glob.sync("#{m.src }/*.jpg")}
 
-    m.assets = {"jpgs": glob.sync("#{m.src }/*.jpg")}
-
-    # filters and replaces instances of local assets with absolute paths
-    _.each m.assets.jpgs, (jpg) ->
-      m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
-    return m
-  ), (n) ->
-    return n.meta.publishedAt
-  ), "package": require("./package.json"),
-  "moment": moment = require("moment") }
+          # filters and replaces instances of local assets with absolute paths
+          _.each m.assets.jpgs, (jpg) ->
+            m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
+          m
+      ), (n) -> n.meta.publishedAt
+    )
+  "package": require("./package.json")
+  "moment": moment = require("moment")
 
 memo_universe = memoize(universe);
 
@@ -88,18 +90,6 @@ task 'build.resume.html', (options) ->
 task 'build.resume.pdf', (options) ->
   markdownpdf().from('_src/resume.md').to './resume.pdf', ->
     console.log 'resume.pdf'
-    return
-
-task 'build.blogs', (options) ->
-  _.forEach memo_universe().blog_entries, (blog_entry) ->
-    console.log(blog_entry.dest)
-    filendir.wa('.' + blog_entry.dest, jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})))
-    (err) ->
-      if err
-        console.log err
-      else
-        console.log 'The file was saved!'
-      return
     return
 
 task 'build.readme', (options) ->

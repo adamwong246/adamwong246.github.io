@@ -8,8 +8,8 @@ html(lang="en")
     meta(name='viewport', content='width=device-width, minimum-scale=1.0, maximum-scale=1.0')
 
     link(href='/style.css', rel='stylesheet', type="text/css")
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    //- <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    //- <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
     block page_title
       title exact change only
@@ -28,7 +28,7 @@ html(lang="en")
       main.HolyGrail-content.Site-content
         block content
           != self.content
-      nav.HolyGrail-nav
+      nav.HolyGrail-nav.no-print
         a(href="/")
           h1.site_title
             | exact
@@ -42,7 +42,7 @@ html(lang="en")
           li
             a(href="https://twitter.com/adamwong246") twitter
           li
-            a(href="github.com/adamwong246") github
+            a(href="http://github.com/adamwong246") github
           li
             a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange
         ul.pages

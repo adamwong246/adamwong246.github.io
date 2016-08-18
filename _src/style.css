@@ -16,6 +16,14 @@ h2{
   margin-bottom: 0.2em;
 }
 
-p, li {
+/*p, li {
   font-family: 'Lato';
+}*/
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
 }

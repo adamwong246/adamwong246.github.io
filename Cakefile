@@ -18,8 +18,6 @@ jade_opts =
   pretty: true
 
 universe = ->
-  console.log("building the universe...")
-
   return {"blog_entries":_.sortBy(_.map(glob.sync("_src/blog_entries/*"), (page) ->
     m = mm.parseFileSync(page + "/index.md")
 

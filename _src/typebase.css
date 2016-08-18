@@ -2,8 +2,8 @@
 /* Setup */
 html {
   /* Change default typefaces here */
-  /*font-family: serif;*/
-  /*font-size: 137.5%;*/
+  font-family: serif;
+  font-size: 137.5%;
   font-size: 110%;
   -webkit-font-smoothing: antialiased;
 }

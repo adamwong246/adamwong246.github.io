@@ -37,6 +37,7 @@
     "path": "^0.11.14",
     "slug": "^0.8.0",
     "watch": "^0.14.0",
-    "yaml-front-matter": "^3.2.3"
+    "yaml-front-matter": "^3.2.3",
+    "html-minifier": ""
   }
 }

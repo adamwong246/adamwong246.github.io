@@ -13,6 +13,7 @@ path = require('path')
 slug = require("slug")
 sstatic = require('node-static')
 watch = require('watch')
+minify = require('html-minifier').minify
 
 jade_opts =
   pretty: true
@@ -40,6 +41,13 @@ universe = ->
 
 memo_universe = memoize(universe);
 
+writeFile = (output, options) ->
+  fs.writeFile output, jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), options )), (err) ->
+    if err
+      console.log err
+    else
+      console.log output
+
 task 'new.blog_entry', (options) ->
   maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blog_entries/*'), (page) ->
     parseInt(path.basename(page, '.md'))
@@ -57,7 +65,6 @@ task 'new.blog_entry', (options) ->
     else
       console.log(newFile)
     return
-
 
 task 'build.index', (options) ->
   fs.writeFile "./index.html", jade.renderFile("./_src/index.jade", _.merge(jade_opts, memo_universe() )), (err) ->
@@ -93,12 +100,13 @@ task 'build.resume.pdf', (options) ->
     return
 
 task 'build.readme', (options) ->
-  fs.writeFile "./README.html", jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./README.md")} )), (err) ->
-    if err
-      console.log err
-    else
-      console.log "README.html"
-    return
+  writeFile "./README.html", {page: mm.parseFileSync("./README.md")}
+  # fs.writeFile "./README.html", jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./README.md")} )), (err) ->
+  #   if err
+  #     console.log err
+  #   else
+  #     console.log "README.html"
+  #   return
 
 task 'build.assets.style', (options) ->
   file_concat [

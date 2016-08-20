@@ -38,6 +38,7 @@
     "slug": "^0.8.0",
     "watch": "^0.14.0",
     "yaml-front-matter": "^3.2.3",
-    "html-minifier": ""
+    "html-minifier": "",
+    "clean-css": ""
   }
 }

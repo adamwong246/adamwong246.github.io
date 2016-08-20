@@ -42,7 +42,7 @@ universe = ->
 memo_universe = memoize(universe);
 
 writeFile = (output, options) ->
-  fs.writeFile output, jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), options )), (err) ->
+  fs.writeFile output, minify(jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), options )), {}), (err) ->
     if err
       console.log err
     else

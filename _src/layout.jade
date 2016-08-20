@@ -49,17 +49,20 @@ html(lang="en")
           li
             a(href="/README.html") README.html
           li
-            a(href="/resume.html") resume.html
-          li
-            a(href="/resume.pdf") resume.pdf
-          li
-            a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") resume.md
+            a(href="/resume.html") resume.html 
+            a(href="/resume.pdf") .pdf 
+            a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") .md
+        p blogs
         ul.blog_entries
           - for entry in blog_entries
             li
               a(href=entry.url)= entry.meta.title
+        p pages
+        ul.pages
+          - for page in pages
+            li
+              a(href=page.url)= page.url
       //aside.HolyGrail-ads
-
     footer
       a(href='/') home
       br

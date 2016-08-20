@@ -36,13 +36,29 @@ universe = ->
           m
       ), (n) -> n.meta.publishedAt
     )
+  "pages": _.map(
+    glob.sync("_src/pages/**/*.md"), (page) ->
+      m = mm.parseFileSync(page)
+
+      m.url = "/#{page.replace('_src/pages/', '').replace(/\.[^/.]+$/, '')}"
+
+      m.dest = m.url + "/index.html"
+      m.src = page
+      m.assets = {"jpgs": glob.sync("#{m.src}/*.jpg")}
+
+      # filters and replaces instances of local assets with absolute paths
+      _.each m.assets.jpgs, (jpg) ->
+        m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
+
+      m
+  )
   "package": require("./package.json")
   "moment": moment = require("moment")
 
 memo_universe = memoize(universe);
 
 writeFile = (output, options) ->
-  fs.writeFile output, minify(jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), options )), {}), (err) ->
+  fs.writeFile output, minify(jade.renderFile("./_src/page.jade", _.merge(jade_opts, memo_universe(), options )), {}), (err) ->
     if err
       console.log err
     else
@@ -73,10 +89,18 @@ task 'build.index', (options) ->
     else
       console.log "index.html"
     return
+task 'build.pages', (options) ->
+  _.forEach memo_universe().pages, (page) ->
+    console.log page
+    fs.writeFile('.' + page.dest, jade.renderFile('./_src/page.jade', _.merge(jade_opts, memo_universe(), {page: page})))
+    (err) ->
+      if err
+        console.log err
+      else
+        console.log 'The file was saved!'
 
 task 'build.blogs', (options) ->
   _.forEach memo_universe().blog_entries, (blog_entry) ->
-    console.log(blog_entry.dest)
     fs.writeFile('.' + blog_entry.dest, jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})))
     (err) ->
       if err
@@ -87,7 +111,7 @@ task 'build.blogs', (options) ->
     return
 
 task 'build.resume.html', (options) ->
-  fs.writeFile "./resume.html", jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./_src/resume.md")} )), (err) ->
+  fs.writeFile "./resume.html", jade.renderFile("./_src/page.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./_src/resume.md")} )), (err) ->
     if err
       console.log err
     else
@@ -101,12 +125,6 @@ task 'build.resume.pdf', (options) ->
 
 task 'build.readme', (options) ->
   writeFile "./README.html", {page: mm.parseFileSync("./README.md")}
-  # fs.writeFile "./README.html", jade.renderFile("./_src/resume_layout.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./README.md")} )), (err) ->
-  #   if err
-  #     console.log err
-  #   else
-  #     console.log "README.html"
-  #   return
 
 task 'build.assets.style', (options) ->
   file_concat [
@@ -130,6 +148,7 @@ task 'build.assets.image', (options) ->
 task 'build', (options) ->
   invoke('build.index')
   invoke('build.blogs')
+  invoke('build.pages')
   invoke('build.readme')
   invoke('build.resume.html')
   invoke('build.assets.style')

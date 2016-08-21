@@ -1,6 +1,6 @@
 ## README
 
-An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.
+An exceedingly simple static blog generator.
 
 ### Credits
 - http://necolas.github.io/normalize.css

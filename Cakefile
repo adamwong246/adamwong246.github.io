@@ -91,7 +91,6 @@ task 'build.index', (options) ->
     return
 task 'build.pages', (options) ->
   _.forEach memo_universe().pages, (page) ->
-    console.log page
     fs.writeFile('.' + page.dest, jade.renderFile('./_src/page.jade', _.merge(jade_opts, memo_universe(), {page: page})))
     (err) ->
       if err
@@ -118,10 +117,10 @@ task 'build.resume.html', (options) ->
       console.log "resume.html"
     return
 
-task 'build.resume.pdf', (options) ->
-  markdownpdf().from('_src/resume.md').to './resume.pdf', ->
-    console.log 'resume.pdf'
-    return
+# task 'build.resume.pdf', (options) ->
+#   markdownpdf().from('_src/resume.md').to './resume.pdf', ->
+#     console.log 'resume.pdf'
+#     return
 
 task 'build.readme', (options) ->
   writeFile "./README.html", {page: mm.parseFileSync("./README.md")}
@@ -153,7 +152,7 @@ task 'build', (options) ->
   invoke('build.resume.html')
   invoke('build.assets.style')
   invoke('build.assets.image')
-  invoke('build.resume.pdf')
+  # invoke('build.resume.pdf')
 
 task 'server', (options) ->
   console.log('server now running on port 8080...')

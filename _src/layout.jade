@@ -6,14 +6,9 @@ html(lang="en")
     meta(name='HandheldFriendly', content='True')
     meta(name='MobileOptimized', content='320')
     meta(name='viewport', content='width=device-width, minimum-scale=1.0, maximum-scale=1.0')
-
     link(href='/style.css', rel='stylesheet', type="text/css")
-    //- <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    //- <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
     block page_title
       title exact change only
-
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,9 +16,7 @@ html(lang="en")
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-47887894-1', 'auto');
       ga('send', 'pageview');
-
   body.HolyGrail.Site
-    header
     .HolyGrail-body
       main.HolyGrail-content.Site-content
         block content
@@ -36,42 +29,33 @@ html(lang="en")
             | change
             <br/>
             | only
-        ul.contacts
-          li
-            a(href="mailto:" + package.author.email)= package.author.email
-          li
-            a(href="https://twitter.com/adamwong246") twitter
-          li
-            a(href="http://github.com/adamwong246") github
-          li
-            a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange
-        ul.pages
-          li
-            a(href="/README.html") README.html
-          li
-            a(href="/resume.html") resume.html 
-            a(href="/resume.pdf") .pdf 
-            a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") .md
-        p blogs
-        ul.blog_entries
-          - for entry in blog_entries
-            li
-              a(href=entry.url)= entry.meta.title
-        p pages
-        ul.pages
+        ul
+          li #[a(href="mailto:" + package.author.email)= package.author.email]
+          li #[a(href="https://twitter.com/adamwong246") twitter]
+          li #[a(href="http://github.com/adamwong246") github]
+          li #[a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange]
+        hr
+        ul
+          li #[a(href="/README.html") README.html]
+          li #[a(href="/resume.html") resume.html]
+          li #[a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") resume.md]
+        hr
+        ul
           - for page in pages
-            li
-              a(href=page.url)= page.url
+            li #[a(href=page.url)= page.url ]
+        hr
+        ul
+          - for entry in blog_entries
+            li #[a(href=entry.url)= entry.meta.title]
       //aside.HolyGrail-ads
-    footer
-      a(href='/') home
-      br
-      a(href=package.repository.url) source
-      br
-      = "v" + package.version
-      br
-      span= package.author.name
-      br
-      a(href="mailto:" + package.author.email)= package.author.email
-      br
-      span 2015
+    footer.no-print
+      #footer-content
+        a(href='/') home
+        br
+        span
+          |v#{package.version} 
+          a(href=package.repository.url) source
+        br
+        a(href="mailto:" + package.author.email)= package.author.email
+        br
+        span= new Date()

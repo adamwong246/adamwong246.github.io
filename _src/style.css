@@ -8,17 +8,13 @@ nav ul {
 }
 
 nav .site_title{
-  text-align: center;
+  /*text-align: center;*/
   margin-top: 0em;
 }
 
 h2{
   margin-bottom: 0.2em;
 }
-
-/*p, li {
-  font-family: 'Lato';
-}*/
 
 @media print
 {

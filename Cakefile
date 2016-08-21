@@ -14,13 +14,14 @@ slug = require("slug")
 sstatic = require('node-static')
 watch = require('watch')
 minify = require('html-minifier').minify
+mkdirp = require('mkdirp-then')
 
 jade_opts =
   pretty: true
 
 universe = ->
   "blog_entries":
-    _.sortBy(
+    _.chain(
       _.map(
         glob.sync("_src/blog_entries/*"), (page) ->
           m = mm.parseFileSync(page + "/index.md")
@@ -34,8 +35,11 @@ universe = ->
           _.each m.assets.jpgs, (jpg) ->
             m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
           m
-      ), (n) -> n.meta.publishedAt
+      )
     )
+    .sortBy((n) ->new Date n.meta.publishedAt)
+    .value().reverse()
+
   "pages": _.map(
     glob.sync("_src/pages/**/*.md"), (page) ->
       m = mm.parseFileSync(page)
@@ -89,6 +93,7 @@ task 'build.index', (options) ->
     else
       console.log "index.html"
     return
+
 task 'build.pages', (options) ->
   _.forEach memo_universe().pages, (page) ->
     fs.writeFile('.' + page.dest, jade.renderFile('./_src/page.jade', _.merge(jade_opts, memo_universe(), {page: page})))
@@ -100,14 +105,16 @@ task 'build.pages', (options) ->
 
 task 'build.blogs', (options) ->
   _.forEach memo_universe().blog_entries, (blog_entry) ->
-    fs.writeFile('.' + blog_entry.dest, jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})))
-    (err) ->
-      if err
-        console.log err
-      else
-        console.log 'The file was saved!'
-      return
-    return
+   console.log blog_entry
+   destination = '.' + blog_entry.dest
+   mkdirp(path.dirname(destination)).then () ->
+     fs.writeFile destination,
+     jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})) ,
+     (err) ->
+       if err
+         console.log err
+       else
+         console.log "> #{destination}"
 
 task 'build.resume.html', (options) ->
   fs.writeFile "./resume.html", jade.renderFile("./_src/page.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./_src/resume.md")} )), (err) ->
@@ -115,12 +122,6 @@ task 'build.resume.html', (options) ->
       console.log err
     else
       console.log "resume.html"
-    return
-
-# task 'build.resume.pdf', (options) ->
-#   markdownpdf().from('_src/resume.md').to './resume.pdf', ->
-#     console.log 'resume.pdf'
-#     return
 
 task 'build.readme', (options) ->
   writeFile "./README.html", {page: mm.parseFileSync("./README.md")}
@@ -129,11 +130,9 @@ task 'build.assets.style', (options) ->
   file_concat [
     './node_modules/normalize.css/normalize.css'
     './_src/flexbox-holy-grail.css'
-    './_src/typebase.css'
     './_src/style.css'
   ], 'style.css', (error) ->
     console.log('style.css')
-    return
 
 task 'build.assets.image', (options) ->
   _.forEach memo_universe().blog_entries, (blog_entry) ->
@@ -152,7 +151,6 @@ task 'build', (options) ->
   invoke('build.resume.html')
   invoke('build.assets.style')
   invoke('build.assets.image')
-  # invoke('build.resume.pdf')
 
 task 'server', (options) ->
   console.log('server now running on port 8080...')

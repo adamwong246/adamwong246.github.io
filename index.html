@@ -22,10 +22,26 @@
       <main class="HolyGrail-content Site-content">
         <article>
           <header>
+            <h2>Removed typebase and pdf rendering</h2>
+            <time>August 21st 2016</time>
+          </header><p>I removed typebase and also markdown2pdf. My resume is now rendered to PDF by the browser.</p>
+        </article>
+        <hr>
+        <article>
+          <header>
+            <h2>Something he’d found and lost so many times</h2>
+            <time>April 29th 2015</time>
+          </header><blockquote>
+<p>It belonged, he knew – he remembered – as she pulled him down, to the meat, the flesh the cowboys mocked. It was a vast thing, beyond knowing, a sea of information coded in spiral and pheromone, infinite intricacy that only the body, in its strong blind way, could ever read.” 
+― William Gibson, Neuromancer</p>
+</blockquote>
+        </article>
+        <hr>
+        <article>
+          <header>
             <h2>Meteor: the first month</h2>
             <time>March 21st 2015</time>
-          </header>
-          <hr><p>There&#39;s an exciting new stack for optimistic developers called Meteor and I&#39;ve had the great pleasure of focusing on learning it for the past months. This is what I&#39;ve learned.</p>
+          </header><p>There&#39;s an exciting new stack for optimistic developers called Meteor and I&#39;ve had the great pleasure of focusing on learning it for the past months. This is what I&#39;ve learned.</p>
 <p>Meteor is framework based on the high-minded ideal of <em>isomorphic</em> javascript, which is a fancy way of saying, &quot;It&#39;s javascript, on the server too!&quot; I find this notion absolutely titilating, though I&#39;m sure other&#39;s are heaving at the very thought. Ok, that&#39;s fair. But give it a chance! It&#39;s an incredibly flexible technology and with a little bit of experience, you&#39;ll find that Meteor is a fantastic tool for building prototypes which evolve into mature software. Meteor is production ready and the time to dive in is now!</p>
 <h2 id="the-basics">The basics</h2>
 <h3 id="meteor-is-not-like-rails-">Meteor is not like Rails.</h3>
@@ -65,19 +81,39 @@ Meteor.subscribe &#39;myOrders&#39;</code></pre>
 <h3 id="but-it-s-still-just-js">But it&#39;s still just js</h3>
 <p>Let&#39;s face facts: node&#39;s asynchronous support is overhyped. Sure, it powerful but the community is fragmented on how to support asynchronous operations. Promises, threads, futures, generators, etc are absolutely overwhelming and bewildering. Meteor does it&#39;s best to shield you from these concerns but you&#39;ll still have to tackle these complex issues at some point.</p>
         </article>
+        <hr>
         <article>
           <header>
-            <h2>First post</h2>
-            <time>February 11th 2015</time>
-          </header>
-          <hr><p>This is my first blog post!!!</p>
+            <h2>Status update</h2>
+            <time>February 17th 2015</time>
+          </header><ul>
+<li>I used <a href="http://necolas.github.io/normalize.css/">Normalize.css</a> for a base, <a href="http://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/">Holy Grail</a> to implement a fluid layout and a sticky footer and for typography, <a href="http://devinhunt.github.io/typebase.css/">Typebase.css</a>. Of course, I&#39;ve added my own <a href="https://github.com/adamwong246/adamwong246.github.io/blob/master/_src/style.css">light touch</a> but so far, it&#39;s quite a neutral theme.</li>
+<li>Each blog is now routed to a nicer url and jpgs included in the same file get re-mapped to a absolute url, so managing images for specific blog entries is easy.</li>
+<li>I used the same technique that generates my resume to turn the <code>README.md</code> into an html file.</li>
+</ul>
+<p>Of course, you can see for yourself by <a href="https://github.com/adamwong246/adamwong246.github.io/commits/master">tracking the commits on github</a>! And if you wanted to see what&#39;s next on my todo list, check out the <a href="https://github.com/adamwong246/adamwong246.github.io/issues">issues</a>.</p>
+<p>Finally, I bumped the version to <code>0.1.0</code>, which according to SemVer I should have done already. </p>
         </article>
+        <hr>
+        <article>
+          <header>
+            <h2>Dogs</h2>
+            <time>February 12th 2015</time>
+          </header><p><img src="/blog/3-Dogs/dogs.jpg" alt="This is a picture of my dogs."></p>
+        </article>
+        <hr>
+        <article>
+          <header>
+            <h2>Generators</h2>
+            <time>February 12th 2015</time>
+          </header><p>This entry was auto-generated and includes a <code>publishedAt</code> time stamp. </p>
+        </article>
+        <hr>
         <article>
           <header>
             <h2>Soylent, day to day</h2>
             <time>February 12th 2015</time>
-          </header>
-          <hr><p>Ever since I backed Soylent on Kickstarter, I&#39;ve been a little obsessed with the stuff. Well, &quot;obsessed&quot; might not be the right word... &quot;consumed&quot; might be a better. &quot;Evangelical&quot; has been tossed around. Seriously, a day does not go by when I do not attempt to bring some poor soul into fold. If someone asks what biege slurry I&#39;m gulping down, I launch into a full scale attack to win the hearts and minds of &quot;fooders&quot; and turn them into &quot;Soylentarians.&quot;</p>
+          </header><p>Ever since I backed Soylent on Kickstarter, I&#39;ve been a little obsessed with the stuff. Well, &quot;obsessed&quot; might not be the right word... &quot;consumed&quot; might be a better. &quot;Evangelical&quot; has been tossed around. Seriously, a day does not go by when I do not attempt to bring some poor soul into fold. If someone asks what biege slurry I&#39;m gulping down, I launch into a full scale attack to win the hearts and minds of &quot;fooders&quot; and turn them into &quot;Soylentarians.&quot;</p>
 <h3 id="what-s-in-it-">What&#39;s in it?</h3>
 <p>Mostly sugar. Maltodextrin to be specific. Sugars are molecules in the form of a chain. Shorter chains are the sugars you are most familiar with. Table sugar, HFC&#39;s glucose, sucrose and fructose fall into this category. Long chains are your breads, pastas and rice- all the starches. Maltodextrin is &quot;medium&quot; length, so it doesn&#39;t taste very sweet. Your body &quot;burns&quot; these sugars more slowly than candy-sugar but faster than pasta-sugar. Next comes oats and brown rice flour. These provide your protein and fiber. Everything else is your vitamins and minerals. Lastly, don&#39;t forget the oils! We need oil in our diet and every daily allotment of Soylent includes a vial of oil.</p>
 <p>Strangely, Soylent is missing 100% a crucial ingredient- salt!. This only matters if you eat Soylent and Soylent alone or you run marathons. Ordinary food, even when supplemented by Soylent, provides more than enough salt. I think they skimped on this to improve the taste.</p>
@@ -95,43 +131,14 @@ Meteor.subscribe &#39;myOrders&#39;</code></pre>
 <p>Another problem is one of will power. Like I said, Soylent makes you appreciate the sensation of eating real food. Soylent nourishes the body but not the soul. If your not careful, you will find yourself walking out of the grocery store with a pint of ice cream, spicy Doritos and soda cause it tastes that darn good. And you&#39;ll find it easier to rationalize to yourself, because you ate 2 solid healthy meals. This is alleviated by forcing yourself to cook. The Soylentarian lifestyle affords you much more time, money and energy to devote to real food, when the modd strikes you. Use your newfound resources to learn to cook again. At my house, we have 5 roommates but we try to eat dinner together. It&#39;s an important human ritual, one I didn&#39;t appreciate until it was gone. Cooking can be fun and rewarding. Eating can be an aesthetic experience. Both should be social opportunities.</p>
 <p>Lastly, you <em>will</em> run into anti-Soylentarians. There&#39;s a lot of them in Portland and I&#39;m sure you know the type. Nutrition-istas and Food Babes everywhere will grimace with horror as you down your Soylent. Just smile back and direct them to the forums, where all manner of nutritional arguments are held.</p>
         </article>
+        <hr>
         <article>
           <header>
-            <h2>Generators</h2>
-            <time>February 12th 2015</time>
-          </header>
-          <hr><p>This entry was auto-generated and includes a <code>publishedAt</code> time stamp. </p>
+            <h2>First post</h2>
+            <time>February 11th 2015</time>
+          </header><p>This is my first blog post!!!</p>
         </article>
-        <article>
-          <header>
-            <h2>Dogs</h2>
-            <time>February 12th 2015</time>
-          </header>
-          <hr><p><img src="/blog/3-Dogs/dogs.jpg" alt="This is a picture of my dogs."></p>
-        </article>
-        <article>
-          <header>
-            <h2>Status update</h2>
-            <time>February 17th 2015</time>
-          </header>
-          <hr><ul>
-<li>I used <a href="http://necolas.github.io/normalize.css/">Normalize.css</a> for a base, <a href="http://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/">Holy Grail</a> to implement a fluid layout and a sticky footer and for typography, <a href="http://devinhunt.github.io/typebase.css/">Typebase.css</a>. Of course, I&#39;ve added my own <a href="https://github.com/adamwong246/adamwong246.github.io/blob/master/_src/style.css">light touch</a> but so far, it&#39;s quite a neutral theme.</li>
-<li>Each blog is now routed to a nicer url and jpgs included in the same file get re-mapped to a absolute url, so managing images for specific blog entries is easy.</li>
-<li>I used the same technique that generates my resume to turn the <code>README.md</code> into an html file.</li>
-</ul>
-<p>Of course, you can see for yourself by <a href="https://github.com/adamwong246/adamwong246.github.io/commits/master">tracking the commits on github</a>! And if you wanted to see what&#39;s next on my todo list, check out the <a href="https://github.com/adamwong246/adamwong246.github.io/issues">issues</a>.</p>
-<p>Finally, I bumped the version to <code>0.1.0</code>, which according to SemVer I should have done already. </p>
-        </article>
-        <article>
-          <header>
-            <h2>Something he’d found and lost so many times</h2>
-            <time>April 29th 2015</time>
-          </header>
-          <hr><blockquote>
-<p>It belonged, he knew – he remembered – as she pulled him down, to the meat, the flesh the cowboys mocked. It was a vast thing, beyond knowing, a sea of information coded in spiral and pheromone, infinite intricacy that only the body, in its strong blind way, could ever read.” 
-― William Gibson, Neuromancer</p>
-</blockquote>
-        </article>
+        <hr>
       </main>
       <nav class="HolyGrail-nav no-print"><a href="/">
           <h1 class="site_title">
@@ -160,19 +167,20 @@ Meteor.subscribe &#39;myOrders&#39;</code></pre>
         </ul>
         <hr>
         <ul>
-          <li><a href="/blog/5-Meteor-the-first-month">Meteor: the first month</a></li>
-          <li><a href="/blog/0-First-post">First post</a></li>
-          <li><a href="/blog/1-Soylent-day-to-day">Soylent, day to day</a></li>
-          <li><a href="/blog/2-Generators">Generators</a></li>
-          <li><a href="/blog/3-Dogs">Dogs</a></li>
-          <li><a href="/blog/4-Status-update">Status update</a></li>
+          <li><a href="/blog/7-Removed-typebase-and-pdf-rendering">Removed typebase and pdf rendering</a></li>
           <li><a href="/blog/6-Something-hed-found-and-lost-so-many-times">Something he’d found and lost so many times</a></li>
+          <li><a href="/blog/5-Meteor-the-first-month">Meteor: the first month</a></li>
+          <li><a href="/blog/4-Status-update">Status update</a></li>
+          <li><a href="/blog/3-Dogs">Dogs</a></li>
+          <li><a href="/blog/2-Generators">Generators</a></li>
+          <li><a href="/blog/1-Soylent-day-to-day">Soylent, day to day</a></li>
+          <li><a href="/blog/0-First-post">First post</a></li>
         </ul>
       </nav>
       <!--aside.HolyGrail-ads-->
     </div>
     <footer class="no-print">
-      <div id="footer-content"><a href="/">home</a><br><span>v0.4.0 <a href="https://github.com/adamwong246/adamwong246.github.io">source</a></span><br><a href="mailto:adamwong246@gmail.com">adamwong246@gmail.com</a><br><span>Sun Aug 21 2016 14:59:28 GMT-0400 (EDT)</span></div>
+      <div id="footer-content"><a href="/">home</a><br><span>v0.5.0 <a href="https://github.com/adamwong246/adamwong246.github.io">source</a></span><br><a href="mailto:adamwong246@gmail.com">adamwong246@gmail.com</a><br><span>2016-08-21T17:05:09-04:00</span></div>
     </footer>
   </body>
 </html>

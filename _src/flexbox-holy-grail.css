@@ -179,7 +179,7 @@ header, footer {
   padding-bottom: 1.5em;
  }
 
-footer > #footer-content, header > #header-content {
+footer > #footer-content {
  padding: 1em;
  border-radius: 3px;
  background: rgba(147, 128, 108, 0.1);

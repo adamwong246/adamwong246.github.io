@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -28,7 +28,6 @@
     "glob": "latest",
     "jade": "^1.8.2",
     "lodash": "^2.4.1",
-    "markdown-pdf": "^4.0.0",
     "marky-mark": "latest",
     "memoizee": "^0.3.8",
     "moment": "^2.9.0",
@@ -39,6 +38,7 @@
     "watch": "^0.14.0",
     "yaml-front-matter": "^3.2.3",
     "html-minifier": "",
-    "clean-css": ""
+    "clean-css": "",
+    "mkdirp-then": ""
   }
 }

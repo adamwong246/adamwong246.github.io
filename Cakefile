@@ -14,7 +14,7 @@ slug = require("slug")
 sstatic = require('node-static')
 watch = require('watch')
 minify = require('html-minifier').minify
-mkdirp = require('mkdirp-then')
+mkdirp = require('mkdirp')
 
 jade_opts =
   pretty: true
@@ -105,12 +105,9 @@ task 'build.pages', (options) ->
 
 task 'build.blogs', (options) ->
   _.forEach memo_universe().blog_entries, (blog_entry) ->
-   console.log blog_entry
    destination = '.' + blog_entry.dest
-   mkdirp(path.dirname(destination)).then () ->
-     fs.writeFile destination,
-     jade.renderFile('./_src/blog_entry_layout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})) ,
-     (err) ->
+   mkdirp path.dirname(destination), (err) ->
+     fs.writeFile destination, jade.renderFile('./_src/blogEntryLayout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})), (err) ->
        if err
          console.log err
        else

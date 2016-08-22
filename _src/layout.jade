@@ -23,12 +23,7 @@ html(lang="en")
           != self.content
       nav.HolyGrail-nav.no-print
         a(href="/")
-          h1.site_title
-            | exact
-            <br/>
-            | change
-            <br/>
-            | only
+          h1.site_title exact change only
         ul
           li #[a(href="mailto:" + package.author.email)= package.author.email]
           li #[a(href="https://twitter.com/adamwong246") twitter]

@@ -15,6 +15,29 @@ h2{
   margin-bottom: 0.2em;
 }
 
+footer {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+header {
+  padding-top: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+body > footer > *, body > header > *{
+ padding: 1em;
+ margin: 0em;
+ border-radius: 3px;
+ background: rgba(147, 128, 108, 0.1);
+}
+
+footer > #footer-content{
+  text-align: right;
+}
+
 @media print
 {
     .no-print, .no-print *

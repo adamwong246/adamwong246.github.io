@@ -40,7 +40,7 @@ html(lang="en")
             li #[a(href=page.url)= page.url ]
         hr
         ul
-          - for entry in blog_entries
+          - for entry in blogEntries
             li #[a(href=entry.url)= entry.meta.title]
       //aside.HolyGrail-ads
     footer.no-print

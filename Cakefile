@@ -20,10 +20,10 @@ jade_opts =
   pretty: true
 
 universe = ->
-  "blog_entries":
+  "blogEntries":
     _.chain(
       _.map(
-        glob.sync("_src/blog_entries/*"), (page) ->
+        glob.sync("_src/blogEntries/*"), (page) ->
           m = mm.parseFileSync(page + "/index.md")
 
           m.url = "/blog/#{path.basename(page)}-#{slug(m.meta.title)}"
@@ -68,12 +68,12 @@ writeFile = (output, options) ->
     else
       console.log output
 
-task 'new.blog_entry', (options) ->
-  maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blog_entries/*'), (page) ->
+task 'new.blogEntry', (options) ->
+  maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blogEntries/*'), (page) ->
     parseInt(path.basename(page, '.md'))
   )) + 1
 
-  newFile = "./_src/blog_entries/#{maxPlusOne}/index.md"
+  newFile = "./_src/blogEntries/#{maxPlusOne}/index.md"
   fs_extra.outputFile newFile, """
   ---
   title: CHANGE ME
@@ -91,7 +91,7 @@ task 'build.index', (options) ->
     if err
       console.log err
     else
-      console.log "index.html"
+      console.log "./_src/index.jade > index.html"
     return
 
 task 'build.pages', (options) ->
@@ -101,40 +101,42 @@ task 'build.pages', (options) ->
       if err
         console.log err
       else
-        console.log 'The file was saved!'
+        console.log "#{page.src} > #{page.dest}"
 
 task 'build.blogs', (options) ->
-  _.forEach memo_universe().blog_entries, (blog_entry) ->
-   destination = '.' + blog_entry.dest
+  _.forEach memo_universe().blogEntries, (blogEntry) ->
+   destination = '.' + blogEntry.dest
    mkdirp path.dirname(destination), (err) ->
-     fs.writeFile destination, jade.renderFile('./_src/blogEntryLayout.jade', _.merge(jade_opts, memo_universe(), {entry: blog_entry})), (err) ->
+     fs.writeFile destination, jade.renderFile('./_src/blogEntryLayout.jade', _.merge(jade_opts, memo_universe(), {entry: blogEntry})), (err) ->
        if err
          console.log err
        else
-         console.log "> #{destination}"
+         console.log "#{blogEntry.src} > #{destination}"
 
 task 'build.resume.html', (options) ->
   fs.writeFile "./resume.html", jade.renderFile("./_src/page.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./_src/resume.md")} )), (err) ->
     if err
       console.log err
     else
-      console.log "resume.html"
+      console.log "resume.md > resume.html"
 
 task 'build.readme', (options) ->
   writeFile "./README.html", {page: mm.parseFileSync("./README.md")}
+  console.log "README.md > README.html"
 
 task 'build.assets.style', (options) ->
-  file_concat [
+  styleFiles = [
     './node_modules/normalize.css/normalize.css'
     './_src/flexbox-holy-grail.css'
     './_src/style.css'
-  ], 'style.css', (error) ->
-    console.log('style.css')
+  ]
+  outFile = 'style.css'
+  file_concat styleFiles, outFile, (error) -> console.log "#{JSON.stringify styleFiles, null, 2} > #{outFile}"
 
 task 'build.assets.image', (options) ->
-  _.forEach memo_universe().blog_entries, (blog_entry) ->
-    _.each blog_entry.assets.jpgs, (jpg) ->
-      dest = ".#{blog_entry.url}/#{path.basename(jpg)}"
+  _.forEach memo_universe().blogEntries, (blogEntry) ->
+    _.each blogEntry.assets.jpgs, (jpg) ->
+      dest = ".#{blogEntry.url}/#{path.basename(jpg)}"
       fs_extra.copy jpg, dest, (err) ->
         if (err)
           return console.error(err)
@@ -157,7 +159,7 @@ task 'server', (options) ->
     return
   ).listen 8080
 
-task 'build_serve_watch', (options) ->
+task 'develop', (options) ->
   invoke('build')
   invoke('server')
 

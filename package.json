@@ -26,7 +26,7 @@
     "filendir": "0.0.1",
     "fs-extra": "^0.16.3",
     "glob": "latest",
-    "jade": "^1.8.2",
+    "jade": "1.11.0",
     "lodash": "^2.4.1",
     "marky-mark": "latest",
     "memoizee": "^0.3.8",

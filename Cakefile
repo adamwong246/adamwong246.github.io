@@ -15,6 +15,7 @@ sstatic = require('node-static')
 watch = require('watch')
 minify = require('html-minifier').minify
 mkdirp = require('mkdirp')
+lwip = require('lwip')
 
 jade_opts =
   pretty: true
@@ -135,12 +136,21 @@ task 'build.assets.style', (options) ->
 
 task 'build.assets.image', (options) ->
   _.forEach memo_universe().blogEntries, (blogEntry) ->
-    _.each blogEntry.assets.jpgs, (jpg) ->
-      dest = ".#{blogEntry.url}/#{path.basename(jpg)}"
-      fs_extra.copy jpg, dest, (err) ->
+    _.each blogEntry.assets.jpgs, (srcPath) ->
+
+      optDest = ".#{blogEntry.url}/#{path.basename(srcPath)}"
+      lwip.open srcPath, (err, image) ->
+        image.batch()
+        .writeFile(optDest,'jpg', {quality: 75}, (err) ->
+          if err then console.log err
+          else console.log "#{srcPath} > #{optDest}"
+        )
+
+      origDest = ".#{blogEntry.url}/orig-#{path.basename(srcPath)}"
+      fs_extra.copy srcPath, origDest, (err) ->
         if (err)
           return console.error(err)
-        console.log("#{jpg} -> #{dest}")
+        console.log("#{srcPath} -> #{origDest}")
 
 task 'build', (options) ->
   invoke('build.index')

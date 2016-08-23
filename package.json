@@ -39,6 +39,7 @@
     "yaml-front-matter": "^3.2.3",
     "html-minifier": "",
     "clean-css": "",
-    "mkdirp-then": ""
+    "mkdirp-then": "",
+    "lwip": ""
   }
 }

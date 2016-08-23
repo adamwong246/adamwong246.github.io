@@ -141,7 +141,8 @@ task 'build.assets.image', (options) ->
       optDest = ".#{blogEntry.url}/#{path.basename(srcPath)}"
       lwip.open srcPath, (err, image) ->
         image.batch()
-        .writeFile(optDest,'jpg', {quality: 75}, (err) ->
+        .scale(0.2)
+        .writeFile(optDest,'jpg', {quality: 50}, (err) ->
           if err then console.log err
           else console.log "#{srcPath} > #{optDest}"
         )

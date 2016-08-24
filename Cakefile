@@ -71,11 +71,14 @@ universe = ->
 memo_universe = memoize(universe);
 
 jadeWrite = (output, template, locals) ->
-  fs.writeFile output, minify(jade.renderFile(template, _.merge(jade_opts, memo_universe(), locals )), htmlMinOpts), (err) ->
-    if err
-      console.log err
+  mkdirp path.dirname(output), (err) ->
+    if err then console.log err
     else
-      console.log output
+      fs.writeFile output, minify(jade.renderFile(template, _.merge(jade_opts, memo_universe(), locals )), htmlMinOpts), (err) ->
+        if err
+          console.log err
+        else
+          console.log output
 
 task 'new.blogEntry', (options) ->
   maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blogEntries/*'), (page) ->
@@ -104,9 +107,7 @@ task 'build.pages', (options) ->
 
 task 'build.blogs', (options) ->
   _.forEach memo_universe().blogEntries, (blogEntry) ->
-   destination = '.' + blogEntry.dest
-   mkdirp path.dirname(destination), (err) ->
-     jadeWrite destination, './_src/blogEntryLayout.jade', {entry: blogEntry}
+   jadeWrite '.' + blogEntry.dest, './_src/blogEntryLayout.jade', {entry: blogEntry}
 
 task 'build.resume.html', (options) ->
   jadeWrite './resume.html', './_src/page.jade', {page: mm.parseFileSync("./_src/resume.md")}

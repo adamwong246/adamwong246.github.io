@@ -1,5 +1,5 @@
 _ = require("lodash")
-file_concat = require('concat')
+readFiles = require('read-files-promise')
 filendir = require('filendir')
 fs = require("fs")
 fs_extra = require('fs-extra')
@@ -16,9 +16,17 @@ watch = require('watch')
 minify = require('html-minifier').minify
 mkdirp = require('mkdirp')
 lwip = require('lwip')
+CleanCSS = require('clean-css')
 
 jade_opts =
   pretty: true
+
+htmlMinOpts =
+  removeAttributeQuotes: true
+  removeComments: true
+  removeTagWhitespace: true
+  collapseWhitespace: true
+  minifyJS: true
 
 universe = ->
   "blogEntries":
@@ -62,8 +70,8 @@ universe = ->
 
 memo_universe = memoize(universe);
 
-writeFile = (output, options) ->
-  fs.writeFile output, minify(jade.renderFile("./_src/page.jade", _.merge(jade_opts, memo_universe(), options )), {}), (err) ->
+jadeWrite = (output, template, locals) ->
+  fs.writeFile output, minify(jade.renderFile(template, _.merge(jade_opts, memo_universe(), locals )), htmlMinOpts), (err) ->
     if err
       console.log err
     else
@@ -88,42 +96,23 @@ task 'new.blogEntry', (options) ->
     return
 
 task 'build.index', (options) ->
-  fs.writeFile "./index.html", jade.renderFile("./_src/index.jade", _.merge(jade_opts, memo_universe() )), (err) ->
-    if err
-      console.log err
-    else
-      console.log "./_src/index.jade > index.html"
-    return
+  jadeWrite "./index.html", "./_src/index.jade", {}
 
 task 'build.pages', (options) ->
   _.forEach memo_universe().pages, (page) ->
-    fs.writeFile('.' + page.dest, jade.renderFile('./_src/page.jade', _.merge(jade_opts, memo_universe(), {page: page})))
-    (err) ->
-      if err
-        console.log err
-      else
-        console.log "#{page.src} > #{page.dest}"
+    jadeWrite ".#{page.dest}" , "./_src/page.jade", {page: page}
 
 task 'build.blogs', (options) ->
   _.forEach memo_universe().blogEntries, (blogEntry) ->
    destination = '.' + blogEntry.dest
    mkdirp path.dirname(destination), (err) ->
-     fs.writeFile destination, jade.renderFile('./_src/blogEntryLayout.jade', _.merge(jade_opts, memo_universe(), {entry: blogEntry})), (err) ->
-       if err
-         console.log err
-       else
-         console.log "#{blogEntry.src} > #{destination}"
+     jadeWrite destination, './_src/blogEntryLayout.jade', {entry: blogEntry}
 
 task 'build.resume.html', (options) ->
-  fs.writeFile "./resume.html", jade.renderFile("./_src/page.jade", _.merge(jade_opts, memo_universe(), {page: mm.parseFileSync("./_src/resume.md")} )), (err) ->
-    if err
-      console.log err
-    else
-      console.log "resume.md > resume.html"
+  jadeWrite './resume.html', './_src/page.jade', {page: mm.parseFileSync("./_src/resume.md")}
 
 task 'build.readme', (options) ->
-  writeFile "./README.html", {page: mm.parseFileSync("./README.md")}
-  console.log "README.md > README.html"
+  jadeWrite "./README.html", "./_src/page.jade", {page: mm.parseFileSync("./README.md")}
 
 task 'build.assets.style', (options) ->
   styleFiles = [
@@ -132,7 +121,16 @@ task 'build.assets.style', (options) ->
     './_src/style.css'
   ]
   outFile = 'style.css'
-  file_concat styleFiles, outFile, (error) -> console.log "#{JSON.stringify styleFiles, null, 2} > #{outFile}"
+  readFiles(styleFiles, {encoding: 'utf8'})
+  .then (buffers) ->
+    buffers.join(' \n ')
+  .then (joined) ->
+    fs.writeFile outFile, new CleanCSS({
+      keepSpecialComments: 0
+    }).minify(joined).styles, (err) ->
+      if err then console.log console.error
+      else
+        console.log "#{JSON.stringify styleFiles, null, 2} > #{outFile}"
 
 task 'build.assets.image', (options) ->
   _.forEach memo_universe().blogEntries, (blogEntry) ->

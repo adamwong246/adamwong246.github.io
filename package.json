@@ -22,7 +22,6 @@
   ],
   "dependencies": {
     "coffee-script": "^1.9.0",
-    "concat": "^1.0.0",
     "filendir": "0.0.1",
     "fs-extra": "^0.16.3",
     "glob": "latest",
@@ -37,9 +36,9 @@
     "slug": "^0.8.0",
     "watch": "^0.14.0",
     "yaml-front-matter": "^3.2.3",
-    "html-minifier": "",
     "clean-css": "",
     "mkdirp-then": "",
-    "lwip": ""
+    "lwip": "",
+    "read-files-promise": ""
   }
 }

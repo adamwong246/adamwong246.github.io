@@ -34,16 +34,15 @@ html(lang="en")
         ul
           - for entry in blogEntries
             li #[a(href=entry.url)= entry.meta.title]
-      //aside.HolyGrail-ads
     footer.no-print
       #footer-content
+        a(href="mailto:" + package.author.email)= package.author.email
         ul
-          li #[a(href="mailto:" + package.author.email)= package.author.email]
           li #[a(href="https://twitter.com/adamwong246") twitter]
           li #[a(href="http://github.com/adamwong246") github]
           li #[a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange]
+          li #[a(href="https://www.reddit.com/user/adamwong246") reddit ]
+          li #[a(href="https://www.facebook.com/adamwong246") facebook ]
         span
           |v#{package.version} 
           a(href=package.repository.url) source
-        br
-        span= moment().format()

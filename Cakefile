@@ -98,7 +98,6 @@ task 'build.readme', (options) ->
 task 'build.assets.style', (options) ->
   styleFiles = [
     './node_modules/normalize.css/normalize.css'
-    './_src/flexbox-holy-grail.css'
     './_src/style.css'
   ]
   outFile = 'style.css'

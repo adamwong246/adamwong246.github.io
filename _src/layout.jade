@@ -25,32 +25,25 @@ html(lang="en")
         a(href="/")
           h1.site_title exact change only
         ul
-          li #[a(href="mailto:" + package.author.email)= package.author.email]
-          li #[a(href="https://twitter.com/adamwong246") twitter]
-          li #[a(href="http://github.com/adamwong246") github]
-          li #[a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange]
-        hr
-        ul
           li #[a(href="/README.html") README.html]
           li #[a(href="/resume.html") resume.html]
           li #[a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") resume.md]
-        hr
         ul
           - for page in pages
             li #[a(href=page.url)= page.url ]
-        hr
         ul
           - for entry in blogEntries
             li #[a(href=entry.url)= entry.meta.title]
       //aside.HolyGrail-ads
     footer.no-print
       #footer-content
-        a(href='/') home
-        br
+        ul
+          li #[a(href="mailto:" + package.author.email)= package.author.email]
+          li #[a(href="https://twitter.com/adamwong246") twitter]
+          li #[a(href="http://github.com/adamwong246") github]
+          li #[a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange]
         span
           |v#{package.version} 
           a(href=package.repository.url) source
-        br
-        a(href="mailto:" + package.author.email)= package.author.email
         br
         span= moment().format()

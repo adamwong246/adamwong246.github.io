@@ -165,7 +165,7 @@ HolyGrail {
 /*http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
 .Site {
   display: flex;
-  min-height: 100vh;
+  min-height: 130vh;
   flex-direction: column;
 }
 

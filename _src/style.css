@@ -1,8 +1,8 @@
 img {max-width:100%;}
 
-p, li, ol {max-width:35rem;}
+/*p, li, ol {max-width:35rem;}*/
 
-nav ul {
+nav ul, footer ul {
   -webkit-padding-start: 0px;
   list-style: none;
 }

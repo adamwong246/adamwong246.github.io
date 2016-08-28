@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -22,7 +22,6 @@
   ],
   "dependencies": {
     "coffee-script": "^1.9.0",
-    "filendir": "0.0.1",
     "fs-extra": "^0.16.3",
     "glob": "latest",
     "jade": "1.11.0",
@@ -39,6 +38,7 @@
     "clean-css": "",
     "mkdirp-then": "",
     "lwip": "",
-    "read-files-promise": ""
+    "read-files-promise": "",
+    "html-minifier": ""
   }
 }

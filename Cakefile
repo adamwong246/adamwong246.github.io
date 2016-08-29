@@ -89,9 +89,6 @@ task 'build.blogs', (options) ->
   _.each memoUniverse().blogEntries, (blogEntry) ->
    jadeWrite '.' + blogEntry.dest, './_src/blogEntryLayout.jade', {entry: blogEntry}
 
-task 'build.resume.html', (options) ->
-  jadeWrite './resume.html', './_src/page.jade', {page: mm.parseFileSync("./_src/resume.md")}
-
 task 'build.readme', (options) ->
   jadeWrite "./README.html", "./_src/page.jade", {page: mm.parseFileSync("./README.md")}
 
@@ -130,7 +127,6 @@ task 'build', (options) ->
   invoke('build.blogs')
   invoke('build.pages')
   invoke('build.readme')
-  invoke('build.resume.html')
   invoke('build.assets.style')
   invoke('build.assets.image')
 

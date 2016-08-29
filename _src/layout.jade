@@ -25,9 +25,8 @@ html(lang="en")
         a(href="/")
           h1.site_title exact change only
         ul
-          li #[a(href="/README.html") README.html]
-          li #[a(href="/resume.html") resume.html]
-          li #[a(href="https://raw.githubusercontent.com/adamwong246/adamwong246.github.io/master/_src/resume.md") resume.md]
+          li #[a(href="/README.html") README]
+          li #[a(href="/resume.html") resume]
         ul
           - for page in pages
             li #[a(href=page.url)= page.url ]

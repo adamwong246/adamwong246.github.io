@@ -26,7 +26,7 @@ memoUniverse = memoize ->
 
           m.dest = m.url + "/index.html"
           m.src = page
-          m.assets = {"jpgs": glob.sync("#{m.src }/*.jpg")}
+          m.assets = {"jpgs": glob.sync("#{m.src}/*.jpg")}
           _.each m.assets.jpgs, (jpg) ->
             m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
           m
@@ -52,18 +52,84 @@ memoUniverse = memoize ->
   "package": require("./package.json")
   "moment": moment = require("moment")
 
-jadeWrite = (output, template, locals) ->
-  mkdirp path.dirname(output), (err) ->
+jadeWrite = (out, template, locals, options) ->
+  mkdirp path.dirname(out), (err) ->
     if err then console.log err
     else
-      fs.writeFile output, minify(jade.renderFile(template, _.merge(pretty: true, memoUniverse(), locals )),
-        removeAttributeQuotes: true
-        removeComments: true
-        removeTagWhitespace: true
-        collapseWhitespace: true
-        minifyJS: true
-      ), (err) ->
-        if err then console.error(err) else console.log(output)
+      rendered = jade.renderFile(template, _.merge(pretty: true, memoUniverse(), locals ))
+      if options.minify
+        output = minify(rendered,
+          removeAttributeQuotes: true
+          removeComments: true
+          removeTagWhitespace: true
+          collapseWhitespace: true
+          minifyJS: true
+        )
+      else
+        output = rendered
+      fs.writeFile out, output, (err) ->
+        if err then console.error(err) else console.log("---> #{out}")
+
+build = (options) ->
+  jadeWrite "#{options.outFolder}/index.html", "./_src/index.jade", {}, {minify: options.minify}
+
+  _.each memoUniverse().blogEntries, (blogEntry) ->
+   jadeWrite "#{options.outFolder}#{blogEntry.dest}", './_src/blogEntryLayout.jade', {entry: blogEntry}, {minify: options.minify}
+
+  _.each memoUniverse().pages, (page) ->
+    jadeWrite "#{options.outFolder}#{page.dest}" , "./_src/page.jade", {page: page}, {minify: options.minify}
+
+  jadeWrite "#{options.outFolder}/README.html", "./_src/page.jade", {page: mm.parseFileSync("./README.md")}, {minify: options.minify}
+
+  # build styles
+  outFile = "#{options.outFolder}/style.css"
+  readFiles([
+    './node_modules/normalize.css/normalize.css'
+    './_src/style.css'
+  ], {encoding: 'utf8'})
+  .then (buffers) ->
+    buffers.join(' \n ')
+  .then (joined) ->
+    fs.writeFile outFile, new CleanCSS({
+      keepSpecialComments: 0
+    }).minify(joined).styles, (err) ->
+      if err then console.error err else console.log "---> #{outFile}"
+
+  # build images
+  _.each memoUniverse().blogEntries, (blogEntry) ->
+    _.each blogEntry.assets.jpgs, (srcPath) ->
+      optDest = "#{options.outFolder}#{blogEntry.url}/#{path.basename(srcPath)}"
+      lwip.open srcPath, (err, image) ->
+        image.batch()
+        .scale(0.2)
+        .writeFile(optDest,'jpg', {quality: 50}, (err) ->
+          if err then console.error err else console.log "---> #{optDest}"
+        )
+
+      origDest = "#{options.outFolder}#{blogEntry.url}/orig-#{path.basename(srcPath)}"
+      fs_extra.copy srcPath, origDest, (err) ->
+        if err then console.error(err) else console.log("---> #{origDest}")
+
+task 'develop', (options) ->
+  outFolder = './tmp'
+  build {outFolder: outFolder, minify: false}
+  console.log('server now running on port 8080...')
+  http.createServer((req, res) ->
+    new (sstatic.Server)(outFolder).serve req, res ).listen 8080
+  watch.createMonitor './_src', (monitor) ->
+    monitor.files['/**/*']
+    monitor.on 'created', (f, stat) ->
+      memoUniverse.clear();
+      invoke('build')
+    monitor.on 'changed', (f, curr, prev) ->
+      memoUniverse.clear();
+      invoke('build')
+    monitor.on 'removed', (f, stat) ->
+      memoUniverse.clear();
+      invoke('build')
+
+task 'produce', (options) ->
+  build {outFolder: '.', minify: true}
 
 task 'new.blogEntry', (options) ->
   maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blogEntries/*'), (page) ->
@@ -78,75 +144,3 @@ task 'new.blogEntry', (options) ->
   ---
   """, (err) ->
     if err then console.error(err) else console.log newFile
-
-task 'build.index', (options) ->
-  jadeWrite "./index.html", "./_src/index.jade", {}
-
-task 'build.pages', (options) ->
-  _.each memoUniverse().pages, (page) ->
-    jadeWrite ".#{page.dest}" , "./_src/page.jade", {page: page}
-
-task 'build.blogs', (options) ->
-  _.each memoUniverse().blogEntries, (blogEntry) ->
-   jadeWrite '.' + blogEntry.dest, './_src/blogEntryLayout.jade', {entry: blogEntry}
-
-task 'build.readme', (options) ->
-  jadeWrite "./README.html", "./_src/page.jade", {page: mm.parseFileSync("./README.md")}
-
-task 'build.assets.style', (options) ->
-  styleFiles = [
-    './node_modules/normalize.css/normalize.css'
-    './_src/style.css'
-  ]
-  outFile = 'style.css'
-  readFiles(styleFiles, {encoding: 'utf8'})
-  .then (buffers) ->
-    buffers.join(' \n ')
-  .then (joined) ->
-    fs.writeFile outFile, new CleanCSS({
-      keepSpecialComments: 0
-    }).minify(joined).styles, (err) ->
-      if err then console.error err else console.log "#{JSON.stringify styleFiles, null, 2} > #{outFile}"
-
-task 'build.assets.image', (options) ->
-  _.each memoUniverse().blogEntries, (blogEntry) ->
-    _.each blogEntry.assets.jpgs, (srcPath) ->
-      optDest = ".#{blogEntry.url}/#{path.basename(srcPath)}"
-      lwip.open srcPath, (err, image) ->
-        image.batch()
-        .scale(0.2)
-        .writeFile(optDest,'jpg', {quality: 50}, (err) ->
-          if err then console.error err else console.log "#{srcPath} > #{optDest}"
-        )
-
-      origDest = ".#{blogEntry.url}/orig-#{path.basename(srcPath)}"
-      fs_extra.copy srcPath, origDest, (err) ->
-        if err then console.error(err) else console.log("#{srcPath} -> #{origDest}")
-
-task 'build', (options) ->
-  invoke('build.index')
-  invoke('build.blogs')
-  invoke('build.pages')
-  invoke('build.readme')
-  invoke('build.assets.style')
-  invoke('build.assets.image')
-
-task 'server', (options) ->
-  console.log('server now running on port 8080...')
-  http.createServer((req, res) ->
-    new (sstatic.Server)('.').serve req, res ).listen 8080
-
-task 'develop', (options) ->
-  invoke('build')
-  invoke('server')
-  watch.createMonitor './_src', (monitor) ->
-    monitor.files['/**/*']
-    monitor.on 'created', (f, stat) ->
-      memoUniverse.clear();
-      invoke('build')
-    monitor.on 'changed', (f, curr, prev) ->
-      memoUniverse.clear();
-      invoke('build')
-    monitor.on 'removed', (f, stat) ->
-      memoUniverse.clear();
-      invoke('build')

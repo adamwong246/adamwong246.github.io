@@ -134,10 +134,6 @@ HolyGrail {
   padding-right: 1.5em;
 }
 
-.HolyGrail-content {
-  margin-top: 1.5em;
-}
-
 .HolyGrail-nav {
   order: -1;
 }
@@ -160,7 +156,8 @@ HolyGrail {
   .HolyGrail-content {
     flex: 1;
     padding: 0 2em;
-    margin: 0;
+    /*margin: 0;*/
+    margin-top: 1.5em;
   }
 }
 

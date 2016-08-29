@@ -1,6 +1,6 @@
 ## README
 
-An exceedingly simple static blog generator in a single [Cakefile](https://github.com/adamwong246/adamwong246.github.io/blob/master/Cakefile)
+An exceedingly simple static blog generator in a single, extremely hackable, [Cakefile](https://github.com/adamwong246/adamwong246.github.io/blob/master/Cakefile).
 
 ### Credits
 - http://necolas.github.io/normalize.css

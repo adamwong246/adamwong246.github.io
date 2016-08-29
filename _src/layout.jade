@@ -22,8 +22,7 @@ html(lang="en")
         block content
           != self.content
       nav.HolyGrail-nav.no-print
-        a(href="/")
-          h1.site_title exact change only
+        a(href="/") #[h1.site_title exact change only]
         a(href="/README.html") README
         ul
           - for page in pages
@@ -34,11 +33,14 @@ html(lang="en")
     footer.no-print
       #footer-content
         ul
-          li #[a(href="https://twitter.com/adamwong246") twitter]
+          li #[a(href="https://news.ycombinator.com/user?id=adamwong246") hacker news ]
           li #[a(href="http://github.com/adamwong246") github]
           li #[a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange]
           li #[a(href="https://www.reddit.com/user/adamwong246") reddit ]
           li #[a(href="https://www.facebook.com/adamwong246") facebook ]
+          li #[a(href="https://twitter.com/adamwong246") twitter]
+          li #[a(href="https://www.instagram.com/adamwong246/") instagram]
+          
         a(href="mailto:" + package.author.email)= package.author.email
         br
         a(href=package.repository.url) v#{package.version} 

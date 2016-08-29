@@ -33,6 +33,7 @@ memoUniverse = memoize ->
       )
     )
     .sortBy (n) -> new Date n.meta.publishedAt
+    .select (n) -> n.meta.published != false
     .value()
     .reverse()
 

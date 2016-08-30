@@ -33,7 +33,7 @@ memoUniverse = memoize ->
       )
     )
     .sortBy (n) -> new Date n.meta.publishedAt
-    .select (n) -> n.meta.published != false
+    .select (n) -> n.meta.publish != false
     .value()
     .reverse()
 
@@ -56,9 +56,8 @@ jadeWrite = (out, template, locals, options) ->
   mkdirp path.dirname(out), (err) ->
     if err then console.log err
     else
-      rendered = jade.renderFile(template, _.merge(pretty: true, memoUniverse(), locals ))
       if options.minify
-        output = minify(rendered,
+        output = minify(jade.renderFile(template, _.merge(memoUniverse(), locals )),
           removeAttributeQuotes: true
           removeComments: true
           removeTagWhitespace: true
@@ -66,7 +65,7 @@ jadeWrite = (out, template, locals, options) ->
           minifyJS: true
         )
       else
-        output = rendered
+        output = jade.renderFile(template, _.merge(pretty: true, memoUniverse(), locals ))
       fs.writeFile out, output, (err) ->
         if err then console.error(err) else console.log("---> #{out}")
 
@@ -81,7 +80,6 @@ build = (options) ->
 
   jadeWrite "#{options.outFolder}/README.html", "./_src/page.jade", {page: mm.parseFileSync("./README.md")}, {minify: options.minify}
 
-  # build styles
   outFile = "#{options.outFolder}/style.css"
   readFiles([
     './node_modules/normalize.css/normalize.css'
@@ -95,7 +93,6 @@ build = (options) ->
     }).minify(joined).styles, (err) ->
       if err then console.error err else console.log "---> #{outFile}"
 
-  # build images
   _.each memoUniverse().blogEntries, (blogEntry) ->
     _.each blogEntry.assets.jpgs, (srcPath) ->
       optDest = "#{options.outFolder}#{blogEntry.url}/#{path.basename(srcPath)}"
@@ -110,28 +107,28 @@ build = (options) ->
       fs_extra.copy srcPath, origDest, (err) ->
         if err then console.error(err) else console.log("---> #{origDest}")
 
-task 'develop', (options) ->
+task 'develop', "build and run the development server", (options) ->
   outFolder = './tmp'
   build {outFolder: outFolder, minify: false}
-  console.log('server now running on port 8080...')
   http.createServer((req, res) ->
     new (sstatic.Server)(outFolder).serve req, res ).listen 8080
+  console.log('server now running on port 8080...')
   watch.createMonitor './_src', (monitor) ->
     monitor.files['/**/*']
     monitor.on 'created', (f, stat) ->
       memoUniverse.clear();
-      invoke('build')
+      invoke('develop')
     monitor.on 'changed', (f, curr, prev) ->
       memoUniverse.clear();
-      invoke('build')
+      invoke('develop')
     monitor.on 'removed', (f, stat) ->
       memoUniverse.clear();
-      invoke('build')
+      invoke('develop')
 
-task 'produce', (options) ->
+task 'produce', "build a production version", (options) ->
   build {outFolder: '.', minify: true}
 
-task 'new.blogEntry', (options) ->
+task 'new.blogEntry', "generate a new empty blog post", (options) ->
   maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blogEntries/*'), (page) ->
     parseInt(path.basename(page, '.md'))
   )) + 1

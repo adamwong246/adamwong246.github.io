@@ -114,16 +114,16 @@ task 'develop', "build and run the development server", (options) ->
     new (sstatic.Server)(outFolder).serve req, res ).listen 8080
   console.log('server now running on port 8080...')
   watch.createMonitor './_src', (monitor) ->
-    monitor.files['/**/*']
+    monitor.files['./**/*']
     monitor.on 'created', (f, stat) ->
       memoUniverse.clear();
-      invoke('develop')
+      build {outFolder: outFolder, minify: false}
     monitor.on 'changed', (f, curr, prev) ->
       memoUniverse.clear();
-      invoke('develop')
+      build {outFolder: outFolder, minify: false}
     monitor.on 'removed', (f, stat) ->
       memoUniverse.clear();
-      invoke('develop')
+      build {outFolder: outFolder, minify: false}
 
 task 'produce', "build a production version", (options) ->
   build {outFolder: '.', minify: true}

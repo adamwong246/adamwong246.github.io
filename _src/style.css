@@ -206,9 +206,9 @@ body > footer > *, body > header > *{
  background: rgba(147, 128, 108, 0.1);
 }
 
-/*footer > #footer-content{
+footer > #footer-content{
   text-align: right;
-}*/
+}
 
 @media print
 {

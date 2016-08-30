@@ -37,18 +37,22 @@ memoUniverse = memoize ->
     .value()
     .reverse()
 
-  "pages": _.map(
-    glob.sync("_src/pages/**/*.md"), (page) ->
-      m = mm.parseFileSync(page)
-      m.url = "/#{page.replace('_src/pages/', '').replace(/\.[^/.]+$/, '')}"
+  "pages": _.chain(
+    _.map(
+      glob.sync("_src/pages/**/*.md"), (page) ->
+        m = mm.parseFileSync(page)
+        m.url = "/#{page.replace('_src/pages/', '').replace(/\.[^/.]+$/, '')}"
 
-      m.dest = m.url + "/index.html"
-      m.src = page
-      m.assets = {"jpgs": glob.sync("#{m.src}/*.jpg")}
-      _.each m.assets.jpgs, (jpg) ->
-        m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
-      m
-  )
+        m.dest = m.url + "/index.html"
+        m.src = page
+        m.assets = {"jpgs": glob.sync("#{m.src}/*.jpg")}
+        _.each m.assets.jpgs, (jpg) ->
+          m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
+        m
+    )
+  ).select (n) -> n.meta.publish != false
+  .value()
+
   "package": require("./package.json")
   "moment": moment = require("moment")
 

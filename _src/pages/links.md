@@ -1,3 +1,6 @@
+---
+publish: false
+---
 - https://news.ycombinator.com/
 - http://www.chrisdancy.com/
 - https://medium.com/snack-lords

@@ -10,11 +10,6 @@ HolyGrail {
   flex-direction: column;
 }
 
-.HolyGrail-header,
-.HolyGrail-footer {
-  flex: none; /* 2 */
-}
-
 .HolyGrail-body {
   display: flex;
   flex: 1 0 auto; /* 2 */
@@ -45,10 +40,9 @@ HolyGrail {
   }
 }
 
-/*http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
 .Site {
   display: flex;
-  min-height: 110vh;
+  min-height: 100vh;
   flex-direction: column;
 }
 
@@ -71,12 +65,6 @@ h2{
   margin-bottom: 0.2em;
 }
 
-footer {
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-bottom: 1.5em;
-}
-
 header {
   padding-top: 1.5em;
   padding-left: 1.5em;
@@ -89,10 +77,6 @@ body > header > *{
  border-radius: 3px;
  background: rgba(147, 128, 108, 0.1);
 }
-
-/*footer > #footer-content{
-  text-align: right;
-}*/
 
 @media print
 {

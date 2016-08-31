@@ -1,0 +1,6 @@
+extends layout.jade
+
+block content
+  ul
+    - for entry in blogEntries
+      li #[a(href=entry.url)= entry.meta.title]

@@ -76,6 +76,8 @@ jadeWrite = (out, template, locals, options) ->
 build = (options) ->
   jadeWrite "#{options.outFolder}/index.html", "./_src/index.jade", {}, {minify: options.minify}
 
+  jadeWrite "#{options.outFolder}/blog.html", "./_src/blog.jade", {}, {minify: options.minify}
+
   _.each memoUniverse().blogEntries, (blogEntry) ->
    jadeWrite "#{options.outFolder}#{blogEntry.dest}", './_src/blogEntryLayout.jade', {entry: blogEntry}, {minify: options.minify}
 

@@ -15,7 +15,7 @@
 
 ## Experience
 
-### Full Stack Developer, [chroma.io](http://www.chroma.io/)
+### Full Stack Developer, [chroma](http://www.chroma.io/)
 
 #### May, 2013
 
@@ -23,7 +23,7 @@ Designed and built "Chroma Fund", a marketplace lending platform that provides i
 
 - Attended TechStore Summer 2016
 
-### Ruby on Rails Developer, [hubbubhealth.com](https://www.hubbubhealth.com/)
+### Ruby on Rails Developer, [hubbub health](https://www.hubbubhealth.com/)
 
 #### May, 2013 - February, 2015
 
@@ -35,7 +35,7 @@ To meet the changing requirements of our users, I worked with an existing team t
 - Revived an out of date Rspec and Cucumber test suite for continuous integration
 - Optimized high traffic queries by replacing ActiveRecord calls with raw SQL
 
-### Ruby on Rails Developer, [spaceport.io](http://spaceport.io/)
+### Ruby on Rails Developer, [spaceport](http://spaceport.io/)
 
 #### June 2012 - March, 2013
 

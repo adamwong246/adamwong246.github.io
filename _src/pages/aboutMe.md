@@ -1,6 +1,8 @@
 # about me
 
-My name is Adam Wong. I'm a living in Portland Oregon and working for [chroma](https://chroma.fund), where I double as a full stack web developer and amateur economics hacker.
+My name is Adam Wong. I'm a living in beautiful Portland Oregon and working for [chroma](https://chroma.fund), where I double as a full stack computer wizard, amateur designer and wannabe economics hacker.
+
+I have a wonderful boyfriend, Vince, and 2 dogs. I also drink too much coffee and I'm obsessed with Soylent.
 
 ---
 
@@ -16,7 +18,7 @@ tymtu is an experimental hierarchical calendar based on gantt charts.
 
 ### freak flag
 
-A social network and dating app for "weird" people.
+A gamified social network and dating app for "weird" people.
 
 ### dotfiles
 

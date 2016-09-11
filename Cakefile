@@ -113,6 +113,10 @@ build = (options) ->
       fs_extra.copy srcPath, origDest, (err) ->
         if err then console.error(err) else console.log("---> #{origDest}")
 
+  profilePicOutfile = "#{options.outFolder}/evilShroom.png"
+  fs_extra.copy "_src/evilShroom.png", profilePicOutfile, (err) ->
+    if err then console.error(err) else console.log("---> #{profilePicOutfile}")
+
 task 'develop', "build and run the development server", (options) ->
   outFolder = './tmp'
   build {outFolder: outFolder, minify: false}

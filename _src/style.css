@@ -4,43 +4,35 @@
   }
 }
 
-.HolyGrail-body {
+body {
   display: flex;
-  flex: 1 0 auto; /* 2 */
+  min-height: 100vh;
   flex-direction: column;
+  flex: 1 0 auto; /* 2 */
   padding-left: 1.5em;
   padding-right: 1.5em;
 }
 
-.HolyGrail-nav {
-  order: -1;
+main {
+  flex: 1;
 }
 
-.HolyGrail-nav {
+nav {
+  order: -1;
   padding: 1em;
   border-radius: 3px;
   background: rgba(147, 128, 108, 0.1);
 }
 
 @media (min-width: 768px) {
-  .HolyGrail-body {
+  body {
     flex-direction: row;
   }
-  .HolyGrail-content {
+  main {
     flex: 1;
     padding: 0 2em;
     margin-top: 1.5em;
   }
-}
-
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
 }
 
 img {max-width:100%;}
@@ -78,10 +70,9 @@ body > header > *{
 
 @media print
 {
-    .no-print, .no-print *
-    {
-        display: none !important;
-    }
+  nav {
+    display: none !important;
+  }
 }
 
 /*http://avexdesigns.com/responsive-youtube-embed/*/

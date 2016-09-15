@@ -37,21 +37,31 @@ memoUniverse = memoize ->
     .value()
     .reverse()
 
-  "pages": _.chain(
-    _.map(
-      glob.sync("_src/pages/**/*.md"), (page) ->
-        m = mm.parseFileSync(page)
-        m.url = "/#{page.replace('_src/pages/', '').replace(/\.[^/.]+$/, '')}"
-
+  "pages":
+    _.union(
+      _.chain(glob.sync("_src/pages/**/*.jade"))
+      .map (jadeFile) ->
+        page = {}
+        page.content = jade.renderFile(jadeFile)
+        page.url = "/#{jadeFile.replace('_src/pages/', '').replace(/\.[^/.]+$/, '')}"
+        page.dest = page.url + "/index.html"
+        page.src = jadeFile
+        page
+      .value()
+    ,
+      _.chain(glob.sync("_src/pages/**/*.md"))
+      .map (markdownFile) ->
+        m = mm.parseFileSync(markdownFile)
+        m.url = "/#{markdownFile.replace('_src/pages/', '').replace(/\.[^/.]+$/, '')}"
         m.dest = m.url + "/index.html"
-        m.src = page
+        m.src = markdownFile
         m.assets = {"jpgs": glob.sync("#{m.src}/*.jpg")}
         _.each m.assets.jpgs, (jpg) ->
           m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
         m
+      .select (n) -> n.meta.publish != false
+      .value()
     )
-  ).select (n) -> n.meta.publish != false
-  .value()
 
   "package": require("./package.json")
   "moment": moment = require("moment")
@@ -119,6 +129,7 @@ build = (options) ->
 
 task 'develop', "build and run the development server", (options) ->
   outFolder = './tmp'
+  fs_extra.removeSync(outFolder)
   build {outFolder: outFolder, minify: false}
   http.createServer((req, res) ->
     new (sstatic.Server)(outFolder).serve req, res ).listen 8080

@@ -4,12 +4,6 @@
   }
 }
 
-HolyGrail {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-}
-
 .HolyGrail-body {
   display: flex;
   flex: 1 0 auto; /* 2 */

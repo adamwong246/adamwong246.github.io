@@ -5,9 +5,7 @@
 
 ## Technical Skills
 
-- Node, Meteor, NPM
-- Ruby on Rails
-- Mongo and SQL
+- Node and Meteor, Ruby on Rails
 - Github, Heroku and Amazon services
 - Java and Android
 - BDD and TDD methodologies
@@ -19,9 +17,12 @@
 
 #### May, 2013
 
-Designed and built "Chroma Fund", a marketplace lending platform that provides investors with access to bundles of small business loans.
+Engineered "Chroma Fund", a marketplace lending platform providing investors with bundles of small business loans.
 
-- Attended TechStore Summer 2016
+- designed and implemented Meteor application
+- was responsible for designing UX and UI as well as implementing front-end
+- created "explainer" video in Adobe Animate
+- attended TechStars Summer 2016 in NYC
 
 ### Ruby on Rails Developer, [hubbub health](https://www.hubbubhealth.com/)
 

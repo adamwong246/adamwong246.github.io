@@ -16,7 +16,7 @@
 
 ### Full Stack Developer, [chroma](http://www.chroma.io/)
 
-#### May, 2013
+#### February, 2015
 
 I engineered the Meteor app "Chroma Fund", a marketplace lending platform providing investors with bundles of small business loans.
 
@@ -48,7 +48,7 @@ I developed the RoR app, spaceport.io, a platform for porting Actionscript games
 - developed according to BDD methodologies using Cucumber
 - leveraged the Chargify API to enable payments
 
-### Android Developer, [Burnside Digitial](http://www.burnsidedigital.com) (formerly ELC Technologies)
+### Android Developer, [Burnside Digital](http://www.burnsidedigital.com) (formerly ELC Technologies)
 
 #### 2011 - April 2012
 

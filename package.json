@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -27,6 +27,7 @@
     "jade": "1.11.0",
     "lodash": "^2.4.1",
     "marky-mark": "latest",
+    "markdown-pdf": "",
     "memoizee": "^0.3.8",
     "moment": "^2.9.0",
     "node-static": "^0.7.6",

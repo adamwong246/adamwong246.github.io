@@ -21,30 +21,18 @@ html(lang="en")
       block content
         != self.content
     nav
+      //- img#profile(src="/evilShroom.png")
       a(href="/") #[h1.site_title exact change only]
-      img#profile(src="/evilShroom.png")
       br
       a(href="/README.html") README
       br
-      a(href="/blog.html") blog
-      ul
-        - for page in pages
-          li #[a(href=page.url)= page.url ]
+      a(href="/blog.html") blog entries
+      br
+      - for page in pages
+        a(href=page.url)= page.url
+        br
       a(href="mailto:" + package.author.email)= package.author.email
-      ul
-        li #[a(href="https://news.ycombinator.com/user?id=adamwong246") hacker news ]
-        li #[a(href="http://github.com/adamwong246") github]
-        li #[a(href="https://www.linkedin.com/in/adam-wong-4634421b") linkedin]
-        li #[a(href="http://stackexchange.com/users/304854/adamwong246?tab=top") stack exchange]
-        li #[a(href="https://www.reddit.com/user/adamwong246") reddit ]
-        li #[a(href="https://www.facebook.com/adamwong246") facebook ]
-        li #[a(href="https://twitter.com/adamwong246") twitter]
-        li #[a(href="https://www.instagram.com/adamwong246/") instagram]
-        li #[a(href="https://plus.google.com/104202656400776521456") google+]
-        li #[a(href="https://soundcloud.com/adamwong246") soundcloud]
-        li #[a(href="https://www.pinterest.com/adamwong246/") pinterest]
-        li #[a(href="http://adamwong246.tumblr.com/") tumblr]
-        li #[a(href="https://www.producthunt.com/@adamwong246") product hunt]
+      br
       a(href=package.repository.url) v#{package.version}
       br
       span #{moment().format()}

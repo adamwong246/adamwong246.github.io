@@ -14,7 +14,7 @@
 
 ## Experience
 
-### Full stack Developer, [Chroma](http://www.chroma.io/)
+### full stack developer, [Chroma](http://www.chroma.io/)
 
 #### February, 2015 - current
 

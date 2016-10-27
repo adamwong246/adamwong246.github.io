@@ -29,6 +29,11 @@ memoUniverse = memoize ->
           m.assets = {"jpgs": glob.sync("#{m.src}/*.jpg")}
           _.each m.assets.jpgs, (jpg) ->
             m.content = m.content.replace(path.basename(jpg), m.url + "/" + path.basename(jpg))
+
+          modFile = "#{page}/_.json"
+
+          if fs.stat modFile, (err, stats) ->
+            m.modifiers = JSON.parse(fs.readFileSync(modFile, 'utf8'))
           m
       )
     )
@@ -113,6 +118,8 @@ build = (options) ->
     _.each blogEntry.assets.jpgs, (srcPath) ->
       optDest = "#{options.outFolder}#{blogEntry.url}/#{path.basename(srcPath)}"
       lwip.open srcPath, (err, image) ->
+
+        if blogEntry.modifiers[]
         image.batch()
         .scale(0.2)
         .writeFile(optDest,'jpg', {quality: 50}, (err) ->

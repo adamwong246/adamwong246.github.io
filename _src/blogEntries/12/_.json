@@ -1,0 +1,13 @@
+{
+  "assets": {
+     "booting.jpg": {
+        "transform": {"scale": 0.2}
+     },
+     "controllers.jpg": {
+        "transform": {"scale": 0.2}
+     },
+     "mm2.jpg": {
+        "transform": {"scale": 0.2}
+     }
+  }
+}

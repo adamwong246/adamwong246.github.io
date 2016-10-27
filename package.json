@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.13.9",
+  "version": "0.14.0",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -21,7 +21,6 @@
     "cake"
   ],
   "dependencies": {
-    "coffee-script": "^1.9.0",
     "fs-extra": "^0.16.3",
     "glob": "latest",
     "jade": "1.11.0",

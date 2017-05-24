@@ -14,9 +14,16 @@
 
 ## Experience
 
+### software engineer, [OpenGov](http://www.opengov.com/)
+
+#### November, 2016 - Current
+
+- implemented charts in D3 and react
+- developed a continuous integration and delivery process with Jenkins.
+
 ### full stack developer, [Chroma](http://www.chroma.io/)
 
-#### February, 2015 - current
+#### February, 2015 - August, 2016
 
 I engineered the Meteor app "Chroma Fund", a marketplace lending platform providing investors with bundles of small business loans.
 

@@ -5,9 +5,9 @@
 
 ## Technical Skills
 
-- Node and Meteor, Ruby on Rails
-- HTML, CSS, JS, etc
-- Github, Heroku and Amazon services
+- Typescript, React, Node, Meteor, Ruby on Rails
+- Docker and DockerHub
+- Github, Heroku Jenkins and Amazon AWS 
 - Java and Android
 - BDD and TDD methodologies
 - certified Scrum Master
@@ -19,7 +19,7 @@
 #### November, 2016 - Current
 
 - implemented charts in D3 and react
-- developed a continuous integration and delivery process with Jenkins.
+- developed a continuous integration and delivery process with Jenkins, Docker and AWS.
 
 ### full stack developer, [Chroma](http://www.chroma.io/)
 

@@ -15,17 +15,14 @@
     "url": "https://github.com/adamwong246/adamwong246.github.io/issues"
   },
   "homepage": "http://adamwong246.github.io/",
-  "scripts": {
-    "pack": "webpack --config webpack.config.js"
-   }.
+
   "dependencies": {
     "clean-css": "",
-    "fs-extra": "^0.16.3",
+    "fs-extra": "9.0.0",
     "glob": "latest",
     "html-minifier": "",
     "jade": "1.11.0",
     "lodash": "^2.4.1",
-    "lwip": "",
     "markdown-pdf": "",
     "marky-mark": "latest",
     "memoizee": "^0.3.8",
@@ -38,8 +35,5 @@
     "slug": "^0.8.0",
     "watch": "^0.14.0",
     "yaml-front-matter": "^3.2.3"
-  },
-  "devDependencies": {
-    "webpack": "^4.29.2"
   }
 }

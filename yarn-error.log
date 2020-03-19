@@ -1,0 +1,139 @@
+Arguments: 
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js add lwip
+
+PATH: 
+  /Users/adam/.nvm/versions/node/v12.16.1/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  12.16.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "exact-change-only",
+    "version": "0.14.0",
+    "license": "ISC",
+    "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
+    "author": {
+      "name": "Adam Wong",
+      "email": "adamwong246@gmail.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/adamwong246/adamwong246.github.io"
+    },
+    "bugs": {
+      "url": "https://github.com/adamwong246/adamwong246.github.io/issues"
+    },
+    "homepage": "http://adamwong246.github.io/",
+  
+    "dependencies": {
+      "clean-css": "",
+      "fs-extra": "^0.16.3",
+      "glob": "latest",
+      "html-minifier": "",
+      "jade": "1.11.0",
+      "lodash": "^2.4.1",
+      "markdown-pdf": "",
+      "marky-mark": "latest",
+      "memoizee": "^0.3.8",
+      "mkdirp-then": "",
+      "moment": "^2.9.0",
+      "node-static": "^0.7.6",
+      "normalize.css": "^3.0.2",
+      "path": "^0.11.14",
+      "read-files-promise": "",
+      "slug": "^0.8.0",
+      "watch": "^0.14.0",
+      "yaml-front-matter": "^3.2.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: /Users/adam/Programming/adamwong246.github.io/node_modules/lwip: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c node-gyp rebuild
+  Directory: /Users/adam/Programming/adamwong246.github.io/node_modules/lwip
+  Output:
+  gyp info it worked if it ends with ok
+  gyp info using node-gyp@5.0.5
+  gyp info using node@12.16.1 | darwin | x64
+  gyp info find Python using Python version 2.7.10 found at "/usr/bin/python"
+  gyp info spawn /usr/bin/python
+  gyp info spawn args [
+  gyp info spawn args   '/Users/adam/.nvm/versions/node/v12.16.1/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
+  gyp info spawn args   'binding.gyp',
+  gyp info spawn args   '-f',
+  gyp info spawn args   'make',
+  gyp info spawn args   '-I',
+  gyp info spawn args   '/Users/adam/Programming/adamwong246.github.io/node_modules/lwip/build/config.gypi',
+  gyp info spawn args   '-I',
+  gyp info spawn args   '/Users/adam/.nvm/versions/node/v12.16.1/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
+  gyp info spawn args   '-I',
+  gyp info spawn args   '/Users/adam/Library/Caches/node-gyp/12.16.1/include/node/common.gypi',
+  gyp info spawn args   '-Dlibrary=shared_library',
+  gyp info spawn args   '-Dvisibility=default',
+  gyp info spawn args   '-Dnode_root_dir=/Users/adam/Library/Caches/node-gyp/12.16.1',
+  gyp info spawn args   '-Dnode_gyp_dir=/Users/adam/.nvm/versions/node/v12.16.1/lib/node_modules/npm/node_modules/node-gyp',
+  gyp info spawn args   '-Dnode_lib_file=/Users/adam/Library/Caches/node-gyp/12.16.1/<(target_arch)/node.lib',
+  gyp info spawn args   '-Dmodule_root_dir=/Users/adam/Programming/adamwong246.github.io/node_modules/lwip',
+  gyp info spawn args   '-Dnode_engine=v8',
+  gyp info spawn args   '--depth=.',
+  gyp info spawn args   '--no-parallel',
+  gyp info spawn args   '--generator-output',
+  gyp info spawn args   'build',
+  gyp info spawn args   '-Goutput_dir=.'
+  gyp info spawn args ]
+  gyp info spawn make
+  gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+    CXX(target) Release/obj.target/lwip_decoder/src/decoder/init.o
+  In file included from ../src/decoder/init.cpp:1:
+  ../src/decoder/decoder.h:91:6: error: variable has incomplete type 'void'
+  void initAll(Handle<Object> exports);
+       ^
+  ../src/decoder/decoder.h:91:14: error: use of undeclared identifier 'Handle'
+  void initAll(Handle<Object> exports);
+               ^
+  ../src/decoder/decoder.h:91:21: error: 'Object' does not refer to a value
+  void initAll(Handle<Object> exports);
+                      ^
+  /Users/adam/Library/Caches/node-gyp/12.16.1/include/node/v8.h:3496:17: note: declared here
+  class V8_EXPORT Object : public Value {
+                  ^
+  In file included from ../src/decoder/init.cpp:1:
+  ../src/decoder/decoder.h:91:29: error: use of undeclared identifier 'exports'
+  void initAll(Handle<Object> exports);
+                              ^
+  4 errors generated.
+  make: *** [Release/obj.target/lwip_decoder/src/decoder/init.o] Error 1
+  gyp ERR! build error 
+  gyp ERR! stack Error: `make` failed with exit code: 2
+  gyp ERR! stack     at ChildProcess.onExit (/Users/adam/.nvm/versions/node/v12.16.1/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:194:23)
+  gyp ERR! stack     at ChildProcess.emit (events.js:311:20)
+  gyp ERR! stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:275:12)
+  gyp ERR! System Darwin 15.4.0
+  gyp ERR! command "/Users/adam/.nvm/versions/node/v12.16.1/bin/node" "/Users/adam/.nvm/versions/node/v12.16.1/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+  gyp ERR! cwd /Users/adam/Programming/adamwong246.github.io/node_modules/lwip
+  gyp ERR! node -v v12.16.1
+  gyp ERR! node-gyp -v v5.0.5
+  gyp ERR! not ok
+      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:311:20)
+      at maybeClose (internal/child_process.js:1021:16)
+      at Socket.<anonymous> (internal/child_process.js:443:11)
+      at Socket.emit (events.js:311:20)
+      at Pipe.<anonymous> (net.js:668:12)

@@ -17,13 +17,13 @@ sstatic = require('node-static');
 watch = require('watch');
 minify = require('html-minifier').minify;
 mkdirp = require('mkdirp');
-lwip = require('lwip');
+// lwip = require('lwip');
 CleanCSS = require('clean-css');
 
 memoUniverse = memoize(function() {
   var moment;
   return {
-    "blogEntries": _.chain(_.map(glob.sync("_src/blogEntries/*"), function(page) {
+    "blogEntries": _.chain(_.map(glob.sync("src/blogEntries/*"), function(page) {
       var m;
       m = mm.parseFileSync(page + "/index.md");
       m.url = "/blog/" + (path.basename(page)) + "-" + (slug(m.meta.title));
@@ -41,18 +41,18 @@ memoUniverse = memoize(function() {
     }).select(function(n) {
       return n.meta.publish !== false;
     }).value().reverse(),
-    "pages": _.union(_.chain(glob.sync("_src/pages/**/*.jade")).map(function(jadeFile) {
+    "pages": _.union(_.chain(glob.sync("src/pages/**/*.jade")).map(function(jadeFile) {
       var page;
       page = {};
       page.content = jade.renderFile(jadeFile);
-      page.url = "/" + (jadeFile.replace('_src/pages/', '').replace(/\.[^\/.]+$/, ''));
+      page.url = "/" + (jadeFile.replace('src/pages/', '').replace(/\.[^\/.]+$/, ''));
       page.dest = page.url + "/index.html";
       page.src = jadeFile;
       return page;
-    }).value(), _.chain(glob.sync("_src/pages/**/*.md")).map(function(markdownFile) {
+    }).value(), _.chain(glob.sync("src/pages/**/*.md")).map(function(markdownFile) {
       var m;
       m = mm.parseFileSync(markdownFile);
-      m.url = "/" + (markdownFile.replace('_src/pages/', '').replace(/\.[^\/.]+$/, ''));
+      m.url = "/" + (markdownFile.replace('src/pages/', '').replace(/\.[^\/.]+$/, ''));
       m.dest = m.url + "/index.html";
       m.src = markdownFile;
       m.assets = {
@@ -102,33 +102,33 @@ jadeWrite = function(out, template, locals, options) {
 
 build = function(options) {
   var outFile, profilePicOutfile;
-  jadeWrite(options.outFolder + "/index.html", "./_src/index.jade", {}, {
+  jadeWrite(options.outFolder + "/index.html", "./src/index.jade", {}, {
     minify: options.minify
   });
-  jadeWrite(options.outFolder + "/blog.html", "./_src/blog.jade", {}, {
+  jadeWrite(options.outFolder + "/blog.html", "./src/blog.jade", {}, {
     minify: options.minify
   });
   _.each(memoUniverse().blogEntries, function(blogEntry) {
-    return jadeWrite("" + options.outFolder + blogEntry.dest, './_src/blogEntryLayout.jade', {
+    return jadeWrite("" + options.outFolder + blogEntry.dest, './src/blogEntryLayout.jade', {
       entry: blogEntry
     }, {
       minify: options.minify
     });
   });
   _.each(memoUniverse().pages, function(page) {
-    return jadeWrite("" + options.outFolder + page.dest, "./_src/page.jade", {
+    return jadeWrite("" + options.outFolder + page.dest, "./src/page.jade", {
       page: page
     }, {
       minify: options.minify
     });
   });
-  jadeWrite(options.outFolder + "/README.html", "./_src/page.jade", {
+  jadeWrite(options.outFolder + "/README.html", "./src/page.jade", {
     page: mm.parseFileSync("./README.md")
   }, {
     minify: options.minify
   });
   outFile = options.outFolder + "/style.css";
-  readFiles(['./node_modules/normalize.css/normalize.css', './_src/style.css'], {
+  readFiles(['./node_modules/normalize.css/normalize.css', './src/style.css'], {
     encoding: 'utf8'
   }).then(function(buffers) {
     return buffers.join(' \n ');
@@ -147,17 +147,17 @@ build = function(options) {
     return _.each(blogEntry.assets.jpgs, function(srcPath) {
       var optDest, origDest;
       optDest = "" + options.outFolder + blogEntry.url + "/" + (path.basename(srcPath));
-      lwip.open(srcPath, function(err, image) {
-        return image.batch().scale(0.2).writeFile(optDest, 'jpg', {
-          quality: 50
-        }, function(err) {
-          if (err) {
-            return console.error(err);
-          } else {
-            return console.log("---> " + optDest);
-          }
-        });
-      });
+      // lwip.open(srcPath, function(err, image) {
+      //   return image.batch().scale(0.2).writeFile(optDest, 'jpg', {
+      //     quality: 50
+      //   }, function(err) {
+      //     if (err) {
+      //       return console.error(err);
+      //     } else {
+      //       return console.log("---> " + optDest);
+      //     }
+      //   });
+      // });
       origDest = "" + options.outFolder + blogEntry.url + "/orig-" + (path.basename(srcPath));
       return fs_extra.copy(srcPath, origDest, function(err) {
         if (err) {
@@ -169,7 +169,7 @@ build = function(options) {
     });
   });
   profilePicOutfile = options.outFolder + "/evilShroom.png";
-  return fs_extra.copy("_src/evilShroom.png", profilePicOutfile, function(err) {
+  return fs_extra.copy("src/evilShroom.png", profilePicOutfile, function(err) {
     if (err) {
       return console.error(err);
     } else {
@@ -179,7 +179,7 @@ build = function(options) {
 };
 
 if (process.argv[2] == 'produce') {
-  return build({outFolder: '.', minify: true});
+  return build({outFolder: './dist', minify: true});
 
 } else if (process.argv[2] == 'develop') {
   var outFolder;
@@ -193,7 +193,7 @@ if (process.argv[2] == 'produce') {
     return new sstatic.Server(outFolder).serve(req, res);
   }).listen(8080);
   console.log('server now running on port 8080...');
-  return watch.createMonitor('./_src', function(monitor) {
+  return watch.createMonitor('./src', function(monitor) {
     monitor.files['./**/*'];
     monitor.on('created', function(f, stat) {
       memoUniverse.clear();
@@ -219,10 +219,10 @@ if (process.argv[2] == 'produce') {
   });
 } else if (process.argv[2] == 'newBlogEntry') {
   var maxPlusOne, newFile;
-  maxPlusOne = Math.max.apply(null, _.map(glob.sync('_src/blogEntries/*'), function(page) {
+  maxPlusOne = Math.max.apply(null, _.map(glob.sync('src/blogEntries/*'), function(page) {
     return parseInt(path.basename(page, '.md'));
   })) + 1;
-  newFile = "./_src/blogEntries/" + maxPlusOne + "/index.md";
+  newFile = "./src/blogEntries/" + maxPlusOne + "/index.md";
   return fs_extra.outputFile(newFile, "---\ntitle: CHANGE ME\npublishedAt: " + (new Date().toString()) + "\n---", function(err) {
     if (err) {
       return console.error(err);

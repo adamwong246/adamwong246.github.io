@@ -5,19 +5,19 @@ sstatic = require('node-static');
 build = require('./build.js');
 server = require('./server.js');
 
-const clearAndWrite = (memoUniverse, outFolder) => {
-  memoUniverse.clear();
-  return build({
-    outFolder: outFolder,
-    minify: false
-  });
-};
+// const clearAndWrite = (memoUniverse, outFolder) => {
+//   memoUniverse.clear();
+//   return build({
+//     outFolder: outFolder,
+//     minify: false
+//   });
+// };
 
-module.exports = function () {
+module.exports = function (memo) {
   var outFolder;
   outFolder = './tmp';
   fs_extra.removeSync(outFolder);
-  build({
+  build(memo, {
     outFolder: outFolder,
     minify: false
   });

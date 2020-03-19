@@ -3,33 +3,41 @@ var CleanCSS = require('clean-css');
 readFiles = require('read-files-promise');
 fs_extra = require('fs-extra');
 lwip = require('js-lwip');
+moment = require('moment');
 
 jadeWrite = require('./jadeWrite.js');
 
-module.exports = function(options) {
+module.exports = function(memo, options) {
   var outFile, profilePicOutfile;
-  jadeWrite(options.outFolder + "/index.html", "./src/index.jade", {}, {
+  console.log(memo)
+
+  jadeWrite(memo, options.outFolder + "/index.html", "./src/index.jade", memo, {
     minify: options.minify
   });
-  jadeWrite(options.outFolder + "/blog.html", "./src/blog.jade", {}, {
+  jadeWrite(memo, options.outFolder + "/blog.html", "./src/blog.jade", memo, {
     minify: options.minify
   });
-  _.each(memoUniverse().blogEntries, function(blogEntry) {
-    return jadeWrite("" + options.outFolder + blogEntry.dest, './src/blogEntryLayout.jade', {
-      entry: blogEntry
+  _.each(memo.blogEntries, function(blogEntry) {
+    return jadeWrite(memo, "" + options.outFolder + blogEntry.dest, './src/blogEntryLayout.jade', {
+      entry: blogEntry,
+      moment: moment,
+      ...memo
+    }, {
+      minify: options.minify
+
+    });
+  });
+  _.each(memo.pages, function(page) {
+    return jadeWrite(memo, "" + options.outFolder + page.dest, "./src/page.jade", {
+      page: page,
+      ...memo
     }, {
       minify: options.minify
     });
   });
-  _.each(memoUniverse().pages, function(page) {
-    return jadeWrite("" + options.outFolder + page.dest, "./src/page.jade", {
-      page: page
-    }, {
-      minify: options.minify
-    });
-  });
-  jadeWrite(options.outFolder + "/README.html", "./src/page.jade", {
-    page: mm.parseFileSync("./README.md")
+  jadeWrite(memo, options.outFolder + "/README.html", "./src/page.jade", {
+    page: mm.parseFileSync("./README.md"),
+    ...memo
   }, {
     minify: options.minify
   });
@@ -49,7 +57,7 @@ module.exports = function(options) {
       }
     });
   });
-  _.each(memoUniverse().blogEntries, function(blogEntry) {
+  _.each(memo.blogEntries, function(blogEntry) {
     return _.each(blogEntry.assets.jpgs, function(srcPath) {
       var optDest, origDest;
       optDest = "" + options.outFolder + blogEntry.url + "/" + (path.basename(srcPath));

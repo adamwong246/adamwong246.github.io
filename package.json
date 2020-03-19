@@ -15,7 +15,11 @@
     "url": "https://github.com/adamwong246/adamwong246.github.io/issues"
   },
   "homepage": "http://adamwong246.github.io/",
-
+  "scripts": {
+    "develop": "node index.js develop",
+    "produce": "node index.js produce",
+    "deploy": "git push origin `git subtree split --prefix dist distinit`:master --force"
+  },
   "dependencies": {
     "clean-css": "",
     "fs-extra": "9.0.0",

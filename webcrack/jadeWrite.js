@@ -3,14 +3,14 @@ jade = require("jade");
 fs = require("fs");
 minify = require('html-minifier').minify;
 
-module.exports = function(memo, out, template, locals, options) {
+module.exports = function(out, template, locals, options) {
   return mkdirp(path.dirname(out), function(err) {
     var output;
     if (err) {
       return console.log(err);
     } else {
       if (options.minify) {
-        output = minify(jade.renderFile(template, _.merge(memo, locals)), {
+        output = minify(jade.renderFile(template, _.merge(options, locals)), {
           removeAttributeQuotes: true,
           removeComments: true,
           removeTagWhitespace: true,

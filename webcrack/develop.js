@@ -5,13 +5,13 @@ sstatic = require('node-static');
 build = require('./build.js');
 server = require('./server.js');
 
-// const clearAndWrite = (memoUniverse, outFolder) => {
-//   memoUniverse.clear();
-//   return build({
-//     outFolder: outFolder,
-//     minify: false
-//   });
-// };
+const clearAndWrite = (memo, outFolder) => {
+  memo.clear();
+  return build(memo, {
+    outFolder: outFolder,
+    minify: false
+  });
+};
 
 module.exports = function (memo) {
   var outFolder;
@@ -25,13 +25,13 @@ module.exports = function (memo) {
   return watch.createMonitor('./src', function(monitor) {
     monitor.files['./**/*'];
     monitor.on('created', function(f, stat) {
-      clearAndWrite(memoUniverse, outFolder)
+      clearAndWrite(memo, outFolder)
     });
     monitor.on('changed', function(f, curr, prev) {
-      clearAndWrite(memoUniverse, outFolder)
+      clearAndWrite(memo, outFolder)
     });
     monitor.on('removed', function(f, stat) {
-      clearAndWrite(memoUniverse, outFolder)
+      clearAndWrite(memo, outFolder)
     });
   });
 }

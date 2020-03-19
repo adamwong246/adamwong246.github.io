@@ -9,19 +9,17 @@ jadeWrite = require('./jadeWrite.js');
 
 module.exports = function(memo, options) {
   var outFile, profilePicOutfile;
-  console.log(memo)
-
-  jadeWrite(memo, options.outFolder + "/index.html", "./src/index.jade", memo, {
+  jadeWrite(options.outFolder + "/index.html", "./src/index.jade", memo(), {
     minify: options.minify
   });
-  jadeWrite(memo, options.outFolder + "/blog.html", "./src/blog.jade", memo, {
+  jadeWrite(options.outFolder + "/blog.html", "./src/blog.jade", memo(), {
     minify: options.minify
   });
-  _.each(memo.blogEntries, function(blogEntry) {
-    return jadeWrite(memo, "" + options.outFolder + blogEntry.dest, './src/blogEntryLayout.jade', {
+  _.each(memo().blogEntries, function(blogEntry) {
+    return jadeWrite("" + options.outFolder + blogEntry.dest, './src/blogEntryLayout.jade', {
       entry: blogEntry,
       moment: moment,
-      ...memo
+      ...memo()
     }, {
       minify: options.minify
 
@@ -30,14 +28,14 @@ module.exports = function(memo, options) {
   _.each(memo.pages, function(page) {
     return jadeWrite(memo, "" + options.outFolder + page.dest, "./src/page.jade", {
       page: page,
-      ...memo
+      ...memo()
     }, {
       minify: options.minify
     });
   });
-  jadeWrite(memo, options.outFolder + "/README.html", "./src/page.jade", {
+  jadeWrite(options.outFolder + "/README.html", "./src/page.jade", {
     page: mm.parseFileSync("./README.md"),
-    ...memo
+    ...memo()
   }, {
     minify: options.minify
   });
@@ -57,7 +55,7 @@ module.exports = function(memo, options) {
       }
     });
   });
-  _.each(memo.blogEntries, function(blogEntry) {
+  _.each(memo().blogEntries, function(blogEntry) {
     return _.each(blogEntry.assets.jpgs, function(srcPath) {
       var optDest, origDest;
       optDest = "" + options.outFolder + blogEntry.url + "/" + (path.basename(srcPath));
@@ -90,4 +88,5 @@ module.exports = function(memo, options) {
       return console.log("---> " + profilePicOutfile);
     }
   });
+  console.log('done!')
 };

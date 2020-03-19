@@ -33,12 +33,6 @@ module.exports = function(memo, options) {
       minify: options.minify
     });
   });
-  jadeWrite(options.outFolder + "/README.html", "./src/page.jade", {
-    page: mm.parseFileSync("./README.md"),
-    ...memo()
-  }, {
-    minify: options.minify
-  });
   outFile = options.outFolder + "/style.css";
   readFiles(['./node_modules/normalize.css/normalize.css', './src/style.css'], {
     encoding: 'utf8'

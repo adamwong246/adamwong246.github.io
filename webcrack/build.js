@@ -1,6 +1,8 @@
+var CleanCSS = require('clean-css');
+
 readFiles = require('read-files-promise');
 fs_extra = require('fs-extra');
-// lwip = require('lwip');
+lwip = require('js-lwip');
 
 jadeWrite = require('./jadeWrite.js');
 
@@ -51,18 +53,18 @@ module.exports = function(options) {
     return _.each(blogEntry.assets.jpgs, function(srcPath) {
       var optDest, origDest;
       optDest = "" + options.outFolder + blogEntry.url + "/" + (path.basename(srcPath));
-      // lwip.open(srcPath, function(err, image) {
-      //   return image.batch().scale(0.2).writeFile(optDest, 'jpg', {
-      //     quality: 50
-      //   }, function(err) {
-      //     if (err) {
-      //       return console.error(err);
-      //     } else {
-      //       return console.log("---> " + optDest);
-      //     }
-      //   });
-      // });
-      origDest = "" + options.outFolder + blogEntry.url + "/orig-" + (path.basename(srcPath));
+      lwip.open(srcPath, function(err, image) {
+        return image.batch().scale(0.2).writeFile(optDest, 'jpg', {
+          quality: 50
+        }, function(err) {
+          if (err) {
+            return console.error(err);
+          } else {
+            return console.log("---> " + optDest);
+          }
+        });
+      });
+      origDest = "" + options.outFolder + blogEntry.url + "/orig-" +(path.basename(srcPath));
       return fs_extra.copy(srcPath, origDest, function(err) {
         if (err) {
           return console.error(err);

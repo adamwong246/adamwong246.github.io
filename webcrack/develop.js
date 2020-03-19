@@ -3,6 +3,7 @@ watch = require('watch');
 sstatic = require('node-static');
 
 build = require('./build.js');
+server = require('./server.js');
 
 const clearAndWrite = (memoUniverse, outFolder) => {
   memoUniverse.clear();
@@ -20,10 +21,7 @@ module.exports = function () {
     outFolder: outFolder,
     minify: false
   });
-  http.createServer(function(req, res) {
-    return new sstatic.Server(outFolder).serve(req, res);
-  }).listen(8080);
-  console.log('server now running on port 8080...');
+  server(8080, outFolder);
   return watch.createMonitor('./src', function(monitor) {
     monitor.files['./**/*'];
     monitor.on('created', function(f, stat) {

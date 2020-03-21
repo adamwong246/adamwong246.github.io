@@ -24,10 +24,8 @@ html(lang="en")
       //- img#profile(src="/evilShroom.png")
       a(href="/") #[h1.site_title exact change only]
       br
-      a(href="/blog.html") blog entries
-      br
       - for page in pages
-        a(href=page.url)= page.url
+        a(href=page.url)= page.title
         br
       a(href="mailto:" + package.author.email)= package.author.email
       br

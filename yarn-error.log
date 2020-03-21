@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js produce
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js build
 
 PATH: 
   /Users/adam/.nvm/versions/node/v12.16.1/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
@@ -32,13 +32,11 @@ npm manifest:
     },
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
-      "develop": "node ./webcrack/index.js develop",
-      "produce": "node ./webcrack/index.js produce",
-      "preview": "node ./webcrack/index.js preview",
-  
+      "build": "node ./webcrack/scripts/build.js",
+      "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
+      "serve": "node ./webcrack/scripts/serve.js",
       "newBlogEntry": "node scripts/newBlogEntry.js",
       "deploy": "git push origin `git subtree split --prefix dist distinit`:master --force",
-  
       "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
     },
     "dependencies": {
@@ -47,8 +45,8 @@ npm manifest:
       "glob": "latest",
       "html-minifier": "",
       "jade": "1.11.0",
+      "js-lwip": "^1.1.0",
       "lodash": "^2.4.1",
-      "markdown-pdf": "",
       "marky-mark": "latest",
       "memoizee": "^0.3.8",
       "mkdirp-then": "",
@@ -57,8 +55,10 @@ npm manifest:
       "normalize.css": "^3.0.2",
       "path": "^0.11.14",
       "read-files-promise": "",
+      "redux": "^4.0.5",
+      "reselect": "^4.0.0",
       "slug": "^0.8.0",
-      "watch": "^0.14.0",
+      "watch": "1.0.2",
       "yaml-front-matter": "^3.2.3"
     }
   }
@@ -682,6 +682,10 @@ Lockfile:
       decree "0.0.6"
       nan "^2.14.0"
   
+  "js-tokens@^3.0.0 || ^4.0.0":
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
+  
   js-yaml@2.0.x:
     version "2.0.5"
     resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-2.0.5.tgz#a25ae6509999e97df278c6719da11bd0687743a8"
@@ -781,6 +785,12 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
   
+  loose-envify@^1.4.0:
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+    dependencies:
+      js-tokens "^3.0.0 || ^4.0.0"
+  
   lower-case@^1.1.1:
     version "1.1.4"
     resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
@@ -870,7 +880,7 @@ Lockfile:
     version "0.0.8"
     resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
   
-  minimist@^1.1.0, minimist@^1.2.5:
+  minimist@^1.2.0, minimist@^1.2.5:
     version "1.2.5"
     resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   
@@ -1086,6 +1096,13 @@ Lockfile:
       string_decoder "~1.1.1"
       util-deprecate "~1.0.1"
   
+  redux@^4.0.5:
+    version "4.0.5"
+    resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
+    dependencies:
+      loose-envify "^1.4.0"
+      symbol-observable "^1.2.0"
+  
   relateurl@^0.2.7:
     version "0.2.7"
     resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
@@ -1131,6 +1148,10 @@ Lockfile:
       tough-cookie "~2.5.0"
       tunnel-agent "^0.6.0"
       uuid "^3.3.2"
+  
+  reselect@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
   
   right-align@^0.1.1:
     version "0.1.3"
@@ -1246,6 +1267,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/strip-bom/-/strip-bom-2.0.0.tgz#6219a85616520491f35788bdbf1447a99c7e6b0e"
     dependencies:
       is-utf8 "^0.2.0"
+  
+  symbol-observable@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   
   throttleit@^1.0.0:
     version "1.0.0"
@@ -1400,12 +1425,12 @@ Lockfile:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   
-  watch@^0.14.0:
-    version "0.14.0"
-    resolved "https://registry.yarnpkg.com/watch/-/watch-0.14.0.tgz#307b6d8f2d731a10cdc56f7344559ddb7c5f2524"
+  watch@1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/watch/-/watch-1.0.2.tgz#340a717bde765726fa0aa07d721e0147a551df0c"
     dependencies:
       exec-sh "^0.2.0"
-      minimist "^1.1.0"
+      minimist "^1.2.0"
   
   which@^1.2.10:
     version "1.3.1"
@@ -1468,7 +1493,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c node ./webcrack/index.js produce
+  Arguments: -c node ./webcrack/scripts/build.js
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

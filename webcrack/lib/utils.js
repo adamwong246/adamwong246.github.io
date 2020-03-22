@@ -1,14 +1,21 @@
-fs = require('fs')
-
-const logReadFile = (f) => console.log("<- " + f);
+const mkdirp = require('mkdirp')
+const fse = require('fs-extra');
 
 module.exports = {
-  logReadFile: logReadFile,
-  logWriteFile:logWriteFile = (f) => console.log("-> " + f),
-  logSkipFile: logSkipFile = (f) => false,
   readfile: (file) => {
-    logReadFile(file)
-    return fs.readFileSync('./' + file, 'utf8');
+    const relativeFilePath = './' + file;
+    console.log("\u001b[31m <- \u001b[0m" + file)
+    return fse.readFileSync(file, 'utf8');
+  }, options: {
+    outFolder: 'dist',
+    inFolder: 'src'
+  },
+
+  writefile: (file, contents) => {
+    const relativeFilePath = './' + file;
+    console.log("\u001b[32m -> \u001b[0m" + relativeFilePath)
+
+    fse.outputFile(relativeFilePath, contents);
   }, options: {
     outFolder: 'dist',
     inFolder: 'src'

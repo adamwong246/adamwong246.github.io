@@ -25,11 +25,11 @@
   },
   "dependencies": {
     "clean-css": "",
+    "filepath": "^1.1.0",
     "fs-extra": "9.0.0",
     "glob": "latest",
     "html-minifier": "",
     "jade": "1.11.0",
-    "js-lwip": "^1.1.0",
     "lodash": "^2.4.1",
     "marky-mark": "latest",
     "memoizee": "^0.3.8",

@@ -1,20 +1,29 @@
 const { INITIALIZE } = require('./constants.js');
+const {writefile} = require('./utils.js');
 
-// connects the store subscription to the writeSelectors
-// it calls these selectors on every change
-// lastly, turn the store on to prevent unecessary file processing on startup
+// connects the store's `subscribe` to each of the output selectors
+module.exports = (store, outputs, webcrackConfigOptions) => {
 
-module.exports = (store) => {
+  // listen for changes to the store
   store.subscribe(() => {
-    console.log("STATE CHANGED!")
-    const writeSelectors = store.getState().writeSelectors
-    const keys = Object.keys(writeSelectors)
-    console.log('writeSelectors: ', keys)
-    keys.forEach((writeKey) => {
-      writeSelectors[writeKey](store)
+
+    // interate over every output selector
+
+    // console.log(outputs)
+    outputs.forEach((output) => {
+
+      // execute the selector given the store
+      output.selector(store).forEach((item, i) => {
+
+        // write the contents to the FS
+        writefile(webcrackConfigOptions.outFolder + "/" + item.filepath, item.contents)
+      });
+
     })
   })
 
+  // lastly, turn the store `on`.
+  // This is to prevent unecessary recomputations when initialy adding files to redux
   store.dispatch({
     type: INITIALIZE,
     payload: true

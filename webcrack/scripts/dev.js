@@ -1,55 +1,49 @@
-const createSelector = require('reselect').createSelector;
-const createStore = require('redux').createStore;
-const moment = require('moment');
+const webcrackConfig = require('../../webcrack.config.js')
 const watch = require('watch');
 
-const {options} = require('../lib/utils.js');
-const stateInitializer = require('../lib/stateInitializer.js');
-const fileInitializer = require('../lib/fileInitializer.js');
-const makeStore = require('../lib/store.js');
+const construct  = require("../lib/construct.js");
+const { readfile } = require("../lib/utils.js");
+const dispatch = require("../lib/dispatch.js");
 
-const webcrackConfig = require('../../webcrack.config.js')
+const watchAndDispatch = (store, key, path, glob) => {
+  console.log('watchAndDispatch', key, path, glob);
 
-const {
-  store
-} = makeStore(webcrackConfig);
+  watch.createMonitor(path, function(monitor) {
+    monitor.files[glob];
 
-webcrackConfig.rules.forEach((config) => {
-      if (Object.keys(config).includes('simpleFile')) {
-        store.dispatch({
-          type: config.key,
-          payload: config.simpleFile
-        })
-      } else {
-        watch.createMonitor(`./${options.inFolder}/${config.path}/`, function(monitor) {
-          monitor.files[config.glob];
-          monitor.on('created', function(f, stat) {
-            console.log(`${config.key} created: ` + f)
-            store.dispatch({
-              type: config.key,
-              payload: "./" + f
-            });
-          });
+    monitor.on('created', function(f, stat) {
+      console.log(`${key} created: ` + './' + f)
+      dispatch(store, key, './' + f);
+    });
 
-          monitor.on('changed', function(f, curr, prev) {
-            console.log(`${config.key} CHANGED: ` + f)
-            store.dispatch({
-              type: config.key,
-              payload: "./" + f
-            });
-          });
+    monitor.on('changed', function(f, curr, prev) {
+      console.log(`${key} changed: ` + './' + f)
+      dispatch(store, key, './' + f);
+    });
 
-          // monitor.on('removed', function(f, stat) {
-          //   console.log('page removed: ' + f)
-          //   store.dispatch({
-          //     type: 'REMOVED',
-          //     payload: f
-          //   })
-        });
+    // monitor.on('removed', function(f, stat) {
+    //   console.log('page removed: ' + f)
+    //   store.dispatch({
+    //     type: 'REMOVED',
+    //     payload: f
+    //   })
+  });
+  // process.exit(0)
+};
 
-        fileInitializer(store, options, config)
+const multiWatch = (store, key, filePicker, options) => {
+  if (typeof filePicker === 'string') {
+    watchAndDispatch(store, key, './' + options.inFolder,  './' + options.inFolder + "/" + filePicker)
+  } else if (Array.isArray(filePicker)) {
+    // listDispatch(store, filePicker, options, key)
+  } else {
+    // objectDispatch(store, filePicker, options, key)
+  }
+};
 
-      }
-    })
+construct(webcrackConfig, (store, inputRule, options) => {
+  console.log('dev.js construct')
+  console.log(inputRule)
 
-    stateInitializer(store)
+  multiWatch(store, inputRule.key, inputRule.filePicker, options)
+})

@@ -1,250 +1,247 @@
+createSelector = require('reselect').createSelector;
 
-const moment = require('moment');
+// import anything! you want to use in your selectors, provided they are *purely functional*
 CleanCSS = require('clean-css');
-
-const {logReadFile, readfile} = require('./webcrack/lib/utils.js');
+jade = require("jade");
+moment = require('moment');
+markdown = require('marky-mark');
+slug = require('slug');
 
 module.exports = {
   initialState: {
-    views: {},
-    pages: {},
-    blogEntries: {},
-    cssAssets: {},
+    views: [],
+    pages: [],
+    blogEntries: [],
+    css: [],
+    license: [],
+    resume: [],
     moment: moment
   },
-  rules:  [{
-      key: 'PACKAGE_JSON',
-      simpleFile: require('./package.json'),
-      stateMutater: (state, action, options) => {
-        return {
-          ...state,
-          package: action.payload
-        }
-      }
-    },
 
+  options: {
+    inFolder: 'src',
+    outFolder: 'dist'
+  },
+
+  // defines the inputs points where files will be read
+  inputs: [
     {
-      key: 'UPSERT_STYLE',
-      path: 'assets',
-      glob: '*.css',
-      stateMutater: (state, action, options) => {
-        const viewSrc = action.payload;
-        const contents = readfile(action.payload)
-        const cssSrc = "./" + action.payload;
-        const cssDest = "./" + options.outFolder + '/style.css'
-
-        // console.log('state.intermediateSelectors', state.intermediateSelectors)
-        return {
-          ...state,
-          cssAssets: {
-            ...state.cssAssets,
-            [cssSrc]: readfile(action.payload)
-          },
-          writeSelectors: {
-            ...state.writeSelectors,
-            [cssDest]: createSelector(
-              [state.intermediateSelectors.cssSelector, state.intermediateSelectors.initialLoadSelector],
-              (cssFiles, initialLoad) => {
-                // console.log('cssFiles', cssFiles)
-                // console.log('initialLoad', initialLoad)
-                if (initialLoad) {
-                  logSkipFile(cssDest);
-                } else {
-                  return fs.writeFile(cssDest, new CleanCSS({
-                    keepSpecialComments: 0
-                  }).minify(Object.keys(cssFiles).map((writeKey) => {
-                    return cssFiles[writeKey]
-                  }).join('\n')).styles, function(err) {
-                    if (err) {
-                      return console.error(err);
-                    } else {
-                      return logWriteFile(cssDest)
-                    }
-                  });
-                }
-              }
-            )
-          }
-        }
+      key: 'license',
+      filePicker: 'LICENSE.txt'
+    },
+    {
+      key: 'css',
+      filePicker: [
+        {
+          filepath: 'assets',
+          fileglob: '*.css',
+        },
+        // 'node_modules/normalize.css/normalize.css'
+      ]
+    },
+    {
+      key: 'pages',
+      filePicker: {
+        filepath: 'pages',
+        fileglob: '**/*.jade'
       }
     },
-
-    //   action: (state, action, options) => {
-    //     const cssSrc = "./" + action.payload;
-    //     const cssDest = "./" + options.outFolder + '/style.css'
-    //
-    //     const cssWriteSelector = createSelector([cssSelector, initialLoadSelector], (cssFiles, initialLoad) => {
-    //       if (initialLoad) {
-    //         logSkipFile(cssDest);
-    //       } else {
-    //         return fs.writeFile(cssDest, new CleanCSS({
-    //           keepSpecialComments: 0
-    //         }).minify(Object.keys(cssFiles).map((writeKey) => {
-    //           return cssFiles[writeKey]
-    //         }).join('\n')).styles, function(err) {
-    //           if (err) {
-    //             return console.error(err);
-    //           } else {
-    //             return logWriteFile(cssDest)
-    //           }
-    //         });
-    //       }
-    //
-    //     });
-    //
-    //     return {
-    //       ...state,
-    //       cssAssets: {
-    //           ...state.cssAssets,
-    //           [cssSrc]: readfile(action.payload)
-    //         },
-    //         writeSelectors: {
-    //           ...state.writeSelectors,
-    //           [cssDest]: cssWriteSelector
-    //         }
-    //     }
-    //   }
-    // },
-    // {
-    //   key: UPSERT_PAGE,
-    //   path: 'pages',
-    //   glob: '**/*.jade',
-    //   reader: (action) => {
-    //     const pageSrc = action.payload;
-    //     const dest = options.outFolder + '/' + action.payload.split('.')[0].replace(`${options.inFolder}/pages/`, '') + '/index.html';
-    //
-    //     const baseFileName = action.payload.split('.')[0].split('/').slice(-1)[0]
-    //
-    //     newPage = {};
-    //     newPage.content = readfile(action.payload)
-    //
-    //     if (baseFileName === 'index') {
-    //       newPage.url = "/" + (pageSrc.replace(`${options.inFolder}/pages/`, '').replace('.jade', '.html'))
-    //       newPage.dest = `${options.outFolder}/index.html`
-    //     } else {
-    //       newPage.url = "/" + (pageSrc.replace(`${options.inFolder}/pages/`, '').replace(/\.[^\/.]+$/, ''))
-    //       newPage.dest = dest
-    //     }
-    //     return newPage;
-    //   },
-    //   writer: () => {
-    //     return createSelector([blogEntriesSelector, pagesSelector, initialLoadSelector, packageSelector, viewsSelector], (blogEntries, pages, initialLoad, package, views) => {
-    //       const page = pages[pageSrc]
-    //       const viewString = views['src/views/page.jade']
-    //       if (initialLoad) {
-    //         logSkipFile(pageSrc)
-    //       } else {
-    //         jadeRender(pageSrc, page, {
-    //           pages,
-    //           package,
-    //           blogEntries: blogEntries
-    //         }, viewString);
-    //       }
-    //     })
-    //   }
-    // },
-    // {
-    //   key: UPSERT_BLOGENTRY,
-    //   path: 'blogEntries',
-    //   glob: '**/index.md',
-    //   reader: (actions) => {
-    //     const blogSrc = action.payload;
-    //     var m;
-    //     logReadFile(blogSrc)
-    //     m = mm.parseFileSync(blogSrc);
-    //     m.url = "./" + options.outFolder + "/blog/" + (slug(m.meta.title)) + '/index.html';
-    //     m.dest = m.url;
-    //   },
-    //   writer: () => {
-    //     blogEntryWrite(mdDest, blogEntry, {
-    //       pages,
-    //       package,
-    //       blogEntries: blogEntries
-    //     });
-    //   }
-    // },
-    // {
-    //   key: UPSERT_VIEW,
-    //   path: 'views',
-    //   glob: '*.jade',
-    //   reader: (actions) => {
-    //     return readfile("./" + action.payload);
-    //   }
-    // },
-
+    {
+      key: 'blogEntries',
+      filePicker: {
+        filepath: 'blogEntries',
+        fileglob: '**/index.md'
+      }
+    },
+    {
+      key: 'views',
+      filePicker: {
+        filepath: 'views',
+        fileglob: '*.jade'
+      }
+    },
+    {
+      key: 'resume',
+      filePicker: {
+        filepath: '',
+        fileglob: 'resume.md'
+      }
+    },
   ],
-  makeSelectors: (baseSelector) => {
-    return {
-      initialLoadSelector: createSelector([baseSelector], (state) => state.initialLoad),
-      packageSelector: createSelector([baseSelector], (state) => state.package),
-      pagesSelector: createSelector([baseSelector], (baseState) => baseState.pages),
-      cssSelector: createSelector([baseSelector], (baseState) => baseState.cssAssets),
-      blogEntriesSelector: createSelector([baseSelector], (baseState) => baseState.blogEntries),
-      viewsSelector: createSelector([baseSelector], (baseState) => baseState.views),
-    }
+
+  // defines the output points based on a base selector which is subscribed to changes in the redux state
+  outputs: (webcrackStateSelector, options) => {
+
+    // define the selectors you will pass to outpoint points
+    // this includes the intermediate selectors and the output selectors
+    // output selectors must return an object of {content: string, path: string}
+    // but intermediate selectors do not
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    const packageSelector = createSelector(webcrackStateSelector, (webcrackState) => {
+      return require("./package.json")
+    });
+
+
+    const pagesSelector = createSelector(webcrackStateSelector, (webcrackState) => {
+      const pages = webcrackState.pages;
+
+      return pages.map((page) => {
+        const baseFileName = page.src.split('.')[1].split('/').slice(-1)[0];
+
+        let dest, url;
+
+        if (baseFileName !== 'index'){
+          dest = `${baseFileName}/index.html`
+          url = `/${baseFileName}/index.html`
+        } else {
+          dest = `index.html`
+          url = `/index.html`
+        }
+        return {
+          ...page,
+          content: page.contents,
+          baseFileName,
+          dest: dest,
+          url: url,
+          title: baseFileName
+        }
+      })
+    });
+
+
+    const blogEntriesSelector = createSelector(webcrackStateSelector, (webcrackState) => {
+      return webcrackState.blogEntries.map((blogEntry) => {
+        const markdownContent = markdown.parse(blogEntry.contents)
+
+        const filePath = "blog/" + (slug(markdownContent.meta.title)) + '/index.html';
+        return {
+          ...blogEntry,
+          meta: markdownContent.meta,
+          markdownContent: markdownContent.content,
+          dest: filePath,
+        }
+      })
+    });
+
+    const viewsSelector = createSelector(webcrackStateSelector, (webcrackState) => webcrackState.views)
+
+    const pageLayoutSelector = createSelector(viewsSelector, (views) => views.find((v) => v.src === './src/views/page.jade'))
+
+    const mardkdownResumeSelector  = createSelector((webcrackStateSelector), (webcrackState) => {
+      const resume = webcrackState.resume[0];
+      return markdown.parse(resume.contents)
+    })
+
+    const htmlFilesSelector = createSelector([
+      packageSelector,
+      pagesSelector,
+      blogEntriesSelector,
+      mardkdownResumeSelector,
+      pageLayoutSelector,
+    ], (package, pages, blogEntries, markdownResume, pageLayout) => {
+
+      const localsToJadeRender = {
+        blogEntries,
+        pages,
+        package
+      }
+
+      return [
+        ...blogEntries.map((blogEntry) => {
+          return {
+            filepath: blogEntry.dest,
+            contents: jade.render(pageLayout.contents, {
+              filename: pageLayout.src,
+              blogEntry,
+              page: {
+                // url: 'asd',
+                content: blogEntry.markdownContent,
+              },
+              ...localsToJadeRender
+            })
+          };
+        }),
+        ...pages.map((page) => {
+          return {
+            filepath: page.dest,
+            contents: jade.render(page.contents, {
+              filename: pageLayout.src,
+              page,
+              ...localsToJadeRender
+            })
+          };
+        }),
+        {
+          filepath: 'resume.html',
+          contents: jade.render(pageLayout.contents, {
+            filename: pageLayout.src,
+            page: {
+              content: markdownResume.content
+            },
+            ...localsToJadeRender
+          })
+        }
+
+      ]
+    });
+
+
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    // Lastly, return the output points and the selectors which feed them
+    return [
+
+      //  a debugging selector will write a json file of the state on every change
+      {
+        key: 'webcrackstate',
+        selector: createSelector([webcrackStateSelector], (webcrackState) => [{
+          filepath: 'webcrackState.json',
+          contents: JSON.stringify(webcrackState, null, 1)
+        }])
+      },
+
+      // a selector does not need inputs, but it will execute only once and never refresh
+      {
+        key: 'readme',
+        selector: createSelector([], () => [{
+          filepath: 'README',
+          contents: "made with webcrack"
+        }])
+      },
+
+      {
+        key: 'license',
+        selector: createSelector([webcrackStateSelector], (webcrackState) => [{
+          filepath: 'LICENSE.txt',
+          contents: JSON.stringify(webcrackState)
+        }])
+      },
+
+
+
+      // simply concats and cleans the css files
+      {
+        key: 'cssFile',
+        selector: createSelector(webcrackStateSelector, (webcrackState) => {
+          return [{
+            filepath: 'style.css',
+            contents: new CleanCSS({
+                keepSpecialComments: 0
+              })
+              .minify(
+                webcrackState.css.map((cssFile) => cssFile.contents).join('\n')
+              ).styles
+          }]
+        })
+      },
+
+      {
+        key: 'htmlFiles',
+        selector: htmlFilesSelector
+      },
+    ]
   }
 }
-
-const blogEntryWrite = function(dest, blogEntry, baseState) {
-  return mkdirp(path.dirname(dest), function(err) {
-    var output;
-    if (err) {
-      return console.log(err);
-    } else {
-      if (options.minify) {
-        output = minify(jade.renderFile(template, _.merge(options, locals)), {
-          removeAttributeQuotes: true,
-          removeComments: true,
-          removeTagWhitespace: true,
-          collapseWhitespace: true,
-          minifyJS: true
-        });
-      } else {
-        output = jade.renderFile(`./${options.inFolder}/views/blogEntryLayout.jade`, {...baseState, entry: blogEntry});
-      }
-      return fs.writeFile(dest, output, function(err) {
-        if (err) {
-          return console.error(err);
-        } else {
-          return logWriteFile(dest)
-        }
-      });
-    }
-  });
-};
-
-const jadeRender = function(src, page, baseState, viewString) {
-  const out = page.dest;
-
-  return mkdirp(path.dirname(out), function(err) {
-    var output;
-    if (err) {
-      return console.log(err);
-    } else {
-      if (options.minify) {
-        // output = minify(jade.renderFile(template, _.merge(options, locals)), {
-        //   removeAttributeQuotes: true,
-        //   removeComments: true,
-        //   removeTagWhitespace: true,
-        //   collapseWhitespace: true,
-        //   minifyJS: true
-        // });
-      } else {
-
-        output = jade.render(viewString, {
-          filename: src,
-          content: page.content,
-          ...baseState
-        });
-      }
-
-      return fs.writeFile(out, output, function(err) {
-        if (err) {
-          return console.error(err);
-        } else {
-          return logWriteFile(out)
-        }
-      });
-    }
-  });
-};

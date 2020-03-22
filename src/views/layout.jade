@@ -19,10 +19,11 @@ html(lang="en")
   body
     main
       block content
-        != self.content
+        != page.content
     nav
       //- img#profile(src="/evilShroom.png")
       a(href="/") #[h1.site_title exact change only]
+      a(href="/resume.html") resume.html
       br
       - for page in pages
         a(href=page.url)= page.title

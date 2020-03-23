@@ -4,7 +4,7 @@ const fse = require('fs-extra');
 module.exports = {
   readfile: (file) => {
     const relativeFilePath = './' + file;
-    console.log("\u001b[31m <- \u001b[0m" + file)
+    console.log("\u001b[31m <-- \u001b[0m" + file)
     return fse.readFileSync(file, 'utf8');
 
   }, options: {
@@ -19,11 +19,11 @@ module.exports = {
       console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
       contents((err, res) => {
         fse.outputFile(relativeFilePath, res);
-        console.log("\u001b[32m -> \u001b[0m" + relativeFilePath)
+        console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
       })
     } else {
         fse.outputFile(relativeFilePath, contents);
-        console.log("\u001b[32m -> \u001b[0m" + relativeFilePath)
+        console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
     }
 
   }, options: {

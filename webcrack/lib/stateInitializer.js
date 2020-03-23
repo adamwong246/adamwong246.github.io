@@ -9,19 +9,13 @@ module.exports = (store, webcrackConfig, baseSelector) => {
   // listen for changes to the store
   store.subscribe(() => {
 
-    const state = store.getState();
-
-    // console.log(state);
-
     // interate over every output selector
 
     // console.log(outputs)
-    const outputKeys = Object.keys(outputs)
-    outputKeys.forEach((outputKey) => {
+    Object.keys(outputs).forEach((outputKey) => {
 
-      const output = outputs[outputKey]
       // execute the selector given the store
-      output(state).forEach((item, i) => {
+      outputs[outputKey](store.getState()).forEach((item, i) => {
 
         key = Object.keys(item)[0]
         filepath = key
@@ -32,8 +26,6 @@ module.exports = (store, webcrackConfig, baseSelector) => {
       });
 
     });
-
-    console.log('done! Waiting for more changes...');
   })
 
   // lastly, turn the store `on`.

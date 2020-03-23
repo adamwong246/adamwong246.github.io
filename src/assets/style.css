@@ -48,7 +48,7 @@ p, li {max-width:35rem;}
 
 nav ul{
   -webkit-padding-start: 0px;
-  list-style: none;
+  /* list-style: none; */
 }
 
 h2{

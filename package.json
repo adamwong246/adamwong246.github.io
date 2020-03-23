@@ -31,6 +31,7 @@
     "html-minifier": "",
     "jade": "1.11.0",
     "lodash": "^2.4.1",
+    "markdown-pdf": "^10.0.0",
     "marky-mark": "latest",
     "memoizee": "^0.3.8",
     "mkdirp-then": "",

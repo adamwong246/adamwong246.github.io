@@ -1,12 +1,14 @@
+// you need to import reselect's createSelector function in order to perform memoized loigc
 createSelector = require('reselect').createSelector;
 
 // import anything! you want to use in your selectors, provided they are *purely functional*
 CleanCSS = require('clean-css');
-jade = require("jade");
-moment = require('moment');
-markdown = require('marky-mark');
-slug = require('slug');
 fs = require('fs');
+jade = require("jade");
+markdown = require('marky-mark');
+markdownpdf = require("markdown-pdf")
+moment = require('moment');
+slug = require('slug');
 
 module.exports = {
   initialState: {
@@ -145,11 +147,13 @@ module.exports = {
       }]
     })
 
+    const resumeSelector = createSelector((reduxState), (state) => markdown.parse(state.resume));
+
     const htmlSelector = createSelector([
       packageSelector,
       pagesSelector,
       blogEntriesSelector,
-      createSelector((reduxState), (state) => markdown.parse(state.resume)),
+      resumeSelector,
       pageLayoutSelector,
     ], (package, pages, blogEntries, markdownResume, pageLayout) => {
       const localsToJadeRender = {
@@ -190,6 +194,9 @@ module.exports = {
       ]
     });
 
+    const resumePdfSelector = createSelector([reduxState], (state) => {
+      return [{'resume.pdf': markdownpdf().from.string(state.resume).to.buffer}]
+    });
     ///////////////////////////////////////////////////////////////////////////
 
     // Lastly, return the output points and the selectors which feed them
@@ -211,6 +218,8 @@ module.exports = {
 
       cssFile: cssSelector,
       htmlFiles: htmlSelector,
+
+      resumePdf: resumePdfSelector
     }
   }
 }

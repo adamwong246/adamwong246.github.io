@@ -27,6 +27,8 @@ html(lang="en")
       a(href="mailto:" + package.author.email)= package.author.email
       hr
       a(href="/resume.html") resume.html
+      |, 
+      a(href="/resume.pdf") .pdf
       hr
       ul
         - for page in pages
@@ -34,7 +36,7 @@ html(lang="en")
       hr
       ul
         - for entry in blogEntries
-          li #[a(href=entry.url)= entry.meta.title.substr(0, 30)]
+          li #[a(href=entry.url)= entry.meta.title]
 
       a(href=package.repository.url) v#{package.version}
       br

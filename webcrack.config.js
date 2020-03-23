@@ -157,7 +157,14 @@ module.exports = {
             content: views[key]
           }
         }),
-      ], (package, pages, blogEntries, markdownResume, pageLayout) => {
+        createSelector(createSelector(reduxState, (state) => state.views), (views) => {
+          const key = './src/views/blogEntryLayout.jade'
+          return {
+            src: key,
+            content: views[key]
+          }
+        })
+      ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout) => {
         const localsToJadeRender = {
           blogEntries,
           pages,
@@ -167,8 +174,9 @@ module.exports = {
         return [
           ...blogEntries.map((blogEntry) => {
             return {
-              [blogEntry.dest]: jade.render(pageLayout.content, {
-                filename: pageLayout.src,
+              [blogEntry.dest]: jade.render(blogEntryLayout.content, {
+                filename: blogEntryLayout.src,
+                entry: blogEntry,
                 page: {
                   content: blogEntry.markdownContent,
                 },

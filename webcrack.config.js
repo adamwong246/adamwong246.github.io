@@ -9,21 +9,27 @@ markdown = require('marky-mark');
 markdownpdf = require("markdown-pdf")
 moment = require('moment');
 slug = require('slug');
+moment = require("moment")
 
 module.exports = {
   initialState: {
     views: {},
     pages: {},
     blogEntries: {},
+    blogEntriesJpgs: [],
     css: "",
     resume: "",
     license: ""
-    // moment: moment
   },
 
   options: {
     inFolder: 'src',
     outFolder: 'dist'
+  },
+
+  encodings: {
+    'utf8': ['md', 'css', 'jade', 'txt'],
+    '': ['jpg']
   },
 
   // defines the inputs points where files will be read
@@ -70,6 +76,17 @@ module.exports = {
       }
     },
 
+    blogEntriesJpgs: {
+      'blogEntries/**/*.jpg': (blogEntriesJpgs, payload) => {
+        return [
+          ...blogEntriesJpgs,
+          {
+            src: payload.src,
+            contents: payload.contents
+          }
+        ]
+      }
+    },
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -78,6 +95,32 @@ module.exports = {
     const resumeSelector = ([reduxState], (state) => {
       return state.resume
     })
+
+    const blogEntriesSelector = createSelector(reduxState, (state) => {
+      const keys = Object.keys(state.blogEntries)
+      return keys.map((key) => {
+        const blogEntry = state.blogEntries[key]
+        const markdownContent = markdown.parse(blogEntry)
+
+        const slugPath = "blog/" + (slug(markdownContent.meta.title)) + "/"
+        const filePath = slugPath + 'index.html';
+        return {
+          meta: markdownContent.meta,
+          markdownContent: markdownContent.content,
+          dest: filePath,
+          url: `/${filePath}`,
+          destFolder: slugPath,
+          srcFolder: key.split('index.md')[0]
+        }
+      }).sort((b, a) => {
+        return moment(a.meta.publishedAt).diff(moment(b.meta.publishedAt))
+      })
+    });
+
+    const blogEntriesJpgsSelector = ([reduxState], (state) => {
+      return state.blogEntriesJpgs
+    })
+
     // Lastly, return the output points and the selectors which feed them
     // each item needs to return an array of objects
     // where the `key` is a file and the `value` is the file contents
@@ -88,9 +131,9 @@ module.exports = {
       }),
 
       //  a debugging selector will write a json file of the state on every change
-      webcrackstate: createSelector([reduxState], (state) => {
-        return {'state.json': JSON.stringify(state, null, 1)}
-      }),
+      // webcrackstate: createSelector([reduxState], (state) => {
+      //   return {'state.json': JSON.stringify(state, null, 1)}
+      // }),
 
       // simply copies the file
       license: createSelector([reduxState], (state) => {
@@ -147,21 +190,7 @@ module.exports = {
             }
           })
         }),
-        createSelector(reduxState, (state) => {
-          const keys = Object.keys(state.blogEntries)
-          return keys.map((key) => {
-            const blogEntry = state.blogEntries[key]
-            const markdownContent = markdown.parse(blogEntry)
-            const filePath = "blog/" + (slug(markdownContent.meta.title)) + '/index.html';
-            return {
-              ...blogEntry,
-              meta: markdownContent.meta,
-              markdownContent: markdownContent.content,
-              dest: filePath,
-              url: `/${filePath}`,
-            }
-          })
-        }),
+        blogEntriesSelector,
         createSelector((reduxState), (state) => markdown.parse(state.resume)),
         createSelector(createSelector(reduxState, (state) => state.views), (views) => {
           const key = './src/views/page.jade'
@@ -226,6 +255,17 @@ module.exports = {
         return {
           'resume.pdf': markdownpdf().from.string(resume).to.buffer
         };
+      }),
+
+      blogEntriesJpgs: createSelector([blogEntriesJpgsSelector, blogEntriesSelector], (jpgs, blogEntries) => {
+        return jpgs.reduce((mm, jpg) => {
+          const jpgSplit = jpg.src.split('/')
+          return {
+            ...mm,
+            [blogEntries.find((b) => jpg.src.includes(b.srcFolder)).destFolder + jpgSplit[jpgSplit.length-1]]: jpg.contents
+          }
+        },{})
+
       }),
 
     }

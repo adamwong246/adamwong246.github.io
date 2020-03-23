@@ -34,17 +34,21 @@ html(lang="en")
       a(href="/resume.md") .md
       hr
         
+      
       ul
         - for page in pages
           li #[a(href=page.url)= page.title]
       hr
       ul
         - for entry in blogEntries
-          li #[a(href=entry.url)= entry.meta.title]
-      
+          li
+            a(href=entry.url)= entry.meta.title
+            br
+            = moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+      //- = JSON.stringify(blogEntries)
       
       a(href=package.repository.url) github
-      br
-      |v#{package.version}    
-      br
+      |  
+      |v#{package.version}
+      | 
       a(href='/LICENSE.txt') LICENSE

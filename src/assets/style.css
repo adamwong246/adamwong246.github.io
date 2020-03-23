@@ -1,3 +1,8 @@
+article p {
+  padding-left: 0.5em;
+  padding-top: 1em;
+}
+
 body {
   background-color: white;
   color: black;

@@ -10,20 +10,24 @@ const webcrackConfig = require("../webcrack.config.js")
 const INITIALIZE = 'INITIALIZE';
 const previousState = {}
 
-const dispatch = (store, key, file) => {
+const dispatch = (store, key, file, encodings) => {
   store.dispatch({
     type: key,
     payload: {
       src: file,
-      contents: readfile(file)
+      contents: readfile(file, encodings)
     }
   });
 };
 
-const readfile = (file) => {
+const readfile = (file, encodings) => {
+
+  const filetype = file.split('.')[2]
+  const encoding = Object.keys(encodings).find((e) => encodings[e].includes(filetype))
+
   const relativeFilePath = './' + file;
   console.log("\u001b[31m <-- \u001b[0m" + file)
-  return fse.readFileSync(file, 'utf8');
+  return fse.readFileSync(file, encoding);
 };
 
 const writefile = (file, contents) => {
@@ -35,7 +39,11 @@ const writefile = (file, contents) => {
       fse.outputFile(relativeFilePath, res);
       console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
     })
+  } else if (typeof contents === 'string'){
+    fse.outputFile(relativeFilePath, contents );
+    console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
   } else {
+    console.log("I don't recognize: " + relativeFilePath)
     fse.outputFile(relativeFilePath, contents);
     console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
   }
@@ -55,7 +63,6 @@ const store = createStore((state = {
         initialLoad: false
       }
     } else {
-
       const key = Object.keys(webcrackConfig.inputs[action.type])[0]
       const reduce = webcrackConfig.inputs[action.type][key]
       return {
@@ -95,10 +102,10 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
         fulfill()
       })
       .on('add', path => {
-        dispatch(store, inputRuleKey, './' + path);
+        dispatch(store, inputRuleKey, './' + path, webcrackConfig.encodings);
       })
       .on('change', path => {
-        dispatch(store, inputRuleKey, './' + path);
+        dispatch(store, inputRuleKey, './' + path, webcrackConfig.encodings);
       })
     // .on('unlink', path => log(`File ${path} has been removed`));
     // .on('addDir', path => log(`Directory ${path} has been added`))

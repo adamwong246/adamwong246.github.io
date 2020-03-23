@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.14.0",
+  "version": "0.2.0",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bluebird": "^3.7.2",
+    "buffer": "^5.5.0",
     "chokidar": "^3.3.1",
     "clean-css": "",
     "filepath": "^1.1.0",
@@ -32,6 +33,7 @@
     "glob": "latest",
     "html-minifier": "",
     "jade": "1.11.0",
+    "jpeg-js": "^0.3.7",
     "jstransformer-marked": "^1.0.3",
     "lodash": "^2.4.1",
     "markdown-pdf": "^10.0.0",

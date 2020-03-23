@@ -16,7 +16,7 @@
   },
   "homepage": "http://adamwong246.github.io/",
   "scripts": {
-    "build": "node ./webcrack/index.js",
+    "build": "node ./scripts/server.js & node ./webcrack/index.js",
     "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
     "serve": "node ./webcrack/scripts/serve.js",
     "newBlogEntry": "node scripts/newBlogEntry.js",

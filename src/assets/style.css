@@ -46,9 +46,11 @@ img#profile{
 
 p, li {max-width:35rem;}
 
-nav ul{
-  padding-inline-start: 1em;
-}
+
+  dl, dt, di {
+    padding-inline-start: 1em;
+  }
+
 
 h2{
   margin-bottom: 0.2em;

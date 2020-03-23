@@ -29,14 +29,19 @@ html(lang="en")
       a(href="/resume.html") resume.html
       |, 
       a(href="/resume.pdf") .pdf
+      |, 
+      a(href="/resume.md") .md
       hr
-      ul
+        
+      dl
+        dt pages
         - for page in pages
-          li #[a(href=page.url)= page.title]
+          di #[a(href=page.url)= page.title]
       hr
-      ul
+      dl
+        dt blog entries
         - for entry in blogEntries
-          li #[a(href=entry.url)= entry.meta.title]
+          di #[a(href=entry.url)= entry.meta.title]
       
       
       a(href=package.repository.url) github

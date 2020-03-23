@@ -32,7 +32,7 @@ npm manifest:
     },
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
-      "build": "node ./webcrack/index.js",
+      "build": "node ./scripts/server.js;; node ./webcrack/index.js",
       "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
       "serve": "node ./webcrack/scripts/serve.js",
       "newBlogEntry": "node scripts/newBlogEntry.js",
@@ -1551,9 +1551,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 2
   Command: sh
-  Arguments: -c node ./webcrack/index.js
+  Arguments: -c node ./scripts/server.js;; node ./webcrack/index.js
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

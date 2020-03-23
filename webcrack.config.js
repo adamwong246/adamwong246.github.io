@@ -208,6 +208,11 @@ module.exports = {
         return [{
           'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
         }]
+      }),
+      resumeMd: createSelector([reduxState], (state) => {
+        return [{
+          'resume.md': reduxState.resume
+        }]
       })
     }
   }

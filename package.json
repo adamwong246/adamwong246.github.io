@@ -16,7 +16,7 @@
   },
   "homepage": "http://adamwong246.github.io/",
   "scripts": {
-    "build": "node ./webcrack/scripts/build.js",
+    "build": "node ./webcrack/index.js",
     "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
     "serve": "node ./webcrack/scripts/serve.js",
     "newBlogEntry": "node scripts/newBlogEntry.js",
@@ -24,6 +24,7 @@
     "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
   },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "chokidar": "^3.3.1",
     "clean-css": "",
     "filepath": "^1.1.0",

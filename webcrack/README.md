@@ -38,9 +38,9 @@ webcrack is _not necessarily_ for web development. It has a much broader use-cas
 
 Only if you understand typescript, immutability, redux and selectors. Luckily, these concepts are not that difficult to learn!
 
-### webcrack.config.ts
+### webcrack.config.js
 
-webcrack is configured with TS configuration file, similar to webpack.config.js. It has 2 sections of note
+webcrack is configured with webpack.config.js. It has 2 sections of note
 
 #### inputs
 `inputs` is a list of configurations which define which files get read and where to store those results in the redux stores

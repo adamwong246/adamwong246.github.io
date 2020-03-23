@@ -32,7 +32,7 @@ npm manifest:
     },
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
-      "build": "node ./webcrack/scripts/build.js",
+      "build": "node ./webcrack/index.js",
       "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
       "serve": "node ./webcrack/scripts/serve.js",
       "newBlogEntry": "node scripts/newBlogEntry.js",
@@ -40,6 +40,7 @@ npm manifest:
       "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
     },
     "dependencies": {
+      "bluebird": "^3.7.2",
       "chokidar": "^3.3.1",
       "clean-css": "",
       "filepath": "^1.1.0",
@@ -192,6 +193,10 @@ Lockfile:
   bluebird@3.0.5:
     version "3.0.5"
     resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.0.5.tgz#2ff9d07c9b3edb29d6d280fe07528365e7ecd392"
+  
+  bluebird@^3.7.2:
+    version "3.7.2"
+    resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   
   brace-expansion@^1.1.7:
     version "1.1.11"
@@ -1537,7 +1542,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c node ./webcrack/scripts/build.js
+  Arguments: -c node ./webcrack/index.js
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

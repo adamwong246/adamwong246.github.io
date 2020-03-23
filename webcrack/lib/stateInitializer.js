@@ -1,4 +1,3 @@
-const { INITIALIZE } = require('./constants.js');
 const {writefile} = require('./utils.js');
 
 // connects the store's `subscribe` to each of the output selectors
@@ -28,10 +27,4 @@ module.exports = (store, webcrackConfig, baseSelector) => {
     });
   })
 
-  // lastly, turn the store `on`.
-  // This is to prevent unecessary recomputations when initialy adding files to redux
-  store.dispatch({
-    type: INITIALIZE,
-    payload: true
-  })
 }

@@ -1,24 +1,29 @@
 const glob = require("glob");
 const dispatch = require("./dispatch.js")
-const watch = require('watch');
+const chokidar = require('chokidar');
 
 module.exports = (store, options, key, inputRule) => {
 
-    const inFolder = options.inFolder
-    const filePath = inputRule.filePath || ''
-    const fileGlob = inputRule.fileGlob
+  const inFolder = options.inFolder
+  const filePath = inputRule.filePath || ''
 
-    glob.sync(`./${inFolder}/${filePath}/${fileGlob}`)
-    .map((file) => dispatch(store, key, file));
+  const path = `./${inFolder}/${filePath}`
 
-    // watch.createMonitor( `./${inFolder}/${filePath}/` , function(monitor) {
-    //   monitor.files[inputRule.fileGlob]
-    //
-    //   console.log(monitor.files[inputRule.fileGlob])
-    //   // monitor.on('changed', function(f, curr, prev) {
-    //   //   console.log(`${key} - file changed: `, f)
-    //   //   dispatch(store, key, './' + f);
-    //   // });
+  chokidar.watch(path, {})
+    .on('add', path => {
+      console.log(`File ${path} has been added`)
+      dispatch(store, key, './' + path);
+    })
+    .on('change', path => {
+      console.log(`File ${path} has been changed`)
+        dispatch(store, key, './' + path);
+    })
+    // .on('unlink', path => log(`File ${path} has been removed`));
+    // .on('addDir', path => log(`Directory ${path} has been added`))
+    // .on('unlinkDir', path => log(`Directory ${path} has been removed`))
+    // .on('error', error => log(`Watcher error: ${error}`))
+    // .on('ready', () => log('Initial scan complete. Ready for changes'))
+    // .on('raw', (event, path, details) => { // internal
+    //   log('Raw event info:', event, path, details);
     // });
-
 };

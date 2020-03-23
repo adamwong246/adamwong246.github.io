@@ -24,6 +24,7 @@
     "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
   },
   "dependencies": {
+    "chokidar": "^3.3.1",
     "clean-css": "",
     "filepath": "^1.1.0",
     "fs-extra": "9.0.0",
@@ -43,7 +44,6 @@
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "slug": "^0.8.0",
-    "watch": "1.0.2",
     "yaml-front-matter": "^3.2.3"
   }
 }

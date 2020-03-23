@@ -12,7 +12,7 @@ module.exports = (configs) => {
     initialLoad: true,
     ...configs.initialState
   }, action) => {
-    // console.log("ACTION:" + JSON.stringify(action, null, 2));
+    console.log("ACTION:" + JSON.stringify(action, null, 2));
 
     if (!action.type.includes('@@redux')) {
 
@@ -30,9 +30,24 @@ module.exports = (configs) => {
     }
   })
 
-  const baseSelector = (createSelector(store.getState, (state) => state))
+  const stateSelector = (createSelector(store.getState, (state) => {
+    return state
+  }))
+
+  const initializedSelector = (createSelector(stateSelector, (state) => {
+    if (!state.initialLoad){
+      return null
+    } else {
+      return state
+    }
+  }))
+
+  // const baseSelector = (createSelector(store.getState, (state) => {
+  //   return state
+  // }))
+
   return {
     store,
-    baseSelector
+    baseSelector: initializedSelector
   }
 }

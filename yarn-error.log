@@ -40,6 +40,7 @@ npm manifest:
       "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
     },
     "dependencies": {
+      "chokidar": "^3.3.1",
       "clean-css": "",
       "filepath": "^1.1.0",
       "fs-extra": "9.0.0",
@@ -59,7 +60,6 @@ npm manifest:
       "redux": "^4.0.5",
       "reselect": "^4.0.0",
       "slug": "^0.8.0",
-      "watch": "1.0.2",
       "yaml-front-matter": "^3.2.3"
     }
   }
@@ -110,6 +110,13 @@ Lockfile:
   any-promise@^1.1.0:
     version "1.3.0"
     resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
+  
+  anymatch@~3.1.1:
+    version "3.1.1"
+    resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-3.1.1.tgz#c55ecf02185e2469259399310c173ce31233b142"
+    dependencies:
+      normalize-path "^3.0.0"
+      picomatch "^2.0.4"
   
   argparse@^1.0.10, argparse@^1.0.7:
     version "1.0.10"
@@ -178,6 +185,10 @@ Lockfile:
     dependencies:
       tweetnacl "^0.14.3"
   
+  binary-extensions@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
+  
   bluebird@3.0.5:
     version "3.0.5"
     resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.0.5.tgz#2ff9d07c9b3edb29d6d280fe07528365e7ecd392"
@@ -188,6 +199,12 @@ Lockfile:
     dependencies:
       balanced-match "^1.0.0"
       concat-map "0.0.1"
+  
+  braces@~3.0.2:
+    version "3.0.2"
+    resolved "https://registry.yarnpkg.com/braces/-/braces-3.0.2.tgz#3454e1a462ee8d599e236df336cd9ea4f8afe107"
+    dependencies:
+      fill-range "^7.0.1"
   
   buffer-from@^1.0.0:
     version "1.1.1"
@@ -224,6 +241,20 @@ Lockfile:
   character-parser@1.2.1:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/character-parser/-/character-parser-1.2.1.tgz#c0dde4ab182713b919b970959a123ecc1a30fcd6"
+  
+  chokidar@^3.3.1:
+    version "3.3.1"
+    resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.3.1.tgz#c84e5b3d18d9a4d77558fef466b1bf16bbeb3450"
+    dependencies:
+      anymatch "~3.1.1"
+      braces "~3.0.2"
+      glob-parent "~5.1.0"
+      is-binary-path "~2.1.0"
+      is-glob "~4.0.1"
+      normalize-path "~3.0.0"
+      readdirp "~3.3.0"
+    optionalDependencies:
+      fsevents "~2.1.2"
   
   clean-css@, clean-css@^4.2.1:
     version "4.2.3"
@@ -434,12 +465,6 @@ Lockfile:
       d "1"
       es5-ext "~0.10.14"
   
-  exec-sh@^0.2.0:
-    version "0.2.2"
-    resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.2.2.tgz#2a5e7ffcbd7d0ba2755bdecb16e5a427dfbdec36"
-    dependencies:
-      merge "^1.2.0"
-  
   ext@^1.1.2:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/ext/-/ext-1.4.0.tgz#89ae7a07158f79d35517882904324077e4379244"
@@ -498,6 +523,12 @@ Lockfile:
     dependencies:
       bluebird "3.0.5"
   
+  fill-range@^7.0.1:
+    version "7.0.1"
+    resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
+    dependencies:
+      to-regex-range "^5.0.1"
+  
   forever-agent@~0.6.1:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -531,11 +562,21 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   
+  fsevents@~2.1.2:
+    version "2.1.2"
+    resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.2.tgz#4c0a1fb34bc68e543b4b82a9ec392bfbda840805"
+  
   getpass@^0.1.1:
     version "0.1.7"
     resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
     dependencies:
       assert-plus "^1.0.0"
+  
+  glob-parent@~5.1.0:
+    version "5.1.1"
+    resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
+    dependencies:
+      is-glob "^4.0.1"
   
   glob@^7.1.3, glob@latest:
     version "7.1.6"
@@ -613,9 +654,29 @@ Lockfile:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   
+  is-binary-path@~2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/is-binary-path/-/is-binary-path-2.1.0.tgz#ea1f7f3b80f064236e83470f86c09c254fb45b09"
+    dependencies:
+      binary-extensions "^2.0.0"
+  
   is-buffer@^1.1.5:
     version "1.1.6"
     resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
+  
+  is-extglob@^2.1.1:
+    version "2.1.1"
+    resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
+  
+  is-glob@^4.0.1, is-glob@~4.0.1:
+    version "4.0.1"
+    resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
+    dependencies:
+      is-extglob "^2.1.1"
+  
+  is-number@^7.0.0:
+    version "7.0.0"
+    resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   
   is-promise@^2.0.0:
     version "2.1.0"
@@ -823,10 +884,6 @@ Lockfile:
       next-tick "~0.2.2"
       timers-ext "0.1"
   
-  merge@^1.2.0:
-    version "1.2.1"
-    resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.1.tgz#38bebf80c3220a8a487b6fcfb3941bb11720c145"
-  
   mime-db@1.43.0:
     version "1.43.0"
     resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.43.0.tgz#0a12e0502650e473d735535050e7c8f4eb4fae58"
@@ -858,7 +915,7 @@ Lockfile:
     version "0.0.8"
     resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
   
-  minimist@^1.2.0, minimist@^1.2.5:
+  minimist@^1.2.5:
     version "1.2.5"
     resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   
@@ -918,6 +975,10 @@ Lockfile:
       colors ">=0.6.0"
       mime "^1.2.9"
       optimist ">=0.3.4"
+  
+  normalize-path@^3.0.0, normalize-path@~3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   
   normalize.css@^3.0.2:
     version "3.0.3"
@@ -992,6 +1053,10 @@ Lockfile:
       request "^2.81.0"
       request-progress "^2.0.1"
       which "^1.2.10"
+  
+  picomatch@^2.0.4, picomatch@^2.0.7:
+    version "2.2.2"
+    resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   
   pinkie-promise@^2.0.0:
     version "2.0.1"
@@ -1069,6 +1134,12 @@ Lockfile:
       safe-buffer "~5.1.1"
       string_decoder "~1.1.1"
       util-deprecate "~1.0.1"
+  
+  readdirp@~3.3.0:
+    version "3.3.0"
+    resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.3.0.tgz#984458d13a1e42e2e9f5841b129e162f369aff17"
+    dependencies:
+      picomatch "^2.0.7"
   
   redux@^4.0.5:
     version "4.0.5"
@@ -1269,6 +1340,12 @@ Lockfile:
     dependencies:
       rimraf "^2.6.3"
   
+  to-regex-range@^5.0.1:
+    version "5.0.1"
+    resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
+    dependencies:
+      is-number "^7.0.0"
+  
   tough-cookie@~2.5.0:
     version "2.5.0"
     resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
@@ -1398,13 +1475,6 @@ Lockfile:
   void-elements@~2.0.1:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
-  
-  watch@1.0.2:
-    version "1.0.2"
-    resolved "https://registry.yarnpkg.com/watch/-/watch-1.0.2.tgz#340a717bde765726fa0aa07d721e0147a551df0c"
-    dependencies:
-      exec-sh "^0.2.0"
-      minimist "^1.2.0"
   
   which@^1.2.10:
     version "1.3.1"

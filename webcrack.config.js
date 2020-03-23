@@ -29,31 +29,27 @@ module.exports = {
   // defines the inputs points where files will be read
   inputs: {
     license: {
-      fileGlob: 'LICENSE.txt',
+      filePath: 'LICENSE.txt',
       mutater: (state, payload) => payload.contents
     },
     css: {
-      filePath: 'assets',
-      fileGlob: '*.css',
+      filePath: 'assets/*.css',
       mutater: (state, payload) => [...state.css, payload.contents]
     },
     pages: {
-      filePath: 'pages',
-      fileGlob: '**/*.jade',
+      filePath: 'pages/**/*.jade',
       mutater: (state, payload) => [...state.pages, {
         [payload.src]: payload.contents
       }]
     },
     blogEntries: {
-      filePath: 'blogEntries',
-      fileGlob: '**/index.md',
+      filePath: 'blogEntries/**/index.md',
       mutater: (state, payload) => [...state.blogEntries, {
         [payload.src]: payload.contents
       }]
     },
     views: {
-      filePath: 'views',
-      fileGlob: '*.jade',
+      filePath: 'views/*.jade',
       mutater: (state, payload) => {
         return {
           ...state.views,
@@ -64,7 +60,7 @@ module.exports = {
       }
     },
     resume: {
-      fileGlob: 'resume.md',
+      filePath: 'resume.md',
       mutater: (state, payload) => payload.contents
     },
   },
@@ -217,6 +213,7 @@ module.exports = {
 
       // simply copies the file
       license: licenseSelectors,
+
       cssFile: cssSelector,
       htmlFiles: htmlSelector,
       resumePdf: resumePdfSelector

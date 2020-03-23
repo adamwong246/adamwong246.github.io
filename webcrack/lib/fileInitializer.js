@@ -39,8 +39,9 @@ const watch = require('watch');
 module.exports = (store, options, key, inputRule) => {
 
     const inFolder = options.inFolder
-    const filePath = inputRule.filePicker.filePath || ''
-    const fileGlob = inputRule.filePicker.fileGlob
+
+    const filePath = inputRule.filePath || ''
+    const fileGlob = inputRule.fileGlob
 
     const initalFileConsumptionPath = `./${inFolder}/${filePath}/${fileGlob}`;
     console.log('initalFileConsumptionPath', initalFileConsumptionPath)

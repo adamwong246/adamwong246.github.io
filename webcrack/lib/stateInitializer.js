@@ -23,8 +23,12 @@ module.exports = (store, webcrackConfig, baseSelector) => {
       // execute the selector given the store
       output(state).forEach((item, i) => {
 
+        key = Object.keys(item)[0]
+        filepath = key
+        contents = item[key]
+
         // write the contents to the FS
-        writefile(webcrackConfig.options.outFolder + "/" + item.filepath, item.contents)
+        writefile(webcrackConfig.options.outFolder + "/" + filepath, contents)
       });
 
     });

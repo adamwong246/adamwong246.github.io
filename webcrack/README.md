@@ -34,6 +34,10 @@ webcrack is _not necessarily_ for web development. It has a much broader use-cas
 - webcrack can't invoke other programs
 - webcrack can't perform impure, non-functional tasks
 
+#### Should I use webcrack?
+
+Only if you understand typescript, immutability, redux and selectors. Luckily, these concepts are not that difficult to learn!
+
 ### webcrack.config.ts
 
 webcrack is configured with TS configuration file, similar to webpack.config.js. It has 2 sections of note

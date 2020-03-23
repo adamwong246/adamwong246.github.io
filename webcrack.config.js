@@ -26,6 +26,7 @@ module.exports = {
   },
 
   // defines the inputs points where files will be read
+  // and a mutator of redux state
   inputs: {
     license: {
       'LICENSE.txt': (state, payload) => payload.contents
@@ -65,143 +66,14 @@ module.exports = {
     // this includes the intermediate selectors and the output selectors
     // output selectors must return an object of {content: string, path: string}
     // but intermediate selectors do not
-
-    ///////////////////////////////////////////////////////////////////////////
-
-    const licenseSelectors = createSelector([reduxState], (state) => [{
-      'LICENSE.txt': state.license
-    }]);
-
-    const packageSelector = createSelector(reduxState, (state) => {
-      return require("./package.json")
-    });
-
-    const pagesSelector = createSelector(reduxState, (state) => {
-      const pages = state.pages;
-
-      return pages.map((page) => {
-        const src = Object.keys(page)[0]
-        const baseFileName = src.split('.')[1].split('/').slice(-1)[0];
-
-        let dest, url;
-
-        if (baseFileName !== 'index') {
-          dest = `${baseFileName}/index.html`
-          url = `/${baseFileName}/index.html`
-        } else {
-          dest = `index.html`
-          url = `/index.html`
-        }
-        return {
-          src,
-          content: page[src],
-          dest: dest,
-          url: url,
-          title: baseFileName
-        }
-      })
-    });
-
-    const blogEntriesSelector = createSelector(reduxState, (state) => {
-      return state.blogEntries.map((blogEntry) => {
-        const markdownContent = markdown.parse(blogEntry[Object.keys(blogEntry)[0]])
-        const filePath = "blog/" + (slug(markdownContent.meta.title)) + '/index.html';
-        return {
-          ...blogEntry,
-          meta: markdownContent.meta,
-          markdownContent: markdownContent.content,
-          dest: filePath,
-          url: `/${filePath}`,
-        }
-      })
-    });
-
-    const viewsSelector = createSelector(reduxState, (state) => state.views)
-
-    const pageLayoutSelector = createSelector(viewsSelector, (views) => {
-      const key = './src/views/page.jade'
-      return {
-        src: key,
-        content: views[key]
-      }
-    })
-
-    // concats and cleans the css while injecting a css file from a node_module
-    const cssSelector = createSelector(reduxState, (state) => {
-      return [{
-        'style.css': new CleanCSS({
-          keepSpecialComments: 0
-        }).minify(
-          [
-            ...state.css,
-            fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
-          ].join('\n')
-        ).styles
-      }]
-    })
-
-    const resumeSelector = createSelector((reduxState), (state) => markdown.parse(state.resume));
-
-    const htmlSelector = createSelector([
-      packageSelector,
-      pagesSelector,
-      blogEntriesSelector,
-      resumeSelector,
-      pageLayoutSelector,
-    ], (package, pages, blogEntries, markdownResume, pageLayout) => {
-      const localsToJadeRender = {
-        blogEntries,
-        pages,
-        package
-      }
-
-      return [
-        ...blogEntries.map((blogEntry) => {
-          return {
-            [blogEntry.dest]: jade.render(pageLayout.content, {
-              filename: pageLayout.src,
-              page: {
-                content: blogEntry.markdownContent,
-              },
-              ...localsToJadeRender
-            })
-          };
-        }),
-        ...pages.map((page) => {
-          return {
-            [page.dest]: jade.render(page.content, {
-              filename: pageLayout.src,
-              ...localsToJadeRender
-            })
-          };
-        }),
-        {
-          'resume.html': jade.render(pageLayout.contents, {
-            filename: pageLayout.src,
-            page: {
-              content: markdownResume.content
-            },
-            ...localsToJadeRender
-          })
-        }
-      ]
-    });
-
-    const resumePdfSelector = createSelector([reduxState], (state) => {
-      return [{
-        'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
-      }]
-    });
-    ///////////////////////////////////////////////////////////////////////////
-
     // Lastly, return the output points and the selectors which feed them
     // each item needs to return an array of objects
     // where the `key` is a file and the `value` is the file contents
     return {
       // a selector does not need inputs, but it will execute only once and never refresh
-      // readme: createSelector([], () => [{
-      //   'README': "made with webcrack"
-      // }]),
+      readme: createSelector([], () => [{
+        'README': "made with webcrack"
+      }]),
 
       //  a debugging selector will write a json file of the state on every change
       webcrackstate: createSelector([reduxState], (state) => [{
@@ -209,11 +81,114 @@ module.exports = {
       }]),
 
       // simply copies the file
-      license: licenseSelectors,
+      license: createSelector([reduxState], (state) => [{
+        'LICENSE.txt': state.license
+      }]),
 
-      cssFile: cssSelector,
-      htmlFiles: htmlSelector,
-      resumePdf: resumePdfSelector
+      cssFile: createSelector(reduxState, (state) => {
+        return [{
+          'style.css': new CleanCSS({
+            keepSpecialComments: 0
+          }).minify(
+            [
+              ...state.css,
+              fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
+            ].join('\n')
+          ).styles
+        }]
+      }),
+      htmlFiles: createSelector([
+        createSelector(reduxState, (state) => {
+          return require("./package.json")
+        }),
+        createSelector(reduxState, (state) => {
+
+          return state.pages.map((page) => {
+            const src = Object.keys(page)[0]
+            const baseFileName = src.split('.')[1].split('/').slice(-1)[0];
+
+            let dest, url;
+
+            if (baseFileName !== 'index') {
+              dest = `${baseFileName}/index.html`
+              url = `/${baseFileName}/index.html`
+            } else {
+              dest = `index.html`
+              url = `/index.html`
+            }
+            return {
+              src,
+              content: page[src],
+              dest: dest,
+              url: url,
+              title: baseFileName
+            }
+          })
+        }),
+        createSelector(reduxState, (state) => {
+          return state.blogEntries.map((blogEntry) => {
+            const markdownContent = markdown.parse(blogEntry[Object.keys(blogEntry)[0]])
+            const filePath = "blog/" + (slug(markdownContent.meta.title)) + '/index.html';
+            return {
+              ...blogEntry,
+              meta: markdownContent.meta,
+              markdownContent: markdownContent.content,
+              dest: filePath,
+              url: `/${filePath}`,
+            }
+          })
+        }),
+        createSelector((reduxState), (state) => markdown.parse(state.resume)),
+        createSelector(createSelector(reduxState, (state) => state.views), (views) => {
+          const key = './src/views/page.jade'
+          return {
+            src: key,
+            content: views[key]
+          }
+        }),
+      ], (package, pages, blogEntries, markdownResume, pageLayout) => {
+        const localsToJadeRender = {
+          blogEntries,
+          pages,
+          package
+        }
+
+        return [
+          ...blogEntries.map((blogEntry) => {
+            return {
+              [blogEntry.dest]: jade.render(pageLayout.content, {
+                filename: pageLayout.src,
+                page: {
+                  content: blogEntry.markdownContent,
+                },
+                ...localsToJadeRender
+              })
+            };
+          }),
+          ...pages.map((page) => {
+            return {
+              [page.dest]: jade.render(page.content, {
+                filename: pageLayout.src,
+                ...localsToJadeRender
+              })
+            };
+          }),
+          {
+            'resume.html': jade.render(pageLayout.contents, {
+              filename: pageLayout.src,
+              page: {
+                content: markdownResume.content
+              },
+              ...localsToJadeRender
+            })
+          }
+        ]
+      }),
+      resumePdf: createSelector([reduxState], (state) => {
+        return [{
+          'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
+        }]
+      })
     }
   }
 }

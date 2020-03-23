@@ -65,19 +65,19 @@ const store = createStore((state = {
   }
 })
 
-const stateSelector = (createSelector(store.getState, (state) => {
-  return state
-}))
+// const stateSelector = (createSelector(store.getState, (state) => {
+//   return state
+// }))
+//
+// const initializedSelector = (createSelector(stateSelector, (state) => {
+//   if (state.initialLoad) {
+//     return webcrackConfig.initialState
+//   } else {
+//     return state
+//   }
+// }))
 
-const initializedSelector = (createSelector(stateSelector, (state) => {
-  if (state.initialLoad) {
-    return webcrackConfig.initialState
-  } else {
-    return state
-  }
-}))
-
-const outputs = webcrackConfig.outputs(initializedSelector)
+const outputs = webcrackConfig.outputs((x) => x)
 
 const fsWatchers = Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 
@@ -112,12 +112,13 @@ const fsWatchers = Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   });
 })
 
+// Wait for all the file watchers to check in
 Promise.all(fsWatchers).then(function() {
+
   // listen for changes to the store
   store.subscribe(() => {
 
     const state = store.getState();
-    // console.log(state)
 
     // interate over every output selector
     Object.keys(outputs).forEach((outputKey) => {
@@ -126,11 +127,8 @@ Promise.all(fsWatchers).then(function() {
       outputs[outputKey](state).forEach((item, i) => {
 
         key = Object.keys(item)[0]
-        filepath = key
-        contents = item[key]
-
         // write the contents to the FS
-        writefile(webcrackConfig.options.outFolder + "/" + filepath, contents)
+        writefile(webcrackConfig.options.outFolder + "/" + key, item[key])
       });
     });
   })

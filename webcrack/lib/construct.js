@@ -2,16 +2,18 @@ const stateInitializer = require('./stateInitializer.js');
 const fileInitializer = require('./fileInitializer.js');
 const makeStore = require('./makeStore.js');
 
-module.exports = (webcrackConfig, callback) => {
+module.exports = (webcrackConfig) => {
 
-  const { store, outputs } = makeStore(webcrackConfig);
+  const { store, baseSelector } = makeStore(webcrackConfig);
 
-  webcrackConfig.inputs.forEach((inputRule) => {
-    if (callback) {
-      callback(store, inputRule, webcrackConfig.options)
-    }
-    fileInitializer(store, webcrackConfig.options, inputRule)
+  Object.keys(webcrackConfig.inputs).forEach((inputRuleKey) => {
+    fileInitializer(
+      store,
+      webcrackConfig.options,
+      inputRuleKey,
+      webcrackConfig.inputs[inputRuleKey]
+    )
   })
 
-  stateInitializer(store, outputs, webcrackConfig.options)
+  stateInitializer(store, webcrackConfig, baseSelector)
 }

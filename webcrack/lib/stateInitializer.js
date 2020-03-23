@@ -2,24 +2,34 @@ const { INITIALIZE } = require('./constants.js');
 const {writefile} = require('./utils.js');
 
 // connects the store's `subscribe` to each of the output selectors
-module.exports = (store, outputs, webcrackConfigOptions) => {
+module.exports = (store, webcrackConfig, baseSelector) => {
+  const outputs = webcrackConfig.outputs(baseSelector)
+
 
   // listen for changes to the store
   store.subscribe(() => {
 
+    const state = store.getState();
+
+    // console.log(state);
+
     // interate over every output selector
 
     // console.log(outputs)
-    outputs.forEach((output) => {
+    const outputKeys = Object.keys(outputs)
+    outputKeys.forEach((outputKey) => {
 
+      const output = outputs[outputKey]
       // execute the selector given the store
-      output.selector(store).forEach((item, i) => {
+      output(state).forEach((item, i) => {
 
         // write the contents to the FS
-        writefile(webcrackConfigOptions.outFolder + "/" + item.filepath, item.contents)
+        writefile(webcrackConfig.options.outFolder + "/" + item.filepath, item.contents)
       });
 
-    })
+    });
+
+    console.log('done! Waiting for more changes...');
   })
 
   // lastly, turn the store `on`.

@@ -7,11 +7,13 @@ const {
 } = require('./constants.js');
 
 module.exports = (configs) => {
+
   const store = createStore((state = {
     initialLoad: true,
     ...configs.initialState
   }, action) => {
-    // console.log(JSON.stringify(action, null, 2));
+
+    // console.log("ACTION:" + JSON.stringify(action, null, 2));
 
     if (!action.type.includes('@@redux')) {
 
@@ -21,19 +23,22 @@ module.exports = (configs) => {
           initialLoad: false
         }
       } else {
+        const key = action.type
+        const mutater = configs.inputs[key].mutater
+        mutation = mutater(state, action.payload)
+
         return {
           ...state,
-          [action.type]: [
-            ...state[action.type],
-            action.payload
-          ]
+          [action.type]: mutation
         }
       }
     }
   })
 
+  const baseSelector = createSelector(store.getState, (state) => state)
+  // console.log(baseSelector)
   return {
     store,
-    outputs: configs.outputs((store) => createSelector(store.getState, (state) => state)(store), configs.options)
+    baseSelector
   }
 }

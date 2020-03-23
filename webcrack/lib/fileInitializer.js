@@ -48,12 +48,12 @@ module.exports = (store, options, key, inputRule) => {
     glob.sync(initalFileConsumptionPath)
     .map((file) => dispatch(store, key, file));
 
-    // watch.createMonitor( `./${inFolder}/${filePath}/` , function(monitor) {
-    //   monitor.files[inputRule.fileGlob]
-    //   monitor.on('changed', function(f, curr, prev) {
-    //     console.log(`${key} - file changed: `, f)
-    //     dispatch(store, key, './' + f);
-    //   });
-    // });
+    watch.createMonitor( `./${inFolder}/${filePath}/` , function(monitor) {
+      monitor.files[inputRule.fileGlob]
+      monitor.on('changed', function(f, curr, prev) {
+        console.log(`${key} - file changed: `, f)
+        dispatch(store, key, './' + f);
+      });
+    });
 
 };

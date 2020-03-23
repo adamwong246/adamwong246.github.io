@@ -79,6 +79,10 @@ module.exports = {
 
     ///////////////////////////////////////////////////////////////////////////
 
+    const licenseSelectors = createSelector([reduxState], (state) => [{
+      'LICENSE.txt': state.license
+    }]);
+
     const packageSelector = createSelector(reduxState, (state) => {
       return require("./package.json")
     });
@@ -212,13 +216,9 @@ module.exports = {
       }]),
 
       // simply copies the file
-      license: createSelector([reduxState], (state) => [{
-        'LICENSE.txt': state.license
-      }]),
-
+      license: liecnseSelector,
       cssFile: cssSelector,
       htmlFiles: htmlSelector,
-
       resumePdf: resumePdfSelector
     }
   }

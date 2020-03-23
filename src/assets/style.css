@@ -47,8 +47,7 @@ img#profile{
 p, li {max-width:35rem;}
 
 nav ul{
-  -webkit-padding-start: 0px;
-  /* list-style: none; */
+  padding-inline-start: 1em;
 }
 
 h2{

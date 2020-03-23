@@ -216,7 +216,7 @@ module.exports = {
       }]),
 
       // simply copies the file
-      license: liecnseSelector,
+      license: licenseSelectors,
       cssFile: cssSelector,
       htmlFiles: htmlSelector,
       resumePdf: resumePdfSelector

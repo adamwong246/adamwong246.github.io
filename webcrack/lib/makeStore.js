@@ -12,7 +12,6 @@ module.exports = (configs) => {
     initialLoad: true,
     ...configs.initialState
   }, action) => {
-
     // console.log("ACTION:" + JSON.stringify(action, null, 2));
 
     if (!action.type.includes('@@redux')) {
@@ -23,20 +22,15 @@ module.exports = (configs) => {
           initialLoad: false
         }
       } else {
-        const key = action.type
-        const mutater = configs.inputs[key].mutater
-        mutation = mutater(state, action.payload)
-
         return {
           ...state,
-          [action.type]: mutation
+          [action.type]: configs.inputs[action.type].mutater(state, action.payload)
         }
       }
     }
   })
 
-  const baseSelector = createSelector(store.getState, (state) => state)
-  // console.log(baseSelector)
+  const baseSelector = (createSelector(store.getState, (state) => state))
   return {
     store,
     baseSelector

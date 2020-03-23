@@ -59,7 +59,7 @@ const store = createStore((state = {
       const mutater = webcrackConfig.inputs[action.type][key]
       return {
         ...state,
-        [action.type]: mutater(state, action.payload)
+        [action.type]: mutater(state[action.type], action.payload)
       }
     }
   }

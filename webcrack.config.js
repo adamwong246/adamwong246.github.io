@@ -17,7 +17,7 @@ module.exports = {
     blogEntries: {},
     css: [],
     resume: "",
-    moment: moment
+    // moment: moment
   },
 
   options: {
@@ -29,15 +29,15 @@ module.exports = {
   // and a mutator of redux state
   inputs: {
     license: {
-      'LICENSE.txt': (state, payload) => payload.contents
+      'LICENSE.txt': (license, payload) => payload.contents
     },
     css: {
-      'assets/*.css': (state, payload) => [...state.css, payload.contents]
+      'assets/*.css': (css, payload) => [...css, payload.contents]
     },
     pages: {
-      'pages/**/*.jade': (state, payload) => {
+      'pages/**/*.jade': (pages, payload) => {
         return {
-          ...state.pages,
+          ...pages,
           ...{
             [payload.src]: payload.contents
           }
@@ -45,9 +45,9 @@ module.exports = {
       }
     },
     blogEntries: {
-      'blogEntries/**/index.md': (state, payload) => {
+      'blogEntries/**/index.md': (blogEntries, payload) => {
         return {
-          ...state.blogEntries,
+          ...blogEntries,
           ...{
             [payload.src]: payload.contents
           }
@@ -55,9 +55,9 @@ module.exports = {
       }
     },
     views: {
-      'views/*.jade': (state, payload) => {
+      'views/*.jade': (views, payload) => {
         return {
-          ...state.views,
+          ...views,
           ...{
             [payload.src]: payload.contents
           }

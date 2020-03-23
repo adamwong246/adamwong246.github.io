@@ -48,6 +48,7 @@ npm manifest:
       "glob": "latest",
       "html-minifier": "",
       "jade": "1.11.0",
+      "jstransformer-marked": "^1.0.3",
       "lodash": "^2.4.1",
       "markdown-pdf": "^10.0.0",
       "marky-mark": "latest",
@@ -787,6 +788,12 @@ Lockfile:
       json-schema "0.2.3"
       verror "1.10.0"
   
+  jstransformer-marked@^1.0.3:
+    version "1.0.3"
+    resolved "https://registry.yarnpkg.com/jstransformer-marked/-/jstransformer-marked-1.0.3.tgz#07ce849d95a3c4e398f2dfd90d94be3b88453f16"
+    dependencies:
+      marked "^0.3.9"
+  
   jstransformer@0.0.2:
     version "0.0.2"
     resolved "https://registry.yarnpkg.com/jstransformer/-/jstransformer-0.0.2.tgz#7aae29a903d196cfa0973d885d3e47947ecd76ab"
@@ -866,6 +873,10 @@ Lockfile:
   marked@0.2.x:
     version "0.2.10"
     resolved "https://registry.yarnpkg.com/marked/-/marked-0.2.10.tgz#d5fd68271caae61c55d291d07bd5034cff5e73ee"
+  
+  marked@^0.3.9:
+    version "0.3.19"
+    resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
   
   marky-mark@latest:
     version "1.2.2"

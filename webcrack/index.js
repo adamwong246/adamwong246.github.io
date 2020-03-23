@@ -65,28 +65,10 @@ const store = createStore((state = {
   }
 })
 
-// const stateSelector = (createSelector(store.getState, (state) => {
-//   return state
-// }))
-//
-// const initializedSelector = (createSelector(stateSelector, (state) => {
-//   if (state.initialLoad) {
-//     return webcrackConfig.initialState
-//   } else {
-//     return state
-//   }
-// }))
-
-const outputs = webcrackConfig.outputs((x) => x)
+const outputs = webcrackConfig.outputs((store) => store)
 
 const fsWatchers = Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
-
-  const inputRule = webcrackConfig.inputs[inputRuleKey]
-  const inFolder = webcrackConfig.options.inFolder
-
-  const key = Object.keys(inputRule)[0];
-  const filePath = key || ''
-  const path = `./${inFolder}/${filePath}`
+  const path = `./${webcrackConfig.options.inFolder}/${Object.keys(webcrackConfig.inputs[inputRuleKey])[0] || ''}`
 
   return new Promise((fulfill, reject) => {
     chokidar.watch(path, {})

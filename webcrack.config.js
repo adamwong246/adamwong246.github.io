@@ -13,8 +13,8 @@ slug = require('slug');
 module.exports = {
   initialState: {
     views: {},
-    pages: [],
-    blogEntries: [],
+    pages: {},
+    blogEntries: {},
     css: [],
     resume: "",
     moment: moment
@@ -35,14 +35,24 @@ module.exports = {
       'assets/*.css': (state, payload) => [...state.css, payload.contents]
     },
     pages: {
-      'pages/**/*.jade': (state, payload) => [...state.pages, {
-        [payload.src]: payload.contents
-      }]
+      'pages/**/*.jade': (state, payload) => {
+        return {
+          ...state.pages,
+          ...{
+            [payload.src]: payload.contents
+          }
+        }
+      }
     },
     blogEntries: {
-      'blogEntries/**/index.md': (state, payload) => [...state.blogEntries, {
-        [payload.src]: payload.contents
-      }]
+      'blogEntries/**/index.md': (state, payload) => {
+        return {
+          ...state.blogEntries,
+          ...{
+            [payload.src]: payload.contents
+          }
+        }
+      }
     },
     views: {
       'views/*.jade': (state, payload) => {
@@ -62,10 +72,6 @@ module.exports = {
   // defines the output points based on a base selector which is subscribed to changes in the redux state
   outputs: (reduxState) => {
 
-    // define the selectors you will pass to outpoint points
-    // this includes the intermediate selectors and the output selectors
-    // output selectors must return an object of {content: string, path: string}
-    // but intermediate selectors do not
     // Lastly, return the output points and the selectors which feed them
     // each item needs to return an array of objects
     // where the `key` is a file and the `value` is the file contents
@@ -103,9 +109,12 @@ module.exports = {
         }),
         createSelector(reduxState, (state) => {
 
-          return state.pages.map((page) => {
-            const src = Object.keys(page)[0]
-            const baseFileName = src.split('.')[1].split('/').slice(-1)[0];
+          const pages = state.pages;
+          const keys = Object.keys(pages)
+
+          return keys.map((key) => {
+            const page = pages[key]
+            const baseFileName = key.split('.')[1].split('/').slice(-1)[0];
 
             let dest, url;
 
@@ -117,8 +126,8 @@ module.exports = {
               url = `/index.html`
             }
             return {
-              src,
-              content: page[src],
+              key,
+              content: page,
               dest: dest,
               url: url,
               title: baseFileName
@@ -126,8 +135,10 @@ module.exports = {
           })
         }),
         createSelector(reduxState, (state) => {
-          return state.blogEntries.map((blogEntry) => {
-            const markdownContent = markdown.parse(blogEntry[Object.keys(blogEntry)[0]])
+          const keys = Object.keys(state.blogEntries)
+          return keys.map((key) => {
+            const blogEntry = state.blogEntries[key]
+            const markdownContent = markdown.parse(blogEntry)
             const filePath = "blog/" + (slug(markdownContent.meta.title)) + '/index.html';
             return {
               ...blogEntry,
@@ -169,6 +180,7 @@ module.exports = {
             return {
               [page.dest]: jade.render(page.content, {
                 filename: pageLayout.src,
+                page,
                 ...localsToJadeRender
               })
             };

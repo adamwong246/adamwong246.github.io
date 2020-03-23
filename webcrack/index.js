@@ -78,24 +78,9 @@ const outputSelectors = Object.keys(outputConfigs).map((outputKey) => {
 
 const finalSelector = createSelector(outputSelectors, (...outputs) => {
   return outputs.reduce((memo, output) => {
-
-
-    // console.log(output)
-    if (Array.isArray(output)){
-      // console.log('array')
-      return {
-        // ...memo, ...output
-      }
-      // return {
-      //   ...memo, output.reduce((), => )
-      // }
-    } else {
-      // console.log('not array')
-      return {
-        ...memo, ...output
-      }
+    return {
+      ...memo, ...output
     }
-
 
   }, {})
 })
@@ -129,14 +114,10 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   store.subscribe(() => {
 
     const finalWriters = finalSelector(store.getState())
-      // console.log('finalWriters')
-      // console.log(finalWriters)
     Object.keys(finalWriters).forEach((key) => {
       if (finalWriters[key] !== previousState[key]){
         writefile(webcrackConfig.options.outFolder + "/" + key,   finalWriters[key])
         previousState[key] = finalWriters[key]
-      } else{
-        // console.log('match on: ', key, ' Skipping write...')
       }
     })
 

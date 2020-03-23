@@ -1,4 +1,4 @@
-# Adam Wong!!
+# Adam Wong
 
 - 971-207-1376
 - adamwong246@gmail.com

@@ -219,11 +219,11 @@ module.exports = {
         }
       }),
 
-      // resumePdf: createSelector([reduxState], (state) => {
-      //   return {
-      //     'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
-      //   };
-      // }),
+      resumePdf: createSelector([reduxState], (state) => {
+        return {
+          'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
+        };
+      }),
 
     }
   }

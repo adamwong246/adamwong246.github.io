@@ -75,6 +75,9 @@ module.exports = {
   // defines the output points based on a base selector which is subscribed to changes in the redux state
   outputs: (reduxState) => {
 
+    const resumeSelector = ([reduxState], (state) => {
+      return state.resume
+    })
     // Lastly, return the output points and the selectors which feed them
     // each item needs to return an array of objects
     // where the `key` is a file and the `value` is the file contents
@@ -94,9 +97,9 @@ module.exports = {
         return  {'LICENSE.txt': state.license}
       }),
 
-      resumeMd: createSelector([reduxState], (state) => {
+      resumeMd: createSelector([resumeSelector], (resume) => {
         return {
-          'resume.md': state.resume
+          'resume.md': resume
         }
       }),
 
@@ -219,9 +222,9 @@ module.exports = {
         }
       }),
 
-      resumePdf: createSelector([reduxState], (state) => {
+      resumePdf: createSelector([resumeSelector], (resume) => {
         return {
-          'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
+          'resume.pdf': markdownpdf().from.string(resume).to.buffer
         };
       }),
 

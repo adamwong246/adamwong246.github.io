@@ -28,28 +28,23 @@ module.exports = {
   // defines the inputs points where files will be read
   inputs: {
     license: {
-      filePath: 'LICENSE.txt',
-      mutater: (state, payload) => payload.contents
+      'LICENSE.txt': (state, payload) => payload.contents
     },
     css: {
-      filePath: 'assets/*.css',
-      mutater: (state, payload) => [...state.css, payload.contents]
+      'assets/*.css': (state, payload) => [...state.css, payload.contents]
     },
     pages: {
-      filePath: 'pages/**/*.jade',
-      mutater: (state, payload) => [...state.pages, {
+      'pages/**/*.jade': (state, payload) => [...state.pages, {
         [payload.src]: payload.contents
       }]
     },
     blogEntries: {
-      filePath: 'blogEntries/**/index.md',
-      mutater: (state, payload) => [...state.blogEntries, {
+      'blogEntries/**/index.md': (state, payload) => [...state.blogEntries, {
         [payload.src]: payload.contents
       }]
     },
     views: {
-      filePath: 'views/*.jade',
-      mutater: (state, payload) => {
+      'views/*.jade': (state, payload) => {
         return {
           ...state.views,
           ...{
@@ -59,8 +54,7 @@ module.exports = {
       }
     },
     resume: {
-      filePath: 'resume.md',
-      mutater: (state, payload) => payload.contents
+      'resume.md': (state, payload) => payload.contents
     },
   },
 
@@ -194,7 +188,9 @@ module.exports = {
     });
 
     const resumePdfSelector = createSelector([reduxState], (state) => {
-      return [{'resume.pdf': markdownpdf().from.string(state.resume).to.buffer}]
+      return [{
+        'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
+      }]
     });
     ///////////////////////////////////////////////////////////////////////////
 

@@ -54,9 +54,12 @@ const store = createStore((state = {
         initialLoad: false
       }
     } else {
+
+      const key = Object.keys(webcrackConfig.inputs[action.type])[0]
+      const mutater = webcrackConfig.inputs[action.type][key]
       return {
         ...state,
-        [action.type]: webcrackConfig.inputs[action.type].mutater(state, action.payload)
+        [action.type]: mutater(state, action.payload)
       }
     }
   }
@@ -80,7 +83,9 @@ const fsWatchers = Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 
   const inputRule = webcrackConfig.inputs[inputRuleKey]
   const inFolder = webcrackConfig.options.inFolder
-  const filePath = inputRule.filePath || ''
+
+  const key = Object.keys(inputRule)[0];
+  const filePath = key || ''
   const path = `./${inFolder}/${filePath}`
 
   return new Promise((fulfill, reject) => {

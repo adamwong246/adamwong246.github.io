@@ -15,8 +15,9 @@ module.exports = {
     views: {},
     pages: {},
     blogEntries: {},
-    css: [],
+    css: "",
     resume: "",
+    license: ""
     // moment: moment
   },
 
@@ -31,9 +32,13 @@ module.exports = {
     license: {
       'LICENSE.txt': (license, payload) => payload.contents
     },
-    css: {
-      'assets/*.css': (css, payload) => [...css, payload.contents]
+    resume: {
+      'resume.md': (state, payload) => payload.contents
     },
+    css: {
+      'assets/*.css': (css, payload) => payload.contents
+    },
+
     pages: {
       'pages/**/*.jade': (pages, payload) => {
         return {
@@ -64,9 +69,7 @@ module.exports = {
         }
       }
     },
-    resume: {
-      'resume.md': (state, payload) => payload.contents
-    },
+
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -77,32 +80,39 @@ module.exports = {
     // where the `key` is a file and the `value` is the file contents
     return {
       // a selector does not need inputs, but it will execute only once and never refresh
-      readme: createSelector([], () => [{
-        'README': "made with webcrack"
-      }]),
+      readme: createSelector([], () => {
+        return {'README': "made with webcrack"}
+      }),
 
       //  a debugging selector will write a json file of the state on every change
-      webcrackstate: createSelector([reduxState], (state) => [{
-        'state.json': JSON.stringify(state, null, 1)
-      }]),
+      webcrackstate: createSelector([reduxState], (state) => {
+        return {'state.json': JSON.stringify(state, null, 1)}
+      }),
 
       // simply copies the file
-      license: createSelector([reduxState], (state) => [{
-        'LICENSE.txt': state.license
-      }]),
+      license: createSelector([reduxState], (state) => {
+        return  {'LICENSE.txt': state.license}
+      }),
+
+      resumeMd: createSelector([reduxState], (state) => {
+        return {
+          'resume.md': state.resume
+        }
+      }),
 
       cssFile: createSelector(reduxState, (state) => {
-        return [{
+        return {
           'style.css': new CleanCSS({
             keepSpecialComments: 0
           }).minify(
             [
-              ...state.css,
+              state.css,
               fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
             ].join('\n')
           ).styles
-        }]
+        }
       }),
+
       htmlFiles: createSelector([
         createSelector(reduxState, (state) => {
           return require("./package.json")
@@ -171,49 +181,50 @@ module.exports = {
           package
         }
 
-        return [
-          ...blogEntries.map((blogEntry) => {
-            return {
-              [blogEntry.dest]: jade.render(blogEntryLayout.content, {
-                filename: blogEntryLayout.src,
-                entry: blogEntry,
-                page: {
-                  content: blogEntry.markdownContent,
-                },
-                ...localsToJadeRender
-              })
-            };
-          }),
-          ...pages.map((page) => {
-            return {
-              [page.dest]: jade.render(page.content, {
-                filename: pageLayout.src,
-                page,
-                ...localsToJadeRender
-              })
-            };
-          }),
-          {
-            'resume.html': jade.render(pageLayout.contents, {
+        const processedPages = pages.reduce((mm, page) => {
+          return {
+            ...mm,
+            [page.dest]: jade.render(page.content, {
               filename: pageLayout.src,
+              page,
+              ...localsToJadeRender
+            })
+          }
+        },{});
+
+        const processedBlogEntries = blogEntries.reduce((mm, blogEntry) => {
+          return {
+            ...mm,
+            [blogEntry.dest]: jade.render(blogEntryLayout.content, {
+              filename: blogEntryLayout.src,
+              entry: blogEntry,
               page: {
-                content: markdownResume.content
+                content: blogEntry.markdownContent,
               },
               ...localsToJadeRender
             })
           }
-        ]
+        },{});
+
+        return {
+          ...processedBlogEntries,
+          ...processedPages,
+          'resume.html': jade.render(pageLayout.contents, {
+            filename: pageLayout.src,
+            page: {
+              content: markdownResume.content
+            },
+            ...localsToJadeRender
+          })
+        }
       }),
-      resumePdf: createSelector([reduxState], (state) => {
-        return [{
-          'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
-        }]
-      }),
-      resumeMd: createSelector([reduxState], (state) => {
-        return [{
-          'resume.md': reduxState.resume
-        }]
-      })
+
+      // resumePdf: createSelector([reduxState], (state) => {
+      //   return {
+      //     'resume.pdf': markdownpdf().from.string(state.resume).to.buffer
+      //   };
+      // }),
+
     }
   }
 }

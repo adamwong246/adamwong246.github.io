@@ -33,19 +33,17 @@ html(lang="en")
       a(href="/resume.md") .md
       hr
         
-      dl
-        dt pages
+      ul
         - for page in pages
-          di #[a(href=page.url)= page.title]
+          li #[a(href=page.url)= page.title]
       hr
-      dl
-        dt blog entries
+      ul
         - for entry in blogEntries
-          di #[a(href=entry.url)= entry.meta.title]
+          li #[a(href=entry.url)= entry.meta.title]
       
       
       a(href=package.repository.url) github
       br
       |v#{package.version}    
       br
-      span #{moment().format()}
+      a(href='/LICENSE.txt') LICENSE

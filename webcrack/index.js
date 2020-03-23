@@ -8,6 +8,7 @@ const glob = require("glob");
 const webcrackConfig = require("../webcrack.config.js")
 
 const INITIALIZE = 'INITIALIZE';
+const previousState = {}
 
 const dispatch = (store, key, file) => {
   store.dispatch({
@@ -56,32 +57,62 @@ const store = createStore((state = {
     } else {
 
       const key = Object.keys(webcrackConfig.inputs[action.type])[0]
-      const mutater = webcrackConfig.inputs[action.type][key]
+      const reduce = webcrackConfig.inputs[action.type][key]
       return {
         ...state,
-        [action.type]: mutater(state[action.type], action.payload)
+        [action.type]: reduce(state[action.type], action.payload)
       }
     }
   }
 })
 
-const outputs = webcrackConfig.outputs((store) => store)
+const rootSelector = ((state) => {
+  return state;
+});
 
-const fsWatchers = Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
+const outputConfigs = webcrackConfig.outputs(rootSelector)
+
+const outputSelectors = Object.keys(outputConfigs).map((outputKey) => {
+  return outputConfigs[outputKey]
+});
+
+const finalSelector = createSelector(outputSelectors, (...outputs) => {
+  return outputs.reduce((memo, output) => {
+
+
+    // console.log(output)
+    if (Array.isArray(output)){
+      // console.log('array')
+      return {
+        // ...memo, ...output
+      }
+      // return {
+      //   ...memo, output.reduce((), => )
+      // }
+    } else {
+      // console.log('not array')
+      return {
+        ...memo, ...output
+      }
+    }
+
+
+  }, {})
+})
+
+// Wait for all the file watchers to check in
+Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   const path = `./${webcrackConfig.options.inFolder}/${Object.keys(webcrackConfig.inputs[inputRuleKey])[0] || ''}`
 
   return new Promise((fulfill, reject) => {
     chokidar.watch(path, {})
       .on('ready', () => {
-        // console.log(`${inputRuleKey} is ready`)
         fulfill()
       })
       .on('add', path => {
-        // console.log(`File ${path} has been added`)
         dispatch(store, inputRuleKey, './' + path);
       })
       .on('change', path => {
-        // console.log(`File ${path} has been changed`)
         dispatch(store, inputRuleKey, './' + path);
       })
     // .on('unlink', path => log(`File ${path} has been removed`));
@@ -92,27 +123,23 @@ const fsWatchers = Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
     //   log('Raw event info:', event, path, details);
     // });
   });
-})
-
-// Wait for all the file watchers to check in
-Promise.all(fsWatchers).then(function() {
+})).then(function() {
 
   // listen for changes to the store
   store.subscribe(() => {
 
-    const state = store.getState();
+    const finalWriters = finalSelector(store.getState())
+      // console.log('finalWriters')
+      // console.log(finalWriters)
+    Object.keys(finalWriters).forEach((key) => {
+      if (finalWriters[key] !== previousState[key]){
+        writefile(webcrackConfig.options.outFolder + "/" + key,   finalWriters[key])
+        previousState[key] = finalWriters[key]
+      } else{
+        // console.log('match on: ', key, ' Skipping write...')
+      }
+    })
 
-    // interate over every output selector
-    Object.keys(outputs).forEach((outputKey) => {
-
-      // execute the selector given the store
-      outputs[outputKey](state).forEach((item, i) => {
-
-        key = Object.keys(item)[0]
-        // write the contents to the FS
-        writefile(webcrackConfig.options.outFolder + "/" + key, item[key])
-      });
-    });
   })
 
   // lastly, turn the store `on`.

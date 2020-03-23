@@ -1,3 +1,9 @@
+body {
+  background-color: white;
+  color: black;
+}
+
+
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
   html {
     font-weight: 300;

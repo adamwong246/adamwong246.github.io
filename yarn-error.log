@@ -32,9 +32,9 @@ npm manifest:
     },
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
-      "build": "node ./scripts/server.js;; node ./webcrack/index.js",
+      "build": "node ./webcrack/index.js",
       "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
-      "serve": "node ./webcrack/scripts/serve.js",
+      "serve": "node ./scripts/server.js",
       "newBlogEntry": "node scripts/newBlogEntry.js",
       "deploy": "git push origin `git subtree split --prefix dist distinit`:master --force",
       "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
@@ -1551,9 +1551,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 2
+  Exit code: 1
   Command: sh
-  Arguments: -c node ./scripts/server.js;; node ./webcrack/index.js
+  Arguments: -c node ./webcrack/index.js
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

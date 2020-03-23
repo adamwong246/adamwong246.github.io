@@ -1,5 +1,6 @@
-# Adam Wong
+# Adam Wong!!
 
+- 971-207-1376
 - adamwong246@gmail.com
 - Portland, OR
 
@@ -7,7 +8,7 @@
 
 - Typescript, React, Node, Meteor, Ruby on Rails
 - Docker and DockerHub
-- Github, Heroku Jenkins and Amazon AWS 
+- Github, Heroku Jenkins and Amazon AWS
 - Java and Android
 - BDD and TDD methodologies
 - certified Scrum Master

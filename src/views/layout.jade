@@ -37,7 +37,10 @@ html(lang="en")
       ul
         - for entry in blogEntries
           li #[a(href=entry.url)= entry.meta.title]
-
-      a(href=package.repository.url) v#{package.version}
+      
+      
+      a(href=package.repository.url) github
+      br
+      |v#{package.version}    
       br
       span #{moment().format()}

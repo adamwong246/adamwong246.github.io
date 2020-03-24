@@ -10,6 +10,12 @@ const webcrackConfig = require("../webcrack.config.js")
 const INITIALIZE = 'INITIALIZE';
 const previousState = {}
 
+const watchMode = false
+if (process.argv[2] == 'watch') {
+  watchMode = true
+}
+
+
 const dispatch = (store, key, file, encodings) => {
   store.dispatch({
     type: key,
@@ -126,7 +132,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
         writefile(webcrackConfig.options.outFolder + "/" + key,   finalWriters[key])
         previousState[key] = finalWriters[key]
       }
-    })
+    })    
 
   })
 
@@ -137,4 +143,4 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
     payload: true
   });
 
-});
+})

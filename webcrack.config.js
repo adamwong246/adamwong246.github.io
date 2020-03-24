@@ -125,11 +125,6 @@ module.exports = {
     // each item needs to return an array of objects
     // where the `key` is a file and the `value` is the file contents
     return {
-      // a selector does not need inputs, but it will execute only once and never refresh
-      readme: createSelector([], () => {
-        return {'README': "made with webcrack"}
-      }),
-
       //  a debugging selector will write a json file of the state on every change
       // webcrackstate: createSelector([reduxState], (state) => {
       //   return {'state.json': JSON.stringify(state, null, 1)}

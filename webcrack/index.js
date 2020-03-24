@@ -8,23 +8,35 @@ const glob = require("glob");
 const webcrackConfig = require("../webcrack.config.js")
 
 const INITIALIZE = 'INITIALIZE';
+const UPSERT = 'UPSERT';
+const REMOVE = 'REMOVE';
+
 const previousState = {}
 
-const dispatch = (store, key, file, encodings) => {
+const dispatchUpsert = (store, key, file, encodings) => {
   store.dispatch({
-    type: key,
+    type: UPSERT,
     payload: {
+      key: key,
       src: file,
       contents: readfile(file, encodings)
     }
   });
 };
 
-const readfile = (file, encodings) => {
+const dispatchRemove = (store, key, file) => {
+  store.dispatch({
+    type: REMOVE,
+    payload: {
+      key: key,
+      file: file
+    }
+  });
+};
 
+const readfile = (file, encodings) => {
   const filetype = file.split('.')[2]
   const encoding = Object.keys(encodings).find((e) => encodings[e].includes(filetype))
-
   const relativeFilePath = './' + file;
   console.log("\u001b[31m <-- \u001b[0m" + file)
   return fse.readFileSync(file, encoding);
@@ -49,6 +61,12 @@ const writefile = (file, contents) => {
   }
 }
 
+
+function omit(key, obj) {
+  const { [key]: omitted, ...rest } = obj;
+  return rest;
+}
+
 const store = createStore((state = {
   initialLoad: true,
   ...webcrackConfig.initialState
@@ -62,17 +80,28 @@ const store = createStore((state = {
         ...state,
         initialLoad: false
       }
-    } else {
+    }
+
+    else if (action.type === UPSERT){
       return {
         ...state,
-        [action.type]: {
-          ...state[action.type],
+        [action.payload.key]: {
+          ...state[action.payload.key],
           ...{
             [action.payload.src]: action.payload.contents
           }
         }
       }
+    } else if (action.type === REMOVE){
+      return {
+        ...state,
+        [action.payload.key]: omit(action.payload.file, state[action.payload.key])
+      }
+    } else {
+      console.log("WHAT?!")
+      return state
     }
+
   }
 })
 
@@ -88,19 +117,29 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   const path = `./${webcrackConfig.options.inFolder}/${webcrackConfig.inputs[inputRuleKey] || ''}`
   return new Promise((fulfill, reject) => {
     chokidar.watch(path, {})
+      .on('error', error => {
+        console.log("\u001b[7m !!! \u001b[0m" + path)
+      })
       .on('ready', () => {
+        console.log("\u001b[7m\u001b[36m  >  \u001b[0m" + path)
         fulfill()
       })
       .on('add', path => {
-        dispatch(store, inputRuleKey, './' + path, webcrackConfig.encodings);
+        console.log("\u001b[7m\u001b[34m  +  \u001b[0m" + path)
+        dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
       })
       .on('change', path => {
-        dispatch(store, inputRuleKey, './' + path, webcrackConfig.encodings);
+        console.log("\u001b[7m\u001b[35m  !  \u001b[0m" + path)
+        dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
       })
-    // .on('unlink', path => log(`File ${path} has been removed`));
+      .on('unlink', path => {
+        console.log("\u001b[7m\u001b[31m  -  \u001b[0m" + path)
+        dispatchRemove(store, inputRuleKey, './' + path)
+      })
+
     // .on('addDir', path => log(`Directory ${path} has been added`))
     // .on('unlinkDir', path => log(`Directory ${path} has been removed`))
-    // .on('error', error => log(`Watcher error: ${error}`))
+    //
     // .on('raw', (event, path, details) => { // internal
     //   log('Raw event info:', event, path, details);
     // });

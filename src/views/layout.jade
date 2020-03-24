@@ -43,13 +43,12 @@ html(lang="en")
             a(href=entry.url)= entry.meta.title
             br
             = moment(entry.meta.publishedAt).format("MMMM Do YYYY")
-      a(href="/blog/index.html") more blog entries
+      a(href="/blog/index.html") more blog entries...
       hr
-      |v#{package.version}
-      br
-      a(href=package.repository.url) github 
-      br
-      |Made with #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]
-      br
-      a(href='/LICENSE.txt') LICENSE
+      p
+        |Made with ❤️ and #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]
+      p
+        |v#{package.version} #[a(href=package.repository.url) github ]
+      p
+        a(href='/LICENSE.txt') LICENSE
       

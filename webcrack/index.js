@@ -10,12 +10,6 @@ const webcrackConfig = require("../webcrack.config.js")
 const INITIALIZE = 'INITIALIZE';
 const previousState = {}
 
-const watchMode = false
-if (process.argv[2] == 'watch') {
-  watchMode = true
-}
-
-
 const dispatch = (store, key, file, encodings) => {
   store.dispatch({
     type: key,
@@ -69,39 +63,29 @@ const store = createStore((state = {
         initialLoad: false
       }
     } else {
-      const key = Object.keys(webcrackConfig.inputs[action.type])[0]
-      const reduce = webcrackConfig.inputs[action.type][key]
       return {
         ...state,
-        [action.type]: reduce(state[action.type], action.payload)
+        [action.type]: {
+          ...state[action.type],
+          ...{
+            [action.payload.src]: action.payload.contents
+          }
+        }
       }
     }
   }
 })
 
-const rootSelector = ((state) => {
-  return state;
-});
-
-const outputConfigs = webcrackConfig.outputs(rootSelector)
-
-const outputSelectors = Object.keys(outputConfigs).map((outputKey) => {
-  return outputConfigs[outputKey]
-});
-
-const finalSelector = createSelector(outputSelectors, (...outputs) => {
-  return outputs.reduce((memo, output) => {
+const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).reduce((mm, inputKey) => {
     return {
-      ...memo, ...output
+      ...mm,
+      [inputKey]: createSelector([(x) => x], (root) => root[inputKey])
     }
-
-  }, {})
-})
+}, {}))
 
 // Wait for all the file watchers to check in
 Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
-  const path = `./${webcrackConfig.options.inFolder}/${Object.keys(webcrackConfig.inputs[inputRuleKey])[0] || ''}`
-
+  const path = `./${webcrackConfig.options.inFolder}/${webcrackConfig.inputs[inputRuleKey] || ''}`
   return new Promise((fulfill, reject) => {
     chokidar.watch(path, {})
       .on('ready', () => {
@@ -126,14 +110,13 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   // listen for changes to the store
   store.subscribe(() => {
 
-    const finalWriters = finalSelector(store.getState())
-    Object.keys(finalWriters).forEach((key) => {
-      if (finalWriters[key] !== previousState[key]){
-        writefile(webcrackConfig.options.outFolder + "/" + key,   finalWriters[key])
-        previousState[key] = finalWriters[key]
+    const newState = finalSelector(store.getState())
+    Object.keys(newState).forEach((key) => {
+      if (newState[key] !== previousState[key]){
+        writefile(webcrackConfig.options.outFolder + "/" + key,   newState[key])
+        previousState[key] = newState[key]
       }
-    })    
-
+    })
   })
 
   // lastly, turn the store `on`.

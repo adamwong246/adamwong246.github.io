@@ -46,7 +46,7 @@ webcrack is configured with webpack.config.js. It has 2 sections of note
 `inputs` is a list of configurations which define which files get read and where to store those results in the redux stores
 
 #### outputs
-`outputs` is a function which accept a selector and some configuration options. This selector is connected to the redux state and you can use it to handle changes to the redux state, which itself is reacting to changes in the filesystem. This function returns a series of `output` configuration objects. Each `output configuration object` is an object with a `key` and a `selector`. This selector must return a list of objects with keys `filepath` and `contents`
+`outputs` is a function which acceptan object of selectors, keyed by inputs. These selectors are connected to the redux state and you can use it to handle changes to the redux state, which itself is reacting to changes in the filesystem. This function returns hash object, where the keys are files to write, and the values are the contents of those files.
 
 ### selectors
 At the heart of webcrack is the selector. Within the `ouputs` function, you can define any selectors you like, using any JS library you want, provided they are _purely functional_. This means that webcrack needs no community plugins and can be made to do complex logic cleanly

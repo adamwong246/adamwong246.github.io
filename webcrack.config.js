@@ -11,28 +11,8 @@ moment = require('moment');
 slug = require('slug');
 moment = require("moment")
 
-const webcrackSelectors = require("./webcrackSelectors.js");
-
-const simpleInput = (license, payload) => payload.contents
-const objectInput = (state, payload) => {
-  return {
-    ...state,
-    ...{
-      [payload.src]: payload.contents
-    }
-  }
-};
-
 module.exports = {
-  initialState: {
-    views: {},
-    pages: {},
-    blogEntries: {},
-    blogEntriesJpgs: [],
-    css: {},
-    resume: "",
-    license: ""
-  },
+  initialState: {},
 
   options: {
     inFolder: 'src',
@@ -47,57 +27,187 @@ module.exports = {
   // defines the inputs points where files will be read
   // and a mutator of redux state
   inputs: {
-    license: {
-      'LICENSE.txt': simpleInput
-    },
-    resume: {
-      'resume.md': simpleInput
-    },
-    css: {
-      'assets/*.css': objectInput
-    },
-    pages: {
-      'pages/**/*.jade': objectInput
-    },
-    blogEntries: {
-      'blogEntries/**/index.md': objectInput
-    },
-    views: {
-      'views/*.jade': objectInput
-    },
-    blogEntriesJpgs: {
-      'blogEntries/**/*.jpg': (blogEntriesJpgs, payload) => {
-        return [
-          ...blogEntriesJpgs,
-          {
-            src: payload.src,
-            contents: payload.contents
-          }
-        ]
-      }
-    },
+    license: 'LICENSE.txt',
+    resume: 'resume.md',
+    css: 'assets/*.css',
+    pages: 'pages/**/*.jade',
+    blogEntries: 'blogEntries/**/index.md',
+    views: 'views/*.jade',
+    blogEntriesJpgs: 'blogEntries/**/*.jpg',
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
-  outputs: (reduxState) => {
+  // `selectors` are keyed on your inputs for easier momization
+  // must return a function of state, which returns a hash
+  outputs: (selectors) => {
 
-    const outputSelectors = webcrackSelectors(reduxState);
+    const resumeSelector = createSelector([selectors.resume], (resumeState) => {
+      return Object.keys(resumeState).reduce((mm, k) => resumeState[k], {})
+    })
 
-    // Lastly, return the output points and the selectors which feed them
-    // each item needs to return an array of objects
-    // where the `key` is a file and the `value` is the file contents
-    return {
-      // a debugging selector will write a json file of the state on every change
-      // webcrackstate: createSelector([reduxState], (state) => {return {'state.json': JSON.stringify(state, null, 1)}}),
+    const licenseSelector = createSelector([selectors.license], (license) => {
+      return Object.keys(license).reduce((mm, k) => license[k], {})
+    })
 
-      // simply copies the file
-      blogEntriesJpgs: outputSelectors.blogEntriesJpgsOutput,
-      cssFile: outputSelectors.cssOutput,
-      htmlFiles: outputSelectors.htmlFileOutput,
-      license: outputSelectors.licenseOutput,
-      resumeMd: outputSelectors.resumeMdOuput,
-      resumePdf: outputSelectors.resumePdfOutput,
+    const styleSelector = createSelector([selectors.css], (css) => {
+      return Object.keys(css).reduce((mm, k) => mm + css[k], {})
+    })
 
-    }
+    const resumePDFSelector = createSelector([resumeSelector], (resume) => {
+      return markdownpdf({}).from.string(resume).to.buffer
+    })
+
+    const blogEntriesSelector = createSelector([selectors.blogEntries], (blogEntries) => {
+      const keys = Object.keys(blogEntries)
+      return keys.map((key) => {
+        const markdownContent = markdown.parse(blogEntries[key])
+
+        const slugPath = "blog/" + (slug(markdownContent.meta.title)) + "/"
+        const filePath = slugPath + 'index.html';
+        return {
+          meta: markdownContent.meta,
+          markdownContent: markdownContent.content,
+          dest: filePath,
+          url: `/${filePath}`,
+          destFolder: slugPath,
+          srcFolder: key.split('index.md')[0]
+        }
+      }).sort((b, a) => {
+        return moment(a.meta.publishedAt).diff(moment(b.meta.publishedAt))
+      })
+    });
+
+
+    const htmlSelector = createSelector([
+      createSelector(() => {
+        return require("./package.json")
+      }),
+      createSelector([selectors.pages], (pages) => {
+        const keys = Object.keys(pages)
+        return keys.map((key) => {
+          const page = pages[key]
+          const baseFileName = key.split('.')[1].split('/').slice(-1)[0];
+
+          let dest, url;
+
+          if (baseFileName !== 'index') {
+            dest = `${baseFileName}/index.html`
+            url = `/${baseFileName}/index.html`
+          } else {
+            dest = `index.html`
+            url = `/index.html`
+          }
+          return {
+            key,
+            content: page,
+            dest: dest,
+            url: url,
+            title: baseFileName
+          }
+        })
+      }),
+      blogEntriesSelector,
+      createSelector(resumeSelector, (resume) => markdown.parse(resume)),
+      createSelector(selectors.views, (views) => {
+        const key = './src/views/page.jade'
+        return {
+          src: key,
+          content: views[key]
+        }
+      }),
+      createSelector(selectors.views, (views) => {
+        const key = './src/views/blogEntryLayout.jade'
+        return {
+          src: key,
+          content: views[key]
+        }
+      })
+    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout) => {
+      const localsToJadeRender = {
+        blogEntries,
+        pages,
+        package
+      }
+      const processedPages = pages.reduce((mm, page) => {
+        return {
+          ...mm,
+          [page.dest]: jade.render(page.content, {
+            filename: pageLayout.src,
+            page,
+            ...localsToJadeRender
+          })
+        }
+      }, {});
+
+      const processedBlogEntries = blogEntries.reduce((mm, blogEntry) => {
+        return {
+          ...mm,
+          [blogEntry.dest]: jade.render(blogEntryLayout.content, {
+            filename: blogEntryLayout.src,
+            entry: blogEntry,
+            page: {
+              content: blogEntry.markdownContent,
+            },
+            ...localsToJadeRender
+          })
+        }
+      }, {});
+
+      return {
+        ...processedBlogEntries,
+        ...processedPages,
+        'resume.html': jade.render(pageLayout.contents, {
+          filename: pageLayout.src,
+          page: {
+            content: markdownResume.content
+          },
+          ...localsToJadeRender
+        })
+      }
+    });
+
+    const blogEntriesJpgsOutput = createSelector([selectors.blogEntriesJpgs, blogEntriesSelector], (jpgs, blogEntries) => {
+      return Object.keys(jpgs).reduce((mm, jpgkey) => {
+        const src = jpgkey
+        const contents = jpgs[jpgkey];
+        const jpgSplit = src.split('/')
+        return {
+          ...mm,
+          [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + jpgSplit[jpgSplit.length - 1]]: contents
+        }
+      }, {})
+    });
+
+    const cssOutput = createSelector(styleSelector, (css) => {
+      return new CleanCSS({
+        keepSpecialComments: 0
+      }).minify(
+        [
+          css,
+          fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
+        ].join('\n')
+      ).styles
+    });
+
+    // return a hash objects based on the state.
+    //Each key is a file and each value is the contents of that file
+    return createSelector([
+      licenseSelector,
+      resumeSelector,
+      resumePDFSelector,
+      cssOutput,
+      htmlSelector,
+      blogEntriesJpgsOutput
+    ], (license, resumeMd, resumePdf, style, html, blogJpegs) => {
+
+      return {
+        'LICENSE.txt': license,
+        'resume.md': resumeMd,
+        'style.css': style,
+        'resume.pdf': resumePdf,
+        ...html,
+        ...blogJpegs
+      }
+    });
   }
 }

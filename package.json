@@ -21,7 +21,7 @@
     "serve": "node ./scripts/server.js",
     "newBlogEntry": "node scripts/newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
-    "shipIt": "git add --all && git commit && yarn deploy"
+    "shipIt": "cp README.md dist && git add --all && git commit && yarn deploy"
   },
   "dependencies": {
     "bluebird": "^3.7.2",

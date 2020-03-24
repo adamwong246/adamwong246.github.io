@@ -50,7 +50,7 @@ module.exports = {
     })
 
     const styleSelector = createSelector([selectors.css], (css) => {
-      return Object.keys(css).reduce((mm, k) => mm + css[k], {})
+      return Object.keys(css).reduce((mm, k) => mm + css[k], '')
     })
 
     const resumePDFSelector = createSelector([resumeSelector], (resume) => {

@@ -7,8 +7,43 @@
 body {
   background-color: lightgray;
   color: black;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 nav {
   background: rgba(147, 128, 108, 0.1);
+  padding: 1em;
+  border-radius: 3px;
+}
+
+
+ul {
+  padding-left: 1rem;
+}
+
+li {
+  padding-top: 0.5rem;
+}
+
+
+
+dl, dt, di {
+  padding-inline-start: 1em;
+}
+
+h2{
+  margin-bottom: 0.2em;
+}
+
+header {
+  padding-top: 1.5em;
+  padding-right: 1.5em;
+}
+
+body > header > *{
+ padding: 1em;
+ margin: 0em;
+ border-radius: 3px;
+ background: rgba(147, 128, 108, 0.1);
 }

@@ -55,7 +55,13 @@ img#profile{
   margin-right: auto;
 }
 
-p, li {max-width:35rem;}
+nav {
+  width: 20rem;
+}
+
+p {
+  max-width:35rem;
+}
 
 
   dl, dt, di {
@@ -69,7 +75,6 @@ h2{
 
 header {
   padding-top: 1.5em;
-  padding-left: 1.5em;
   padding-right: 1.5em;
 }
 

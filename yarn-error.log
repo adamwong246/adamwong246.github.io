@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "exact-change-only",
-    "version": "0.2.1",
+    "version": "0.2.3",
     "license": "ISC",
     "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
     "author": {
@@ -32,12 +32,11 @@ npm manifest:
     },
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
-      "build": "node ./webcrack/index.js",
-      "dev": "node ./webcrack/scripts/dev.js; node ./webcrack/scripts/serve.js",
+      "build": "rm -rf dist/** && node ./webcrack/index.js",
       "serve": "node ./scripts/server.js",
       "newBlogEntry": "node scripts/newBlogEntry.js",
-      "deploy": "git push origin `git subtree split --prefix dist distinit`:master --force",
-      "shipIt": "git add --all && git commit && yarn deploy"
+      "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
+      "shipIt": "cp README.md dist && git add --all && git commit && yarn deploy"
     },
     "dependencies": {
       "bluebird": "^3.7.2",
@@ -1574,7 +1573,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c git add --all && git commit && yarn deploy
+  Arguments: -c cp README.md dist && git add --all && git commit && yarn deploy
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

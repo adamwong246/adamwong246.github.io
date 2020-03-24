@@ -35,9 +35,10 @@ img#profile{
   margin-right: auto;
 }
 
-article {
-  max-width:35rem;
+p {
+  max-width: 35rem;
 }
+
 
 dl, dt, di {
   padding-inline-start: 1em;

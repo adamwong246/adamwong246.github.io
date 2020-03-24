@@ -38,11 +38,12 @@ html(lang="en")
           li #[a(href=page.url)= page.title]
       hr
       ul
-        - for entry in blogEntries
+        - for entry in blogEntries.slice(0, 5)
           li
             a(href=entry.url)= entry.meta.title
             br
             = moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+      a(href="/blog/index.html") more blog entries
       hr
       |v#{package.version}
       br
@@ -51,3 +52,4 @@ html(lang="en")
       |Made with #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]
       br
       a(href='/LICENSE.txt') LICENSE
+      

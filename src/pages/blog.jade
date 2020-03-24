@@ -1,0 +1,11 @@
+extends ../views/layout.jade
+
+block content
+  ul
+    - for entry in blogEntries
+      li
+        a(href=entry.url)
+          = entry.meta.title
+          | -
+          time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+  

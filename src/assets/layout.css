@@ -1,4 +1,4 @@
-body {
+#main-container {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -6,7 +6,7 @@ body {
 }
 
 @media (min-width: 700px) {
-  body {
+  #main-container {
     flex-direction: row;
   }
 
@@ -47,4 +47,8 @@ img#profile{
 
 p {
   max-width: 35rem;
+}
+
+footer{
+  text-align: right
 }

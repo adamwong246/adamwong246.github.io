@@ -11,7 +11,7 @@ body {
   padding-right: 1.5em;
 }
 
-nav {
+nav, footer {
   background: rgba(147, 128, 108, 0.1);
   padding: 1em;
   border-radius: 3px;

@@ -5,5 +5,75 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-47887894-1', 'auto');
 ga('send', 'pageview');
 </script></head><body><div id="main-container"><main><article><header><h2><a href="blog/Introducing-webcrack-the-build-tool-you-never-wanted/index.html">Introducing webcrack - the build tool you never wanted</a></h2><time>March 23rd 2020</time></header><hr><p><a href="https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack">webcrack</a> is a thing I&#39;ve been building on the side. It was inspired by webpack, but it&#39;s very different.</p>
-<p>Whereas webpack is designed to make js bundles, webcrack is designed to make files. Put very simply, webcrack watches a series of files in a source folder, and when they change, pass those to Redux store, which is then pulled apart with Reselect selectors, and the changes are written back to a destination folder. The practical upshot of this is that you can abstract difficult logic into memoized selectors, without having to deal with dependencies and the annoyance of writing to the disk!</p>
-<p>Webcrack isn&#39;t a task runner either, though it can be used as one. It has a very broad use case and can be used anytime you need to process files in a complex way, provided you have a good understanding of Redux and Reselect.</p></article></main><nav><a href="/"><h1 class="site_title">exact change only</h1></a><a href="mailto:adamwong246@gmail.com">adamwong246@gmail.com</a><hr><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">.pdf</a>, <a href="/resume.md">.md</a><hr><ul><li><a href="/aboutMe/index.html">aboutMe</a></li><li><a href="/blog/index.html">blog</a></li><li><a href="/index.html">index</a></li></ul><hr><ul><li><a href="/blog/Introducing-webcrack-the-build-tool-you-never-wanted/index.html">Introducing webcrack - the build tool you never wanted</a><br>March 23rd 2020</li><li><a href="/blog/migrating-away-from-coffeescript/index.html">migrating away from coffeescript</a><br>October 27th 2016</li><li><a href="/blog/Creating-a-multi-emulator-machine/index.html">Creating a multi-emulator machine</a><br>October 24th 2016</li><li><a href="/blog/Syntax-highlight-test/index.html">Syntax highlight test</a><br>August 27th 2016</li><li><a href="/blog/Philosophy-of-Music-Design-in-Games-Fez/index.html">Philosophy of Music Design in Games - Fez</a><br>August 25th 2016</li></ul><a href="/blog/index.html">more blog entries...</a></nav></div><footer>Made with ❤️ and <a href="https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack">webcrack</a><br>v0.2.4 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a><br><a href="/LICENSE.txt">LICENSE</a></footer></body></html>
+<p>Whereas webpack is designed to make js bundles, webcrack is designed to make files. Put very simply, webcrack watches a series of files in a source folder, and when they change, pass those to Redux store, which is then pulled apart with Reselect selectors, and the changes are written back to a destination folder. The practical upshot of this is that you can abstract difficult logic into memoized selectors, without having to deal with dependencies and the annoyance of writing to the disk! Webcrack isn&#39;t a task runner either, though it can be used as one. It has a very broad use case and can be used anytime you need to process files in a complex way, provided you have a good understanding of Redux and Reselect.</p>
+<h2 id="an-example">an example</h2>
+<p>In this simple example, we are watching for changes to css files, which are merged together, alongside normalize.css, and then minified.</p>
+<h3 id="webcrack-config-js">webcrack.config.js</h3>
+<pre><code class="lang-javascript">// you need to import reselect&#39;s createSelector function in order to perform memoized logic
+createSelector = require(&#39;reselect&#39;).createSelector;
+
+// import anything! you want to use in your selectors, provided they are *purely functional*
+CleanCSS = require(&#39;clean-css&#39;);
+
+module.exports = {
+  initialState: {},
+
+  // where to read and write the files
+  options: {
+    inFolder: &#39;src&#39;,
+    outFolder: &#39;dist&#39;
+  },
+
+  // webcrack needs to know the encoding of tile types
+  encodings: {
+    &#39;utf8&#39;: [css&#39;],
+  },
+
+  // defines the inputs points where files will be read
+  inputs: {
+    css: &#39;assets/*.css&#39;,
+  },
+
+  // defines the output points
+  // `selectors` are keyed on your inputs for easier memoization
+  // must return a function of state, which returns a hash
+  // where every key is a file and every value is the contents of that file
+  outputs: (selectors) =&gt; {
+
+    const styleSelector = createSelector([selectors.css], (css) =&gt; {
+      return Object.keys(css).reduce((mm, k) =&gt; mm + css[k], &#39;&#39;)
+    })
+
+    const cssOutput = createSelector(styleSelector, (css) =&gt; {
+      return new CleanCSS({
+        keepSpecialComments: 0
+      }).minify(
+        [
+          css,
+          fs.readFileSync(&#39;./node_modules/normalize.css/normalize.css&#39;, &#39;utf8&#39;)
+        ].join(&#39;\n&#39;)
+      ).styles
+    });
+
+    // return a hash objects based on the state.
+    //Each key is a file and each value is the contents of that file
+    return createSelector([
+      cssOutput,
+    ], (style) =&gt; {
+
+      return {
+        &#39;style.css&#39;: style,
+      }
+    });
+  }
+}</code></pre>
+<p>In this simple example, we are watching for changes to css files, which are merged together, alongside normalize.css, and then minified.</p>
+<p>if you run webcrack alongside a file server, you have an instant development environment!</p>
+<h2 id="an-more-complex-example">an more complex example</h2>
+<p><a href="https://github.com/adamwong246/adamwong246.github.io/blob/dev/webcrack.config.js">Here</a> you can see the webcrack.config.js file which is used to build this site.</p>
+<h2 id="but-why-">but WHY?</h2>
+<p>Webpack is neat but sometimes you don&#39;t need a client-side SPA. Github Pages for instance does not support client-side routing because, though it does host your files, it doesn&#39;t provide redirect rules.</p>
+<p>Gulp and Grunt are ok but their reliance of community-plugins is, IMHO, an liability. I almost always prefer dependencies, especially for trivial tasks.</p>
+<p><a href="https://github.com/adamwong246/adamwong246.github.io/blob/dev/webcrack/index.js">Webcrack itself</a> is <em>tiny</em> and extremely hackable. It also has very few of it&#39;s own dependencies.</p>
+<h2 id="give-it-a-try">Give it a try</h2>
+<p>I&#39;ve not yet made webcrack a formal NPM package but for now you can try it out from <a href="https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack">here</a></p></article></main><nav><a href="/"><h1 class="site_title">exact change only</h1></a><a href="mailto:adamwong246@gmail.com">adamwong246@gmail.com</a><hr><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">.pdf</a>, <a href="/resume.md">.md</a><hr><ul><li><a href="/aboutMe/index.html">aboutMe</a></li><li><a href="/blog/index.html">blog</a></li><li><a href="/index.html">index</a></li></ul><hr><ul><li><a href="/blog/Introducing-webcrack-the-build-tool-you-never-wanted/index.html">Introducing webcrack - the build tool you never wanted</a><br>March 23rd 2020</li><li><a href="/blog/migrating-away-from-coffeescript/index.html">migrating away from coffeescript</a><br>October 27th 2016</li><li><a href="/blog/Creating-a-multi-emulator-machine/index.html">Creating a multi-emulator machine</a><br>October 24th 2016</li><li><a href="/blog/Syntax-highlight-test/index.html">Syntax highlight test</a><br>August 27th 2016</li><li><a href="/blog/Philosophy-of-Music-Design-in-Games-Fez/index.html">Philosophy of Music Design in Games - Fez</a><br>August 25th 2016</li></ul><a href="/blog/index.html">more blog entries...</a></nav></div><footer>Made with ❤️ and <a href="https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack">webcrack</a><br>v0.2.4 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a><br><a href="/LICENSE.txt">LICENSE</a></footer></body></html>

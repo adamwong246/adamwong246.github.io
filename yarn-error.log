@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "exact-change-only",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "license": "ISC",
     "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
     "author": {
@@ -37,7 +37,7 @@ npm manifest:
       "serve": "node ./scripts/server.js",
       "newBlogEntry": "node scripts/newBlogEntry.js",
       "deploy": "git push origin `git subtree split --prefix dist distinit`:master --force",
-      "shipIt": "yarn produce && git add --all && git commit && yarn deploy"
+      "shipIt": "git add --all && git commit && yarn deploy"
     },
     "dependencies": {
       "bluebird": "^3.7.2",
@@ -1574,7 +1574,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c yarn produce && git add --all && git commit && yarn deploy
+  Arguments: -c git add --all && git commit && yarn deploy
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

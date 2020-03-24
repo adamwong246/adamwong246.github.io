@@ -19,7 +19,8 @@
 
 #### November, 2016 - Current
 
-- implemented charts in D3 and react
+- used TS, Redux, Reselect and React to build a functional and type-safe frontend framework
+- implemented charts in D3
 - developed a continuous integration and delivery process with Jenkins, Docker and AWS.
 
 ### full stack developer, [Chroma](http://www.chroma.io/)

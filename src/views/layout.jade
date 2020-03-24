@@ -33,8 +33,6 @@ html(lang="en")
       |, 
       a(href="/resume.md") .md
       hr
-        
-      
       ul
         - for page in pages
           li #[a(href=page.url)= page.title]
@@ -45,10 +43,11 @@ html(lang="en")
             a(href=entry.url)= entry.meta.title
             br
             = moment(entry.meta.publishedAt).format("MMMM Do YYYY")
-      //- = JSON.stringify(blogEntries)
-      
-      a(href=package.repository.url) github
-      |  
+      hr
       |v#{package.version}
-      | 
+      br
+      a(href=package.repository.url) github 
+      br
+      |Made with #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]
+      br
       a(href='/LICENSE.txt') LICENSE

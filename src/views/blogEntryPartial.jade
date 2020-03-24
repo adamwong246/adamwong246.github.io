@@ -3,4 +3,5 @@ article
     h2
       a(href=entry.dest)= entry.meta.title
     time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+  hr
   != entry.markdownContent

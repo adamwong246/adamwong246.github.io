@@ -17,7 +17,7 @@ module.exports = {
     pages: {},
     blogEntries: {},
     blogEntriesJpgs: [],
-    css: "",
+    css: {},
     resume: "",
     license: ""
   },
@@ -41,8 +41,16 @@ module.exports = {
     resume: {
       'resume.md': (state, payload) => payload.contents
     },
+
     css: {
-      'assets/*.css': (css, payload) => payload.contents
+      'assets/*.css': (csses, payload) => {
+        return {
+          ...csses,
+          ...{
+            [payload.src]: payload.contents
+          }
+        }
+      }
     },
 
     pages: {
@@ -121,6 +129,12 @@ module.exports = {
       return state.blogEntriesJpgs
     })
 
+    const cssSelector = ([reduxState], (state) => {
+      return Object.keys(state.css).map((c) => {
+        return state.css[c]
+      })
+    })
+
     // Lastly, return the output points and the selectors which feed them
     // each item needs to return an array of objects
     // where the `key` is a file and the `value` is the file contents
@@ -141,13 +155,14 @@ module.exports = {
         }
       }),
 
-      cssFile: createSelector(reduxState, (state) => {
+      cssFile: createSelector(cssSelector, (css) => {
+        console.log(css)
         return {
           'style.css': new CleanCSS({
             keepSpecialComments: 0
           }).minify(
             [
-              state.css,
+              ...css,
               fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
             ].join('\n')
           ).styles

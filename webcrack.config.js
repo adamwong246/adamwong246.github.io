@@ -156,7 +156,6 @@ module.exports = {
       }),
 
       cssFile: createSelector(cssSelector, (css) => {
-        console.log(css)
         return {
           'style.css': new CleanCSS({
             keepSpecialComments: 0

@@ -7,12 +7,6 @@ li {
   padding-top: 0.5rem;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-  html {
-    font-weight: 300;
-  }
-}
-
 body {
   display: flex;
   min-height: 100vh;
@@ -30,19 +24,6 @@ nav {
   order: -1;
   padding: 1em;
   border-radius: 3px;
-  background: rgba(147, 128, 108, 0.1);
-  width: 18rem;
-}
-
-@media (min-width: 768px) {
-  body {
-    flex-direction: row;
-  }
-  main {
-    flex: 1;
-    padding: 0 2em;
-    margin-top: 1.5em;
-  }
 }
 
 img {max-width:100%;}
@@ -58,11 +39,13 @@ p {
   max-width:35rem;
 }
 
+pre {
+  width: 100%;
+}
 
-  dl, dt, di {
-    padding-inline-start: 1em;
-  }
-
+dl, dt, di {
+  padding-inline-start: 1em;
+}
 
 h2{
   margin-bottom: 0.2em;

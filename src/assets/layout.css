@@ -35,12 +35,8 @@ img#profile{
   margin-right: auto;
 }
 
-p {
+article {
   max-width:35rem;
-}
-
-pre {
-  width: 100%;
 }
 
 dl, dt, di {

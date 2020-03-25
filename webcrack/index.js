@@ -23,7 +23,6 @@ function cleanEmptyFoldersRecursively(folder) {
   if (files.length > 0) {
     files.forEach(function(file) {
       var fullPath = path.join(folder, file);
-      cleanEmptyFoldersRecursively(fullPath);
     });
 
     // re-evaluate files; after deleting subfolder
@@ -32,7 +31,7 @@ function cleanEmptyFoldersRecursively(folder) {
   }
 
   if (files.length == 0) {
-    console.log("removing: ", folder);
+    console.log("\u001b[31m\u001b[7m XXX \u001b[0m" + folder)
     fs.rmdirSync(folder);
     return;
   }
@@ -87,10 +86,10 @@ const writefile = (file, contents, callback) => {
   }
 }
 
-const removefile = (file, callback) => {
-  console.log("\u001b[31m\u001b[7m XXX \u001b[0m" + file)
+const removefile = (file) => {
+  console.log("\u001b[31m\u001b[7m XXX \u001b[0m./" + file)
   try {
-    fse.unlinkSync('./' + file, callback)
+    fse.unlinkSync('./' + file)
     cleanEmptyFoldersRecursively('./' + file.substring(0, file.lastIndexOf("/")))
   } catch (ex) {
     console.error('inner', ex.message);
@@ -166,7 +165,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
         fulfill()
       })
       .on('add', path => {
-        console.log("\u001b[7m\u001b[34m  +  \u001b[0m" + path)
+        console.log("\u001b[7m\u001b[34m  +  \u001b[0m./" + path)
         dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
       })
       .on('change', path => {
@@ -174,7 +173,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
         dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
       })
       .on('unlink', path => {
-        console.log("\u001b[7m\u001b[31m  -  \u001b[0m" + path)
+        console.log("\u001b[7m\u001b[31m  -  \u001b[0m./" + path)
         dispatchRemove(store, inputRuleKey, './' + path)
       })
   });
@@ -190,8 +189,9 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
       .map((key) => {
         return new Promise((fulfill, reject) => {
           if (!state[key]) {
-            console.log(key, " was not found")
-            removefile(webcrackConfig.options.outFolder + "/" + key, fulfill)
+            removefile(webcrackConfig.options.outFolder + "/" + key)
+            delete previousState[key]
+            fulfill()
           } else {
             if (state[key] !== previousState[key]) {
               previousState[key] = state[key]
@@ -204,6 +204,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
       })
 
     Promise.all(writePromises).then((v) => {
+      cleanEmptyFoldersRecursively(webcrackConfig.options.outFolder);
       console.log("\u001b[7m All files written. Waiting for changes...\u001b[0m ")
     })
   })

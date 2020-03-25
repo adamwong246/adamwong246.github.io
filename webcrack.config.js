@@ -9,7 +9,6 @@ markdown = require('marky-mark');
 markdownpdf = require("markdown-pdf")
 moment = require('moment');
 slug = require('slug');
-moment = require("moment")
 
 module.exports = {
   initialState: {},
@@ -34,6 +33,7 @@ module.exports = {
     blogEntries: 'blogEntries/**/index.md',
     views: 'views/*.jade',
     blogEntriesJpgs: 'blogEntries/**/*.jpg',
+    notFoundPage: '404.jade'
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -61,8 +61,7 @@ module.exports = {
       const keys = Object.keys(blogEntries)
       return keys.map((key) => {
         const markdownContent = markdown.parse(blogEntries[key])
-
-        const slugPath = "blog/" + (slug(markdownContent.meta.title)) + "/"
+        const slugPath = "blog/" + key.split('/')[3] + '-' +(slug(markdownContent.meta.title)) + "/"
         const filePath = slugPath + 'index.html';
         return {
           meta: markdownContent.meta,
@@ -78,10 +77,24 @@ module.exports = {
     });
 
 
+    const pageJadeSelector = createSelector(selectors.views, (views) => {
+      const key = './src/views/page.jade'
+      return {
+        src: key,
+        content: views[key]
+      }
+    });
+
+    const packageSelector = createSelector(() => {
+      return require("./package.json")
+    });
+
+    const notFoundSelector = createSelector([selectors.notFoundPage], (notfoundPage) => {
+      return Object.keys(notfoundPage).reduce((mm, k) => notfoundPage[k], {});
+    })
+
     const htmlSelector = createSelector([
-      createSelector(() => {
-        return require("./package.json")
-      }),
+      packageSelector,
       createSelector([selectors.pages], (pages) => {
         const keys = Object.keys(pages)
         return keys.map((key) => {
@@ -108,21 +121,16 @@ module.exports = {
       }),
       blogEntriesSelector,
       createSelector(resumeSelector, (resume) => markdown.parse(resume)),
-      createSelector(selectors.views, (views) => {
-        const key = './src/views/page.jade'
-        return {
-          src: key,
-          content: views[key]
-        }
-      }),
+      pageJadeSelector,
       createSelector(selectors.views, (views) => {
         const key = './src/views/blogEntryLayout.jade'
         return {
           src: key,
           content: views[key]
         }
-      })
-    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout) => {
+      }),
+      notFoundSelector,
+    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent) => {
       const localsToJadeRender = {
         blogEntries,
         pages,
@@ -162,9 +170,15 @@ module.exports = {
             content: markdownResume.content
           },
           ...localsToJadeRender
+        }),
+        '404.html': jade.render(notFoundContent, {
+          filename: pageLayout.src,
+          ...localsToJadeRender
         })
       }
     });
+
+
 
     const blogEntriesJpgsOutput = createSelector([selectors.blogEntriesJpgs, blogEntriesSelector], (jpgs, blogEntries) => {
       return Object.keys(jpgs).reduce((mm, jpgkey) => {
@@ -183,11 +197,13 @@ module.exports = {
         keepSpecialComments: 0
       }).minify(
         [
-          css,
-          fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
+          fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8'),
+          css
         ].join('\n')
       ).styles
     });
+
+
 
     // return a hash objects based on the state.
     //Each key is a file and each value is the contents of that file
@@ -197,7 +213,7 @@ module.exports = {
       resumePDFSelector,
       cssOutput,
       htmlSelector,
-      blogEntriesJpgsOutput
+      blogEntriesJpgsOutput,
     ], (license, resumeMd, resumePdf, style, html, blogJpegs) => {
 
       return {
@@ -206,7 +222,7 @@ module.exports = {
         'style.css': style,
         'resume.pdf': resumePdf,
         ...html,
-        ...blogJpegs
+        ...blogJpegs,
       }
     });
   }

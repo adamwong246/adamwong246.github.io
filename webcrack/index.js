@@ -42,25 +42,29 @@ const readfile = (file, encodings) => {
   return fse.readFileSync(file, encoding);
 };
 
-const writefile = (file, contents) => {
+const writefile = (file, contents, callback) => {
   const relativeFilePath = './' + file;
 
   if (typeof contents === "function") {
     console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
     contents((err, res) => {
-      fse.outputFile(relativeFilePath, res);
+      fse.outputFile(relativeFilePath, res, callback);
       console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
     })
   } else if (typeof contents === 'string'){
-    fse.outputFile(relativeFilePath, contents );
+    fse.outputFile(relativeFilePath, contents, callback);
     console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
   } else {
-    console.log("I don't recognize: " + relativeFilePath)
-    fse.outputFile(relativeFilePath, contents);
+    // console.log("I don't recognize: " + relativeFilePath)
+    fse.outputFile(relativeFilePath, contents, callback);
     console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
   }
 }
 
+const removefile = (file, callback) => {
+  console.log("\u001b[31m\u001b[7m XXX \u001b[0m" + file)
+  fse.unlinkSync('./'+file, callback)
+};
 
 function omit(key, obj) {
   const { [key]: omitted, ...rest } = obj;
@@ -71,8 +75,8 @@ const store = createStore((state = {
   initialLoad: true,
   ...webcrackConfig.initialState
 }, action) => {
-  // console.log("ACTION:" + JSON.stringify(action, null, 2));
-
+  console.log(action.type)
+  console.log("\u001b[7m\u001b[35m ||| Redux recieved action \u001b[0m", action.type)
   if (!action.type.includes('@@redux')) {
 
     if (action.type === INITIALIZE) {
@@ -136,25 +140,46 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
         console.log("\u001b[7m\u001b[31m  -  \u001b[0m" + path)
         dispatchRemove(store, inputRuleKey, './' + path)
       })
-
-    // .on('addDir', path => log(`Directory ${path} has been added`))
-    // .on('unlinkDir', path => log(`Directory ${path} has been removed`))
-    //
-    // .on('raw', (event, path, details) => { // internal
-    //   log('Raw event info:', event, path, details);
-    // });
   });
 })).then(function() {
 
   // listen for changes to the store
   store.subscribe(() => {
 
-    const newState = finalSelector(store.getState())
-    Object.keys(newState).forEach((key) => {
-      if (newState[key] !== previousState[key]){
-        writefile(webcrackConfig.options.outFolder + "/" + key,   newState[key])
-        previousState[key] = newState[key]
-      }
+    console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
+
+    const state = finalSelector(store.getState())
+
+    // console.log(Object.keys(state))
+    // console.log(previousState)
+
+    const writePromises = Object.keys(state)
+    .map((key) => {
+      return new Promise((fulfill, reject) => {
+
+        // if (!previousState[key]){
+        //   console.log(key, " was not found")
+        //
+        //   // previousState[key] = state[key]
+        //   if (previousState){
+        //     // removefile(webcrackConfig.options.outFolder + "/" + key,  fulfill)
+        //     console.log("removing because not inital")
+        //   } else {
+        //     console.log("not bothering to remove file on initial load")
+        //   }
+        //
+        // }
+        if (state[key] !== previousState[key]){
+          previousState[key] = state[key]
+          writefile(webcrackConfig.options.outFolder + "/" + key,   state[key], fulfill)
+        } else {
+          fulfill()
+        }
+      })
+    })
+
+    Promise.all(writePromises).then((v) => {
+      console.log("\u001b[7m All files written. Waiting for changes...\u001b[0m ")
     })
   })
 

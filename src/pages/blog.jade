@@ -1,11 +1,16 @@
 extends ../views/layout.jade
 
 block content
-  ul
+  h1 All blog posts
+  table
+    thead
+      tr
+        th title
+        th publish date
+          
     - for entry in blogEntries
-      li
-        a(href=entry.url)
-          = entry.meta.title
-          | -
+      tr
+        td
+          a(href=entry.url)= entry.meta.title
+        td
           time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
-  

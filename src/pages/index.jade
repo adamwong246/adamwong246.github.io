@@ -3,5 +3,5 @@ extends ../views/layout.jade
 block content
   - for entry in blogEntries.slice(0, 5)
     include ../views/blogEntryPartial
-  hr
+    hr
   a(href="/blog/index.html") more blog entries

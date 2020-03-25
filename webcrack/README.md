@@ -49,4 +49,4 @@ webcrack is configured with webpack.config.js. It has 2 sections of note
 `outputs` is a function which acceptan object of selectors, keyed by inputs. These selectors are connected to the redux state and you can use it to handle changes to the redux state, which itself is reacting to changes in the filesystem. This function returns hash object, where the keys are files to write, and the values are the contents of those files.
 
 ### selectors
-At the heart of webcrack is the selector. Within the `ouputs` function, you can define any selectors you like, using any JS library you want, provided they are _purely functional_. This means that webcrack needs no community plugins and can be made to do complex logic cleanly
+At the heart of webcrack is the selector. Within the `ouputs` function, you can define any selectors you like, using any JS library you want, provided they are _purely functional_. This means that webcrack needs no community plugins and can be made to do complex logic cleanly. 

@@ -21,7 +21,7 @@ html(lang="en")
     #main-container
       main
         block content
-          != page.content
+
       nav
         //- img#profile(src="/evilShroom.png")
         a(href="/") #[h1.site_title exact change only]
@@ -44,7 +44,7 @@ html(lang="en")
               a(href=entry.url)= entry.meta.title
               br
               = moment(entry.meta.publishedAt).format("MMMM Do YYYY")
-        a(href="/blog/index.html") more blog entries...
+        include ./blogLink
 
     footer
       |Made with ❤️ and #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]

@@ -96,7 +96,7 @@ const removefile = (file, callback) => {
     console.error('inner', ex.message);
     throw ex;
   } finally {
-    console.log('finally');
+    // console.log('finally');
     return;
   }
 

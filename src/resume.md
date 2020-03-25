@@ -68,6 +68,5 @@ I developed Android apps as part of an Agile team that spanned across Android, i
 - examples of work include the well received Postcard on the Run Android app
 
 ## Education
-
-- University of South Carolina
-- Bachelors of Computer Science,  May 2010
+###  University of South Carolina
+#### Bachelors of Computer Science,  May 2010

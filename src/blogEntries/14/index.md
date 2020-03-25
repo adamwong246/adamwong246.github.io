@@ -3,9 +3,13 @@ title: Introducing webcrack - the build tool you never wanted
 publishedAt: Mon Mar 23 2020 12:12:43 GMT-0700 (Pacific Daylight Time)
 ---
 
-[webcrack](https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack) is a thing I've been building on the side. It was inspired by webpack, but it's very different.
+[webcrack](https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack) is a thing I've been building on the side. It was inspired by webpack, but it's very different. Whereas webpack is designed to make js bundles, webcrack is designed to make files.
 
-Whereas webpack is designed to make js bundles, webcrack is designed to make files. Put very simply, webcrack watches a series of files in a source folder, and when they change, pass those to Redux store, which is then pulled apart with Reselect selectors, and the changes are written back to a destination folder. The practical upshot of this is that you can abstract difficult logic into memoized selectors, without having to deal with dependencies and the annoyance of writing to the disk! Webcrack isn't a task runner either, though it can be used as one. It has a very broad use case and can be used anytime you need to process files in a complex way, provided you have a good understanding of Redux and Reselect.
+## a functional file processor
+
+Webcrack is a functional build tool- like all functions, it maps input to output, except in this case, it maps a set of input files to a set of output files.
+
+Put very simply, webcrack watches a series of files in a source folder, and when they change, pass those to Redux store, which is then pulled apart with Reselect selectors, and the changes are written back to a destination folder. The practical upshot of this is that you can abstract difficult logic into memoized selectors, without having to deal with dependencies and the annoyance of writing to the disk! Webcrack isn't a task runner either, though it can be used as one. It has a very broad use case and can be used anytime you need to process files in a complex way, provided you have a good understanding of Redux and Reselect.
 
 ## an example
 
@@ -31,7 +35,7 @@ module.exports = {
 
   // webcrack needs to know the encoding of tile types
   encodings: {
-    'utf8': [css'],
+    'utf8': ['css'],
   },
 
   // defines the inputs points where files will be read
@@ -87,7 +91,9 @@ Webpack is neat but sometimes you don't need a client-side SPA. Github Pages for
 
 Gulp and Grunt are ok but their reliance of community-plugins is, IMHO, an liability. I almost always prefer to avoid dependencies, especially for trivial tasks.
 
-[Webcrack itself](https://github.com/adamwong246/adamwong246.github.io/blob/dev/webcrack/index.js) is *tiny* and extremely hackable. It has very few of it's own dependencies.
+Webcrack does not impose many restrictions on the developer. It can consume any type of file and process them using any technology you like.
+
+[Webcrack](https://github.com/adamwong246/adamwong246.github.io/blob/dev/webcrack/index.js) is *tiny* and extremely hackable. It has very few of it's own dependencies. In fact, webcrack itself is fewer lines of code than the average `webcrack.config.js` file.
 
 ## Give it a try
 

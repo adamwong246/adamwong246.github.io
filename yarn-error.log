@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "exact-change-only",
-    "version": "0.2.4",
+    "version": "0.3.0",
     "license": "ISC",
     "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
     "author": {
@@ -42,7 +42,7 @@ npm manifest:
       "bluebird": "^3.7.2",
       "buffer": "^5.5.0",
       "chokidar": "^3.3.1",
-      "clean-css": "",
+      "clean-css": "4.2.3",
       "filepath": "^1.1.0",
       "fs-extra": "9.0.0",
       "glob": "latest",
@@ -274,7 +274,7 @@ Lockfile:
     optionalDependencies:
       fsevents "~2.1.2"
   
-  clean-css@, clean-css@^4.2.1:
+  clean-css@4.2.3, clean-css@^4.2.1:
     version "4.2.3"
     resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.3.tgz#507b5de7d97b48ee53d84adb0160ff6216380f78"
     dependencies:

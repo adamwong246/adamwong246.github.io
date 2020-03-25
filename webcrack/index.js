@@ -113,8 +113,7 @@ const store = createStore((state = {
   initialLoad: true,
   ...webcrackConfig.initialState
 }, action) => {
-  console.log(action.type)
-  console.log("\u001b[7m\u001b[35m ||| Redux recieved action \u001b[0m", action.type)
+  // console.log("\u001b[7m\u001b[35m ||| Redux recieved action \u001b[0m", action.type)
   if (!action.type.includes('@@redux')) {
 
     if (action.type === INITIALIZE) {
@@ -184,7 +183,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   // listen for changes to the store
   store.subscribe(() => {
 
-    console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
+    // console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
 
     const state = finalSelector(store.getState())
     const writePromises = Array.from(new Set(Object.keys(previousState).concat(Object.keys(state))))

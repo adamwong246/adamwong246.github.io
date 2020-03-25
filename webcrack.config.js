@@ -192,16 +192,12 @@ module.exports = {
       }, {})
     });
 
-    const cssOutput = createSelector(styleSelector, (css) => {
-      return new CleanCSS({
-        keepSpecialComments: 0
+    const cssOutput = createSelector(styleSelector, (css) =>
+      new CleanCSS({
+        keepSpecialComments: 2
       }).minify(
-        [
-          fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8'),
-          css
-        ].join('\n')
-      ).styles
-    });
+        fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8') + css
+      ).styles);
 
 
 

@@ -4,7 +4,7 @@ const createStore = require('redux').createStore;
 const Promise = require("bluebird")
 const fse = require("fs-extra")
 const glob = require("glob");
-
+const path = require("path")
 const webcrackConfig = require("../webcrack.config.js")
 
 const INITIALIZE = 'INITIALIZE';
@@ -12,6 +12,32 @@ const UPSERT = 'UPSERT';
 const REMOVE = 'REMOVE';
 
 const previousState = {}
+
+function cleanEmptyFoldersRecursively(folder) {
+  // console.log('cleanEmptyFoldersRecursively', folder);
+  var isDir = fs.statSync(folder).isDirectory();
+  if (!isDir) {
+    return;
+  }
+  var files = fs.readdirSync(folder);
+  if (files.length > 0) {
+    files.forEach(function(file) {
+      var fullPath = path.join(folder, file);
+      cleanEmptyFoldersRecursively(fullPath);
+    });
+
+    // re-evaluate files; after deleting subfolder
+    // we may have parent folder empty now
+    files = fs.readdirSync(folder);
+  }
+
+  if (files.length == 0) {
+    console.log("removing: ", folder);
+    fs.rmdirSync(folder);
+    return;
+  }
+}
+
 
 const dispatchUpsert = (store, key, file, encodings) => {
   store.dispatch({
@@ -51,7 +77,7 @@ const writefile = (file, contents, callback) => {
       fse.outputFile(relativeFilePath, res, callback);
       console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
     })
-  } else if (typeof contents === 'string'){
+  } else if (typeof contents === 'string') {
     fse.outputFile(relativeFilePath, contents, callback);
     console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
   } else {
@@ -63,11 +89,23 @@ const writefile = (file, contents, callback) => {
 
 const removefile = (file, callback) => {
   console.log("\u001b[31m\u001b[7m XXX \u001b[0m" + file)
-  fse.unlinkSync('./'+file, callback)
+  try {
+    fse.unlinkSync('./' + file, callback)
+    cleanEmptyFoldersRecursively('./' + file.substring(0, file.lastIndexOf("/")))
+  } catch (ex) {
+    console.error('inner', ex.message);
+    throw ex;
+  } finally {
+    console.log('finally');
+    return;
+  }
+
 };
 
 function omit(key, obj) {
-  const { [key]: omitted, ...rest } = obj;
+  const {
+    [key]: omitted, ...rest
+  } = obj;
   return rest;
 }
 
@@ -84,9 +122,7 @@ const store = createStore((state = {
         ...state,
         initialLoad: false
       }
-    }
-
-    else if (action.type === UPSERT){
+    } else if (action.type === UPSERT) {
       return {
         ...state,
         [action.payload.key]: {
@@ -96,7 +132,7 @@ const store = createStore((state = {
           }
         }
       }
-    } else if (action.type === REMOVE){
+    } else if (action.type === REMOVE) {
       return {
         ...state,
         [action.payload.key]: omit(action.payload.file, state[action.payload.key])
@@ -110,11 +146,13 @@ const store = createStore((state = {
 })
 
 const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).reduce((mm, inputKey) => {
-    return {
-      ...mm,
-      [inputKey]: createSelector([(x) => x], (root) => root[inputKey])
-    }
+  return {
+    ...mm,
+    [inputKey]: createSelector([(x) => x], (root) => root[inputKey])
+  }
 }, {}))
+
+
 
 // Wait for all the file watchers to check in
 Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
@@ -149,34 +187,22 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
     console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
 
     const state = finalSelector(store.getState())
-
-    // console.log(Object.keys(state))
-    // console.log(previousState)
-
-    const writePromises = Object.keys(state)
-    .map((key) => {
-      return new Promise((fulfill, reject) => {
-
-        // if (!previousState[key]){
-        //   console.log(key, " was not found")
-        //
-        //   // previousState[key] = state[key]
-        //   if (previousState){
-        //     // removefile(webcrackConfig.options.outFolder + "/" + key,  fulfill)
-        //     console.log("removing because not inital")
-        //   } else {
-        //     console.log("not bothering to remove file on initial load")
-        //   }
-        //
-        // }
-        if (state[key] !== previousState[key]){
-          previousState[key] = state[key]
-          writefile(webcrackConfig.options.outFolder + "/" + key,   state[key], fulfill)
-        } else {
-          fulfill()
-        }
+    const writePromises = Array.from(new Set(Object.keys(previousState).concat(Object.keys(state))))
+      .map((key) => {
+        return new Promise((fulfill, reject) => {
+          if (!state[key]) {
+            console.log(key, " was not found")
+            removefile(webcrackConfig.options.outFolder + "/" + key, fulfill)
+          } else {
+            if (state[key] !== previousState[key]) {
+              previousState[key] = state[key]
+              writefile(webcrackConfig.options.outFolder + "/" + key, state[key], fulfill)
+            } else {
+              fulfill()
+            }
+          }
+        })
       })
-    })
 
     Promise.all(writePromises).then((v) => {
       console.log("\u001b[7m All files written. Waiting for changes...\u001b[0m ")

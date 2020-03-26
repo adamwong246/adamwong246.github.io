@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -20,7 +20,7 @@
     "serve": "node ./scripts/server.js",
     "newBlogEntry": "node scripts/newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
-    "shipIt": "cp README.md dist && git add --all && git commit && yarn deploy"
+    "shipIt": "git add --all && git commit && yarn deploy"
   },
   "dependencies": {
     "bluebird": "3.7.2",
@@ -49,6 +49,7 @@
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "slug": "^0.8.0",
+    "truncate-html": "^1.0.3",
     "yaml-front-matter": "^3.2.3"
   }
 }

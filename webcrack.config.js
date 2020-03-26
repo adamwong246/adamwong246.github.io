@@ -2,15 +2,16 @@
 createSelector = require('reselect').createSelector;
 
 // import anything! you want to use in your selectors, provided they are *purely functional*
+cheerio = require("cheerio");
 CleanCSS = require('clean-css');
 fs = require('fs');
 jade = require("jade");
+lwip = require("js-lwip");
 markdown = require('marky-mark');
 markdownpdf = require("markdown-pdf");
 moment = require('moment');
 slug = require('slug');
-lwip = require("js-lwip");
-cheerio = require("cheerio");
+truncateHtml = require('truncate-html')
 
 const {
   contentOfFile,
@@ -305,6 +306,7 @@ module.exports = {
       blogEntriesJpgsModifiedOutput,
     ], (license, resumeMd, resumePdf, style, html, blogJpegsOriginal, blogJpegsMod) => {
       return {
+        'README.md': fs.readFileSync('./README.md', 'utf8'),
         'LICENSE.txt': license,
         'resume.md': resumeMd,
         'style.css': style,

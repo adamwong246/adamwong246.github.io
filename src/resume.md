@@ -1,8 +1,11 @@
 # Adam Wong
 
+## Contact
 - 971-207-1376
 - adamwong246@gmail.com
-- Portland, OR
+
+## Location
+Portland, OR
 
 ## Technical Skills
 

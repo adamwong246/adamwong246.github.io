@@ -10,6 +10,35 @@ A blog entry folder may have a `assets.json` file which describes how to process
 ## This is an original picture of my dogs.
 ![This is an original picture of my dogs.](dogs.jpg)
 
+## an example asset file
+```json
+{
+  "dogs.jpg": {
+
+    "variant0": [
+      {"scale": 0.1},
+      {"border": [10, "yellow"]},
+      {"rotate": [-100, "green"]},
+      {"rotate": [33, "red"]}
+    ],
+
+    "variant1": [
+      {"scale": 0.2},
+      {"blur": 1.1},
+      {"pad": [20, 40, 60, 80]},
+      {"border": [30, "blue"]}
+    ],
+
+    "variant2": [
+      {"saturate": -0.95},
+      {"scale": 0.1},
+      {"setPixel": [100, 100, "red"]},
+      {"lighten": 0.9}
+    ]
+
+  }
+}
+```
 ## The following are variants processed with [lwip](https://www.npmjs.com/package/js-lwip)
 
 ![This is an modified picture of my dogs.](variant0-dogs.jpg)

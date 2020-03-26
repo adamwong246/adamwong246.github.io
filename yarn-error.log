@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "exact-change-only",
-    "version": "0.3.4",
+    "version": "0.3.6",
     "license": "ISC",
     "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
     "author": {
@@ -64,6 +64,7 @@ npm manifest:
       "read-files-promise": "",
       "redux": "^4.0.5",
       "reselect": "^4.0.0",
+      "simple-icons": "^2.7.0",
       "slug": "^0.8.0",
       "truncate-html": "^1.0.3",
       "yaml-front-matter": "^3.2.3"
@@ -1497,6 +1498,10 @@ Lockfile:
   sigmund@~1.0.0:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/sigmund/-/sigmund-1.0.1.tgz#3ff21f198cad2175f9f3b781853fd94d0d19b590"
+  
+  simple-icons@^2.7.0:
+    version "2.7.0"
+    resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-2.7.0.tgz#cefc137b7ce81e42ef554742dac4ee06ef569679"
   
   slug@^0.8.0:
     version "0.8.0"

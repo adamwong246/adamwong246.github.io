@@ -21,16 +21,17 @@ const {
   srcAndContentOfFiles
 } = require("./webcrackHelpers.js");
 
-const LICENSE = 'LICENSE';
-const RESUME = 'RESUME';
-const CSS = 'CSS';
-const PAGES = 'PAGES';
-const BLOG_ENTRIES = 'BLOG_ENTRIES'
-const VIEWS = 'VIEWS'
-const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
-const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
 const BLOG_ASSETS = 'BLOG_ASSETS'
+const BLOG_ENTRIES = 'BLOG_ENTRIES'
+const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const CONTACTS = 'CONTACTS'
+const CSS = 'CSS';
+const JPG = 'JPG'
+const LICENSE = 'LICENSE';
+const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
+const PAGES = 'PAGES';
+const RESUME = 'RESUME';
+const VIEWS = 'VIEWS'
 
 module.exports = {
   initialState: {},
@@ -47,16 +48,17 @@ module.exports = {
 
   // defines the inputs points where files will be read and their key within the Redux store
   inputs: {
-    [LICENSE]: 'LICENSE.txt',
-    [RESUME]: 'resume.md',
-    [CSS]: 'assets/*.css',
-    [PAGES]: 'pages/**/*.jade',
-    [BLOG_ENTRIES]: 'blogEntries/**/index.md',
-    [VIEWS]: 'views/*.jade',
-    [BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
-    [NOT_FOUND_PAGE]: '404.jade',
     [BLOG_ASSETS]: 'blogEntries/**/assets.json',
+    [BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
+    [BLOG_ENTRIES]: 'blogEntries/**/index.md',
     [CONTACTS]: 'contacts.json',
+    [CSS]: 'assets/*.css',
+    [JPG]: 'assets/*.jpg',
+    [LICENSE]: 'LICENSE.txt',
+    [NOT_FOUND_PAGE]: '404.jade',
+    [PAGES]: 'pages/**/*.jade',
+    [RESUME]: 'resume.md',
+    [VIEWS]: 'views/*.jade',
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -320,7 +322,17 @@ module.exports = {
       htmlSelector,
       blogEntriesJpgsOrginalOutput,
       blogEntriesJpgsModifiedOutput,
-    ], (license, resumeMd, resumePdf, style, html, blogJpegsOriginal, blogJpegsMod) => {
+      createSelector(selectors.JPG, (jpgs) => {
+
+        return Object.keys(jpgs).reduce((mm, jKey) => {
+          // console.log(jKey.split('/').slice(-2))
+          return {
+            [jKey.split('/').slice(-2).join('/')]: jpgs[jKey]
+          }
+        }, {})
+
+      })
+    ], (license, resumeMd, resumePdf, style, html, blogJpegsOriginal, blogJpegsMod, jpgs) => {
       return {
         'README.md': fs.readFileSync('./README.md', 'utf8'),
         'LICENSE.txt': license,
@@ -329,7 +341,8 @@ module.exports = {
         'resume.pdf': resumePdf,
         ...html,
         ...blogJpegsOriginal,
-        ...blogJpegsMod
+        ...blogJpegsMod,
+        ...jpgs
       }
     });
   }

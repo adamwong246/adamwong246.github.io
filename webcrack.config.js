@@ -9,7 +9,7 @@ markdown = require('marky-mark');
 markdownpdf = require("markdown-pdf")
 moment = require('moment');
 slug = require('slug');
-
+lwip = require("js-lwip")
 
 const {
   contentOfFile,
@@ -26,6 +26,7 @@ const BLOG_ENTRIES = 'BLOG_ENTRIES'
 const VIEWS = 'VIEWS'
 const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
+const BLOG_ASSETS = 'BLOG_ASSETS'
 
 module.exports = {
   initialState: {},
@@ -36,7 +37,7 @@ module.exports = {
   },
 
   encodings: {
-    'utf8': ['md', 'css', 'jade', 'txt'],
+    'utf8': ['md', 'css', 'jade', 'txt', 'json'],
     '': ['jpg']
   },
 
@@ -49,13 +50,18 @@ module.exports = {
     [BLOG_ENTRIES]: 'blogEntries/**/index.md',
     [VIEWS]: 'views/*.jade',
     [BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
-    [NOT_FOUND_PAGE]: '404.jade'
+    [NOT_FOUND_PAGE]: '404.jade',
+    [BLOG_ASSETS]: 'blogEntries/**/assets.json',
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
   // `selectors` are keyed on your inputs for easier momization
   // must return a function of state, which returns a hash
   outputs: (selectors) => {
+
+    const packageSelector = createSelector(() => {
+      return require("./package.json")
+    });
 
     const resumeSelector = contentOfFile(selectors[RESUME])
     const licenseSelector = contentOfFile(selectors[LICENSE])
@@ -65,10 +71,15 @@ module.exports = {
     const styleSelector = contentsOfFiles(selectors[CSS])
     const blogEntriesSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ENTRIES]);
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
-
-    const packageSelector = createSelector(() => {
-      return require("./package.json")
-    });
+    const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
+    const blogEntriesAssetsSrcAndJson = createSelector([blogEntriesAssetsSrcAndContents], (assets) => {
+      return assets.map((asset) => {
+        return {
+          src: asset.src,
+          json: JSON.parse(asset.content)
+        }
+      })
+    })
 
     const resumePDFSelector = createSelector([resumeSelector], (resume) => {
       return markdownpdf({}).from.string(resume).to.buffer
@@ -171,22 +182,6 @@ module.exports = {
       }
     });
 
-    const blogEntriesJpgsOutput = createSelector([
-      srcAndContentOfFiles(selectors[BLOG_ENTRIES_JPGS]),
-      blogEntriesSelector
-    ], (jpgs, blogEntries) => {
-        return jpgs.reduce((mm, jpg) => {
-          const src = jpg.src
-          const jpgSplit = src.split('/')
-          return {
-            ...mm,
-            [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + jpgSplit[jpgSplit.length - 1]]: jpg.content
-          }
-        }, {})
-    });
-
-
-
     const cssOutput = createSelector(styleSelector, (css) =>
       new CleanCSS({
         keepSpecialComments: 2
@@ -194,6 +189,82 @@ module.exports = {
         fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8') + css
       ).styles);
 
+
+
+
+    const blogEntriesJpgsOrginalOutput = createSelector([
+      srcAndContentOfFiles(selectors[BLOG_ENTRIES_JPGS]),
+      blogEntriesSelector
+    ], (jpgs, blogEntries) => {
+      return jpgs.reduce((mm, jpg) => {
+        const src = jpg.src
+        const jpgSplit = src.split('/')
+        return {
+          ...mm,
+          [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + jpgSplit[jpgSplit.length - 1]]: jpg.content
+        }
+      }, {})
+    });
+
+
+    const blogEntriesJpgsModifiedOutput = createSelector([
+      srcAndContentOfFiles(selectors[BLOG_ENTRIES_JPGS]),
+      blogEntriesAssetsSrcAndJson,
+      blogEntriesSelector
+    ], (jpgs, assets, blogEntries) => {
+      return jpgs.reduce((mm, jpg) => {
+        const src = jpg.src
+        const jpgSplit = src.split('/')
+
+
+        const asset = assets.find((asset) => {
+          return src.split('/').slice(0, -1).join('') === asset.src.split('/').slice(0, -1).join('')
+        })
+
+        if (asset) {
+          const assetManifest = asset.json
+          const transformations = assetManifest[jpgSplit.slice(-1)[0]]
+
+          modifiedJpgs = Object.keys(transformations).reduce((mmm, transformationKey) => {
+            const transformation = transformations[transformationKey]
+
+            const modifedImagePromise = new Promise((res, rej) => {
+              return lwip.open(jpg.content, 'jpg', function(err, image) {
+
+                const batchImage = image.batch()
+                transformation.forEach((transform) => {
+                  ts = Object.keys(transform)[0]
+                  args = transform[ts]
+                  if (args.length) {
+                    batchImage[ts](...transform[ts])
+                  } else {
+                    batchImage[ts](transform[ts])
+                  }
+                });
+
+                batchImage.toBuffer('jpg', {}, (err, buffer) => {
+                  res(buffer)
+                })
+              });
+            })
+
+            const blogFolder = blogEntries.find((b) => src.includes(b.srcFolder)).destFolder
+            console.log(blogFolder);
+            
+            return {
+              ...mmm,
+              [blogFolder + transformationKey + '-' + jpgSplit[jpgSplit.length - 1]]: modifedImagePromise
+            }
+          }, {})
+          return {
+            ...mm,
+            ...modifiedJpgs
+          }
+        } else {
+          return mm
+        }
+      }, {})
+    });
 
     // return a hash objects based on the state.
     //Each key is a file and each value is the contents of that file
@@ -203,16 +274,17 @@ module.exports = {
       resumePDFSelector,
       cssOutput,
       htmlSelector,
-      blogEntriesJpgsOutput,
-    ], (license, resumeMd, resumePdf, style, html, blogJpegs) => {
-
+      blogEntriesJpgsOrginalOutput,
+      blogEntriesJpgsModifiedOutput,
+    ], (license, resumeMd, resumePdf, style, html, blogJpegsOriginal, blogJpegsMod) => {
       return {
         'LICENSE.txt': license,
         'resume.md': resumeMd,
         'style.css': style,
         'resume.pdf': resumePdf,
         ...html,
-        ...blogJpegs,
+        ...blogJpegsOriginal,
+        ...blogJpegsMod
       }
     });
   }

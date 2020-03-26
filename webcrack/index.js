@@ -65,6 +65,7 @@ const dispatchRemove = (store, key, file) => {
   });
 };
 
+
 const readfile = (file, encodings) => {
   const filetype = file.split('.')[2]
   const encoding = Object.keys(encodings).find((e) => encodings[e].includes(filetype))
@@ -82,11 +83,25 @@ const writefile = (file, contents, callback) => {
       fse.outputFile(relativeFilePath, res, callback);
       console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
     })
+
   } else if (typeof contents === 'string') {
     fse.outputFile(relativeFilePath, contents, callback);
     console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+
+  } else if (Buffer.isBuffer(contents)){
+    fse.outputFile(relativeFilePath, contents, callback);
+
+  } else if (typeof contents.then === 'function'){
+    console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
+    Promise.resolve(contents).then(function(value) {
+      fse.outputFile(relativeFilePath, value, callback);
+      console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+    }, function(value) {
+      // not called
+    });
+
   } else {
-    // console.log("I don't recognize: " + relativeFilePath)
+    console.log("I don't recognize: " + relativeFilePath, contents)
     fse.outputFile(relativeFilePath, contents, callback);
     console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
   }

@@ -1,10 +1,15 @@
 const chokidar = require('chokidar');
 const createSelector = require('reselect').createSelector;
 const createStore = require('redux').createStore;
-const Promise = require("bluebird")
 const fse = require("fs-extra")
 const glob = require("glob");
 const path = require("path")
+const Promise = require("bluebird")
+
+Promise.config({
+  cancellation: true
+});
+
 const webcrackConfig = require("../webcrack.config.js")
 
 const INITIALIZE = 'INITIALIZE';
@@ -12,6 +17,7 @@ const UPSERT = 'UPSERT';
 const REMOVE = 'REMOVE';
 
 const previousState = {}
+let outputPromise = Promise.resolve();
 
 function cleanEmptyFoldersRecursively(folder) {
   // console.log('cleanEmptyFoldersRecursively', folder);
@@ -110,7 +116,8 @@ function omit(key, obj) {
 
 const store = createStore((state = {
   initialLoad: true,
-  ...webcrackConfig.initialState
+  ...webcrackConfig.initialState,
+  timestamp: Date.now()
 }, action) => {
   // console.log("\u001b[7m\u001b[35m ||| Redux recieved action \u001b[0m", action.type)
   if (!action.type.includes('@@redux')) {
@@ -118,7 +125,8 @@ const store = createStore((state = {
     if (action.type === INITIALIZE) {
       return {
         ...state,
-        initialLoad: false
+        initialLoad: false,
+        timestamp: Date.now()
       }
     } else if (action.type === UPSERT) {
       return {
@@ -128,18 +136,20 @@ const store = createStore((state = {
           ...{
             [action.payload.src]: action.payload.contents
           }
-        }
+        },
+        timestamp: Date.now()
       }
     } else if (action.type === REMOVE) {
       return {
         ...state,
-        [action.payload.key]: omit(action.payload.file, state[action.payload.key])
+        [action.payload.key]: omit(action.payload.file, state[action.payload.key]),
+        timestamp: Date.now()
       }
     } else {
       console.log("WHAT?!")
       return state
     }
-
+    return state
   }
 })
 
@@ -182,30 +192,38 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   // listen for changes to the store
   store.subscribe(() => {
 
-    // console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
+    console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
 
-    const state = finalSelector(store.getState())
-    const writePromises = Array.from(new Set(Object.keys(previousState).concat(Object.keys(state))))
+    const state = store.getState();
+    const outputs = finalSelector(state)
+
+    if (outputPromise.isPending()) {
+      console.log('cancelling previous write!')
+      outputPromise.cancel()
+    }
+
+    outputPromise = Promise.all(
+      Array.from(new Set(Object.keys(previousState).concat(Object.keys(outputs))))
       .map((key) => {
         return new Promise((fulfill, reject) => {
-          if (!state[key]) {
+          if (!outputs[key]) {
             removefile(webcrackConfig.options.outFolder + "/" + key)
             delete previousState[key]
             fulfill()
           } else {
-            if (state[key] !== previousState[key]) {
-              previousState[key] = state[key]
-              writefile(webcrackConfig.options.outFolder + "/" + key, state[key], fulfill)
+            if (outputs[key] !== previousState[key]) {
+              previousState[key] = outputs[key]
+              writefile(webcrackConfig.options.outFolder + "/" + key, outputs[key], fulfill)
             } else {
               fulfill()
             }
           }
         })
       })
-
-    Promise.all(writePromises).then((v) => {
+    )
+    .then(() => {
       cleanEmptyFoldersRecursively(webcrackConfig.options.outFolder);
-      console.log("\u001b[7m All files written. Waiting for changes...\u001b[0m ")
+      console.log("\u001b[7m   All files written. Waiting for changes...   \u001b[0m ")
     })
   })
 

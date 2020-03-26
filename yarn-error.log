@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "exact-change-only",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "license": "ISC",
     "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
     "author": {

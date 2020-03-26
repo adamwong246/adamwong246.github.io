@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -48,6 +48,7 @@
     "read-files-promise": "",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
+    "simple-icons": "^2.7.0",
     "slug": "^0.8.0",
     "truncate-html": "^1.0.3",
     "yaml-front-matter": "^3.2.3"

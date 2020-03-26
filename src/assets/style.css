@@ -60,3 +60,7 @@ td, th {
 #site_title {
   text-align: center;
 }
+
+.contact-icon svg {
+  width: 0.9em;
+}

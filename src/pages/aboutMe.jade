@@ -2,9 +2,15 @@ extends ../views/layout.jade
 
 block content
   h1 about me
-
+  
   p My name is Adam Wong. I'm living in beautiful Portland Oregon. I have a wonderful boyfriend, Vince, and 2 dogs. I also drink too much coffee and I'm obsessed with Soylent.
 
+  h2 Contact me
+  
+  p
+    a(href="mailto:" + package.author.email)= package.author.email
+  p 971-207-1376
+  
   h2 Resume
   
   p
@@ -14,3 +20,12 @@ block content
     a(href="/resume.pdf") pdf
     |, and 
     a(href="/resume.md") md
+
+
+  h2 Social media
+  ul
+    - for contact in contacts
+      li
+        a.contact-icon(href=contact.content)
+          != contact.icon
+          = contact.type

@@ -10,6 +10,7 @@ lwip = require("js-lwip");
 markdown = require('marky-mark');
 markdownpdf = require("markdown-pdf");
 moment = require('moment');
+simpleIcons = require('simple-icons');
 slug = require('slug');
 truncateHtml = require('truncate-html')
 
@@ -29,6 +30,7 @@ const VIEWS = 'VIEWS'
 const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
 const BLOG_ASSETS = 'BLOG_ASSETS'
+const CONTACTS = 'CONTACTS'
 
 module.exports = {
   initialState: {},
@@ -54,6 +56,7 @@ module.exports = {
     [BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
     [NOT_FOUND_PAGE]: '404.jade',
     [BLOG_ASSETS]: 'blogEntries/**/assets.json',
+    [CONTACTS]: 'contacts.json',
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -74,6 +77,17 @@ module.exports = {
     const blogEntriesSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ENTRIES]);
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
     const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
+
+    const contactSelector = createSelector(contentOfFile(selectors[CONTACTS]), (contactsString) =>{
+      const contectJson = JSON.parse(contactsString)
+      return contectJson.map((c) => {
+        return {
+          'type': Object.keys(c)[0],
+          'content': c[Object.keys(c)[0]],
+          'icon': simpleIcons.get(Object.keys(c)[0]).svg
+        }
+      })
+    })
 
     const blogEntriesAssetsSrcAndJson = createSelector([blogEntriesAssetsSrcAndContents], (assets) => {
       return assets.map((asset) => {
@@ -246,11 +260,13 @@ module.exports = {
       pageJadeSelector,
       blogEntryJadeLayout,
       notFoundSelector,
-    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent) => {
+      contactSelector,
+    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent, contacts) => {
       const localsToJadeRender = {
         blogEntries,
         pages,
-        package
+        package,
+        contacts
       }
       const processedPages = pages.reduce((mm, page) => {
         return {

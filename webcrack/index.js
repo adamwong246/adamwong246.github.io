@@ -43,7 +43,6 @@ function cleanEmptyFoldersRecursively(folder) {
   }
 }
 
-
 const dispatchUpsert = (store, key, file, encodings) => {
   store.dispatch({
     type: UPSERT,
@@ -119,7 +118,6 @@ const removefile = (file) => {
     // console.log('finally');
     return;
   }
-
 };
 
 function omit(key, obj) {
@@ -174,8 +172,6 @@ const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).
     [inputKey]: createSelector([(x) => x], (root) => root[inputKey])
   }
 }, {}))
-
-
 
 // Wait for all the file watchers to check in
 Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {

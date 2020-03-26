@@ -1,6 +1,6 @@
 {
   "name": "exact-change-only",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "ISC",
   "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
   "author": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "bluebird": "3.7.2",
     "buffer": "^5.5.0",
+    "cherio": "^1.0.0-rc.2",
     "chokidar": "^3.3.1",
     "clean-css": "4.2.3",
     "filepath": "^1.1.0",

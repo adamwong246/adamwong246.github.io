@@ -6,10 +6,11 @@ CleanCSS = require('clean-css');
 fs = require('fs');
 jade = require("jade");
 markdown = require('marky-mark');
-markdownpdf = require("markdown-pdf")
+markdownpdf = require("markdown-pdf");
 moment = require('moment');
 slug = require('slug');
-lwip = require("js-lwip")
+lwip = require("js-lwip");
+cheerio = require("cheerio");
 
 const {
   contentOfFile,
@@ -72,6 +73,7 @@ module.exports = {
     const blogEntriesSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ENTRIES]);
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
     const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
+
     const blogEntriesAssetsSrcAndJson = createSelector([blogEntriesAssetsSrcAndContents], (assets) => {
       return assets.map((asset) => {
         return {
@@ -126,71 +128,12 @@ module.exports = {
       })
     });
 
-    const htmlSelector = createSelector([
-      packageSelector,
-      pagesSelector,
-      blogEntriesSelector,
-      createSelector(resumeSelector, (resume) => markdown.parse(resume)),
-      pageJadeSelector,
-      blogEntryJadeLayout,
-      notFoundSelector,
-    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent) => {
-      const localsToJadeRender = {
-        blogEntries,
-        pages,
-        package
-      }
-      const processedPages = pages.reduce((mm, page) => {
-        return {
-          ...mm,
-          [page.dest]: jade.render(page.content, {
-            filename: pageLayout.src,
-            page,
-            ...localsToJadeRender
-          })
-        }
-      }, {});
-
-      const processedBlogEntries = blogEntries.reduce((mm, blogEntry) => {
-        return {
-          ...mm,
-          [blogEntry.dest]: jade.render(blogEntryLayout.content, {
-            filename: blogEntryLayout.src,
-            entry: blogEntry,
-            page: {
-              content: blogEntry.markdownContent,
-            },
-            ...localsToJadeRender
-          })
-        }
-      }, {});
-
-      return {
-        ...processedBlogEntries,
-        ...processedPages,
-        'resume.html': jade.render(pageLayout.content, {
-          filename: pageLayout.src,
-          page: {
-            content: markdownResume.content
-          },
-          ...localsToJadeRender
-        }),
-        '404.html': jade.render(notFoundContent, {
-          filename: pageLayout.src,
-          ...localsToJadeRender
-        })
-      }
-    });
-
     const cssOutput = createSelector(styleSelector, (css) =>
       new CleanCSS({
         keepSpecialComments: 2
       }).minify(
         fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8') + css
       ).styles);
-
-
-
 
     const blogEntriesJpgsOrginalOutput = createSelector([
       srcAndContentOfFiles(selectors[BLOG_ENTRIES_JPGS]),
@@ -249,8 +192,7 @@ module.exports = {
             })
 
             const blogFolder = blogEntries.find((b) => src.includes(b.srcFolder)).destFolder
-            console.log(blogFolder);
-            
+
             return {
               ...mmm,
               [blogFolder + transformationKey + '-' + jpgSplit[jpgSplit.length - 1]]: modifedImagePromise
@@ -264,6 +206,91 @@ module.exports = {
           return mm
         }
       }, {})
+    });
+
+    const blogEntriesJpgsSelector = createSelector([
+      blogEntriesJpgsOrginalOutput,
+      blogEntriesJpgsModifiedOutput
+    ], (originals, modifed) => {
+      return {
+        ...originals,
+        ...modifed
+      }
+    })
+
+    const blogEntriesSelectorWithUpdatedImageLinks = createSelector([blogEntriesSelector, blogEntriesJpgsSelector], (blogEntries, jpgs) => {
+      return blogEntries.map((blogEntry) => {
+        const blogEntryHtmlString = blogEntry.markdownContent
+
+        const $ = cheerio.load(blogEntryHtmlString)
+
+        Object.keys(jpgs).forEach((jpg) => {
+          const split = jpg.split('/')
+          $(':root')
+          .find(`img[src="${split[split.length -1]}"]`)
+          .replaceWith(cheerio(`<img src=${'/' + jpg}></img>`))
+        })
+        return {
+          ...blogEntry,
+          markdownContent: $.html()
+        }
+      })
+    })
+
+    const htmlSelector = createSelector([
+      packageSelector,
+      pagesSelector,
+      blogEntriesSelectorWithUpdatedImageLinks,
+      createSelector(resumeSelector, (resume) => markdown.parse(resume)),
+      pageJadeSelector,
+      blogEntryJadeLayout,
+      notFoundSelector,
+    ], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent) => {
+      const localsToJadeRender = {
+        blogEntries,
+        pages,
+        package
+      }
+      const processedPages = pages.reduce((mm, page) => {
+        return {
+          ...mm,
+          [page.dest]: jade.render(page.content, {
+            filename: pageLayout.src,
+            page,
+            ...localsToJadeRender
+          })
+        }
+      }, {});
+
+      const processedBlogEntries = blogEntries.reduce((mm, blogEntry) => {
+        return {
+          ...mm,
+          [blogEntry.dest]: jade.render(blogEntryLayout.content, {
+            filename: blogEntryLayout.src,
+            entry: blogEntry,
+            page: {
+              content: blogEntry.markdownContent,
+            },
+            ...localsToJadeRender
+          })
+        }
+      }, {});
+
+      return {
+        ...processedBlogEntries,
+        ...processedPages,
+        'resume.html': jade.render(pageLayout.content, {
+          filename: pageLayout.src,
+          page: {
+            content: markdownResume.content
+          },
+          ...localsToJadeRender
+        }),
+        '404.html': jade.render(notFoundContent, {
+          filename: pageLayout.src,
+          ...localsToJadeRender
+        })
+      }
     });
 
     // return a hash objects based on the state.

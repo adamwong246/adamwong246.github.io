@@ -33,6 +33,7 @@
     "html-minifier": "",
     "jade": "1.11.0",
     "jpeg-js": "^0.3.7",
+    "js-lwip": "^1.1.0",
     "jstransformer-marked": "^1.0.3",
     "lodash": "^2.4.1",
     "markdown-pdf": "^10.0.0",

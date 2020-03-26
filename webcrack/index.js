@@ -194,8 +194,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 
     console.log("\u001b[7m\u001b[31m >>> Redux state change... \u001b[0m")
 
-    const state = store.getState();
-    const outputs = finalSelector(state)
+    const outputs = finalSelector(store.getState())
 
     if (outputPromise.isPending()) {
       console.log('cancelling previous write!')
@@ -205,6 +204,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
     outputPromise = Promise.all(
       Array.from(new Set(Object.keys(previousState).concat(Object.keys(outputs))))
       .map((key) => {
+
         return new Promise((fulfill, reject) => {
           if (!outputs[key]) {
             removefile(webcrackConfig.options.outFolder + "/" + key)
@@ -218,10 +218,10 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
               fulfill()
             }
           }
-        })
+        });
+
       })
-    )
-    .then(() => {
+    ).then(() => {
       cleanEmptyFoldersRecursively(webcrackConfig.options.outFolder);
       console.log("\u001b[7m   All files written. Waiting for changes...   \u001b[0m ")
     })

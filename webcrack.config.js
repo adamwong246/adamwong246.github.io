@@ -10,7 +10,13 @@ markdownpdf = require("markdown-pdf")
 moment = require('moment');
 slug = require('slug');
 
-const {contentOfFile, contentsOfFiles, srcAndContentOfFile, srcAndContentOfFiles} = require("./webcrackHelpers.js");
+
+const {
+  contentOfFile,
+  contentsOfFiles,
+  srcAndContentOfFile,
+  srcAndContentOfFiles
+} = require("./webcrackHelpers.js");
 
 const LICENSE = 'LICENSE';
 const RESUME = 'RESUME';
@@ -71,7 +77,7 @@ module.exports = {
     const blogEntriesSelector = createSelector(blogEntriesSrcAndContents, (blogEntries) => {
       return blogEntries.map((blogEntry) => {
         const markdownContent = markdown.parse(blogEntry.content)
-        const slugPath = "blog/" + blogEntry.src.split('/')[3] + '-' +(slug(markdownContent.meta.title)) + "/"
+        const slugPath = "blog/" + blogEntry.src.split('/')[3] + '-' + (slug(markdownContent.meta.title)) + "/"
         const filePath = slugPath + 'index.html';
         return {
           meta: markdownContent.meta,

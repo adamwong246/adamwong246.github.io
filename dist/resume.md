@@ -20,7 +20,7 @@ Portland, OR
 
 ### software engineer, [OpenGov](http://www.opengov.com/)
 
-#### November, 2016 - Current
+#### November, 2016 - March, 2020
 
 - used TS, Redux, Reselect and React to build a functional and type-safe frontend framework
 - implemented charts in D3

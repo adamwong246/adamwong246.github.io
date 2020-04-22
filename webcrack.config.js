@@ -8,8 +8,8 @@ fs = require('fs');
 jade = require("jade");
 lwip = require("js-lwip");
 markdown = require('marky-mark');
-markdownpdf = require("markdown-pdf");
 moment = require('moment');
+puppeteer = require('puppeteer');
 simpleIcons = require('simple-icons');
 slug = require('slug');
 truncateHtml = require('truncate-html')
@@ -100,10 +100,6 @@ module.exports = {
       })
     })
 
-    const resumePDFSelector = createSelector([resumeSelector], (resume) => {
-      return markdownpdf({}).from.string(resume).to.buffer
-    })
-
     const blogEntriesSelector = createSelector(blogEntriesSrcAndContents, (blogEntries) => {
       return blogEntries.map((blogEntry) => {
         const markdownContent = markdown.parse(blogEntry.content)
@@ -145,7 +141,7 @@ module.exports = {
       })
     });
 
-    const cssOutput = createSelector(styleSelector, (css) =>
+    const cssOutputSelectors = createSelector(styleSelector, (css) =>
       new CleanCSS({
         keepSpecialComments: 2
       }).minify(
@@ -254,11 +250,15 @@ module.exports = {
       })
     })
 
+    const resumeMarkdownSelector = createSelector(resumeSelector, (resume) => markdown.parse(resume))
+
+
+
     const htmlSelector = createSelector([
       packageSelector,
       pagesSelector,
       blogEntriesSelectorWithUpdatedImageLinks,
-      createSelector(resumeSelector, (resume) => markdown.parse(resume)),
+      resumeMarkdownSelector,
       pageJadeSelector,
       blogEntryJadeLayout,
       notFoundSelector,
@@ -312,13 +312,38 @@ module.exports = {
       }
     });
 
+    const resumePDFSelector = createSelector([htmlSelector, cssOutputSelectors], (htmlFiles, css) => {
+      return (async () => {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+
+        await page.setContent(htmlFiles['resume.html'])
+        await page.addStyleTag({content: css})
+        const pdf = await page.pdf({
+          path: '/dev/null',
+          format: 'A4', printBackground: true,
+          margin: {
+            top: '0.4in',
+            right: '0.4in',
+            bottom: '0.4in',
+            left: '0.4in',
+          }
+        });
+
+        await browser.close();
+
+        return pdf
+
+      })();
+    })
+
     // return a hash objects based on the state.
     //Each key is a file and each value is the contents of that file
     return createSelector([
       licenseSelector,
       resumeSelector,
       resumePDFSelector,
-      cssOutput,
+      cssOutputSelectors,
       htmlSelector,
       blogEntriesJpgsOrginalOutput,
       blogEntriesJpgsModifiedOutput,

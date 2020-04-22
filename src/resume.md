@@ -1,11 +1,8 @@
 # Adam Wong
 
-## Contact
+- Portland, OR
 - 971-207-1376
 - adamwong246@gmail.com
-
-## Location
-Portland, OR
 
 ## Technical Skills
 
@@ -13,14 +10,15 @@ Portland, OR
 - Docker and DockerHub
 - Github, Heroku Jenkins and Amazon AWS
 - Java and Android
-- BDD and TDD methodologies
-- certified Scrum Master
+- BDD and TDD methodologies, Agile methodologies
 
 ## Experience
 
 ### software engineer, [OpenGov](http://www.opengov.com/)
 
 #### November, 2016 - March, 2020
+
+I worked with a team to decompose a monolithic Rails app into a series of Typescript microservices.
 
 - used TS, Redux, Reselect and React to build a functional and type-safe frontend framework
 - implemented charts in D3
@@ -48,27 +46,6 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 - managed assets via Amazon S3
 - revived an out of date Rspec and Cucumber test suite for continuous integration
 - optimized high traffic queries by replacing ActiveRecord calls with raw SQL
-
-### Ruby on Rails developer, Spaceport
-
-#### June 2012 - March, 2013
-
-I developed the RoR app, spaceport.io, a platform for porting Actionscript games to iOS and Android.
-
-- maintained an extensive, pre-existing test suite via Jenkins
-- created responsive/fluid designs with Twitter Bootstrap
-- developed according to BDD methodologies using Cucumber
-- leveraged the Chargify API to enable payments
-
-### Android developer, [Burnside Digital](http://www.burnsidedigital.com) (formerly ELC Technologies)
-
-#### April 2011 - April 2012
-
-I developed Android apps as part of an Agile team that spanned across Android, iOs, Windows and Web platforms.
-
-- traveled to Palo Alto, California to work with Google
-- formally trained in Agile and Scrum methods and practices
-- examples of work include the well received Postcard on the Run Android app
 
 ## Education
 ###  University of South Carolina

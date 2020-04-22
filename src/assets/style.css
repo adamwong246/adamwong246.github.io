@@ -61,3 +61,8 @@ td, th {
 .contact-icon svg {
   width: 0.9em;
 }
+
+h1, h2, h3, h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

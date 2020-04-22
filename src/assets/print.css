@@ -1,6 +1,14 @@
 @media print
 {
-  nav {
+  footer, nav {
     display: none !important;
+  }
+
+  p {
+    max-width: none !important;
+  }
+
+  ul {
+    margin-top: 0px;
   }
 }

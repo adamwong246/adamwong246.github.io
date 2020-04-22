@@ -32,8 +32,8 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 
 - responsible for designing UX and UI as well as implementing front-end
 - supported blockchain verifiable transactions
-- created "explainer" video in Adobe Animate
-- attended TechStars Summer 2016 in NYC
+- created "explainer" video in Adobe Animate to demonstrate chrome.fund to investors.
+- attended TechStars Summer 2016 accelerator program in NYC
 
 ### Ruby on Rails developer, [Hubbub Health](https://www.hubbubhealth.com/)
 

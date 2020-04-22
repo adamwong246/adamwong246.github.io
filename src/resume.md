@@ -21,7 +21,7 @@
 I worked with a team to decompose a monolithic Rails app into a series of Typescript microservices.
 
 - used TS, Redux, Reselect and React to build a functional and type-safe frontend framework
-- implemented charts in D3
+- implemented charts in D3 to visualize financial reports
 - developed a continuous integration and delivery process with Jenkins, Docker and AWS.
 
 ### full stack developer, [Chroma](http://www.chroma.io/)

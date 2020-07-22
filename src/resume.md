@@ -1,8 +1,6 @@
 # Adam Wong
 
-- Portland, OR
-- 971-207-1376
-- adamwong246@gmail.com
+#### Portland, Oregon - 971-207-1376 - adamwong246@gmail.com
 
 ## Technical Skills
 
@@ -20,9 +18,12 @@
 
 I worked with a team to decompose a monolithic Rails app into a series of Typescript microservices.
 
-- used TS, Redux, Reselect and React to build a functional and type-safe frontend framework
+- used TS to build an open-source, functional and type-safe framework used by many teams within OpenGov
+- used Node/TS to build microservice backends
+- used TS with Redux, Reselect and React to build frontend SPAs
 - implemented charts in D3 to visualize financial reports
-- developed a continuous integration and delivery process with Jenkins, Docker and AWS.
+- developed a continuous integration and delivery process with Jenkins and Docker
+- deployed our apps to AWS via Kubernetes
 
 ### full stack developer, [Chroma](http://www.chroma.io/)
 
@@ -32,7 +33,6 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 
 - responsible for designing UX and UI as well as implementing front-end
 - supported blockchain verifiable transactions
-- created "explainer" video in Adobe Animate to demonstrate chrome.fund to investors.
 - attended TechStars Summer 2016 accelerator program in NYC
 
 ### Ruby on Rails developer, [Hubbub Health](https://www.hubbubhealth.com/)

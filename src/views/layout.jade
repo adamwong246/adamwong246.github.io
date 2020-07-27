@@ -17,7 +17,9 @@ html(lang="en")
       ga('create', 'UA-47887894-1', 'auto');
       ga('send', 'pageview');
     script.
-      function onLoad() {
+      window.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+        
         // Select the button
         const btn = document.querySelector(".dark-toggle");
         // Check for dark mode preference at the OS level
@@ -33,9 +35,9 @@ html(lang="en")
         } else {
           // ...let's toggle the .light-theme class on the body
           document.body.classList.toggle("light-theme");
-        }
-      }
-      
+        }        
+      });
+
       function toggleDark() {
         
         // Get the user's theme preference from local storage, if it's available
@@ -52,7 +54,7 @@ html(lang="en")
         }
       }
       
-  body(onLoad="onLoad()")
+  body()
     #main-container
       main
         block content

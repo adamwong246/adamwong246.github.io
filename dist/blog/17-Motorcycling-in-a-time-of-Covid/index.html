@@ -3,7 +3,9 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script>function onLoad() {
+ga('send', 'pageview');</script><script>window.addEventListener('DOMContentLoaded', (event) => {
+  console.log('DOM fully loaded and parsed');
+  
   // Select the button
   const btn = document.querySelector(".dark-toggle");
   // Check for dark mode preference at the OS level
@@ -19,8 +21,8 @@ ga('send', 'pageview');</script><script>function onLoad() {
   } else {
     // ...let's toggle the .light-theme class on the body
     document.body.classList.toggle("light-theme");
-  }
-}
+  }        
+});
 
 function toggleDark() {
   
@@ -37,7 +39,7 @@ function toggleDark() {
     localStorage.setItem("theme", "dark")
   }
 }
-</script></head><body onLoad="onLoad()"><div id="main-container"><main><article><header><h1><a href="/blog/17-Motorcycling-in-a-time-of-Covid/index.html">Motorcycling in a time of Covid</a></h1><h4><time>July 21st 2020</time></h4><hr></header><p>2020 has been pretty rough for everyone. Portland is about to explode and it&apos;s dangerous to congregate in even small groups. That&apos;s why I&apos;ve taken the last few months to go on sabbatical and to fulfill a life-long dream- purchase and repair a motorcycle, and then tour to Oregon countryside.</p>
+</script></head><body><div id="main-container"><main><article><header><h1><a href="/blog/17-Motorcycling-in-a-time-of-Covid/index.html">Motorcycling in a time of Covid</a></h1><h4><time>July 21st 2020</time></h4><hr></header><p>2020 has been pretty rough for everyone. Portland is about to explode and it&apos;s dangerous to congregate in even small groups. That&apos;s why I&apos;ve taken the last few months to go on sabbatical and to fulfill a life-long dream- purchase and repair a motorcycle, and then tour to Oregon countryside.</p>
 <p>So far this summer, I&apos;ve put over 2000 miles on my bike, replaced a tire, replaced the master cylinder and brakes and only tipped Bruce over once!</p>
 <p><img src="https://lh3.googleusercontent.com/pw/ACtC-3cdrDfCOwtYAWUCBLyNGdkR2US1x1YFmN2POMhHHKwZs0-QNKztNdApGhI0XdkWyZeCT3xAzoavIBHpDG7gDR2uHotSHNz28gUc9TuwTIOQk0qcoWcw80sZKqwYVxH_-OgJflvo4X-juxAesSsX0dxe=w658-h661-no?authuser=0" alt="my map"></p>
 <p><img src="https://lh3.googleusercontent.com/pw/ACtC-3csN8osG7Zl_TVx6Q9dKEwudObkGMsUVXFJJqP7wrQEKQ8438SdsiO4kRmlfQMfn-Sxz0NmIzcrktdXUukVQgqyLCXGBJDZQeIGG3aYOPtq2PDB792_iCBaz0XXIwUetx8NldMD7naTQGJJfjnGQ1aO=w882-h661-no?authuser=0" alt="the beach"></p>

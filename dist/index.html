@@ -3,7 +3,9 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script>function onLoad() {
+ga('send', 'pageview');</script><script>window.addEventListener('DOMContentLoaded', (event) => {
+  console.log('DOM fully loaded and parsed');
+  
   // Select the button
   const btn = document.querySelector(".dark-toggle");
   // Check for dark mode preference at the OS level
@@ -19,8 +21,8 @@ ga('send', 'pageview');</script><script>function onLoad() {
   } else {
     // ...let's toggle the .light-theme class on the body
     document.body.classList.toggle("light-theme");
-  }
-}
+  }        
+});
 
 function toggleDark() {
   
@@ -37,7 +39,7 @@ function toggleDark() {
     localStorage.setItem("theme", "dark")
   }
 }
-</script></head><body onLoad="onLoad()"><div id="main-container"><main><article><header><h2><a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a></h2><h4><time>July 26th 2020</time></h4></header><p>My friends and I took a camping trip to the John Day Fossil Beds to see the eclipse.</p>
+</script></head><body><div id="main-container"><main><article><header><h2><a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a></h2><h4><time>July 26th 2020</time></h4></header><p>My friends and I took a camping trip to the John Day Fossil Beds to see the eclipse.</p>
 <p><img src="/blog/18-Memories-of-Totality/OuterCoronaRegulus-SMQ_3566.jpg"></p>
 <p>We camped at Dick Creek, which is quite beautiful and has several nearby trails. All the private property nearby was really crowded out but Dick Creek, which is owned by the Bureau of Land Management, was very sparse!</p>
 <p><img src="/blog/18-Memories-of-Totality/IMG_20170821_085811.jpg">

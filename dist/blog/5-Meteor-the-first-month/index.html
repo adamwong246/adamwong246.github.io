@@ -3,7 +3,9 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script>function onLoad() {
+ga('send', 'pageview');</script><script>window.addEventListener('DOMContentLoaded', (event) => {
+  console.log('DOM fully loaded and parsed');
+  
   // Select the button
   const btn = document.querySelector(".dark-toggle");
   // Check for dark mode preference at the OS level
@@ -19,8 +21,8 @@ ga('send', 'pageview');</script><script>function onLoad() {
   } else {
     // ...let's toggle the .light-theme class on the body
     document.body.classList.toggle("light-theme");
-  }
-}
+  }        
+});
 
 function toggleDark() {
   
@@ -37,7 +39,7 @@ function toggleDark() {
     localStorage.setItem("theme", "dark")
   }
 }
-</script></head><body onLoad="onLoad()"><div id="main-container"><main><article><header><h1><a href="/blog/5-Meteor-the-first-month/index.html">Meteor: the first month</a></h1><h4><time>March 21st 2015</time></h4><hr></header><p>There&apos;s an exciting new stack for optimistic developers called Meteor and I&apos;ve had the great pleasure of focusing on learning it for the past months. This is what I&apos;ve learned.</p>
+</script></head><body><div id="main-container"><main><article><header><h1><a href="/blog/5-Meteor-the-first-month/index.html">Meteor: the first month</a></h1><h4><time>March 21st 2015</time></h4><hr></header><p>There&apos;s an exciting new stack for optimistic developers called Meteor and I&apos;ve had the great pleasure of focusing on learning it for the past months. This is what I&apos;ve learned.</p>
 <p>Meteor is framework based on the high-minded ideal of <em>isomorphic</em> javascript, which is a fancy way of saying, &quot;It&apos;s javascript, on the server too!&quot; I find this notion absolutely titilating, though I&apos;m sure other&apos;s are heaving at the very thought. Ok, that&apos;s fair. But give it a chance! It&apos;s an incredibly flexible technology and with a little bit of experience, you&apos;ll find that Meteor is a fantastic tool for building prototypes which evolve into mature software. Meteor is production ready and the time to dive in is now!</p>
 <h2 id="the-basics">The basics</h2>
 <h3 id="meteor-is-not-like-rails-">Meteor is not like Rails.</h3>

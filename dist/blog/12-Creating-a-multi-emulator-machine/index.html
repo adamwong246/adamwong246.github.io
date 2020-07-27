@@ -3,7 +3,9 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script>function onLoad() {
+ga('send', 'pageview');</script><script>window.addEventListener('DOMContentLoaded', (event) => {
+  console.log('DOM fully loaded and parsed');
+  
   // Select the button
   const btn = document.querySelector(".dark-toggle");
   // Check for dark mode preference at the OS level
@@ -19,8 +21,8 @@ ga('send', 'pageview');</script><script>function onLoad() {
   } else {
     // ...let's toggle the .light-theme class on the body
     document.body.classList.toggle("light-theme");
-  }
-}
+  }        
+});
 
 function toggleDark() {
   
@@ -37,7 +39,7 @@ function toggleDark() {
     localStorage.setItem("theme", "dark")
   }
 }
-</script></head><body onLoad="onLoad()"><div id="main-container"><main><article><header><h1><a href="/blog/12-Creating-a-multi-emulator-machine/index.html">Creating a multi-emulator machine</a></h1><h4><time>October 24th 2016</time></h4><hr></header><p>Chache loves old Sega games but I grew up in a Nintendo house so I built an multi-emulator machine.</p>
+</script></head><body><div id="main-container"><main><article><header><h1><a href="/blog/12-Creating-a-multi-emulator-machine/index.html">Creating a multi-emulator machine</a></h1><h4><time>October 24th 2016</time></h4><hr></header><p>Chache loves old Sega games but I grew up in a Nintendo house so I built an multi-emulator machine.</p>
 <h3 id="get-some-hardware-install-lakka-and-boot-up">Get some hardware, install Lakka and boot up</h3>
 <p>You&apos;ll need an old PC, laptop, or even a RassberryPi, anything you can install linux on. I&apos;m using my ancient but trusty Asus EEE PC.</p>
 <p><a href="http://www.lakka.tv/get/">Lakka</a> is a linux distro which is mostly just the RetroArch frontend. You could also install LibRetro on an existing linux system through aptitude, but I wanted to do the full OS install.</p>

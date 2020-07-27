@@ -6,7 +6,8 @@ block content
       header
         h2
           a(href=entry.url)= entry.meta.title
-        time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+        h4
+          time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
       != truncateHtml(entry.markdownContent, 100, { byWords: true, keepWhitespaces: true })
       a(href=entry.url) Read more...
     hr

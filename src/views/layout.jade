@@ -16,8 +16,43 @@ html(lang="en")
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-47887894-1', 'auto');
       ga('send', 'pageview');
-  
-  body
+    script.
+      function onLoad() {
+        // Select the button
+        const btn = document.querySelector(".dark-toggle");
+        // Check for dark mode preference at the OS level
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+         
+        // Get the user's theme preference from local storage, if it's available
+        const currentTheme = localStorage.getItem("theme");
+        // If the user's preference in localStorage is dark...
+        if (currentTheme === "dark") {
+          // ...let's toggle the .dark-theme class on the body
+          document.body.classList.toggle("dark-theme");
+        // Otherwise, if the user's preference in localStorage is light...
+        } else {
+          // ...let's toggle the .light-theme class on the body
+          document.body.classList.toggle("light-theme");
+        }
+      }
+      
+      function toggleDark() {
+        
+        // Get the user's theme preference from local storage, if it's available
+        const currentTheme = localStorage.getItem("theme");
+        
+        // If the user's preference in localStorage is dark...
+        if (currentTheme === "dark") {
+          document.body.classList.remove("dark-theme");
+          localStorage.setItem("theme", "light")
+
+        } else {
+          document.body.classList.add("dark-theme");
+          localStorage.setItem("theme", "dark")
+        }
+      }
+      
+  body(onLoad="onLoad()")
     #main-container
       main
         block content
@@ -48,4 +83,4 @@ html(lang="en")
             include ./blogLink
 
     footer
-      |v#{package.version} #[a(href=package.repository.url) github] #[a(href='/LICENSE.txt') LICENSE] #[a(href="/README.md") README] Made with ❤️ and #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]
+      |#[button.dark-toggle(onClick="toggleDark()") darkmode]  v#{package.version} #[a(href=package.repository.url) github] #[a(href='/LICENSE.txt') LICENSE] #[a(href="/README.md") README] Made with ❤️ and #[a(href='https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack') webcrack]

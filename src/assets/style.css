@@ -4,14 +4,6 @@
   }
 }
 
-body {
-  color: black;
-}
-
-nav, footer {
-  background: rgba(147, 128, 108, 0.1);
-}
-
 nav {
   padding-top: 0px;
   padding-left: 1em;
@@ -47,7 +39,7 @@ body > header > *{
  padding: 1em;
  margin: 0em;
  border-radius: 3px;
- background: rgba(147, 128, 108, 0.1);
+ /* background: rgba(147, 128, 108, 0.1); */
 }
 
 td, th {

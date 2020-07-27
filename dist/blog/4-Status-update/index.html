@@ -3,11 +3,44 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');
-</script></head><body><div id="main-container"><main><article><header><h2><a href="/blog/4-Status-update/index.html">Status update</a></h2><time>February 17th 2015</time></header><ul>
+ga('send', 'pageview');</script><script>function onLoad() {
+  // Select the button
+  const btn = document.querySelector(".dark-toggle");
+  // Check for dark mode preference at the OS level
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+   
+  // Get the user's theme preference from local storage, if it's available
+  const currentTheme = localStorage.getItem("theme");
+  // If the user's preference in localStorage is dark...
+  if (currentTheme === "dark") {
+    // ...let's toggle the .dark-theme class on the body
+    document.body.classList.toggle("dark-theme");
+  // Otherwise, if the user's preference in localStorage is light...
+  } else {
+    // ...let's toggle the .light-theme class on the body
+    document.body.classList.toggle("light-theme");
+  }
+}
+
+function toggleDark() {
+  
+  // Get the user's theme preference from local storage, if it's available
+  const currentTheme = localStorage.getItem("theme");
+  
+  // If the user's preference in localStorage is dark...
+  if (currentTheme === "dark") {
+    document.body.classList.remove("dark-theme");
+    localStorage.setItem("theme", "light")
+
+  } else {
+    document.body.classList.add("dark-theme");
+    localStorage.setItem("theme", "dark")
+  }
+}
+</script></head><body onLoad="onLoad()"><div id="main-container"><main><article><header><h1><a href="/blog/4-Status-update/index.html">Status update</a></h1><h4><time>February 17th 2015</time></h4><hr></header><ul>
 <li>I used <a href="http://necolas.github.io/normalize.css/">Normalize.css</a> for a base, <a href="http://philipwalton.github.io/solved-by-flexbox/demos/holy-grail/">Holy Grail</a> to implement a fluid layout and a sticky footer and for typography, <a href="http://devinhunt.github.io/typebase.css/">Typebase.css</a>. Of course, I&apos;ve added my own <a href="https://github.com/adamwong246/adamwong246.github.io/blob/master/_src/style.css">light touch</a> but so far, it&apos;s quite a neutral theme.</li>
 <li>Each blog is now routed to a nicer url and jpgs included in the same file get re-mapped to a absolute url, so managing images for specific blog entries is easy.</li>
 <li>I used the same technique that generates my resume to turn the <code>README.md</code> into an html file.</li>
 </ul>
 <p>Of course, you can see for yourself by <a href="https://github.com/adamwong246/adamwong246.github.io/commits/master">tracking the commits on github</a>! And if you wanted to see what&apos;s next on my todo list, check out the <a href="https://github.com/adamwong246/adamwong246.github.io/issues">issues</a>.</p>
-<p>Finally, I bumped the version to <code>0.1.0</code>, which according to SemVer I should have done already. </p></article></main><nav><div id="site_title"><a href="/"><h1>exact change only</h1></a><img src="/assets/headshot.jpg" style="max-width: 40vw; width: 100%"></div><hr><ul><li><a href="/aboutMe/index.html">About me</a></li><li><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></li><li><a href="/sideprojects/index.html">Side projects</a></li></ul><hr><ul><li><a href="/blog/17-Motorcycling-in-a-time-of-Covid/index.html">Motorcycling in a time of Covid</a><br>July 21st 2020</li><li><a href="/blog/16-Upgrading-my-resume-with-Puppeteer/index.html">Upgrading my resume with Puppeteer</a><br>April 22nd 2020</li><li><a href="/blog/15-Image-pipeline-v2/index.html">Image pipeline v2</a><br>March 25th 2020</li><li><a href="/blog/14-Introducing-webcrack-the-build-tool-you-never-wanted/index.html">Introducing webcrack - the build tool you never wanted</a><br>March 23rd 2020</li><li><a href="/blog/13-migrating-away-from-coffeescript/index.html">migrating away from coffeescript</a><br>October 27th 2016</li><li><a href="/blog/index.html" class="blog-link">more blog entries...</a></li></ul></nav></div><footer>v0.3.7 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a> <a href="/LICENSE.txt">LICENSE</a> <a href="/README.md">README</a> Made with ❤️ and <a href="https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack">webcrack</a></footer></body></html>
+<p>Finally, I bumped the version to <code>0.1.0</code>, which according to SemVer I should have done already. </p></article></main><nav><div id="site_title"><a href="/"><h1>exact change only</h1></a><img src="/assets/headshot.jpg" style="max-width: 40vw; width: 100%"></div><hr><ul><li><a href="/aboutMe/index.html">About me</a></li><li><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></li><li><a href="/sideprojects/index.html">Side projects</a></li></ul><hr><ul><li><a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a><br>July 26th 2020</li><li><a href="/blog/17-Motorcycling-in-a-time-of-Covid/index.html">Motorcycling in a time of Covid</a><br>July 21st 2020</li><li><a href="/blog/16-Upgrading-my-resume-with-Puppeteer/index.html">Upgrading my resume with Puppeteer</a><br>April 22nd 2020</li><li><a href="/blog/15-Image-pipeline-v2/index.html">Image pipeline v2</a><br>March 25th 2020</li><li><a href="/blog/14-Introducing-webcrack-the-build-tool-you-never-wanted/index.html">Introducing webcrack - the build tool you never wanted</a><br>March 23rd 2020</li><li><a href="/blog/index.html" class="blog-link">more blog entries...</a></li></ul></nav></div><footer><button onClick="toggleDark()" class="dark-toggle">darkmode</button>  v0.3.7 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a> <a href="/LICENSE.txt">LICENSE</a> <a href="/README.md">README</a> Made with ❤️ and <a href="https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack">webcrack</a></footer></body></html>

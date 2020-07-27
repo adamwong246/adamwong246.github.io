@@ -1,16 +1,14 @@
 # Adam Wong
 
-#### Portland, Oregon - 971-207-1376 - adamwong246@gmail.com
+#### adamwong246@gmail.com - 971-207-1376 - Portland, Oregon
 
-## Technical Skills
+---
 
 - Typescript, React, Node, Meteor, Ruby on Rails
 - Docker and DockerHub
 - Github, Heroku Jenkins and Amazon AWS
 - Java and Android
 - BDD and TDD methodologies, Agile methodologies
-
-## Experience
 
 ### software engineer, [OpenGov](http://www.opengov.com/)
 
@@ -48,5 +46,4 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 - optimized high traffic queries by replacing ActiveRecord calls with raw SQL
 
 ## Education
-###  University of South Carolina
-#### Bachelors of Computer Science,  May 2010
+University of South Carolina, BA of Computer Science,  May 2010

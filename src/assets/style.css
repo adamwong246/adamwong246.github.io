@@ -5,18 +5,34 @@
 }
 
 nav {
-  padding-top: 0px;
+  /* padding-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 1em; */
+  padding: 1em;
+
+  text-align: center;
+
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+nav li {
+  list-style-type: none;
 }
 
 footer {
   padding: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 ul {
   padding-left: 1.5em;
+}
+
+nav ul {
+  padding-left: 0px;
 }
 
 li {
@@ -57,4 +73,9 @@ td, th {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+#more-blog-entries {
+  text-align:center;
+  padding: 1em;
 }

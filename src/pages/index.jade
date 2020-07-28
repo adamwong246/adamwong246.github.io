@@ -11,4 +11,5 @@ block content
       != truncateHtml(entry.markdownContent, 100, { byWords: true, keepWhitespaces: true })
       a(href=entry.url) Read more...
     hr
-  include ./blogLink
+  h5#more-blog-entries
+    include ./blogLink

@@ -1,3 +1,14 @@
+body nav {
+  background-color: rgba(147, 128, 108, 0.1);
+  /* color: black; */
+}
+
+body footer {
+  background-color: rgba(147, 128, 108, 0.1);
+  /* color: black; */
+}
+
+
 /* Default colors */
 body {
   color: #222;
@@ -12,6 +23,7 @@ body.dark-theme {
 
 .dark-theme button{
   background-color: #121212;
+  color: white;
 }
 
 .dark-theme a:link{

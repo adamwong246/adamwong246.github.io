@@ -16,9 +16,10 @@
   },
   "homepage": "http://adamwong246.github.io/",
   "scripts": {
-    "build": "rm -rf dist/** && node ./webcrack/index.js",
-    "serve": "node ./scripts/server.js",
-    "newBlogEntry": "node scripts/newBlogEntry.js",
+    "build": "rm -rf dist/** && node ./webcrack/index.js ../dev/webcrack.config.js",
+    "dev": "rm -rf dist/** && nodemon ./webcrack/index.js ../dev/webcrack.config.js",
+    "serve": "node ./dev/server.js",
+    "newBlogEntry": "node dev/newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
     "shipIt": "git add --all && git commit && yarn deploy"
   },
@@ -42,6 +43,7 @@
     "mkdirp-then": "",
     "moment": "^2.9.0",
     "node-static": "^0.7.6",
+    "nodemon": "^2.0.4",
     "normalize.css": "^3.0.2",
     "path": "^0.11.14",
     "puppeteer": "^3.0.1",

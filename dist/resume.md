@@ -10,6 +10,8 @@
 - Java and Android
 - BDD and TDD methodologies, Agile methodologies
 
+---
+
 ### software engineer, [OpenGov](http://www.opengov.com/)
 
 #### November, 2016 - March, 2020
@@ -45,5 +47,7 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 - revived an out of date Rspec and Cucumber test suite for continuous integration
 - optimized high traffic queries by replacing ActiveRecord calls with raw SQL
 
-## Education
-University of South Carolina, BA of Computer Science,  May 2010
+---
+
+### BA of Computer Science, University of South Carolina
+#### May 2010

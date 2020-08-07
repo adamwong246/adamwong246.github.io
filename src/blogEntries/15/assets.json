@@ -20,6 +20,13 @@
       {"scale": 0.1},
       {"setPixel": [100, 100, "red"]},
       {"lighten": 0.9}
+    ],
+
+    "variant3": [
+      {"saturate": -0.95},
+      {"scale": 0.1},
+      {"setPixel": [100, 100, "red"]},
+      {"lighten": 0.9}
     ]
 
   }

@@ -10,7 +10,7 @@ Promise.config({
   cancellation: true
 });
 
-const webcrackConfig = require("../webcrack.config.js")
+const webcrackConfig = require(process.argv[2])
 
 const INITIALIZE = 'INITIALIZE';
 const UPSERT = 'UPSERT';
@@ -37,7 +37,7 @@ function cleanEmptyFoldersRecursively(folder) {
   }
 
   if (files.length == 0) {
-    console.log("\u001b[31m\u001b[7m XXX \u001b[0m" + folder)
+    console.log("\u001b[31m\u001b[7m XXX! \u001b[0m" + folder)
     fs.rmdirSync(folder);
     return;
   }
@@ -107,13 +107,13 @@ const writefile = (file, contents, callback) => {
 }
 
 const removefile = (file) => {
-  console.log("\u001b[31m\u001b[7m XXX \u001b[0m./" + file)
+  console.log("\u001b[31m\u001b[7m XXX? \u001b[0m./" + file)
   try {
     fse.unlinkSync('./' + file)
     cleanEmptyFoldersRecursively('./' + file.substring(0, file.lastIndexOf("/")))
   } catch (ex) {
-    console.error('inner', ex.message);
-    throw ex;
+    // console.error('inner', ex.message);
+    // throw ex;
   } finally {
     // console.log('finally');
     return;

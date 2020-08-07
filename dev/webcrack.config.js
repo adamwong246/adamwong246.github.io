@@ -27,11 +27,13 @@ const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const CONTACTS = 'CONTACTS'
 const CSS = 'CSS';
 const JPG = 'JPG'
+const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
 const LICENSE = 'LICENSE';
 const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
 const PAGES = 'PAGES';
 const RESUME = 'RESUME';
 const VIEWS = 'VIEWS'
+const FAVICON_PNG = 'FAVICON_PNG'
 
 module.exports = {
   initialState: {},
@@ -43,7 +45,7 @@ module.exports = {
 
   encodings: {
     'utf8': ['md', 'css', 'jade', 'txt', 'json'],
-    '': ['jpg']
+    '': ['jpg', 'png']
   },
 
   // defines the inputs points where files will be read and their key within the Redux store
@@ -52,13 +54,15 @@ module.exports = {
     [BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
     [BLOG_ENTRIES]: 'blogEntries/**/index.md',
     [CONTACTS]: 'contacts.json',
-    [CSS]: 'assets/*.css',
-    [JPG]: 'assets/*.jpg',
+    [CSS]: 'stylesheets/*.css',
+    [JPG]: 'images/*.jpg',
+    [JPG_TRANSFORMS]: 'images/assets.json',
     [LICENSE]: 'LICENSE.txt',
     [NOT_FOUND_PAGE]: '404.jade',
     [PAGES]: 'pages/**/*.jade',
     [RESUME]: 'resume.md',
     [VIEWS]: 'views/*.jade',
+    [FAVICON_PNG]: 'images/evilShroom.png',
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -67,7 +71,7 @@ module.exports = {
   outputs: (selectors) => {
 
     const packageSelector = createSelector(() => {
-      return require("./package.json")
+      return require("../package.json")
     });
 
     const resumeSelector = contentOfFile(selectors[RESUME])
@@ -79,6 +83,8 @@ module.exports = {
     const blogEntriesSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ENTRIES]);
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
     const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
+
+    const imageAssetsSrcAndContents = contentOfFile(selectors[JPG_TRANSFORMS]);
 
     const contactSelector = createSelector(contentOfFile(selectors[CONTACTS]), (contactsString) =>{
       const contectJson = JSON.parse(contactsString)
@@ -172,7 +178,6 @@ module.exports = {
         const src = jpg.src
         const jpgSplit = src.split('/')
 
-
         const asset = assets.find((asset) => {
           return src.split('/').slice(0, -1).join('') === asset.src.split('/').slice(0, -1).join('')
         })
@@ -252,8 +257,6 @@ module.exports = {
 
     const resumeMarkdownSelector = createSelector(resumeSelector, (resume) => markdown.parse(resume))
 
-
-
     const htmlSelector = createSelector([
       packageSelector,
       pagesSelector,
@@ -321,12 +324,12 @@ module.exports = {
         await page.addStyleTag({content: css})
         const pdf = await page.pdf({
           path: '/dev/null',
-          format: 'A4', printBackground: true,
+          format: 'A4', printBackground: false,
           margin: {
-            top: '0.3in',
-            right: '0.3in',
-            bottom: '0.3in',
-            left: '0.3in',
+            top: '0.5in',
+            right: '0.5in',
+            bottom: '0.5in',
+            left: '0.5in',
           }
         });
 
@@ -337,8 +340,64 @@ module.exports = {
       })();
     })
 
+    const imageAssetsOriginalSelector = createSelector(selectors.JPG, imageAssetsSrcAndContents, (jpgs, assets) => {
+      const transformationManifest = JSON.parse(assets)
+
+      return Object.keys(jpgs).reduce((mm, jKey) => {
+
+        const shortFileName = jKey.split('/')[3]
+        const images = {
+          [jKey.split('/').slice(-2).join('/')]: jpgs[jKey]
+        }
+
+        const transformations = transformationManifest[shortFileName]
+        if (transformations){
+
+
+
+          const modifiedJpgs = Object.keys(transformations).reduce((mmm, transformationKey) => {
+            const transformation = transformations[transformationKey]
+
+            const modifedImagePromise = new Promise((res, rej) => {
+              return lwip.open(jpgs[jKey], 'jpg', function(err, image) {
+                const batchImage = image.batch()
+                transformation.forEach((transform) => {
+                  ts = Object.keys(transform)[0]
+                  args = transform[ts]
+                  if (args.length) {
+                    batchImage[ts](...transform[ts])
+                  } else {
+                    batchImage[ts](transform[ts])
+                  }
+                });
+
+                batchImage.toBuffer('jpg', {}, (err, buffer) => {
+                  res(buffer)
+                })
+              });
+            })
+
+
+
+            const jpgSplit = jKey
+            images['images/' + transformationKey + '-' + shortFileName] = modifedImagePromise
+
+          }, {})
+
+
+        }
+
+        return images;
+      }, {})
+    })
+
+    const faviconSelector = createSelector(contentOfFile(selectors[FAVICON_PNG]), (favicon) => {
+      return favicon
+    })
+
+
     // return a hash objects based on the state.
-    //Each key is a file and each value is the contents of that file
+    // Each key is a file and each value is the contents of that file
     return createSelector([
       licenseSelector,
       resumeSelector,
@@ -347,17 +406,19 @@ module.exports = {
       htmlSelector,
       blogEntriesJpgsOrginalOutput,
       blogEntriesJpgsModifiedOutput,
-      createSelector(selectors.JPG, (jpgs) => {
-
-        return Object.keys(jpgs).reduce((mm, jKey) => {
-          // console.log(jKey.split('/').slice(-2))
-          return {
-            [jKey.split('/').slice(-2).join('/')]: jpgs[jKey]
-          }
-        }, {})
-
-      })
-    ], (license, resumeMd, resumePdf, style, html, blogJpegsOriginal, blogJpegsMod, jpgs) => {
+      imageAssetsOriginalSelector,
+      faviconSelector,
+    ], (
+      license,
+      resumeMd,
+      resumePdf,
+      style,
+      html,
+      blogJpegsOriginal,
+      blogJpegsMod,
+      jpgs,
+      favicon,
+    ) => {
       return {
         'README.md': fs.readFileSync('./README.md', 'utf8'),
         'LICENSE.txt': license,
@@ -367,7 +428,8 @@ module.exports = {
         ...html,
         ...blogJpegsOriginal,
         ...blogJpegsMod,
-        ...jpgs
+        ...jpgs,
+        'favicon.png': favicon
       }
     });
   }

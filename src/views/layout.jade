@@ -53,7 +53,7 @@ html(lang="en")
           localStorage.setItem("theme", "dark")
         }
       }
-      
+    link(rel="icon"  type="image/png"  href="/favicon.png")
   body()
     #main-container
       main
@@ -61,7 +61,8 @@ html(lang="en")
 
       nav
         #site_title
-          img(src="/assets/headshot.jpg" style="max-width: 40vw; width: 80%; border-radius: 50%;")
+          a(href="/images/headshot2.jpg")
+            img(src="/images/optimized-headshot2.jpg" style="max-width: 40vw; width: 80%; border-radius: 50%;")
           h3
             a(href='/') adamwong246.github.io
           

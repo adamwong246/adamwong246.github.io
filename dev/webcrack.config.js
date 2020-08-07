@@ -326,10 +326,10 @@ module.exports = {
           path: '/dev/null',
           format: 'A4', printBackground: false,
           margin: {
-            top: '0.5in',
-            right: '0.5in',
-            bottom: '0.5in',
-            left: '0.5in',
+            top: '0in',
+            right: '0.25in',
+            bottom: '0in',
+            left: '0.25in',
           }
         });
 

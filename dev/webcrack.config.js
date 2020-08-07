@@ -420,7 +420,6 @@ module.exports = {
       jpgs,
       favicon,
     ) => {
-      console.log(jpgs)
       return {
         'README.md': fs.readFileSync('./README.md', 'utf8'),
         'LICENSE.txt': license,

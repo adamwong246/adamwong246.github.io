@@ -6,5 +6,12 @@
       {"scale": 0.33}
     ]
 
+  },
+
+  "aboutMe.jpg": {
+    "optimized": [
+      {"scale": 0.33}
+    ]
+
   }
 }

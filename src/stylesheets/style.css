@@ -11,10 +11,11 @@ nav {
   padding-bottom: 1em; */
   padding: 1em;
 
-  text-align: center;
+  /* text-align: center; */
 
-  margin-left: 2em;
-  margin-right: 2em;
+  /* margin-left: 2em;
+  margin-right: 2em; */
+  /* z-index:1; */
 }
 
 nav li {
@@ -23,8 +24,6 @@ nav li {
 
 footer {
   padding: 1em;
-  margin-left: 2em;
-  margin-right: 2em;
 }
 
 ul {
@@ -62,10 +61,6 @@ td, th {
   padding: 0.25rem;
 }
 
-#site_title {
-  text-align: center;
-}
-
 .contact-icon svg {
   width: 0.9em;
 }
@@ -79,3 +74,19 @@ h1, h2, h3, h4, h5, h6 {
   text-align:center;
   padding: 1em;
 }
+
+/* #site-title img{
+  border-radius: 50%;
+} */
+
+/* nav {
+  z-index: -1;
+}
+
+main {
+  z-index: 0;
+}
+
+footer {
+  z-index: 1;
+} */

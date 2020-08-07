@@ -1,8 +1,8 @@
 {
-  "name": "exact-change-only",
-  "version": "1.0.0",
+  "name": "adamwong246.github.io",
+  "version": "1.0.1",
   "license": "ISC",
-  "description": "An exceedingly simple blog written in coffeescript, run by cake, managed with npm and hosted on Github pages.",
+  "description": "An exceedingly simple blog written in javascript, build with webcrack, and hosted on Github pages.",
   "author": {
     "name": "Adam Wong",
     "email": "adamwong246@gmail.com"

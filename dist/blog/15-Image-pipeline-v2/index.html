@@ -3,61 +3,7 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script>window.addEventListener('DOMContentLoaded', (event) => {
-  console.log('DOM fully loaded and parsed');
-  
-  // Initial state
-  var scrollPos = 0;  
-  window.addEventListener('scroll', function(){
-    // detects new state and compares it with the new one
-    if ((document.body.getBoundingClientRect()).top > scrollPos)
-  		document.body.classList.remove("hide-menu");
-      
-  	else
-  		document.body.classList.add("hide-menu");
-      
-  	// saves the new position for iteration.
-  	scrollPos = (document.body.getBoundingClientRect()).top;
-  });
-
-  // Select the button
-  const btn = document.querySelector(".dark-toggle");
-  // Check for dark mode preference at the OS level
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-   
-  // Get the user's theme preference from local storage, if it's available
-  const currentTheme = localStorage.getItem("theme");
-  // If the user's preference in localStorage is dark...
-  if (currentTheme === "dark") {
-    // ...let's toggle the .dark-theme class on the body
-    document.body.classList.toggle("dark-theme");
-  // Otherwise, if the user's preference in localStorage is light...
-  } else {
-    // ...let's toggle the .light-theme class on the body
-    document.body.classList.toggle("light-theme");
-  }        
-});
-
-function toggleDark() {
-  
-  // Get the user's theme preference from local storage, if it's available
-  const currentTheme = localStorage.getItem("theme");
-  
-  // If the user's preference in localStorage is dark...
-  if (currentTheme === "dark") {
-    document.body.classList.remove("dark-theme");
-    localStorage.setItem("theme", "light")
-
-  } else {
-    document.body.classList.add("dark-theme");
-    localStorage.setItem("theme", "dark")
-  }
-}
-
-function openMenu() {
-    document.body.classList.toggle("closed-menu");
-}
-</script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu"><div id="main-container"><nav><div id="site-title"><h3><img src="/favicon.png" onClick="openMenu()"><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <ul><li><h4><a href="/aboutMe/index.html">About me</a></h4></li><li><h4><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></h4></li><li><h4><a href="/sideprojects/index.html">Side projects</a></h4></li><li><h4><a href="/blog/index.html">Blog entries</a></h4></li><li><h4>Latest entry:<a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a></h4></li></ul></div></nav><main><article><header><h1><a href="/blog/15-Image-pipeline-v2/index.html">Image pipeline v2</a></h1><h4><time>March 25th 2020</time></h4><hr></header><h3 id="an-example-of-my-image-pipeline-">An example of my image pipeline.</h3>
+ga('send', 'pageview');</script><script src="/index.js"></script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu animate-logo"><div id="main-container"><nav><div id="site-title"><h3><img src="/favicon.png" onClick="openMenu()" class="box bounce-7"><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <ul><li><h4><a href="/aboutMe/index.html">About me</a></h4></li><li><h4><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></h4></li><li><h4><a href="/sideprojects/index.html">Side projects</a></h4></li><li><h4><a href="/blog/index.html">Blog entries</a></h4></li><li><h4>Latest entry:<a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a></h4></li></ul></div></nav><main><article><header><h1><a href="/blog/15-Image-pipeline-v2/index.html">Image pipeline v2</a></h1><h4><time>March 25th 2020</time></h4><hr></header><h3 id="an-example-of-my-image-pipeline-">An example of my image pipeline.</h3>
 <p>A blog entry folder may have a <code>assets.json</code> file which describes how to process images. You can put your raw images alongside your blog content and the rules with which to manipulate them and webcrack will take care of the reset.</p>
 <h2 id="this-is-an-original-picture-of-my-dogs-">This is an original picture of my dogs.</h2>
 <p><img src="/blog/3-Dogs/dogs.jpg"></p>
@@ -91,4 +37,4 @@ function openMenu() {
 <h2 id="the-following-are-variants-processed-with-lwip-https-www-npmjs-com-package-js-lwip-">The following are variants processed with <a href="https://www.npmjs.com/package/js-lwip">lwip</a></h2>
 <p><img src="/blog/15-Image-pipeline-v2/variant0-dogs.jpg">
 <img src="/blog/15-Image-pipeline-v2/variant1-dogs.jpg">
-<img src="/blog/15-Image-pipeline-v2/variant2-dogs.jpg"></p></article></main></div><footer><span><button onClick="toggleDark()" class="dark-toggle">darkmode</button></span><br><span>v1.0.3 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a> <a href="/LICENSE.txt">LICENSE</a> <a href="/README.md">README</a></span></footer></body></html>
+<img src="/blog/15-Image-pipeline-v2/variant2-dogs.jpg"></p></article></main></div><footer><span><button onClick="toggleDark()" class="dark-toggle">darkmode</button></span><br><span>v1.0.4 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a> <a href="/LICENSE.txt">LICENSE</a> <a href="/README.md">README</a></span></footer></body></html>

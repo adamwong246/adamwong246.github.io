@@ -3,61 +3,7 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script>window.addEventListener('DOMContentLoaded', (event) => {
-  console.log('DOM fully loaded and parsed');
-  
-  // Initial state
-  var scrollPos = 0;  
-  window.addEventListener('scroll', function(){
-    // detects new state and compares it with the new one
-    if ((document.body.getBoundingClientRect()).top > scrollPos)
-  		document.body.classList.remove("hide-menu");
-      
-  	else
-  		document.body.classList.add("hide-menu");
-      
-  	// saves the new position for iteration.
-  	scrollPos = (document.body.getBoundingClientRect()).top;
-  });
-
-  // Select the button
-  const btn = document.querySelector(".dark-toggle");
-  // Check for dark mode preference at the OS level
-  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-   
-  // Get the user's theme preference from local storage, if it's available
-  const currentTheme = localStorage.getItem("theme");
-  // If the user's preference in localStorage is dark...
-  if (currentTheme === "dark") {
-    // ...let's toggle the .dark-theme class on the body
-    document.body.classList.toggle("dark-theme");
-  // Otherwise, if the user's preference in localStorage is light...
-  } else {
-    // ...let's toggle the .light-theme class on the body
-    document.body.classList.toggle("light-theme");
-  }        
-});
-
-function toggleDark() {
-  
-  // Get the user's theme preference from local storage, if it's available
-  const currentTheme = localStorage.getItem("theme");
-  
-  // If the user's preference in localStorage is dark...
-  if (currentTheme === "dark") {
-    document.body.classList.remove("dark-theme");
-    localStorage.setItem("theme", "light")
-
-  } else {
-    document.body.classList.add("dark-theme");
-    localStorage.setItem("theme", "dark")
-  }
-}
-
-function openMenu() {
-    document.body.classList.toggle("closed-menu");
-}
-</script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu"><div id="main-container"><nav><div id="site-title"><h3><img src="/favicon.png" onClick="openMenu()"><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <ul><li><h4><a href="/aboutMe/index.html">About me</a></h4></li><li><h4><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></h4></li><li><h4><a href="/sideprojects/index.html">Side projects</a></h4></li><li><h4><a href="/blog/index.html">Blog entries</a></h4></li><li><h4>Latest entry:<a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a></h4></li></ul></div></nav><main><article><header><h1><a href="/blog/5-Meteor-the-first-month/index.html">Meteor: the first month</a></h1><h4><time>March 21st 2015</time></h4><hr></header><p>There&apos;s an exciting new stack for optimistic developers called Meteor and I&apos;ve had the great pleasure of focusing on learning it for the past months. This is what I&apos;ve learned.</p>
+ga('send', 'pageview');</script><script src="/index.js"></script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu animate-logo"><div id="main-container"><nav><div id="site-title"><h3><img src="/favicon.png" onClick="openMenu()" class="box bounce-7"><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <ul><li><h4><a href="/aboutMe/index.html">About me</a></h4></li><li><h4><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></h4></li><li><h4><a href="/sideprojects/index.html">Side projects</a></h4></li><li><h4><a href="/blog/index.html">Blog entries</a></h4></li><li><h4>Latest entry:<a href="/blog/18-Memories-of-Totality/index.html">Memories of Totality</a></h4></li></ul></div></nav><main><article><header><h1><a href="/blog/5-Meteor-the-first-month/index.html">Meteor: the first month</a></h1><h4><time>March 21st 2015</time></h4><hr></header><p>There&apos;s an exciting new stack for optimistic developers called Meteor and I&apos;ve had the great pleasure of focusing on learning it for the past months. This is what I&apos;ve learned.</p>
 <p>Meteor is framework based on the high-minded ideal of <em>isomorphic</em> javascript, which is a fancy way of saying, &quot;It&apos;s javascript, on the server too!&quot; I find this notion absolutely titilating, though I&apos;m sure other&apos;s are heaving at the very thought. Ok, that&apos;s fair. But give it a chance! It&apos;s an incredibly flexible technology and with a little bit of experience, you&apos;ll find that Meteor is a fantastic tool for building prototypes which evolve into mature software. Meteor is production ready and the time to dive in is now!</p>
 <h2 id="the-basics">The basics</h2>
 <h3 id="meteor-is-not-like-rails-">Meteor is not like Rails.</h3>
@@ -95,4 +41,4 @@ Meteor.subscribe &apos;myOrders&apos;</code></pre>
 <h3 id="it-uses-a-lot-of-ram">It uses a lot of RAM</h3>
 <p>But RAM is cheap, so it&apos;s not a big deal most of the time.</p>
 <h3 id="but-it-s-still-just-js">But it&apos;s still just js</h3>
-<p>Let&apos;s face facts: node&apos;s asynchronous support is overhyped. Sure, it powerful but the community is fragmented on how to support asynchronous operations. Promises, threads, futures, generators, etc are absolutely overwhelming and bewildering. Meteor does it&apos;s best to shield you from these concerns but you&apos;ll still have to tackle these complex issues at some point.</p></article></main></div><footer><span><button onClick="toggleDark()" class="dark-toggle">darkmode</button></span><br><span>v1.0.3 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a> <a href="/LICENSE.txt">LICENSE</a> <a href="/README.md">README</a></span></footer></body></html>
+<p>Let&apos;s face facts: node&apos;s asynchronous support is overhyped. Sure, it powerful but the community is fragmented on how to support asynchronous operations. Promises, threads, futures, generators, etc are absolutely overwhelming and bewildering. Meteor does it&apos;s best to shield you from these concerns but you&apos;ll still have to tackle these complex issues at some point.</p></article></main></div><footer><span><button onClick="toggleDark()" class="dark-toggle">darkmode</button></span><br><span>v1.0.4 <a href="https://github.com/adamwong246/adamwong246.github.io">github</a> <a href="/LICENSE.txt">LICENSE</a> <a href="/README.md">README</a></span></footer></body></html>

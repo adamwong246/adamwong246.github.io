@@ -34,6 +34,7 @@ const PAGES = 'PAGES';
 const RESUME = 'RESUME';
 const VIEWS = 'VIEWS'
 const FAVICON_PNG = 'FAVICON_PNG'
+const JS = 'JS'
 
 module.exports = {
   initialState: {},
@@ -44,7 +45,7 @@ module.exports = {
   },
 
   encodings: {
-    'utf8': ['md', 'css', 'jade', 'txt', 'json'],
+    'utf8': ['md', 'css', 'jade', 'txt', 'json', 'js'],
     '': ['jpg', 'png']
   },
 
@@ -63,6 +64,7 @@ module.exports = {
     [RESUME]: 'resume.md',
     [VIEWS]: 'views/*.jade',
     [FAVICON_PNG]: 'images/evilShroom.png',
+    [JS]: 'index.js',
   },
 
   // defines the output points based on a base selector which is subscribed to changes in the redux state
@@ -83,6 +85,8 @@ module.exports = {
     const blogEntriesSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ENTRIES]);
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
     const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
+
+
 
     const imageAssetsSrcAndContents = contentOfFile(selectors[JPG_TRANSFORMS]);
 
@@ -409,6 +413,7 @@ module.exports = {
       blogEntriesJpgsModifiedOutput,
       imageAssetsOriginalSelector,
       faviconSelector,
+      contentOfFile(selectors[JS]),
     ], (
       license,
       resumeMd,
@@ -419,6 +424,7 @@ module.exports = {
       blogJpegsMod,
       jpgs,
       favicon,
+      js
     ) => {
       return {
         'README.md': fs.readFileSync('./README.md', 'utf8'),
@@ -430,7 +436,8 @@ module.exports = {
         ...blogJpegsOriginal,
         ...blogJpegsMod,
         ...jpgs,
-        'favicon.png': favicon
+        'favicon.png': favicon,
+        'index.js': js
       }
     });
   }

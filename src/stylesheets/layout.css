@@ -2,7 +2,7 @@
   display: flex;
   min-height: 91vh;
   flex-direction: column;
-  flex: 1 0 auto; 
+  flex: 1 0 auto;
 }
 
 #site-title {
@@ -34,7 +34,15 @@
   }
 
   .closed-menu nav #menu {
-    display:none;
+    display: none;
+  }
+
+  body.closed-menu main {
+    filter: none;
+  }
+
+  body:not(.closed-menu) main {
+    filter: blur(10px);
   }
 
   #menu {

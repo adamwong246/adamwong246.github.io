@@ -88,8 +88,6 @@ module.exports = {
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
     const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
 
-
-
     const imageAssetsSrcAndContents = contentOfFile(selectors[JPG_TRANSFORMS]);
 
     const contactSelector = createSelector(contentOfFile(selectors[CONTACTS]), (contactsString) =>{
@@ -429,6 +427,9 @@ module.exports = {
       return favicon
     })
 
+    const clientJsSelector = createSelector(contentOfFile(selectors[JS]), (js) => {
+      return js
+    })
 
     // return a hash objects based on the state.
     // Each key is a file and each value is the contents of that file
@@ -443,7 +444,7 @@ module.exports = {
       blogEntriesGifsOutput,
       imageAssetsOriginalSelector,
       faviconSelector,
-      contentOfFile(selectors[JS]),
+      clientJsSelector
     ], (
       license,
       resumeMd,

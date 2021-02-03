@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run build
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js dev
 
 PATH: 
   /Users/adam/.nvm/versions/node/v12.16.1/bin:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
@@ -2016,7 +2016,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c rm -rf dist/** && node ./webcrack/index.js ../dev/webcrack.config.js
+  Arguments: -c rm -rf dist/** && nodemon ./webcrack/index.js ../dev/webcrack.config.js
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

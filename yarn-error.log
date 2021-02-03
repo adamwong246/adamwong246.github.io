@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js dev
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js shipIt
 
 PATH: 
   /Users/adam/.nvm/versions/node/v12.16.1/bin:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "adamwong246.github.io",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "license": "ISC",
     "description": "An exceedingly simple blog written in javascript, build with webcrack, and hosted on Github pages.",
     "author": {
@@ -32,8 +32,9 @@ npm manifest:
     },
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
+      "help": "cat help.txt",
       "build": "rm -rf dist/** && node ./webcrack/index.js ../dev/webcrack.config.js",
-      "dev": "rm -rf dist/** && nodemon ./webcrack/index.js ../dev/webcrack.config.js",
+      "dev": "rm -rf dist/**; node ./dev/server.js & nodemon ./webcrack/index.js ../dev/webcrack.config.js",
       "serve": "node ./dev/server.js",
       "newBlogEntry": "node dev/newBlogEntry.js",
       "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
@@ -2016,7 +2017,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c rm -rf dist/** && nodemon ./webcrack/index.js ../dev/webcrack.config.js
+  Arguments: -c git add --all && git commit && yarn deploy
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

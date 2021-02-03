@@ -24,6 +24,7 @@ const {
 const BLOG_ASSETS = 'BLOG_ASSETS'
 const BLOG_ENTRIES = 'BLOG_ENTRIES'
 const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
+const BLOG_ENTRIES_GIFS = 'BLOG_ENTRIES_GIFS'
 const CONTACTS = 'CONTACTS'
 const CSS = 'CSS';
 const JPG = 'JPG'
@@ -46,13 +47,14 @@ module.exports = {
 
   encodings: {
     'utf8': ['md', 'css', 'jade', 'txt', 'json', 'js'],
-    '': ['jpg', 'png']
+    '': ['jpg', 'png', 'gif']
   },
 
   // defines the inputs points where files will be read and their key within the Redux store
   inputs: {
     [BLOG_ASSETS]: 'blogEntries/**/assets.json',
     [BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
+    [BLOG_ENTRIES_GIFS]: 'blogEntries/**/*.gif',
     [BLOG_ENTRIES]: 'blogEntries/**/index.md',
     [CONTACTS]: 'contacts.json',
     [CSS]: 'stylesheets/*.css',
@@ -158,6 +160,20 @@ module.exports = {
         fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8') + css
       ).styles);
 
+    const blogEntriesGifsOutput = createSelector([
+      srcAndContentOfFiles(selectors[BLOG_ENTRIES_GIFS]),
+      blogEntriesSelector
+    ], (gifs, blogEntries) => {
+      return gifs.reduce((mm, gif) => {
+        const src = gif.src
+        const gifSplit = src.split('/')
+        return {
+          ...mm,
+          [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + gifSplit[gifSplit.length - 1]]: gif.content
+        }
+      }, {})
+    });
+
     const blogEntriesJpgsOrginalOutput = createSelector([
       srcAndContentOfFiles(selectors[BLOG_ENTRIES_JPGS]),
       blogEntriesSelector
@@ -240,7 +256,9 @@ module.exports = {
       }
     })
 
-    const blogEntriesSelectorWithUpdatedImageLinks = createSelector([blogEntriesSelector, blogEntriesJpgsSelector], (blogEntries, jpgs) => {
+    const blogEntriesSelectorWithUpdatedImageLinks = createSelector([
+      blogEntriesSelector, blogEntriesJpgsSelector, blogEntriesGifsOutput
+    ], (blogEntries, jpgs, gifs) => {
       return blogEntries.map((blogEntry) => {
         const blogEntryHtmlString = blogEntry.markdownContent
 
@@ -251,6 +269,13 @@ module.exports = {
           $(':root')
           .find(`img[src="${split[split.length -1]}"]`)
           .replaceWith(cheerio(`<img src=${'/' + jpg}></img>`))
+        })
+
+        Object.keys(gifs).forEach((gif) => {
+          const split = gif.split('/')
+          $(':root')
+          .find(`img[src="${split[split.length -1]}"]`)
+          .replaceWith(cheerio(`<img src=${'/' + gif}></img>`))
         })
         return {
           ...blogEntry,
@@ -321,25 +346,29 @@ module.exports = {
 
     const resumePDFSelector = createSelector([htmlSelector, cssOutputSelectors], (htmlFiles, css) => {
       return (async () => {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-
-        await page.setContent(htmlFiles['resume.html'])
-        await page.addStyleTag({content: css})
-        const pdf = await page.pdf({
-          path: '/dev/null',
-          format: 'A4', printBackground: false,
-          margin: {
-            top: '0in',
-            right: '0.25in',
-            bottom: '0in',
-            left: '0.25in',
-          }
-        });
-
-        await browser.close();
-
-        return pdf
+        try {
+          const browser = await puppeteer.launch();
+          const page = await browser.newPage();
+          await page.setContent(htmlFiles['resume.html'])
+          await page.addStyleTag({content: css})
+          const pdf = await page.pdf({
+            path: '/dev/null',
+            format: 'A4', printBackground: false,
+            margin: {
+              top: '0.0in',
+              right: '0.25in',
+              bottom: '0.0in',
+              left: '0.25in',
+            }
+          });
+          await browser.close();
+          return pdf
+        } catch (e) {
+            console.error(e);
+            return e;
+        } finally {
+            // console.log('We do cleanup here');
+        }
 
       })();
     })
@@ -411,6 +440,7 @@ module.exports = {
       htmlSelector,
       blogEntriesJpgsOrginalOutput,
       blogEntriesJpgsModifiedOutput,
+      blogEntriesGifsOutput,
       imageAssetsOriginalSelector,
       faviconSelector,
       contentOfFile(selectors[JS]),
@@ -422,6 +452,7 @@ module.exports = {
       html,
       blogJpegsOriginal,
       blogJpegsMod,
+      gifs,
       jpgs,
       favicon,
       js
@@ -435,6 +466,7 @@ module.exports = {
         ...html,
         ...blogJpegsOriginal,
         ...blogJpegsMod,
+        ...gifs,
         ...jpgs,
         'favicon.png': favicon,
         'index.js': js

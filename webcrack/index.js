@@ -93,8 +93,14 @@ const writefile = (file, contents, callback) => {
   } else if (typeof contents.then === 'function'){
     console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
     Promise.resolve(contents).then(function(value) {
-      fse.outputFile(relativeFilePath, value, callback);
-      console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+
+      if (value instanceof Error){
+        console.log("\u001b[31m !!! \u001b[0m" + relativeFilePath + " " + value.message)
+      } else {
+        fse.outputFile(relativeFilePath, value, callback);
+        console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+      }
+
     }, function(value) {
       // not called
     });

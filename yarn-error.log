@@ -1,14 +1,14 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js shipIt
+  /Users/adam/.nvm/versions/node/v14.9.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js serve
 
 PATH: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
+  /Users/adam/.rbenv/shims:/Users/adam/.nvm/versions/node/v14.9.0/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  12.16.1
+  14.9.0
 
 Platform: 
   darwin x64
@@ -2017,13 +2017,13 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c git add --all && git commit && yarn deploy
+  Arguments: -c node ./dev/server.js
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   
       at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
       at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
       at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:311:20)
-      at maybeClose (internal/child_process.js:1021:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5)
+      at ChildProcess.emit (events.js:314:20)
+      at maybeClose (internal/child_process.js:1047:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:287:5)

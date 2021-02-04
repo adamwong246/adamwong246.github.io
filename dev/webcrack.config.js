@@ -113,7 +113,8 @@ module.exports = {
     const blogEntriesSelector = createSelector(blogEntriesSrcAndContents, (blogEntries) => {
       return blogEntries.map((blogEntry) => {
         const markdownContent = markdown.parse(blogEntry.content)
-        const slugPath = "blog/" + blogEntry.src.split('/')[3] + '-' + (slug(markdownContent.meta.title)) + "/"
+        const entryId = blogEntry.src.split('/')[3]
+        const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
         const filePath = slugPath + 'index.html';
         return {
           meta: markdownContent.meta,
@@ -121,11 +122,48 @@ module.exports = {
           dest: filePath,
           url: `/${filePath}`,
           destFolder: slugPath,
-          srcFolder: blogEntry.src.split('index.md')[0]
+          srcFolder: blogEntry.src.split('index.md')[0],
+          entryId
         }
       }).sort((b, a) => {
         return moment(a.meta.publishedAt).diff(moment(b.meta.publishedAt))
+      }).map((lmnt, ndx, ry) => {
+
+
+        if (ndx === ry.length-1){
+          lmnt.meta.previous = null;
+        } else {
+          const previous = ry[ndx+1];
+          lmnt.meta.previous = {
+            url: previous.url,
+            title: previous.meta.title,
+          };
+        }
+
+        if (ndx === 0){
+          lmnt.meta.next = null;
+        } else {
+          const next = ry[ndx-1];
+          lmnt.meta.next = {
+            url: next.url,
+            title: next.meta.title,
+          };
+        }
+
+        // if (ndx === ry.length){
+        //   lmnt.meta.next = null;
+        // } else {
+        //   // const next = ry[ndx+1];
+        //   lmnt.meta.next = {
+        //     // url: next.url,
+        //     // title: next.meta.title,
+        //   };
+        // }
+
+
+        return lmnt
       })
+
     });
 
     const pagesSelector = createSelector(pagesSrcAndContents, (pages) => {

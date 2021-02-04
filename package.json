@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "license": "ISC",
   "description": "An exceedingly simple blog written in javascript, build with webcrack, and hosted on Github pages.",
   "author": {
@@ -17,9 +17,15 @@
   "homepage": "http://adamwong246.github.io/",
   "scripts": {
     "help": "cat help.txt",
-    "build": "rm -rf dist/** && node ./webcrack/index.js ../dev/webcrack.config.js",
-    "dev": "rm -rf dist/**; node ./dev/server.js & nodemon ./webcrack/index.js ../dev/webcrack.config.js",
+
+    "webcrack:build": "node ./webcrack/index.js ../dev/webcrack.config.js",
+    "webcrack:watch": "node ./webcrack/index.js ../dev/webcrack.config.js",
+    "webcrack:dev": "nodemon ./webcrack/index.js ../dev/webcrack.config.js",
+
     "serve": "node ./dev/server.js",
+
+    "dev": "rm -rf dist/**; node ./dev/server.js & yarn webcrack:dev",
+
     "newBlogEntry": "node dev/newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
     "shipIt": "git add --all && git commit && yarn deploy"

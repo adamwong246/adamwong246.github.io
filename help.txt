@@ -1,3 +1,12 @@
-"yarn build" - Builds the webcrack configuration once.
-"yarn watch" - Builds the webcrack configuration once and watches for changes to src. Does NOT watch webcrack config for changes.
-"yarn dev"   - Builds the webcrack configuration once and watches for changes to src, relaunching the webcrack config when necessary.
+# Yarn commands and their descriptions.
+
+yarn webcrack:build - Builds src
+yarn webcrack:watch - Watches and builds src.
+yarn webcrack:dev   - Watches and builds src and webcrack.config.js
+
+yarn serve - Start the dev server.
+yarn dev   - Start the dev server with webcrack:dev
+
+yarn newBlogEntry - Make an empty blog entry
+
+yarn deploy - Send the dist folder to the right github branch and directory.

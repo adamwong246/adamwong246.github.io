@@ -1,8 +1,10 @@
+// webcrack/index.js
+
 const chokidar = require('chokidar');
 const createSelector = require('reselect').createSelector;
 const createStore = require('redux').createStore;
 const fse = require("fs-extra")
-const glob = require("glob");
+const glob = require("glob-promise");
 const path = require("path")
 const Promise = require("bluebird")
 
@@ -10,7 +12,9 @@ Promise.config({
   cancellation: true
 });
 
+console.log("Webcrack args: ", process.argv)
 const webcrackConfig = require(process.argv[2])
+const mode = process.argv[3]
 
 const INITIALIZE = 'INITIALIZE';
 const UPSERT = 'UPSERT';
@@ -183,26 +187,45 @@ const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).
 Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   const path = `./${webcrackConfig.options.inFolder}/${webcrackConfig.inputs[inputRuleKey] || ''}`
   return new Promise((fulfill, reject) => {
-    chokidar.watch(path, {})
-      .on('error', error => {
-        console.log("\u001b[7m !!! \u001b[0m" + path)
+
+
+    if ( mode === "build"){
+      glob(path, {}).then((files) => {
+        files.forEach((file) => {
+          dispatchUpsert(store, inputRuleKey, file, webcrackConfig.encodings);
+        })
+      }).then(() => {
+          fulfill()
       })
-      .on('ready', () => {
-        console.log("\u001b[7m\u001b[36m  >  \u001b[0m" + path)
-        fulfill()
-      })
-      .on('add', path => {
-        console.log("\u001b[7m\u001b[34m  +  \u001b[0m./" + path)
-        dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
-      })
-      .on('change', path => {
-        console.log("\u001b[7m\u001b[35m  !  \u001b[0m" + path)
-        dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
-      })
-      .on('unlink', path => {
-        console.log("\u001b[7m\u001b[31m  -  \u001b[0m./" + path)
-        dispatchRemove(store, inputRuleKey, './' + path)
-      })
+    } else if (mode === "watch") {
+
+      chokidar.watch(path, {})
+        .on('error', error => {
+          console.log("\u001b[7m !!! \u001b[0m" + path)
+        })
+        .on('ready', () => {
+          console.log("\u001b[7m\u001b[36m  >  \u001b[0m" + path)
+          fulfill()
+        })
+        .on('add', path => {
+          console.log("\u001b[7m\u001b[34m  +  \u001b[0m./" + path)
+          dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
+        })
+        .on('change', path => {
+          console.log("\u001b[7m\u001b[35m  !  \u001b[0m" + path)
+          dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
+        })
+        .on('unlink', path => {
+          console.log("\u001b[7m\u001b[31m  -  \u001b[0m./" + path)
+          dispatchRemove(store, inputRuleKey, './' + path)
+        })
+
+    } else {
+      console.error(`The 3rd argument should be 'watch' or 'build', not "${mode}"`)
+      process.exit(-1)
+    }
+
+
   });
 })).then(function() {
 

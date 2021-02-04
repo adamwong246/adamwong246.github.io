@@ -1,4 +1,4 @@
-// you need to import reselect's createSelector function in order to perform memoized loigc
+// you need to import reselect's createSelector function in order to perform memoized logic
 createSelector = require('reselect').createSelector;
 
 // import anything! you want to use in your selectors, provided they are *purely functional*
@@ -19,7 +19,7 @@ const {
   contentsOfFiles,
   srcAndContentOfFile,
   srcAndContentOfFiles
-} = require("./webcrackHelpers.js");
+} = require("../webcrack/webcrackHelpers.js");
 
 const BLOG_ASSETS = 'BLOG_ASSETS'
 const BLOG_ENTRIES = 'BLOG_ENTRIES'

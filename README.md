@@ -10,14 +10,6 @@ Because of the nature of github pages, development is done on the [dev branch](h
 - a resume generator that creates a pdf and html document from a markdown file
 - an image pipeline to transform your jpegs
 
-### yarn scripts
-
-- `build` - start webcrack
-- `serve` - start the development server
-- `newBlogEntry` - create a new blank blog entry
-- `deploy` - push the `dist` folder to the `main` branch
-- `shipIt` - commit and deploy the code
-
 ### Directory structure
 
 - `src` - the source folder

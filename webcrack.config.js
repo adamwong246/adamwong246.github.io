@@ -459,7 +459,7 @@ module.exports = {
 
     // return a hash objects based on the state.
     // Each key is a file and each value is the contents of that file
-    return createSelector([
+    const siteSelector = createSelector([
       licenseSelector,
       resumeSelector,
       resumePDFSelector,
@@ -499,5 +499,14 @@ module.exports = {
         'index.js': js
       }
     });
+
+    const siteAndMapSelector = createSelector([siteSelector], (site) => {
+      return {
+        ...site,
+        'sitemap.html': `<ul>${Object.keys(site).sort((e)=>e).map((e)=> `<li><a href="/${e}"> ${e} </a></li>`).join('')}</ul>`
+      }
+    })
+
+    return siteAndMapSelector;
   }
 }

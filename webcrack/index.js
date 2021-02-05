@@ -233,6 +233,9 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
               } else if (Buffer.isBuffer(contents)){
                 fse.outputFile(relativeFilePath, contents, fulfill);
 
+              } else if (Array.isArray(contents)){
+                fse.outputFile(relativeFilePath, JSON.stringify(contents), fulfill);
+
               } else if (typeof contents.then === 'function'){
                 console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
                 Promise.resolve(contents).then(function(value) {

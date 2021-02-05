@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js webpack:build
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js webpack:dev
 
 PATH: 
   /Users/adam/.nvm/versions/node/v12.16.1/bin:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "adamwong246.github.io",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "license": "ISC",
     "description": "An exceedingly simple blog written in javascript, build with webcrack, and hosted on Github pages.",
     "author": {
@@ -33,12 +33,12 @@ npm manifest:
     "homepage": "http://adamwong246.github.io/",
     "scripts": {
       "help": "cat help.txt",
-      "webcrack:build": "node ./webcrack/index.js ../dev/webcrack.config.js build",
-      "webcrack:watch": "node ./webcrack/index.js ../dev/webcrack.config.js watch",
-      "webcrack:dev": "nodemon ./webcrack/index.js ../dev/webcrack.config.js watch",
-      "serve": "node ./dev/server.js",
+      "webcrack:build": "node ./webcrack/index.js ../webcrack.config.js build",
+      "webcrack:watch": "node ./webcrack/index.js ../webcrack.config.js watch",
+      "webcrack:dev": "nodemon ./webcrack/index.js ../webcrack.config.js watch",
+      "serve": "node ./server.js",
       "dev": "rm -rf dist/**; yarn serve & yarn webcrack:dev",
-      "newBlogEntry": "node dev/newBlogEntry.js",
+      "newBlogEntry": "node newBlogEntry.js",
       "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
       "shipIt": "git add --all && git commit && yarn deploy"
     },
@@ -2385,7 +2385,7 @@ Lockfile:
       "@types/yoga-layout" "1.9.2"
 
 Trace: 
-  Error: Command "webpack:build" not found.
+  Error: Command "webpack:dev" not found.
       at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
       at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:87307:17
       at Generator.next (<anonymous>)

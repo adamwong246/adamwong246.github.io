@@ -19,7 +19,7 @@ const {
   contentsOfFiles,
   srcAndContentOfFile,
   srcAndContentOfFiles
-} = require("../webcrack/webcrackHelpers.js");
+} = require("./webcrack/webcrackHelpers.js");
 
 const BLOG_ASSETS = 'BLOG_ASSETS'
 const BLOG_ENTRIES = 'BLOG_ENTRIES'
@@ -75,7 +75,7 @@ module.exports = {
   outputs: (selectors) => {
 
     const packageSelector = createSelector(() => {
-      return require("../package.json")
+      return require("./package.json")
     });
 
     const resumeSelector = contentOfFile(selectors[RESUME])
@@ -149,17 +149,6 @@ module.exports = {
             title: next.meta.title,
           };
         }
-
-        // if (ndx === ry.length){
-        //   lmnt.meta.next = null;
-        // } else {
-        //   // const next = ry[ndx+1];
-        //   lmnt.meta.next = {
-        //     // url: next.url,
-        //     // title: next.meta.title,
-        //   };
-        // }
-
 
         return lmnt
       })

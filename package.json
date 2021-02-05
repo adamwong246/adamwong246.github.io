@@ -17,12 +17,12 @@
   "homepage": "http://adamwong246.github.io/",
   "scripts": {
     "help": "cat help.txt",
-    "webcrack:build": "node ./webcrack/index.js ../dev/webcrack.config.js build",
-    "webcrack:watch": "node ./webcrack/index.js ../dev/webcrack.config.js watch",
-    "webcrack:dev": "nodemon ./webcrack/index.js ../dev/webcrack.config.js watch",
-    "serve": "node ./dev/server.js",
+    "webcrack:build": "node ./webcrack/index.js ../webcrack.config.js build",
+    "webcrack:watch": "node ./webcrack/index.js ../webcrack.config.js watch",
+    "webcrack:dev": "nodemon ./webcrack/index.js ../webcrack.config.js watch",
+    "serve": "node ./server.js",
     "dev": "rm -rf dist/**; yarn serve & yarn webcrack:dev",
-    "newBlogEntry": "node dev/newBlogEntry.js",
+    "newBlogEntry": "node newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
     "shipIt": "git add --all && git commit && yarn deploy"
   },

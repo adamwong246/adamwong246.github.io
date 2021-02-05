@@ -83,7 +83,6 @@ module.exports = {
     const pageJadeSelector = srcAndContentOfFile(selectors[VIEWS], './src/views/page.jade')
     const blogEntryJadeLayout = srcAndContentOfFile(selectors[VIEWS], './src/views/blogEntryLayout.jade')
     const notFoundSelector = contentOfFile(selectors[NOT_FOUND_PAGE])
-    const styleSelector = contentsOfFiles(selectors[CSS])
     const blogEntriesSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ENTRIES]);
     const pagesSrcAndContents = srcAndContentOfFiles(selectors[PAGES]);
     const blogEntriesAssetsSrcAndContents = srcAndContentOfFiles(selectors[BLOG_ASSETS]);
@@ -178,13 +177,6 @@ module.exports = {
       })
     });
 
-    const cssOutputSelectors = createSelector(styleSelector, (css) =>
-      new CleanCSS({
-        keepSpecialComments: 2
-      }).minify(
-        fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8') + css
-      ).styles);
-
     const blogEntriesGifsOutput = createSelector([
       srcAndContentOfFiles(selectors[BLOG_ENTRIES_GIFS]),
       blogEntriesSelector
@@ -212,7 +204,6 @@ module.exports = {
         }
       }, {})
     });
-
 
     const blogEntriesJpgsModifiedOutput = createSelector([
       srcAndContentOfFiles(selectors[BLOG_ENTRIES_JPGS]),
@@ -369,8 +360,21 @@ module.exports = {
       }
     });
 
+    const cssOutputSelectors = createSelector(contentsOfFiles(selectors[CSS]), (css) =>
+      new CleanCSS({
+        keepSpecialComments: 2
+      }).minify(
+        fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8') + css
+      ).styles);
+
+    const cssPdfSelector = createSelector(selectors[CSS], (cssFiles) => [
+      cssFiles['./src/stylesheets/typography.css'],
+      cssFiles['./src/stylesheets/layout.css'],
+      cssFiles['./src/stylesheets/style.css']
+    ].join('\n'))
+
     const resumePDFSelector = createSelector(
-      [resumeMarkdownSelector, cssOutputSelectors],
+      [resumeMarkdownSelector, cssPdfSelector],
       (resumeMarkdown, css) => {
       return (async () => {
         try {
@@ -382,10 +386,10 @@ module.exports = {
             path: '/dev/null',
             format: 'A4', printBackground: false,
             margin: {
-              top: '0.5in',
-              right: '0.5in',
-              bottom: '0.5in',
-              left: '0.5in',
+              top: '0.4in',
+              right: '0.4in',
+              bottom: '0.4in',
+              left: '0.4in',
             }
           });
           await browser.close();

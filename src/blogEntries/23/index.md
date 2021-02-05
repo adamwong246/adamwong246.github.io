@@ -1,5 +1,5 @@
 ---
-title: My family's reaction when the hear the Factorio startup sound
+title: My family's reaction when they hear the Factorio startup sound
 publishedAt: Thu Feb 04 2021 11:42:48 GMT-0800 (Pacific Standard Time)
 ---
 

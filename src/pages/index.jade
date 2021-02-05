@@ -9,6 +9,7 @@ block content
         h4
           time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
       != truncateHtml(entry.markdownContent, 50, { byWords: true, keepWhitespaces: true })
+      br
       a(href=entry.url) Read more...
     hr
   h5#more-blog-entries

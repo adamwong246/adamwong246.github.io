@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run webcrack:watch
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js webpack:build
 
 PATH: 
   /Users/adam/.nvm/versions/node/v12.16.1/bin:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
@@ -40,13 +40,9 @@ npm manifest:
       "dev": "rm -rf dist/**; yarn serve & yarn webcrack:dev",
       "newBlogEntry": "node dev/newBlogEntry.js",
       "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
-      "shipIt": "git add --all && git commit && yarn deploy",
-      "blessed": "nodemon ./webcrack/blessed.js",
-      "termkit": "node ./webcrack/terminalKit.js",
-      "ink": "node ./webcrack/ink.js"
+      "shipIt": "git add --all && git commit && yarn deploy"
     },
     "dependencies": {
-      "blessed": "^0.1.81",
       "bluebird": "3.7.2",
       "buffer": "^5.5.0",
       "cherio": "^1.0.0-rc.2",
@@ -57,7 +53,6 @@ npm manifest:
       "glob": "latest",
       "glob-promise": "^4.0.1",
       "html-minifier": "",
-      "ink": "^3.0.8",
       "jade": "1.11.0",
       "jpeg-js": "^0.3.7",
       "js-lwip": "^1.1.0",
@@ -77,7 +72,6 @@ npm manifest:
       "reselect": "^4.0.0",
       "simple-icons": "^2.7.0",
       "slug": "^0.8.0",
-      "terminal-kit": "^1.47.0",
       "truncate-html": "^1.0.3",
       "yaml-front-matter": "^3.2.3"
     }
@@ -2391,16 +2385,14 @@ Lockfile:
       "@types/yoga-layout" "1.9.2"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c node ./webcrack/index.js ../dev/webcrack.config.js watch
-  Directory: /Users/adam/Programming/adamwong246.github.io
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:311:20)
-      at maybeClose (internal/child_process.js:1021:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5)
+  Error: Command "webpack:build" not found.
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:87307:17
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:116:14
+      at new Promise (<anonymous>)
+      at new F (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:23451:28)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:95:12
+      at runCommand (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:87312:22)
+      at Object.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:87412:14)

@@ -380,21 +380,23 @@ module.exports = {
       }
     });
 
-    const resumePDFSelector = createSelector([htmlSelector, cssOutputSelectors], (htmlFiles, css) => {
+    const resumePDFSelector = createSelector(
+      [resumeMarkdownSelector, cssOutputSelectors],
+      (resumeMarkdown, css) => {
       return (async () => {
         try {
           const browser = await puppeteer.launch();
           const page = await browser.newPage();
-          await page.setContent(htmlFiles['resume.html'])
+          await page.setContent(resumeMarkdown.content)
           await page.addStyleTag({content: css})
           const pdf = await page.pdf({
             path: '/dev/null',
             format: 'A4', printBackground: false,
             margin: {
-              top: '0.0in',
-              right: '0.25in',
-              bottom: '0.0in',
-              left: '0.25in',
+              top: '0.5in',
+              right: '0.5in',
+              bottom: '0.5in',
+              left: '0.5in',
             }
           });
           await browser.close();

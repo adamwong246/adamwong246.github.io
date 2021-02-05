@@ -262,7 +262,16 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
       })
     ).then(() => {
       cleanEmptyFoldersRecursively(webcrackConfig.options.outFolder);
-      console.log("\u001b[7m   All files written. Waiting for changes...   \u001b[0m ")
+
+      if ( mode === "build"){
+        console.log("\u001b[7m   All files written. Webcrack is done!...   \u001b[0m ")
+      } else if (mode === "watch") {
+        console.log("\u001b[7m   All files written. Waiting for changes...   \u001b[0m ")
+      } else {
+        console.error(`The 3rd argument should be 'watch' or 'build', not "${mode}"`)
+        process.exit(-1)
+      }
+
     })
   })
 

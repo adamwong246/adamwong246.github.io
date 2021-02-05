@@ -101,3 +101,13 @@ pre, code {
 .forward-link {
   float: right;
 }
+
+.right {
+  float:right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

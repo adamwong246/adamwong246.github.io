@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "license": "ISC",
   "description": "An exceedingly simple blog written in javascript, build with webcrack, and hosted on Github pages.",
   "author": {

@@ -413,18 +413,10 @@ module.exports = {
       const transformationManifest = JSON.parse(assets)
 
       return Object.keys(jpgs).reduce((mm, jKey) => {
-        console.log(jKey)
-
         const shortFileName = jKey.split('/')[3]
-
-          mm[jKey.split('/').slice(-2).join('/')] = jpgs[jKey]
-
-
+        mm[jKey.split('/').slice(-2).join('/')] = jpgs[jKey]
         const transformations = transformationManifest[shortFileName]
         if (transformations){
-
-
-
           const modifiedJpgs = Object.keys(transformations).reduce((mmm, transformationKey) => {
             const transformation = transformations[transformationKey]
 

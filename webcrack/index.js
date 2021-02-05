@@ -8,11 +8,8 @@ const glob = require("glob-promise");
 const path = require("path")
 const Promise = require("bluebird")
 
-Promise.config({
-  cancellation: true
-});
+Promise.config({cancellation: true});
 
-console.log("Webcrack args: ", process.argv)
 const webcrackConfig = require(process.argv[2])
 const mode = process.argv[3]
 
@@ -24,7 +21,6 @@ const previousState = {}
 let outputPromise = Promise.resolve();
 
 function cleanEmptyFoldersRecursively(folder) {
-  // console.log('cleanEmptyFoldersRecursively', folder);
   var isDir = fs.statSync(folder).isDirectory();
   if (!isDir) {
     return;
@@ -48,86 +44,33 @@ function cleanEmptyFoldersRecursively(folder) {
 }
 
 const dispatchUpsert = (store, key, file, encodings) => {
+  console.log("\u001b[31m <-- \u001b[0m" + file)
+
   store.dispatch({
     type: UPSERT,
     payload: {
       key: key,
       src: file,
-      contents: readfile(file, encodings)
+      contents: fse.readFileSync(file, Object.keys(encodings).find((e) => encodings[e].includes(file.split('.')[2])))
     }
   });
-};
 
-const dispatchRemove = (store, key, file) => {
-  store.dispatch({
-    type: REMOVE,
-    payload: {
-      key: key,
-      file: file
-    }
-  });
-};
+  // const filetype = file.split('.')[2]
+  // const encoding = Object.keys(encodings).find((e) => encodings[e].includes(filetype))
+  // const relativeFilePath = './' + file;
+  // console.log("\u001b[31m <-- \u001b[0m" + file)
+  // fse.readFile(file, encoding).then((contents) => {
+  //   store.dispatch({
+  //     type: UPSERT,
+  //     payload: {
+  //       key: key,
+  //       src: file,
+  //       contents: contents
+  //     }
+  //   });
+  // });
 
 
-const readfile = (file, encodings) => {
-  const filetype = file.split('.')[2]
-  const encoding = Object.keys(encodings).find((e) => encodings[e].includes(filetype))
-  const relativeFilePath = './' + file;
-  console.log("\u001b[31m <-- \u001b[0m" + file)
-  return fse.readFileSync(file, encoding);
-};
-
-const writefile = (file, contents, callback) => {
-  const relativeFilePath = './' + file;
-
-  if (typeof contents === "function") {
-    console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
-    contents((err, res) => {
-      fse.outputFile(relativeFilePath, res, callback);
-      console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
-    })
-
-  } else if (typeof contents === 'string') {
-    fse.outputFile(relativeFilePath, contents, callback);
-    console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
-
-  } else if (Buffer.isBuffer(contents)){
-    fse.outputFile(relativeFilePath, contents, callback);
-
-  } else if (typeof contents.then === 'function'){
-    console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
-    Promise.resolve(contents).then(function(value) {
-
-      if (value instanceof Error){
-        console.log("\u001b[31m !!! \u001b[0m" + relativeFilePath + " " + value.message)
-      } else {
-        fse.outputFile(relativeFilePath, value, callback);
-        console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
-      }
-
-    }, function(value) {
-      // not called
-    });
-
-  } else {
-    console.log("I don't recognize: " + relativeFilePath, contents)
-    fse.outputFile(relativeFilePath, contents, callback);
-    console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
-  }
-}
-
-const removefile = (file) => {
-  console.log("\u001b[31m\u001b[7m XXX? \u001b[0m./" + file)
-  try {
-    fse.unlinkSync('./' + file)
-    cleanEmptyFoldersRecursively('./' + file.substring(0, file.lastIndexOf("/")))
-  } catch (ex) {
-    // console.error('inner', ex.message);
-    // throw ex;
-  } finally {
-    // console.log('finally');
-    return;
-  }
 };
 
 function omit(key, obj) {
@@ -183,6 +126,7 @@ const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).
   }
 }, {}))
 
+
 // Wait for all the file watchers to check in
 Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
   const path = `./${webcrackConfig.options.inFolder}/${webcrackConfig.inputs[inputRuleKey] || ''}`
@@ -217,7 +161,13 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
         })
         .on('unlink', path => {
           console.log("\u001b[7m\u001b[31m  -  \u001b[0m./" + path)
-          dispatchRemove(store, inputRuleKey, './' + path)
+          store.dispatch({
+            type: REMOVE,
+            payload: {
+              key: inputRuleKey,
+              file: './' + path
+            }
+          });
         })
 
     } else {
@@ -247,13 +197,62 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 
         return new Promise((fulfill, reject) => {
           if (!outputs[key]) {
-            removefile(webcrackConfig.options.outFolder + "/" + key)
+
+            const file = webcrackConfig.options.outFolder + "/" + key
+            console.log("\u001b[31m\u001b[7m XXX? \u001b[0m./" + file)
+            try {
+              fse.unlinkSync('./' + file)
+              cleanEmptyFoldersRecursively('./' + file.substring(0, file.lastIndexOf("/")))
+            } catch (ex) {
+              // console.error('inner', ex.message);
+              // throw ex;
+            } finally {
+              // console.log('finally');
+              return;
+            }
             delete previousState[key]
             fulfill()
           } else {
             if (outputs[key] !== previousState[key]) {
               previousState[key] = outputs[key]
-              writefile(webcrackConfig.options.outFolder + "/" + key, outputs[key], fulfill)
+
+              const relativeFilePath = './' + webcrackConfig.options.outFolder + "/" + key;
+              const contents = outputs[key];
+
+              if (typeof contents === "function") {
+                console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
+                contents((err, res) => {
+                  fse.outputFile(relativeFilePath, res, fulfill);
+                  console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+                })
+
+              } else if (typeof contents === 'string') {
+                fse.outputFile(relativeFilePath, contents, fulfill);
+                console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+
+              } else if (Buffer.isBuffer(contents)){
+                fse.outputFile(relativeFilePath, contents, fulfill);
+
+              } else if (typeof contents.then === 'function'){
+                console.log("\u001b[33m ... \u001b[0m" + relativeFilePath)
+                Promise.resolve(contents).then(function(value) {
+
+                  if (value instanceof Error){
+                    console.log("\u001b[31m !!! \u001b[0m" + relativeFilePath + " " + value.message)
+                  } else {
+                    fse.outputFile(relativeFilePath, value, fulfill);
+                    console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+                  }
+
+                }, function(value) {
+                  // not called
+                });
+
+              } else {
+                console.log("I don't recognize: " + relativeFilePath, contents)
+                fse.outputFile(relativeFilePath, contents, callback);
+                console.log("\u001b[32m --> \u001b[0m" + relativeFilePath)
+              }
             } else {
               fulfill()
             }

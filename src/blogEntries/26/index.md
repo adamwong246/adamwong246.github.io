@@ -1,5 +1,5 @@
 ---
-title: Better "Read more" links
+title: Smarter "Read more" links
 publishedAt: Fri Feb 05 2021 11:20:50 GMT-0800 (Pacific Standard Time)
 ---
 

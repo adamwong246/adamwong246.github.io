@@ -398,6 +398,11 @@ module.exports = {
             }
           });
           await browser.close();
+
+          // clear the timestamp for deterministic pdfs
+          for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
+            pdf[offset] = 0;
+          }
           return pdf
         } catch (e) {
             console.error(e);

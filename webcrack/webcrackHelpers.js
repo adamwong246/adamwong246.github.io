@@ -1,3 +1,5 @@
+const createSelector = require('reselect').createSelector;
+
 module.exports = {
 
   contentsOfFiles: (selector) => {

@@ -1,11 +1,11 @@
 # Yarn commands and their descriptions.
 
-yarn webcrack:build - Builds src
-yarn webcrack:watch - Watches and builds src.
-yarn webcrack:dev   - Watches and builds src and webcrack.config.js
+yarn funkophile:build - Builds src
+yarn funkophile:watch - Watches and builds src.
+yarn funkophile:dev   - Watches and builds src and funkophile.config.js
 
 yarn serve - Start the dev server.
-yarn dev   - Start the dev server with webcrack:dev
+yarn dev   - Start the dev server with funkophile:dev
 
 yarn newBlogEntry - Make an empty blog entry
 

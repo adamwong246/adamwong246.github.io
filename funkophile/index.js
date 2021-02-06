@@ -1,4 +1,4 @@
-// webcrack/index.js
+// funkophile/index.js
 
 const chokidar = require('chokidar');
 const createSelector = require('reselect').createSelector;
@@ -12,7 +12,7 @@ Promise.config({
 	cancellation: true
 });
 
-const webcrackConfig = require(process.argv[2])
+const funkophileConfig = require(process.argv[2])
 const mode = process.argv[3]
 
 const INITIALIZE = 'INITIALIZE';
@@ -37,12 +37,12 @@ const logger = {
 	removedFile: (path) => console.log("\u001b[31m\u001b[7m ??? \u001b[0m./" + path),
 
 	writingString: (path) => console.log("\u001b[32m --> \u001b[0m" + path),
-	writingFunction: (path) => console.log("\u001b[33m (?) \u001b[0m" + path),
-	writingPromise: (path) => console.log("\u001b[33m (p) \u001b[0m" + path),
+	writingFunction: (path) => console.log("\u001b[33m ... \u001b[0m" + path),
+	writingPromise: (path) => console.log("\u001b[33m ... \u001b[0m" + path),
 	writingError: (path, message) => console.log("\u001b[31m !!! \u001b[0m" + path + " " + message),
 
-	waiting: () => console.log("\u001b[7m Webcrack is done for now but waiting on changes...\u001b[0m "),
-	done: () => console.log("\u001b[7m Webcrack is done!\u001b[0m ")
+	waiting: () => console.log("\u001b[7m Funkophile is done for now but waiting on changes...\u001b[0m "),
+	done: () => console.log("\u001b[7m Funkophile is done!\u001b[0m ")
 
 }
 
@@ -108,7 +108,7 @@ function omit(key, obj) {
 
 const store = createStore((state = {
 	initialLoad: true,
-	...webcrackConfig.initialState,
+	...funkophileConfig.initialState,
 	timestamp: Date.now()
 }, action) => {
 	// console.log("\u001b[7m\u001b[35m ||| Redux recieved action \u001b[0m", action.type)
@@ -145,7 +145,7 @@ const store = createStore((state = {
 	}
 })
 
-const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).reduce((mm, inputKey) => {
+const finalSelector = funkophileConfig.outputs(Object.keys(funkophileConfig.inputs).reduce((mm, inputKey) => {
 	return {
 		...mm,
 		[inputKey]: createSelector([(x) => x], (root) => root[inputKey])
@@ -154,13 +154,13 @@ const finalSelector = webcrackConfig.outputs(Object.keys(webcrackConfig.inputs).
 
 
 // Wait for all the file watchers to check in
-Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
-	const path = `./${webcrackConfig.options.inFolder}/${webcrackConfig.inputs[inputRuleKey] || ''}`
+Promise.all(Object.keys(funkophileConfig.inputs).map((inputRuleKey) => {
+	const path = `./${funkophileConfig.options.inFolder}/${funkophileConfig.inputs[inputRuleKey] || ''}`
 	return new Promise((fulfill, reject) => {
 		if (mode === "build") {
 			glob(path, {}).then((files) => {
 				files.forEach((file) => {
-					dispatchUpsert(store, inputRuleKey, file, webcrackConfig.encodings);
+					dispatchUpsert(store, inputRuleKey, file, funkophileConfig.encodings);
 				})
 			}).then(() => {
 				fulfill()
@@ -177,11 +177,11 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 				})
 				.on('add', path => {
 					logger.watchAdd(path)
-					dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
+					dispatchUpsert(store, inputRuleKey, './' + path, funkophileConfig.encodings);
 				})
 				.on('change', path => {
 					logger.watchChange(path)
-					dispatchUpsert(store, inputRuleKey, './' + path, webcrackConfig.encodings);
+					dispatchUpsert(store, inputRuleKey, './' + path, funkophileConfig.encodings);
 				})
 				.on('unlink', path => {
 					logger.watchUnlink(path)
@@ -225,7 +225,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 				return new Promise((fulfill, reject) => {
 					if (!outputs[key]) {
 
-						const file = webcrackConfig.options.outFolder + "/" + key
+						const file = funkophileConfig.options.outFolder + "/" + key
 						logger.removedFile(file)
 
 						try {
@@ -244,7 +244,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 						if (outputs[key] !== previousState[key]) {
 							previousState[key] = outputs[key]
 
-							const relativeFilePath = './' + webcrackConfig.options.outFolder + "/" + key;
+							const relativeFilePath = './' + funkophileConfig.options.outFolder + "/" + key;
 							const contents = outputs[key];
 
 							if (typeof contents === "function") {
@@ -294,7 +294,7 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 
 			})
 		).then(() => {
-			cleanEmptyFoldersRecursively(webcrackConfig.options.outFolder);
+			cleanEmptyFoldersRecursively(funkophileConfig.options.outFolder);
 
 			if (mode === "build") {
 				logger.done()

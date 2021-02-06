@@ -5,7 +5,7 @@ const {
 	contentsOfFiles,
 	srcAndContentOfFile,
 	srcAndContentOfFiles
-} = require("./webcrack/webcrackHelpers.js");
+} = require("./funkophile/funkophileHelpers.js");
 
 // extract your logic for easier testing
 const {
@@ -18,7 +18,7 @@ const {
 	processBlogEntries,
 	transformJpegs,
 	updateBlogImagePaths,
-} = require("./webcrackUtils.js");
+} = require("./funkophileUtils.js");
 
 // One key for every file input pattern
 const BLOG_ASSETS = 'BLOG_ASSETS'
@@ -40,7 +40,7 @@ const JS = 'JS'
 module.exports = {
 	initialState: {},
 
-	// webcrack cannot deterministicly load content outside the inFolder
+	// funkophile cannot deterministicly load content outside the inFolder
 	options: {
 		inFolder: 'src',
 		outFolder: 'dist'

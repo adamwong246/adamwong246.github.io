@@ -1,7 +1,7 @@
 extends ../views/layout.jade
 
 block content
-  - for entry in blogEntries.slice(0, 5)
+  - for entry in blogEntries
     - var content = cheerio.load(entry.markdownContent)(':root')
     article
       header
@@ -14,5 +14,3 @@ block content
         .clearfix
           a.right(href=entry.url) Read more...
     hr
-  h5#more-blog-entries
-    include ./blogLink

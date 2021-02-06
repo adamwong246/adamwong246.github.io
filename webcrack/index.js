@@ -33,7 +33,7 @@ const logger = {
 
 	cleaningEmptyfolder: (path) => console.log("\u001b[31m\u001b[7m XXX! \u001b[0m" + path),
 
-  readingFile: (path) => console.log("\u001b[31m <-- \u001b[0m" + path),
+	readingFile: (path) => console.log("\u001b[31m <-- \u001b[0m" + path),
 	removedFile: (path) => console.log("\u001b[31m\u001b[7m ??? \u001b[0m./" + path),
 
 	writingString: (path) => console.log("\u001b[32m --> \u001b[0m" + path),
@@ -71,7 +71,7 @@ function cleanEmptyFoldersRecursively(folder) {
 }
 
 const dispatchUpsert = (store, key, file, encodings) => {
-  logger.readingFile(file)
+	logger.readingFile(file)
 	store.dispatch({
 		type: UPSERT,
 		payload: {
@@ -186,13 +186,19 @@ Promise.all(Object.keys(webcrackConfig.inputs).map((inputRuleKey) => {
 				.on('unlink', path => {
 					logger.watchUnlink(path)
 					store.dispatch({
-						type: REMOVE,
-						payload: {
-							key: inputRuleKey,
-							file: './' + path
-						}
-					});
+							type: REMOVE,
+							payload: {
+								key: inputRuleKey,
+								file: './' + path
+							}
+						})
 				})
+        .on('unlinkDir', path => {
+          logger.watchUnlink(path)
+        })
+        // .on('raw', (event, path, details) => { // internal
+        //   log('Raw event info:', event, path, details);
+        // })
 
 		} else {
 			console.error(`The 3rd argument should be 'watch' or 'build', not "${mode}"`)

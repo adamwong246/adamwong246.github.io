@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "license": "ISC",
   "description": "An exceedingly simple blog written in javascript, build with webcrack, and hosted on Github pages.",
   "author": {
@@ -31,7 +31,7 @@
     "bluebird": "3.7.2",
     "buffer": "^5.5.0",
     "cherio": "^1.0.0-rc.2",
-    "chokidar": "^3.3.1",
+    "chokidar": "3.5.1",
     "clean-css": "4.2.3",
     "filepath": "^1.1.0",
     "fs-extra": "9.0.0",

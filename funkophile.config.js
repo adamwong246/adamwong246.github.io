@@ -25,6 +25,7 @@ const BLOG_ASSETS = 'BLOG_ASSETS'
 const BLOG_ENTRIES = 'BLOG_ENTRIES'
 const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const BLOG_ENTRIES_GIFS = 'BLOG_ENTRIES_GIFS'
+const BLOG_ENTRIES_MOVS = 'BLOG_ENTRIES_MOVS'
 const CONTACTS = 'CONTACTS'
 const CSS = 'CSS';
 const JPG = 'JPG'
@@ -57,6 +58,7 @@ module.exports = {
 		[BLOG_ASSETS]: 'blogEntries/**/assets.json',
 		[BLOG_ENTRIES_GIFS]: 'blogEntries/**/*.gif',
 		[BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
+    [BLOG_ENTRIES_MOVS]: 'blogEntries/**/*.mov',
 		[BLOG_ENTRIES]: 'blogEntries/**/index.md',
 		[CONTACTS]: 'contacts.json',
 		[CSS]: 'stylesheets/*.css',
@@ -88,6 +90,17 @@ module.exports = {
 				return {
 					...mm,
 					[blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + gifSplit[gifSplit.length - 1]]: gif.content
+				}
+			}, {})
+		);
+
+		const $blogEntriesMovs = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_MOVS]), $blogEntries],
+			(movs, blogEntries) => movs.reduce((mm, mov) => {
+				const src = mov.src
+				const movSplit = src.split('/')
+				return {
+					...mm,
+					[blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + movSplit[movSplit.length - 1]]: mov.content
 				}
 			}, {})
 		);
@@ -168,7 +181,8 @@ module.exports = {
 							...originals,
 							...modifed
 						}
-					}), $blogEntriesGifs
+					}), $blogEntriesGifs,
+					$blogEntriesMovs
 				], updateBlogImagePaths),
 				$resumeMarkdown,
 				srcAndContentOfFile(_[VIEWS], './src/views/page.jade'),
@@ -212,6 +226,7 @@ module.exports = {
 			$blogEntriesJpgsOrginal,
 			$blogEntriesJpgsModified,
 			$blogEntriesGifs,
+			$blogEntriesMovs,
 			$$$(
 				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], jpgTransformPromises
 			),
@@ -226,6 +241,7 @@ module.exports = {
 			blogJpegsOriginal,
 			blogJpegsMod,
 			gifs,
+			movs,
 			jpgs,
 			favicon,
 			js
@@ -236,6 +252,7 @@ module.exports = {
 				...gifs,
 				...html,
 				...jpgs,
+				...movs,
 				'favicon.png': favicon,
 				'index.js': js,
 				'LICENSE.txt': license,

@@ -116,7 +116,7 @@ module.exports = {
 				})
 			),
 			$blogEntries
-		], (jpgs, assets, blogEntries) => transformJpegs);
+		],  transformJpegs );
 
 		const $resumeMarkdown = $$$(contentOfFile(_[RESUME]), markdown.parse)
 
@@ -211,7 +211,9 @@ module.exports = {
 			$blogEntriesJpgsModified,
 			$blogEntriesGifs,
 			$$$(
-				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], (jpgs, assets) => jpgTransformPromises
+				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], (jpgs, assets) => {
+          return jpgTransformPromises(jpgs, assets)
+        }
 			),
 			contentOfFile(_[FAVICON_PNG]),
 			contentOfFile(_[JS])

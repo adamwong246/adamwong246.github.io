@@ -204,7 +204,7 @@ module.exports = {
 						}
 					}, {})),
 					'resume.html': jadeRenderPageLayout(markdownResume.content, pageLayout, localsToJadeRender),
-					'404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
+					// '404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
 				}
 			}),
 			$blogEntriesJpgsOrginal,

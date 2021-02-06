@@ -116,7 +116,7 @@ module.exports = {
 				})
 			),
 			$blogEntries
-		],  transformJpegs );
+		], transformJpegs);
 
 		const $resumeMarkdown = $$$(contentOfFile(_[RESUME]), markdown.parse)
 
@@ -204,6 +204,8 @@ module.exports = {
 						}
 					}, {})),
 					'resume.html': jadeRenderPageLayout(markdownResume.content, pageLayout, localsToJadeRender),
+
+					// 404s break on github?
 					// '404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
 				}
 			}),
@@ -211,9 +213,7 @@ module.exports = {
 			$blogEntriesJpgsModified,
 			$blogEntriesGifs,
 			$$$(
-				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], (jpgs, assets) => {
-          return jpgTransformPromises(jpgs, assets)
-        }
+				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], jpgTransformPromises
 			),
 			contentOfFile(_[FAVICON_PNG]),
 			contentOfFile(_[JS])

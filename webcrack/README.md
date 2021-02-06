@@ -17,7 +17,7 @@ Funkophile is _not necessarily_ for web development. It has a much broader use-c
 
 #### *Why* is Funkophile **awesome**?
 
-Funkophile is a functional file processor. It lets you manipulate files in a *functional* way- using redux selectors- and it does so efficiently- using promises. **It lets you focus on the logic of your selectors and disregard the processing of files**. You setup in some files to read, some files to write, and some selectors filled with easily testable logic- Funkophile will handle the borings parts for you! When you first start Funkophile, it will process every file. Subsequent changes to an input file will automatically update _only_ the dependent output files. It just works! (tm)
+Funkophile is a functional file processor. It lets you manipulate files in a *functional* way- using redux selectors- and it does so efficiently- using promises. **It lets you focus on the logic of your selectors and disregard the processing of files**. You setup in some files to read, some files to write, and some selectors filled with easily testable logic- Funkophile will handle the borings parts for you! When you first start Funkophile, it will process every file. Subsequent changes to an input file will run through your selectors and automatically update _only_ the dependent output files. It just works! (tm)
 
 #### What Funkophile *can do*
 

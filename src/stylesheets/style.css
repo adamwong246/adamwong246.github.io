@@ -10,15 +10,11 @@ nav {
 }
 
 nav li {
-  list-style-type: none;
+  margin-left: 1em;
 }
 
 footer {
   padding: 1em;
-}
-
-ul {
-  padding-left: 1.5em;
 }
 
 nav ul {
@@ -26,7 +22,7 @@ nav ul {
 }
 
 li {
-  padding-top: 0.5em;
+  padding-top: 0.25em;
 }
 
 dl, dt, di {
@@ -86,4 +82,8 @@ h1, h2, h3, h4, h5, h6 {
       64%  { transform: scale(1,1)      translateY(0); }
       100% { transform: scale(1,1)      translateY(0); }
   }
+}
+
+article {
+  margin-bottom: 1em;
 }

@@ -37,6 +37,7 @@ const RESUME = 'RESUME';
 const VIEWS = 'VIEWS'
 const FAVICON_PNG = 'FAVICON_PNG'
 const JS = 'JS'
+const PDF_SETTINGS = 'PDF_SETTINGS'
 
 module.exports = {
 	initialState: {},
@@ -70,7 +71,8 @@ module.exports = {
 		[NOT_FOUND_PAGE]: '404.jade',
 		[PAGES]: 'pages/**/*.jade',
 		[RESUME]: 'resume.md',
-		[VIEWS]: 'views/*.jade'
+		[VIEWS]: 'views/*.jade',
+    [PDF_SETTINGS]: 'pdfSettings.json',
 	},
 
 	// return a selector based on the given selector '_'
@@ -137,12 +139,16 @@ module.exports = {
 			contentOfFile(_[LICENSE]),
 			contentOfFile(_[RESUME]),
 			$$$(
-				[$resumeMarkdown, $$$(_[CSS], (cssFiles) => [
-					cssFiles['./src/stylesheets/typography.css'],
-					cssFiles['./src/stylesheets/layout.css'],
-					cssFiles['./src/stylesheets/style.css']
-				].join('\n'))],
-				(resumeMarkdown, css) => makeResumePdf(resumeMarkdown, css)),
+				[
+					$resumeMarkdown,
+					$$$(_[CSS], (cssFiles) => [
+						cssFiles['./src/stylesheets/typography.css'],
+						cssFiles['./src/stylesheets/layout.css'],
+						cssFiles['./src/stylesheets/style.css']
+					].join('\n')),
+					contentOfFile(_[PDF_SETTINGS]),
+				],
+				(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings)),
 			$$$([contentsOfFiles(_[CSS]), $$$([], () => fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8'))], (css, normalize) =>
 				cleandAndMinifyCss(normalize + '\n' + css)
 			),
@@ -195,7 +201,11 @@ module.exports = {
 						'icon': simpleIcons.get(Object.keys(c)[0]).svg
 					}
 				})),
-			], (package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent, contacts) => {
+
+        srcAndContentOfFile(_[VIEWS], './src/views/resume.jade'),
+			], (
+        package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent, contacts, resumeLayout
+      ) => {
 
 				const localsToJadeRender = {
 					blogEntries,
@@ -217,7 +227,7 @@ module.exports = {
 							[page.dest]: jadeRender(page.content, pageLayout, localsToJadeRender)
 						}
 					}, {})),
-					'resume.html': jadeRenderPageLayout(markdownResume.content, pageLayout, localsToJadeRender),
+					'resume.html': jadeRenderPageLayout(markdownResume.content, resumeLayout, localsToJadeRender),
 
 					// 404s break on github?
 					// '404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)

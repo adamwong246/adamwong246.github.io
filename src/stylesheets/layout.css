@@ -16,6 +16,10 @@
   margin-right: 1em;
 }
 
+#menu {
+  margin-top: 0.5em;
+}
+
 @media (max-width: 700px) {
 
   nav {
@@ -45,9 +49,7 @@
     filter: blur(10px);
   }
 
-  #menu {
-    margin: 1em;
-  }
+
 
   .hide-menu nav {
     display: none;

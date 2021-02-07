@@ -49,5 +49,5 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 
 ---
 
-### BA of Computer Science, University of South Carolina
-#### May 2010
+#### BA of Computer Science, University of South Carolina
+##### May 2010

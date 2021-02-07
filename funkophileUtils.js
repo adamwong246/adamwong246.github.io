@@ -95,7 +95,7 @@ module.exports = {
 		}).minify(css).styles
 	},
 
-	makeResumePdf: (resumeMarkdown, css) => {
+	makeResumePdf: (resumeMarkdown, css, pdfSettings) => {
 		return (async () => {
 			try {
 				const browser = await puppeteer.launch();
@@ -106,14 +106,7 @@ module.exports = {
 				})
 				const pdf = await page.pdf({
 					path: '/dev/null',
-					format: 'A4',
-					printBackground: false,
-					margin: {
-						top: '0.4in',
-						right: '0.4in',
-						bottom: '0.4in',
-						left: '0.4in',
-					}
+          ...JSON.parse(pdfSettings)
 				});
 				await browser.close();
 

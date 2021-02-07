@@ -1,7 +1,7 @@
 extends ../views/layout.jade
 
 block content
-  - for entry in blogEntries
+  - for entry in blogEntries.slice(0, 10)
     - var content = cheerio.load(entry.markdownContent)(':root')
     article
       header
@@ -9,8 +9,12 @@ block content
           a(href=entry.url)= entry.meta.title
         h4
           time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+      hr
       != content.first()
       if (content.length > 1)
         .clearfix
           a.right(href=entry.url) Read more...
-    hr
+
+  include blogLink
+  
+    

@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js cleanBuild
+  /Users/adam/.nvm/versions/node/v12.16.1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js funkophile:build
 
 PATH: 
   /Users/adam/.nvm/versions/node/v12.16.1/bin:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin
@@ -2407,7 +2407,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c rm -rf dist/**; yarn funkophile:build
+  Arguments: -c node ./funkophile/index.js ../funkophile.config.js build
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

@@ -18,8 +18,8 @@ const {
 
 const $blogEntries = require("./src/blogEntries/funkophile.js");
 const styleFunkophile = require("./src/stylesheets/funkophile.js");
+const srcFunkophile = require("./src/funkophile.js");
 
-const CONTACTS = 'CONTACTS'
 const JPG = 'JPG'
 const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
 const LICENSE = 'LICENSE';
@@ -49,9 +49,7 @@ module.exports = {
 	// defines the inputs points where files will be read and their key within the Redux store
 	inputs: {
     ...$blogEntries.inputs,
-		...styleFunkophile.inputs,
-		[CONTACTS]: 'contacts.json',
-		[FAVICON_PNG]: 'images/evilShroom.png',
+		...srcFunkophile.inputs,
 		[JPG_TRANSFORMS]: 'images/assets.json',
 		[JPG]: 'images/*.jpg',
 		[JS]: 'index.js',
@@ -68,23 +66,14 @@ module.exports = {
 
 		const $package = $$$(() => require("./package.json"));
 
-		const $resumeMarkdown = $$$(contentOfFile(_[RESUME]), markdown.parse)
-
 		const blogSelector = $blogEntries.outputs(_);
-		const cssSelector = styleFunkophile.outputs(_);
+    const srcSelector = srcFunkophile.outputs(_);
 
-		return $$$([$$$([
-			contentOfFile(_[LICENSE]),
-			contentOfFile(_[RESUME]),
-			$$$(
-				[
-					$resumeMarkdown,
-					cssSelector.$pdfCss,
-					contentOfFile(_[PDF_SETTINGS]),
-				],
-				(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings)),
-        cssSelector.$webCss,
-			$$$([
+    const $resumeMarkdown = srcSelector.$resumeMarkdown
+
+		return $$$([
+      $$$([
+          $$$([
 				$package,
 				$$$(
 					srcAndContentOfFiles(_[PAGES]),
@@ -115,14 +104,7 @@ module.exports = {
 				srcAndContentOfFile(_[VIEWS], './src/views/page.jade'),
 				srcAndContentOfFile(_[VIEWS], './src/views/blogEntryLayout.jade'),
 				contentOfFile(_[NOT_FOUND_PAGE]),
-				$$$(contentOfFile(_[CONTACTS]), (contactsString) => JSON.parse(contactsString).map((c) => {
-					return {
-						'type': Object.keys(c)[0],
-						'content': c[Object.keys(c)[0]],
-						'icon': simpleIcons.get(Object.keys(c)[0]).svg
-					}
-				})),
-
+        srcSelector.$contacts,
         srcAndContentOfFile(_[VIEWS], './src/views/resume.jade'),
 			], (
         package, pages, blogEntries, markdownResume, pageLayout, blogEntryLayout, notFoundContent, contacts, resumeLayout
@@ -155,35 +137,23 @@ module.exports = {
 				}
 			}),
       blogSelector.$allBlogAssets,
-			$$$(
-				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], jpgTransformPromises
+      $$$(
+        [_.JPG, contentOfFile(_[JPG_TRANSFORMS])], jpgTransformPromises
 			),
-			contentOfFile(_[FAVICON_PNG]),
-			contentOfFile(_[JS])
+      srcSelector.$all,
 		], (
-			license,
-			resumeMd,
-			resumePdf,
-			style,
 			html,
       blogAssets,
 			jpgs,
-			favicon,
-			js
+			srcAll
 		) => {
 
 			return {
-        ...blogAssets,
 				...html,
+        ...blogAssets,
 				...jpgs,
-
-				'favicon.png': favicon,
-				'index.js': js,
-				'LICENSE.txt': license,
 				'README.md': fs.readFileSync('./README.md', 'utf8'),
-				'resume.md': resumeMd,
-				'resume.pdf': resumePdf,
-				'style.css': style,
+        ...srcAll
 			}
 		})], (site) => {
 			return {

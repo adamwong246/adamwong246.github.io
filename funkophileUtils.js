@@ -45,35 +45,35 @@ module.exports = {
 			}, {})
 	},
 
-	makeResumePdf: (resumeMarkdown, css, pdfSettings) => {
-		return (async () => {
-			try {
-				const browser = await puppeteer.launch();
-				const page = await browser.newPage();
-				await page.setContent(resumeMarkdown.content)
-				await page.addStyleTag({
-					content: css
-				})
-				const pdf = await page.pdf({
-					path: '/dev/null',
-          ...JSON.parse(pdfSettings)
-				});
-				await browser.close();
-
-				// clear the timestamp for deterministic pdfs
-				for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
-					pdf[offset] = 0;
-				}
-				return pdf
-			} catch (e) {
-				console.error(e);
-				return e;
-			} finally {
-				// console.log('We do cleanup here');
-			}
-
-		})();
-	},
+	// makeResumePdf: (resumeMarkdown, css, pdfSettings) => {
+	// 	return (async () => {
+	// 		try {
+	// 			const browser = await puppeteer.launch();
+	// 			const page = await browser.newPage();
+	// 			await page.setContent(resumeMarkdown.content)
+	// 			await page.addStyleTag({
+	// 				content: css
+	// 			})
+	// 			const pdf = await page.pdf({
+	// 				path: '/dev/null',
+  //         ...JSON.parse(pdfSettings)
+	// 			});
+	// 			await browser.close();
+  //
+	// 			// clear the timestamp for deterministic pdfs
+	// 			for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
+	// 				pdf[offset] = 0;
+	// 			}
+	// 			return pdf
+	// 		} catch (e) {
+	// 			console.error(e);
+	// 			return e;
+	// 		} finally {
+	// 			// console.log('We do cleanup here');
+	// 		}
+  //
+	// 	})();
+	// },
 
 	transformJpegs: (jpgs, assets, blogEntries) => {
 		return jpgs.reduce((mm, jpg) => {

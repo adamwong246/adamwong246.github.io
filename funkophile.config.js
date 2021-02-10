@@ -9,21 +9,17 @@ const {
 
 // extract your logic for easier testing
 const {
-	cleandAndMinifyCss,
 	jpgTransformPromises,
 	jadeRender,
 	jadeRenderPageLayout,
 	jadeRenderBlogEntry,
 	makeResumePdf,
-	processBlogEntries,
-	transformJpegs,
-	updateBlogImagePaths,
 } = require("./funkophileUtils.js");
 
 const $blogEntries = require("./src/blogEntries/funkophile.js");
+const styleFunkophile = require("./src/stylesheets/funkophile.js");
 
 const CONTACTS = 'CONTACTS'
-const CSS = 'CSS';
 const JPG = 'JPG'
 const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
 const LICENSE = 'LICENSE';
@@ -53,8 +49,8 @@ module.exports = {
 	// defines the inputs points where files will be read and their key within the Redux store
 	inputs: {
     ...$blogEntries.inputs,
+		...styleFunkophile.inputs,
 		[CONTACTS]: 'contacts.json',
-		[CSS]: 'stylesheets/*.css',
 		[FAVICON_PNG]: 'images/evilShroom.png',
 		[JPG_TRANSFORMS]: 'images/assets.json',
 		[JPG]: 'images/*.jpg',
@@ -75,6 +71,7 @@ module.exports = {
 		const $resumeMarkdown = $$$(contentOfFile(_[RESUME]), markdown.parse)
 
 		const blogSelector = $blogEntries.outputs(_);
+		const cssSelector = styleFunkophile.outputs(_);
 
 		return $$$([$$$([
 			contentOfFile(_[LICENSE]),
@@ -82,17 +79,11 @@ module.exports = {
 			$$$(
 				[
 					$resumeMarkdown,
-					$$$(_[CSS], (cssFiles) => [
-						cssFiles['./src/stylesheets/typography.css'],
-						cssFiles['./src/stylesheets/layout.css'],
-						cssFiles['./src/stylesheets/style.css']
-					].join('\n')),
+					cssSelector.$pdfCss,
 					contentOfFile(_[PDF_SETTINGS]),
 				],
 				(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings)),
-			$$$([contentsOfFiles(_[CSS]), $$$([], () => fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8'))], (css, normalize) =>
-				cleandAndMinifyCss(normalize + '\n' + css)
-			),
+        cssSelector.$webCss,
 			$$$([
 				$package,
 				$$$(

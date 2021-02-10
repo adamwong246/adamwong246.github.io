@@ -45,12 +45,6 @@ module.exports = {
 			}, {})
 	},
 
-	cleandAndMinifyCss: (css) => {
-		return new CleanCSS({
-			keepSpecialComments: 2
-		}).minify(css).styles
-	},
-
 	makeResumePdf: (resumeMarkdown, css, pdfSettings) => {
 		return (async () => {
 			try {

@@ -159,10 +159,9 @@ module.exports = {
 
 
     return {
-      $blogEntriesGifs,
-      $blogEntriesMovs,
-      $blogEntriesJpgsOrginal,
-      $blogEntriesJpgsModified,
+      $allBlogAssets: $$$([$blogEntriesGifs, $blogEntriesMovs, $blogEntriesJpgsOrginal, $blogEntriesJpgsModified], (gifs, movs, jpgOrginals, jpgModifieds) => {
+        return {...gifs, ...movs, ...jpgOrginals, ...jpgModifieds}
+      }),
 
       $blog: $$$([
         $blogEntries, $$$([

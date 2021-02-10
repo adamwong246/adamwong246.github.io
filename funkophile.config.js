@@ -154,10 +154,7 @@ module.exports = {
 					// '404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
 				}
 			}),
-			blogSelector.$blogEntriesJpgsOrginal,
-			blogSelector.$blogEntriesJpgsModified,
-			blogSelector.$blogEntriesGifs,
-			blogSelector.$blogEntriesMovs,
+      blogSelector.$allBlogAssets,
 			$$$(
 				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], jpgTransformPromises
 			),
@@ -169,21 +166,14 @@ module.exports = {
 			resumePdf,
 			style,
 			html,
-			blogJpegsOriginal,
-			blogJpegsMod,
-			blogGifs,
-			blogMovs,
+      blogAssets,
 			jpgs,
 			favicon,
 			js
 		) => {
 
 			return {
-				...blogJpegsMod,
-				...blogJpegsOriginal,
-				...blogGifs,
-        ...blogMovs,
-
+        ...blogAssets,
 				...html,
 				...jpgs,
 

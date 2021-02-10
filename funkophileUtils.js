@@ -3,56 +3,12 @@ CleanCSS = require('clean-css');
 fs = require('fs');
 jade = require("jade");
 lwip = require("js-lwip");
-markdown = require('marky-mark');
 moment = require('moment');
 puppeteer = require('puppeteer');
 simpleIcons = require('simple-icons');
 slug = require('slug');
 
 module.exports = {
-	processBlogEntries: (blogEntries) => {
-		return blogEntries.map((blogEntry) => {
-				const markdownContent = markdown.parse(blogEntry.content)
-				const entryId = blogEntry.src.split('/')[3]
-				const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
-				const filePath = slugPath + 'index.html';
-				return {
-					meta: markdownContent.meta,
-					markdownContent: markdownContent.content,
-					dest: filePath,
-					url: `/${filePath}`,
-					destFolder: slugPath,
-					srcFolder: blogEntry.src.split('index.md')[0],
-					entryId
-				}
-			})
-			.sort((b, a) => moment(a.meta.publishedAt)
-				.diff(moment(b.meta.publishedAt)))
-			.map((lmnt, ndx, ry) => {
-
-				if (ndx === ry.length - 1) {
-					lmnt.meta.previous = null;
-				} else {
-					const previous = ry[ndx + 1];
-					lmnt.meta.previous = {
-						url: previous.url,
-						title: previous.meta.title,
-					};
-				}
-
-				if (ndx === 0) {
-					lmnt.meta.next = null;
-				} else {
-					const next = ry[ndx - 1];
-					lmnt.meta.next = {
-						url: next.url,
-						title: next.meta.title,
-					};
-				}
-
-				return lmnt
-			})
-	},
 
 	jpgTransformPromises: (jpgs, assets) => {
 		return Object.keys(jpgs)
@@ -178,32 +134,7 @@ module.exports = {
 		}, {})
 	},
 
-	updateBlogImagePaths: (blogEntries, jpgs, gifs) => {
-		return blogEntries.map((blogEntry) => {
-			const blogEntryHtmlString = blogEntry.markdownContent
 
-			const $ = cheerio.load(blogEntryHtmlString)
-
-			Object.keys(jpgs).forEach((jpg) => {
-				const split = jpg.split('/')
-				$(':root')
-					.find(`img[src="${split[split.length -1]}"]`)
-					.replaceWith(cheerio(`<img src=${'/' + jpg}></img>`))
-			})
-
-			Object.keys(gifs).forEach((gif) => {
-				const split = gif.split('/')
-				$(':root')
-					.find(`img[src="${split[split.length -1]}"]`)
-					.replaceWith(cheerio(`<img src=${'/' + gif}></img>`))
-			})
-			return {
-				...blogEntry,
-				markdownContent: $.html()
-			}
-		})
-
-	},
 
 	jadeRender: (content, pageLayout, locals) => {
 		return jade.render(content, {

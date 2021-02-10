@@ -58,6 +58,7 @@
     "simple-icons": "^2.7.0",
     "slug": "^0.8.0",
     "truncate-html": "^1.0.3",
+    "webpack": "^5.21.2",
     "yaml-front-matter": "^3.2.3"
   }
 }

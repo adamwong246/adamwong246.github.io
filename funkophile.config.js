@@ -20,12 +20,8 @@ const {
 	updateBlogImagePaths,
 } = require("./funkophileUtils.js");
 
-// One key for every file input pattern
-const BLOG_ASSETS = 'BLOG_ASSETS'
-const BLOG_ENTRIES = 'BLOG_ENTRIES'
-const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
-const BLOG_ENTRIES_GIFS = 'BLOG_ENTRIES_GIFS'
-const BLOG_ENTRIES_MOVS = 'BLOG_ENTRIES_MOVS'
+const $blogEntries = require("./src/blogEntries/funkophile.js");
+
 const CONTACTS = 'CONTACTS'
 const CSS = 'CSS';
 const JPG = 'JPG'
@@ -56,11 +52,7 @@ module.exports = {
 
 	// defines the inputs points where files will be read and their key within the Redux store
 	inputs: {
-		[BLOG_ASSETS]: 'blogEntries/**/assets.json',
-		[BLOG_ENTRIES_GIFS]: 'blogEntries/**/*.gif',
-		[BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
-    [BLOG_ENTRIES_MOVS]: 'blogEntries/**/*.mov',
-		[BLOG_ENTRIES]: 'blogEntries/**/index.md',
+    ...$blogEntries.inputs,
 		[CONTACTS]: 'contacts.json',
 		[CSS]: 'stylesheets/*.css',
 		[FAVICON_PNG]: 'images/evilShroom.png',
@@ -80,60 +72,9 @@ module.exports = {
 
 		const $package = $$$(() => require("./package.json"));
 
-		const $blogEntries = $$$(
-			srcAndContentOfFiles(_[BLOG_ENTRIES]),
-			processBlogEntries
-		);
-
-		const $blogEntriesGifs = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_GIFS]), $blogEntries],
-			(gifs, blogEntries) => gifs.reduce((mm, gif) => {
-				const src = gif.src
-				const gifSplit = src.split('/')
-				return {
-					...mm,
-					[blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + gifSplit[gifSplit.length - 1]]: gif.content
-				}
-			}, {})
-		);
-
-		const $blogEntriesMovs = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_MOVS]), $blogEntries],
-			(movs, blogEntries) => movs.reduce((mm, mov) => {
-				const src = mov.src
-				const movSplit = src.split('/')
-				return {
-					...mm,
-					[blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + movSplit[movSplit.length - 1]]: mov.content
-				}
-			}, {})
-		);
-
-		const $blogEntriesJpgsOrginal = $$$([
-			srcAndContentOfFiles(_[BLOG_ENTRIES_JPGS]),
-			$blogEntries
-		], (jpgs, blogEntries) => jpgs.reduce((mm, jpg) => {
-			const src = jpg.src
-			const jpgSplit = src.split('/')
-			return {
-				...mm,
-				[blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + jpgSplit[jpgSplit.length - 1]]: jpg.content
-			}
-		}, {}));
-
-		const $blogEntriesJpgsModified = $$$([
-			srcAndContentOfFiles(_[BLOG_ENTRIES_JPGS]),
-			$$$(
-				[srcAndContentOfFiles(_[BLOG_ASSETS])],
-				(assets) => assets.map((asset) => {
-					return {
-						src: asset.src,
-						json: JSON.parse(asset.content)
-					}
-				})
-			),
-			$blogEntries
-		], transformJpegs);
-
 		const $resumeMarkdown = $$$(contentOfFile(_[RESUME]), markdown.parse)
+
+		const blogSelector = $blogEntries.outputs(_);
 
 		return $$$([$$$([
 			contentOfFile(_[LICENSE]),
@@ -178,18 +119,7 @@ module.exports = {
 							}
 						})
 					}),
-				$$$([
-					$blogEntries, $$$([
-						$blogEntriesJpgsOrginal,
-						$blogEntriesJpgsModified
-					], (originals, modifed) => {
-						return {
-							...originals,
-							...modifed
-						}
-					}), $blogEntriesGifs,
-					$blogEntriesMovs
-				], updateBlogImagePaths),
+          blogSelector.$blog,
 				$resumeMarkdown,
 				srcAndContentOfFile(_[VIEWS], './src/views/page.jade'),
 				srcAndContentOfFile(_[VIEWS], './src/views/blogEntryLayout.jade'),
@@ -233,10 +163,10 @@ module.exports = {
 					// '404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
 				}
 			}),
-			$blogEntriesJpgsOrginal,
-			$blogEntriesJpgsModified,
-			$blogEntriesGifs,
-			$blogEntriesMovs,
+			blogSelector.$blogEntriesJpgsOrginal,
+			blogSelector.$blogEntriesJpgsModified,
+			blogSelector.$blogEntriesGifs,
+			blogSelector.$blogEntriesMovs,
 			$$$(
 				[_.JPG, contentOfFile(_[JPG_TRANSFORMS])], jpgTransformPromises
 			),
@@ -250,19 +180,22 @@ module.exports = {
 			html,
 			blogJpegsOriginal,
 			blogJpegsMod,
-			gifs,
-			movs,
+			blogGifs,
+			blogMovs,
 			jpgs,
 			favicon,
 			js
 		) => {
+
 			return {
 				...blogJpegsMod,
 				...blogJpegsOriginal,
-				...gifs,
+				...blogGifs,
+        ...blogMovs,
+
 				...html,
 				...jpgs,
-				...movs,
+
 				'favicon.png': favicon,
 				'index.js': js,
 				'LICENSE.txt': license,

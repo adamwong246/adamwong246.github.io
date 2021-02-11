@@ -127,9 +127,6 @@ module.exports = {
 				contentOfFile(_["PDF_SETTINGS"]),
 			],
 			(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings))
-
-			console.log(projectFunkyBundleSelectors.$bundle)
-			// process.exit()
 		return {
 			$pages: pageSelectors,
 			...blogSelector,

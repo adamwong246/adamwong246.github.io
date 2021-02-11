@@ -8,13 +8,14 @@ function build({ entryFile, outputFolder }) {
   // bundle the asset
   const outputFiles = bundle(graph);
   // write to output folder
-  for (const outputFile of outputFiles) {
-    fs.writeFileSync(
-      path.join(outputFolder, outputFile.name),
-      outputFile.content,
-      'utf-8'
-    );
-  }
+  // for (const outputFile of outputFiles) {
+  //   fs.writeFileSync(
+  //     path.join(outputFolder, outputFile.name),
+  //     outputFile.content,
+  //     'utf-8'
+  //   );
+  // }
+  return outputFiles;
 }
 
 function createDependencyGraph(entryFile) {
@@ -240,7 +241,9 @@ function trim(str) {
   return lines.map(line => line.replace(regex, '')).join('\n');
 }
 
-build({
-  entryFile: path.join(__dirname, './fixtures/index.js'),
-  outputFolder: path.join(__dirname, './output'),
-});
+module.exports = {
+  build: build({
+    entryFile: path.join(__dirname, './fixtures/index.js'),
+    outputFolder: path.join(__dirname, './output'),
+  })
+}

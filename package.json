@@ -28,7 +28,9 @@
     "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy"
   },
   "dependencies": {
+    "@babel/core": "^7.12.13",
     "@randy.tarampi/lwip": "^3.0.17",
+    "babel": "^6.23.0",
     "bluebird": "3.7.2",
     "buffer": "^5.5.0",
     "cherio": "^1.0.0-rc.2",

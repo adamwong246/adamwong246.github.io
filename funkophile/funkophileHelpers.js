@@ -10,7 +10,14 @@ module.exports = {
 
 	contentOfFile: (selector) => {
 		return createSelector([selector], (selected) => {
-			return selected[Object.keys(selected)[0]]
+			try{
+        return selected[Object.keys(selected)[0]]
+      } catch (e) {
+        console.error("error", e)
+				console.error("selected", selected)
+				console.error("selector", selector)
+				process.exit(-1)
+      }
 		})
 	},
 

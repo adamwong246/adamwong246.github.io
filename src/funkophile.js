@@ -1,9 +1,11 @@
 const $$$ = require('reselect').createSelector;
-puppeteer = require('puppeteer');
-lwip = require("@randy.tarampi/lwip");
+const puppeteer = require('puppeteer');
+const lwip = require("@randy.tarampi/lwip");
 
 const blogEntries = require("./blogEntries/funkophile.js");
 const styleFunkophile = require("./stylesheets/funkophile.js")
+const pagesFunkophile = require("./pages/funkophile.js");
+const projectFunkyBundle = require("./projects/funkybundle/funkophile.js");
 
 const {
 	contentOfFile,
@@ -11,9 +13,6 @@ const {
 	srcAndContentOfFile,
 	srcAndContentOfFiles
 } = require("../funkophile/funkophileHelpers.js");
-
-const pagesFunkophile = require("./pages/funkophile.js");
-const blogFunkophile = require("./blogEntries/funkophile.js");
 
 const CONTACTS = 'CONTACTS'
 const FAVICON_PNG = 'FAVICON_PNG'
@@ -104,6 +103,7 @@ module.exports = {
 		...styleFunkophile.inputs,
 		...pagesFunkophile.inputs,
     ...blogEntries.inputs,
+    ...projectFunkyBundle.inputs,
 	},
 
 	outputs: (_) => {
@@ -111,6 +111,7 @@ module.exports = {
 		const blogSelector = blogEntries.outputs(_);
 		const cssSelector = styleFunkophile.outputs(_);
 		const pageSelectors = pagesFunkophile.outputs(_);
+    const projectFunkyBundleSelectors = projectFunkyBundle.outputs(_);
 
 		const $resume = contentOfFile(_["RESUME"]);
 		const $js = contentOfFile(_["JS"]);
@@ -127,6 +128,8 @@ module.exports = {
 			],
 			(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings))
 
+			console.log(projectFunkyBundleSelectors.$bundle)
+			// process.exit()
 		return {
 			$pages: pageSelectors,
 			...blogSelector,
@@ -153,12 +156,13 @@ module.exports = {
 			}),
 
 			$all: $$$([
+				projectFunkyBundleSelectors.$bundle,
 				$resume, $favicon, $js, $license, $resumePdf, cssSelector.$webCss, blogSelector.$allBlogAssets,
 				$$$(
 					[_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
 				),
 			], (
-				r, f, j, l, rsmPdf, css, allBlogAssets, jpgs
+				fb, r, f, j, l, rsmPdf, css, allBlogAssets, jpgs
 			) => {
 				return {
 					'resume.md': r,
@@ -168,7 +172,8 @@ module.exports = {
 					'resume.pdf': rsmPdf,
 					'style.css': css,
 					...allBlogAssets,
-					...jpgs
+					...jpgs,
+          ...fb,
 				}
 			})
 

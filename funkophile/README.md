@@ -9,11 +9,10 @@ Funkophile is a build tool that inputs files, processes them, and then outputs t
 
 #### What is Funkophile *not*?
 
-Funkophile is _not_ webpack. It does not build JS bundles. (Thought it could help you do so!)
-
-Funkophile is _not_ grunt or gulp. It is not a task runner. It is a file-processor.
-
-Funkophile is _not necessarily_ for web development. It has a much broader use-case.
+- Funkophile is _not_ webpack or rollup. It does not *just* build JS bundles, though it could help you do so.
+- Funkophile is _not_ grunt or gulp. It is not *just* a task runner, it is a file-processor. The "tasks" Funkophile runs are functions run on files. 
+- Funkophile is _not_ a module loader.
+- Funkophile is _not necessarily_ for web development. It has a much broader use-case.
 
 #### *Why* is Funkophile **awesome**?
 
@@ -24,7 +23,8 @@ Funkophile is a functional file processor. It lets you manipulate files in a *fu
 - Funkophile can replace your flavor-of-the-week State Site Generator with a hackable and lightweight solution.
 - Funkophile can replace some of the things that grunt or gulp do.
 - Funkophile can replace some of the things that webpack is used for.
-- Funkophile is very unopinionated and works well with other tools _like_ grunt and webpack.
+- Funkophile can replace both build tools (like grunt and gulp) and bundlers (like webpack and rollup).
+- Funkophile is also very unopinionated and works well with other tools grunt, gulp, webpack, and rollups.
 - Funkophile can functionally and efficiently watch files for changes, process them, then write them back to the filesystem.
 
 #### What Funkophile *should not be used for*

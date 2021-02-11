@@ -14,6 +14,7 @@ Promise.config({
 
 const funkophileConfig = require(process.argv[2])
 const mode = process.argv[3]
+const keyToWatch = process.argv[4]
 
 const INITIALIZE = 'INITIALIZE';
 const UPSERT = 'UPSERT';
@@ -154,7 +155,10 @@ const finalSelector = funkophileConfig.outputs(Object.keys(funkophileConfig.inpu
 
 
 // Wait for all the file watchers to check in
-Promise.all(Object.keys(funkophileConfig.inputs).map((inputRuleKey) => {
+Promise.all(
+	Object.keys(funkophileConfig.inputs)
+	// ['FUNKYBUNDLE']
+.map((inputRuleKey) => {
 	const path = `./${funkophileConfig.options.inFolder}/${funkophileConfig.inputs[inputRuleKey] || ''}`
 	return new Promise((fulfill, reject) => {
 		if (mode === "build") {

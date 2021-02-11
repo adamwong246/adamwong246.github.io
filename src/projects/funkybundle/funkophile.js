@@ -1,90 +1,94 @@
-import {
-	createSelector as $$$
-} from 'reselect';
-
-import {
+const $$$ = require('reselect').createSelector;
+const {
 	contentOfFile,
 	contentsOfFiles,
 	srcAndContentOfFile,
 	srcAndContentOfFiles
-} from "../../../funkophile/funkophileHelpers.js";
+} = require("../../../funkophile/funkophileHelpers.js");
 
-const FUNKYBUNDLE = 'FUNKYBUNDLE'
+const FUNKYBUNDLE_INDEX_JS = 'FUNKYBUNDLE_INDEX_JS';
+const FUNKYBUNDLE_EXPERIMENT_0_HTML = 'FUNKYBUNDLE_EXPERIMENT_0_HTML';
+const FUNKYBUNDLE_EXPERIMENT_1_HTML = 'FUNKYBUNDLE_EXPERIMENT_1_HTML';
+const FUNKYBUNDLE_EXPERIMENT_2_HTML = 'FUNKYBUNDLE_EXPERIMENT_2_HTML';
+const FUNKYBUNDLE_EXPERIMENT_3_HTML = 'FUNKYBUNDLE_EXPERIMENT_3_HTML';
+const FUNKYBUNDLE_EXPERIMENT_4_HTML = 'FUNKYBUNDLE_EXPERIMENT_4_HTML';
+const FUNKYBUNDLE_EXPERIMENT_5_HTML = 'FUNKYBUNDLE_EXPERIMENT_5_HTML';
+const FUNKYBUNDLE_EXPERIMENT_2_JS = 'FUNKYBUNDLE_EXPERIMENT_2_JS';
+const FUNKYBUNDLE_EXPERIMENT_3_JS = 'FUNKYBUNDLE_EXPERIMENT_3_JS';
+const FUNKYBUNDLE_EXPERIMENT_4_JS = 'FUNKYBUNDLE_EXPERIMENT_4_JS';
+const FUNKYBUNDLE_EXPERIMENT_5_JS = 'FUNKYBUNDLE_EXPERIMENT_5_JS';
+const FUNKYBUNDLE_EXPERIMENT_5_JS_START = 'FUNKYBUNDLE_EXPERIMENT_5_JS_START';
+const FUNKYBUNDLE_EXPERIMENT_5_JS_MODULES = 'FUNKYBUNDLE_EXPERIMENT_5_JS_MODULES';
+const FUNKYBUNDLE_CIRCLE = 'FUNKYBUNDLE_CIRCLE';
+const FUNKYBUNDLE_SQUARE = 'FUNKYBUNDLE_SQUARE';
 
-export default {
+module.exports = {
 
 	inputs: {
-    [FUNKYBUNDLE]: 'projects/funkybundle/index.js'
+		[FUNKYBUNDLE_INDEX_JS]: 'projects/funkybundle/index.js',
+		[FUNKYBUNDLE_EXPERIMENT_0_HTML]: 'projects/funkybundle/experiment0.html',
+		[FUNKYBUNDLE_EXPERIMENT_1_HTML]: 'projects/funkybundle/experiment1.html',
+		[FUNKYBUNDLE_EXPERIMENT_2_HTML]: 'projects/funkybundle/experiment2.html',
+		[FUNKYBUNDLE_EXPERIMENT_3_HTML]: 'projects/funkybundle/experiment3.html',
+		[FUNKYBUNDLE_EXPERIMENT_4_HTML]: 'projects/funkybundle/experiment4.html',
+    [FUNKYBUNDLE_EXPERIMENT_5_HTML]: 'projects/funkybundle/experiment5.html',
+		[FUNKYBUNDLE_EXPERIMENT_2_JS]: 'projects/funkybundle/experiment2.js',
+		[FUNKYBUNDLE_EXPERIMENT_3_JS]: 'projects/funkybundle/experiment3.js',
+		[FUNKYBUNDLE_EXPERIMENT_4_JS]: 'projects/funkybundle/experiment4.js',
+    [FUNKYBUNDLE_EXPERIMENT_5_JS]: 'projects/funkybundle/experiment5.js',
+    [FUNKYBUNDLE_EXPERIMENT_5_JS]: 'projects/funkybundle/experiment5.js',
+    [FUNKYBUNDLE_EXPERIMENT_5_JS_MODULES]: 'projects/funkybundle/funkybundleModules_experiment5.js',
+    [FUNKYBUNDLE_EXPERIMENT_5_JS_START]: 'projects/funkybundle/funkybundleStart_experiment5.js',
+		[FUNKYBUNDLE_CIRCLE]: 'projects/funkybundle/circle.js',
+		[FUNKYBUNDLE_SQUARE]: 'projects/funkybundle/square.js',
 	},
 
 	outputs: (_) => {
 
-		const blogSelector = blogEntries.outputs(_);
-		const cssSelector = styleFunkophile.outputs(_);
-		const pageSelectors = pagesFunkophile.outputs(_);
-
-		const $resume = contentOfFile(_["RESUME"]);
-		const $js = contentOfFile(_["JS"]);
-		const $favicon = contentOfFile(_["FAVICON_PNG"]);
-		const $license = contentOfFile(_["LICENSE"]);
-
-		const $resumeMarkdown = $$$($resume, markdown.parse);
-
-		const $resumePdf = $$$(
-			[
-				$resumeMarkdown,
-				cssSelector.$pdfCss,
-				contentOfFile(_["PDF_SETTINGS"]),
-			],
-			(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings))
-
-		const $funkybundle = contentOfFile(_["FUNKYBUNDLE"]);
+    // const funkyBundledExperiment5 = funkyBundler();
 
 		return {
-			$pages: pageSelectors,
-			...blogSelector,
 
-			$resume,
-			$js,
-			$favicon,
-			$resumeMarkdown,
+			$bundle: $$$([
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_0_HTML"]),
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_1_HTML"]),
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_2_HTML"]),
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_3_HTML"]),
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_4_HTML"]),
+        contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_5_HTML"]),
+				contentOfFile(_["FUNKYBUNDLE_INDEX_JS"]),
+				contentOfFile(_["FUNKYBUNDLE_CIRCLE"]),
+				contentOfFile(_["FUNKYBUNDLE_SQUARE"]),
 
-			$content: $$$([pageSelectors, blogSelector.$blog, $resumeMarkdown, $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
-				return {
-					'type': Object.keys(c)[0],
-					'content': c[Object.keys(c)[0]],
-					'icon': simpleIcons.get(Object.keys(c)[0]).svg
-				}
-			}))], (p, b, r, c) => {
-				return {
-					pages: p,
-					blog: b,
-					resume: r,
-					contacts: c
-				}
-
-			}),
-
-			$all: $$$([
-				$resume, $favicon, $js, $license, $resumePdf, cssSelector.$webCss, blogSelector.$allBlogAssets,
-				$$$(
-					[_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
-				),
-        $funkybundle
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_2_JS"]),
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_3_JS"]),
+				contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_4_JS"]),
+        contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_5_JS"]),
+        contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_5_JS_MODULES"]),
+        contentOfFile(_["FUNKYBUNDLE_EXPERIMENT_5_JS_START"]),
 			], (
-				r, f, j, l, rsmPdf, css, allBlogAssets, jpgs, funkybundle
+				exp0, exp1, exp2, exp3, exp4, exp5,
+				js, circle, square,
+				expJs2, expJs3, expJs4, expJs5, expJsModules5, expJsStart5,
 			) => {
-        console.log(funkybundle)
 				return {
-					'resume.md': r,
-					'favicon.png': f,
-					'index.js': j,
-					'LICENSE.txt': l,
-					'resume.pdf': rsmPdf,
-					'style.css': css,
-					...allBlogAssets,
-					...jpgs,
-          'funkybundle/funkybundle.js': funkybundle
+					'projects/funkybundle/experiment0.html': exp0,
+					'projects/funkybundle/experiment1.html': exp1,
+					'projects/funkybundle/experiment2.html': exp2,
+					'projects/funkybundle/experiment3.html': exp3,
+          'projects/funkybundle/experiment4.html': exp4,
+          'projects/funkybundle/experiment5.html': exp5,
+
+					'projects/funkybundle/funkybundled.js': js,
+					'projects/funkybundle/circle.js': circle,
+					'projects/funkybundle/square.js': square,
+
+					'projects/funkybundle/experiment2.js': expJs2,
+					'projects/funkybundle/experiment3.js': expJs3,
+          'projects/funkybundle/experiment4.js': expJs4,
+          'projects/funkybundle/experiment5.js': expJs5,
+          'projects/funkybundle/funkybundleStart_experiment5.js': expJsStart5,
+          'projects/funkybundle/funkybundleModules_experiment5.js': expJsModules5,
 				}
 			})
 

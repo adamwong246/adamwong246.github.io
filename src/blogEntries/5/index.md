@@ -3,7 +3,7 @@ title: "Meteor: the first month"
 publishedAt: Sat Mar 21 2015 08:49:37 GMT-0700 (PDT)
 ---
 
-There's an exciting new stack for optimistic developers called Meteor and I've had the great pleasure of focusing on learning it for the past months. This is what I've learned.
+There's an exciting new stack for optimistic developers called Meteor and I've had the great pleasure of focusing on learning it for the past months. This is what I've learned...
 
 Meteor is framework based on the high-minded ideal of *isomorphic* javascript, which is a fancy way of saying, "It's javascript, on the server too!" I find this notion absolutely titilating, though I'm sure other's are heaving at the very thought. Ok, that's fair. But give it a chance! It's an incredibly flexible technology and with a little bit of experience, you'll find that Meteor is a fantastic tool for building prototypes which evolve into mature software. Meteor is production ready and the time to dive in is now!
 

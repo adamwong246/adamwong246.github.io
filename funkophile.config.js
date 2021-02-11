@@ -14,50 +14,34 @@ const {
 	jadeRenderBlogEntry,
 } = require("./funkophileUtils.js");
 
-// const blogEntries = require("./src/blogEntries/funkophile.js");
 const srcFunkophile = require("./src/funkophile.js");
 
-const JPG = 'JPG'
-const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
-const LICENSE = 'LICENSE';
 const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
-// const PAGES = 'PAGES';
-const RESUME = 'RESUME';
 const VIEWS = 'VIEWS'
-const FAVICON_PNG = 'FAVICON_PNG'
-const JS = 'JS'
-const PDF_SETTINGS = 'PDF_SETTINGS'
 
 module.exports = {
 	initialState: {},
 
-	// funkophile cannot deterministicly load content outside the inFolder
 	options: {
 		inFolder: 'src',
 		outFolder: 'dist'
 	},
 
-	// how you want your files loaded
 	encodings: {
 		'utf8': ['md', 'css', 'jade', 'txt', 'json', 'js'],
 		'': ['jpg', 'png', 'gif']
 	},
 
-	// defines the inputs points where files will be read and their key within the Redux store
 	inputs: {
 		...srcFunkophile.inputs,
-		[JPG_TRANSFORMS]: 'images/assets.json',
-		[JPG]: 'images/*.jpg',
-		[JS]: 'index.js',
-		[LICENSE]: 'LICENSE.txt',
-		[NOT_FOUND_PAGE]: '404.jade',
-		// [PAGES]: 'pages/**/*.jade',
-		[RESUME]: 'resume.md',
-		[VIEWS]: 'views/*.jade',
-		[PDF_SETTINGS]: 'pdfSettings.json',
+    [NOT_FOUND_PAGE]: '404.jade',
+    [VIEWS]: 'views/*.jade',
 	},
 
 	// return a selector based on the given selector '_'
+	// the selector should return an object with keys for filenames and values of contents.
+	// The contents can be a JSON-able, function or promise.
+
 	outputs: (_) => {
 
 		const $package = $$$(() => require("./package.json"));

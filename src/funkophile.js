@@ -1,6 +1,8 @@
 const $$$ = require('reselect').createSelector;
+puppeteer = require('puppeteer');
+lwip = require("js-lwip");
 
-const $blogEntries = require("./blogEntries/funkophile.js");
+const blogEntries = require("./blogEntries/funkophile.js");
 const styleFunkophile = require("./stylesheets/funkophile.js")
 
 const {
@@ -15,6 +17,12 @@ const blogFunkophile = require("./blogEntries/funkophile.js");
 
 const CONTACTS = 'CONTACTS'
 const FAVICON_PNG = 'FAVICON_PNG'
+const JPG = 'JPG'
+const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
+const JS = 'JS'
+const LICENSE = 'LICENSE';
+const PDF_SETTINGS = 'PDF_SETTINGS'
+const RESUME = 'RESUME';
 
 const makeResumePdf = (resumeMarkdown, css, pdfSettings) => {
 	return (async () => {
@@ -86,14 +94,21 @@ module.exports = {
 	inputs: {
 		[CONTACTS]: 'contacts.json',
 		[FAVICON_PNG]: 'images/evilShroom.png',
+		[JPG]: 'images/*.jpg',
+		[JS]: 'index.js',
+		[LICENSE]: 'LICENSE.txt',
+		[PDF_SETTINGS]: 'pdfSettings.json',
+		[RESUME]: 'resume.md',
+    [JPG_TRANSFORMS]: 'images/assets.json',
+
 		...styleFunkophile.inputs,
 		...pagesFunkophile.inputs,
-    ...$blogEntries.inputs,
+    ...blogEntries.inputs,
 	},
 
 	outputs: (_) => {
 
-		const blogSelector = $blogEntries.outputs(_);
+		const blogSelector = blogEntries.outputs(_);
 		const cssSelector = styleFunkophile.outputs(_);
 		const pageSelectors = pagesFunkophile.outputs(_);
 
@@ -120,8 +135,6 @@ module.exports = {
 			$js,
 			$favicon,
 			$resumeMarkdown,
-
-
 
 			$content: $$$([pageSelectors, blogSelector.$blog, $resumeMarkdown, $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
 				return {

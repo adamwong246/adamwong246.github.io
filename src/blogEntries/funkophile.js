@@ -1,5 +1,9 @@
 const $$$ = require('reselect').createSelector;
 markdown = require('marky-mark');
+slug = require('slug');
+moment = require('moment');
+cheerio = require("cheerio");
+simpleIcons = require('simple-icons');
 
 const {
 	contentOfFile,

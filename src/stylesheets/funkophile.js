@@ -1,4 +1,6 @@
 const $$$ = require('reselect').createSelector;
+fs = require('fs');
+CleanCSS = require('clean-css');
 
 const {
 	contentOfFile,

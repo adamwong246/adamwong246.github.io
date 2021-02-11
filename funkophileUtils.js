@@ -1,12 +1,4 @@
-cheerio = require("cheerio");
-CleanCSS = require('clean-css');
-fs = require('fs');
 jade = require("jade");
-lwip = require("js-lwip");
-moment = require('moment');
-puppeteer = require('puppeteer');
-simpleIcons = require('simple-icons');
-slug = require('slug');
 
 module.exports = {
 

@@ -44,3 +44,7 @@ A blog entry folder may have a `assets.json` file which describes how to process
 ![This is an modified picture of my dogs.](variant0-dogs.jpg)
 ![This is another modified picture of my dogs.](variant1-dogs.jpg)
 ![This is yet another modified picture of my dogs.](variant2-dogs.jpg)
+
+---
+
+Update: `js-lwip` no longer works with later versions of node. I've since migrated to `@randy.tarampi/lwip`.

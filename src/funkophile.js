@@ -1,6 +1,6 @@
 const $$$ = require('reselect').createSelector;
 puppeteer = require('puppeteer');
-lwip = require("js-lwip");
+lwip = require("@randy.tarampi/lwip");
 
 const blogEntries = require("./blogEntries/funkophile.js");
 const styleFunkophile = require("./stylesheets/funkophile.js")

@@ -1,6 +1,20 @@
 const $$$ = require('reselect').createSelector;
 
+const $blogEntries = require("./blogEntries/funkophile.js");
 const styleFunkophile = require("./stylesheets/funkophile.js")
+
+const {
+	contentOfFile,
+	contentsOfFiles,
+	srcAndContentOfFile,
+	srcAndContentOfFiles
+} = require("../funkophile/funkophileHelpers.js");
+
+const pagesFunkophile = require("./pages/funkophile.js");
+const blogFunkophile = require("./blogEntries/funkophile.js");
+
+const CONTACTS = 'CONTACTS'
+const FAVICON_PNG = 'FAVICON_PNG'
 
 const makeResumePdf = (resumeMarkdown, css, pdfSettings) => {
 	return (async () => {
@@ -32,38 +46,61 @@ const makeResumePdf = (resumeMarkdown, css, pdfSettings) => {
 	})();
 };
 
-const {
-	contentOfFile,
-	contentsOfFiles,
-	srcAndContentOfFile,
-	srcAndContentOfFiles
-} = require("../funkophile/funkophileHelpers.js");
-//
-// const {
-// 	transformJpegs,
-// } = require("../../funkophileUtils.js");
+const jpgTransformPromises = (jpgs, assets) => {
+	return Object.keys(jpgs)
+		.reduce((mm, jKey) => {
+			const shortFileName = jKey.split('/')[3]
+			mm[jKey.split('/').slice(-2).join('/')] = jpgs[jKey]
+			const transformations = JSON.parse(assets)[shortFileName]
+			if (transformations) {
 
-const CONTACTS = 'CONTACTS'
-const FAVICON_PNG = 'FAVICON_PNG'
+				Object.keys(transformations).forEach((transformationKey) => {
+
+					mm['images/' + transformationKey + '-' + shortFileName] = new Promise((res, rej) => lwip.open(jpgs[jKey], 'jpg', (err, image) => {
+
+						const batchImage = image.batch()
+						transformations[transformationKey].forEach((transform) => {
+							ts = Object.keys(transform)[0]
+							args = transform[ts]
+							if (args.length) {
+								batchImage[ts](...transform[ts])
+							} else {
+								batchImage[ts](transform[ts])
+							}
+						});
+
+						batchImage.toBuffer('jpg', {}, (err, buffer) => {
+							res(buffer)
+						})
+					}))
+
+				}, {})
+
+			}
+			return mm;
+		}, {})
+};
 
 module.exports = {
 
 	inputs: {
 		[CONTACTS]: 'contacts.json',
 		[FAVICON_PNG]: 'images/evilShroom.png',
-		...styleFunkophile.inputs
+		...styleFunkophile.inputs,
+		...pagesFunkophile.inputs,
+    ...$blogEntries.inputs,
 	},
-
 
 	outputs: (_) => {
 
+		const blogSelector = $blogEntries.outputs(_);
 		const cssSelector = styleFunkophile.outputs(_);
+		const pageSelectors = pagesFunkophile.outputs(_);
 
 		const $resume = contentOfFile(_["RESUME"]);
 		const $js = contentOfFile(_["JS"]);
 		const $favicon = contentOfFile(_["FAVICON_PNG"]);
 		const $license = contentOfFile(_["LICENSE"]);
-
 
 		const $resumeMarkdown = $$$($resume, markdown.parse);
 
@@ -76,27 +113,49 @@ module.exports = {
 			(resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings))
 
 		return {
+			$pages: pageSelectors,
+			...blogSelector,
+
 			$resume,
 			$js,
 			$favicon,
 			$resumeMarkdown,
 
-			$contacts: $$$(contentOfFile(_[CONTACTS]), (contactsString) => JSON.parse(contactsString).map((c) => {
+
+
+			$content: $$$([pageSelectors, blogSelector.$blog, $resumeMarkdown, $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
 				return {
 					'type': Object.keys(c)[0],
 					'content': c[Object.keys(c)[0]],
 					'icon': simpleIcons.get(Object.keys(c)[0]).svg
 				}
-			})),
+			}))], (p, b, r, c) => {
+				return {
+					pages: p,
+					blog: b,
+					resume: r,
+					contacts: c
+				}
 
-			$all: $$$([$resume, $favicon, $js, $license, $resumePdf, cssSelector.$webCss], (r, f, j, l, rsmPdf, css) => {
+			}),
+
+			$all: $$$([
+				$resume, $favicon, $js, $license, $resumePdf, cssSelector.$webCss, blogSelector.$allBlogAssets,
+				$$$(
+					[_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
+				),
+			], (
+				r, f, j, l, rsmPdf, css, allBlogAssets, jpgs
+			) => {
 				return {
 					'resume.md': r,
 					'favicon.png': f,
 					'index.js': j,
 					'LICENSE.txt': l,
 					'resume.pdf': rsmPdf,
-          'style.css': css
+					'style.css': css,
+					...allBlogAssets,
+					...jpgs
 				}
 			})
 

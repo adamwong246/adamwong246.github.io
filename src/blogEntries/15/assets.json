@@ -18,7 +18,7 @@
     "variant2": [
       {"saturate": -0.95},
       {"scale": 0.1},
-      {"setPixel": [100, 100, "red"]},
+      {"setPixel": [100, 100, "blue"]},
       {"lighten": 0.9}
     ],
 

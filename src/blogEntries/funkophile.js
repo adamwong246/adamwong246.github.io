@@ -8,9 +8,6 @@ const {
 	srcAndContentOfFiles
 } = require("../../funkophile/funkophileHelpers.js");
 
-const {
-	transformJpegs,
-} = require("../../funkophileUtils.js");
 
 // One key for every file input pattern
 const BLOG_ASSETS = 'BLOG_ASSETS'
@@ -19,75 +16,128 @@ const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const BLOG_ENTRIES_GIFS = 'BLOG_ENTRIES_GIFS'
 const BLOG_ENTRIES_MOVS = 'BLOG_ENTRIES_MOVS'
 
+const transformJpegs = (jpgs, assets, blogEntries) => {
+	return jpgs.reduce((mm, jpg) => {
+		const src = jpg.src
+		const jpgSplit = src.split('/')
+
+		const asset = assets.find((asset) => {
+			return src.split('/').slice(0, -1).join('') === asset.src.split('/').slice(0, -1).join('')
+		})
+
+		if (asset) {
+			const assetManifest = asset.json
+			const transformations = assetManifest[jpgSplit.slice(-1)[0]]
+
+			modifiedJpgs = Object.keys(transformations).reduce((mmm, transformationKey) => {
+				const transformation = transformations[transformationKey]
+
+				const modifedImagePromise = new Promise((res, rej) => {
+					return lwip.open(jpg.content, 'jpg', (err, image) => {
+
+						const batchImage = image.batch()
+						transformation.forEach((transform) => {
+							ts = Object.keys(transform)[0]
+							args = transform[ts]
+							if (args.length) {
+								batchImage[ts](...transform[ts])
+							} else {
+								batchImage[ts](transform[ts])
+							}
+						});
+
+						batchImage.toBuffer('jpg', {}, (err, buffer) => {
+							res(buffer)
+						})
+					});
+				})
+
+				const blogFolder = blogEntries.find((b) => src.includes(b.srcFolder)).destFolder
+
+				return {
+					...mmm,
+					[blogFolder + transformationKey + '-' + jpgSplit[jpgSplit.length - 1]]: modifedImagePromise
+				}
+			}, {})
+			return {
+				...mm,
+				...modifiedJpgs
+			}
+		} else {
+			return mm
+		}
+	}, {})
+};
+
 const updateBlogImagePaths = (blogEntries, jpgs, gifs, movs) => {
-  return blogEntries.map((blogEntry) => {
-    const blogEntryHtmlString = blogEntry.markdownContent
+	return blogEntries.map((blogEntry) => {
+		const blogEntryHtmlString = blogEntry.markdownContent
 
-    const $ = cheerio.load(blogEntryHtmlString)
+		const $ = cheerio.load(blogEntryHtmlString)
 
-    Object.keys(jpgs).forEach((jpg) => {
-      const split = jpg.split('/')
-      $(':root')
-        .find(`img[src="${split[split.length -1]}"]`)
-        .replaceWith(cheerio(`<img src=${'/' + jpg}></img>`))
-    })
+		Object.keys(jpgs).forEach((jpg) => {
+			const split = jpg.split('/')
+			$(':root')
+				.find(`img[src="${split[split.length -1]}"]`)
+				.replaceWith(cheerio(`<img src=${'/' + jpg}></img>`))
+		})
 
-    Object.keys(gifs).forEach((gif) => {
-      const split = gif.split('/')
-      $(':root')
-        .find(`img[src="${split[split.length -1]}"]`)
-        .replaceWith(cheerio(`<img src=${'/' + gif}></img>`))
-    })
-    return {
-      ...blogEntry,
-      markdownContent: $.html(),
-      // images: {jpgs, gifs, movs}
-    }
-  })
+		Object.keys(gifs).forEach((gif) => {
+			const split = gif.split('/')
+			$(':root')
+				.find(`img[src="${split[split.length -1]}"]`)
+				.replaceWith(cheerio(`<img src=${'/' + gif}></img>`))
+		})
+		return {
+			...blogEntry,
+			markdownContent: $.html(),
+			// images: {jpgs, gifs, movs}
+		}
+	})
 };
 
 const processBlogEntries = (blogEntries) => {
-  return blogEntries.map((blogEntry) => {
-      const markdownContent = markdown.parse(blogEntry.content)
-      const entryId = blogEntry.src.split('/')[3]
-      const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
-      const filePath = slugPath + 'index.html';
-      return {
-        meta: markdownContent.meta,
-        markdownContent: markdownContent.content,
-        dest: filePath,
-        url: `/${filePath}`,
-        destFolder: slugPath,
-        srcFolder: blogEntry.src.split('index.md')[0],
-        entryId
-      }
-    })
-    .sort((b, a) => moment(a.meta.publishedAt)
-      .diff(moment(b.meta.publishedAt)))
-    .map((lmnt, ndx, ry) => {
+	return blogEntries.map((blogEntry) => {
+			const markdownContent = markdown.parse(blogEntry.content)
+			const entryId = blogEntry.src.split('/')[3]
+			const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
+			const filePath = slugPath + 'index.html';
+			return {
+				meta: markdownContent.meta,
+				markdownContent: markdownContent.content,
+				dest: filePath,
+				url: `/${filePath}`,
+				destFolder: slugPath,
+				srcFolder: blogEntry.src.split('index.md')[0],
+				entryId
+			}
+		})
+		.sort((b, a) => moment(a.meta.publishedAt)
+			.diff(moment(b.meta.publishedAt)))
+		.map((lmnt, ndx, ry) => {
 
-      if (ndx === ry.length - 1) {
-        lmnt.meta.previous = null;
-      } else {
-        const previous = ry[ndx + 1];
-        lmnt.meta.previous = {
-          url: previous.url,
-          title: previous.meta.title,
-        };
-      }
+			if (ndx === ry.length - 1) {
+				lmnt.meta.previous = null;
+			} else {
+				const previous = ry[ndx + 1];
+				lmnt.meta.previous = {
+					url: previous.url,
+					title: previous.meta.title,
+				};
+			}
 
-      if (ndx === 0) {
-        lmnt.meta.next = null;
-      } else {
-        const next = ry[ndx - 1];
-        lmnt.meta.next = {
-          url: next.url,
-          title: next.meta.title,
-        };
-      }
+			if (ndx === 0) {
+				lmnt.meta.next = null;
+			} else {
+				const next = ry[ndx - 1];
+				lmnt.meta.next = {
+					url: next.url,
+					title: next.meta.title,
+				};
+			}
 
-      return lmnt
-    })
+			return lmnt
+		})
 };
 
 module.exports = {
@@ -97,7 +147,7 @@ module.exports = {
 		[BLOG_ASSETS]: 'blogEntries/**/assets.json',
 		[BLOG_ENTRIES_GIFS]: 'blogEntries/**/*.gif',
 		[BLOG_ENTRIES_JPGS]: 'blogEntries/**/*.jpg',
-    [BLOG_ENTRIES_MOVS]: 'blogEntries/**/*.mov',
+		[BLOG_ENTRIES_MOVS]: 'blogEntries/**/*.mov',
 		[BLOG_ENTRIES]: 'blogEntries/**/index.md',
 	},
 
@@ -158,24 +208,29 @@ module.exports = {
 		], transformJpegs);
 
 
-    return {
-      $allBlogAssets: $$$([$blogEntriesGifs, $blogEntriesMovs, $blogEntriesJpgsOrginal, $blogEntriesJpgsModified], (gifs, movs, jpgOrginals, jpgModifieds) => {
-        return {...gifs, ...movs, ...jpgOrginals, ...jpgModifieds}
-      }),
+		return {
+			$allBlogAssets: $$$([$blogEntriesGifs, $blogEntriesMovs, $blogEntriesJpgsOrginal, $blogEntriesJpgsModified], (gifs, movs, jpgOrginals, jpgModifieds) => {
+				return {
+					...gifs,
+					...movs,
+					...jpgOrginals,
+					...jpgModifieds
+				}
+			}),
 
-      $blog: $$$([
-        $blogEntries, $$$([
-          $blogEntriesJpgsOrginal,
-          $blogEntriesJpgsModified
-        ], (originals, modifed) => {
-          return {
-            ...originals,
-            ...modifed
-          }
-        }), $blogEntriesGifs,
-        $blogEntriesMovs
-      ], updateBlogImagePaths)
-    }
+			$blog: $$$([
+				$blogEntries, $$$([
+					$blogEntriesJpgsOrginal,
+					$blogEntriesJpgsModified
+				], (originals, modifed) => {
+					return {
+						...originals,
+						...modifed
+					}
+				}), $blogEntriesGifs,
+				$blogEntriesMovs
+			], updateBlogImagePaths)
+		}
 
 	}
 }

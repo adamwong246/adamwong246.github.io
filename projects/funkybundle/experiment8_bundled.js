@@ -15,7 +15,7 @@ function area(radius) {
 }
 exports.default = area; },};
 const entry = "/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/index.js";
-function webpackStart({ modules, entry }) {
+function funkypackStart({ modules, entry }) {
   const moduleCache = {};
   const require = moduleName => {
     // if in cache, return the cached version
@@ -34,4 +34,4 @@ function webpackStart({ modules, entry }) {
   // start the program
   require(entry);
 }
-webpackStart({ modules, entry });
+funkypackStart({ modules, entry });

@@ -1,6 +1,6 @@
 #main-container {
   display: flex;
-  min-height: 91vh;
+  min-height: 92vh;
   flex-direction: column;
   flex: 1 0 auto;
 }
@@ -79,7 +79,6 @@
    }
 }
 
-
 nav {
   order: -1;
   position: fixed;
@@ -113,3 +112,4 @@ pre, code {
   clear: both;
   display: table;
 }
+

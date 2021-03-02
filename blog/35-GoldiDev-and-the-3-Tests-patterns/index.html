@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"><link href="/style.css" rel="stylesheet" type="text/css"><title>GoldiDev and the 3 Tests patterns</title><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-47887894-1', 'auto');
+ga('send', 'pageview');</script><script src="/index.js"></script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu animate-logo"><div id="main-container"><nav><div id="site-title"><h3><img src="/favicon.png" onClick="openMenu()" class="box bounce-7"><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <ul><li><span><a href="/aboutMe/index.html">About me</a></span></li><li><span><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></span></li><li><span><a href="/sideprojects/index.html">Side projects</a></span></li><li><span><a href="/blog/index.html">Blog entries</a></span></li><li><span>Latest entry: <a href="/blog/35-GoldiDev-and-the-3-Tests-patterns/index.html">GoldiDev and the 3 Tests patterns</a></span></li></ul></div></nav><main><article><header><h1><a href="/blog/35-GoldiDev-and-the-3-Tests-patterns/index.html">GoldiDev and the 3 Tests patterns</a></h1><h4><time>March 1st 2021</time></h4><hr></header><p>I recently did a code challenge for a job and came up with a nice way to test application logic.</p>
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  /* padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none; */
+}
+</style>
+
+
+
+<h2 id="tests-and-types-of-tests">Tests and types of tests</h2>
+<p>Developers like to have the same arguments over and over again. One perennial favorite is the naming-of-types-of tests debate- as in, what <em>kind</em> of test is this? You have unit tests, the smallest of all types of tests, which typically interogate functions. This is not to be confused with <em>functional testing</em> which is NOT the testing of functions, nor the testing <em>by</em> functions, but the testing of <em>functionality</em>. There are &quot;Acceptance tests&quot; and &quot;Integration tests&quot;, commonly understood to be bigger tests of whole systems. In the context of of web development, this means running a server(s), a browser, a bot and Selenium. You can test functions or classes (which are of course just functions). You can test the React classes in multiple ways too. There&apos;s a LOT of ways you can test your application and knowing which are worthwhile, and which are not, can make or break your deadlines.</p>
+<p>Each type of test has a value and a cost. The test takes developer-time to write and maintain. Long running tests make you wait around, like a gambler at a slot machine, hoping that <em>maybe</em> this time, your tests will pass 100%. Some tests are snakepits of complication, while others are too simple to be of any use. There really isn&apos;t a right or wrong answer- intuition and experience can teach which tests to apply and where. </p>
+<p>My experience has taught me a few things about web app architecture: The view ought to be a simple functional React render, a redux store should manage nearly all the application state, selectors should channel that store into your React view, and <strong>testing should be done by applying actions to the store and interogating the selectors.</strong> This philosophy drove my design of Burger Lord. </p>
+<h2 id="integration-tests-or-this-porridge-is-too-hot-">Integration tests, or &quot;This porridge is too hot&quot;</h2>
+<p>Typically when web developers employ cucumber, it is to write (nearly) plain English (or whatever your language may be) DSL describing a user&apos;s interactions with a webpage. The cucumber scenarios will be parsed and matched against regular expressions and mapped to a selenium process driving a browser, the browser making requests against the server. While there&apos;s a lot of worth in writing the scenarios themselves, the actual process of writing and running full integration tests is enormous. Integeration tests are fussy to write and are generally just flimsy- your QA person will probably know of a few tests that just fail for some mysterious reason from time to time. These &quot;big&quot; tests are valuable but the investment in developer-time is not to be ignored. Menwhile, integration test suite run-times are often measured in hours.</p>
+<h2 id="unit-tests-or-this-porridge-is-too-cold-">Unit tests, or &quot;This porridge is too cold&quot;</h2>
+<p>On the far end of the spectrum ot test-types, we have unit tests. These tests are typically assertions of functions- that, for <em>this</em> input, a function returns an expected <em>output</em>. &quot;Small&quot; tests are usefull, but also limited. Programmers know to write functions which are small and understandable, and when testing their own work, will simply cheese-it with easy tests in an effort to keep the code-coverage high enough to pass PR review. So often, the functions themseleves are correct- it&apos;s the interaction between functions which fail. The tests are easier to write, and much faster to execute, but much less usefull, because testing the obvious is, by definition, a not really necesssary. </p>
+<h2 id="react-tests-or-this-porridge-is-burnt-on-the-top-and-frozen-on-the-bottom-">React tests, or &quot;This porridge is burnt on the top and frozen on the bottom&quot;</h2>
+<p>You can also test React components. You typically mount or render or virtually render a react element, (it&apos;s complicated) and then make assertions. This sounds appealing but the reality is having multiple ways of testing a React component isn&apos;t fun. <em>React components are things that really ought not need to be tested at all</em>, and none of the options at your disposal are intuitive. React components have the capacity for state and complex behavior, but anyone who&apos;s had to deal with such knows it&apos;s far better to write simple views. You really REALLY do NOT want big fat React views- you want small functions that take props and event hooks, and return HTML. And if your React classes ARE a straightforward mapping of props to html, do you really need to test it? Any visual artifacts are quite easy to detect by eye- you are probably prototyping in storybooks anyways. Add to the situation the state of React testing, which is fragmented and confusing. It&apos;s an absolute time-sink for little value returned.</p>
+<h2 id="reduxreselect-tests-or-this-porridge-is-juuuuust-right-">reduxReselect Tests or &quot;This porridge is juuuuust right!&quot;</h2>
+<p>The web development community has pretty much concluded what I said earlier- your state should be a redux store, fed to a functional view. The bridge between the 2 is  &quot;selector&quot; provided by reselect. Selectors take the store&apos;s state, the minimal representation of your app, and apply some computed fields, then pass this &quot;expanded&quot;, de-normalized data to the view. It&apos;s also the natural place to test your application.</p>
+<p>The implementation of the test is quite straightforward. We make the store, apply some actions, then take the new state, feed it to the selector, then finally make some assertions about the result of that selector. </p>
+<div id="firstCodeSection">
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, &apos;test&apos;)">test.js</button>
+    <button class="tablinks" onclick="openCity(event, &apos;store&apos;)">store.js</button>
+    <button class="tablinks" onclick="openCity(event, &apos;selector&apos;)">selector.js</button>
+
+</div>
+
+<div id="test" class="tabcontent">
+  <pre><code>  it(&apos;you compute the cost of a sandwich&apos;, () =&gt; {
+    const store = storeCreator(initialState);
+    const sandwichName = &quot;The new name of a sandwich&quot;;
+
+    assert.equal(NewOrderSelector(store.getState()).sandwiches.length, 0);
+    store.dispatch({ type: &quot;CHANGE_STAGED_SANDWICH_NAME&quot;, payload: sandwichName })
+    store.dispatch({ type: &quot;ADD_SANDWICH&quot; })
+    store.dispatch({ type: &quot;SELECT_INGREDIENT_TO_PUSH&quot;, payload: { sandwichName: sandwichName, ingredientId: 5 } })
+    store.dispatch({ type: &quot;PUSH_INGREDIENT&quot;, payload: 0 })
+    assert.equal(NewOrderSelector(store.getState()).sandwiches[0].cost, 5);
+  });
+</code></pre>
+</div>
+
+<div id="store" class="tabcontent active">
+  <pre><code>export default (initialState) =&gt; createStore((state = [], action) =&gt; {
+  switch (action.type) {
+
+    case SELECT_INGREDIENT_TO_PUSH:
+      return {
+        ...state,
+        sandwiches: state.sandwiches.map((sandwich) =&gt; {
+          if (sandwich.name === action.payload.sandwichName) {
+            sandwich.toPush = action.payload.ingredientId
+          }
+          return sandwich
+        })
+      }
+
+    case PUSH_INGREDIENT:
+      return {
+        ...state,
+        sandwiches: state.sandwiches.map((sandwich, ndx) =&gt; {
+          if (ndx === action.payload) {
+            sandwich.recipe.push(sandwich.toPush)
+            sandwich.toPush = &quot;&quot;
+          }
+          return sandwich
+        }),
+      }
+    case CHANGE_SANDWICH_NAME:
+      return {
+        ...state,
+        sandwiches: state.sandwiches.map((s, ndx) =&gt; {
+          if (ndx === action.payload.index) {
+            s.name = action.payload.sandwichName
+          }
+          return s;
+        })
+      }
+
+    case ADD_SANDWICH:
+      return {
+        ...state,
+        stagedSandwich: &quot;&quot;,
+        sandwiches: [
+          ...state.sandwiches,
+          {
+            name: state.stagedSandwich, recipe: [], toPush: &quot;&quot;
+          }
+        ]
+      }
+
+    case CHANGE_STAGED_SANDWICH_NAME:
+      return {
+        ...state,
+        stagedSandwich: action.payload
+      }
+
+      return {
+        ...state,
+        orders: newOrders
+      }
+
+    default:
+      return state
+  }
+}, initialState)
+</code></pre>
+</div>
+
+<div id="selector" class="tabcontent">
+  <pre><code>export const NewOrderSelector = createSelector([baseSelector], (base) =&gt; {
+
+  const subTotal = base.sandwiches.reduce((mm, sandwich) =&gt; {
+    return mm + sandwich.recipe.reduce((mm2, recipeIngredientId) =&gt; {
+      return (mm2 + (base.ingredients.find((ingredient) =&gt; ingredient.id === recipeIngredientId).cost) )
+    }, 0)
+  }, 0)
+
+  const grandTotal = (subTotal * (1 + (base.gratuity / 100))).toFixed(2);
+
+  const runningTally = {};
+  base.ingredients.forEach((ingredient) =&gt; runningTally[ingredient.id] = ingredient.amount)
+  base.sandwiches.forEach((sandwich) =&gt; {
+    sandwich.recipe.forEach((recipeIngredientId) =&gt; {
+      runningTally[recipeIngredientId] = runningTally[recipeIngredientId] -1
+    })
+  })
+
+  return {
+    orders: base.orders,
+    sandwiches: base.sandwiches.map((sandwich) =&gt; {
+      return {
+        ...sandwich,
+        cost: sandwich.recipe.reduce((mm, id) =&gt; { return mm + base.ingredients.find((ingredient) =&gt; ingredient.id === id).cost }, 0)
+      }
+    }),
+    ingredients: base.ingredients,
+
+    gratuity: base.gratuity || 0,
+    stagedSandwich: base.stagedSandwich,
+
+    subTotal, grandTotal, runningTally,
+
+    orderDisabled: base.sandwiches.length === 0 
+  }
+});
+</code></pre>
+</div>
+</div>
+
+
+<p>We are getting a LOT of bang for our buck here. We are hitting all the important logic, without rendering any view. It&apos;s just a single node process unlike integration tests which must run full systems. There&apos;s no virtual-dom to trip over, and data setup is simple- no mocking or stubbing required. And this pattern can be used in node applications too- there&apos;s nothing about about redux and reselect preventing you from using them on the server-side too. These &quot;selector-store tests&quot; or maybe &quot;redux-reselect&quot; tests or whatever you want to call them, hit the sweet spot. They help enforce good architecture, they are <em>usefull</em>, rather than an obligation, they are fast as unit test and, can be, as expressive as integration tests. </p>
+<p>We can make things even sweeter by introducing a Cucumber-ish DSL! If we map &quot;Given&quot; statements to the initial state of the store, the &quot;When&quot; statements to redux actions and the &quot;Then&quot; statements to aspects of the selector we wish to measure, we produce a modest Cucumber suite. We finally acheive the dream of a testing framework simpler than the thing being tested!</p>
+<div id="secondCodeSection">
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, &apos;scenarios&apos;)">scenarios.js</button>
+  <button class="tablinks" onclick="openCity(event, &apos;givens&apos;)">givens.js</button>
+  <button class="tablinks" onclick="openCity(event, &apos;whens&apos;)">whens.js</button>
+  <button class="tablinks" onclick="openCity(event, &apos;thens&apos;)">thens.js</button>
+</div>
+
+<div id="scenarios" class="tabcontent">
+  <pre><code>export default {
+  &quot;very simple scenarios&quot;: {
+    &quot;Test of sandwiches add&quot;: {
+      givens: [&quot;an initial store with ingredient #1 amount &apos;100&apos;&quot;],
+      whens: [
+        &quot;I change the staged sandwich name to &apos;Adams sandwich&apos;&quot;,
+        &quot;I add the sandwich&quot;,
+        &quot;I change the staged sandwich name to &apos;Chaches sandwich&apos;&quot;,
+        &quot;I add the sandwich&quot;,
+      ],
+      thens: [
+        &quot;sandwich #0 should have name &apos;Adams sandwich&apos;&quot;,
+        &quot;sandwich #1 should have name &apos;Chaches sandwich&apos;&quot;
+      ]
+    }
+  },
+};
+</code></pre>
+</div>
+
+<div id="givens" class="tabcontent">
+  <pre><code>export default [
+    { matcher: /an initial store with ingredient #(\d<em>) amount &apos;(\d</em>)&apos;/gm, modifier: (state) =&gt; state }
+]
+</code></pre>
+</div>
+
+<div id="whens" class="tabcontent">
+<pre><code>
+// Notice how there is 1 &quot;when&quot; for each redux action
+export default [
+  {
+    matcher: /I submit the order with a grand total of &apos;(.<em>)&apos;/gm,
+    action: NEW_ORDER,
+    payload: (match) =&gt; match[0][1]
+  },
+  {
+    matcher: /I remove sandwich #(.</em>)/gm,
+    action: REMOVE_SANDWICH,
+    payload: (match) =&gt; parseInt(match[0][1])
+  },
+  {
+    matcher: /I pop the top of sandwich &apos;(.<em>)&apos;/gm,
+    action: POP_INGREDIENT,
+    payload: (match) =&gt; match[0][1]
+  },
+  {
+    matcher: /I change the name of sandwich #(.</em>) to &apos;(.<em>)&apos;/gm,
+    action: CHANGE_SANDWICH_NAME,
+    payload: (match) =&gt; {
+      return {index: parseInt(match[0][1]), sandwichName: (match[0][2]) };
+    }
+  },
+  {
+    matcher: /I change the gratuity name to &apos;(.</em>)&apos;/gm,
+    action: CHANGE_GRATUITY,
+    payload: (match) =&gt; parseInt(match[0][1])
+  },
+  {
+    matcher: /I change the staged sandwich name to &apos;(.<em>)&apos;/gm,
+    action: CHANGE_STAGED_SANDWICH_NAME,
+    payload: (match) =&gt; match[0][1]
+  },
+  {
+    matcher: /I select the ingredient &apos;(.</em>)&apos; for &apos;(.<em>)&apos;/gm,
+    action: SELECT_INGREDIENT_TO_PUSH,
+    payload: (match) =&gt; {
+      return { sandwichName: match[0][2], ingredientId: parseInt(match[0][1]) }
+    }
+  },
+  {
+    matcher: /I push the selected ingredient for sandwich &apos;(.</em>)&apos;/gm,
+    action: PUSH_INGREDIENT,
+    payload: (match) =&gt; parseInt(match[0][1])
+  },
+  {
+    matcher: /I add the sandwich/gm,
+    action: ADD_SANDWICH,
+    payload: () =&gt; true
+  }
+]
+</code></pre>
+</div>
+
+<div id="thens" class="tabcontent">
+<pre><code>
+export default [
+  {
+    matcher: /ingredients #(.<em>) should have amount (.</em>)/gm,
+    assert: (match, computed) =&gt; {
+      assert.equal(
+        computed.ingredients.find((i) =&gt; i.id === parseInt(match[0][1])).amount,
+        parseInt(match[0][2])
+      )
+    }
+  },
+  {
+    matcher: /sandwich #(.<em>) should have name &apos;(.</em>)&apos;/gm,
+    assert: (match, computed) =&gt; {
+      assert.equal(
+        computed.sandwiches[parseInt(match[0][1])].name,
+        match[0][2]
+      )
+    }
+  },
+  {
+    matcher: /there should be (.<em>) sandwiches/gm,
+    assert: (match, computed) =&gt; {
+      assert.equal(
+        computed.sandwiches.length,
+        parseInt(match[0][1])
+      )
+    }
+  },
+
+  {
+    matcher: /sandwich #(.</em>) should have (.<em>) ingredients/gm,
+    assert: (match, computed) =&gt; {
+      assert.equal(
+        computed.sandwiches[parseInt(match[0][1])].recipe.length,
+        parseInt(match[0][2])
+      )
+    }
+  },
+
+  {
+    matcher: /the running tally for ingredient &apos;(.</em>)&apos; should be &apos;(.<em>)&apos;/gm,
+    assert: (match, computed) =&gt; { assert.equal(computed.runningTally[match[0][1]], parseInt(match[0][2])) }
+  },
+  {
+    matcher: /the gratuity should be &apos;(.</em>)&apos;/gm,
+    assert: (match, computed) =&gt; assert.equal(computed.gratuity, parseInt(match[0][1]))
+  },
+  {
+    matcher: /sandwich #(.<em>) should have name &apos;(.</em>)&apos;/gm,
+    assert: (match, computed) =&gt; {
+      assert.equal(computed.sandwiches[parseInt(match[0][1])].name, match[0][2] )
+    }
+  }
+
+]
+</code></pre>
+</div>
+
+<p></p></div><p></p>
+<h2 id="pros-and-cons">Pros and Cons</h2>
+<p>Whats NOT so great about this approach? Well, you AREN&apos;T testing the view, so if you are doing crazy stateful things, these tests may give you false security. You can&apos;t test more than 1 store- luckily most apps have but 1. And you can&apos;t test inter-connected systems- you can only mock a redux store and then examine the results of a selector. But you know what&apos;s awesome about this approach? It&apos;s <em>fast.</em> Fast enough to run in the background and run like unit-tests. Were they integration tests, my cucumber steps might have taken 5 minutes to boot up, login and start poking links via Selenium. But by testing just the store and selector, my entire suite of 20 cucumber scenarios can be ran in 75 milliseconds. </p>
+<h2 id="coda">Coda</h2>
+<p>Developers are lazy, for good or for bad. If they <em>must</em> write tests, often they write silly tests. I know I did. Our CI process would kickback any PR that didn&apos;t meet the testing threshold and I&apos;d be forced to write a test, <em>any</em> test, to get the PR merged. Not a usefull test, mind you. Just a test which was previously NOT tested. </p>
+<p>This is not good. It&apos;s not <em>supposed</em> to be like that, at all!</p>
+<p>But here&apos;s the thing: when the test is usefull, the devs will write them. To a dev, the test is just a thing to be solved, like any other code, a means to an end. And if the test helps get the job done, devs will employ them. Devs don&apos;t like to manually test the application, and they <em>really</em> don&apos;t like being woke up in the middle of the night because the server caught on fire. It behooves us to write good code, not just fancy code or slinging the equivelant of EMCA dogfood, but <em>reliable</em> engineering that does what it says on the tin without falling over. We owe it to the user&apos;s and to ourselves.</p>
+<p>Here&apos;s the demo <a href="https://adamwong246.github.io/Burger_Lord/">Burger Lord</a> and here&apos;s <a href="https://github.com/adamwong246/Burger_Lord">the code</a>.</p>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+document.querySelectorAll('.tab > button:first-child').forEach((b) => b.click())
+
+</script></article><hr><a href="/blog/34-Passive-resistance-and-open-displays-of-contempt/index.html" class="back-link">⬅️ Passive resistance and open displays of contempt</a></main></div><footer><span><a href="https://github.com/adamwong246/adamwong246.github.io">v1.6.10</a> <a href="/sitemap.html">sitemap </a> <button onClick="toggleDark()" class="dark-toggle">🌙</button></span></footer></body></html>

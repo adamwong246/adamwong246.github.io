@@ -18,10 +18,6 @@ blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
 
-p {
-  margin-bottom: 0;
-}
-
 ul {
   padding-left: 1.5em;
   margin-top: 0em;

@@ -87,7 +87,7 @@ module.exports = {
 						'resume.html': jadeRenderPageLayout(content.resume.content, resumeLayout, localsToJadeRender),
 
 						// 404s break on github?
-						// '404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
+						'404.html': jadeRender(notFoundContent, pageLayout, localsToJadeRender)
 					}
 				}),
 				srcSelector.$all,

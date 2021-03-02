@@ -1,5 +1,5 @@
 ---
-title: GoldiDev and the 3 Tests patterns
+title: GoldiDev and the 3 Test patterns
 publishedAt: Mon Mar 01 2021 11:05:33 GMT-0800 (Pacific Standard Time)
 ---
 
@@ -380,7 +380,7 @@ export default [
 
 ## Pros and Cons
 
-Whats NOT so great about this approach? Well, you aren't necessarily testing the view, so if you are doing crazy stateful things in the view, these tests may give you false security. You can't test more than 1 store- luckily most apps have but 1. And you can't test inter-connected systems- you can only make a redux store, appy actions to it and then examine the results of a selector based on the new state. But you know what's awesome about this approach? It's _fast._ Fast enough to run in the background and run like unit-tests. Were they integration tests, my cucumber steps might have taken multiple minutes to boot up, login and start poking links via Selenium. But by testing just the store and selector, my entire suite of 20 cucumber scenarios can be ran in 75 milliseconds. We can do pseudo-integration-ish tests orders of magnitudes faster than their bigger counterparts. It's fast enough to be watched and run during a dev's coding process, like unit tests, but it tests deep, stateful logic, not just trivial "functional" logic. It's all wrapped up in a psuedo-cucumber syntax which is simple enough for a non-technical stakeholders but easy for coders to parse.
+Whats NOT so great about this approach? Well, you aren't necessarily testing the view, so if you are doing crazy stateful things in the view, these tests may give you false security. You can't test more than 1 store- luckily most apps have but 1. And you can't test inter-connected systems- you can only make a redux store, appy actions to it and then examine the results of a selector based on the new state. But you know what's awesome about this approach? It's _fast._ Fast enough to run in the background and run like unit-tests. Were they integration tests, my cucumber steps might have taken multiple minutes to boot up, login and start poking links via Selenium. But by testing just the store and selector, my entire suite of 20 cucumber scenarios can be ran in 75 milliseconds. We can do pseudo-integration-ish tests orders of magnitudes faster than their bigger counterparts. It's fast enough to be watched and run during a dev's coding process, like unit tests, but it tests deep, stateful logic, not just trivial "functional" logic. _It turns troublesome stateful tests *into* trivial functional tests._ It's all wrapped up in a psuedo-cucumber syntax which is simple enough for a non-technical stakeholders to contribute to but easy for coders to parse.
 
 ## What kind of test is this?
 

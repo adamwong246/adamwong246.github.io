@@ -6,47 +6,15 @@ publishedAt: Mon Mar 01 2021 11:05:33 GMT-0800 (Pacific Standard Time)
 I recently did a code challenge for a job and came up with a nice way to test application logic.
 
 <style>
-body {font-family: Arial;}
+  .tabcontent:not(.active) {
+    /* background-color: red; */
+    display:none;
+  }
 
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  /* padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none; */
-}
+  .tabcontent.active {
+    background-color: darkgrey;
+  }
 </style>
-
-
 
 ## Tests and types of tests
 
@@ -58,11 +26,11 @@ My experience has taught me a few things about web app architecture: The view ou
 
 ## Integration tests, or "This porridge is too hot"
 
-Typically, web developers employ cucumber to write (nearly) plain English (or whatever your language may be) scenarios describing a user's interactions with a webpage. The cucumber scenarios will be parsed and matched against regular expressions, then sent to a selenium process driving a browser, the browser making requests against the server. It's a slow roundtrip, waiting for pages to load. While there's a lot of worth in writing the scenarios themselves, the actual process of writing and running full integration tests is enormous. Integeration tests are fussy to write and are generally just kind of flimsy- your QA person will probably know of a few tests that just fail for some mysterious reason from time to time. These "big" tests are valuable for big features but the investment in developer-time is not to be ignored. Integration test suite run-times are often measured in hours. Thse big tests are so _expensive_, they really ought to be measured in dollars because AWS resources aren't free. Niether are QA-hours and dev-hours spent watching progress bars. And trust me when I say that if a test is not fast and nimble enough for a developer to find useful, they will not WANT to write, maintain or run it!
+Integration tests test the entire stack of an application- from browser to databse. Typically, web developers employ cucumber to write (nearly) plain English (or whatever your language may be) scenarios describing a user's interactions with a webpage. The cucumber scenarios will be parsed and matched against regular expressions, then sent to a selenium process driving a browser, the browser making requests against the server. It's a slow roundtrip, waiting for pages to load. While there's a lot of worth in writing the scenarios themselves, the actual process of writing and running full integration tests is enormous. Integeration tests are fussy to write and are generally just kind of flimsy- your QA person will probably know of a few tests that just fail for some mysterious reason from time to time. These "big" tests are valuable for big features but the investment in developer-time is not to be ignored. Integration test suite run-times are often measured in hours. Thse big tests are so _expensive_, they really ought to be measured in dollars because AWS resources aren't free. Niether are QA-hours and dev-hours spent watching progress bars. And trust me when I say that if a test is not fast and nimble enough for a developer to find useful, they will not WANT to write, maintain or run it!
 
 ## Unit tests, or "This porridge is too cold"
 
-On the far end of the spectrum ot test-types, we have unit tests. These tests are typically assertions of functions- that, for _this_ input, a function returns an expected _output_. "Small" tests are usefull, but also limited. Programmers know to write functions which are small and understandable, and when testing their own work, will simply cheese-it with easy tests in an effort to keep the code-coverage high enough to pass PR review. So often, the functions themseleves are correct- it's the interaction between functions which fail. The tests are easier to write, and much faster to execute, but much less usefull, because testing the obvious is, by definition, not really necesssary. 
+On the far end of the spectrum ot test-types, we have unit tests. At their most discrete, these "small" tests are make assertions of functions- that, for _this_ input, a function returns an expected _output_. Unit tests are usefull, but limited. Programmers know to write functions which are small and understandable, and when testing their own work, will simply cheese-it with easy tests in an effort to keep the code-coverage high enough to pass PR review. So often, the functions themseleves are correct- it's the interaction between functions which fail. The tests are easier to write, and much faster to execute, but much less usefull, because testing the obvious is, by definition, not really necesssary. 
 
 ## React tests, or "This porridge is burnt on the top and frozen on the bottom!"
 
@@ -77,21 +45,25 @@ Tests are usefull for 2 reasons. 1) They provide struts for you to develop your 
 
 Much like unit tests, react tests don't really help you solve difficult state-based bugs, because any bugs in your functional view will be trivial to solve. Obvious bugs tend to have obvious solutions. This is not always true, but is often true. Integration tests are state based, but are immensly expensive. We need a different kind of test- one that can test the core logic and the state of the app, as it changes, without (necessarily) involving the overhead of the view and without excessive testing apparati.
 
-## "This porridge is juuuuust right!"
+Good code tends to come in layers- clear, tested and testable APIs handling a known responsibility. And all software has 3 layers. These are 1) the state 2) the logic and 3) the view. The state is the foundation, the possible "ways" an application can be. The logic is the number crunching of which it is vitally important to be correct. The view is all the extra stuff on top to make it easy for humans to handle. Good code will keep these 3 concerns apart. Bad code is usually the mixing of these 3 concerns into an unmaintainable tangle. Each layer needs to be tested, but not all layers are equal. The view, as stated before, needs to be functional. It needs to be a function of the selected state, because that makes it easy to test.
 
-The web development community has pretty much concluded what I said earlier- your state should be a redux store, fed to a functional view. The bridge between the 2 is  "selector" provided by reselect. Selectors take the store's state, the minimal representation of your app, and apply some computed fields, then pass this "expanded", de-normalized data to the view. It's a natural chokepoint for data flowing through the application and it's also the natural place to test your application.
+
+
+## Selected State tests, or "This porridge is juuuuust right!"
+
+The web development community has pretty much concluded what I said earlier- your state should be a redux store, fed to a functional view. The bridge between the 2 is the "selector" provided by reselect. Selectors take the store's state, the minimal representation of your app, and apply some computed fields, then pass this "expanded", de-normalized data to the view. It's a natural chokepoint for data flowing through the application and it's also the natural place to test your application.
 
 The implementation of the test is quite straightforward. We make the store, apply some actions, then take the new state, feed it to the selector, then finally make some assertions about the result of that selector. 
 
 <div id="firstCodeSection">
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'test')">test.js</button>
-    <button class="tablinks" onclick="openCity(event, 'store')">store.js</button>
-    <button class="tablinks" onclick="openCity(event, 'selector')">selector.js</button>
+    <button class="tablinks" onclick="openTab(event, 'test', 'firstCodeSection')">test.js</button>
+    <button class="tablinks" onclick="openTab(event, 'store', 'firstCodeSection')">store.js</button>
+    <button class="tablinks" onclick="openTab(event, 'selector', 'firstCodeSection')">selector.js</button>
   
 </div>
 
-<div id="test" class="tabcontent">
+<div id="test" class="tabcontent active">
   <pre><code>  it('you compute the cost of a sandwich', () => {
     const store = storeCreator(initialState);
     const sandwichName = "The new name of a sandwich";
@@ -106,7 +78,7 @@ The implementation of the test is quite straightforward. We make the store, appl
 </code></pre>
 </div>
 
-<div id="store" class="tabcontent active">
+<div id="store" class="tabcontent">
   <pre><code>export default (initialState) => createStore((state = [], action) => {
   switch (action.type) {
 
@@ -222,13 +194,13 @@ We can make things even sweeter by introducing a dead-simple Cucumber DSL! If we
 
 <div id="secondCodeSection">
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'scenarios')">scenarios.js</button>
-  <button class="tablinks" onclick="openCity(event, 'givens')">givens.js</button>
-  <button class="tablinks" onclick="openCity(event, 'whens')">whens.js</button>
-  <button class="tablinks" onclick="openCity(event, 'thens')">thens.js</button>
+  <button class="tablinks" onclick="openTab(event, 'scenarios', 'secondCodeSection')">scenarios.js</button>
+  <button class="tablinks" onclick="openTab(event, 'givens', 'secondCodeSection')">givens.js</button>
+  <button class="tablinks" onclick="openTab(event, 'whens', 'secondCodeSection')">whens.js</button>
+  <button class="tablinks" onclick="openTab(event, 'thens', 'secondCodeSection')">thens.js</button>
 </div>
 
-<div id="scenarios" class="tabcontent">
+<div id="scenarios" class="tabcontent active">
   <pre><code>export default {
   "very simple scenarios": {
     "Test of sandwiches add": {
@@ -380,11 +352,11 @@ export default [
 
 Whats NOT so great about this approach? Well, you aren't necessarily testing the view, so if you are doing crazy stateful things in the view, these tests may give you false security. Then again, the view ought to be a function of the state- perhaps it's worth testing, but not really essential IMHO. You can't test more than 1 store- luckily most apps have but 1. And you can't test inter-connected systems- you can only make a redux store, appy actions to it and then examine the results of a selector based on the new state. But you know what's awesome about this approach? It's _fast._ Fast enough to run in the background and run like unit-tests. Were they integration tests, my cucumber steps might have taken multiple minutes to boot up, login and start poking links via Selenium. But by testing just the store and selector, my entire suite of 20 cucumber scenarios can be ran in 75 milliseconds. We can do pseudo-integration-ish tests orders of magnitudes faster than their bigger counterparts. It's fast enough to be watched and run during a dev's daily coding process, like unit tests, but it tests deep, stateful logic, not just trivial "functional" logic. _It turns troublesome stateful testing into trivial stateless testing, because the state is precisely what is being tested._ It's all wrapped up in a psuedo-cucumber syntax which can be parsed with 100 lines of javascript, but is human-readable enough for a non-technical stakeholders.
 
-This is perhaps the most pertinent benefit, because tests are more than a begruding duty- they are documentation-as-code. Tests, really _good_ tests, preserve, almost as a form of documentation, what the app _ought_ to do, today and in the far future. Employees come and go, and their intuition, wisdom and insitutional knowledge goes with them. Wikis is never up to date. But tests that must pass before your can merge are the rudder that steers the ship true. It keeps your app from "drifting" over time, in and out of functionality, as features are added and old code is abandoned. It's easy enough to manage a fresh application- but a legacy code base without tests is a code base with amnesia. You can write code to make a computer do just about anything- but what happens when you don't know _what_ the machine ought to do? Therin lies the rub. If you think Jira will save you, think again becuase the buck stops at testing. _The tests, and the results of those tests, define what functions it can be proven that an app provides._ Your text-documentation can't and won't ever provide the real rigour of code-documentation, or as we call them, "tests".
+This is perhaps the most pertinent benefit, because tests are more than a begruding duty- they are documentation-as-code. Tests, really _good_ tests, preserve, almost as a form of documentation, what the app _ought_ to do, today and in the far future. Employees come and go, and their intuition, wisdom and insitutional knowledge goes with them. Wikis are _never_ up to date. But tests that must pass before your can merge are the rudder that steers the ship true. It keeps your app from "drifting" over time, in and out of functionality, as features are added and old code is abandoned. It's easy enough to manage a fresh application- but a legacy code base without tests is a code base with amnesia. You can write code to make a computer do just about anything- but what happens when you don't know _what_ the machine ought to do? Therin lies the rub. If you think Jira will save you, think again becuase the buck stops at testing. _The tests, and the results of those tests, define what functions it can be proven that an app provides._ Your text-documentation can't and won't ever provide the real rigour of code-documentation, or as we call them, "tests".
 
 ## What kind of test is this?
 
-The say one of the hardest parts of programming is naming the thing. I'm open to ideas- I thought maybe it should involve the prefix 're' a la "redux", "react", and "reselect", but in other languages, you might adopt similar strategies for different implementations of selectors and stores. So I'm hoping that a new testing strategy called "Selected State tests" will now sit on the shelf, between "Unit tests" and "Integration tests".
+The say one of the hardest parts of programming is naming the thing. I'm open to ideas- I thought maybe it should involve the prefix 're' a la "redux", "react", and "reselect", but in other languages, you might adopt similar strategies for different implementations of selectors and stores. So I'm hoping that a new testing strategy called "Selected State tests" will now sit on the shelf, between "Unit tests" and "Integration tests". One of the conclusions I hope you take away is that this approach can be adapted to other software, not just frontend javascript apps using redux and reselect. __Any software that uses a store with discrete actions and a core of business logic can be tested using this strategy.__ A Rails app fits the description, where the store is the database and the tests are executed upon controller actions, without rendering the view. But it's important to identify the different layers of your app- the base state, the computed business logic and the layer of "fluff" that is known as the "view". _You need to identify these layers and keep them separate._ Selected State tests make this point realizable, rather than theoretical, and make sure you are testing the really important parts- the business logic, as a function of a reproducible state. 
 
 ## Coda
 
@@ -397,20 +369,20 @@ But here's the thing: when the test is usefull, the devs will write them. To a d
 Here's the demo [Burger Lord](https://adamwong246.github.io/Burger_Lord/) and here's [the code](https://github.com/adamwong246/Burger_Lord).
 
 <script>
-function openCity(evt, cityName) {
+function openTab(evt, tabName, tabCollection) {
   var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
+  tabcontent = document.getElementById(tabCollection).getElementsByClassName("tabcontent")
 
-document.querySelectorAll('.tab > button:first-child').forEach((b) => b.click())
+  
+  for (i = 0; i < tabcontent.length; i++) {
+    console.log(tabcontent[i])
+
+    if (tabcontent[i].id === tabName){
+      tabcontent[i].classList.add("active")
+    } else {
+      tabcontent[i].classList.remove("active")
+    }
+  }
+}
 
 </script>

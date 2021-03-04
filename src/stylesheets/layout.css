@@ -95,10 +95,6 @@ footer{
   text-align: -webkit-right;
 }
 
-pre, code {
-  overflow: unset;
-}
-
 .forward-link {
   float: right;
 }

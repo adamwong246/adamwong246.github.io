@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v15.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js shipIt!
+  /Users/adam/.nvm/versions/node/v15.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run funkophile:build
 
 PATH: 
-  /Users/adam/.nvm/versions/node/v15.8.0/bin:/Users/adam/.rbenv/shims:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
+  /Users/adam/.rbenv/shims:/Users/adam/.nvm/versions/node/v15.8.0/bin:/Users/adam/.rbenv/shims:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
 
 Yarn version: 
   1.5.1
@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "adamwong246.github.io",
-    "version": "1.6.8",
+    "version": "1.6.15",
     "license": "ISC",
     "description": "An exceedingly simple blog written in javascript, build with funkophile, and hosted on Github pages.",
     "author": {
@@ -4272,7 +4272,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy
+  Arguments: -c node ./funkophile/index.js ../funkophile.config.js build
   Directory: /Users/adam/Programming/adamwong246.github.io
   Output:
   

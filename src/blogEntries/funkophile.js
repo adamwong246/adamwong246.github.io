@@ -22,6 +22,8 @@ const BLOG_ENTRIES_GIFS = 'BLOG_ENTRIES_GIFS'
 const BLOG_ENTRIES_MOVS = 'BLOG_ENTRIES_MOVS'
 const BLOG_ENTRIES_PNGS = 'BLOG_ENTRIES_PNGS'
 
+const BLOG_ENTRIES_RAW = 'BLOG_ENTRIES_RAW'
+
 const transformJpegs = (jpgs, assets, blogEntries) => {
   return jpgs.reduce((mm, jpg) => {
     const src = jpg.src
@@ -164,6 +166,8 @@ module.exports = {
     [BLOG_ENTRIES_MOVS]: 'blogEntries/**/*.mov',
     [BLOG_ENTRIES_PNGS]: 'blogEntries/**/*.png',
     [BLOG_ENTRIES]: 'blogEntries/**/index.md',
+
+    [BLOG_ENTRIES_RAW]: 'blogEntries/**/raw/*'
   },
 
   // return a selector based on the given selector '_'
@@ -173,6 +177,18 @@ module.exports = {
       srcAndContentOfFiles(_[BLOG_ENTRIES]),
       processBlogEntries
     );
+
+
+  //   const $blogEntriesRaw = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_RAW]), $blogEntries],
+  //   (gifs, blogEntries) => gifs.reduce((mm, gif) => {
+  //     const src = gif.src
+  //     const gifSplit = src.split('/')
+  //     return {
+  //       ...mm,
+  //       [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + gifSplit[gifSplit.length - 1]]: gif.content
+  //     }
+  //   }, {})
+  // );
 
     const $blogEntriesGifs = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_GIFS]), $blogEntries],
       (gifs, blogEntries) => gifs.reduce((mm, gif) => {
@@ -234,16 +250,28 @@ module.exports = {
     ], transformJpegs);
 
 
+    const $blogEntriesRaw = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_RAW]), $blogEntries],
+    (rawAssets, blogEntries) => rawAssets.reduce((mm, raw) => {
+      const src = raw.src;
+      const rawSplit = src.split('/');
+      return {
+        ...mm,
+        [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + rawSplit[rawSplit.length - 1]]: raw.content
+      }
+    }, {})
+  );
+
     return {
       $allBlogAssets: $$$([
-        $blogEntriesGifs, $blogEntriesMovs, $blogEntriesJpgsOrginal, $blogEntriesJpgsModified, $blogEntriesPngs
-      ], (gifs, movs, jpgOrginals, jpgModifieds, pngs) => {
+        $blogEntriesGifs, $blogEntriesMovs, $blogEntriesJpgsOrginal, $blogEntriesJpgsModified, $blogEntriesPngs, $blogEntriesRaw
+      ], (gifs, movs, jpgOrginals, jpgModifieds, pngs, rawAssets) => {
         return {
           ...gifs,
+          ...jpgModifieds,
+          ...jpgOrginals,
           ...movs,
           ...pngs,
-          ...jpgOrginals,
-          ...jpgModifieds
+          ...rawAssets,
         }
       }),
 
@@ -258,7 +286,7 @@ module.exports = {
           }
         }), $blogEntriesGifs,
         $blogEntriesMovs,
-        $blogEntriesPngs
+        $blogEntriesPngs,
       ], updateBlogImagePaths)
     }
 

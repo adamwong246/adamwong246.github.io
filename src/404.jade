@@ -16,30 +16,15 @@ block content
 
   script. 
     const search = function (list) {
-      const mappedList = list.map(function (path) {
+      document.getElementById('fuzzMatches').innerHTML = new Fuse(list.map(function (path) {
         return {path}
-      })
-      const options = {
-        // isCaseSensitive: false,
-        // includeScore: false,
-        // shouldSort: true,
-        // includeMatches: false,
+      }), {
+        shouldSort: true
         findAllMatches: true,
-        // minMatchCharLength: 1,
-        // location: 0,
-        // threshold: 0.6,
-        // distance: 100,
-        // useExtendedSearch: false,
-        // ignoreLocation: false,
-        // ignoreFieldNorm: false,
         keys: [
           "path"
         ]
-      };
-      const fuse = new Fuse(list, options);
-
-      const pattern = window.location.pathname.split('/')[1]
-      document.getElementById('fuzzMatches').innerHTML = fuse.search(pattern).map(function (p) {
+      }).search(window.location.pathname.split('/')[1]).map(function (p) {
         return `<li> <a href='${p.item}'>${p.item}</a></li>`
       }).join("")
     }

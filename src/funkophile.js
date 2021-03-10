@@ -161,7 +161,6 @@ module.exports = {
 			], (
 				fb, r, f, j, l, rsmPdf, css, allBlogAssets, jpgs
 			) => {
-				console.log(allBlogAssets)
 				return {
 					'resume.md': r,
 					'favicon.png': f,

@@ -106,14 +106,9 @@ const updateBlogImagePaths = (blogEntries, jpgs, gifs, movs, pngs, rawAssets) =>
 
     Object.keys(rawAssets).forEach((rawAsset) => {
       const split = rawAsset.split('/')
-      
-      console.log(`a[href="${split[split.length - 1]}"]`);
-
-
       $(':root')
         .find(`a[href="${split[split.length - 1]}"]`)
         .attr('href', `${'/' + rawAsset}`)
-        // .replaceWith(cheerio(`<a href=${'/' + png}></a>`))
     })
 
     return {

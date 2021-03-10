@@ -16,16 +16,21 @@ block content
 
   script. 
     const search = function (list) {
-      document.getElementById('fuzzMatches').innerHTML = new Fuse(list.map(function (path) {
+      const mappedList = list.map(function (path) {
         return {path}
-      }), {
-        shouldSort: true
+      })
+      const options = {
+        shouldSort: true,
         findAllMatches: true,
         keys: [
           "path"
         ]
-      }).search(window.location.pathname.split('/')[1]).map(function (p) {
-        return `<li> <a href='${p.item}'>${p.item}</a></li>`
+      };
+      const fuse = new Fuse(list, options);
+
+      const pattern = window.location.pathname.split('/')[1]
+      document.getElementById('fuzzMatches').innerHTML = fuse.search(pattern).map(function (p) {
+        return `<li> <a href='/${p.item}'>${p.item}</a></li>`
       }).join("")
     }
 

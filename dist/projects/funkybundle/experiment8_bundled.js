@@ -1,20 +1,20 @@
-const modules = {"/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/index.js": function(exports, require) { console.log("Hello from funkybundle/fixtures/index.js");
-const _imported = require("/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/square.js");
-const _imported2 = require("/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/circle.js");
+const modules = {"/Users/adam/Code/adamwong246.github.io/src/projects/funkybundle/fixtures/index.js": function(exports, require) { console.log("Hello from funkybundle/fixtures/index.js");
+const _imported = require("/Users/adam/Code/adamwong246.github.io/src/projects/funkybundle/fixtures/square.js");
+const _imported2 = require("/Users/adam/Code/adamwong246.github.io/src/projects/funkybundle/fixtures/circle.js");
 let message = 'Area of square: ' + _imported["default"](5) + '. Area of circle: ' + _imported2["default"](5);
 console.log(message);
 let body = document.querySelector('body');
-body.innerHTML = body.innerHTML + "<pre>" + message + "</pre>"; },"/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/square.js": function(exports, require) { // filename: square.js
+body.innerHTML = body.innerHTML + "<pre>" + message + "</pre>"; },"/Users/adam/Code/adamwong246.github.io/src/projects/funkybundle/fixtures/square.js": function(exports, require) { // filename: square.js
 function area(side) {
   return side * side;
 }
-exports.default = area; },"/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/circle.js": function(exports, require) { // filename: circle.js
+exports.default = area; },"/Users/adam/Code/adamwong246.github.io/src/projects/funkybundle/fixtures/circle.js": function(exports, require) { // filename: circle.js
 const PI = 3.141;
 function area(radius) {
   return PI * radius * radius;
 }
 exports.default = area; },};
-const entry = "/Users/adam/Programming/adamwong246.github.io/src/projects/funkybundle/fixtures/index.js";
+const entry = "/Users/adam/Code/adamwong246.github.io/src/projects/funkybundle/fixtures/index.js";
 function funkypackStart({ modules, entry }) {
   const moduleCache = {};
   const require = moduleName => {

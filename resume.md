@@ -11,6 +11,14 @@
 - BDD and TDD methodologies, Agile methodologies
 
 ---
+### software engineer (contract), [Chroma Signet](http://www.chromasignet.com)
+#### January, 2021 - current
+
+I was brought on as a contract worker to help meet a critical deadlines
+
+- implemented a Rewards feature to allow customers to redeem loyalty points
+- implemented a github-first development process as PM
+- implemented a high-level testing framework
 
 ### software engineer, [OpenGov](http://www.opengov.com/)
 

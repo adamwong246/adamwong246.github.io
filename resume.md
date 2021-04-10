@@ -33,7 +33,7 @@ I worked with a team to decompose a monolithic Rails app into a series of Typesc
 - developed a continuous integration and delivery process with Jenkins and Docker
 - deployed our apps to AWS via Kubernetes
 
-### full stack developer, [Chroma](http://www.chroma.io/)
+### full stack developer, [Chroma Fund](https://chroma.fund)
 
 #### February, 2015 - August, 2016
 

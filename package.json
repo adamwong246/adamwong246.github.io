@@ -58,6 +58,7 @@
     "read-files-promise": "",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
+    "selenium-webdriver": "^4.0.0-beta.3",
     "simple-icons": "^2.7.0",
     "slug": "^0.8.0",
     "truncate-html": "^1.0.3",

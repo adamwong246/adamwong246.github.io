@@ -12,6 +12,7 @@ body footer {
 
 
 /* Default colors */
+
 body {
   color: #444;
   background-color: #ddd;
@@ -23,8 +24,11 @@ strong {
   color: #333;
 }
 
+
 /* Dark theme colors */
-body.dark-theme {
+
+
+/* body.dark-theme {
   color: #eee;
   background-color: #121212;
 }
@@ -36,11 +40,13 @@ body.dark-theme {
 
 .dark-theme a:link{
   color:  red;
-}
+} */
+
 
 /* Styles for users who prefer dark mode at the OS level */
-@media (prefers-color-scheme: dark) {
-  /* defaults to dark theme */
+
+
+/* @media (prefers-color-scheme: dark) {
   body {
     color: #eee;
     background-color: #121212;
@@ -54,10 +60,8 @@ body.dark-theme {
     color:  red;
   }
 
-
-  /* Override dark mode with light mode styles if the user decides to swap */
   body.light-theme {
     color: #222;
     background-color: #fff;
   }
-}
+} */

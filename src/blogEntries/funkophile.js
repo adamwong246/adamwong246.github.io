@@ -79,62 +79,53 @@ const transformJpegs = (jpgs, assets, blogEntries) => {
 
 const updateBlogImagePaths = (blogEntries, jpgs, gifs, movs, pngs, rawAssets) => {
   return blogEntries.map((blogEntry) => {
-    const blogEntryHtmlString = blogEntry.markdownContent
+    const blogEntryHtmlString = blogEntry.markdownContent;
+    const $ = cheerio.load(blogEntryHtmlString);
 
-    const $ = cheerio.load(blogEntryHtmlString)
+    [
+      ...Object.keys(jpgs),
+      ...Object.keys(gifs),
+      ...Object.keys(pngs),
+      ...Object.keys(rawAssets)
+    ].forEach((key) => {
+      const split = key.split('/');
+      const last = split[split.length - 1];
 
-    Object.keys(jpgs).forEach((jpg) => {
-      const split = jpg.split('/')
       $(':root')
-        .find(`img[src="${split[split.length - 1]}"]`)
-        .replaceWith(cheerio(`<img src=${'/' + jpg}></img>`))
-    })
+        .find(`img[src="${last}"]`)
+        .attr("src", `/${key}`)
 
-    Object.keys(gifs).forEach((gif) => {
-      const split = gif.split('/')
       $(':root')
-        .find(`img[src="${split[split.length - 1]}"]`)
-        .replaceWith(cheerio(`<img src=${'/' + gif}></img>`))
-    })
-
-    Object.keys(pngs).forEach((png) => {
-      const split = png.split('/')
-      $(':root')
-        .find(`img[src="${split[split.length - 1]}"]`)
-        .replaceWith(cheerio(`<img src=${'/' + png}></img>`))
-    })
-
-    Object.keys(rawAssets).forEach((rawAsset) => {
-      const split = rawAsset.split('/')
-      $(':root')
-        .find(`a[href="${split[split.length - 1]}"]`)
-        .attr('href', `${'/' + rawAsset}`)
-    })
+        .find(`a[href="${last}"]`)
+        .attr("href", `/${key}`)
+    });
 
     return {
       ...blogEntry,
       markdownContent: $.html(),
       // images: {jpgs, gifs, movs}
-    }
-  })
+    };
+  });
+
 };
+
 
 const processBlogEntries = (blogEntries) => {
   return blogEntries.map((blogEntry) => {
-    const markdownContent = markdown.parse(blogEntry.content)
-    const entryId = blogEntry.src.split('/')[3]
-    const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
-    const filePath = slugPath + 'index.html';
-    return {
-      meta: markdownContent.meta,
-      markdownContent: markdownContent.content,
-      dest: filePath,
-      url: `/${filePath}`,
-      destFolder: slugPath,
-      srcFolder: blogEntry.src.split('index.md')[0],
-      entryId
-    }
-  })
+      const markdownContent = markdown.parse(blogEntry.content)
+      const entryId = blogEntry.src.split('/')[3]
+      const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
+      const filePath = slugPath + 'index.html';
+      return {
+        meta: markdownContent.meta,
+        markdownContent: markdownContent.content,
+        dest: filePath,
+        url: `/${filePath}`,
+        destFolder: slugPath,
+        srcFolder: blogEntry.src.split('index.md')[0],
+        entryId
+      }
+    })
     .sort((b, a) => moment(a.meta.publishedAt)
       .diff(moment(b.meta.publishedAt)))
     .map((lmnt, ndx, ry) => {
@@ -186,16 +177,16 @@ module.exports = {
     );
 
 
-  //   const $blogEntriesRaw = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_RAW]), $blogEntries],
-  //   (gifs, blogEntries) => gifs.reduce((mm, gif) => {
-  //     const src = gif.src
-  //     const gifSplit = src.split('/')
-  //     return {
-  //       ...mm,
-  //       [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + gifSplit[gifSplit.length - 1]]: gif.content
-  //     }
-  //   }, {})
-  // );
+    //   const $blogEntriesRaw = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_RAW]), $blogEntries],
+    //   (gifs, blogEntries) => gifs.reduce((mm, gif) => {
+    //     const src = gif.src
+    //     const gifSplit = src.split('/')
+    //     return {
+    //       ...mm,
+    //       [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + gifSplit[gifSplit.length - 1]]: gif.content
+    //     }
+    //   }, {})
+    // );
 
     const $blogEntriesGifs = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_GIFS]), $blogEntries],
       (gifs, blogEntries) => gifs.reduce((mm, gif) => {
@@ -258,15 +249,15 @@ module.exports = {
 
 
     const $blogEntriesRaw = $$$([srcAndContentOfFiles(_[BLOG_ENTRIES_RAW]), $blogEntries],
-    (rawAssets, blogEntries) => rawAssets.reduce((mm, raw) => {
-      const src = raw.src;
-      const rawSplit = src.split('/');
-      return {
-        ...mm,
-        [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + rawSplit[rawSplit.length - 1]]: raw.content
-      }
-    }, {})
-  );
+      (rawAssets, blogEntries) => rawAssets.reduce((mm, raw) => {
+        const src = raw.src;
+        const rawSplit = src.split('/');
+        return {
+          ...mm,
+          [blogEntries.find((b) => src.includes(b.srcFolder)).destFolder + rawSplit[rawSplit.length - 1]]: raw.content
+        }
+      }, {})
+    );
 
     return {
       $allBlogAssets: $$$([

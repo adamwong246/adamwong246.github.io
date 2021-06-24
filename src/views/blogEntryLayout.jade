@@ -9,7 +9,7 @@ block content
   hr
   
   if(entry.meta.previous)
-    a.back-link(href=entry.meta.previous.url)
+    a.forward-link(href=entry.meta.previous.url)
       | ⬅️ 
       = entry.meta.previous.title
   if(entry.meta.next)

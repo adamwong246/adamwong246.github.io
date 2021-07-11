@@ -8,12 +8,15 @@ block content
   include blogEntryPartial
   hr
   
-  if(entry.meta.previous)
-    a.back-link(href=entry.meta.previous.url)
-      | ⬅️ 
-      = entry.meta.previous.title
-  if(entry.meta.next)
-    a.forward-link(href=entry.meta.next.url)
-      = entry.meta.next.title
-      |  ➡️
-  
+  .forward-link
+    if(entry.meta.previous)
+      p
+        a(href=entry.meta.previous.url)
+          | ⬅️ 
+          = entry.meta.previous.title
+    if(entry.meta.next)
+      p
+        a(href=entry.meta.next.url)
+          = entry.meta.next.title
+          |  ➡️
+      

@@ -1,0 +1,10 @@
+---
+title: The Vainglorious Eternals Go Golfing
+publishedAt: Sun Jul 11 2021 11:03:51 GMT-0700 (Pacific Daylight Time)
+---
+
+> In a better world, such photos might still exist. The people in them would not have become nearly as rich or unaccountable or powerful as they are in this one, but there’s no reason to think that they would not have found each other in some refrigerated clubhouse or hotel dining room or breakout session or cigar bar. In that world, these men would not be any better than they are in this one, because they are what they are by nature—mutants of appetite and ego, and outliers from the rest of humanity in terms of both the depth and the breadth of their need. But in that other world, in which they are merely rich and terrible, they would threaten only the good times of the other people sharing those spaces with them.
+
+> In this one, though, these vainglorious eternals somehow shamble on atop the culture even in their curdling dotage. From that commanding position they do what they do—pursue their endless blowsy feuds, scheme and carp, watch television and go on television and, where the opportunity presents itself, blithely commit various high crimes and misdemeanors. Far above the struggle and insecurity of everyday life, these brittle titans squabble and gossip and go through acrimonious and highly public divorces; for all the ways in which the toxic runoff of inequality can currently be felt in the culture, the fact that the cheesy churn of rich and petty men drifting into and pissily out of each other’s good graces now so distorts our politics is among the most enervating. It is one thing to see so much of our popular culture narrowing and flattening to suit various billionaires’ crude and idle whims, but it’s something else to realize that the political life of the richest and most powerful country on earth is in large part determined by the spats and obsessions of a super-class of aged and lazy lords, all of whom consider themselves peers of each other and virtually no one else.
+
+[Read more](https://newrepublic.com/article/155733/trump-clinton-bloomberg-giuliani-golf-photo-vainglorious-eternals)

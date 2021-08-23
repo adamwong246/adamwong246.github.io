@@ -1,6 +1,6 @@
 #main-container {
   display: flex;
-  min-height: 92vh;
+  min-height: 93vh;
   flex-direction: column;
   flex: 1 0 auto;
 }

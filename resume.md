@@ -11,14 +11,16 @@
 - BDD and TDD methodologies, Agile methodologies
 
 ---
-### software engineer (contract), [Chroma Signet](http://www.chromasignet.com)
+### software engineer and customer success, [Chroma](http://www.chromasignet.com)
 #### January, 2021 - current
 
-I was brought on as a contract worker to help meet a critical deadlines
+I returned to Chroma to develop Signet.code, a cannabis packaging app.
 
+- implemented a PDF generator capable of producing 10k unique labels. 
+- managed customers to produce custom cannabis labels.
 - implemented a Rewards feature to allow customers to redeem loyalty points
+- integrated node with multiple external APIs and our cross-platform react-native app with external SDKs
 - implemented a github-first development process as PM
-- implemented a high-level testing framework
 
 ### software engineer, [OpenGov](http://www.opengov.com/)
 

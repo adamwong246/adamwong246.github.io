@@ -30,9 +30,9 @@ module.exports = {
     );
 
     const $pdfCss = $$$(_[CSS], (cssFiles) => [
-      cssFiles['./src/stylesheets/typography.css'],
-      cssFiles['./src/stylesheets/layout.css'],
-      cssFiles['./src/stylesheets/style.css']
+      // cssFiles['./src/stylesheets/typography.css'],
+      // cssFiles['./src/stylesheets/layout.css'],
+      // cssFiles['./src/stylesheets/style.css']
     ].join('\n'));
 
     return {

@@ -1,6 +1,6 @@
 # Adam Wong
 
-#### adamwong246@gmail.com - 971-207-1376 - Portland, Oregon
+### adamwong246@gmail.com - Portland, Oregon - BA of Computer Science, USC
 
 ---
 
@@ -11,16 +11,16 @@
 - BDD and TDD methodologies, Agile methodologies
 
 ---
-### software engineer and customer success, [Chroma](http://www.chromasignet.com)
+
+### founder, engineer, customer success, [Chroma](http://www.chromasignet.com)
 #### January, 2021 - current
 
-I returned to Chroma to develop Signet.code, a cannabis packaging app.
+I returned to Chroma to develop Signet.code, a cannabis packaging application.
 
-- implemented a PDF generator capable of producing 10k unique labels. 
-- managed customers to produce custom cannabis labels.
-- implemented a Rewards feature to allow customers to redeem loyalty points
+- ran Rewards programs wherin NFTs were attached to cannabis products, to be claimed by customers
+- implemented a PDF generator capable of producing unique labels at high scale
+- managed customer relations to produce dynamic labels
 - integrated node with multiple external APIs and our cross-platform react-native app with external SDKs
-- implemented a github-first development process as PM
 
 ### software engineer, [OpenGov](http://www.opengov.com/)
 
@@ -57,7 +57,4 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 - revived an out of date Rspec and Cucumber test suite for continuous integration
 - optimized high traffic queries by replacing ActiveRecord calls with raw SQL
 
----
 
-#### BA of Computer Science, University of South Carolina
-##### May 2010

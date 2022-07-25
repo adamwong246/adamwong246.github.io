@@ -1,6 +1,10 @@
+nav #headshot {
+  margin: auto;
+}
+
 #main-container {
   display: flex;
-  min-height: 93vh;
+  min-height: 95vh;
   flex-direction: column;
   flex: 1 0 auto;
 }
@@ -21,27 +25,40 @@
 }
 
 @media (max-width: 700px) {
+  nav #headshot {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
   nav {
     width: 100%;
     filter: drop-shadow(5px 5px 5px #222)
   }
+
   nav #site-title img {
     filter: drop-shadow(5px 5px 5px #222)
   }
+
   main {
     margin-top: 80px;
     margin-left: 1em;
     margin-right: 1em;
   }
+
   .closed-menu nav #menu {
     display: none;
   }
+
   body.closed-menu main {
     filter: none;
   }
+
   body:not(.closed-menu) main {
     filter: blur(10px);
   }
+
   .hide-menu nav {
     display: none;
   }
@@ -51,6 +68,7 @@
   #main-container {
     flex-direction: row;
   }
+
   main {
     flex: 1;
     margin-top: 1.5em;
@@ -58,10 +76,12 @@
     max-width: 50vw;
     margin-left: 390px;
   }
+
   nav {
     width: 20em;
     height: -webkit-fill-available;
   }
+
   body {
     padding-left: 1.5em;
     padding-right: 1.5em;

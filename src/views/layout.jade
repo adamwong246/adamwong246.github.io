@@ -2,11 +2,11 @@ doctype html
 html(lang="en")
   head
     meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-    meta(name='HandheldFriendly', content='True')
-    meta(name='MobileOptimized', content='320')
-    meta(name='viewport', content='width=device-width, minimum-scale=1.0, maximum-scale=1.0')
-    link(href='/style.css', rel='stylesheet', type="text/css")
+    meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+    meta(name='HandheldFriendly' content='True')
+    meta(name='MobileOptimized' content='320')
+    meta(name='viewport' content='width=device-width, minimum-scale=1.0, maximum-scale=1.0')
+    link(href='/style.css' rel='stylesheet' type="text/css")
     block pageTitle
       title= package.name
     script.
@@ -17,7 +17,7 @@ html(lang="en")
       ga('create', 'UA-47887894-1', 'auto');
       ga('send', 'pageview');
     script(src="/index.js")
-    link(rel="icon"  type="image/png"  href="/favicon.png")
+    link(rel="icon" type="image/png" href="/favicon.png")
     block head
   body.closed-menu.animate-logo
     #main-container
@@ -27,10 +27,9 @@ html(lang="en")
             img.box.bounce-7(src="/favicon.png" onClick="openMenu()")
             a(href='/') adamwong246.github.io
         #menu  
+          img#headshot(src="/images/optimized-headshot5.jpg" )
+          p I am a software engineer with over 10 years of experience in web developement in the VC startup scene. I live in Portland Oregon with my partner Vincent and our dog, Sancho.
           ul
-            li
-              span
-                a(href='/aboutMe/index.html') About me
             li
               span
                 a(href="/resume.html") resume.html

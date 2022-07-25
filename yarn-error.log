@@ -1,24 +1,37 @@
 Arguments: 
-  /Users/adam/.nvm/versions/node/v15.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js serve
+  /Users/adam/.nvm/versions/node/v15.8.0/bin/node /Users/adam/.nvm/versions/node/v15.8.0/bin/yarn add blogEntry family
 
 PATH: 
-  /Users/adam/Programming/adamwong246.github.io/node_modules/.bin:/Users/adam/.config/yarn/link/node_modules/.bin:/Users/adam/Programming/adamwong246.github.io/node_modules/.bin:/Users/adam/.config/yarn/link/node_modules/.bin:/Users/adam/.nvm/versions/node/v15.8.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/adam/.nvm/versions/node/v15.8.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/adam/.nvm/versions/node/v15.8.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/adam/.rbenv/shims:/Users/adam/.nvm/versions/node/v15.8.0/bin:/Users/adam/Programming/ImageMagick-7.0.11/bin:/Users/adam/Programming/ImageMagick-7.0.11/bin:/Users/adam/.rbenv/shims:/Users/adam/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
+  /Users/adam/.nvm/versions/node/v15.8.0/bin:/Users/adam/.nvm/versions/node/v10.24.1/bin:/Users/adam/.nvm/versions/node/v14.18.2/bin:/Users/adam/.nvm/versions/node/v16.14.2/bin:/Users/adam/.yarn/bin:/Users/adam/.config/yarn/global/node_modules/.bin:/Users/adam/.nvm/versions/node/v17.0.1/bin:/Users/adam/.nvm/versions/node/v17.0.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/adam/.yarn/bin:/Users/adam/.config/yarn/global/node_modules/.bin:/Users/adam/.nvm/versions/node/v17.0.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/adam/.rvm/bin:/Users/adam/.rvm/bin
 
 Yarn version: 
-  1.5.1
+  1.22.17
 
 Node version: 
   15.8.0
 
 Platform: 
-  darwin x64
+  darwin arm64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/blogEntry: Not found
+      at Request.params.callback [as _callback] (/Users/adam/.nvm/versions/node/v15.8.0/lib/node_modules/yarn/lib/cli.js:67029:18)
+      at Request.self.callback (/Users/adam/.nvm/versions/node/v15.8.0/lib/node_modules/yarn/lib/cli.js:140883:22)
+      at Request.emit (node:events:378:20)
+      at Request.<anonymous> (/Users/adam/.nvm/versions/node/v15.8.0/lib/node_modules/yarn/lib/cli.js:141855:10)
+      at Request.emit (node:events:378:20)
+      at IncomingMessage.<anonymous> (/Users/adam/.nvm/versions/node/v15.8.0/lib/node_modules/yarn/lib/cli.js:141777:12)
+      at Object.onceWrapper (node:events:484:28)
+      at IncomingMessage.emit (node:events:390:22)
+      at endReadableNT (node:internal/streams/readable:1307:12)
+      at processTicksAndRejections (node:internal/process/task_queues:81:21)
 
 npm manifest: 
   {
     "name": "adamwong246.github.io",
-    "version": "1.6.17",
+    "version": "1.7.7",
     "license": "ISC",
-    "description": "An exceedingly simple blog written in javascript, build with funkophile, and hosted on Github pages.",
+    "description": "An exceedingly simple TypeScript blog, and hosted on Github pages.",
     "author": {
       "name": "Adam Wong",
       "email": "adamwong246@gmail.com"
@@ -74,6 +87,7 @@ npm manifest:
       "read-files-promise": "",
       "redux": "^4.0.5",
       "reselect": "^4.0.0",
+      "selenium-webdriver": "^4.0.0-beta.3",
       "simple-icons": "^2.7.0",
       "slug": "^0.8.0",
       "truncate-html": "^1.0.3",
@@ -2236,7 +2250,7 @@ Lockfile:
       readable-stream "~2.3.6"
       set-immediate-shim "~1.0.1"
   
-  jszip@^3.2.2:
+  jszip@^3.2.2, jszip@^3.5.0:
     version "3.6.0"
     resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.6.0.tgz#839b72812e3f97819cc13ac4134ffced95dd6af9"
     dependencies:
@@ -3173,7 +3187,7 @@ Lockfile:
     dependencies:
       align-text "^0.1.1"
   
-  rimraf@^2.6.3:
+  rimraf@^2.6.3, rimraf@^2.7.1:
     version "2.7.1"
     resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
     dependencies:
@@ -3226,6 +3240,16 @@ Lockfile:
       "@types/json-schema" "^7.0.6"
       ajv "^6.12.5"
       ajv-keywords "^3.5.2"
+  
+  selenium-webdriver@^4.0.0-beta.3:
+    version "4.0.0-beta.3"
+    resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.0.0-beta.3.tgz#8c29512a27ca9c1f95a96a9a8f488304c894390e"
+    integrity sha512-R0mGHpQkSKgIWiPgcKDcckh4A6aaK0KTyWxs5ieuiI7zsXQ+Kb6neph+dNoeqq3jSBGyv3ONo2w3oohoL4D/Rg==
+    dependencies:
+      jszip "^3.5.0"
+      rimraf "^2.7.1"
+      tmp "^0.2.1"
+      ws "^7.3.1"
   
   semver-diff@^3.1.1:
     version "3.1.1"
@@ -4201,6 +4225,11 @@ Lockfile:
     version "7.4.3"
     resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.3.tgz#1f9643de34a543b8edb124bdcbc457ae55a6e5cd"
   
+  ws@^7.3.1:
+    version "7.4.4"
+    resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.4.tgz#383bc9742cb202292c9077ceab6f6047b17f2d59"
+    integrity sha512-Qm8k8ojNQIMx7S+Zp8u/uHOx7Qazv3Yv4q68MiWWWOJhiwG5W3x7iqmRtJo8xxrciZUY4vRxUTJCKuRnF28ZZw==
+  
   xdg-basedir@^4.0.0:
     version "4.0.0"
     resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
@@ -4272,18 +4301,3 @@ Lockfile:
   yocto-queue@^0.1.0:
     version "0.1.0"
     resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
-
-Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c node ./server.js
-  Directory: /Users/adam/Programming/adamwong246.github.io
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
-      at ChildProcess.emit (node:events:378:20)
-      at maybeClose (node:internal/child_process:1067:16)
-      at Process.ChildProcess._handle.onexit (node:internal/child_process:301:5)

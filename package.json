@@ -1,8 +1,8 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.7.7",
+  "version": "1.8.0",
   "license": "ISC",
-  "description": "An exceedingly simple TypeScript blog, and hosted on Github pages.",
+  "description": "An exceedingly simple blog. Powered by funkophile!",
   "author": {
     "name": "Adam Wong",
     "email": "adamwong246@gmail.com"

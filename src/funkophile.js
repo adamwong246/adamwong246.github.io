@@ -24,13 +24,11 @@ const PDF_SETTINGS = 'PDF_SETTINGS'
 const RESUME = 'RESUME';
 
 const makeResumePdf = (resumeMarkdown, css, pdfSettings) => {
-  return (async() => {
+  return (async () => {
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
       await page.setContent(resumeMarkdown.content)
-
-      console.log(css);
 
       await page.addStyleTag({
         content: css
@@ -42,7 +40,7 @@ const makeResumePdf = (resumeMarkdown, css, pdfSettings) => {
       await browser.close();
 
       // clear the timestamp for deterministic pdfs
-      for (const offset of[97, 98, 99, 100, 132, 133, 134, 135]) {
+      for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
         pdf[offset] = 0;
       }
       return pdf

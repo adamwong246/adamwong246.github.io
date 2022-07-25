@@ -25,14 +25,17 @@ module.exports = {
 
   outputs: (_) => {
 
-    const $webCss = $$$([contentsOfFiles(_[CSS]), $$$([], () => fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8'))], (css, normalize) =>
+    const normalizeDotCss = fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8');
+
+    const $webCss = $$$([contentsOfFiles(_[CSS]), $$$([], () => normalizeDotCss)], (css, normalize) =>
       cleandAndMinifyCss(normalize + '\n' + css)
     );
 
     const $pdfCss = $$$(_[CSS], (cssFiles) => [
-      // cssFiles['./src/stylesheets/typography.css'],
-      // cssFiles['./src/stylesheets/layout.css'],
-      // cssFiles['./src/stylesheets/style.css']
+      normalizeDotCss,
+      cssFiles['./src/stylesheets/typography.css'],
+      cssFiles['./src/stylesheets/style.css'],
+
     ].join('\n'));
 
     return {

@@ -12,7 +12,7 @@
 
 ---
 
-### founder, engineer, customer success, [Chroma](http://www.chromasignet.com)
+### founder, engineer, customer success @ [Chroma](http://www.chromasignet.com)
 #### January, 2021 - current
 
 I returned to Chroma to develop Signet.code, a cannabis packaging application.
@@ -22,7 +22,7 @@ I returned to Chroma to develop Signet.code, a cannabis packaging application.
 - managed customer relations to produce dynamic labels
 - integrated node with multiple external APIs and our cross-platform react-native app with external SDKs
 
-### software engineer, [OpenGov](http://www.opengov.com/)
+### software engineer @ [OpenGov](http://www.opengov.com/)
 
 #### November, 2016 - March, 2020
 
@@ -35,7 +35,7 @@ I worked with a team to decompose a monolithic Rails app into a series of Typesc
 - developed a continuous integration and delivery process with Jenkins and Docker
 - deployed our apps to AWS via Kubernetes
 
-### full stack developer, [Chroma Fund](https://chroma.fund)
+### full stack developer @ [Chroma Fund](https://chroma.fund)
 
 #### February, 2015 - August, 2016
 
@@ -45,7 +45,7 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 - supported blockchain verifiable transactions
 - attended TechStars Summer 2016 accelerator program in NYC
 
-### Ruby on Rails developer, [Hubbub Health](https://www.hubbubhealth.com/)
+### Ruby on Rails developer @ [Hubbub Health](https://www.hubbubhealth.com/)
 
 #### May, 2013 - February, 2015
 

@@ -112,20 +112,21 @@ const updateBlogImagePaths = (blogEntries, jpgs, gifs, movs, pngs, rawAssets) =>
 
 const processBlogEntries = (blogEntries) => {
   return blogEntries.map((blogEntry) => {
-      const markdownContent = markdown.parse(blogEntry.content)
-      const entryId = blogEntry.src.split('/')[3]
-      const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
-      const filePath = slugPath + 'index.html';
-      return {
-        meta: markdownContent.meta,
-        markdownContent: markdownContent.content,
-        dest: filePath,
-        url: `/${filePath}`,
-        destFolder: slugPath,
-        srcFolder: blogEntry.src.split('index.md')[0],
-        entryId
-      }
-    })
+    const markdownContent = markdown.parse(blogEntry.content)
+    const entryId = blogEntry.src.split('/')[3]
+    const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
+    const filePath = slugPath + 'index.html';
+    return {
+      meta: markdownContent.meta,
+      markdownContent: markdownContent.content,
+      dest: filePath,
+      url: `/${filePath}`,
+      destFolder: slugPath,
+      srcFolder: blogEntry.src.split('index.md')[0],
+      entryId
+    }
+  })
+    .filter((a) => a.meta.published !== false)
     .sort((b, a) => moment(a.meta.publishedAt)
       .diff(moment(b.meta.publishedAt)))
     .map((lmnt, ndx, ry) => {

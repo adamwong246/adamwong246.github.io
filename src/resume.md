@@ -4,20 +4,29 @@
 
 ---
 
-- Typescript, React, Node, Meteor, Ruby on Rails
-- Docker and DockerHub
-- Github, Heroku Jenkins and Amazon AWS
-- Java and Android
-- BDD and TDD methodologies, Agile methodologies
+- Solidity, Typescript/JS/Node, Java/Kotlin, Ruby, Rust, Lua
+- React, React Native, Rails, Android
+- Kubernetes, Docker
+- Amazon AWS, Heroku, Jenkins
+- BDD, TDD, Agile methodologies
 
 ---
 
-### founder, engineer, customer success @ [Chroma](http://www.chromasignet.com)
-#### January, 2021 - current
+### freelance web3 developer
+
+I am currently working with https://liquidcollections.com/ to develop NFTs which are redeemable for consumer goods.
+
+- Maintained an extensive set of frontend and backend TS infrastructure
+- Wrote and tested custom solidity code to create dynamic on-chain metadata.
+- https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0
+
+### engineer, customer success @ [Chroma](http://www.chromasignet.com)
+
+#### January, 2021 - August 2022
 
 I returned to Chroma to develop Signet.code, a cannabis packaging application.
 
-- ran Rewards programs wherin NFTs were attached to cannabis products, to be claimed by customers
+- ran Rewards programs wherein NFTs were attached to cannabis products, to be claimed by customers
 - implemented a PDF generator capable of producing unique labels at high scale
 - managed customer relations to produce dynamic labels
 - integrated node with multiple external APIs and our cross-platform react-native app with external SDKs
@@ -56,5 +65,3 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 - managed assets via Amazon S3
 - revived an out of date Rspec and Cucumber test suite for continuous integration
 - optimized high traffic queries by replacing ActiveRecord calls with raw SQL
-
-

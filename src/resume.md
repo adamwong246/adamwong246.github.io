@@ -12,13 +12,6 @@
 
 ---
 
-### freelance web3 developer
-
-I am currently working with [liquid collections](https://liquidcollections.com/) to develop NFTs which are redeemable for consumer goods.
-
-- Maintained an extensive set of frontend and backend TS infrastructure
-- Wrote and tested custom solidity code to create [dynamic on-chain metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
-
 ### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 
 #### January, 2021 - August 2022
@@ -59,7 +52,7 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 
 I worked with a large team to incentivize employee wellness with the RoR app, [hubbubhealth.com](hubbubhealth.com).
 
-- wrote Javascript for both modern and legacy browsers
+- developed Javascript for both modern and legacy browsers
 - debugged user-submitted errors with New Relic and Papertrail
 - managed assets via Amazon S3
 - revived an out of date Rspec and Cucumber test suite for continuous integration

@@ -2,6 +2,8 @@
 
 ### adamwong246@gmail.com - Portland, Oregon - BA of Computer Science, USC
 
+#### full stack engineer @ [Piton Labs](https://pitonlabs.com/)
+
 ---
 
 - Solidity, Typescript/JS/Node, Java/Kotlin, Ruby, Rust, Lua
@@ -11,9 +13,6 @@
 - BDD, TDD, Agile methodologies
 
 ---
-
-### full stack engineer @ [Piton Labs](https://pitonlabs.com/)
-#### February 2023
 
 ### freelance web3 developer
 

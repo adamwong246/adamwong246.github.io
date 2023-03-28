@@ -12,6 +12,18 @@
 
 ---
 
+### full stack engineer @ [Piton Labs](https://pitonlabs.com/)
+#### February 2023
+
+### freelance web3 developer
+
+#### August 2022 - January 2023
+
+I worked with [liquid collections](https://liquidcollections.com/) to develop NFTs which are redeemable for consumer goods.
+
+- Maintained an extensive set of frontend and backend TS infrastructure
+- Wrote and tested custom solidity code to create [dynamic on-chain metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
+
 ### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 
 #### January, 2021 - August 2022

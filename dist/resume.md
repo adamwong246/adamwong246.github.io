@@ -14,12 +14,12 @@
 
 ### Software Developer
 
-#### February 2023
+#### February 2023 - Current
 
 I joined with [Piton Labs](https://pitonlabs.com/) to manage the development of the Accion Opportunity Fund.
 
-- Maintained an extensive set of frontend and backend TS infrastructure
-- Wrote and tested custom solidity code to create [dynamic on-chain metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
+- Managed a cross-team collaboration between PitonLabs and AOF
+- Developed a integration test suite
 
 ### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 

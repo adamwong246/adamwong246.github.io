@@ -23,12 +23,12 @@ const LICENSE = 'LICENSE';
 const PDF_SETTINGS = 'PDF_SETTINGS'
 const RESUME = 'RESUME';
 
-const makeResumePdf = (resumeMarkdown, css, pdfSettings) => {
+const makeResumePdf = (resumeContent, css, pdfSettings) => {
   return (async () => {
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
-      await page.setContent(resumeMarkdown.content)
+      await page.setContent(resumeContent)
 
       await page.addStyleTag({
         content: css
@@ -127,7 +127,7 @@ module.exports = {
         cssSelector.$pdfCss,
         contentOfFile(_["PDF_SETTINGS"]),
       ],
-      (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown, css, pdfSettings))
+      (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown.content, css, pdfSettings))
     return {
       $pages: pageSelectors,
       ...blogSelector,

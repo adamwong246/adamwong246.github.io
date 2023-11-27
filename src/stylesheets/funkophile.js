@@ -33,6 +33,7 @@ module.exports = {
 
     const $pdfCss = $$$(_[CSS], (cssFiles) => [
       normalizeDotCss,
+      cssFiles['./src/stylesheets/resume.css'],
       cssFiles['./src/stylesheets/typography.css'],
       cssFiles['./src/stylesheets/style.css'],
 

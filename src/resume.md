@@ -2,17 +2,26 @@
 
 ### adamwong246@gmail.com - Portland, Oregon - BA of Computer Science, USC
 
-#### full stack engineer @ [Piton Labs](https://pitonlabs.com/)
-
 ---
 
-- Solidity, Typescript/JS/Node, Java/Kotlin, Ruby, Rust, Lua
-- React, React Native, Rails, Android
+- AWS Certified Cloud Practitioner
+- Typescript/JavaScript/Node, Golang, Java/Kotlin, Ruby, Rust, Lua, Solidity
+- React, Rails, Android
 - Kubernetes, Docker
-- Amazon AWS, Heroku, Jenkins
 - BDD, TDD, Agile methodologies
 
 ---
+
+### Software Developer
+
+#### February 2023
+
+I joined with [Piton Labs](https://pitonlabs.com/) to manage the development of the Accion Opportunity Fund.
+
+- Maintained an extensive set of frontend and backend TS infrastructure
+- Wrote and tested custom solidity code to create [dynamic on-chain metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
+
+### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 
 ### freelance web3 developer
 

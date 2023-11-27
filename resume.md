@@ -12,16 +12,14 @@
 
 ---
 
-### Software Developer
+### software engineer @ [Piton Labs](https://pitonlabs.com/)
 
 #### February 2023 - Current
 
-I joined with [Piton Labs](https://pitonlabs.com/) to manage the development of the Accion Opportunity Fund.
+I joined with Piton Labs to manage the development of the Accion Opportunity Fund.
 
 - Managed a cross-team collaboration between PitonLabs and AOF
 - Developed a integration test suite
-
-### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 
 ### freelance web3 developer
 

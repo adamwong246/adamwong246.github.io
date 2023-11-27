@@ -16,7 +16,7 @@
 
 #### February 2023 - Current
 
-I joined with Piton Labs to manage the development of the Accion Opportunity Fund.
+I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 
 - Managed a cross-team collaboration between PitonLabs and AOF
 - Developed a integration test suite

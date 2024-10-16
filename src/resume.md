@@ -1,25 +1,19 @@
-# Adam Wong
+|     |  |
+| -------- | ------- |
+| <h1> Adam Wong </h1> <h2>adamwong246@gmail.com</h2> <h3>Portland, Oregon </h3> <h4>BA of Computer Science, USC </h4> | <ul> <li>AWS Certified Cloud Practitioner </li> <li>Typescript/JavaScript/Node, Golang, Java/Kotlin, Ruby, Rust, Lua, Solidity</li><li>React, Rails, Android</li><li>Kubernetes, Docker </li><li>BDD, TDD, Agile methodologies </li> </ul>    | 
 
-### adamwong246@gmail.com - Portland, Oregon - BA of Computer Science, USC
-
----
-
-- AWS Certified Cloud Practitioner
-- Typescript/JavaScript/Node, Golang, Java/Kotlin, Ruby, Rust, Lua, Solidity
-- React, Rails, Android
-- Kubernetes, Docker
-- BDD, TDD, Agile methodologies
-
----
+--- 
 
 ### software engineer @ [Piton Labs](https://pitonlabs.com/)
 
-#### February 2023 - Current
+#### February 2023 - October 2024
 
 I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 
+- Integrated a severless NextJs app with AWS services
 - Managed a cross-team collaboration between PitonLabs and AOF
-- Developed a integration test suite
+- Developed a integration test suite as part of the CICD system
+- Managed the i18n translation project
 
 ### freelance web3 developer
 

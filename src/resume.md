@@ -4,6 +4,12 @@
 
 --- 
 
+### freelance developer @ [Testeranto]("https://www.npmjs.com/package/testeranto)
+
+#### January 2024 - Current
+
+I developed an AI-first, Acceptance Test Driven Development Typescript test framework.
+
 ### software engineer @ [Piton Labs](https://pitonlabs.com/)
 
 #### February 2023 - October 2024

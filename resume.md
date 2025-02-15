@@ -4,7 +4,7 @@
 
 --- 
 
-### freelance developer @ [Testeranto]("https://www.npmjs.com/package/testeranto)
+### freelance developer @ [Testeranto](https://www.npmjs.com/package/testeranto)
 
 #### January 2024 - Current
 

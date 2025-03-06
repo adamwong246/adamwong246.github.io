@@ -16,10 +16,11 @@ I developed an AI-first, Acceptance Test Driven Development Typescript test fram
 
 I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 
-- integrated a severless NextJs app with AWS services
+- integrated a severless NextJs app with AWS golang services via Kubernetes
 - managed a cross-team collaboration between PitonLabs and AOF
 - developed a integration test suite as part of the CICD system
-- managed the i18n translation project
+- maintained a i18n compatible Bootstrap design library
+- maintained multiple databases, both SQL and NoSql
 
 ### freelance web3 developer
 
@@ -27,8 +28,8 @@ I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 
 I worked with [liquid collections](https://liquidcollections.com/) to develop NFTs which are redeemable for consumer goods.
 
-- maintained an extensive set of frontend and backend TS infrastructure
 - wrote and tested custom solidity code to create [dynamic on-chain metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
+- developed a react frontend backed by an express server
 
 ### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 
@@ -39,7 +40,8 @@ I returned to Chroma to develop Signet.code, a cannabis packaging application.
 - managed a Rewards programs wherein customer-claimable NFTs were attached to cannabis products
 - implemented a PDF generator capable of producing unique labels at high scale
 - managed customer relations to produce dynamic labels
-- integrated node with multiple external APIs and our cross-platform react-native app with external SDKs
+- integrated node with multiple external REST APIs 
+- managed a cross-platform react-native app with external SDKs
 
 ### software engineer @ [OpenGov](http://www.opengov.com/)
 
@@ -47,6 +49,7 @@ I returned to Chroma to develop Signet.code, a cannabis packaging application.
 
 I worked with a team to decompose a monolithic Rails app into a series of Typescript microservices.
 
+- organized our team under Agile methodologies and Jira
 - designed an open-source, functional and type-safe framework used across multiple teams with our organization
 - migrated a Rails monolith into a series of micro-services
 - wrote frontend SPAs in TS with Redux, Reselect and React

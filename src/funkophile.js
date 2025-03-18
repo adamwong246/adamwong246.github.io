@@ -1,18 +1,19 @@
-const $$$ = require('reselect').createSelector;
-const puppeteer = require('puppeteer');
-const lwip = require("@randy.tarampi/lwip");
+import simpleIcons from 'simple-icons';
+import lwip from "@randy.tarampi/lwip";
+import markdown from 'marky-mark';
+import puppeteer from "puppeteer"
+import reselect from "reselect"
+import path from "path"
 
-const blogEntries = require("./blogEntries/funkophile.js");
-const styleFunkophile = require("./stylesheets/funkophile.js")
-const pagesFunkophile = require("./pages/funkophile.js");
-const projectFunkyBundle = require("./projects/funkybundle/funkophile.js");
-
-const {
+import {
   contentOfFile,
-  contentsOfFiles,
-  srcAndContentOfFile,
-  srcAndContentOfFiles
-} = require("../funkophile/funkophileHelpers.js");
+} from "funkophile/funkophileHelpers";
+
+import styleFunkophile from "./stylesheets/funkophile.js";
+import pagesFunkophile from "./pages/funkophile.js";
+import blogFunkophile from "./blogEntries/funkophile.js";
+
+const $$$ = reselect.createSelector;
 
 const CONTACTS = 'CONTACTS'
 const FAVICON_PNG = 'FAVICON_PNG'
@@ -58,19 +59,29 @@ const makeResumePdf = (resumeContent, css, pdfSettings) => {
 const jpgTransformPromises = (jpgs, assets) => {
   return Object.keys(jpgs)
     .reduce((mm, jKey) => {
-      const shortFileName = jKey.split('/')[3]
+      const shortFileName = path.basename(jKey)
       mm[jKey.split('/').slice(-2).join('/')] = jpgs[jKey]
       const transformations = JSON.parse(assets)[shortFileName]
+
+      
+      
       if (transformations) {
 
         Object.keys(transformations).forEach((transformationKey) => {
 
+          
+
           mm['images/' + transformationKey + '-' + shortFileName] = new Promise((res, rej) => lwip.open(jpgs[jKey], 'jpg', (err, image) => {
+
+            if (err) {
+              console.error(err)
+              process.exit(-1)
+            }
 
             const batchImage = image.batch()
             transformations[transformationKey].forEach((transform) => {
-              ts = Object.keys(transform)[0]
-              args = transform[ts]
+              const ts = Object.keys(transform)[0]
+              const args = transform[ts]
               if (args.length) {
                 batchImage[ts](...transform[ts])
               } else {
@@ -78,8 +89,14 @@ const jpgTransformPromises = (jpgs, assets) => {
               }
             });
 
-            batchImage.toBuffer('jpg', {}, (err, buffer) => {
-              res(buffer)
+            batchImage.toBuffer('jpg', {}, (err2, buffer) => {
+              if (err2) {
+                console.error(err2)
+                process.exit(-1)
+              } else {
+                res(buffer)
+              }
+              
             })
           }))
 
@@ -90,7 +107,7 @@ const jpgTransformPromises = (jpgs, assets) => {
     }, {})
 };
 
-module.exports = {
+export default {
 
   inputs: {
     [CONTACTS]: 'contacts.json',
@@ -104,16 +121,16 @@ module.exports = {
 
     ...styleFunkophile.inputs,
     ...pagesFunkophile.inputs,
-    ...blogEntries.inputs,
-    ...projectFunkyBundle.inputs,
+    ...blogFunkophile.inputs,
+    // ...projectFunkyBundle.inputs,
   },
 
   outputs: (_) => {
 
-    const blogSelector = blogEntries.outputs(_);
+    const blogSelector = blogFunkophile.outputs(_);
     const cssSelector = styleFunkophile.outputs(_);
     const pageSelectors = pagesFunkophile.outputs(_);
-    const projectFunkyBundleSelectors = projectFunkyBundle.outputs(_);
+    // const projectFunkyBundleSelectors = projectFunkyBundle.outputs(_);
 
     const $resume = contentOfFile(_["RESUME"]);
     const $js = contentOfFile(_["JS"]);
@@ -128,7 +145,8 @@ module.exports = {
         cssSelector.$pdfCss,
         contentOfFile(_["PDF_SETTINGS"]),
       ],
-      (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown.content, css, pdfSettings))
+      (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown.content, css, pdfSettings));
+    
     return {
       $pages: pageSelectors,
       ...blogSelector,
@@ -138,31 +156,54 @@ module.exports = {
       $favicon,
       $resumeMarkdown,
 
-      $content: $$$([pageSelectors, blogSelector.$blog, $resumeMarkdown, $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
-        return {
-          'type': Object.keys(c)[0],
-          'content': c[Object.keys(c)[0]],
-          'icon': simpleIcons.get(Object.keys(c)[0]).svg
-        }
-      }))], (p, b, r, c) => {
-        return {
-          pages: p,
-          blog: b,
-          resume: r,
-          contacts: c
-        }
+      $content: $$$([
+        pageSelectors,
+        blogSelector.$blog,
+        $resumeMarkdown,
+        $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
+          return {
+            'type': Object.keys(c)[0],
+            'content': c[Object.keys(c)[0]],
+            'icon': simpleIcons.get(Object.keys(c)[0]).svg
+          }
+        }))], (p, b, r, c) => {
+        
+        
+          return {
+            pages: p,
+            blog: b,
+            resume: r,
+            contacts: c
+          }
 
-      }),
+        }),
 
       $all: $$$([
-        projectFunkyBundleSelectors.$bundle,
-        $resume, $favicon, $js, $license, $resumePdf, cssSelector.$webCss, blogSelector.$allBlogAssets,
+        $resume,
+        $favicon,
+        $js,
+        $license,
+        $resumePdf,
+        cssSelector.$webCss,
+        blogSelector.$allBlogAssets,
         $$$(
           [_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
         ),
       ], (
-        fb, r, f, j, l, rsmPdf, css, allBlogAssets, jpgs
+        r,
+        f,
+        j,
+        l,
+        rsmPdf,
+        css,
+        allBlogAssets,
+        jpgs
       ) => {
+        
+          console.log(jpgs)
+          // process.exit()
+
+        
         return {
           'resume.md': r,
           'favicon.png': f,
@@ -172,7 +213,6 @@ module.exports = {
           'style.css': css,
           ...allBlogAssets,
           ...jpgs,
-          ...fb,
         }
       })
 

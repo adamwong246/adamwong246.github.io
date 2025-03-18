@@ -1,13 +1,23 @@
-const $$$ = require('reselect').createSelector;
-fs = require('fs');
-CleanCSS = require('clean-css');
-
-const {
+import reselect from "reselect"
+const $$$ = reselect.createSelector;
+import {
   contentOfFile,
   contentsOfFiles,
   srcAndContentOfFile,
-  srcAndContentOfFiles
-} = require("../../funkophile/funkophileHelpers.js");
+  srcAndContentOfFiles,
+} from "funkophile/funkophileHelpers";
+import fs from "fs";
+import CleanCSS from "clean-css";
+// const $$$ = require('reselect').createSelector;
+// fs = require('fs');
+// CleanCSS = require('clean-css');
+
+// const {
+//   contentOfFile,
+//   contentsOfFiles,
+//   srcAndContentOfFile,
+//   srcAndContentOfFiles
+// } = require("../../funkophile/funkophileHelpers.js");
 
 const CSS = 'CSS';
 
@@ -17,7 +27,7 @@ const cleandAndMinifyCss = (css) => {
   }).minify(css).styles
 };
 
-module.exports = {
+export default {
 
   inputs: {
     [CSS]: 'stylesheets/*.css'

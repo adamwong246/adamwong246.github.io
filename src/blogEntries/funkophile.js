@@ -1,18 +1,18 @@
-const $$$ = require('reselect').createSelector;
-const lwip = require("@randy.tarampi/lwip");
-markdown = require('marky-mark');
-slug = require('slug');
-moment = require('moment');
-cheerio = require("cheerio");
-simpleIcons = require('simple-icons');
-
-const {
+import markdown from 'marky-mark';
+import path from 'path';
+import reselect from 'reselect';
+import slug from "slug";
+const $$$ = reselect.createSelector
+import {
   contentOfFile,
   contentsOfFiles,
   srcAndContentOfFile,
   srcAndContentOfFiles
-} = require("../../funkophile/funkophileHelpers.js");
+} from "funkophile/funkophileHelpers";
 
+import cheerio from 'cheerio';
+import moment from 'moment';
+import lwip from "@randy.tarampi/lwip"
 
 // One key for every file input pattern
 const BLOG_ASSETS = 'BLOG_ASSETS'
@@ -37,7 +37,7 @@ const transformJpegs = (jpgs, assets, blogEntries) => {
       const assetManifest = asset.json
       const transformations = assetManifest[jpgSplit.slice(-1)[0]]
 
-      modifiedJpgs = Object.keys(transformations).reduce((mmm, transformationKey) => {
+      const modifiedJpgs = Object.keys(transformations).reduce((mmm, transformationKey) => {
         const transformation = transformations[transformationKey]
 
         const modifedImagePromise = new Promise((res, rej) => {
@@ -45,8 +45,8 @@ const transformJpegs = (jpgs, assets, blogEntries) => {
 
             const batchImage = image.batch()
             transformation.forEach((transform) => {
-              ts = Object.keys(transform)[0]
-              args = transform[ts]
+              const ts = Object.keys(transform)[0]
+              const args = transform[ts]
               if (args.length) {
                 batchImage[ts](...transform[ts])
               } else {
@@ -103,17 +103,15 @@ const updateBlogImagePaths = (blogEntries, jpgs, gifs, movs, pngs, rawAssets) =>
     return {
       ...blogEntry,
       markdownContent: $.html(),
-      // images: {jpgs, gifs, movs}
+      images: {jpgs, gifs, movs}
     };
   });
-
 };
-
 
 const processBlogEntries = (blogEntries) => {
   return blogEntries.map((blogEntry) => {
     const markdownContent = markdown.parse(blogEntry.content)
-    const entryId = blogEntry.src.split('/')[3]
+    const entryId = blogEntry.src.split('/').slice(-2, -1)[0]
     const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
     const filePath = slugPath + 'index.html';
     return {
@@ -155,7 +153,7 @@ const processBlogEntries = (blogEntries) => {
     })
 };
 
-module.exports = {
+export default {
 
   // defines the inputs points where files will be read and their key within the Redux store
   inputs: {

@@ -1,34 +1,33 @@
-jade = require("jade");
+import jade from "jade";
 
-module.exports = {
+export const jadeRender = (content, pageLayout, locals) => {
+	return jade.render(content, {
+		filename: pageLayout.src,
+		...locals
+	})
+}
 
-	jadeRender: (content, pageLayout, locals) => {
-		return jade.render(content, {
-			filename: pageLayout.src,
-			...locals
-		})
-	},
+export const jadeRenderPageLayout = (content, pageLayout, locals) => {
 
-	jadeRenderPageLayout: (content, pageLayout, locals) => {
-		return jade.render(pageLayout.content, {
-			filename: pageLayout.src,
-			page: {
-				content: content
-			},
-			...locals
-		})
-	},
+	const l = {
+		filename: pageLayout.src,
+		page: {
+			content: content
+		},
 
-	jadeRenderBlogEntry: (blogEntry, blogEntryLayout, locals) => {
-		return jade.render(blogEntryLayout.content, {
-			filename: blogEntryLayout.src,
-			entry: blogEntry,
-			page: {
-				content: blogEntry.markdownContent,
-			},
-			...locals
-		})
+		...locals
 	}
 
+	return jade.render(pageLayout.content, l)
+}
 
+export const jadeRenderBlogEntry = (blogEntry, blogEntryLayout, locals) => {
+	return jade.render(blogEntryLayout.content, {
+		filename: blogEntryLayout.src,
+		entry: blogEntry,
+		page: {
+			content: blogEntry.markdownContent,
+		},
+		...locals
+	})
 }

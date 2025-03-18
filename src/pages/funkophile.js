@@ -1,15 +1,16 @@
-const $$$ = require('reselect').createSelector;
-
-const {
-	contentOfFile,
-	contentsOfFiles,
-	srcAndContentOfFile,
-	srcAndContentOfFiles
-} = require("../../funkophile/funkophileHelpers.js");
+import path from "path"
+import reselect from "reselect"
+const $$$ = reselect.createSelector;
+import {
+  contentOfFile,
+  contentsOfFiles,
+  srcAndContentOfFile,
+  srcAndContentOfFiles,
+} from "funkophile/funkophileHelpers";
 
 const PAGES = 'PAGES'
 
-module.exports = {
+export default {
 
 	inputs: {
 		[PAGES]: 'pages/**/*.jade',
@@ -20,8 +21,12 @@ module.exports = {
 		return $$$(
 			srcAndContentOfFiles(_[PAGES]),
 			(pages) => {
+
+				// console.log("pages", pages)
+				// process.exit()
+
 				return pages.map((page) => {
-					const baseFileName = page.src.split('.')[1].split('/').slice(-1)[0];
+					const baseFileName = path.basename(page.src).split('.')[0];//.split('/').slice(-1)[0];
 
 					let dest, url;
 

@@ -1,5 +1,5 @@
 _ = require("lodash");
-glob = require('glob');
+glob = require('glob').glob;
 path = require('path');
 fs_extra = require('fs-extra');
 

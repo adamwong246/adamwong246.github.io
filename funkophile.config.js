@@ -1,25 +1,30 @@
-const $$$ = require('reselect').createSelector;
+import moment from "moment";import funkophile from "funkophile";
+import cheerio from 'cheerio';
+import fs from "fs";
 
-const {
+import reselect from "reselect";
+const $$$ = reselect.createSelector;
+
+import {
   contentOfFile,
   contentsOfFiles,
   srcAndContentOfFile,
-  srcAndContentOfFiles
-} = require("./funkophile/funkophileHelpers.js");
+  srcAndContentOfFiles,
+} from "funkophile/funkophileHelpers";
 
-// extract your logic for easier testing
-const {
+import {
   jadeRender,
   jadeRenderPageLayout,
   jadeRenderBlogEntry,
-} = require("./funkophileUtils.js");
+} from "./funkophileUtils.js";
 
-const srcFunkophile = require("./src/funkophile.js");
+import srcFunkophile from "./src/funkophile.js";
 
-const NOT_FOUND_PAGE = 'NOT_FOUND_PAGE'
-const VIEWS = 'VIEWS'
 
-module.exports = {
+const NOT_FOUND_PAGE = "NOT_FOUND_PAGE";
+const VIEWS = "VIEWS";
+
+funkophile({
   initialState: {},
 
   options: {
@@ -29,7 +34,7 @@ module.exports = {
 
   encodings: {
     'utf8': ['md', 'css', 'jade', 'txt', 'json', 'js'],
-    '': ['jpg', 'png', 'gif']
+    '': ['jpg', 'png', 'gif', 'mov']
   },
 
   inputs: {
@@ -44,30 +49,42 @@ module.exports = {
 
   outputs: (_) => {
 
-    const $package = $$$(() => require("./package.json"));
+    // const $packageDotJson = $$$(() => require("./packageDotJson.json"));
+    const $packageDotJson = $$$(() => {
+      const data = JSON.parse(fs.readFileSync("package.json").toString())
+      // const { default: data } = await import("./package.json") assert {type: "json"};
+      // console.log(data.repository)
+      // process.exit()
+      return data;
+    });
 
     const srcSelector = srcFunkophile.outputs(_);
 
     return $$$([
       $$$([
         $$$([
-          $package,
+          $packageDotJson,
           srcSelector.$content,
           srcAndContentOfFile(_[VIEWS], './src/views/page.jade'),
           srcAndContentOfFile(_[VIEWS], './src/views/blogEntryLayout.jade'),
           contentOfFile(_[NOT_FOUND_PAGE]),
           srcAndContentOfFile(_[VIEWS], './src/views/resume.jade'),
         ], (
-          package,
+          packageDotJson,
           content,
-          pageLayout, blogEntryLayout, notFoundContent, resumeLayout
+          pageLayout,
+          blogEntryLayout,
+          notFoundContent,
+          resumeLayout
         ) => {
-
+          
           const localsToJadeRender = {
-            package,
+            packageDotJson,
             blogEntries: content.blog,
             contacts: content.contacts,
             pages: content.pages,
+            moment: moment,
+            cheerio: cheerio,
           }
 
           return {
@@ -103,20 +120,26 @@ module.exports = {
 
       srcAndContentOfFile(_[VIEWS], './src/views/page.jade'),
       contentOfFile(_[NOT_FOUND_PAGE]),
-      $package,
+      $packageDotJson,
       srcSelector.$content,
 
-    ], (site, pageLayout, notFoundContent, package, content) => {
+    ], (
+      site,
+      pageLayout,
+      notFoundContent,
+      packageDotJson,
+      content
+    ) => {
       return {
         ...site,
         'sitemap.html': `<ul>${Object.keys(site).sort((e) => e).map((e) => `<li><a href="/${e}"> ${e} </a></li>`).join('')}</ul>`,
         'fuse.js': fs.readFileSync('./node_modules/fuse.js/dist/fuse.min.js', 'utf8'),
         '404.html': jadeRender(notFoundContent, pageLayout, {
           blogEntries: content.blog,
-          package,
+          packageDotJson,
           paths: Object.keys(site)
         })
       }
     });
   }
-}
+}, 'build');

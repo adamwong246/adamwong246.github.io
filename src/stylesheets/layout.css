@@ -118,3 +118,7 @@ footer {
   clear: both;
   display: table;
 }
+
+:root {
+  overscroll-behavior: none;
+}

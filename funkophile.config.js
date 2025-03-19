@@ -1,4 +1,5 @@
-import moment from "moment";import funkophile from "funkophile";
+import moment from "moment";
+import funkophile from "funkophile";
 import cheerio from 'cheerio';
 import fs from "fs";
 
@@ -7,9 +8,7 @@ const $$$ = reselect.createSelector;
 
 import {
   contentOfFile,
-  contentsOfFiles,
   srcAndContentOfFile,
-  srcAndContentOfFiles,
 } from "funkophile/funkophileHelpers";
 
 import {
@@ -20,11 +19,11 @@ import {
 
 import srcFunkophile from "./src/funkophile.js";
 
-
 const NOT_FOUND_PAGE = "NOT_FOUND_PAGE";
 const VIEWS = "VIEWS";
 
 funkophile({
+  mode: process.argv[2],
   initialState: {},
 
   options: {
@@ -52,9 +51,6 @@ funkophile({
     // const $packageDotJson = $$$(() => require("./packageDotJson.json"));
     const $packageDotJson = $$$(() => {
       const data = JSON.parse(fs.readFileSync("package.json").toString())
-      // const { default: data } = await import("./package.json") assert {type: "json"};
-      // console.log(data.repository)
-      // process.exit()
       return data;
     });
 
@@ -142,4 +138,4 @@ funkophile({
       }
     });
   }
-}, 'build');
+});

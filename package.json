@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "license": "ISC",
   "description": "An exceedingly simple blog. Powered by funkophile!",
   "author": {
@@ -17,10 +17,10 @@
   "homepage": "http://adamwong246.github.io/",
   "type": "module",
   "scripts": {
-    "help": "cat help.txt",
+
     "funkophile:build": "node ./funkophile.config.js build",
     "funkophile:watch": "node ./funkophile.config.js watch",
-    "funkophile:dev": "nodemon  ./funkophile.config.js",
+    "funkophile:dev": "nodemon  ./funkophile.config.js watch",
     "serve": "node ./server.cjs",
     "dev": "rm -rf dist/**; yarn serve & yarn funkophile:dev",
     "cleanBuild": "rm -rf dist/**; yarn funkophile:build",
@@ -40,7 +40,7 @@
     "express": "^4.21.2",
     "filepath": "^1.1.0",
     "fs-extra": "^11.3.0",
-    "funkophile": "../funkophile",
+    "funkophile": "0.0.25",
     "fuse.js": "^6.4.6",
     "glob": "11.0.1",
     "html-minifier": "",

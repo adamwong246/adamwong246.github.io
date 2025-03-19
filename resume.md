@@ -1,6 +1,6 @@
 |     |  |
 | -------- | ------- |
-| <h1> Adam Wong </h1> <h2>adamwong246@gmail.com</h2> <h3>Portland, Oregon </h3> <h4>BA of Computer Science, USC </h4> | <ul> <li>AWS Certified Cloud Practitioner </li> <li>Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity</li><li>React, Nextjs, Tailwind, Rails, Android</li><li>Kubernetes, Docker </li><li>BDD, TDD, Agile methodologies </li> </ul>    | 
+| <h1> Adam Wong </h1> <h2>adamwong246@gmail.com</h2> <h3>Portland, Oregon </h3> <h4>BA of Computer Science, USC </h4> | <ul> <li>Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity</li><li>React, Nextjs, Tailwind, Rails, Android</li><li>Kubernetes, Docker </li><li>BDD, TDD, Agile methodologies </li> <li>AWS Certified Cloud Practitioner </li>  </ul>    | 
 
 --- 
 

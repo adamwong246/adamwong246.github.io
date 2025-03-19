@@ -1,0 +1,1 @@
+I need my resume to match the wireframe in `desiredResume.jpg`. Please alter `style.css` but do NOT alter `resume.html`.

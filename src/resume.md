@@ -1,6 +1,18 @@
-|     |  |
-| -------- | ------- |
-| <h1> Adam Wong </h1> <h2>adamwong246@gmail.com</h2> <h3>Portland, Oregon </h3> <h4>BA of Computer Science, USC </h4> | <ul> <li>Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity</li><li>React, Nextjs, Tailwind, Rails, Android</li><li>Kubernetes, Docker </li><li>BDD, TDD, Agile methodologies </li> <li>AWS Certified Cloud Practitioner </li>  </ul>    | 
+# Adam Wong
+
+## adamwong246@gmail.com
+
+### Portland, OR
+
+#### BA of Computer Science, US
+
+
+- Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity
+- React, Nextjs, Tailwind, Rails, Android
+- Kubernetes, Docker
+- BDD and TDD methodologies
+- certified Scrum Master
+- AWS Certified Cloud Practitioner
 
 --- 
 

@@ -17,7 +17,6 @@
   "homepage": "http://adamwong246.github.io/",
   "type": "module",
   "scripts": {
-
     "funkophile:build": "node ./funkophile.config.js build",
     "funkophile:watch": "node ./funkophile.config.js watch",
     "funkophile:dev": "nodemon  ./funkophile.config.js watch",
@@ -40,7 +39,7 @@
     "express": "^4.21.2",
     "filepath": "^1.1.0",
     "fs-extra": "^11.3.0",
-    "funkophile": "0.0.25",
+    "funkophile": "0.1.0",
     "fuse.js": "^6.4.6",
     "glob": "11.0.1",
     "html-minifier": "",

@@ -130,7 +130,6 @@ export default {
     const blogSelector = blogFunkophile.outputs(_);
     const cssSelector = styleFunkophile.outputs(_);
     const pageSelectors = pagesFunkophile.outputs(_);
-    // const projectFunkyBundleSelectors = projectFunkyBundle.outputs(_);
 
     const $resume = contentOfFile(_["RESUME"]);
     const $js = contentOfFile(_["JS"]);
@@ -198,12 +197,7 @@ export default {
         css,
         allBlogAssets,
         jpgs
-      ) => {
-        
-          console.log(jpgs)
-          // process.exit()
-
-        
+      ) => {        
         return {
           'resume.md': r,
           'favicon.png': f,

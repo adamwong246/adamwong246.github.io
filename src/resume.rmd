@@ -4,15 +4,16 @@ classoption:
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="30%"}
+::: {.column width="50%"}
 
-## Adam Wong
-###### adamwong246@gmail.com
-###### Portland, OR
-###### BA of Computer Science, USC
+# Adam Wong
+#### Portland, OR
+#### BA of Computer Science, USC
+##### [adamwong246@gmail.com](adamwong246@gmail.com) [LinkedIn](https://www.linkedin.com/in/adam-wong-4634421b) [GitHub](http://github.com/adamwong246)
 
 :::
-::: {.column width="70%"}
+
+::: {.column width="50%"}
 
 - Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity
 - React, Nextjs, Tailwind, Rails, Android

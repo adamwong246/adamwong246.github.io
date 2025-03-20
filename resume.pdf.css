@@ -424,16 +424,30 @@ th {
 }
 
 h1 {
-  font-size: 52px;
+  font-size: 30px;
+}
+
+p, li {
+  font-size: 11px;
+}
+
+* {
+  line-height: 1em;
+}
+
+h2, h3, h4 {
+  line-height: 1em;
+}
+
+p, ul {
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 body {
   margin: -2rem;
 }
 
-h1 {
-  font-size: 52px;
-  color: green;
-}
+
 * {
   line-height: 1.3em;
 }
@@ -446,6 +460,7 @@ p {
   margin-bottom: 8px;
   margin-top: 8px;
 }
+
 /* body {
     font-family: 'Hoefler Text', Times New Roman, Times, serif;
 }

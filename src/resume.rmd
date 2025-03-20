@@ -4,20 +4,16 @@ classoption:
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="40%"}
+::: {.column width="30%"}
 
-# Adam Wong
+## Adam Wong
 
-### adamwong246@gmail.com
-
-#### Portland, OR
-
-##### BA of Computer Science, USC
-
-
+##### adamwong246@gmail.com
+##### Portland, OR
+###### BA of Computer Science, USC
 
 :::
-::: {.column width="60%"}
+::: {.column width="70%"}
 
 - Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity
 - React, Nextjs, Tailwind, Rails, Android
@@ -32,7 +28,7 @@ classoption:
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 ##### [Testeranto](https://www.npmjs.com/package/testeranto)
 ##### freelance developer
@@ -50,7 +46,7 @@ I developed an AI-first, Acceptance Test Driven Development Typescript test fram
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 ##### [Piton Labs](https://pitonlabs.com/)
 ##### software engineer
@@ -74,7 +70,7 @@ I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 ##### freelance web3 developer
 ###### August 2022
@@ -95,7 +91,7 @@ I worked with [liquid collections](https://liquidcollections.com/) to develop NF
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 ##### Chroma Signet
 ##### engineer & customer success
@@ -118,7 +114,7 @@ I returned to Chroma to develop Signet.code, a cannabis packaging application.
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 ##### [OpenGov](http://www.opengov.com/)
 ##### software engineer
@@ -143,7 +139,7 @@ I worked with a team to decompose a monolithic Rails app into a series of Typesc
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 #### Chroma Fund
 #### full stack developer
@@ -151,7 +147,7 @@ I worked with a team to decompose a monolithic Rails app into a series of Typesc
 ##### August 2016
 
 :::
-::: {.column width="75%"}
+::: {.column width="70%"}
 
 I engineered the Meteor app "Chroma Fund", a marketplace lending platform providing investors with bundles of small business loans.
 
@@ -165,7 +161,7 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 ---
 
 :::::::::::::: {.columns}
-::: {.column width="25%"}
+::: {.column width="30%"}
 
 #### Hubbub Health
 #### Ruby on Rails developer

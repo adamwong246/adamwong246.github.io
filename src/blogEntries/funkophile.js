@@ -1,18 +1,14 @@
+import * as cheerio from 'cheerio';
+import moment from 'moment';
+import lwip from "@randy.tarampi/lwip"
 import markdown from 'marky-mark';
-import path from 'path';
 import reselect from 'reselect';
 import slug from "slug";
 const $$$ = reselect.createSelector
 import {
-  contentOfFile,
-  contentsOfFiles,
-  srcAndContentOfFile,
+
   srcAndContentOfFiles
 } from "funkophile/funkophileHelpers";
-
-import cheerio from 'cheerio';
-import moment from 'moment';
-import lwip from "@randy.tarampi/lwip"
 
 // One key for every file input pattern
 const BLOG_ASSETS = 'BLOG_ASSETS'
@@ -21,7 +17,6 @@ const BLOG_ENTRIES_JPGS = 'BLOG_ENTRIES_JPGS'
 const BLOG_ENTRIES_GIFS = 'BLOG_ENTRIES_GIFS'
 const BLOG_ENTRIES_MOVS = 'BLOG_ENTRIES_MOVS'
 const BLOG_ENTRIES_PNGS = 'BLOG_ENTRIES_PNGS'
-
 const BLOG_ENTRIES_RAW = 'BLOG_ENTRIES_RAW'
 
 const transformJpegs = (jpgs, assets, blogEntries) => {

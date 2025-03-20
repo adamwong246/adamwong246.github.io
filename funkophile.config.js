@@ -1,6 +1,6 @@
 import moment from "moment";
 import funkophile from "funkophile";
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import fs from "fs";
 
 import reselect from "reselect";

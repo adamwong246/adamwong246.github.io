@@ -1,7 +1,5 @@
 import simpleIcons from 'simple-icons';
 import lwip from "@randy.tarampi/lwip";
-import markdown from 'marky-mark';
-import puppeteer from "puppeteer"
 import reselect from "reselect"
 import path from "path"
 
@@ -22,54 +20,16 @@ const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
 const JS = 'JS'
 const LICENSE = 'LICENSE';
 const PDF_SETTINGS = 'PDF_SETTINGS'
-// const RESUME = 'RESUME';
-
-// const makeResumePdf = (resumeContent, css, pdfSettings) => {
-//   return (async () => {
-//     try {
-//       const browser = await puppeteer.launch();
-//       const page = await browser.newPage();
-//       await page.setContent(resumeContent)
-
-//       await page.addStyleTag({
-//         content: css
-//       })
-
-//       const pdf = await page.pdf({
-//         path: '/dev/null',
-//         ...JSON.parse(pdfSettings)
-//       });
-//       await browser.close();
-
-//       // clear the timestamp for deterministic pdfs
-//       // for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
-//       //   pdf[offset] = 0;
-//       // }
-//       return pdf
-//     } catch (e) {
-//       console.error(e);
-//       return e;
-//     } finally {
-//       // console.log('We do cleanup here');
-//     }
-
-//   })();
-// };
 
 const jpgTransformPromises = (jpgs, assets) => {
   return Object.keys(jpgs)
     .reduce((mm, jKey) => {
       const shortFileName = path.basename(jKey)
       mm[jKey.split('/').slice(-2).join('/')] = jpgs[jKey]
-      const transformations = JSON.parse(assets)[shortFileName]
-
-      
-      
+      const transformations = JSON.parse(assets)[shortFileName]      
       if (transformations) {
 
         Object.keys(transformations).forEach((transformationKey) => {
-
-          
 
           mm['images/' + transformationKey + '-' + shortFileName] = new Promise((res, rej) => lwip.open(jpgs[jKey], 'jpg', (err, image) => {
 
@@ -116,13 +76,11 @@ export default {
     [JS]: 'index.js',
     [LICENSE]: 'LICENSE.txt',
     [PDF_SETTINGS]: 'pdfSettings.json',
-    // [RESUME]: 'resume.md',
     [JPG_TRANSFORMS]: 'images/assets.json',
 
     ...styleFunkophile.inputs,
     ...pagesFunkophile.inputs,
     ...blogFunkophile.inputs,
-    // ...projectFunkyBundle.inputs,
   },
 
   outputs: (_) => {
@@ -131,34 +89,18 @@ export default {
     const cssSelector = styleFunkophile.outputs(_);
     const pageSelectors = pagesFunkophile.outputs(_);
 
-    // const $resume = contentOfFile(_["RESUME"]);
     const $js = contentOfFile(_["JS"]);
     const $favicon = contentOfFile(_["FAVICON_PNG"]);
     const $license = contentOfFile(_["LICENSE"]);
-
-    // const $resumeMarkdown = $$$($resume, markdown.parse);
-
-    // const $resumePdf = $$$(
-    //   [
-    //     $resumeMarkdown,
-    //     cssSelector.$pdfCss,
-    //     contentOfFile(_["PDF_SETTINGS"]),
-    //   ],
-    //   (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown.content, css, pdfSettings));
     
     return {
       $pages: pageSelectors,
       ...blogSelector,
-
-      // $resume,
       $js,
       $favicon,
-      // $resumeMarkdown,
-
       $content: $$$([
         pageSelectors,
         blogSelector.$blog,
-        // $resumeMarkdown,
         $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
           return {
             'type': Object.keys(c)[0],
@@ -171,39 +113,32 @@ export default {
           return {
             pages: p,
             blog: b,
-            // resume: r,
             contacts: c
           }
 
         }),
 
       $all: $$$([
-        // $resume,
         $favicon,
         $js,
         $license,
-        // $resumePdf,
         cssSelector.$webCss,
         blogSelector.$allBlogAssets,
         $$$(
           [_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
         ),
       ], (
-        // r,
         f,
         j,
         l,
-        // rsmPdf,
         css,
         allBlogAssets,
         jpgs
       ) => {        
         return {
-          // 'resume.md': r,
           'favicon.png': f,
           'index.js': j,
           'LICENSE.txt': l,
-          // 'resume.pdf': rsmPdf,
           'style.css': css,
           ...allBlogAssets,
           ...jpgs,
@@ -212,8 +147,6 @@ export default {
 
       $resumePdfCss: cssSelector.$resumePdfCss,
       $resumeHtmlCss: cssSelector.$resumeHtmlCss
-
-      
 
     }
   }

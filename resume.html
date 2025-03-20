@@ -245,14 +245,24 @@ th {
 padding: 0;
 }
 h1 {
-font-size: 52px;
+font-size: 30px;
+}
+p, li {
+font-size: 11px;
+}
+* {
+line-height: 1em;
+}
+h2, h3, h4 {
+line-height: 1em;
+}
+p, ul {
+margin-bottom: 0px;
+margin-top: 0px;
 }
 body {
 margin: 1rem;
-}
-h1 {
-font-size: 52px;
-color: red;
+width: 40rem;
 }
 * {
 line-height: 1.3em;
@@ -351,10 +361,13 @@ margin-bottom: 1em;
 </style>
 </head>
 <body>
+<div class="columns">
+<div class="column" style="width:40%;">
 <h1 id="adam-wong">Adam Wong</h1>
-<h2 id="adamwong246gmail.com">adamwong246@gmail.com</h2>
-<h3 id="portland-or">Portland, OR</h3>
-<h4 id="ba-of-computer-science-us">BA of Computer Science, US</h4>
+<h3 id="adamwong246gmail.com">adamwong246@gmail.com</h3>
+<h4 id="portland-or">Portland, OR</h4>
+<h5 id="ba-of-computer-science-usc">BA of Computer Science, USC</h5>
+</div><div class="column" style="width:60%;">
 <ul>
 <li>Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua,
 Solidity</li>
@@ -364,13 +377,27 @@ Solidity</li>
 <li>certified Scrum Master</li>
 <li>AWS Certified Cloud Practitioner</li>
 </ul>
+</div>
+</div>
 <hr />
-<h3 id="freelance-developer-testeranto">freelance developer @ <a href="https://www.npmjs.com/package/testeranto">Testeranto</a></h3>
-<h4 id="january-2024---current">January 2024 - Current</h4>
+<div class="columns">
+<div class="column" style="width:25%;">
+<h5 id="testeranto"><a href="https://www.npmjs.com/package/testeranto">Testeranto</a></h5>
+<h5 id="freelance-developer">freelance developer</h5>
+<h6 id="january-2024">January 2024</h6>
+</div><div class="column" style="width:75%;">
 <p>I developed an AI-first, Acceptance Test Driven Development
 Typescript test framework.</p>
-<h3 id="software-engineer-piton-labs">software engineer @ <a href="https://pitonlabs.com/">Piton Labs</a></h3>
-<h4 id="february-2023---january-2025">February 2023 - January 2025</h4>
+</div>
+</div>
+<hr />
+<div class="columns">
+<div class="column" style="width:25%;">
+<h5 id="piton-labs"><a href="https://pitonlabs.com/">Piton Labs</a></h5>
+<h5 id="software-engineer">software engineer</h5>
+<h6 id="february-2023">February 2023</h6>
+<h6 id="january-2025">January 2025</h6>
+</div><div class="column" style="width:75%;">
 <p>I joined Piton Labs to manage the development of the Accion
 Opportunity Fund.</p>
 <ul>
@@ -379,8 +406,15 @@ Opportunity Fund.</p>
 <li>developed a integration test suite as part of the CICD system</li>
 <li>managed the i18n translation project</li>
 </ul>
-<h3 id="freelance-web3-developer">freelance web3 developer</h3>
-<h4 id="august-2022---january-2023">August 2022 - January 2023</h4>
+</div>
+</div>
+<hr />
+<div class="columns">
+<div class="column" style="width:25%;">
+<h5 id="freelance-web3-developer">freelance web3 developer</h5>
+<h6 id="august-2022">August 2022</h6>
+<h6 id="january-2023">January 2023</h6>
+</div><div class="column" style="width:75%;">
 <p>I worked with <a href="https://liquidcollections.com/">liquid
 collections</a> to develop NFTs which are redeemable for consumer
 goods.</p>
@@ -390,9 +424,16 @@ infrastructure</li>
 <li>wrote and tested custom solidity code to create <a href="https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0">dynamic
 on-chain metadata</a>.</li>
 </ul>
-<h3 id="engineer-customer-success-chroma">engineer, customer success @
-<a href="http://www.chromasignet.com">Chroma</a></h3>
-<h4 id="january-2021---august-2022">January, 2021 - August 2022</h4>
+</div>
+</div>
+<hr />
+<div class="columns">
+<div class="column" style="width:25%;">
+<h5 id="chroma-signet">Chroma Signet</h5>
+<h5 id="engineer-customer-success">engineer &amp; customer success</h5>
+<h6 id="january-2021">January 2021</h6>
+<h6 id="august-2022-1">August 2022</h6>
+</div><div class="column" style="width:75%;">
 <p>I returned to Chroma to develop Signet.code, a cannabis packaging
 application.</p>
 <ul>
@@ -404,8 +445,16 @@ high scale</li>
 <li>integrated node with multiple external APIs and our cross-platform
 react-native app with external SDKs</li>
 </ul>
-<h3 id="software-engineer-opengov">software engineer @ <a href="http://www.opengov.com/">OpenGov</a></h3>
-<h4 id="november-2016---march-2020">November, 2016 - March, 2020</h4>
+</div>
+</div>
+<hr />
+<div class="columns">
+<div class="column" style="width:25%;">
+<h5 id="opengov"><a href="http://www.opengov.com/">OpenGov</a></h5>
+<h5 id="software-engineer-1">software engineer</h5>
+<h6 id="november-2016">November 2016</h6>
+<h6 id="march-2020">March 2020</h6>
+</div><div class="column" style="width:75%;">
 <p>I worked with a team to decompose a monolithic Rails app into a
 series of Typescript microservices.</p>
 <ul>
@@ -418,8 +467,16 @@ across multiple teams with our organization</li>
 and Docker</li>
 <li>deployed our apps to AWS via Kubernetes</li>
 </ul>
-<h3 id="full-stack-developer-chroma-fund">full stack developer @ <a href="https://chroma.fund">Chroma Fund</a></h3>
-<h4 id="february-2015---august-2016">February, 2015 - August, 2016</h4>
+</div>
+</div>
+<hr />
+<div class="columns">
+<div class="column" style="width:25%;">
+<h4 id="chroma-fund">Chroma Fund</h4>
+<h4 id="full-stack-developer">full stack developer</h4>
+<h5 id="february-2015">February 2015</h5>
+<h5 id="august-2016">August 2016</h5>
+</div><div class="column" style="width:75%;">
 <p>I engineered the Meteor app “Chroma Fund”, a marketplace lending
 platform providing investors with bundles of small business loans.</p>
 <ul>
@@ -428,9 +485,16 @@ front-end</li>
 <li>supported blockchain verifiable transactions</li>
 <li>attended TechStars Summer 2016 accelerator program in NYC</li>
 </ul>
-<h3 id="ruby-on-rails-developer-hubbub-health">Ruby on Rails developer @
-<a href="https://www.hubbubhealth.com/">Hubbub Health</a></h3>
-<h4 id="may-2013---february-2015">May, 2013 - February, 2015</h4>
+</div>
+</div>
+<hr />
+<div class="columns">
+<div class="column" style="width:25%;">
+<h4 id="hubbub-health">Hubbub Health</h4>
+<h4 id="ruby-on-rails-developer">Ruby on Rails developer</h4>
+<h5 id="may-2013">May 2013</h5>
+<h5 id="february-2015-1">February 2015</h5>
+</div><div class="column" style="width:75%;">
 <p>I worked with a large team to incentivize employee wellness with the
 RoR app, <a href="hubbubhealth.com">hubbubhealth.com</a>.</p>
 <ul>
@@ -442,5 +506,7 @@ integration</li>
 <li>optimized high traffic queries by replacing ActiveRecord calls with
 raw SQL</li>
 </ul>
+</div>
+</div>
 </body>
 </html>

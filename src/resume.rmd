@@ -7,9 +7,8 @@ classoption:
 ::: {.column width="30%"}
 
 ## Adam Wong
-
-##### adamwong246@gmail.com
-##### Portland, OR
+###### adamwong246@gmail.com
+###### Portland, OR
 ###### BA of Computer Science, USC
 
 :::
@@ -141,10 +140,10 @@ I worked with a team to decompose a monolithic Rails app into a series of Typesc
 :::::::::::::: {.columns}
 ::: {.column width="30%"}
 
-#### Chroma Fund
-#### full stack developer
-##### February 2015
-##### August 2016
+##### Chroma Fund
+##### full stack developer
+###### February 2015
+###### August 2016
 
 :::
 ::: {.column width="70%"}
@@ -163,10 +162,10 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 :::::::::::::: {.columns}
 ::: {.column width="30%"}
 
-#### Hubbub Health
-#### Ruby on Rails developer
-##### May 2013
-##### February 2015
+##### Hubbub Health
+##### Ruby on Rails developer
+###### May 2013
+###### February 2015
 
 :::
 ::: {.column width="75%"}

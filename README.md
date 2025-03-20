@@ -10,14 +10,14 @@ Because of the nature of github pages, development is done on the [dev branch](h
 - a resume generator that creates a pdf and html document from a markdown file
 - an image pipeline to transform your jpegs
 
-### Directory structure
+### Other requirements
 
-- `src` - the source folder
-  - `assets` - css and images
-  - `blogEntries` - the content of my blog
-    - `n` - a blog entry
-      - `index.md` - the content of the blog entry
-      - `*.jpg` - image files pertaining to the blog entry
-      - `assets.json` - a file describing the transforms to be made to any images
-  - `pages` - jade files to be rendered. These are outputed in a way that maintains their directory structure.
-  - `views` - layout templates
+#### pandoc
+
+```
+brew install pandoc
+brew install --cask basictex
+brew install weasyprint
+sudo ln -s /Library/TeX/Root/bin/universal-darwin/pdflatex /usr/local/bin/pdflatex
+
+```

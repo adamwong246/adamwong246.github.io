@@ -6,8 +6,6 @@ import {
 import fs from "fs";
 import CleanCSS from "clean-css";
 
-const CSS = 'CSS';
-
 const cleandAndMinifyCss = (css) => {
   return new CleanCSS({
     keepSpecialComments: 2
@@ -17,28 +15,42 @@ const cleandAndMinifyCss = (css) => {
 export default {
 
   inputs: {
-    [CSS]: 'stylesheets/*.css'
+    ['CSS']: 'stylesheets/*.css',
+    ['RESUME_CSS']: 'stylesheets/resume/*.css'
   },
 
   outputs: (_) => {
 
     const normalizeDotCss = fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8');
 
-    const $webCss = $$$([contentsOfFiles(_[CSS]), $$$([], () => normalizeDotCss)], (css, normalize) =>
+    const $webCss = $$$([
+      contentsOfFiles(_['CSS']),
+      $$$([], () => normalizeDotCss)]
+      , (css, normalize) =>
       cleandAndMinifyCss(normalize + '\n' + css)
     );
 
-    const $pdfCss = $$$(_[CSS], (cssFiles) => [
+    const $resumePdfCss = $$$([_['CSS'], _['RESUME_CSS']], (cssFiles, rf) => [
       normalizeDotCss,
-      cssFiles['/Users/adam/Code/adamwong246.github.io/src/stylesheets/resume.css'],
+      rf['/Users/adam/Code/adamwong246.github.io/src/stylesheets/resume/resume.css'],
+      rf['/Users/adam/Code/adamwong246.github.io/src/stylesheets/resume/resume.pdf.css'],
       cssFiles['/Users/adam/Code/adamwong246.github.io/src/stylesheets/typography.css'],
       cssFiles['/Users/adam/Code/adamwong246.github.io/src/stylesheets/style.css'],
-
     ].join('\n'));
 
+    const $resumeHtmlCss = $$$([_['CSS'], _['RESUME_CSS']], (cssFiles, rf) => [
+      normalizeDotCss,
+      rf['/Users/adam/Code/adamwong246.github.io/src/stylesheets/resume/resume.css'],
+      rf['/Users/adam/Code/adamwong246.github.io/src/stylesheets/resume/resume.html.css'],
+      cssFiles['/Users/adam/Code/adamwong246.github.io/src/stylesheets/typography.css'],
+      cssFiles['/Users/adam/Code/adamwong246.github.io/src/stylesheets/style.css'],
+    ].join('\n'));
+
+    
     return {
       $webCss,
-      $pdfCss
+      $resumePdfCss,
+      $resumeHtmlCss
     };
   }
 }

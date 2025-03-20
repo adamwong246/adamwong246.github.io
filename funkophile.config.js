@@ -64,14 +64,14 @@ funkophile({
           srcAndContentOfFile(_[VIEWS], './src/views/page.jade'),
           srcAndContentOfFile(_[VIEWS], './src/views/blogEntryLayout.jade'),
           contentOfFile(_[NOT_FOUND_PAGE]),
-          srcAndContentOfFile(_[VIEWS], './src/views/resume.jade'),
+          // srcAndContentOfFile(_[VIEWS], './src/views/resume.jade'),
         ], (
           packageDotJson,
           content,
           pageLayout,
           blogEntryLayout,
           notFoundContent,
-          resumeLayout
+          // resumeLayout
         ) => {
           
           const localsToJadeRender = {
@@ -96,7 +96,7 @@ funkophile({
                 [page.dest]: jadeRender(page.content, pageLayout, localsToJadeRender)
               }
             }, {})),
-            'resume.html': jadeRenderPageLayout(content.resume.content, resumeLayout, localsToJadeRender),
+            // 'resume.html': jadeRenderPageLayout(content.resume.content, resumeLayout, localsToJadeRender),
 
 
           }
@@ -118,23 +118,30 @@ funkophile({
       contentOfFile(_[NOT_FOUND_PAGE]),
       $packageDotJson,
       srcSelector.$content,
+      srcSelector.$resumePdfCss,
+      srcSelector.$resumeHtmlCss,
 
     ], (
       site,
       pageLayout,
       notFoundContent,
       packageDotJson,
-      content
+      content,
+      resumePdfCss,
+      resumeHtmlCss
     ) => {
       return {
         ...site,
+        'resume.html.css': resumeHtmlCss,
+        'resume.pdf.css': resumePdfCss,
         'sitemap.html': `<ul>${Object.keys(site).sort((e) => e).map((e) => `<li><a href="/${e}"> ${e} </a></li>`).join('')}</ul>`,
         'fuse.js': fs.readFileSync('./node_modules/fuse.js/dist/fuse.min.js', 'utf8'),
         '404.html': jadeRender(notFoundContent, pageLayout, {
           blogEntries: content.blog,
           packageDotJson,
           paths: Object.keys(site)
-        })
+        }),
+        
       }
     });
   }

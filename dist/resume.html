@@ -1,29 +1,378 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"><link href="/style.css" rel="stylesheet" type="text/css"><title></title><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-47887894-1', 'auto');
-ga('send', 'pageview');</script><script src="/index.js"></script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu animate-logo"><div id="main-container"><nav><div id="site-title"><h3><img src="/favicon.png" onClick="openMenu()" class="box bounce-7"><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <img id="headshot" src="/images/optimized-headshot5.jpg"><p>I am a software engineer with over 10 years of experience in web development in the VC startup scene. I live in Portland Oregon with my partner Vincent and our dog, Sancho.</p><ul><li><span><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">pdf</a>, <a href="/resume.md">md</a></span></li><li><span><a href="/sideprojects/index.html">Side projects</a></span></li><li><span><a href="/blog/index.html">Blog entries</a></span></li><li><span>Latest entry: <a href="/blog/52-Give-TDD-a-chance/index.html">Give TDD a chance</a></span></li></ul></div></nav><main><article><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><h1> Adam Wong </h1> <h2>adamwong246@gmail.com</h2> <h3>Portland, Oregon </h3> <h4>BA of Computer Science, USC </h4></td>
-<td><ul> <li>Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity</li><li>React, Nextjs, Tailwind, Rails, Android</li><li>Kubernetes, Docker </li><li>BDD, TDD, Agile methodologies </li> <li>AWS Certified Cloud Practitioner </li>  </ul></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="freelance-developer-testeranto-https-www-npmjs-com-package-testeranto-">freelance developer @ <a href="https://www.npmjs.com/package/testeranto">Testeranto</a></h3>
-<h4 id="january-2024-current">January 2024 - Current</h4>
-<p>I developed an AI-first, Acceptance Test Driven Development Typescript test framework.</p>
-<h3 id="software-engineer-piton-labs-https-pitonlabs-com-">software engineer @ <a href="https://pitonlabs.com/">Piton Labs</a></h3>
-<h4 id="february-2023-january-2025">February 2023 - January 2025</h4>
-<p>I joined Piton Labs to manage the development of the Accion Opportunity Fund.</p>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>resume</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+html {
+font-family: sans-serif; 
+-ms-text-size-adjust: 100%; 
+-webkit-text-size-adjust: 100%; 
+}
+
+body {
+margin: 0;
+}
+
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+display: inline-block; 
+vertical-align: baseline; 
+}
+
+audio:not([controls]) {
+display: none;
+height: 0;
+}
+
+[hidden],
+template {
+display: none;
+}
+
+
+a {
+background-color: transparent;
+}
+
+a:active,
+a:hover {
+outline: 0;
+}
+
+
+abbr[title] {
+border-bottom: 1px dotted;
+}
+
+b,
+strong {
+font-weight: bold;
+}
+
+dfn {
+font-style: italic;
+}
+
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+
+mark {
+background: #ff0;
+color: #000;
+}
+
+small {
+font-size: 80%;
+}
+
+sub,
+sup {
+font-size: 75%;
+line-height: 0;
+position: relative;
+vertical-align: baseline;
+}
+sup {
+top: -0.5em;
+}
+sub {
+bottom: -0.25em;
+}
+
+
+img {
+border: 0;
+}
+
+svg:not(:root) {
+overflow: hidden;
+}
+
+
+figure {
+margin: 1em 40px;
+}
+
+hr {
+box-sizing: content-box;
+height: 0;
+}
+
+pre {
+overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+
+
+
+button,
+input,
+optgroup,
+select,
+textarea {
+color: inherit; 
+font: inherit; 
+margin: 0; 
+}
+
+button {
+overflow: visible;
+}
+
+button,
+select {
+text-transform: none;
+}
+
+button,
+html input[type="button"], 
+input[type="reset"],
+input[type="submit"] {
+-webkit-appearance: button; 
+cursor: pointer; 
+}
+
+button[disabled],
+html input[disabled] {
+cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+border: 0;
+padding: 0;
+}
+
+input {
+line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+box-sizing: border-box; 
+padding: 0; 
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+height: auto;
+}
+
+input[type="search"] {
+-webkit-appearance: textfield; 
+box-sizing: content-box; 
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+
+fieldset {
+border: 1px solid #c0c0c0;
+margin: 0 2px;
+padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+border: 0; 
+padding: 0; 
+}
+
+textarea {
+overflow: auto;
+}
+
+optgroup {
+font-weight: bold;
+}
+
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+h1 {
+font-size: 52px;
+}
+body {
+margin: 1rem;
+}
+h1 {
+font-size: 52px;
+color: red;
+}
+* {
+line-height: 1.3em;
+}
+h2, h3, h4 {
+line-height: 1.4em;
+}
+p {
+margin-bottom: 8px;
+margin-top: 8px;
+}
+
+blockquote {
+
+border-left: 10px solid #ccc;
+margin: 1.5em 10px;
+padding: 0.5em 10px;
+quotes: "\201C""\201D""\2018""\2019";
+}
+ul {
+padding-left: 1.5em;
+margin-top: 0em;
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+html {
+font-weight: 300;
+}
+}
+nav {
+padding: 1em;
+z-index: 1;
+}
+nav li {
+margin-left: 1em;
+}
+footer {
+padding: 1em;
+}
+nav ul {
+padding-left: 0px;
+}
+li {
+padding-top: 0.25em;
+}
+dl, dt, di {
+padding-inline-start: 1em;
+}
+h2{
+margin-bottom: 0.2em;
+}
+header {
+padding-top: 0.25em;
+}
+body > header > *{
+padding: 1em;
+margin: 0em;
+border-radius: 3px;
+}
+td, th {
+padding: 0.25rem;
+}
+.contact-icon svg {
+width: 0.9em;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 0px;
+margin-bottom: 0px;
+}
+#more-blog-entries {
+text-align:center;
+padding: 1em;
+}
+@media (max-width: 700px) {
+.animate-logo .box {
+animation-duration: 2s;
+animation-iteration-count: infinite;
+transform-origin: bottom;
+}
+.bounce-7 {
+animation-name: bounce-7;
+animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-7 {
+0% { transform: scale(1,1) translateY(0); }
+10% { transform: scale(1.1,.9) translateY(0); }
+30% { transform: scale(.9,1.1) translateY(-10px); }
+50% { transform: scale(1.05,.95) translateY(0); }
+57% { transform: scale(1,1) translateY(-7px); }
+64% { transform: scale(1,1) translateY(0); }
+100% { transform: scale(1,1) translateY(0); }
+}
+}
+article {
+margin-bottom: 1em;
+}
+</style>
+</head>
+<body>
+<h1 id="adam-wong">Adam Wong</h1>
+<h2 id="adamwong246gmail.com">adamwong246@gmail.com</h2>
+<h3 id="portland-or">Portland, OR</h3>
+<h4 id="ba-of-computer-science-us">BA of Computer Science, US</h4>
+<ul>
+<li>Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua,
+Solidity</li>
+<li>React, Nextjs, Tailwind, Rails, Android</li>
+<li>Kubernetes, Docker</li>
+<li>BDD and TDD methodologies</li>
+<li>certified Scrum Master</li>
+<li>AWS Certified Cloud Practitioner</li>
+</ul>
+<hr />
+<h3 id="freelance-developer-testeranto">freelance developer @ <a href="https://www.npmjs.com/package/testeranto">Testeranto</a></h3>
+<h4 id="january-2024---current">January 2024 - Current</h4>
+<p>I developed an AI-first, Acceptance Test Driven Development
+Typescript test framework.</p>
+<h3 id="software-engineer-piton-labs">software engineer @ <a href="https://pitonlabs.com/">Piton Labs</a></h3>
+<h4 id="february-2023---january-2025">February 2023 - January 2025</h4>
+<p>I joined Piton Labs to manage the development of the Accion
+Opportunity Fund.</p>
 <ul>
 <li>integrated a serverless NextJs app with AWS services</li>
 <li>managed a cross-team collaboration between PitonLabs and AOF</li>
@@ -31,47 +380,67 @@ ga('send', 'pageview');</script><script src="/index.js"></script><link rel="icon
 <li>managed the i18n translation project</li>
 </ul>
 <h3 id="freelance-web3-developer">freelance web3 developer</h3>
-<h4 id="august-2022-january-2023">August 2022 - January 2023</h4>
-<p>I worked with <a href="https://liquidcollections.com/">liquid collections</a> to develop NFTs which are redeemable for consumer goods.</p>
+<h4 id="august-2022---january-2023">August 2022 - January 2023</h4>
+<p>I worked with <a href="https://liquidcollections.com/">liquid
+collections</a> to develop NFTs which are redeemable for consumer
+goods.</p>
 <ul>
-<li>maintained an extensive set of frontend and backend TS infrastructure</li>
-<li>wrote and tested custom solidity code to create <a href="https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0">dynamic on-chain metadata</a>.</li>
+<li>maintained an extensive set of frontend and backend TS
+infrastructure</li>
+<li>wrote and tested custom solidity code to create <a href="https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0">dynamic
+on-chain metadata</a>.</li>
 </ul>
-<h3 id="engineer-customer-success-chroma-http-www-chromasignet-com-">engineer, customer success @ <a href="http://www.chromasignet.com">Chroma</a></h3>
-<h4 id="january-2021-august-2022">January, 2021 - August 2022</h4>
-<p>I returned to Chroma to develop Signet.code, a cannabis packaging application.</p>
+<h3 id="engineer-customer-success-chroma">engineer, customer success @
+<a href="http://www.chromasignet.com">Chroma</a></h3>
+<h4 id="january-2021---august-2022">January, 2021 - August 2022</h4>
+<p>I returned to Chroma to develop Signet.code, a cannabis packaging
+application.</p>
 <ul>
-<li>managed a Rewards programs wherein customer-claimable NFTs were attached to cannabis products</li>
-<li>implemented a PDF generator capable of producing unique labels at high scale</li>
+<li>managed a Rewards programs wherein customer-claimable NFTs were
+attached to cannabis products</li>
+<li>implemented a PDF generator capable of producing unique labels at
+high scale</li>
 <li>managed customer relations to produce dynamic labels</li>
-<li>integrated node with multiple external APIs and our cross-platform react-native app with external SDKs</li>
+<li>integrated node with multiple external APIs and our cross-platform
+react-native app with external SDKs</li>
 </ul>
-<h3 id="software-engineer-opengov-http-www-opengov-com-">software engineer @ <a href="http://www.opengov.com/">OpenGov</a></h3>
-<h4 id="november-2016-march-2020">November, 2016 - March, 2020</h4>
-<p>I worked with a team to decompose a monolithic Rails app into a series of Typescript microservices.</p>
+<h3 id="software-engineer-opengov">software engineer @ <a href="http://www.opengov.com/">OpenGov</a></h3>
+<h4 id="november-2016---march-2020">November, 2016 - March, 2020</h4>
+<p>I worked with a team to decompose a monolithic Rails app into a
+series of Typescript microservices.</p>
 <ul>
-<li>designed an open-source, functional and type-safe framework used across multiple teams with our organization</li>
+<li>designed an open-source, functional and type-safe framework used
+across multiple teams with our organization</li>
 <li>migrated a Rails monolith into a series of micro-services</li>
 <li>wrote frontend SPAs in TS with Redux, Reselect and React</li>
 <li>implemented charts in D3 to visualize financial reports</li>
-<li>developed a continuous integration and delivery process with Jenkins and Docker</li>
+<li>developed a continuous integration and delivery process with Jenkins
+and Docker</li>
 <li>deployed our apps to AWS via Kubernetes</li>
 </ul>
-<h3 id="full-stack-developer-chroma-fund-https-chroma-fund-">full stack developer @ <a href="https://chroma.fund">Chroma Fund</a></h3>
-<h4 id="february-2015-august-2016">February, 2015 - August, 2016</h4>
-<p>I engineered the Meteor app &quot;Chroma Fund&quot;, a marketplace lending platform providing investors with bundles of small business loans.</p>
+<h3 id="full-stack-developer-chroma-fund">full stack developer @ <a href="https://chroma.fund">Chroma Fund</a></h3>
+<h4 id="february-2015---august-2016">February, 2015 - August, 2016</h4>
+<p>I engineered the Meteor app “Chroma Fund”, a marketplace lending
+platform providing investors with bundles of small business loans.</p>
 <ul>
-<li>responsible for designing UX and UI as well as implementing front-end</li>
+<li>responsible for designing UX and UI as well as implementing
+front-end</li>
 <li>supported blockchain verifiable transactions</li>
 <li>attended TechStars Summer 2016 accelerator program in NYC</li>
 </ul>
-<h3 id="ruby-on-rails-developer-hubbub-health-https-www-hubbubhealth-com-">Ruby on Rails developer @ <a href="https://www.hubbubhealth.com/">Hubbub Health</a></h3>
-<h4 id="may-2013-february-2015">May, 2013 - February, 2015</h4>
-<p>I worked with a large team to incentivize employee wellness with the RoR app, <a href="hubbubhealth.com">hubbubhealth.com</a>.</p>
+<h3 id="ruby-on-rails-developer-hubbub-health">Ruby on Rails developer @
+<a href="https://www.hubbubhealth.com/">Hubbub Health</a></h3>
+<h4 id="may-2013---february-2015">May, 2013 - February, 2015</h4>
+<p>I worked with a large team to incentivize employee wellness with the
+RoR app, <a href="hubbubhealth.com">hubbubhealth.com</a>.</p>
 <ul>
 <li>developed Javascript for both modern and legacy browsers</li>
 <li>debugged user-submitted errors with New Relic and Papertrail</li>
 <li>managed assets via Amazon S3</li>
-<li>revived an out of date Rspec and Cucumber test suite for continuous integration</li>
-<li>optimized high traffic queries by replacing ActiveRecord calls with raw SQL</li>
-</ul></article></main></div><footer><span><a href="https://github.com/adamwong246/adamwong246.github.io">v1.10.1</a> <a href="/sitemap.html">sitemap </a></span></footer></body></html>
+<li>revived an out of date Rspec and Cucumber test suite for continuous
+integration</li>
+<li>optimized high traffic queries by replacing ActiveRecord calls with
+raw SQL</li>
+</ul>
+</body>
+</html>

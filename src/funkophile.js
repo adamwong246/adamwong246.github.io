@@ -22,39 +22,39 @@ const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
 const JS = 'JS'
 const LICENSE = 'LICENSE';
 const PDF_SETTINGS = 'PDF_SETTINGS'
-const RESUME = 'RESUME';
+// const RESUME = 'RESUME';
 
-const makeResumePdf = (resumeContent, css, pdfSettings) => {
-  return (async () => {
-    try {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.setContent(resumeContent)
+// const makeResumePdf = (resumeContent, css, pdfSettings) => {
+//   return (async () => {
+//     try {
+//       const browser = await puppeteer.launch();
+//       const page = await browser.newPage();
+//       await page.setContent(resumeContent)
 
-      await page.addStyleTag({
-        content: css
-      })
+//       await page.addStyleTag({
+//         content: css
+//       })
 
-      const pdf = await page.pdf({
-        path: '/dev/null',
-        ...JSON.parse(pdfSettings)
-      });
-      await browser.close();
+//       const pdf = await page.pdf({
+//         path: '/dev/null',
+//         ...JSON.parse(pdfSettings)
+//       });
+//       await browser.close();
 
-      // clear the timestamp for deterministic pdfs
-      // for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
-      //   pdf[offset] = 0;
-      // }
-      return pdf
-    } catch (e) {
-      console.error(e);
-      return e;
-    } finally {
-      // console.log('We do cleanup here');
-    }
+//       // clear the timestamp for deterministic pdfs
+//       // for (const offset of [97, 98, 99, 100, 132, 133, 134, 135]) {
+//       //   pdf[offset] = 0;
+//       // }
+//       return pdf
+//     } catch (e) {
+//       console.error(e);
+//       return e;
+//     } finally {
+//       // console.log('We do cleanup here');
+//     }
 
-  })();
-};
+//   })();
+// };
 
 const jpgTransformPromises = (jpgs, assets) => {
   return Object.keys(jpgs)
@@ -116,7 +116,7 @@ export default {
     [JS]: 'index.js',
     [LICENSE]: 'LICENSE.txt',
     [PDF_SETTINGS]: 'pdfSettings.json',
-    [RESUME]: 'resume.md',
+    // [RESUME]: 'resume.md',
     [JPG_TRANSFORMS]: 'images/assets.json',
 
     ...styleFunkophile.inputs,
@@ -131,34 +131,34 @@ export default {
     const cssSelector = styleFunkophile.outputs(_);
     const pageSelectors = pagesFunkophile.outputs(_);
 
-    const $resume = contentOfFile(_["RESUME"]);
+    // const $resume = contentOfFile(_["RESUME"]);
     const $js = contentOfFile(_["JS"]);
     const $favicon = contentOfFile(_["FAVICON_PNG"]);
     const $license = contentOfFile(_["LICENSE"]);
 
-    const $resumeMarkdown = $$$($resume, markdown.parse);
+    // const $resumeMarkdown = $$$($resume, markdown.parse);
 
-    const $resumePdf = $$$(
-      [
-        $resumeMarkdown,
-        cssSelector.$pdfCss,
-        contentOfFile(_["PDF_SETTINGS"]),
-      ],
-      (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown.content, css, pdfSettings));
+    // const $resumePdf = $$$(
+    //   [
+    //     $resumeMarkdown,
+    //     cssSelector.$pdfCss,
+    //     contentOfFile(_["PDF_SETTINGS"]),
+    //   ],
+    //   (resumeMarkdown, css, pdfSettings) => makeResumePdf(resumeMarkdown.content, css, pdfSettings));
     
     return {
       $pages: pageSelectors,
       ...blogSelector,
 
-      $resume,
+      // $resume,
       $js,
       $favicon,
-      $resumeMarkdown,
+      // $resumeMarkdown,
 
       $content: $$$([
         pageSelectors,
         blogSelector.$blog,
-        $resumeMarkdown,
+        // $resumeMarkdown,
         $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
           return {
             'type': Object.keys(c)[0],
@@ -171,44 +171,49 @@ export default {
           return {
             pages: p,
             blog: b,
-            resume: r,
+            // resume: r,
             contacts: c
           }
 
         }),
 
       $all: $$$([
-        $resume,
+        // $resume,
         $favicon,
         $js,
         $license,
-        $resumePdf,
+        // $resumePdf,
         cssSelector.$webCss,
         blogSelector.$allBlogAssets,
         $$$(
           [_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
         ),
       ], (
-        r,
+        // r,
         f,
         j,
         l,
-        rsmPdf,
+        // rsmPdf,
         css,
         allBlogAssets,
         jpgs
       ) => {        
         return {
-          'resume.md': r,
+          // 'resume.md': r,
           'favicon.png': f,
           'index.js': j,
           'LICENSE.txt': l,
-          'resume.pdf': rsmPdf,
+          // 'resume.pdf': rsmPdf,
           'style.css': css,
           ...allBlogAssets,
           ...jpgs,
         }
-      })
+      }),
+
+      $resumePdfCss: cssSelector.$resumePdfCss,
+      $resumeHtmlCss: cssSelector.$resumeHtmlCss
+
+      
 
     }
   }

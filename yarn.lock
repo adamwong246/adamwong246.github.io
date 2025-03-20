@@ -3180,6 +3180,11 @@ node-gyp@^11.1.0:
     tar "^7.4.3"
     which "^5.0.0"
 
+node-pandoc@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/node-pandoc/-/node-pandoc-0.3.0.tgz#d46577cd0a72af415353fcb8a0117adb6242f9c8"
+  integrity sha512-e+kANHQQFBlN7J8wEFf7sNc1sSCLltyPtPqNA/IEapiNsA1LjZ9mtV/B0lU6b2cAdvn7rrAVNBONw+Fo1YsY+A==
+
 node-releases@^2.0.19:
   version "2.0.19"
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.19.tgz"

@@ -21,11 +21,13 @@
     "funkophile:watch": "node ./funkophile.config.js watch",
     "funkophile:dev": "nodemon  ./funkophile.config.js watch",
     "serve": "node ./server.cjs",
-    "dev": "rm -rf dist/**; yarn serve & yarn funkophile:dev",
+    "dev": "yarn serve & yarn funkophile:dev",
     "cleanBuild": "rm -rf dist/**; yarn funkophile:build",
     "newBlogEntry": "node newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
-    "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy"
+    "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy",
+    "resume:pdf": "pandoc src/resume.md -o dist/resume.pdf -t html --self-contained --css dist/resume.pdf.css ",
+    "resume:html": "pandoc -t html --self-contained --css=dist/resume.html.css -o dist/resume.html src/resume.md"
   },
   "dependencies": {
     "@babel/core": "^7.12.13",
@@ -53,6 +55,7 @@
     "mkdirp-then": "",
     "moment": "^2.9.0",
     "node-gyp": "^11.1.0",
+    "node-pandoc": "^0.3.0",
     "node-static": "^0.7.6",
     "nodemon": "^2.0.4",
     "normalize.css": "^3.0.2",

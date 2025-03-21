@@ -7,7 +7,7 @@ publishedAt: Mon Mar 23 2020 12:12:43 GMT-0700 (Pacific Daylight Time)
 
 ## a functional file processor
 
-Webcrack is a functional build tool- like all functions, it maps input to output, except in this case, it maps a set of input files to a set of output files.
+Webcrack is a functional build tool - like all functions, it maps input to output, except in this case, it maps a set of input files to a set of output files.
 
 Put very simply, webcrack watches a series of files in a source folder, and when they change, pass those to Redux store, which is then pulled apart with Reselect selectors, and the changes are written back to a destination folder. The practical upshot of this is that you can abstract difficult logic into memoized selectors, without having to deal with dependencies and the annoyance of writing to the disk! Webcrack isn't a task runner either, though it can be used as one. It has a very broad use case and can be used anytime you need to process files in a complex way, provided you have a good understanding of Redux and Reselect.
 

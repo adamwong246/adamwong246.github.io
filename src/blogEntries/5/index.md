@@ -13,7 +13,7 @@ Meteor is framework based on the high-minded ideal of *isomorphic* javascript, w
 
 I'm a RoR guy. I bet if you are reading this, there's a good chance that you cut your teeth on Rails. **Forget all of it.**
 
-Meteor does not use HTTP to communicate between the server and client. Rather, it uses Websockets and the Distributed Data Protocol (DDP) to create magical, reactive variables which map Mongo documents to the view.
+Meteor does not use HTTP to communicate between the server and client. Rather, it uses WebSockets and the Distributed Data Protocol (DDP) to create magical, reactive variables which map MongoDB documents to the view.
 
 Meteor uses Collections to store individual documents but by publishing and subscribing to other collections over DDP. This feels weird, at first, but it's actually quite natural.
 

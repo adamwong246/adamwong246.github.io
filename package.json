@@ -23,7 +23,7 @@
     "serve": "node ./server.cjs",
     "dev": "yarn serve & yarn funkophile:dev",
     "cleanBuild": "rm -rf dist/**; yarn funkophile:build; yarn resume:pdf; yarn resume:html",
-    "newBlogEntry": "node newBlogEntry.js",
+    "newBlogEntry": "node newBlogEntry.cjs",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
     "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy",
     "resume:pdf": "pandoc src/resume.rmd -o dist/resume.pdf -t html --self-contained --css dist/resume.pdf.css",

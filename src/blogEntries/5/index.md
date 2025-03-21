@@ -15,7 +15,7 @@ I'm a RoR guy. I bet if you are reading this, there's a good chance that you cut
 
 Meteor does not use HTTP to communicate between the server and client. Rather, it uses WebSockets and the Distributed Data Protocol (DDP) to create magical, reactive variables which map MongoDB documents to the view.
 
-Meteor uses Collections to store individual documents but by publishing and subscribing to other collections over DDP. This feels weird, at first, but it's actually quite natural.
+Meteor uses Collections to store individual documents by publishing and subscribing to other collections over DDP. This feels weird at first, but it's actually quite natural.
 
 The server publishes some orders
 
@@ -51,20 +51,20 @@ Template.example.helpers
 
 Therefore, the documents which are shared are the overlap between these 2 subsets- those published by the server and those queried from a helper.
 
-Of course, if you are a beginner, you've got the autopublish package installed and every document is simply available to the client. That's fine for now but don't leave it in your app forever.
+Of course, if you're a beginner, you've got the autopublish package installed and every document is simply available to the client. That's fine for now but don't leave it in your app forever.
 
-A similar package to look out for is the `insecure` which allows the "client to write to the database". It think this is a bit of a mischaracterization, because the client can't ever "write to the database", only call Meteor Methods. The `insecure` package simply implement this niavely- you'l want your version of the same methods to have more security
+A similar package to look out for is the `insecure` package which allows the "client to write to the database". I think this is a bit of a mischaracterization, because the client can't ever "write to the database", only call Meteor Methods. The `insecure` package simply implements this naively - you'll want your version of the same methods to have more security.
 
-Overall, the impression upon me is very different from Rails. Rails is about strict separation of logic and view, with a controller to handle the details of http. Meteor is less "opinionated" but it forces you to deal more directly with details in a less abstract way. You need to understand the underlying technology, rather than Rails's curated DSL's. Out of the box, Meteor enforces no MVP, though you *could* implement such. Be careful, because without those rails, it's easy to tangle your logic and your implementation!
+Overall, the impression upon me is very different from Rails. Rails is about strict separation of logic and view, with a controller to handle the details of HTTP. Meteor is less "opinionated" but it forces you to deal more directly with details in a less abstract way. You need to understand the underlying technology, rather than Rails's curated DSLs. Out of the box, Meteor enforces no MVP, though you *could* implement such. Be careful, because without those rails, it's easy to tangle your logic and your implementation!
 
-### Meteor is backed by a mongo db and loves JSON
-Adios SQL! I've personally always despised SQL. I *get* it, sort of, but it never felt natural. Mongo is a breath of fresh air. Not only is every document a plain JSON object, queries are also JSON. Yes, you can have a schema, if you want. Yes, migrations are an real consideration and you have to manage joins yourself.
+### Meteor is backed by a MongoDB and loves JSON
+Adios SQL! I've personally always despised SQL. I *get* it, sort of, but it never felt natural. MongoDB is a breath of fresh air. Not only is every document a plain JSON object, queries are also JSON. Yes, you can have a schema if you want. Yes, migrations are a real consideration and you have to manage joins yourself.
 
-### Meteor requires **yet another** package manger.
-It is, however, a very nice and necessary.
+### Meteor requires **yet another** package manager.
+It is, however, a very nice and necessary one.
 
 ### It uses a lot of RAM
 But RAM is cheap, so it's not a big deal most of the time.
 
-### But it's still just js
-Let's face facts: node's asynchronous support is overhyped. Sure, it powerful but the community is fragmented on how to support asynchronous operations. Promises, threads, futures, generators, etc are absolutely overwhelming and bewildering. Meteor does it's best to shield you from these concerns but you'll still have to tackle these complex issues at some point.
+### But it's still just JavaScript
+Let's face facts: Node's asynchronous support is overhyped. Sure, it's powerful but the community is fragmented on how to support asynchronous operations. Promises, threads, futures, generators, etc. are absolutely overwhelming and bewildering. Meteor does its best to shield you from these concerns but you'll still have to tackle these complex issues at some point.

@@ -11,4 +11,8 @@ Surely you have now heard of the latest, (and worst in recent memory), trend in 
 
 LLM's don't write good code, they just write bad code faster and cheaper than a junior dev. Bad news for bootcamp grads, but good news for the rest of us. Because, much like a junior dev, LLMs can be tamed. It's possible to bring them to heel, harness them under your will and point them in the direction you want them to take you. The trick is to give them a little leeway, but no real control. A little bit of carrot and a lot of stick. To me, it's ever more clear that there is only 1 real strategy for writing good code- tests. Whether it's written by meatbags or neural nets, code _must_ be tested. And the faster you write that code, the stronger this imperative becomes. It's easier than ever to _write_ the code, but harder than ever to ascertain it's quality. 
 
-It's for this reason that I have created [testeranto](https://www.npmjs.com/package/testeranto). Testeranto is the synthesis of many years of insight, but it's most salient point is this: If humans write good tests, the machine can write good code to implement those tests. Using BDD practices, we can define what the code _ought_ to do, and this makes the implementation much much more reliable. 
+It's for this reason that I have created [testeranto](https://www.npmjs.com/package/testeranto). Testeranto is the synthesis of many years of insight, but it's most salient point is this: If humans write good tests, the machine can write good code to implement those tests. Using BDD practices, we can define what the code _ought_ to do, and this makes the implementation much much more likely to succeed. 
+
+Sound interesting? Then check out this rough demo!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WvU5xMqGi6Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

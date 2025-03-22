@@ -1,0 +1,2 @@
+/add src/blogEntries/**/*.md
+/code Fix any spelling and grammatical errors. 

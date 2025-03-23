@@ -1,3 +1,12 @@
+pre {
+  background-color: darkgrey;
+  color: green;
+  padding: 0.5rem;
+  /* border-color: green; */
+  border: green 1px solid;
+  box-shadow: 5px 5px 5px black;
+}
+
 body nav {
   background-color: gray;
 }

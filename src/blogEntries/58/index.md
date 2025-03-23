@@ -3,6 +3,8 @@ title: Getting started with testeranto
 publishedAt: Sun Mar 23 2025 09:11:14 GMT-0700 (Pacific Daylight Time)
 ---
 
+So you want to add testeranto to your project? 
+
 # 1) add the `testeranto` package to your project
 ```
 npm install testeranto

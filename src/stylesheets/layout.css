@@ -109,8 +109,26 @@ footer {
   text-align: -webkit-right;
 }
 
-.forward-link {
-  float: right;
+.back-and-forward-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+
+  
+}
+
+.back-link, .forward-link {
+  margin: 1rem;
+}
+
+.back-link:after, .forward-link:after {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  
 }
 
 .right {

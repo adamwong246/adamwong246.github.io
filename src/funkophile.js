@@ -1,5 +1,5 @@
 import simpleIcons from 'simple-icons';
-import {Jimp} from "jimp";
+import { Jimp } from "jimp";
 import reselect from "reselect"
 import path from "path"
 
@@ -26,7 +26,7 @@ const jpgTransformPromises = (jpgs, assets) => {
     .reduce((mm, jKey) => {
       const shortFileName = path.basename(jKey)
       mm[jKey.split('/').slice(-2).join('/')] = jpgs[jKey]
-      const transformations = JSON.parse(assets)[shortFileName]      
+      const transformations = JSON.parse(assets)[shortFileName]
       if (transformations) {
 
         Object.keys(transformations).forEach((transformationKey) => {
@@ -56,7 +56,7 @@ const jpgTransformPromises = (jpgs, assets) => {
               } else {
                 res(buffer)
               }
-              
+
             })
           }))
 
@@ -92,7 +92,7 @@ export default {
     const $js = contentOfFile(_["JS"]);
     const $favicon = contentOfFile(_["FAVICON_PNG"]);
     const $license = contentOfFile(_["LICENSE"]);
-    
+
     return {
       $pages: pageSelectors,
       ...blogSelector,
@@ -108,8 +108,8 @@ export default {
             'icon': simpleIcons.get(Object.keys(c)[0]).svg
           }
         }))], (p, b, r, c) => {
-        
-        
+
+
           return {
             pages: p,
             blog: b,
@@ -134,7 +134,7 @@ export default {
         css,
         allBlogAssets,
         jpgs
-      ) => {        
+      ) => {
         return {
           'favicon.png': f,
           'index.js': j,

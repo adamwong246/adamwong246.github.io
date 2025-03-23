@@ -1,12 +1,8 @@
 body nav {
-  /* background-color: rgba(147, 128, 108, 0.1); */
-  /* background-color: green; */
   background-color: gray;
 }
 
 body footer {
-  /* background-color: rgba(147, 128, 108, 0.1); */
-  /* color: black; */
   background-color: gray;
 }
 
@@ -14,7 +10,7 @@ body footer {
 /* Default colors */
 
 body {
-  color: #444;
+  color: #555;
   background-color: #ddd;
 }
 
@@ -24,44 +20,37 @@ strong {
   color: #333;
 }
 
+@media (prefers-color-scheme: dark) {
 
-/* Dark theme colors */
+  body nav {
+    background-color: #101010;
+  }
+  
+  body footer {
+    background-color: #101010;
+  }
 
-
-/* body.dark-theme {
-  color: #eee;
-  background-color: #121212;
-}
-
-.dark-theme button{
-  background-color: #121212;
-  color: white;
-}
-
-.dark-theme a:link{
-  color:  red;
-} */
-
-
-/* Styles for users who prefer dark mode at the OS level */
-
-
-/* @media (prefers-color-scheme: dark) {
+  
   body {
-    color: #eee;
-    background-color: #121212;
+    color: #ddd;
+    background-color: #333;
+  }
+  
+  h1,
+  h2,
+  strong {
+    color: #555;
   }
 
-  button{
-    background-color: #121212;
+  a:link {
+    color: rgb(159, 112, 201);
   }
+  
+  /* visited link */
+  a:visited {
+    color: rgb(118, 118, 229);
+  }
+  
+}
 
-  a:link{
-    color:  red;
-  }
 
-  body.light-theme {
-    color: #222;
-    background-color: #fff;
-  }
-} */

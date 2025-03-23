@@ -8,15 +8,18 @@ block content
   include blogEntryPartial
   hr
   
-  .forward-link
-    if(entry.meta.previous)
-      p
+  .back-and-forward-links
+    .back-link 
+      if(entry.meta.previous)
         a(href=entry.meta.previous.url)
           | ⬅️ 
           = entry.meta.previous.title
-    if(entry.meta.next)
-      p
+
+    .forward-link
+      if(entry.meta.next)
         a(href=entry.meta.next.url)
           = entry.meta.next.title
           |  ➡️
+      
+    
       

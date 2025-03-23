@@ -97,8 +97,9 @@ img {
   max-width: 100%;
 }
 
-code {
+pre > code {
   white-space: break-spaces;
+  display: block;
 }
 
 p {

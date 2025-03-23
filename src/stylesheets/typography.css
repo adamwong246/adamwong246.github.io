@@ -32,7 +32,8 @@ ul {
   margin-top: 0em;
 }
 
-code,kbd,pre,samp {
+pre > code {
   font-family: monospace,monospace;
   font-size: 0.7rem;
+  line-height: 0.85rem;
 }

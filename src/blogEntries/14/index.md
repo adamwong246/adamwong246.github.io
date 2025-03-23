@@ -3,6 +3,8 @@ title: Introducing webcrack - the build tool you never wanted
 publishedAt: Mon Mar 23 2020 12:12:43 GMT-0700 (Pacific Daylight Time)
 ---
 
+UPDATE: "Webcrack" is deprecated and has long ago been replaced with [funkophile](https://www.npmjs.com/package/funkophile).
+
 [webcrack](https://github.com/adamwong246/adamwong246.github.io/tree/dev/webcrack) is a thing I've been building on the side. It was inspired by webpack, but it's very different. Whereas webpack is designed to make js bundles, webcrack is designed to make files.
 
 ## a functional file processor

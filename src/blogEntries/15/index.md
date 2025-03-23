@@ -3,6 +3,12 @@ title: Image pipeline v2
 publishedAt: Wed Mar 25 2020 23:45:29 GMT-0700 (Pacific Daylight Time)
 ---
 
+Update: `js-lwip` no longer works with later versions of node. I've since migrated to `@randy.tarampi/lwip`.
+
+
+Update II: `j@randy.tarampi/lwip` no longer works with later versions of node. I've since migrated to `jimp`.
+
+
 ### An example of my image pipeline.
 
 A blog entry folder may have a `assets.json` file which describes how to process images. You can put your raw images alongside your blog content and the rules with which to manipulate them and webcrack will take care of the reset.
@@ -46,5 +52,3 @@ A blog entry folder may have a `assets.json` file which describes how to process
 ![This is yet another modified picture of my dogs.](variant2-dogs.jpg)
 
 ---
-
-Update: `js-lwip` no longer works with later versions of node. I've since migrated to `@randy.tarampi/lwip`.

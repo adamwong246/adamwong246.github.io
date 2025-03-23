@@ -97,6 +97,10 @@ img {
   max-width: 100%;
 }
 
+code {
+  white-space: break-spaces;
+}
+
 p {
   max-width: 35rem;
 }

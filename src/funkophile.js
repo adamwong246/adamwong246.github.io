@@ -1,5 +1,5 @@
 import simpleIcons from 'simple-icons';
-import lwip from "@randy.tarampi/lwip";
+import {Jimp} from "jimp";
 import reselect from "reselect"
 import path from "path"
 
@@ -31,7 +31,7 @@ const jpgTransformPromises = (jpgs, assets) => {
 
         Object.keys(transformations).forEach((transformationKey) => {
 
-          mm['images/' + transformationKey + '-' + shortFileName] = new Promise((res, rej) => lwip.open(jpgs[jKey], 'jpg', (err, image) => {
+          mm['images/' + transformationKey + '-' + shortFileName] = new Promise((res, rej) => Jimp.open(jpgs[jKey], 'jpg', (err, image) => {
 
             if (err) {
               console.error(err)

@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import moment from 'moment';
-import lwip from "@randy.tarampi/lwip"
+
 import markdown from 'marky-mark';
 import reselect from 'reselect';
 import slug from "slug";
@@ -36,7 +36,7 @@ const transformJpegs = (jpgs, assets, blogEntries) => {
         const transformation = transformations[transformationKey]
 
         const modifedImagePromise = new Promise((res, rej) => {
-          return lwip.open(jpg.content, 'jpg', (err, image) => {
+          return jimp.open(jpg.content, 'jpg', (err, image) => {
 
             const batchImage = image.batch()
             transformation.forEach((transform) => {

@@ -2,3 +2,7 @@ body {
   margin: 1rem;
   width: 40rem;
 }
+
+body {
+  font-family: Tahoma, sans-serif !important;
+}

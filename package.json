@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "license": "ISC",
   "description": "An exceedingly simple blog. Powered by funkophile!",
   "author": {
@@ -35,7 +35,7 @@
     "clean-css": "4.2.3",
     "express": "^4.21.2",
     "fs-extra": "^11.3.0",
-    "funkophile": "0.1.0",
+    "funkophile": "0.2.0",
     "fuse.js": "^6.4.6",
     "glob": "11.0.1",
     "jade": "1.11.0",

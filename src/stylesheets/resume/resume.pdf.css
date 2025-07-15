@@ -2,3 +2,6 @@ body {
   margin: -2rem;
 }
 
+body {
+  font-family: Tahoma, sans-serif !important;
+}

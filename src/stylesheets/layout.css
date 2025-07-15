@@ -107,7 +107,8 @@ p, li, blockquote {
 }
 
 main {
-  padding: 2rem;
+  padding-left: 2rem;
+  margin-top: 0;
 }
 
 article {

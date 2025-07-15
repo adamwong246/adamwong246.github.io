@@ -5,7 +5,7 @@ publishedAt: Sun Mar 23 2025 09:11:14 GMT-0700 (Pacific Daylight Time)
 
 So you want to add testeranto to your project? 
 
-# 1) add the `testeranto` package to your project
+### 1) add the `testeranto` package to your project
 ```
 npm install testeranto
 ```
@@ -14,14 +14,14 @@ or
 yarn install testeranto
 ```
 
-# 2) initializing your project
+###  2) initializing your project
 
 This command will scaffold out a config file and some output directories.
 ```
 yarn tsx node_modules/testeranto/bin/init-docs.js
 ```
 
-# 3) Create the subject of your test.
+###  3) Create the subject of your test.
 
 Every test needs a subject- the thing-being-tested, rather than the test itself. Any piece of ecmascript can be the subject of a testeranto test. For this example, lets create a [`Rectangle` class](https://github.com/ChromaPDX/kokomoBay/blob/631428153e654c657bc2ee919303fd2a992155d0/src/Rectangle.ts) as the subject.
 
@@ -63,7 +63,7 @@ class Rectangle {
 export default Rectangle;
 ```
 
-# 4) the test "shape"
+###  4) the test "shape"
 
 Every testeranto test has an "shape" describing the necessary type signatures. In this example, we have the file [Rectangle.test.shape.ts](https://github.com/ChromaPDX/kokomoBay/blob/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/src/Rectangle.test.shape.ts)
 
@@ -109,7 +109,7 @@ export type IRectangleTestShape = {
 };
 ```
 
-# 5) The test "specification"
+###  5) The test "specification"
 
 Every test has as [specification](https://github.com/ChromaPDX/kokomoBay/blob/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/src/Rectangle.test.specification.ts) which acts is the pure logic of a BDD test. This piece of code is gherkin-like Behavior Driven DSL which described the behavior of a piece of code, but none of it's implementation details. It is designed to be comprehensible to non-coding stakeholders.
 ``` ts
@@ -131,7 +131,7 @@ export const RectangleTesterantoBaseTestSpecification: ITestSpecification<
 };
 ```
 
-# 6) The test "interface"
+###  6) The test "interface"
 
 Inverse of the "specifcation" is the [interface](https://github.com/ChromaPDX/kokomoBay/blob/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/src/Rectangle.test.interface.ts). The "interface" is only implementation details, but no BDD logic. 
 
@@ -151,7 +151,7 @@ export const RectangleTesterantoBaseInterface: IPartialInterface<IRectangleTestS
   };
 ```
 
-# 7) The test "implementation"
+###  7) The test "implementation"
 
 Every test has an [implementation](https://github.com/ChromaPDX/kokomoBay/blob/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/src/Rectangle.test.implementation.ts) which acts is the "glue" between the interface and the specification.
 ``` ts
@@ -221,7 +221,7 @@ export const RectangleTesterantoBaseTestImplementation: ITestImplementation<IRec
 };
 ```
 
-# 8) Create a test entrypoint
+###  8) Create a test entrypoint
 
 Every testeranto test has an entrypoint. In this example, we have the file [Rectangle.test.web.ts](https://github.com/ChromaPDX/kokomoBay/blob/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/src/Rectangle/Rectangle.test.web.ts)
 
@@ -268,7 +268,7 @@ export default Testeranto(
 );
 ```
 
-# 9) Add your test to the config file
+###  9) Add your test to the config file
 
 You need to [Register your test in the config file](https://github.com/ChromaPDX/kokomoBay/blob/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/testeranto.mts#L21)
 
@@ -281,23 +281,23 @@ This will register our test to be run in the browser, with no needed ports and n
   ]
 ```
 
-# 10) build your tests
+###  10) build your tests
 
 ``` sh
 tsx node_modules/testeranto/dist/prebuild/build-tests.mjs testeranto.mts
 ```
 
-# 11) run your tests
+###  11) run your tests
 
 ``` sh
 tsx node_modules/testeranto/dist/prebuild/run-tests.mjs testeranto.mts
 ```
 
-# 12) examine your test results
+###  12) examine your test results
 
 Running the tests should produce a series of file in [`docs`](https://github.com/ChromaPDX/kokomoBay/tree/2d8abde977c5ba3ce57e97ac474b39cf01ec37b6/docs/web/src/Rectangle/Rectangle.test.web).
 
-# 13) Run the aider prompt to auto-magically fix tests
+###  13) Run the aider prompt to auto-magically fix tests
 
 ```
 aider --model deepseek  --api-key deepseek=YOUR_SECRET_KEY --load docs/web/src/Rectangle/Rectangle.test.electron/prompt.txt

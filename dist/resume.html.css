@@ -423,37 +423,39 @@ th {
   padding: 0;
 }
 
-h1 {
-  font-size: 30px;
-}
-
 p, li {
   font-size: 11px;
 }
 
-* {
-  line-height: 1em;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 !important;
 }
 
-h2, h3, h4 {
-  line-height: 1em;
+li {
+  margin: 0;
+  padding: 0 !important;
 }
 
-p, ul {
-  margin-bottom: 0px;
-  margin-top: 0px;
-  margin-left: 1rem;
-  margin-right: 1rem;
+body ul {
+  margin-top: 1rem !important ;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 0 !important;
 }
 
 p {
-  margin-top: 0px !important;
+  margin: 0;
+  margin: 0 0 0 !important;
 }
+
 body {
   margin: 1rem;
   width: 40rem;
 }
 
+body {
+  font-family: Tahoma, sans-serif !important;
+}
 @font-face {
   font-family: "M PLUS Rounded 1c";
   src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Thin.ttf") format("truetype");
@@ -525,7 +527,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   line-height: 1.2;
-  margin: 1.5em 0 0.5em;
+  margin: 0.75em 0 0.75rem;
   font-weight: 700;
 }
 
@@ -546,17 +548,17 @@ h4 {
 }
 
 p {
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.5rem;
   max-width: 65ch;
 }
 
 ul, ol {
   padding-left: 2rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 0;
 }
 
 li {
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 blockquote {
@@ -633,10 +635,10 @@ td, th {
   width: 0.9em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
+/* h1, h2, h3, h4, h5, h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+} */
 
 #more-blog-entries {
   text-align:center;
@@ -657,9 +659,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
   }
 
-  main {
+  /* main {
     padding: 1rem;
-  }
+  } */
 
   .animate-logo .box {
     animation-duration: 2s;

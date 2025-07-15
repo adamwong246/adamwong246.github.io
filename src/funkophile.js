@@ -20,6 +20,7 @@ const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
 const JS = 'JS'
 const LICENSE = 'LICENSE';
 const PDF_SETTINGS = 'PDF_SETTINGS'
+const FONTS = 'FONTS'
 
 const jpgTransformPromises = (jpgs, assets) => {
   return Object.keys(jpgs)
@@ -77,6 +78,7 @@ export default {
     [LICENSE]: 'LICENSE.txt',
     [PDF_SETTINGS]: 'pdfSettings.json',
     [JPG_TRANSFORMS]: 'images/assets.json',
+    // [FONTS]: 'fonts/**/*',
 
     ...styleFunkophile.inputs,
     ...pagesFunkophile.inputs,

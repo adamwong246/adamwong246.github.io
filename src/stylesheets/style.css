@@ -51,10 +51,10 @@ td, th {
   width: 0.9em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
+/* h1, h2, h3, h4, h5, h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+} */
 
 #more-blog-entries {
   text-align:center;
@@ -75,9 +75,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
   }
 
-  main {
+  /* main {
     padding: 1rem;
-  }
+  } */
 
   .animate-logo .box {
     animation-duration: 2s;

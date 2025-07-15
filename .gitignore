@@ -4,3 +4,4 @@ tmp
 bin/
 lib/
 .aider*
+.aider.conf.yml

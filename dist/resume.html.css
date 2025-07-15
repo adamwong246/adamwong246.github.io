@@ -454,45 +454,132 @@ body {
   width: 40rem;
 }
 
-* {
-  line-height: 1.3em;
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
 }
 
-h2, h3, h4 {
-  line-height: 1.4em;
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS Rounded 1c";
+  src: url("./fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("./fonts/Raleway/static/Raleway-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 1.5em 0 0.5em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
 }
 
 p {
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin: 0 0 1.5rem;
+  max-width: 65ch;
 }
 
-/* body {
-    font-family: 'Hoefler Text', Times New Roman, Times, serif;
+ul, ol {
+  padding-left: 2rem;
+  margin: 0 0 1.5rem;
 }
 
-h1, h2, h3, h4, h5, h6, ul dl dt {
-    font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
-} */
+li {
+  margin-bottom: 0.5rem;
+}
 
 blockquote {
-  /* background: #f9f9f9; */
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  quotes: "\201C""\201D""\2018""\2019";
-}
 
-ul {
-  padding-left: 1.5em;
-  margin-top: 0em;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
 }
 
 pre > code {
-  font-family: monospace,monospace;
-  font-size: 0.7rem;
-  line-height: 0.85rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
+
+a {
+
+  transition: color 0.2s ease;
+}
+
+
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
   html {
     font-weight: 300;
@@ -557,16 +644,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 700px) {
+  body {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
 
   .animate-logo .box {
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-      transform-origin: bottom;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
   }
 
   .bounce-7 {
-      animation-name: bounce-7;
-      animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    animation-name: bounce-7;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
   }
   @keyframes bounce-7 {
       0%   { transform: scale(1,1)      translateY(0); }

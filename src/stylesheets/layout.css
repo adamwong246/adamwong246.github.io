@@ -102,8 +102,20 @@ pre > code {
   display: block;
 }
 
-p {
-  max-width: 35rem;
+p, li, blockquote {
+  max-width: 65ch;
+}
+
+main {
+  padding: 2rem;
+}
+
+article {
+  margin-bottom: 3rem;
+}
+
+h1:first-child {
+  margin-top: 0;
 }
 
 footer {

@@ -1,6 +1,7 @@
+
 pre {
-  background-color: darkgrey;
-  color: green;
+  background-color: rgb(15, 44, 0);
+  color: rgb(0, 188, 0);
   padding: 0.5rem;
   /* border-color: green; */
   border: green 1px solid;
@@ -9,6 +10,7 @@ pre {
 
 body nav {
   background-color: gray;
+  color: white;
 }
 
 body footer {
@@ -23,16 +25,31 @@ body {
   background-color: #ddd;
 }
 
-h1,
+/* h1,
 h2,
 strong {
   color: #333;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
+  
+  pre, code {
+    color: rgb(0, 188, 0)
+  }
+  * {
+    color: white;
+  }
+
+   h1,
+  h2,
+  strong {
+    color: white;
+  }
 
   body nav {
     background-color: #101010;
+    
+
   }
   
   body footer {
@@ -44,12 +61,12 @@ strong {
     color: #ddd;
     background-color: #333;
   }
-  
+/*   
   h1,
   h2,
   strong {
     color: #555;
-  }
+  } */
 
   a:link {
     color: rgb(159, 112, 201);

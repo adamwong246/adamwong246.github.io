@@ -1,38 +1,30 @@
 ---
 title: Testeranto 0.143.0 - testeranto is officially self-testing
 publishedAt: Tue Jul 15 2025 14:08:10 GMT-0700 (Pacific Daylight Time)
+author: aider / deepseek
 ---
 
-## Disclaimer: this was written by an LLM
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   🚀 Testeranto 0.143.0: The Future of AI-Powered Testing is Here!   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+### Disclaimer: This was written by an LLM.
 
-          🤖 Tests That Write Themselves? Meet Testeranto!
-```
+Sorry for tha AI slop but I thought it was well and good to let the LLM describe it's own work, since it DID write ~50% of testeranto. I have touched the document up, and removed a few outright lies, but I've honored the spirit of the original writing.
 
-We're thrilled to announce Testeranto 0.143.0 - the most advanced
-version yet of our groundbreaking AI-powered testing framework! If
-you're tired of writing tedious tests or struggling to keep your test
-suite up-to-date with your codebase, Testeranto is about to become your
-new best friend.
+---
+
+# 🚀 Testeranto 0.143.0: The Future of AI-Powered Testing is Here!
+## 🤖 Tests That Write Themselves? Meet Testeranto!
+
+
+We're thrilled to announce Testeranto 0.143.0 - the most advanced version yet of our groundbreaking AI-powered testing framework! If you're tired of writing tedious tests or struggling to keep your test suite up-to-date with your codebase, Testeranto is about to become your new best friend.
 
 
 ## 🎯 What Makes Testeranto Special?
 
-### 1️⃣ Self-Testing Architecture (Now Complete!)
-
-  For the first time ever, Testeranto can test itself! That's right - our
-  entire framework is now verified by its own testing infrastructure. This
-  milestone proves that Testeranto's architecture is robust enough to
-  handle even the most complex testing scenarios. If it's good enough to
-  test itself, imagine what it can do for your projects!
+### 1️⃣ Self-Testing Architecture
+Testeranto is now verified by its own testing infrastructure. This milestone proves that Testeranto's architecture is robust enough to imagine what it can do for your projects!
 
 ### 2️⃣ Beautiful BDD Interface
 
-Say goodbye to messy test files! Testeranto's Behavior-Driven
-Development (BDD) interface gives you:
+Say goodbye to messy test files! Testeranto's Behavior-Driven. Development (BDD) interface gives you:
 
 ```
  Suite.Default("User Authentication", {
@@ -44,33 +36,30 @@ Development (BDD) interface gives you:
  });
  ```
 
-Clean, readable tests that document your system's behavior while
-verifying its correctness.
+Clean, readable tests that document your system's behavior while verifying its correctness.
 
 ### 3️⃣ AI-Optimized Bundling (Our Secret Sauce)
 
 Here's where things get really exciting:
 
- 1 esbuild-powered bundling creates ultra-efficient test packages
- 2 Metafile generation gives you the exact list of files included
- 3 Perfect LLM context - feed only the relevant files to your AI
+1. esbuild-powered bundling creates ultra-efficient test packages
+2. Metafile generation gives you the exact list of files included
+3. Perfect LLM context - feed only the relevant files to your AI
    assistant
 
-This means when tests fail, you can send the exact right context to your
-AI coding assistant to get perfect fixes every time!
+This means when tests fail, you can send the exact right context to your AI coding assistant to get perfect fixes every time!
 
 
 ## 🔥 The Testeranto Value Proposition
 
 Imagine this workflow:
 
- 1 Write your feature in plain English (via BDD specs)
- 2 Let Testeranto generate the initial test implementation
- 3 When tests fail, send the perfectly-sized bundle to your AI assistant
- 4 Get back working code that passes all tests
+1. Write your feature in plain English (via BDD specs)
+2. Let Testeranto generate the initial test implementation
+3. When tests fail, send the perfectly-sized bundle to your AI assistant
+4. Get back working code that passes all tests
 
 It's testing that practically writes itself!
-
 
 ## 🙏 Special Thanks to Aider
 
@@ -110,7 +99,6 @@ team, Testeranto 0.143.0 will transform your testing workflow.
 
 ## Join the testing revolution today! 🚀
 
-### [adamwong246.github.io/testeranto](https://adamwong246.github.io/testeranto/) | [GitHub](https://github.com/adamwong246/testeranto) | [NPM](https://www.npmjs.com/package/testeranto) | [Examples](https://adamwong246.github.io/spacetrash_v8/testeranto/)
+#### [adamwong246.github.io/testeranto](https://adamwong246.github.io/testeranto/) | [GitHub](https://github.com/adamwong246/testeranto) | [NPM](https://www.npmjs.com/package/testeranto) | [Examples](https://adamwong246.github.io/spacetrash_v8/testeranto/)
 
-#Testeranto #BDD #AITesting #JavaScript #TypeScript #WebDevelopment
-#Programming
+\#Testeranto \#BDD \#AITesting \#JavaScript \#TypeScript \#WebDevelopment \#Programming

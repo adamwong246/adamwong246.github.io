@@ -34,7 +34,10 @@ nav #headshot {
 
   nav {
     width: 100%;
-    filter: drop-shadow(5px 5px 5px #222)
+    filter: drop-shadow(5px 5px 5px #222);
+    top: 0;
+    transition-property: top;
+    transition-duration: 1s;
   }
 
   nav #site-title img {

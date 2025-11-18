@@ -107,7 +107,7 @@ export default {
           return {
             'type': Object.keys(c)[0],
             'content': c[Object.keys(c)[0]],
-            'icon': simpleIcons.get(Object.keys(c)[0]).svg
+            // 'icon': simpleIcons.get(Object.keys(c)[0]).svg
           }
         }))], (p, b, r, c) => {
 

@@ -24,4 +24,4 @@ sudo ln -s /Library/TeX/Root/bin/universal-darwin/pdflatex /usr/local/bin/pdflat
 
 ## AI Directives
 
-Do not use "default" values unless there is a very good reason to do so. Prefer to throw errors rather than obscure the problem.
+Do not use "default" values or fallback strategies unless there is a very good reason to do so. Prefer to throw errors rather than obscure the problem.

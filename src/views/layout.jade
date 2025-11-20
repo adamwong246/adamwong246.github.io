@@ -19,39 +19,35 @@ html(lang="en")
     script(src="/index.js")
     link(rel="icon" type="image/png" href="/favicon.png")
     block head
-  body.closed-menu.animate-logo
+  body.closed-menu
     #main-container
       nav
         #site-title
           h3
-            img.box.bounce-7(src="/favicon.png" onClick="openMenu()")
             a(href='/') adamwong246.github.io
         #menu  
-          p I am a software engineer with over 10 years of experience in web development in the VC startup scene. I live in Portland Oregon with my partner Vincent and our dog, Sancho.
+          p I am a software engineer with over 10 years of experience in web development in the VC startup scene. I live in Portland Oregon with my partner Vincent and our dogs, Sancho and Dulcinea.
           ul
             li
-              span
+              h4
                 a(href="/resume.html") resume.html
                 |, 
                 a(href="/resume.pdf") resume.pdf
+                |, 
+                a(href="/resume.md") resume.md
+
+            li
+              h4
+                a(href="https://github.com/adamwong246") Github
+                |, 
+                a(href="https://www.linkedin.com/in/adam-wong-4634421b/") LinkedIn
                 
             li
-              span #[a(href='/sideprojects/index.html') Side projects]
-            li
-              span
-                a(href='/blog/index.html') Blog entries
-            - for entry in blogEntries.slice(0, 1)
-              li
-                span
-                  |Latest entry: 
-                  a(href=entry.url)
-                    = entry.meta.title
-
-
+              h4 
+                #[a(href='/sideprojects/index.html') Side projects]
       main
         block content
 
     footer
       span
-        | #[a(href=packageDotJson.repository.url) v#{packageDotJson.version}] #[a(href="/sitemap.html") sitemap ]
-        //- #[button.dark-toggle(onClick="toggleDark()") 🌙]
+        | #[a(href=packageDotJson.repository.url) v#{packageDotJson.version}] #[a(href="/sitemap.html") sitemap ] #[img(src="/favicon.png")]

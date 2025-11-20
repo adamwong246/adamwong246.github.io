@@ -1,11 +1,19 @@
+---
+classoption:
+- twocolumn
+---
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
 # Adam Wong
+#### Portland, OR
+#### BA of Computer Science, USC
+###### [adamwong246@gmail.com](adamwong246@gmail.com) [LinkedIn](https://www.linkedin.com/in/adam-wong-4634421b) [GitHub](http://github.com/adamwong246)
 
-### adamwong246@gmail.com
+:::
 
-### Portland, OR
-
-#### BA of Computer Science, US
-
+::: {.column width="50%"}
 
 - Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua, Solidity
 - React, Nextjs, Tailwind, Rails, Android
@@ -14,17 +22,39 @@
 - certified Scrum Master
 - AWS Certified Cloud Practitioner
 
---- 
+:::
+::::::::::::::
 
-### freelance developer @ [Testeranto](https://www.npmjs.com/package/testeranto)
+---
 
-#### January 2024 - Current
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### [Testeranto](https://www.npmjs.com/package/testeranto)
+##### freelance developer
+###### January 2024
+
+:::
+::: {.column width="75%"}
 
 I developed an AI-first, Acceptance Test Driven Development Typescript test framework.
 
-### software engineer @ [Piton Labs](https://pitonlabs.com/)
 
-#### February 2023 - January 2025
+:::
+::::::::::::::
+
+---
+
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### [Piton Labs](https://pitonlabs.com/)
+##### software engineer
+###### February 2023
+###### January 2025
+
+:::
+::: {.column width="75%"}
 
 I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 
@@ -33,18 +63,43 @@ I joined Piton Labs to manage the development of the Accion Opportunity Fund.
 - developed a integration test suite as part of the CICD system
 - managed the i18n translation project
 
-### freelance web3 developer
 
-#### August 2022 - January 2023
+:::
+::::::::::::::
+
+---
+
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### freelance web3 developer
+###### August 2022
+###### January 2023
+
+:::
+::: {.column width="75%"}
 
 I worked with [liquid collections](https://liquidcollections.com/) to develop NFTs which are redeemable for consumer goods.
 
 - maintained an extensive set of frontend and backend TS infrastructure
 - wrote and tested custom solidity code to create [dynamic on-chain metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
 
-### engineer, customer success @ [Chroma](http://www.chromasignet.com)
 
-#### January, 2021 - August 2022
+:::
+::::::::::::::
+
+---
+
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### Chroma Signet
+##### engineer & customer success
+###### January 2021
+###### August 2022
+
+:::
+::: {.column width="75%"}
 
 I returned to Chroma to develop Signet.code, a cannabis packaging application.
 
@@ -53,9 +108,21 @@ I returned to Chroma to develop Signet.code, a cannabis packaging application.
 - managed customer relations to produce dynamic labels
 - integrated node with multiple external APIs and our cross-platform react-native app with external SDKs
 
-### software engineer @ [OpenGov](http://www.opengov.com/)
+:::
+::::::::::::::
 
-#### November, 2016 - March, 2020
+---
+
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### [OpenGov](http://www.opengov.com/)
+##### software engineer
+###### November 2016
+###### March 2020
+
+:::
+::: {.column width="75%"}
 
 I worked with a team to decompose a monolithic Rails app into a series of Typescript microservices.
 
@@ -66,9 +133,21 @@ I worked with a team to decompose a monolithic Rails app into a series of Typesc
 - developed a continuous integration and delivery process with Jenkins and Docker
 - deployed our apps to AWS via Kubernetes
 
-### full stack developer @ [Chroma Fund](https://chroma.fund)
+:::
+::::::::::::::
 
-#### February, 2015 - August, 2016
+---
+
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### Chroma Fund
+##### full stack developer
+###### February 2015
+###### August 2016
+
+:::
+::: {.column width="70%"}
 
 I engineered the Meteor app "Chroma Fund", a marketplace lending platform providing investors with bundles of small business loans.
 
@@ -76,9 +155,21 @@ I engineered the Meteor app "Chroma Fund", a marketplace lending platform provid
 - supported blockchain verifiable transactions
 - attended TechStars Summer 2016 accelerator program in NYC
 
-### Ruby on Rails developer @ [Hubbub Health](https://www.hubbubhealth.com/)
+:::
+::::::::::::::
 
-#### May, 2013 - February, 2015
+---
+
+:::::::::::::: {.columns}
+::: {.column width="30%"}
+
+##### Hubbub Health
+##### Ruby on Rails developer
+###### May 2013
+###### February 2015
+
+:::
+::: {.column width="75%"}
 
 I worked with a large team to incentivize employee wellness with the RoR app, [hubbubhealth.com](hubbubhealth.com).
 
@@ -87,3 +178,7 @@ I worked with a large team to incentivize employee wellness with the RoR app, [h
 - managed assets via Amazon S3
 - revived an out of date Rspec and Cucumber test suite for continuous integration
 - optimized high traffic queries by replacing ActiveRecord calls with raw SQL
+
+:::
+::::::::::::::
+

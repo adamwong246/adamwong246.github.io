@@ -6,7 +6,7 @@ author: aider / deepseek
 
 ### Disclaimer: This was written by an LLM.
 
-Sorry for tha AI slop but I thought it was well and good to let the LLM describe it's own work, since it DID write ~50% of testeranto. I have touched the document up, and removed a few outright lies, but I've honored the spirit of the original writing.
+Sorry for the AI slop but I thought it was well and good to let the LLM describe its own work, since it DID write ~50% of testeranto. I have touched the document up, and removed a few outright lies, but I've honored the spirit of the original writing.
 
 ---
 
@@ -24,7 +24,7 @@ Testeranto is now verified by its own testing infrastructure. This milestone pro
 
 ### 2️⃣ Beautiful BDD Interface
 
-Say goodbye to messy test files! Testeranto's Behavior-Driven. Development (BDD) interface gives you:
+Say goodbye to messy test files! Testeranto's Behavior-Driven Development (BDD) interface gives you:
 
 ```
  Suite.Default("User Authentication", {

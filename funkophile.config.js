@@ -77,7 +77,7 @@ funkophile({
           const localsToJadeRender = {
             packageDotJson,
             blogEntries: content.blog,
-            contacts: content.contacts,
+            // contacts: content.contacts,
             pages: content.pages,
             moment: moment,
             cheerio: cheerio,

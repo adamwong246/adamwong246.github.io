@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "1.15.2",
+  "version": "2.0.0",
   "license": "ISC",
   "description": "An exceedingly simple blog. Powered by funkophile!",
   "author": {
@@ -22,12 +22,13 @@
     "funkophile:dev": "nodemon  ./funkophile.config.js watch",
     "serve": "node ./server.cjs",
     "dev": "yarn serve & yarn funkophile:dev",
-    "cleanBuild": "rm -rf dist/**; yarn funkophile:build; yarn resume:pdf; yarn resume:html",
+    "cleanBuild": "rm -rf dist/**; yarn funkophile:build; yarn resume:pdf; yarn resume:html; yarn resume:md",
     "newBlogEntry": "node newBlogEntry.js",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
     "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy",
-    "resume:pdf": "pandoc src/resume.rmd -o dist/resume.pdf -t html --self-contained --css dist/resume.pdf.css",
-    "resume:html": "pandoc -t html --self-contained --css=dist/resume.html.css -o dist/resume.html src/resume.rmd"
+    "resume:pdf": "pandoc src/resume.rmd -o dist/resume.pdf -t html --embed-resources --standalone --css dist/resume.pdf.css",
+    "resume:html": "pandoc src/resume.rmd -o dist/resume.html -t html --embed-resources --standalone --css dist/resume.html.css",
+    "resume:md": "cp src/resume.rmd dist/resume.md"
   },
   "dependencies": {
     "cherio": "^1.0.0-rc.2",
@@ -36,7 +37,7 @@
     "esbuild": "^0.27.0",
     "express": "^4.21.2",
     "fs-extra": "^11.3.0",
-    "funkophile": "0.2.5",
+    "funkophile": "../funkophile",
     "fuse.js": "^6.4.6",
     "glob": "11.0.1",
     "jade": "1.11.0",

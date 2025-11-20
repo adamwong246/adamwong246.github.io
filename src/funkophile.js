@@ -13,7 +13,6 @@ import blogFunkophile from "./blogEntries/funkophile.js";
 
 const $$$ = reselect.createSelector;
 
-const CONTACTS = 'CONTACTS'
 const FAVICON_PNG = 'FAVICON_PNG'
 const JPG = 'JPG'
 const JPG_TRANSFORMS = 'JPG_TRANSFORMS'
@@ -21,6 +20,8 @@ const JS = 'JS'
 const LICENSE = 'LICENSE';
 const PDF_SETTINGS = 'PDF_SETTINGS'
 const FONTS = 'FONTS'
+const FONT_MPLUS_BOLD = 'FONT_MPLUS_BOLD'
+const FONT_RALEWAY_REGULAR = 'FONT_RALEWAY_REGULAR'
 
 const jpgTransformPromises = (jpgs, assets) => {
   return Object.keys(jpgs)
@@ -71,14 +72,14 @@ const jpgTransformPromises = (jpgs, assets) => {
 export default {
 
   inputs: {
-    [CONTACTS]: 'contacts.json',
     [FAVICON_PNG]: 'images/evilShroom.png',
     [JPG]: 'images/*.jpg',
     [JS]: 'index.js',
     [LICENSE]: 'LICENSE.txt',
     [PDF_SETTINGS]: 'pdfSettings.json',
     [JPG_TRANSFORMS]: 'images/assets.json',
-    // [FONTS]: 'fonts/**/*',
+    [FONT_MPLUS_BOLD]: 'fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Bold.ttf',
+    [FONT_RALEWAY_REGULAR]: 'fonts/Raleway/static/Raleway-Regular.ttf',
 
     ...styleFunkophile.inputs,
     ...pagesFunkophile.inputs,
@@ -103,19 +104,20 @@ export default {
       $content: $$$([
         pageSelectors,
         blogSelector.$blog,
-        $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
-          return {
-            'type': Object.keys(c)[0],
-            'content': c[Object.keys(c)[0]],
-            // 'icon': simpleIcons.get(Object.keys(c)[0]).svg
-          }
-        }))], (p, b, r, c) => {
+        // $$$(contentOfFile(_["CONTACTS"]), (contactsString) => JSON.parse(contactsString).map((c) => {
+        //   return {
+        //     'type': Object.keys(c)[0],
+        //     'content': c[Object.keys(c)[0]],
+        //     // 'icon': simpleIcons.get(Object.keys(c)[0]).svg
+        //   }
+        // }))
+      ], (p, b, r, c) => {
 
 
           return {
             pages: p,
             blog: b,
-            contacts: c
+            // contacts: c
           }
 
         }),
@@ -129,13 +131,17 @@ export default {
         $$$(
           [_.JPG, contentOfFile(_["JPG_TRANSFORMS"])], jpgTransformPromises
         ),
+        contentOfFile(_["FONT_MPLUS_BOLD"]),
+        contentOfFile(_["FONT_RALEWAY_REGULAR"]),
       ], (
         f,
         j,
         l,
         css,
         allBlogAssets,
-        jpgs
+        jpgs,
+        fontMplusBold,
+        fontRalewayRegular
       ) => {
         return {
           'favicon.png': f,
@@ -144,6 +150,8 @@ export default {
           'style.css': css,
           ...allBlogAssets,
           ...jpgs,
+          'fonts/MPLUSRounded1c-Bold.ttf': fontMplusBold,
+          'fonts/Raleway-Regular.ttf': fontRalewayRegular,
         }
       }),
 

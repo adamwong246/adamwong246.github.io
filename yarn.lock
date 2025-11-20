@@ -1293,10 +1293,8 @@ function-bind@^1.1.2:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.2.tgz#2c02d864d97f3ea6c8830c464cbd11ab6eab7a1c"
   integrity sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==
 
-funkophile@0.2.5:
+funkophile@../funkophile:
   version "0.2.5"
-  resolved "https://registry.yarnpkg.com/funkophile/-/funkophile-0.2.5.tgz#c2c57ec7786e68bd0f1945a866530f61ad77f57f"
-  integrity sha512-OPOAXz/4gACrIfvlS5TQvfo1LQzrPoCKa3BQSZRZ+FWesXAeqA08dw+8ZCvUTyhH42mytamLBMZ6AeIn3PAj/w==
   dependencies:
     "@tsconfig/node-lts-strictest-esm" "^18.12.1"
     "@types/bluebird" "^3.5.42"

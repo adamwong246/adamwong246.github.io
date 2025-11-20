@@ -2385,6 +2385,11 @@ type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
+typebase@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/typebase/-/typebase-1.0.1.tgz#14695d74057cd2bf9c242617cc3cf663ac0dea2c"
+  integrity sha512-iCOsu72t1xErSsgI4qfhbvrmkpOm2rOwjQttcYOhNkOw8xSHDPA/IK7EMVONvEE02/87ZNMbwsYBT9Gf8irsZA==
+
 typescript@^5.8.2:
   version "5.9.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.3.tgz#5b4f59e15310ab17a216f5d6cf53ee476ede670f"

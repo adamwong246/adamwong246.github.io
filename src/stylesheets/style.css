@@ -18,10 +18,10 @@ nav ul {
 
 @media (max-width: 700px) {
   body {
-    font-size: 16px;
-    line-height: 1.6;
-    padding: 0;
-    margin: 0;
+    /* font-size: 16px; */
+    /* line-height: 1.6; */
+    /* padding: 0;
+    margin: 0; */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   }
 
@@ -29,7 +29,7 @@ nav ul {
     font-size: 1.8rem;
     line-height: 1.2;
     margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
   }
 
   h2 {
@@ -45,7 +45,7 @@ nav ul {
 
   p, li {
     line-height: 1.6;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
   }
 
   article {
@@ -72,6 +72,41 @@ nav ul {
     margin-top: 1rem;
   }
 
+  /* Fix colors for mobile layout */
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: #ddd;
+      background-color: #333;
+    }
+    
+    article {
+      background: #444;
+      color: #ddd;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1, h2, h3, h4, h5, h6, strong {
+      color: white;
+    }
+    
+    nav {
+      background-color: #101010;
+      color: white;
+    }
+    
+    footer {
+      background-color: #101010;
+      color: white;
+    }
+    
+    a:link {
+      color: rgb(159, 112, 201);
+    }
+    
+    a:visited {
+      color: rgb(118, 118, 229);
+    }
+  }
 }
 
 article {

@@ -1,6 +1,6 @@
 {
   "name": "adamwong246.github.io",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "ISC",
   "description": "An exceedingly simple blog. Powered by funkophile!",
   "author": {
@@ -28,7 +28,7 @@
     "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy",
     "resume:pdf": "pandoc src/resume.rmd -o dist/resume.pdf -t html --embed-resources --standalone --css dist/resume.pdf.css",
     "resume:html": "pandoc src/resume.rmd -o dist/resume.html -t html --embed-resources --standalone --css dist/resume.html.css",
-    "resume:md": "cp src/resume.rmd dist/resume.md"
+    "resume:md": "pandoc src/resume.rmd -o dist/resume.md -t markdown_strict"
   },
   "dependencies": {
     "cherio": "^1.0.0-rc.2",

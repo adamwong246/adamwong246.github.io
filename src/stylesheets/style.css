@@ -51,9 +51,9 @@ nav ul {
   article {
     margin-bottom: 2rem;
     padding: 1rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* background: white;
+    border-radius: 8px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
   }
 
   .back-and-forward-links {
@@ -74,18 +74,18 @@ nav ul {
 
   /* Fix colors for mobile layout */
   @media (prefers-color-scheme: dark) {
-    body {
+    /* body {
       color: #ddd;
       background-color: #333;
-    }
+    } */
     
-    article {
+    /* article {
       background: #444;
       color: #ddd;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+    } */
     
-    h1, h2, h3, h4, h5, h6, strong {
+    /* h1, h2, h3, h4, h5, h6, strong {
       color: white;
     }
     
@@ -105,7 +105,7 @@ nav ul {
     
     a:visited {
       color: rgb(118, 118, 229);
-    }
+    } */
   }
 }
 

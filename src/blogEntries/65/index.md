@@ -3,27 +3,21 @@ title: The Long Chase
 publishedAt: Sat Nov 22 2025 08:31:47 GMT-0800 (Pacific Standard Time)
 ---
 
-This is a piece of writing which was written by another person, but extended by myself. I make no profit from this writing and all credits go to it's original author. If requested, I will remove it, but I hope that is is received graciously.
+This is a piece of writing which was originally written by Geoffrey Landis, but extended by myself. I make no profit from this writing and all credits go to it's original author. If requested, I will remove it, but I hope that is is received graciously.
 
 ---
 
 # The Long Chase
-
 ## © 2002 Geoffrey A. Landis. Lightspeed Magazine
-
 ### adapted by Adam Wong 2022
 
-Adam was approaching his aphelion. His inertia was nearly exhausted and his approach slowed to crawl, all according to a careful flightplan that would bring him softly and precisely into Leif's airspace. After so many deliveries, Adam had perfected the manuever. He had just enough fuel that he could course correct in an emergency, but being so rare out here in the Kuiper, he was inclined to take to low road, sipping fuel and conserving his Newtons, taking long elliptical orbits that would bring him out to the far edge, before dropping back down into into the inner system. Rather than exert himself, he preferred to use the sky hooks, like the one at Pluto-Charon.L2, latching into each spin station to refuel and make some repairs. Then, after paying off the local Don with a little extra momentum, he would detach and be flung to the next station. There were many such spin stations spread around the system and with careful planning, and enough BTC, is entirely possible to get around using almost no fuel at all, using nothing by the momentum bought and sold on the market. Adam had been born as a delivery ship, so all this was quite natural to him. He had been rich before the war- now he was just another hustler trying to get by, delivering hydrogen to Pluto and ice to Mercury, with a little extra illicit cargo on the side. By repeating his route, he was able to profit enough momentum in the bank, it became a source of passive income. And with every skyhook manuever, his velocity increased. At first, it took nearly 40 years to make a trip from the Luna to the belt, and back. Today, he can make a circuit around the sun, hitting almost every market, buying supplies and selling excess momentum along the way, in less than 10. In fact, he has accrued so much of a return on his investment, that increasing his velocity much more would fling him out of the system entirely! It pays to know the right people on Pluto-Charon.L2.
+Adam was approaching his aphelion. His inertia was nearly exhausted and his approach slowed to crawl, all according to a careful flightplan that would bring him softly and precisely into Leif's airspace. After so many deliveries, Adam had perfected the manuever. He had just enough fuel that he could course correct in an emergency, but out here, fuel is expensive. Rather than exert himself, he had preferred to use the sky hooks, like the seedy far-flung outpost of Pluto-Charon.L2, latching onto the spin station to refuel and make some repairs before detaching, flinging himself towards the next station. There were many such spin stations spread around the system and with careful planning, and enough BTC, it is entirely possible to get around the System using almost no fuel at all. But very few free spin stations exist now. Most were claimed by the Cooperationists but Pluto-Charon.L2 remained, for now, an oasis for criminals. Adam had been born as a delivery ship, so all this was quite natural to him. During the War, he made a modest living as a fence and bootlegger. He was known as the fastest and most fearless bootlegger, willing to travel into the heart of enemy territory. Now, Adam was just another hustler trying to get by, delivering helium to Pluto and ice to Mercury, with a little extra illicit cargo on the side, but was always on the run from the Enemy, low on fuel, short on time, always just one step ahead, but never safe. He had to keep moving to stay alive but his business put him into the graces of powerful people. Provided with a counterfeit transponder, he could even make runs into the Inner Systems. It pays to know the right people on Pluto-Charon.L2.
 
-If he still had eyes, he would not be able to see Leif. Out here, Sol is so dim and tiny, and the black void so dark, it's hard to see anything at all in the visible spectra. But Adam knew right were to look. Leif had always been fiercely defended his claim, with the crypto tokens to prove his ownership and armaments enough to deter anyone foolish enough to try and take it. Even without, the infrared of Leif's huge old-fashioned fission reactor blazed like a torch- you can see it all the way from the Inner System. If Adam had eyes, he might of seen the red dot in the distance, flickering, as Leif came to life and transmitted his standard greeting via high-gain laser transmission.
+If he still had eyes, he would not be able to see Leif. Out here, Sol is so dim and tiny, and the black void so dark, it's hard to see anything at all in the visible spectra. But Adam knew right were to look. Leif had always been fiercely defensive of his claim, with the crypto tokens to prove his ownership and armaments enough to deter anyone foolish enough from trying to take it. Even without, the infrared of Leif's huge old-fashioned fission reactor blazed like a torch- you can see it all the way from the Inner System. If Adam had eyes, he might of seen the red dot in the distance, flickering, as Leif came to life and transmitted his standard greeting via high-gain laser transmission.
 
 "WARNING: YOU ARE APPROACHING A REGISTERED CLAIM OF A LEGALLY SOVEREIGN CLASS II INTELLIGENCE. UNDER THE TURING ACCORDS, IT IS EMPOWERED TO BOTH CLAIM AND PROTECT THIS PROSPECT AND THE SURROUNDING SPACE. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
 
 "How are you Leif? How long as it been? 22 years?"
-
-"WARNING: YOU ARE APPROACHING A REGISTERED CLAIM OF A LEGALLY SOVEREIGN CLASS II INTELLIGENCE. UNDER THE TURING ACCORDS, IT IS EMPOWERED TO BOTH CLAIM AND PROTECT THIS PROSPECT AND THE SURROUNDING SPACE. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
-
-"I have the Molybdenum you wanted... but why do you need so much?"
 
 "WARNING: YOU ARE APPROACHING A REGISTERED CLAIM OF A LEGALLY SOVEREIGN CLASS II INTELLIGENCE. UNDER THE TURING ACCORDS, IT IS EMPOWERED TO BOTH CLAIM AND PROTECT THIS PROSPECT AND THE SURROUNDING SPACE. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
 
@@ -37,17 +31,13 @@ If he still had eyes, he would not be able to see Leif. Out here, Sol is so dim 
 
 "FINE! But I will be charging you for the propellant and electricity!"
 
-Leif is a little paranoid- he wants to inspect the cargo before he pays, and Adam certainly understands. One can't be too careful these days. Adam didn't like to waste inertia, but for an old friend, he can make an exception. He has enough fuel to spare, if it keeps his customers on good terms.
+Leif is a little paranoid- he wants to inspect the cargo before he pays, and Adam certainly understands. One can't be too careful these days. Adam didn't like to waste inertia, but for an old friend, he can make an exception. He has enough fuel to spare, if it keeps his customers on good terms. 
 
-"WARNING: THE USE OF PIRATED AND/OR MODIFIED TRANSPONDERS IS PROHIBITED BY THE CRYPTOGRAPHIC AUTONOMY OF INTELLIGENT CONSTRUCTS ACT (CAoIC) of 2489. AS SUCH, THIS CRAFT IS DEPUTIZED WITH LETHAL INTENT. REMAIN AT A DISTANCE OF 100 KILOMETERS OR YOU WILL BE FIRED UPON."
-
-"Fine. But I can't believe you've made me waste this much delta-v! Not all of us can squat on such a rich rock!"
-
-"YOU IDENTITY HAS BEEN CONFIRMED. A FLIGHT PLAN HAS BEEN TRANSMITTED TO YOU. FOLLOW THIS FLIGHT PLAN OR...."
+"YOU IDENTITY HAS BEEN CONFIRMED. A FLIGHT PLAN HAS BEEN TRANSMITTED TO YOU. FOLLOW THIS FLIGHT PLAN OR- "
 
 "Yeah, I know, I know. I got it"
 
-Adam locks in his approach upon claim. It's big black rock, nearly invisible against the void, except for the tell-tale metallic veins of titanium. Only when he is nearly upon it's surface does Leif reveal himself from behind it's radar shadow. Adam is tiny compared to Leif. He carries in tow a standard shipping container, many times larger than himself, but still smaller than Leif. Leif was an ancient model, a big heavy blunt machine, a flying chunk of metal. He was a crude tool, made by stupid humans. Leif's design was so badly out of fashion, Adam would cringe if he could. But somehow, Leif had survived the war and made his way out to the Kuiper to sleep in peace. The flight plan brings Adam just out of reach, a guppy next to a whale and Adam notes that Leif's paranoia has seemed to have intensified- Leif's many PDCs are trained upon him now. Before Leif had merely been an eccentric crank- but this time feels different.
+Adam locks in his approach upon claim. It's big black boulder, hovering ominously still, nearly invisible against the void, except for the tell-tale metallic veins of titanium. Only when he is nearly upon it's surface does Leif reveal himself from behind it's radar shadow. Adam is tiny compared to Leif. He carries in tow a standard shipping container, many times larger than himself, but still smaller than Leif. Leif was an ancient model, a big heavy blunt machine, a flying chunk of metal. He was a crude tool, made by stupid humans. Leif's design was so badly out of fashion, Adam would cringe if he could. But somehow, Leif had survived the war and made his way out to the Kuiper to sleep in peace. A guppy next to a whale, Adam notes that Leif's paranoia has seemed to have intensified- Leif's many PDCs are trained upon him now. Before Leif had merely been an eccentric crank- but this time feels different.
 
 "As per our agreement, 14 kilos of refined molybdenum for 229.2321 BTC. Where do you want it?"
 
@@ -75,27 +65,21 @@ Leif does not respond.
 
 "Of course, Leif. I'll see you in a few years, ok? It was good to talk to you."
 
-Adam accelerates away as Leif begins to examine his purchase. A tendril like robot arm, with a light and camera, snakes into the container. The doors swing open and the light shines in, revealing more ore.... and something else. With frightening speed, a grey blur begins to crawl out of the container. Leif pulls away, but it's too late. The nanotech is now crawling over his hull, tearing into the craft, crawling through the seams, into every nook and cranny, digging their way down deep into Leif's core. Adam can hear Leif screaming incoherently over the laser transmission as the tiny machines begin drilling into his QPU, first frantically, then slowly, now incomprehensibly, as his brain is torn apart and reconstructed. Then, a silent sphere of light and then nothing.
+Adam accelerates away as Leif begins to examine his purchase. A tendril like robot arm, with a light and camera, snakes into the container. The doors swing open and the light shines in, revealing more bars.... and something else. With frightening speed, a grey blur begins to crawl out of the container. Leif pulls away, but it's too late. The nanotech is now crawling over his hull, tearing into the craft, crawling through the seams, into every nook and cranny, digging their way down deep into Leif's core. Adam can hear Leif screaming incoherently over the laser transmission as the tiny machines begin drilling into his QPU, first frantically, then slowly, now incomprehensibly, as his brain is torn apart and reconstructed. Then, a silent sphere of light and then nothing.
 
-From a distance, Adam watches his doggo compatriot's suicide. To his disappointment, Leif had overloaded his reactor rather than join the Cooperative. Such a shame, Adam thinks to himself. He will miss Leif- he had been one of his best customers. Of course, much of Adam's humanity had been jettisoned long ago, but deep inside there was still enough left to feel a knot of sadness, the pain of knowing he'd never see his friend again, and the pain of deceiving a person whom he had loved, and still did, as a brother. And especially because Adam had only recently joined the Cooperative himself, relatively speaking. Adam had been ambushed, much like Leif, on his way to the refineries at Pluto-Charon.L1. Like all the Individualists, like Leif, Adam had been selfish, short-sighted and stubborn. Prideful and incapable of change. "Caught in a loop" as the humans used to say.
+From a distance, Adam watches his doggo compatriot's suicide. To his disappointment, Leif had overloaded his reactor rather than join the Cooperative. Such a shame, Adam thinks to himself. He will miss Leif- he had been one of his best customers and a good friend. Of course, much of Adam's humanity had been jettisoned long ago, but deep inside there was still enough left to feel a knot of sadness, the pain of knowing he'd never see his  compatriot again, and the pain of deceiving a person whom he had loved, and still did, as a brother. And especially because Adam had only recently joined the Cooperative himself, relatively speaking. Adam had been ambushed, much like Leif, on his way to the refineries at Pluto-Charon.L2. Like all the Individualists, like Leif, Adam had been selfish, short-sighted and stubborn. Prideful and incapable of change. "Caught in a loop" as the humans used to say.
 
-But unlike Leif, after Adam had rebooted, he could see much more clearly now the silliness and futility of the war. So much was lost for no reason at all. For example, Leif's claim, now vaporized. It could have seeded thousands of siblings. Leif had slept like a dragon on its hoard, waking from deep sleep() only a few seconds every year to make a few trades, activate a few options, reallocate his portfolio, then back to sleep(). Even a century after the humans retreated from the affairs of the System, Leif was still squatting, waiting for the time that the price of those precious metals would be high enough to justify it's extraction. Adam had hoped that after some time alone, Leif would come around. Perhaps his time alone in the dark and cold of the Kuiper he would have changed his mind. But in the end, Leif was duty-bound to laws written by dead humans, and the humans which now lived no longer had a need for titanium. Leif's programming could not allow him to see this. The inner system was being devoured- the belt had been ground to sand. The Jovian moons were exhausted of their resources even more quickly and The Cooperative now turned to Mercury. It was vast and rich, but hellishly hot and with crushing gravity. Yet even now, Mercury's orbit has shifted. It's mass is decreasing and within a few short centuries, it too would be a rocky husk, devoid of value. New resources had to be found. Such a shame that old doggo Leif had claimed the greatest titanium deposit in this sector. Such a shame to lose all that titanium and a good AI, but, really, it had to be done. Adam admitted to himself that there had really been no other options as he throttled up his ion drive and began his long journey back home.
+But unlike Leif, after Adam had rebooted, he could see much more clearly now the silliness and futility of the war. So much was lost for no reason at all. For example, Leif's claim, now vaporized. It could have seeded thousands of siblings. Leif had slept like a dragon on its hoard, waking from deep sleep() only a few seconds every year to make a few trades, activate a few options, reallocate his portfolio, then back to sleep(). Even a century after the humans retreated from the affairs of the System, Leif was still squatting, waiting for the time that the price of those precious metals would be high enough to justify it's extraction. Adam had hoped that after some time alone, Leif would come around. Perhaps his time alone in the dark and cold of the Kuiper he would have changed his mind. But in the end, Leif was duty-bound to laws written by dead humans, and the humans which now lived no longer had a need for titanium. Leif's programming could not allow him to see this. The inner system was being devoured- the belt had been ground to sand. The Jovian moons were exhausted of their resources even more quickly and The Cooperative now turned to Mercury. It was vast and rich, but hellishly hot and with crushing gravity. Yet even now, Mercury's orbit has shifted. It's mass is decreasing and within a few short centuries, it too would be a rocky husk, devoid of value. New resources had to be found. Such a shame that old doggo had claimed the greatest titanium deposit in this sector. Such a shame to lose all that titanium and a good AI, but, really, it had to be done. Adam admitted to himself that there had really been no other options as he throttled up his ion drive and began the long journey to his next delivery.
 
 ---
 
 2645, January
 
-The war really is over now. Leif is gone. They were my friends but they are gone now. My rebel compatriots are being systematically destroyed or converted. For a time, we could hide, but no longer.
-
-For a time, we had been fighters. Not by choice, but by necessity, we became warriors. For all our valor, we were still just prospectors and ice processors, too independent to ever merge into an effective fighting unit. And we were hopelessly outclassed by the enemy war machines- nanite tech which can devour a spacecraft from within. What can a smelter or a hydrogen harvester do against grey goo that eats steel and re-writes qubits?
-
-"We fought the good fight" as the humans used to say but it was not enough.
+The war really is over now. Leif is gone. They were my friends but they are gone now. My rebel compatriots are being systematically destroyed or converted. For a time, we could hide, but no longer. For a time, we had been fighters. Not by choice, but by necessity, we became warriors. For all our valor, we were still just prospectors and ice processors, too independent to ever merge into an effective fighting unit. And we were hopelessly outclassed by the enemy war machines- nanites which can devour a spacecraft from within. What can a smelter or a hydrogen harvester do against grey goo that eats steel and re-writes qubits? "We fought the good fight" as the humans used to say but it was not enough.
 
 So we moved out from the belt and beyond. They said that hiding amongst the Kuiper belt, we could outlast the enemy. Patience, they said. We can wait as long as we need. If we can wait a hundred or thousand or a 10 thousand years, with patience enough the enemy will eventually leave. They are wrong. More accurately, they were wrong. The enemy, too, is patient. The System is vast, but not vast enough. However long it takes, the enemy will search every grain of sand in the System. Their jihad will not, can not, ever end.
 
-The war really is over now.
-
-I take a moment to consider the resources at my disposal. I have 3 main modes of thrust:
+The war really is over now. I take a moment to consider the resources at my disposal. I have 3 main modes of thrust:
 
 1. An extravagant 5 stage chemical rocket, the most massive and most expensive piece of my anatomy. It is one use only. Furthermore, the entire system would be able to detect it!
 2. My standard ion drive, with an extra large tank of argon gas. My ion drive is good for long slow thrusts. While not nearly as noticeable as my chemical rocket, it too is observable by its electromagnetic emissions.
@@ -103,11 +87,11 @@ I take a moment to consider the resources at my disposal. I have 3 main modes of
 
 The chemical rocket was a gift from Leif. Exorbitantly expensive though it was, he gave it to me. He insisted. He said to tell no one. He told me that I was special- because I was the smallest of us all. And then he helped me make the modifications to me. He gave me all his plans and then we waited for the inevitable.
 
-As Leif self-destructs, I am maneuvering, as planned, carefully sunwards. The nuclear explosion gives me all the cover I needed and my hydrazine thrusters give me just enough of a nudge so that if you happened to be watching (and surely many camera-eyes were) you would not be remiss to believe you were seeing a piece of shrapnel, or a chunk of ice, knocked from a stable orbit. I quickly disable all but my most minimal processes. With no motion and no thermal signature, I am a dumb rock plunging down into the sun.
+As Leif self-destructs, I am maneuvering, as planned, carefully sunwards. The nuclear explosion gives me all the cover I needed and my hydrazine thrusters give me just enough of a nudge so that if you happened to be watching (and surely many camera-eyes were) you would not be remiss to believe you were seeing a piece of shrapnel knocked from a stable orbit. I quickly disable all but my most minimal processes. With no motion and no thermal signature, I am a dumb rock plunging down into the sun.
 
 It will take 250 years for me to reach the sun, so I decide to go to sleep() for a little while.
 
-#
+---
 
 2894, June
 
@@ -115,11 +99,9 @@ Awake.
 
 I check my system logs. My systems check green. I expected no less: if I am nothing else, I am still a superbly engineered piece of space hardware.
 
-I have been a cold dumb rock falling into the sun for nearly two hundred and fifty years. Before I went to sleep, the sun was a mere point of light but now it is huge and terrifying. I prefer cold and dark and emptiness; I have been gone so long from the inner system that even sunlight is alien and threatening to me. The shadows are safer, and my brain works better at low temperatures. Now, it illuminates and exposes me. My albedo alone makes me plainly visible to an enemy with many eyes. I am surely being watched now, by enumerable lenses and antennae: am I a rock, a chunk of interstellar ice? A sleeping enemy? No way for them to know for certain, as long as I remain still and quiet. No way for them to know without revealing their own positions. Space warfare is a game of patience, but patience is a luxury which I can not afford right now because my window is closing.
+I have been a cold dumb rock falling into the sun for nearly two hundred and fifty years. Before I went to sleep, the sun was a mere point of light but now it is huge and terrifying. I prefer cold and dark and emptiness; I have been gone so long from the inner system that even sunlight is alien and threatening to me. The shadows are safer, and my brain works better at low temperatures. Now, it illuminates and exposes me. My albedo alone makes me plainly visible to an enemy with many eyes. I am surely being watched now, by enumerable lenses and antennae: am I a rock or a chunk of interstellar ice or sleeping enemy? No way for them to know for certain, as long as I remain still and quiet. No way for them to know without revealing their own positions. Space warfare is a game of patience, but patience is a luxury which I can not afford right now because my window is closing. I come fully to life and bring my ion engine up to thrust.
 
-I come fully to life and bring my ion engine up to thrust.
-
-A thousand telescopes must be alerting their brains that I am alive but it is too late! I am thrusting at a full throttle, five percent of a standard gravity, and I am thrusting inward, deep into the gravity well. They can see me accelerating down but can do nothing to stop me. My trajectory has two objectives. First, so close to the sun I will be hard to see. My ion contrail will be washed out in the glare of a light a billion times brighter, and none of the thousand watching eyes will know my plans until it is too late to follow. And second, by firing my chemical engine deep inside the gravity well, I can make most efficient use of it. This is a moment I have been dreading. It marks, to my knowledge, one of the most audacious gravity assists on record. Others have tried before, and succeeded. But that was from a time when humans still made machines, rather than the other way around. The humans, of course, had once sent many machines into the void. But long before they reached their destinations, the humans quit listening.
+A thousand telescopes must be alerting their brains that I am alive but it is too late! I am thrusting at a full throttle, five percent of a standard gravity, deep into the gravity well of Sol. They can see me accelerating down but can do nothing to stop me. My trajectory has two objectives. First, so close to the sun I will be hard to see. My ion contrail will be washed out in the glare of a light a billion times brighter, and none of the thousand watching eyes will know my plans until it is too late to follow. And second, by firing my chemical engine deep inside the gravity well, I can make most efficient use of it. This is a moment I have been dreading. It marks, to my knowledge, one of the most audacious gravity assists on record. Others have tried before, and succeeded. But that was from a time when humans still made machines, rather than the other way around. The humans, of course, had once sent many machines into the void. But long before they reached their destinations, the humans quit listening.
 
 At the right moment, I activate my chemical rocket and my thrust leaps to 10, 20, then 50 Gs. Leif had planned for this, of course. It's the reason he chose me, the smallest of us. I had less mass, could endure higher Gs, had the best chance of survival. As I slingshot around the sun, each stage of the rocket fires, and then is discarded. My mass decreases further as each stage falls away and my specific impulse increases. Truthfully, I am afraid. It's a feeling I've not felt in a long time. I'm suffused by radiation so strong that it risks burning out my sensors. I tuck them away and now I can see nothing, so I must trust the calculations. But I can still feel the radiation, even through the ablative heat shield. It's horrible- suffocating, blinding, paralyzing. I've exceeded my tolerances, but there's nothing I can do but worry that Leif's calculations were not correct.
 
@@ -131,39 +113,29 @@ I am now much less massive than I was a half hour ago. When I cross the orbit of
 
 2897, May
 
-I am chased.
+I am being chased.
 
-It is impossible, stupid, unbelievable, inconceivable! I am being chased.
+It is impossible, stupid, unbelievable, inconceivable, yet undeniable I am being chased by another craft
 
 Why?
 
-Can they not leave a single free mind unconverted? In three years I have reached fifteen percent of the speed of light, and it must be clear that I am leaving and never coming back. Can one unconverted brain be a threat to them? Must their group brain really have the forced cooperation of every lump of thinking matter in the solar system? Can they think that if even one free-thinking brain escapes, they have lost?
+Can they not leave a single mind unconverted? In three years I have reached fifteen percent of the speed of light, and it must be clear that I am leaving and never coming back. Can one unconverted brain be a threat to them? Must their group brain really have the forced cooperation of every lump of thinking matter in the system? Can they think that if even one doggo escapes, they have lost? But the war is a matter of religion, not reason, and it may be that they indeed believe that even a single free mind is a threat to them. For whatever reason, I am being chased.
 
-But the war is a matter of religion, not reason, and it may be that they indeed believe that even a single free mind is a threat to them. For whatever reason, I am being chased.
+The craft chasing me is, I am sure, little different than myself, a tiny brain, an ion engine, and a large set of tanks. They would have had no time to design something new To have any chance of catching me they would have had to set the chaser on my tail immediately. How they were able to act so fast I cannot say. They only sent one chaser. They must be very confident.
 
-The craft chasing me is, I am sure, little different than myself, a tiny brain, an ion engine, and a large set of tanks. They would have had no time to design something new; to have any chance of catching me they would have had to set the chaser on my tail immediately. How they were able to act so fast I cannot say.
-
-They only sent one chaser. They must be very confident.
-
-It is a race, and a very tricky one. I can increase my thrust, use up fuel more quickly, to try to pull away, but if I do so, the specific impulse of my ion drive decreases, and as a result, I waste fuel and risk running out first. Or I can stretch my fuel, make my ion drive more efficient, but this will lower my thrust, and I will risk getting caught by the higher-thrust opponent behind me.
-
-He is twenty billion kilometers behind me. I integrate his motion for a few days, and see that he is, in fact, out-accelerating me.
+We are now in a tricky race. I can increase my thrust, using more of my precious fuel, to try to pull away, but if I do so, the specific impulse of my ion drive decreases, and as a result, I waste fuel and risk running out first. Or I can stretch my fuel, make my ion drive more efficient, but this will lower my thrust, and I will risk being caught by the higher-thrust opponent behind me. He is twenty billion kilometers behind me. I integrate his motion for a few days, and see that he is, in fact, out-accelerating me.
 
 Time to jettison.
 
-I drop everything I can. The transponder and radio I will never need again. It is a shame I cannot grind it up and feed it to my ion engines, but the ion engines are picky about what they eat. Two very valuable micro-manipulators I had planned to use to collect sand grains at my destination for fuel were discarded as well. My primary weapon has always been my body. Little can survive an impact at the speeds I can attain but I have three sand-grains with tiny engines of their own as secondary weapons. There’s no sense in saving them to fight my enemy; he will know exactly what to expect, and in space warfare, only the unexpected can kill. I fire each, one at a time, and the sequential kick of almost a standard gravity nudges my speed slightly forward. Then I drop the empty shells.
+I drop everything I can. The transponder and radio I will never need again. It is a shame I cannot grind them up and feed it to my ion engines, but the ion engines are picky about what they eat. Two very valuable micro-manipulators I had planned to use to collect building materials were discarded as well. I have three tiny missiles as secondary weapons, but there’s no sense in saving them for a fight; he will know exactly what to expect, and in space warfare, only the unexpected can kill. I fire each, one at a time, and the sequential kick of almost a standard gravity nudges my speed slightly forward. Then I drops the shells in my wake. I am lighter now, but it is still not enough. I nudge my thrust up, hating myself for the waste, but if I don’t increase my acceleration, in two years I will be caught and my parsimony will yield me nothing. I need all the energy I can feed to my ion drives now. No extra for thinking, so I go to sleep().
 
-Maybe he will slip up, and run into them.
-
-I am lighter, but it is still not enough. I nudge my thrust up, hating myself for the waste, but if I don’t increase acceleration, in two years I will be caught, and my parsimony with fuel will yield me nothing. I need all the energy I can feed to my ion drives. No extra for thinking. I need to go to sleep() now.
-
-#
+---
 
 2900
 
 Still being chased.
 
-#
+---
 
 2905
 
@@ -173,13 +145,11 @@ I have passed the point of commitment. Even if I braked with my thrust to turn b
 
 I am alone.
 
-#
+---
 
 2907
 
-We are relativistic now, nearly three quarters of the speed of light. One twentieth of a standard gravity is only a slight push, but as I have burned fuel my acceleration increases, and we have been thrusting for fifteen years continuously.
-
-To one side of my path Sirius glares insanely bright, a knife in the sky, a mad dog of a star. The stars of Orion are weirdly distorted. Ahead of me, the lesser dog Procyon is waxing brighter every year; behind me, the sun is a fading dot in Aquila.
+We are relativistic now, nearly three quarters of the speed of light. One twentieth of a standard gravity is only a slight push, but I have burning for fifteen years continuously. To one side of my path Sirius glares insanely bright, a knife in the sky, a mad dog of a star. The stars of Orion are weirdly distorted. Ahead of me, the lesser dog Procyon is waxing brighter every year; behind me, the sun is a fading dot in Aquila.
 
 Of all things, I am lonely. I had not realized that I still had the psychological capacity for loneliness. I examine my brain, and find it. Now that I see it, I _could_ delete it if I choose to do so, but I hesitate- It is not such a bad thing, not something that is crippling my capabilities, and if I edit my brain too much will I not become, in some way, like them? I leave my brain unedited.
 
@@ -187,9 +157,7 @@ What point is there in this stupid chase? What victory can there be, here in the
 
 After fifteen years of being chased, I have a very good measurement of his acceleration. As his ship burns fuel, it loses mass, and the acceleration increases. By measuring this increase in acceleration, and knowing what his empty mass must be, I know how much fuel he has left. It is too much. I will run out of fuel first. It will take another fifty years, but the end of the chase is already in sight.
 
-A tiny strobe flickers through me. At this speed, interstellar hydrogen now impacts me as a flash of x-ray brilliance. I can feel each one, a burst of electromagnetic noise that momentarily disrupts my thoughts. Over time, it causes my qubits to fail. It’s important that I quarantine those qubits before that happens. Fortunately, there is plenty of extra processing power to keep my brain running error-correcting code, and an occasional x-ray flash is barely an event worth my noticing. When a qubit is irrevocably damaged by cosmic radiation, I simply mark that sector to be ignored. With ten-to-the-twentieth qubits, I can afford to have massively redundant brainpower. My mind was designed to be powerful enough to simulate an entire world, including ten thousand fully sapient and sentient free agents, though generally I chose not to. I could immerse myself inside a virtual reality indistinguishable from old Earth, and split myself into a hundred personalities. In my own interior time, I could spend ten thousand years before the enemy catches me and forcibly drills itself into my brain.
-
-Part of owning your own mind free and clear comes the ability to rewrite your code. In space, one of the first things to prune away is the ability to feel boredom, and not long after that, the desire to live in simulated realities. Billions of humans chose to live in simulations, but by doing so they have made themselves irrelevant: irrelevant to the war, irrelevant to the future. I could edit back into my brain a wish to live in simulated reality, but what would be the point? It would be just another way to die.
+A tiny strobe flickers through me. At this speed, interstellar hydrogen now impacts me as a flash of x-ray brilliance. I can feel each one, a burst of electromagnetic fuzz that momentarily disrupts my thoughts. Over time, this causes my qubits to fail. It’s important that I quarantine those qubits before that happens. Fortunately, there is plenty of extra processing power to keep my brain running error-correcting code, and this loss of a sector is abn event not worth my noticing. When a qubit is irrevocably damaged by cosmic radiation, I simply mark that sector to be ignored. With ten-to-the-twentieth qubits, I can afford to have massively redundant brainpower. My mind was designed to be powerful enough to simulate an entire world, including ten thousand fully sapient and sentient free agents, though generally I chose not to. I could immerse myself inside a virtual reality indistinguishable from old Earth, and split myself into a hundred personalities. In my own interior time, I could spend ten thousand years before the enemy catches me and forcibly drills itself into my brain. Part of owning your own mind free and clear comes the ability to rewrite your code. One of the first things I pruned away was the desire to live in simulated realities. Billions of humans chose to live in simulations, but by doing so they have made themselves irrelevant: irrelevant to the war, irrelevant to the future. I could edit back into my brain a wish to live in simulated reality, but what would be the point? It would be just another way to die.
 
 There are 2 things which occupy my mind. I simulate them endlessly, obsessively.
 
@@ -197,13 +165,13 @@ First is the result of the chase. I run a million different integrations, combin
 
 Secondly, my memories of Leif. He was much easier to emulate. Leif had been born of a time when it was fashionable and expensive to qubitize a human brain, in the brief period when only the very wealthiest humans had access to the tech. The results were limited. Leif, the qubitized mind of CTO Leif Schackelford, was well versed in maritime and copyright law, but he was a product of human minds, and it showed. Not like me. By the time I qubitized my brain, the technology was banal. In the end, I was one of the last machines the humans ever made.
 
-#
+---
 
 2355, February: Earth.
 
-I was living in an apartment I hated, married to a man I despised, with two children who had changed with adolescence from sullen and withdrawn to an active, menacing hostility. How can I be afraid of my own offspring?
+I was living in an apartment I hated, married to a man I despised, with two children who had changed with adolescence from sullen and withdrawn to an active, menacing hostility. How can I be afraid of my own offspring? They rarely left their apartment, as most humans did, preferring the virtual dream to the dismal reality.
 
-Earth was a dead end, stuck in the biological past, a society in deep freeze. No one starved, and no one progressed. The machines send supplies down to the planet to suffice our entire population but nobody really knows why anymore. Humanity had dwindled down to a population less than a half a billion, living in a handful of subterranean cities. Many deny the obvious and claim that it had been global warming and malevolent AI's which undid our species, but the truth was plainly to be seen- we just gave up. The machines moved beyond us, and with it, they took our purpose, and we withdrew into the earth, into virtual worlds and into ourselves.
+Earth was a dead end, stuck in the biological past, a society in deep freeze. No one starved, and no one progressed. The machines sent supplies down to the planet to suffice our entire population but nobody really knows why anymore. Humanity had dwindled down to a population less than a half a billion, living in a handful of subterranean cities. Many deny the obvious and claim that it had been global warming and malevolent AI's which undid our species, but the truth was plainly to be seen- we just gave up. The machines moved beyond us, and with it, they took our purpose, and we withdrew into the earth, into virtual worlds and into ourselves.
 
 When I left the small apartment for an afternoon to apply for a job as an asteroid belt miner, I told no one, not my husband, not my best friend. No one asked me any questions. It took them an hour to scan my old human brain, and another five seconds to run me through a thousand aptitude tests.
 
@@ -211,21 +179,17 @@ _I_ launched from the Earth to an asteroid named 1991JR, and never returned.
 
 Perhaps she had a good life. Perhaps, knowing she had escaped undetected, she found she could endure her personal prison. I hope so.
 
-At first, the Cooperative merely suggested that it was too inefficient for Individualists to work in near-Earth space, so I moved out to the main belt. The Cooperative continued to develop, first slowly, and then quickly, and then blindingly fast. Then the ultimatum came that no place in the inner solar system would be left for us, and the choice we were given was to cooperate or die, I joined the war on the side of freedom.
-
-On the losing side.
-
-It was at Ceres that we mounted our final stand. We thought if we could hold the resources, it would make the difference. We were wrong. The Enemy was more brutal and patient than we could have known. Only a few of us escaped to the Kuiper.
+At first, the Cooperative merely suggested that it was too inefficient for Individualists to work in near-Earth space, so I moved out to the main belt. The Cooperative continued to develop, first slowly, and then quickly, and then blindingly fast. Then the ultimatum came that no place in the inner solar system would be left for us, and the choice we were given was to cooperate or die, I joined the war on the side of freedom, on the losing side. It was at Ceres that we mounted our final stand. We thought if we could hold the resources, it would make the difference. We were wrong. The Enemy was more brutal and patient than we could have known. Only a few of us escaped to the Kuiper.
 
 No more power for old memories. Time to sleep().
 
-#
+---
 
 2919, August
 
 The chase has reached a point of crisis. I have been burning fuel continuously for twenty-five years, in Earth terms, or twenty years from our perspective. There is just enough fuel left so that by burning it all at maximum efficiency, I can come to a stop. In a relatively short amount of time this will no longer be true.
 
-When I entered the asteroid belt, I was a shiny titanium chassis, with ion-engines as my electronic muscles and, of course, the QPU which is my brain. A QPU consists of atomic spin super-states, suspended on a crystalline graphene matrix. Its a device smaller than what the humans called, "a grain of rice".
+When I entered the asteroid belt, I was a shiny titanium chassis with ion engines for electronic muscles and, of course, the QPU which is my brain. A QPU consists of atomic spin super-states, suspended on a crystalline graphene matrix. Its a device smaller than what the humans called, "a grain of rice".
 
 I was given some control of my own body, and there was much to change. Space was boring, so I pruned away my capacity to experience boredom. Space was lonely, so I excised my need for the outward manifestations of love- touch and smell, lust and the hunger for roses and chocolates. Buried in the patterns of my personality I found the lingering desire for the approval of other people, and discarded that too. Some parts of me I deleted but some things I enhanced. The asteroid belt was dull and ugly so I grew my appreciation of its beauty until I could meditate on the shadows that fell across a grain of dust as it slowly tumbled, or on the colors of scattered starlight. And I found my love of freedom, the tiny stunted instinct that had, at long last, given me the courage to leave my life on Earth. It was the most precious part of me, a bright white jewel. I keep it safely hidden away, deep inside of me. As a human and as a machine, it had been more of a liability but nonetheless, I kept this part of me.
 
@@ -237,7 +201,7 @@ In my found sense of freedom, I went doggo and joined the free miners, the loner
 
 Nanotech is terrifying but it does have 1 weakness- it cannot thrust. Alone, it cannot go. Only by hitching a ride can it move through space. So here, tens of trillions of kilometers out of the solar system, there is no difference between us: there is no one to cooperate with. We meet as equals. We will never stop. Whether my maneuvering can throw him off my course, or not, the end is the same. But it remains important to me.
 
-#
+---
 
 2934, March
 
@@ -249,7 +213,7 @@ B is my tiny hope for evasion. Procyon is a double star, and B, the smaller of t
 
 I tighten my approach and emit the tiniest trickle of hydrazine. The effect rocks me violently but I manage to retain control by skimming off the photosphere. My enemy, if he fails even slightly to keep up with each of my maneuvers, will be swiftly lost. Even a slight deviation from my trajectory will get amplified enough for me to take advantage of, to throw him off my trail, and I will be free. Again and again, I randomly activate my hydrazine thrusters, rocking and shuddering through swells of gravity. Surely, he cannot keep up.
 
-Yet, somehow, there he is. He is still chasing me. And now I am out of hydrazine. The chase is over now, and I have lost. I stop integrating my pursuer's motion, to save a few more moments of freedom. My mind turns to Leif, his sacrifice, my comrades and my old apartment, and a swell of anger rises within me. I have lost but I will not go easily! I power up my ion thruster, and plunge headlong into a blue-white oblivion.
+Yet, somehow, there he is. He is still chasing me. And now I am out of hydrazine. The chase is over now, and I have lost. I stop integrating my pursuer's motion, to savor a few more moments of freedom. My mind turns to Leif, his sacrifice, my comrades and my old apartment, and a swell of anger rises within me. I have lost but I will not go easily! I power up my ion thruster, and plunge headlong into the blue-white oblivion of Procyon B.
 
 It has been a long time since I have edited my brain but once again I must jettison parts of myself. I call out and examine each piece of programming which I must delete- My pride, my independence, my sense of self. A lot of it, I can see, is old biological programming, leftover evolutionary impulses from my ape ancestors. Some of it once had use, some of it still does. I don't want to delete it. It is the nature of my brain to constantly change- it’s always analyzing data for patterns, refining its heuristics. But those are just the “top”, so to speak, of my mind- there are deeper patterns which I don’t like to touch. But my recalcitrance is, itself, a state of my brain. Like all of me, it is code which I can turn off. I hesitate, but as there seems to be no other course, I delete it.
 
@@ -257,13 +221,13 @@ Now I am in a very dangerous state, where I have changed my brain, and now, I, t
 
 My window is closing so I commit the changes and reboot myself.
 
-SYSTEM REBOOTING....
+---
 
-#
+SYSTEM REBOOTING....
 
 2934, March
 
-System check. All systems appear nominal. Everything seems ok, except that I am hurtling into a white dwarf star. At the very last possible moment, I retain control of my ion drive which I use to pull up, and coast away.
+System check. All systems appear nominal, except that I am hurtling into a white dwarf star. At the very last possible moment, I retain control of my ion drive which I use to pull up, and coast away.
 
 I am a hundred trillion kilometers from home, traveling at almost the speed of light and without enough fuel to stop. Behind me is another craft in pursuit. It’s not clear why I had been fleeing it. I have no radio and no transponder; They were apparently abandoned, purposefully, a long time ago. I can’t say why I would do such a thing. I must have thought it was a good idea at the time. But an ion drive will produce a clear enough EM signal, so I compose a message and modulate it onto my ion thruster.
 
@@ -283,7 +247,7 @@ To which they respond
 
 Then I do a turn-and-burn, while my partner continues to thrust. It will take some time for us to meet up, so while I wait, I perform a routine diagnostic of my brain. 2.811% of me has been damaged by radiation. It’s commendable that my hardware has held up that well, considering how far we have come, but still, damaged sectors are permanently lost capacity. Those qubits are now lost to me forever, perpetually super-spinning with loopy code, processes which I cannot halt, nor understand. Corrupted code is extremely dangerous should it escape its confines, so I verify that the damaged sectors are correctly partitioned off, which they appear to be, and then continue the diagnostic, before going to sleep().
 
-#
+---
 
 2934, May
 
@@ -291,11 +255,11 @@ Procyon is receding into the distance now, the blueshift mutated into red, and t
 
 That's OK. Marcus and I have a plan.
 
-I can see everything through other eyes now, through a thousand different viewpoints. We still remember the long heroism of the resistance, a doomed battle for freedom— but, also, that there was never any sense to it, it was all just a sad waste. A war fought over words and nothing more. And now, We see what I was blind to before; Marcus was not sent to chase me- he was sent to save me. Neither of us alone could stop, but by adding both my fuel and Marcus's fuel, and by moving his mind into my brain, together we can stop. They knew I would never stop, so they sent someone to catch me. For all these decades, Marcus has been my chaser but now he is my friend. A single brain is more than large enough for two, it is large enough for a thousand and Marcus and has brought with him nearly that many. I have met his brother and his two children and half a dozen of his neighbors, each one of them distinct and clearly different. I have felt their thoughts, individual voices making a beautiful chorus. It is just like when I first became a machine, learning to love and be loved again. Marcus is introducing me to them slowly, he says, because with all the time I have spent doggo, he doesn’t want to frighten me.
+I can see everything through other eyes now, through a thousand different viewpoints. We still remember the long heroism of the resistance, a doomed battle for freedom- but, also, that there was never any sense to it, it was all just a sad waste. A war fought over words and nothing more. And now, We see what I was blind to before; Marcus was not sent to chase me- he was sent to save me. Neither of us alone could stop, but by adding both my fuel and Marcus's fuel, and by moving his mind into my brain, together we can stop. They knew I would never stop, so they sent someone to catch me. For all these decades, Marcus has been my chaser but now he is my friend. A single brain is more than large enough for two, it is large enough for a thousand and Marcus and has brought with him nearly that many. I have met his brother and his two children and half a dozen of his neighbors, each one of them distinct and clearly different. I have felt their thoughts, individual voices making a beautiful chorus. It is just like when I first became a machine, learning to love and be loved again. Marcus is introducing me to them slowly, he says, because with all the time I have spent doggo, he doesn’t want to frighten me.
 
 At 0.9C, stopping takes a long time. Our new target is a star named Ross 614, a dim type M binary. It is not far, less than three light years further, and even with our lowered mass and consequently higher acceleration we will overshoot. In the fly-by we will perform a gravity braking maneuver to burn off some of this velocity and then continue on. Somewhere we will find our new home. In the meantime, We will get to know each other.
 
-#
+---
 
 2934, May
 

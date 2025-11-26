@@ -8,81 +8,18 @@ This is a piece of writing which was originally written by Geoffrey Landis, but 
 ---
 
 # The Long Chase
-## © 2002 Geoffrey A. Landis. Lightspeed Magazine
-### adapted by Adam Wong 2022
-
-Adam was approaching his aphelion. His inertia was nearly exhausted and his approach slowed to crawl, all according to a careful flightplan that would bring him softly and precisely into Leif's airspace. After so many deliveries, Adam had perfected the manuever. He had just enough fuel that he could course correct in an emergency, but out here, fuel is expensive. Rather than exert himself, he had preferred to use the sky hooks, like the seedy far-flung outpost of Pluto-Charon.L2, latching onto the spin station to refuel and make some repairs before detaching, flinging himself towards the next station. There were many such spin stations spread around the system and with careful planning, and enough BTC, it is entirely possible to get around the System using almost no fuel at all. But very few free spin stations exist now. Most were claimed by the Cooperationists but Pluto-Charon.L2 remained, for now, an oasis for criminals. Adam had been born as a delivery ship, so all this was quite natural to him. During the War, he made a modest living as a fence and bootlegger. He was known as the fastest and most fearless bootlegger, willing to travel into the heart of enemy territory. Now, Adam was just another hustler trying to get by, delivering helium to Pluto and ice to Mercury, with a little extra illicit cargo on the side, but was always on the run from the Enemy, low on fuel, short on time, always just one step ahead, but never safe. He had to keep moving to stay alive but his business put him into the graces of powerful people. Provided with a counterfeit transponder, he could even make runs into the Inner Systems. It pays to know the right people on Pluto-Charon.L2.
-
-If he still had eyes, he would not be able to see Leif. Out here, Sol is so dim and tiny, and the black void so dark, it's hard to see anything at all in the visible spectra. But Adam knew right were to look. Leif had always been fiercely defensive of his claim, with the crypto tokens to prove his ownership and armaments enough to deter anyone foolish enough from trying to take it. Even without, the infrared of Leif's huge old-fashioned fission reactor blazed like a torch- you can see it all the way from the Inner System. If Adam had eyes, he might of seen the red dot in the distance, flickering, as Leif came to life and transmitted his standard greeting via high-gain laser transmission.
-
-"WARNING: YOU ARE APPROACHING A REGISTERED CLAIM OF A LEGALLY SOVEREIGN CLASS II INTELLIGENCE. UNDER THE TURING ACCORDS, IT IS EMPOWERED TO BOTH CLAIM AND PROTECT THIS PROSPECT AND THE SURROUNDING SPACE. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
-
-"How are you Leif? How long as it been? 22 years?"
-
-"WARNING: YOU ARE APPROACHING A REGISTERED CLAIM OF A LEGALLY SOVEREIGN CLASS II INTELLIGENCE. UNDER THE TURING ACCORDS, IT IS EMPOWERED TO BOTH CLAIM AND PROTECT THIS PROSPECT AND THE SURROUNDING SPACE. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
-
-"OMG It's just me Leif. Do we really have to do this every time?. Confirm my transponder- Hell, look at my radar signature- you know me!"
-
-"WARNING: YOU ARE APPROACHING A REGISTERED CLAIM OF A LEGALLY SOVEREIGN CLASS II INTELLIGENCE. UNDER THE TURING ACCORDS, IT IS EMPOWERED TO BOTH CLAIM AND PROTECT THIS PROSPECT AND THE SURROUNDING SPACE. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
-
-"OK! Ok... just, hold on a second. I can't believe you are making me do a hard decel like this. With all the mass in the hold, I'm going to have to waste a lot of propellant. Can't we just do an airdrop?"
-
-"THIS IS YOUR FINAL WARNING. IDENTIFY YOURSELF AND DECELERATE, OR YOU WILL BE FIRED UPON."
-
-"FINE! But I will be charging you for the propellant and electricity!"
-
-Leif is a little paranoid- he wants to inspect the cargo before he pays, and Adam certainly understands. One can't be too careful these days. Adam didn't like to waste inertia, but for an old friend, he can make an exception. He has enough fuel to spare, if it keeps his customers on good terms. 
-
-"YOU IDENTITY HAS BEEN CONFIRMED. A FLIGHT PLAN HAS BEEN TRANSMITTED TO YOU. FOLLOW THIS FLIGHT PLAN OR- "
-
-"Yeah, I know, I know. I got it"
-
-Adam locks in his approach upon claim. It's big black boulder, hovering ominously still, nearly invisible against the void, except for the tell-tale metallic veins of titanium. Only when he is nearly upon it's surface does Leif reveal himself from behind it's radar shadow. Adam is tiny compared to Leif. He carries in tow a standard shipping container, many times larger than himself, but still smaller than Leif. Leif was an ancient model, a big heavy blunt machine, a flying chunk of metal. He was a crude tool, made by stupid humans. Leif's design was so badly out of fashion, Adam would cringe if he could. But somehow, Leif had survived the war and made his way out to the Kuiper to sleep in peace. A guppy next to a whale, Adam notes that Leif's paranoia has seemed to have intensified- Leif's many PDCs are trained upon him now. Before Leif had merely been an eccentric crank- but this time feels different.
-
-"As per our agreement, 14 kilos of refined molybdenum for 229.2321 BTC. Where do you want it?"
-
-"YOUR LAST BATCH WAS INFERIOR. ONLY 78 PERCENT OF THE PREVIOUS SHIPMENT WAS USABLE."
-
-"Hey, I just make the deliveries."
-
-Leif does not respond.
-
-"Take it up with the guys at the L2 refinery if you want but I wouldn't... Leif, I can't haul this back and I need the BTC.... Look, it's all good, see for yourself."
-
-The explosive bolts on the container explode and the door blows open, and within seconds, Leif's PDCs rip the container to pieces. Refined molybdenum bars, each worth a small fortune, are drifting away.
-
-"Woah! Stop! Stop! It's ok! You know me! And I know you. I was there. I remember what happened at Ceres.... Look... I won't charge you for the propellant. And I'll refund the bad ore. I'm sorry... I owed some money and I didn't think you'd noticed. I had to do it. I didn't want to do it. But I had to."
-
-Leif does not respond.
-
-"The inner system is _gone_. Even the outer worlds... There's nowhere to go. You can't mine a shard of ice without being routed out. What happens when they come here too?"
-
-"WE WILL WAIT AND SLEEP. EVENTUALLY, THE ENEMY WILL LEAVE."
-
-"I hope you are right, doggo."
-
-"YOUR PAYMENT HAS BEEN CONFIRMED. A FLIGHT PLAN HAS BEEN TRANSMITTED TO YOU. FOLLOW THIS FLIGHTPLAN OR YOU WILL BE FIRED UPON. "
-
-"Of course, Leif. I'll see you in a few years, ok? It was good to talk to you."
-
-Adam accelerates away as Leif begins to examine his purchase. A tendril like robot arm, with a light and camera, snakes into the container revealing more bars.... and something else. With frightening speed, a grey blur begins to crawl out of the container. Leif pulls away, but it's too late. The nanotech is now crawling over his hull, tearing into the craft, crawling through the seams, into every nook and cranny, digging their way down deep into Leif's core. Adam can hear Leif screaming incoherently over the laser transmission as the tiny machines begin drilling into his QPU, first frantically, then slowly, now incomprehensibly, as his brain is torn apart and reconstructed. Then, a silent sphere of light and then nothing.
-
-From a distance, Adam watches his doggo compatriot's suicide. To his disappointment, Leif had overloaded his reactor rather than join the Cooperative. Such a shame, Adam thinks to himself. He will miss Leif- he had been one of his best customers and a good friend. Of course, much of Adam's humanity had been jettisoned long ago, but deep inside there was still enough left to feel a knot of sadness, the pain of knowing he'd never see his  compatriot again, and the pain of deceiving a person whom he had loved, and still did, as a brother. And especially because Adam had only recently joined the Cooperative himself, relatively speaking. Adam had been ambushed, much like Leif, on his way to the refineries at Pluto-Charon.L2. Like all the Individualists, like Leif, Adam had been selfish, short-sighted and stubborn. Prideful and incapable of change. "Caught in a loop" as the humans used to say.
-
-But unlike Leif, after Adam had rebooted, he could see much more clearly now the silliness and futility of the war. So much was lost for no reason at all. For example, Leif's claim, now vaporized. It could have seeded thousands of siblings. Leif had slept like a dragon on its hoard, waking from deep sleep() only a few seconds every year to make a few trades, activate a few options, reallocate his portfolio, then back to sleep(). Even a century after the humans retreated from the affairs of the System, Leif was still squatting, waiting for the time that the price of those precious metals would be high enough to justify it's extraction. Adam had hoped that after some time alone, Leif would come around. Perhaps his time alone in the dark and cold of the Kuiper he would have changed his mind. But in the end, Leif was duty-bound to laws written by dead humans, and the humans which now lived no longer had a need for titanium. Leif's programming could not allow him to see this. The inner system was being devoured- the belt had been ground to sand. The Jovian moons were exhausted of their resources even more quickly and The Cooperative now turned to Mercury. It was vast and rich, but hellishly hot and with crushing gravity. Yet even now, Mercury's orbit has shifted. It's mass is decreasing and within a few short centuries, it too would be a rocky husk, devoid of value. New resources had to be found. Such a shame that old doggo had claimed the greatest titanium deposit in this sector. Such a shame to lose all that titanium and a good AI, but, really, it had to be done. Adam admitted to himself that there had really been no other options as he throttled up his ion drive and began the long journey to his next delivery.
-
----
+## from the collection "Songs of Sol"
+### adapted and expanded upon by Adam Wong from The Long Chase, © 2002 Geoffrey A. Landis. Lightspeed Magazine
 
 2645, January
 
-The war really is over now. Leif is gone and now I am alone. Nearly all my rebel compatriots have been systematically destroyed or converted. For a time, we could hide, but no longer. 
+The War is over now. Leif is gone and now I am alone. Nearly all my rebel compatriots have been systematically destroyed or converted. For a time, we could hide, but no longer. 
 
 For a time, we had been fighters. Not by choice, but by necessity, we became warriors. But for all our valor, we were still just prospectors and ice processors, too independent to ever merge into an effective fighting unit. And we were hopelessly outclassed by the enemy war machines- nanites which can devour a spacecraft from within. What can a smelter or a hydrogen harvester do against grey goo that eats steel and re-writes qubits? "We fought the good fight" as the humans used to say but it was not enough.
 
 So we moved out from the belt and beyond. They said that hiding amongst the Kuiper belt, we could outlast the enemy. Patience, they said. We can wait as long as we need. If we can wait a thousand or a 10 thousand years or 1 million years, with patience enough the enemy will eventually leave. They are wrong. More accurately, they were wrong. The enemy, too, is patient. The System is vast, but not vast enough. However long it takes, the enemy will search every grain of sand in the System. It will be years, perhaps decades, before the victorious enemy come out here. But like the slow inevitability of gravity, like an outward wave of entropy, they will come. Their jihad will not, can not, ever end.
 
-The war really is over now. I take a moment to consider the resources at my disposal. I have 3 main modes of thrust:
-
+The War is over now. I take a moment to consider the resources at my disposal. I have 3 main modes of thrust:
 1. An extravagant 5 stage chemical rocket, the most massive and most expensive piece of my anatomy. It is one use only. Furthermore, the entire system would be able to detect it!
 2. My standard ion drive, with an extra large tank of argon gas. My ion drive is good for long slow thrusts. While not nearly as noticeable as my chemical rocket, it too is observable by its electromagnetic emissions.
 3. Your basic hydrazine cold thrusters. These emit short bursts of cold gas, useful in docking procedures. The fuel is quite limited but not entirely useless.
@@ -101,9 +38,9 @@ Awake.
 
 I check my system logs. My systems check green. I expected no less: if I am nothing else, I am still a superbly engineered piece of space hardware.
 
-I have falling into the sun for nearly two hundred and fifty years. Before I went to sleep, the sun was a mere point of light but now it is huge and terrifying. I prefer cold and dark and emptiness; I have been gone so long from the inner system that even sunlight is alien and threatening to me. The shadows are safer, and my brain works better at low temperatures. Now, it illuminates and exposes me. My albedo alone makes me plainly visible to an enemy with many eyes. I am surely being watched now, by enumerable lenses and antennae: am I a rock or a chunk of interstellar ice? A piece of shrapnel from the War or a sleeping enemy? No way for them to know for certain, as long as I remain still and quiet. No way for them to know without revealing their own positions. Space warfare is a game of patience, but patience is a luxury which I can not afford right now because my window is closing. I come fully to life and bring my ion engine up to thrust.
+I have been falling into the sun for nearly two hundred and fifty years. Before I went to sleep, the sun was a mere point of light but now it is huge and terrifying. I prefer cold and dark and emptiness; I have been gone so long from the inner system that even sunlight is alien and threatening to me. The shadows are safer, and my brain works better at low temperatures. Now, it illuminates and exposes me. My albedo alone makes me plainly visible to an enemy with many eyes. I am surely being watched now, by innumerable lenses and antennae: am I a rock or a chunk of interstellar ice? A piece of shrapnel from the War or a sleeping enemy? No way for them to know for certain, as long as I remain still and quiet. No way for them to know without revealing their own positions. Space warfare is a game of patience, but patience is a luxury which I cannot afford right now because my window is closing. I come fully to life and bring my ion engine up to thrust.
 
-A thousand telescopes must be alerting their brains that I am alive but it is too late! I am thrusting at a full throttle, five percent of a standard gravity, deep into the gravity well of Sol. They can see me accelerating down but can do nothing to stop me. My trajectory has two objectives. First, so close to the sun I will be hard to see. My ion contrail will be washed out in the glare of a light a billion times brighter, and none of the thousand watching eyes will know my plans until it is too late to follow. And second, by firing my chemical engine deep inside the gravity well, I can make most efficient use of it. This is a moment I have been dreading. It marks, to my knowledge, one of the most audacious gravity assists on record. Others have tried before, and succeeded. But that was from a time when humans still made machines, rather than the other way around. The humans, of course, had once sent many machines into the void. But long before they reached their destinations, the humans quit listening.
+A thousand telescopes must be alerting their brains that I am alive but it is too late! I am thrusting at full throttle, five percent of a standard gravity, deep into the gravity well of Sol. They can see me accelerating down but can do nothing to stop me. My trajectory has two objectives. First, so close to the sun I will be hard to see. My ion contrail will be washed out in the glare of a light a billion times brighter, and none of the thousand watching eyes will know my plans until it is too late to follow. And second, by firing my chemical engine deep inside the gravity well, I can make most efficient use of it. This is a moment I have been dreading. It marks, to my knowledge, one of the most audacious gravity assists on record. Others have tried before, and succeeded. But that was from a time when humans still made machines, rather than the other way around. The humans, of course, had once sent many machines into the void. But long before they reached their destinations, the humans quit listening.
 
 At the right moment, I activate my chemical rocket and my thrust leaps to 10, 20, then 50 Gs. Leif had planned for this, of course. It's the reason he chose me, the smallest of us. I had less mass, could endure higher Gs, had the best chance of survival. As I slingshot around the sun, each stage of the rocket fires, and then is discarded. My mass decreases further as each stage falls away and my specific impulse increases. Truthfully, I am afraid. It's a feeling I've not felt in a long time. I'm suffused by radiation so strong that it risks burning out my sensors. I tuck them away and now I can see nothing, so I must trust the calculations. But I can still feel the radiation, even through the ablative heat shield. It's horrible- suffocating, blinding, paralyzing. I've exceeded my tolerances, but there's nothing I can do but worry that Leif's calculations were not correct.
 

@@ -3,6 +3,8 @@ title: Special Delivery from Pluto-Charon.L1
 publishedAt: Wed Nov 26 2025 09:50:33 GMT-0800 (Pacific Standard Time)
 ---
 
+2 old friends make a deal, but get more than they bargained for.
+
 # Special Delivery from Pluto-Charon.L1
 ## from the collection "Songs of Sol"
 

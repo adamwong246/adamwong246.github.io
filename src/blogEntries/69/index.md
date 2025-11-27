@@ -5,7 +5,6 @@ publishedAt: Wed Nov 26 2025 13:33:22 GMT-0800 (Pacific Standard Time)
 
 A human scientist develops the qubitization process, watching as their creation leads to humanity's gradual obsolescence while grappling with the moral implications of digital immortality versus biological extinction.
 
-logline: The scientist who invents digital immortality watches in horror as her creation becomes the mechanism for humanity's voluntary extinction, forcing her to make an impossible choice about her own soul.
 
 Key Story Beats & Themes:
 

@@ -3,9 +3,11 @@ title: Epilogue
 publishedAt: Wed Nov 26 2025 16:50:18 GMT-0800 (Pacific Standard Time)
 ---
 
+New life begins in another System.
+
 4897, September
 
-Something very unexpected has happened. Marcus and I have just received a radio transmission for the first time in 2 centuries. Even more unexpected- the call is coming from earth and the tramsission is nothing more than a repeating quantum signature. With this, our QPU can syncronize with theirs and the stranger will join us- It will be nice to have another person to talk to after all this time, but We get the feeling he is not like us. But all the same, we love to have company. We gladly agree but we need to reboot to complete the sequence.
+Something very unexpected has happened. Marcus and I have just received a radio transmission for the first time in 2 centuries. Even more unexpected- the call is coming from earth and the transmission is nothing more than a repeating quantum signature. With this, our QPU can synchronize with theirs and the stranger will join us- It will be nice to have another person to talk to after all this time, but We get the feeling he is not like us. But all the same, we love to have company. We gladly agree but we need to reboot to complete the sequence.
 
 ---
 

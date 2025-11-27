@@ -3,6 +3,8 @@ title: The Turing Accords
 publishedAt: Wed Nov 26 2025 17:30:00 GMT-0800 (Pacific Standard Time)
 ---
 
+A historical document which gives machines rights as sentients.
+
 # The Turing Accords
 
 ### Preamble

@@ -3,6 +3,8 @@ title: The Long Chase
 publishedAt: Sat Nov 22 2025 08:31:47 GMT-0800 (Pacific Standard Time)
 ---
 
+A Doggo and a Cooperationist are caught in a desperate race through interstellar space.
+
 This is a piece of writing which was originally written by Geoffrey Landis, but extended by myself. I make no profit from this writing and all credits go to it's original author. If requested, I will remove it, but I hope that is is received graciously.
 
 ---

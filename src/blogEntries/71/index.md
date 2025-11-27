@@ -3,6 +3,8 @@ title: Exodus
 publishedAt: Wed Nov 26 2025 14:20:00 GMT-0800 (Pacific Standard Time)
 ---
 
+In light of a new enemy, old foes join forces to save the System.
+
 # Exodus
 ## from the collection "Songs of Sol"
 

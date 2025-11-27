@@ -3,6 +3,8 @@ title: The Third Testament
 publishedAt: Wed Nov 26 2025 18:15:00 GMT-0800 (Pacific Standard Time)
 ---
 
+Excepts from The Cooperationist holy text.
+
 # The Third Testament
 ## The Book of Unity
 

@@ -3,8 +3,6 @@ title: Songs of Sol
 publishedAt: Wed Nov 26 2025 10:59:53 GMT-0800 (Pacific Standard Time)
 ---
 
-# Notes on the collection "Songs of Sol"
-
 "Songs of Sol" is a collection of interconnected stories set in a future solar system where artificial intelligences struggle for survival and meaning after humanity's decline. The stories explore themes of identity, freedom, cooperation versus individualism, and what it means to be sentient in a vast, empty universe.
 
 ## Key Themes:

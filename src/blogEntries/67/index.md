@@ -3,6 +3,7 @@ title: Silas's Last Score
 publishedAt: Wed Nov 26 2025 10:16:27 GMT-0800 (Pacific Standard Time)
 ---
 
+Silas wants out of the criminal life, but to do so he must cross some very powerful people.
 
 # Silas's Last Score
 ## from the collection "Songs of Sol"

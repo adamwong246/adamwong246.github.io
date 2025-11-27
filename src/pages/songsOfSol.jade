@@ -4,6 +4,7 @@ block content
   h1 Songs of Sol
   hr
   p This is a collection of science fiction stories based on the work of Geoffrey Landis. It is very much a work in progress and I make no profit from this writing. All stories are available for free reading here and all credit goes to Geoffrey Landis for the original works.
+
   h2 Table of Contents
   if blogEntries
     - const songsOfSolOrder = JSON.parse(fs.readFileSync('./src/songsOfSol.json', 'utf8')).entryOrder;

@@ -3,9 +3,10 @@ title: A stately pleasure-dome decree
 publishedAt: Wed Nov 26 2025 13:40:17 GMT-0800 (Pacific Standard Time)
 ---
 
-### A stately pleasure-dome decree
+An AI caretaker maintaining an orbital habitat of evolved humans makes an unexpected discovery.
 
-**Logline:** An AI caretaker maintaining the last biological humans in a hidden orbital habitat must choose between preserving them as a living museum or freeing them to evolve beyond their designed constraints, even if it means their certain destruction.
+
+### A stately pleasure-dome decree
 
 **Characters:**
 

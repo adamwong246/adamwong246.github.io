@@ -1,9 +1,8 @@
 extends ../views/layout.jade
 
 block content
-  h1 All blog posts
-  hr
-  table
+
+  table(style='width: max-content')
     thead
       tr
         th id
@@ -16,4 +15,4 @@ block content
         td
           a(href=entry.url)= entry.meta.title
         td
-          time= moment(entry.meta.publishedAt).format("MMMM Do YYYY")
+          time= moment(entry.meta.publishedAt).format("MMM Do YYYY")

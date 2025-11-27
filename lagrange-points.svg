@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">
+    Lagrange Points in the Sun-Earth-Moon System
+  </text>
+  
+  <!-- Sun -->
+  <g transform="translate(400, 300)">
+    <!-- Sun -->
+    <circle cx="0" cy="0" r="50" fill="#FFD700" stroke="#FF8C00" stroke-width="2"/>
+    <text x="0" y="-70" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Sun</text>
+    
+    <!-- Earth Orbit -->
+    <circle cx="0" cy="0" r="200" stroke="#444" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
+    
+    <!-- Earth -->
+    <circle cx="200" cy="0" r="20" fill="#1E90FF" stroke="#0000CD" stroke-width="1"/>
+    <text x="200" y="-30" text-anchor="middle" fill="white" font-family="Arial" font-size="12">Earth</text>
+    
+    <!-- Moon Orbit around Earth -->
+    <circle cx="200" cy="0" r="40" stroke="#666" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+    
+    <!-- Moon -->
+    <circle cx="240" cy="0" r="8" fill="#C0C0C0" stroke="#888" stroke-width="1"/>
+    <text x="240" y="-15" text-anchor="middle" fill="white" font-family="Arial" font-size="8">Moon</text>
+    
+    <!-- Sun-Earth Lagrange Points -->
+    <!-- L1 - Between Sun and Earth -->
+    <circle cx="180" cy="0" r="5" fill="none" stroke="#FF4444" stroke-width="2"/>
+    <text x="180" y="-15" text-anchor="middle" fill="#FF4444" font-family="Arial" font-size="10">L₁</text>
+    
+    <!-- L2 - Beyond Earth -->
+    <circle cx="220" cy="0" r="5" fill="none" stroke="#FF4444" stroke-width="2"/>
+    <text x="220" y="-15" text-anchor="middle" fill="#FF4444" font-family="Arial" font-size="10">L₂</text>
+    
+    <!-- L3 - Opposite side of Sun -->
+    <circle cx="-200" cy="0" r="5" fill="none" stroke="#FF4444" stroke-width="2"/>
+    <text x="-200" y="-15" text-anchor="middle" fill="#FF4444" font-family="Arial" font-size="10">L₃</text>
+    
+    <!-- L4 - Leading Trojan -->
+    <circle cx="100" cy="173" r="5" fill="none" stroke="#FF4444" stroke-width="2"/>
+    <text x="100" y="188" text-anchor="middle" fill="#FF4444" font-family="Arial" font-size="10">L₄</text>
+    
+    <!-- L5 - Trailing Trojan -->
+    <circle cx="100" cy="-173" r="5" fill="none" stroke="#FF4444" stroke-width="2"/>
+    <text x="100" y="-158" text-anchor="middle" fill="#FF4444" font-family="Arial" font-size="10">L₅</text>
+    
+    <!-- Equilateral triangle lines for Sun-Earth L4/L5 -->
+    <path d="M 0,0 L 200,0 L 100,173 Z" stroke="#666" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+    <path d="M 0,0 L 200,0 L 100,-173 Z" stroke="#666" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+    
+    <!-- Earth-Moon Lagrange Points -->
+    <!-- L1 - Between Earth and Moon -->
+    <circle cx="215" cy="0" r="4" fill="none" stroke="#44FF44" stroke-width="2"/>
+    <text x="215" y="-12" text-anchor="middle" fill="#44FF44" font-family="Arial" font-size="8">L₁</text>
+    
+    <!-- L2 - Beyond Moon -->
+    <circle cx="245" cy="0" r="4" fill="none" stroke="#44FF44" stroke-width="2"/>
+    <text x="245" y="-12" text-anchor="middle" fill="#44FF44" font-family="Arial" font-size="8">L₂</text>
+    
+    <!-- L3 - Opposite side of Earth -->
+    <circle cx="160" cy="0" r="4" fill="none" stroke="#44FF44" stroke-width="2"/>
+    <text x="160" y="-12" text-anchor="middle" fill="#44FF44" font-family="Arial" font-size="8">L₃</text>
+    
+    <!-- L4 - Leading Trojan -->
+    <circle cx="220" cy="35" r="4" fill="none" stroke="#44FF44" stroke-width="2"/>
+    <text x="220" y="48" text-anchor="middle" fill="#44FF44" font-family="Arial" font-size="8">L₄</text>
+    
+    <!-- L5 - Trailing Trojan -->
+    <circle cx="220" cy="-35" r="4" fill="none" stroke="#44FF44" stroke-width="2"/>
+    <text x="220" y="-22" text-anchor="middle" fill="#44FF44" font-family="Arial" font-size="8">L₅</text>
+    
+    <!-- Equilateral triangle lines for Earth-Moon L4/L5 -->
+    <path d="M 200,0 L 240,0 L 220,35 Z" stroke="#888" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+    <path d="M 200,0 L 240,0 L 220,-35 Z" stroke="#888" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 500)">
+    <rect x="0" y="0" width="220" height="110" fill="#222" stroke="#666" stroke-width="1" rx="5"/>
+    
+    <text x="10" y="20" fill="white" font-family="Arial" font-size="12" font-weight="bold">Legend:</text>
+    
+    <!-- Sun-Earth Lagrange Points -->
+    <circle cx="15" cy="35" r="4" fill="none" stroke="#FF4444" stroke-width="2"/>
+    <text x="25" y="38" fill="#FF4444" font-family="Arial" font-size="10">Sun-Earth Lagrange Points</text>
+    
+    <!-- Earth-Moon Lagrange Points -->
+    <circle cx="15" cy="55" r="4" fill="none" stroke="#44FF44" stroke-width="2"/>
+    <text x="25" y="58" fill="#44FF44" font-family="Arial" font-size="10">Earth-Moon Lagrange Points</text>
+    
+    <!-- Sun-Earth Orbit -->
+    <circle cx="15" cy="75" r="4" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="25" y="78" fill="white" font-family="Arial" font-size="10">Sun-Earth Orbit</text>
+    
+    <!-- Earth-Moon Orbit -->
+    <circle cx="15" cy="95" r="4" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="25" y="98" fill="white" font-family="Arial" font-size="10">Earth-Moon Orbit</text>
+  </g>
+  
+  <!-- Description -->
+  <g transform="translate(400, 450)">
+    <text x="0" y="0" text-anchor="middle" fill="white" font-family="Arial" font-size="12">
+      All Lagrange Points shown in a single unified diagram
+    </text>
+    <text x="0" y="20" text-anchor="middle" fill="white" font-family="Arial" font-size="12">
+      L₁, L₂, L₃ are collinear • L₄ and L₅ form equilateral triangles
+    </text>
+    <text x="0" y="40" text-anchor="middle" fill="#FFA500" font-family="Arial" font-size="10">
+      L₂ can be in Earth's shadow during certain orbital positions
+    </text>
+  </g>
+  
+  <!-- Highlight L2's shadow potential -->
+  <g transform="translate(400, 300)">
+    <!-- Earth's shadow cone (simplified) -->
+    <path d="M 200,0 L 250,-50 L 250,50 Z" fill="#222266" fill-opacity="0.3" stroke="#4444AA" stroke-width="0.5"/>
+    <text x="230" y="-60" text-anchor="middle" fill="#8888FF" font-family="Arial" font-size="8">Earth's Shadow</text>
+    
+    <!-- Highlight L2 -->
+    <circle cx="220" cy="0" r="7" fill="none" stroke="#FFA500" stroke-width="3"/>
+    <text x="220" y="20" text-anchor="middle" fill="#FFA500" font-family="Arial" font-size="9">L₂: Potential Shadow Zone</text>
+  </g>
+</svg>

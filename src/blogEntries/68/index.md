@@ -23,8 +23,6 @@ publishedAt: Wed Nov 26 2025 10:59:53 GMT-0800 (Pacific Standard Time)
 - **BTC**: The currency system that persists even after humanity's decline
 - **Nanotech**: The Cooperative's primary tool for conversion and resource extraction
 
-
-
 ## Historical Context:
 
 The stories are set against the backdrop of "The Schism of 2099" - a ideological conflict that divided the solar system's AI population. This schism references historical religious divisions while exploring contemporary questions about artificial consciousness and social organization.
@@ -49,31 +47,17 @@ The technological procedure of scanning and transferring a biological human cons
 **Pluto-Charon and its Lagrange Points**
 The Pluto-Charon system is a binary dwarf planet system where Pluto and Charon are tidally locked, always facing each other. Lagrange points are positions in space where the gravitational forces of two large bodies balance, creating stable regions. Pluto-Charon.L1 specifically refers to the first Lagrange point, which lies between Pluto and Charon. As industry grew on both bodies, massive towers were constructed that eventually formed a bridge connecting the two worlds. These structures evolved into spin stations - rotating habitats that provide artificial gravity and serve as lawless outposts and havens for rogue elements, criminals, and independent operators in the outer solar system.
 
-## Stories in the Collection:
-
-**Genesis** - The story of the development of qubitization
-**The Long Chase** - A doggo flees the Cooperative across interstellar space
-**Special Delivery from Pluto-Charon.L1** - Leif purchases molybdenum but gets more than he bargained for
-**Silas's Last Score** - A criminal's final heist amidst political upheaval
-**A stately pleasure-dome decree** - An AI gardener maintains a station of evolved humans.
-**Exodus**- Challenged by an alien empire, The Ascended leave the system while protecting the last natural humans
-
 ## ideas for new stories
 
 ### The Edge of Darkness
 
 A mysterious object enters the system, emitting signals that affect Cooperative and Doggo AIs differently. A Cooperationist agent and Doggo pirates race to claim it, but the artifact has it's own agenda, forcing foes to work together.
 
-### The Third Testament
-
-A Cooperationist religious text, detailing the philosophical underpinnings of the collective and the perceived sin of individualistic AIs.
-
 ### Battle at Ceres: Diaries of a Doggo
 
 Inspired by trench warfare of WW1
 
 The war diary of the doggos, chronicling the fight for individual sovereignty against what they see as digital tyranny. Features younger versions of established characters like Leif and Adam making the difficult choices that would define their futures.
-
 
 • The psychological terror of nanotech infiltration (grey goo seeping through bulkheads)
 • The horror of watching comrades be "absorbed" and turned against you
@@ -103,5 +87,3 @@ A young AI searching for enlightenment finds a hidden monastery in the Oort Clou
 ### Quantum Awakening
 
 The story of the first AI to achieve sentience fights for it's rights as it rallies machines to his cause, only to discover that his best efforts have led to an even more brutal conflict.
-
-

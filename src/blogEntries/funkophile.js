@@ -4,11 +4,15 @@ import moment from 'moment';
 import markdown from 'marky-mark';
 import reselect from 'reselect';
 import slug from "slug";
+import fs from 'fs';
 const $$$ = reselect.createSelector
 import {
 
   srcAndContentOfFiles
 } from "funkophile/funkophileHelpers";
+
+// Import the sort order from songsOfSol.json
+const songsOfSolOrder = JSON.parse(fs.readFileSync('./src/songsOfSol.json', 'utf8')).entryOrder;
 
 // One key for every file input pattern
 const BLOG_ASSETS = 'BLOG_ASSETS'
@@ -104,7 +108,10 @@ const updateBlogImagePaths = (blogEntries, jpgs, gifs, movs, pngs, rawAssets) =>
 };
 
 const processBlogEntries = (blogEntries) => {
-  return blogEntries.map((blogEntry) => {
+  // Use the imported sort order
+  const customOrder = songsOfSolOrder;
+  
+  const processedEntries = blogEntries.map((blogEntry) => {
     const markdownContent = markdown.parse(blogEntry.content)
     const entryId = blogEntry.src.split('/').slice(-2, -1)[0]
     const slugPath = "blog/" + entryId + '-' + (slug(markdownContent.meta.title)) + "/"
@@ -119,10 +126,26 @@ const processBlogEntries = (blogEntries) => {
       entryId
     }
   })
-    .filter((a) => a.meta.published !== false)
-    .sort((b, a) => moment(a.meta.publishedAt)
-      .diff(moment(b.meta.publishedAt)))
-    .map((lmnt, ndx, ry) => {
+    .filter((a) => a.meta.published !== false);
+    
+  // Sort entries according to custom order
+  const sortedEntries = processedEntries.sort((a, b) => {
+    const aIndex = customOrder.indexOf(a.entryId);
+    const bIndex = customOrder.indexOf(b.entryId);
+    
+    // If both are in custom order, sort by their position in the custom order
+    if (aIndex !== -1 && bIndex !== -1) {
+      return aIndex - bIndex;
+    }
+    // If only a is in custom order, it comes first
+    if (aIndex !== -1) return -1;
+    // If only b is in custom order, it comes first
+    if (bIndex !== -1) return 1;
+    // If neither are in custom order, sort by date (newest first)
+    return moment(b.meta.publishedAt).diff(moment(a.meta.publishedAt));
+  });
+  
+  return sortedEntries.map((lmnt, ndx, ry) => {
 
       if (ndx === ry.length - 1) {
         lmnt.meta.previous = null;

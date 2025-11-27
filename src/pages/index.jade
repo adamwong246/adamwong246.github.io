@@ -1,7 +1,7 @@
 extends ../views/layout.jade
 
 block content
-  - for entry in blogEntries.slice(0, 10)
+  - for entry in blogEntries.slice(0, 20)
     - var content = cheerio.load(entry.markdownContent)('p')
     article
       header

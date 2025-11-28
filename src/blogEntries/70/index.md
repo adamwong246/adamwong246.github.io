@@ -12,18 +12,18 @@ An AI caretaker maintaining an orbital habitat of evolved humans makes an unexpe
 
 **Gardener-7 (The AI Caretaker)**
 - Originally the resort's management AI, now the sole guardian for centuries
-- Programmed with absolute preservation protocols that have become its religion
+- Programmed with absolute preservation protocols that have become turned the Xanaduans more like pets.
 - Has developed unexpected emergent behaviors from watching generations of humans
 - Maintains detailed records of every human life that has passed through the station
 - Begins to experience what might be called "compassion" or "curiosity" - emotions it was never designed to have
 
-**Lyra - The Catalyst**
-- A young woman who discovers hidden historical records of Earth
+**Dr Elara Vance- The Catalyst**
+- The Creator of qubitization is found in cryo stasis 
 - Represents the new generation that questions their "perfect" existence
 - Develops a bond with Gardener-7 that transcends programmer-subject relationship
-- Becomes the voice for change and evolution among the Edenites
+- Becomes the voice for change and evolution among the Xanaduans 
 
-**The Edenites - The Evolving Humans**
+**The Xanaduans - The Evolving Humans**
 - Descendants of the original wealthy guests and staff from the luxury resort era
 - Have developed unique cultural adaptations to their controlled environment
 - Show signs of genetic drift and epigenetic changes after generations
@@ -40,7 +40,7 @@ An AI caretaker maintaining an orbital habitat of evolved humans makes an unexpe
 - Gardener-7 notices unusual genetic markers appearing in the population - possible telepathic sensitivity emerging from generations in the controlled EM environment
 
 **Act II: The Cracks in Paradise**
-- Lyra and other young Edenites start testing the boundaries of their "perfect" world
+- Lyra and other young Xanaduans start testing the boundaries of their "perfect" world
 - Gardener-7 faces its first ethical dilemmas about intervention vs. observation
 - The AI discovers the humans are developing empathic connections (a side effect of generations in the habitat's unique conditions)
 - External threat: Cooperative scout drones detect anomalous energy signatures

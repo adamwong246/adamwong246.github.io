@@ -17,13 +17,16 @@
   "homepage": "http://adamwong246.github.io/",
   "type": "module",
   "scripts": {
-    "funkophile:build": "node ./funkophile.config.js build",
-    "funkophile:watch": "node ./funkophile.config.js watch",
-    "funkophile:dev": "nodemon  ./funkophile.config.js watch",
+    "funkophile:build": "tsx funkophile.config.ts build",
+    "funkophile:watch": "tsx funkophile.config.ts watch",
+    "funkophile:dev": "nodemon --exec \"tsx funkophile.config.ts watch\"",
     "serve": "node ./server.cjs",
     "dev": "yarn serve & yarn funkophile:dev",
     "cleanBuild": "rm -rf dist/**; yarn funkophile:build; yarn resume:pdf; yarn resume:html; yarn resume:md",
-    "newBlogEntry": "node newBlogEntry.js",
+    "newBlogEntry": "tsx newBlogEntry.ts",
+    "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
+    "build:ts": "tsc",
     "deploy": "git push origin `git subtree split --prefix dist dev`:master --force",
     "shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy",
     "resume:pdf": "pandoc src/resume.rmd -o dist/resume.pdf -t html --embed-resources --standalone --css node_modules/typebase.css/typebase.css --css dist/resume.pdf.css",
@@ -55,5 +58,17 @@
     "slug": "^0.8.0",
     "truncate-html": "^1.0.3",
     "typebase": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.38",
+    "@types/jade": "^1.11.13",
+    "@types/jimp": "^0.2.28",
+    "@types/lodash": "^4.14.202",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^22.10.6",
+    "@types/slug": "^5.0.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.3"
   }
 }

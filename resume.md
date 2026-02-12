@@ -1,0 +1,140 @@
+# Adam Wong
+
+#### Portland, OR
+
+#### BA of Computer Science, USC
+
+###### [adamwong246@gmail.com](adamwong246@gmail.com) [LinkedIn](https://www.linkedin.com/in/adam-wong-4634421b) [GitHub](http://github.com/adamwong246)
+
+- Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua,
+  Solidity
+- React, Nextjs, Tailwind, Rails, Android
+- Kubernetes, Docker
+- BDD and TDD methodologies
+- certified Scrum Master
+- AWS Certified Cloud Practitioner
+
+------------------------------------------------------------------------
+
+##### [Testeranto](https://www.npmjs.com/package/testeranto)
+
+##### freelance developer
+
+###### January 2024
+
+I developed an AI-first, Acceptance Test Driven Development Typescript
+test framework.
+
+------------------------------------------------------------------------
+
+##### [Piton Labs](https://pitonlabs.com/)
+
+##### software engineer
+
+###### February 2023
+
+###### January 2025
+
+I joined Piton Labs to manage the development of the Accion Opportunity
+Fund.
+
+- integrated a serverless NextJs app with AWS services
+- managed a cross-team collaboration between PitonLabs and AOF
+- developed a integration test suite as part of the CICD system
+- managed the i18n translation project
+
+------------------------------------------------------------------------
+
+##### freelance web3 developer
+
+###### August 2022
+
+###### January 2023
+
+I worked with [liquid collections](https://liquidcollections.com/) to
+develop NFTs which are redeemable for consumer goods.
+
+- maintained an extensive set of frontend and backend TS infrastructure
+- wrote and tested custom solidity code to create [dynamic on-chain
+  metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
+
+------------------------------------------------------------------------
+
+##### Chroma Signet
+
+##### engineer & customer success
+
+###### January 2021
+
+###### August 2022
+
+I returned to Chroma to develop Signet.code, a cannabis packaging
+application.
+
+- managed a Rewards programs wherein customer-claimable NFTs were
+  attached to cannabis products
+- implemented a PDF generator capable of producing unique labels at high
+  scale
+- managed customer relations to produce dynamic labels
+- integrated node with multiple external APIs and our cross-platform
+  react-native app with external SDKs
+
+------------------------------------------------------------------------
+
+##### [OpenGov](http://www.opengov.com/)
+
+##### software engineer
+
+###### November 2016
+
+###### March 2020
+
+I worked with a team to decompose a monolithic Rails app into a series
+of Typescript microservices.
+
+- designed an open-source, functional and type-safe framework used
+  across multiple teams with our organization
+- migrated a Rails monolith into a series of micro-services
+- wrote frontend SPAs in TS with Redux, Reselect and React
+- implemented charts in D3 to visualize financial reports
+- developed a continuous integration and delivery process with Jenkins
+  and Docker
+- deployed our apps to AWS via Kubernetes
+
+------------------------------------------------------------------------
+
+##### Chroma Fund
+
+##### full stack developer
+
+###### February 2015
+
+###### August 2016
+
+I engineered the Meteor app “Chroma Fund”, a marketplace lending
+platform providing investors with bundles of small business loans.
+
+- responsible for designing UX and UI as well as implementing front-end
+- supported blockchain verifiable transactions
+- attended TechStars Summer 2016 accelerator program in NYC
+
+------------------------------------------------------------------------
+
+##### Hubbub Health
+
+##### Ruby on Rails developer
+
+###### May 2013
+
+###### February 2015
+
+I worked with a large team to incentivize employee wellness with the RoR
+app, [hubbubhealth.com](hubbubhealth.com).
+
+- developed Javascript for both modern and legacy browsers
+- debugged user-submitted errors with New Relic and Papertrail
+- managed assets via Amazon S3
+- revived an out of date Rspec and Cucumber test suite for continuous
+  integration
+- optimized high traffic queries by replacing ActiveRecord calls with
+  raw SQL

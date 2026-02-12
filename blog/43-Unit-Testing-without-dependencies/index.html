@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"><link href="/style.css" rel="stylesheet" type="text/css"><title>Unit Testing without dependencies</title><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-47887894-1', 'auto');
+ga('send', 'pageview');</script><script src="/index.js"></script><link rel="icon" type="image/png" href="/favicon.png"></head><body class="closed-menu"><div id="main-container"><nav><div id="site-title"><h3><a href="/">adamwong246.github.io</a></h3></div><div id="menu"> <p>I am a software engineer with over 15 years of experience in web development in the VC startup scene. I live in Portland Oregon with my partner Vincent and our dogs, Sancho and Dulcinea. </p><ul><li><h4><a href="/resume.html">resume.html</a>, <a href="/resume.pdf">resume.pdf</a>, <a href="/resume.md">resume.md</a></h4></li><li><h4><a href="https://github.com/adamwong246">Github</a>, <a href="https://www.linkedin.com/in/adam-wong-4634421b/">LinkedIn</a></h4></li><li><h4> <a href="/blog/index.html">Blog</a>, <a href="/sideprojects/index.html">Side projects</a></h4></li></ul></div></nav><main><article><header><h1><a href="/blog/43-Unit-Testing-without-dependencies/index.html">Unit Testing without dependencies</a></h1><h4><time>March 15th 2021</time></h4><hr></header><html><head></head><body><p>Unit testing forms the base of your tests strategy. It's the most granular type of tests- the testing of individual classes and functions. And in the context of the javascript world, where <em>everything</em> is a function, this means that you are validating that, for some function, given some known data, the functions returns something that passses an assertion. Most JS devs will reach for a tool like jest, jasmine, mocha or chai when writing tests, but <em>that's not necessary.</em> It really isn't. Node provides just about everything you need to roll your own unit testing framework with just a little bit of effort.</p>
+<div id="firstCodeSection">
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'polybool', 'firstCodeSection')">polybool.test.js</button> 
+    <button class="tablinks" onclick="openTab(event, 'test', 'firstCodeSection')">test.js</button>
+    <button class="tablinks" onclick="openTab(event, 'output', 'firstCodeSection')">output</button><br></div>
+
+<div id="polybool" class="tabcontent active"><pre><code>
+import assert from "assert";
+
+import PolyBool from 'polybooljs';
+
+import test0 from './test0.json';
+import test1Fixtures from './testFixture1.js';
+import test2 from './testFixture2.json';
+
+PolyBool.polygon._tests = {
+"no segments produces no regions": {
+input: [{ segments: [] }],
+assertion: (polygon) =&gt; assert.strictEqual(0, polygon.regions.length)
+},
+
+"my failing segments": {
+input: [test0],
+assertion: (polygon) =&gt; assert.strictEqual(polygon.regions.length &gt; 0, true)
+},
+
+"known good segments": {
+input: [test2],
+assertion: (polygon) =&gt; assert.strictEqual(polygon.regions.length &gt; 0, true)
+}
+}
+
+PolyBool.intersect._tests = {
+"a basic intersect test": {
+input: test1Fixtures.input,
+assertion: (intersections) =&gt; assert.deepStrictEqual(intersections, test1Fixtures.output)
+},
+}
+
+export default PolyBool;
+</code></pre></div>
+
+<div id="test" class="tabcontent"><pre><code>
+import assert from "assert";
+import deepEqual from 'deep-equal';
+
+import polyboolTests from "./polybool2.test.js";
+
+function runTests(tests, subject) {
+console.log(subject.name)
+Object.keys(tests).forEach((testKey) =&gt; {
+const assertion = tests[testKey].assertion;
+try {
+assertion(subject(...tests[testKey].input));
+console.log(<code>✓  ${testKey}</code>);
+
+    } catch (e) {
+      if (e instanceof assert.AssertionError) {
+        console.error(<code>❌  ${testKey}  --  ${assertion.toString()}</code>);
+      } else {
+        console.log("some other error: ", e);
+      }
+    }
+
+})
+}
+
+function idOfModuleWithExports(exportChunk, modules = module) {
+if (deepEqual(modules.exports, exportChunk) ) {
+return modules.id;
+} else {
+for (let i = 0; i &lt; modules.children.length; i++){
+const checkChild = idOfModuleWithExports(exportChunk, modules.children[i]);
+if (checkChild){
+return checkChild
+}<br> }
+}
+}
+
+function testModule(testableModule, key) {
+const idOfTestedModule = idOfModuleWithExports(testableModule)
+console.log("Testing: ", idOfTestedModule)
+
+Object.keys(testableModule).some(function (k) {
+if (testableModule[k][key]) {
+runTests(testableModule[k][key], testableModule[k])
+}
+});
+
+}
+
+testModule(polyboolTests, "_tests")
+</code></pre></div>
+
+<div id="output" class="tabcontent"><pre><code>
+{-^ω^}-  yarn test                                                                                                ~/Programming/SpaceTrash/src/apps/experiments/rotFovReact fov ●●●
+yarn run v1.5.1
+(node:73151) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use <code>node --trace-deprecation ...</code> to show where the warning was created)
+warning package.json: No license field
+warning ../../../../package.json: "dependencies" has dependency "express" with range "^4.17.1" that collides with a dependency in "devDependencies" of the same name with version "~4.14.1"
+$ node -r esm src/test.js
+Testing:  /Users/adam/Programming/SpaceTrash/src/apps/experiments/rotFovReact/node_modules/polybooljs/index.js
+polygon
+✓  no segments produces no regions
+❌  my failing segments  --  (polygon) =&gt; assert.strictEqual(polygon.regions.length &gt; 0, true)
+✓  known good segments
+intersect
+✓  a basic intersect test
+✨  Done in 0.75s.
+
+</code></pre></div>
+
+<p></p></div><p></p>
+<p>See? You don't need all those extra depedencies, plus you get some insight into just how Node assertions work.</p>
+<h2 id="specifying-the-tests">Specifying the tests</h2>
+<p>This approach literally adds the tests themselves to the subject-functions themselves. It's not something you think if often, but it's quite possible- to apply properties, not to classes or objects, but to <em>functions</em>. I chose the key <code>_tests</code> to specify this property. This value associated with this key is the tests themseves- a description of the test as a key, some input and finally the assertion itself. Finally, we export that classes with it's tests.</p>
+<h2 id="running-the-tests">Running the tests</h2>
+<p>To run these tests, just import the test-module and pass them to an incredibly simply function, which enumerates over the import looking for the <code>_tests</code> key. When it finds the matching module, it runs the test, catching any AssertionErrors, without which the process would exit on failure.</p>
+<h2 id="why-it-is-great-">Why it is great.</h2>
+<p>Depedencies, even realtively simple ones, are a liablility. Every depedency is a potential vector for confusion, bugs and tech abandonment. In this case, it's proably not a big fear, but still, rolling your own stuff is often a valuable learning experience. And this definition is <strong>tight</strong>- more of a DSL, than JS really. It's almost simple enought that a PM could read it!</p>
+<style>
+  .tabcontent:not(.active) {
+    /* background-color: red; */
+    display:none;
+  }
+
+  .tabcontent.active {
+    background-color: darkgrey;
+  }
+</style>
+
+<script>
+function openTab(evt, tabName, tabCollection) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementById(tabCollection).getElementsByClassName("tabcontent")
+
+
+  for (i = 0; i < tabcontent.length; i++) {
+    console.log(tabcontent[i])
+
+    if (tabcontent[i].id === tabName){
+      tabcontent[i].classList.add("active")
+    } else {
+      tabcontent[i].classList.remove("active")
+    }
+  }
+}
+
+</script></body></html></article><hr><div class="back-and-forward-links"><div class="back-link"> <a href="/blog/42-Goldenboy/index.html">⬅️ Goldenboy</a></div><div class="forward-link"><a href="/blog/44-On-the-subject-of-the-testing-of-machines/index.html">On the subject of the testing of machines ➡️</a></div></div></main></div><footer><span><a href="https://github.com/adamwong246/adamwong246.github.io">v2.3.0</a> <a href="/sitemap.html">sitemap </a> <img src="/favicon.png"></span></footer></body></html>

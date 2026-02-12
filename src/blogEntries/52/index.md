@@ -3,7 +3,7 @@ title: Give TDD a chance
 publishedAt: Thu Mar 30 2023 10:05:03 GMT-0700 (Pacific Daylight Time)
 ---
 
-A lot of ink has already been spilled on the subject of TDD and how, why, when, where and for what reasons the methodology ought and ought not be applied. Nonetheless, I'd like to compose my thoughts on the subject, because it is my humble opinion that TDD leads to a fundamentally better, happier place for software engineers. Note that I qualify that statement with "for software engineers"- managers, shareholders and spouses often have different priorities from those who are paid to press the buttons. But I myself am a coder. I like programming and I like to practice my craft well, effectively, but also kindly. Somewhat selfishly, I want to spend my working hours gracefully working the problem and that is not an unreasonable thing to want, given that we all spend decades at a time, laboring to enchant these infernal magic boxes to flip the right bits. 
+A lot of ink has already been spilled on the subject of TDD and how, why, when, where and for what reasons the methodology ought and ought not be applied. Nonetheless, I'd like to compose my thoughts on the subject, because it is my humble opinion that TDD leads to a fundamentally better, happier place for software engineers. Note that I qualify that statement with "for software engineers"- managers, shareholders and spouses often have different priorities from those who are paid to press the buttons. But I myself am a coder. I like programming and I like to practice my craft well, effectively, but also kindly. Somewhat selfishly, I want to spend my working hours gracefully working the problem and that is not an unreasonable thing to want, given that we all spend decades at a time, laboring to enchant these infernal magic boxes to flip the right bits.
 
 # Tests > docs > gestalt > nothing
 
@@ -13,12 +13,13 @@ Why and wherefore comes this chaos? In my experience, it is because much of this
 
 What, then, is the cure? The cure is Test Driven Development.
 
-Why, then, is TDD the cure? TDD drags your business process out of the ether and crystallizes it in code. In doing so, assumptions are challenged and old cruft gets left behind. The necessary due diligence of writing the tests clears away all that confusion, because the test is undeniably clear and correct. The tests become the ultimate authority on what your stack can and can't do. Docs can be out of date and humans are often confused, but the tests are always correct, even when they fail. And this provides a touchstone for the entire team- a place to encode those important details as well as a signal into the heart of your stack. 
+Why, then, is TDD the cure? TDD drags your business process out of the ether and crystallizes it in code. In doing so, assumptions are challenged and old cruft gets left behind. The necessary due diligence of writing the tests clears away all that confusion, because the test is undeniably clear and correct. The tests become the ultimate authority on what your stack can and can't do. Docs can be out of date and humans are often confused, but the tests are always correct, even when they fail. And this provides a touchstone for the entire team- a place to encode those important details as well as a signal into the heart of your stack.
 
-Finally, _how_, is TDD the cure? I am not of the opinion that tests must always be written before the code and this is one of those cases. In this case, I prescribe a series of improvements. 
-1) Mechanical turk the task
-2) Document the task so that other humans can follow it.
-3) Automate it as a test so that no humans need follow it.
+Finally, _how_, is TDD the cure? I am not of the opinion that tests must always be written before the code and this is one of those cases. In this case, I prescribe a series of improvements.
+
+1. Mechanical turk the task
+2. Document the task so that other humans can follow it.
+3. Automate it as a test so that no humans need follow it.
 
 Here the pattern is clear- Tests are merely the application of automation. It is not a great feat, just the banal observation that tests are "living" docs, which are better than "dead" docs, which are better than myth. Do yourself and your team a favor and rise above this churn. If you understand the process, you can write it down. If you can write it down, you can automate it. If you automate it, congratulations, you are now a Test Driven Developer!
 
@@ -26,7 +27,7 @@ Here the pattern is clear- Tests are merely the application of automation. It is
 
 There are many reasons to adopt a TDD methodology. Sadly, there is one reason which can override them all- appeals to "velocity."
 
-Managers will often say that "we don't have time for tests" or "we'll add them later" or "we need to ship now". This is a classic case of short-term thinking. The truth is that TDD actually increases velocity in the long run. How? By reducing the time spent debugging and fixing bugs. By making it easier to refactor and add new features. By giving you the confidence to make changes without fear of breaking existing functionality. 
+Managers will often say that "we don't have time for tests" or "we'll add them later" or "we need to ship now". This is a classic case of short-term thinking. The truth is that TDD actually increases velocity in the long run. How? By reducing the time spent debugging and fixing bugs. By making it easier to refactor and add new features. By giving you the confidence to make changes without fear of breaking existing functionality.
 
 But how do you convince a manager who is focused on the next sprint? You don't. You just do it. Write the tests anyway. The benefits will speak for themselves. And if they don't, well, you can always find another job. But I digress.
 
@@ -34,10 +35,11 @@ But how do you convince a manager who is focused on the next sprint? You don't. 
 
 TDD is not just a technique. It's a mindset. It's a way of thinking about software development that puts quality first. It's a way of working that forces you to think about the problem before you start coding. It's a way of writing code that is more modular, more testable, and more maintainable.
 
-The TDD cycle is simple: Red, Green, Refactor. 
-1) Write a failing test (Red)
-2) Write the minimum amount of code to make the test pass (Green)
-3) Refactor the code to make it better (Refactor)
+The TDD cycle is simple: Red, Green, Refactor.
+
+1. Write a failing test (Red)
+2. Write the minimum amount of code to make the test pass (Green)
+3. Refactor the code to make it better (Refactor)
 
 This cycle is repeated over and over again. It's a rhythm that becomes second nature. It's a dance that you do with your code. And it's a dance that pays off in the long run.
 

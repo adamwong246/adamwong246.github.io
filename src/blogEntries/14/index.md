@@ -27,58 +27,55 @@ createSelector = require('reselect').createSelector;
 CleanCSS = require('clean-css');
 
 module.exports = {
-  initialState: {},
+	initialState: {},
 
-  // where to read and write the files
-  options: {
-    inFolder: 'src',
-    outFolder: 'dist'
-  },
+	// where to read and write the files
+	options: {
+		inFolder: 'src',
+		outFolder: 'dist',
+	},
 
-  // webcrack needs to know the encoding of tile types
-  encodings: {
-    'utf8': ['css'],
-  },
+	// webcrack needs to know the encoding of tile types
+	encodings: {
+		utf8: ['css'],
+	},
 
-  // defines the inputs points where files will be read
-  inputs: {
-    css: 'assets/*.css',
-  },
+	// defines the inputs points where files will be read
+	inputs: {
+		css: 'assets/*.css',
+	},
 
-  // defines the output points
-  // `selectors` are keyed on your inputs for easier memoization
-  // must return a function of state, which returns a hash
-  // where every key is a file and every value is the contents of that file
-  outputs: (selectors) => {
+	// defines the output points
+	// `selectors` are keyed on your inputs for easier memoization
+	// must return a function of state, which returns a hash
+	// where every key is a file and every value is the contents of that file
+	outputs: selectors => {
+		const styleSelector = createSelector([selectors.css], css => {
+			return Object.keys(css).reduce((mm, k) => mm + css[k], '');
+		});
 
-    const styleSelector = createSelector([selectors.css], (css) => {
-      return Object.keys(css).reduce((mm, k) => mm + css[k], '')
-    })
+		const cssOutput = createSelector(styleSelector, css => {
+			return new CleanCSS({
+				keepSpecialComments: 0,
+			}).minify(
+				[
+					css,
+					fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8'),
+				].join('\n'),
+			).styles;
+		});
 
-    const cssOutput = createSelector(styleSelector, (css) => {
-      return new CleanCSS({
-        keepSpecialComments: 0
-      }).minify(
-        [
-          css,
-          fs.readFileSync('./node_modules/normalize.css/normalize.css', 'utf8')
-        ].join('\n')
-      ).styles
-    });
-
-    // return a hash objects based on the state.
-    //Each key is a file and each value is the contents of that file
-    return createSelector([
-      cssOutput,
-    ], (style) => {
-
-      return {
-        'style.css': style,
-      }
-    });
-  }
-}
+		// return a hash objects based on the state.
+		//Each key is a file and each value is the contents of that file
+		return createSelector([cssOutput], style => {
+			return {
+				'style.css': style,
+			};
+		});
+	},
+};
 ```
+
 In this simple example, we are watching for changes to css files, which are merged together, alongside normalize.css, and then minified.
 
 if you run webcrack alongside a file server, you have an instant development environment!
@@ -95,7 +92,7 @@ Gulp and Grunt are ok but their reliance of community-plugins is, IMHO, an liabi
 
 Webcrack does not impose many restrictions on the developer. It can consume any type of file and process them using any technology you like.
 
-[Webcrack](https://github.com/adamwong246/adamwong246.github.io/blob/dev/webcrack/index.js) is *tiny* and extremely hackable. It has very few of it's own dependencies. In fact, webcrack itself is fewer lines of code than the average `webcrack.config.js` file.
+[Webcrack](https://github.com/adamwong246/adamwong246.github.io/blob/dev/webcrack/index.js) is _tiny_ and extremely hackable. It has very few of it's own dependencies. In fact, webcrack itself is fewer lines of code than the average `webcrack.config.js` file.
 
 ## Give it a try
 

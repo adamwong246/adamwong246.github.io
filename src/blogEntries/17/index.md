@@ -7,11 +7,9 @@ publishedAt: Tue Jul 21 2020 11:48:55 GMT-0700 (Pacific Daylight Time)
 
 So far this summer, I've put over 2000 miles on my bike, replaced a tire, replaced the master cylinder and brakes and only tipped Bruce over once!
 
-![my map](https://lh3.googleusercontent.com/pw/ACtC-3cdrDfCOwtYAWUCBLyNGdkR2US1x1YFmN2POMhHHKwZs0-QNKztNdApGhI0XdkWyZeCT3xAzoavIBHpDG7gDR2uHotSHNz28gUc9TuwTIOQk0qcoWcw80sZKqwYVxH_-OgJflvo4X-juxAesSsX0dxe=w658-h661-no?authuser=0
-)
+![my map](https://lh3.googleusercontent.com/pw/ACtC-3cdrDfCOwtYAWUCBLyNGdkR2US1x1YFmN2POMhHHKwZs0-QNKztNdApGhI0XdkWyZeCT3xAzoavIBHpDG7gDR2uHotSHNz28gUc9TuwTIOQk0qcoWcw80sZKqwYVxH_-OgJflvo4X-juxAesSsX0dxe=w658-h661-no?authuser=0)
 
-![the beach](https://lh3.googleusercontent.com/pw/ACtC-3csN8osG7Zl_TVx6Q9dKEwudObkGMsUVXFJJqP7wrQEKQ8438SdsiO4kRmlfQMfn-Sxz0NmIzcrktdXUukVQgqyLCXGBJDZQeIGG3aYOPtq2PDB792_iCBaz0XXIwUetx8NldMD7naTQGJJfjnGQ1aO=w882-h661-no?authuser=0
-)
+![the beach](https://lh3.googleusercontent.com/pw/ACtC-3csN8osG7Zl_TVx6Q9dKEwudObkGMsUVXFJJqP7wrQEKQ8438SdsiO4kRmlfQMfn-Sxz0NmIzcrktdXUukVQgqyLCXGBJDZQeIGG3aYOPtq2PDB792_iCBaz0XXIwUetx8NldMD7naTQGJJfjnGQ1aO=w882-h661-no?authuser=0)
 
 ![bruce](https://lh3.googleusercontent.com/pw/ACtC-3eSYZyRdXQxFeO-4ycdbM5TUQrxmlrEdYu-aQrmX1fUoay0cm0lYwlBQE7XpYdHSNhESEPDFSgml0s8ptP-vtwmdIWfefaEXUeeLXmR-QUebeVXPC4EAWXM9KCZY0qf0h19lcXV_0SPJlW7H4GxxEqk=w882-h661-no?authuser=0)
 

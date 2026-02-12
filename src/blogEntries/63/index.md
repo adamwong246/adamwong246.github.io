@@ -1,5 +1,5 @@
 ---
-title: ""
+title: ''
 publishedAt: Thu Nov 20 2025 09:40:30 GMT-0800 (Pacific Standard Time)
 ---
 

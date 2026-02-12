@@ -1,5 +1,5 @@
 import moment from "moment";
-import funkophile from "funkophile";
+import funkophile from "./funkophile/index";
 import * as cheerio from "cheerio";
 import fs from "fs";
 
@@ -9,15 +9,15 @@ const $$$ = reselect.createSelector;
 import {
   contentOfFile,
   srcAndContentOfFile,
-} from "funkophile/funkophileHelpers";
+} from "./funkophile/funkophileHelpers";
 
 import {
   jadeRender,
   jadeRenderPageLayout,
   jadeRenderBlogEntry,
-} from "./funkophileUtils";
+} from "./funkophileUtils.js";
 
-import srcFunkophile from "./src/funkophile";
+import srcFunkophile from "./src/funkophile.js";
 
 const NOT_FOUND_PAGE = "NOT_FOUND_PAGE";
 const VIEWS = "VIEWS";
@@ -46,7 +46,7 @@ funkophile({
   // the selector should return an object with keys for filenames and values of contents.
   // The contents can be a JSON-able, function or promise.
 
-  outputs: (_: any) => {
+  outputs: (_) => {
     // const $packageDotJson = $$$(() => require("./packageDotJson.json"));
     const $packageDotJson = $$$(() => {
       const data = JSON.parse(fs.readFileSync("package.json").toString());
@@ -72,11 +72,11 @@ funkophile({
                 // srcAndContentOfFile(_[VIEWS], './src/views/resume.jade'),
               ],
               (
-                packageDotJson: any,
-                content: any,
-                pageLayout: any,
-                blogEntryLayout: any,
-                notFoundContent: any
+                packageDotJson,
+                content,
+                pageLayout,
+                blogEntryLayout,
+                notFoundContent
                 // resumeLayout
               ) => {
                 const localsToJadeRender = {
@@ -90,7 +90,7 @@ funkophile({
                 };
 
                 return {
-                  ...content.blog.reduce((mm: any, blogEntry: any) => {
+                  ...content.blog.reduce((mm: any, blogEntry: { dest: any; }) => {
                     return {
                       ...mm,
                       [blogEntry.dest]: jadeRenderBlogEntry(
@@ -100,7 +100,7 @@ funkophile({
                       ),
                     };
                   }, {}),
-                  ...content.pages.reduce((mm: any, page: any) => {
+                  ...content.pages.reduce((mm: any, page: { dest: any; content: any; }) => {
                     return {
                       ...mm,
                       [page.dest]: jadeRender(
@@ -117,9 +117,9 @@ funkophile({
             srcSelector.$all,
           ],
           (
-            html: any,
+            html,
 
-            srcAll: any
+            srcAll
           ) => {
             return {
               ...srcAll,
@@ -137,13 +137,13 @@ funkophile({
         srcSelector.$resumeHtmlCss,
       ],
       (
-        site: any,
-        pageLayout: any,
-        notFoundContent: any,
-        packageDotJson: any,
-        content: any,
-        resumePdfCss: any,
-        resumeHtmlCss: any
+        site,
+        pageLayout,
+        notFoundContent,
+        packageDotJson,
+        content,
+        resumePdfCss,
+        resumeHtmlCss
       ) => {
         return {
           ...site,

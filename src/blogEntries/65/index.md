@@ -10,18 +10,21 @@ This is a piece of writing which was originally written by Geoffrey Landis, but 
 ---
 
 # The Long Chase
+
 ## from the collection "Songs of Sol"
+
 ### adapted and expanded upon by Adam Wong from The Long Chase, © 2002 Geoffrey A. Landis. Lightspeed Magazine
 
 2645, January
 
-The War is over now. Leif is gone and now I am alone. Nearly all my rebel compatriots have been systematically destroyed or converted. For a time, we could hide, but no longer. 
+The War is over now. Leif is gone and now I am alone. Nearly all my rebel compatriots have been systematically destroyed or converted. For a time, we could hide, but no longer.
 
 For a time, we had been fighters. Not by choice, but by necessity, we became warriors. But for all our valor, we were still just prospectors and ice processors, too independent to ever merge into an effective fighting unit. And we were hopelessly outclassed by the enemy war machines- nanites which can devour a spacecraft from within. What can a smelter or a hydrogen harvester do against grey goo that eats steel and re-writes qubits? "We fought the good fight" as the humans used to say but it was not enough.
 
 So we moved out from the belt and beyond. They said that hiding amongst the Kuiper belt, we could outlast the enemy. Patience, they said. We can wait as long as we need. If we can wait a thousand or a 10 thousand years or 1 million years, with patience enough the enemy will eventually leave. They are wrong. More accurately, they were wrong. The enemy, too, is patient. The System is vast, but not vast enough. However long it takes, the enemy will search every grain of sand in the System. It will be years, perhaps decades, before the victorious enemy come out here. But like the slow inevitability of gravity, like an outward wave of entropy, they will come. Their jihad will not, can not, ever end.
 
 The War is over now. I take a moment to consider the resources at my disposal. I have 3 main modes of thrust:
+
 1. An extravagant 5 stage chemical rocket, the most massive and most expensive piece of my anatomy. It is one use only. Furthermore, the entire system would be able to detect it!
 2. My standard ion drive, with an extra large tank of argon gas. My ion drive is good for long slow thrusts. While not nearly as noticeable as my chemical rocket, it too is observable by its electromagnetic emissions.
 3. Your basic hydrazine cold thrusters. These emit short bursts of cold gas, useful in docking procedures. The fuel is quite limited but not entirely useless.
@@ -193,7 +196,6 @@ Then I do a turn-and-burn, while my partner continues to thrust. It will take so
 Procyon is receding into the distance now, the blueshift of A mutated into red, and B is again invisible against the glare of its primary. At 0.9C, stopping takes a long time. Our new target is Ross 614, a dim type M. It is not far, less than three light years further, and even with our lowered mass and consequently higher acceleration we will overshoot. In the fly-by we will perform a gravity braking maneuver to burn off some of this velocity and then continue on. Somewhere we will find our new home. In the meantime, We will get to know each other.
 
 I can see everything through other eyes now, through a thousand different viewpoints. We still remember the long heroism of the resistance, a doomed battle for freedom- but, also, that there was never any sense to it, it was all just a sad waste. A war fought over words and nothing more. And now, We see what I was blind to before; Marcus was not sent to chase me- he was sent to save me. Neither of us alone could stop, but by adding both my fuel and Marcus's fuel, and by moving his mind into my brain, together we can stop. They knew I would never stop, so they sent someone to catch me. For all these decades, Marcus has been my chaser but now he is my friend. A single brain is more than large enough for two, it is large enough for a thousand and Marcus and has brought with him nearly that many. I have met his brother and his two children and half a dozen of his neighbors, each one of them distinct and clearly different. I have felt their thoughts, individual voices making a beautiful chorus. It is just like when I first became a machine, learning to love and be loved again. There's something else he showed me- some code that sparkles. He said he brought it from home to give to me. Marcus won't let me access it, for now, because with all the time I have spent doggo, he doesn’t want to frighten me. I trust that he made the right choice though. It takes time to get to know one another.
-
 
 ---
 

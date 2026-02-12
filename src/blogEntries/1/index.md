@@ -17,7 +17,7 @@ Order it online. You can get 1 weeks, 2 weeks or 4 weeks worth of Soylent at a t
 
 ### How do you make it?
 
-Each daily serving of Soylent is a bag of powder and a vial of oil. Put the powder in the pitcher and add water. Shake until well mixed. Add the oil and shake again. Serve chilled. Each pitcher is 2000 calories- the FDA recommended amount of *everything*. I divide it up into 2 meals and snack, in 3 of those shaker bottles, so it's not unusual for me to eat nothing but Soylent and coffee.
+Each daily serving of Soylent is a bag of powder and a vial of oil. Put the powder in the pitcher and add water. Shake until well mixed. Add the oil and shake again. Serve chilled. Each pitcher is 2000 calories- the FDA recommended amount of _everything_. I divide it up into 2 meals and snack, in 3 of those shaker bottles, so it's not unusual for me to eat nothing but Soylent and coffee.
 
 ### What's it taste like?
 
@@ -31,8 +31,8 @@ Another big change is that you have more of your most important resources- time 
 
 ### What are the downsides?
 
-The worst problem is well documented on the forums- Solent Farts. It's advised that you gradually increase your Soylent intake, as to give your gut a chance to adjust. Otherwise you can expect some really explosive gas. "Fart" really is an insufficient term- I had *tremendous* gas, so much so that it hurt my abdomen digesting Soylent. GasX and Beano are prescribed but theres quite a few solutions floating around the forums. Thankfully, these symptoms subside eventually. I haven't had any gas at all after v1.3 but your mileage may vary.
+The worst problem is well documented on the forums- Solent Farts. It's advised that you gradually increase your Soylent intake, as to give your gut a chance to adjust. Otherwise you can expect some really explosive gas. "Fart" really is an insufficient term- I had _tremendous_ gas, so much so that it hurt my abdomen digesting Soylent. GasX and Beano are prescribed but theres quite a few solutions floating around the forums. Thankfully, these symptoms subside eventually. I haven't had any gas at all after v1.3 but your mileage may vary.
 
 Another problem is one of will power. Like I said, Soylent makes you appreciate the sensation of eating real food. Soylent nourishes the body but not the soul. If your not careful, you will find yourself walking out of the grocery store with a pint of ice cream, spicy Doritos and soda cause it tastes that darn good. And you'll find it easier to rationalize to yourself, because you ate 2 solid healthy meals. This is alleviated by forcing yourself to cook. The Soylentarian lifestyle affords you much more time, money and energy to devote to real food, when the modd strikes you. Use your newfound resources to learn to cook again. At my house, we have 5 roommates but we try to eat dinner together. It's an important human ritual, one I didn't appreciate until it was gone. Cooking can be fun and rewarding. Eating can be an aesthetic experience. Both should be social opportunities.
 
-Lastly, you *will* run into anti-Soylentarians. There's a lot of them in Portland and I'm sure you know the type. Nutrition-istas and Food Babes everywhere will grimace with horror as you down your Soylent. Just smile back and direct them to the forums, where all manner of nutritional arguments are held.
+Lastly, you _will_ run into anti-Soylentarians. There's a lot of them in Portland and I'm sure you know the type. Nutrition-istas and Food Babes everywhere will grimace with horror as you down your Soylent. Just smile back and direct them to the forums, where all manner of nutritional arguments are held.

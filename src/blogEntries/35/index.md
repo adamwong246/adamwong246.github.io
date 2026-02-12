@@ -20,9 +20,9 @@ I recently did a code challenge for a job and came up with a nice way to test ap
 
 Developers like to have the same arguments over and over again. One perennial favorite is the naming-of-types-of tests debate- as in, what _kind_ of test is this? You have unit tests, the smallest of all types of tests, which typically interogate functions. This is not to be confused with _functional testing_ which is NOT the testing of functions, nor the testing _by_ functions, but the testing of _functionality_. There are "Acceptance tests" and "Integration tests", commonly understood to be bigger tests of whole systems. In the context of of web development, this means running a server(s), a browser, a bot and Selenium. You can test functions or classes (which are of course just functions). You can test the React classes in multiple ways too. There's a LOT of ways you can test your application and knowing which are worthwhile, and which are not, can make or break your deadlines.
 
-Each type of test has a value and a cost. The test takes developer-time to write and maintain. Long running tests make you wait around, like a gambler at a slot machine, hoping that _maybe_ this time, your tests will pass 100%. Some tests are snakepits of complication, while others are too simple to be of any use. There really isn't a right or wrong answer- intuition and experience can teach which tests to apply and where. 
+Each type of test has a value and a cost. The test takes developer-time to write and maintain. Long running tests make you wait around, like a gambler at a slot machine, hoping that _maybe_ this time, your tests will pass 100%. Some tests are snakepits of complication, while others are too simple to be of any use. There really isn't a right or wrong answer- intuition and experience can teach which tests to apply and where.
 
-My experience has taught me a few things about web app architecture: The view ought to be a simple functional React render, a redux store should manage nearly all the application state, selectors should channel that store into your React view, and **testing should be done by applying actions to the store and interogating the selectors.** This philosophy drove my design of Burger Lord. 
+My experience has taught me a few things about web app architecture: The view ought to be a simple functional React render, a redux store should manage nearly all the application state, selectors should channel that store into your React view, and **testing should be done by applying actions to the store and interogating the selectors.** This philosophy drove my design of Burger Lord.
 
 ## Integration tests, or "This porridge is too hot"
 
@@ -30,7 +30,7 @@ Integration tests test the entire stack of an application- from browser to datab
 
 ## Unit tests, or "This porridge is too cold"
 
-On the far end of the spectrum ot test-types, we have unit tests. At their most discrete, these "small" tests are make assertions of functions- that, for _this_ input, a function returns an expected _output_. Unit tests are usefull, but limited. Programmers know to write functions which are small and understandable, and when testing their own work, will simply cheese-it with easy tests in an effort to keep the code-coverage high enough to pass PR review. So often, the functions themseleves are correct- it's the interaction between functions which fail. The tests are easier to write, and much faster to execute, but much less usefull, because testing the obvious is, by definition, not really necesssary. 
+On the far end of the spectrum ot test-types, we have unit tests. At their most discrete, these "small" tests are make assertions of functions- that, for _this_ input, a function returns an expected _output_. Unit tests are usefull, but limited. Programmers know to write functions which are small and understandable, and when testing their own work, will simply cheese-it with easy tests in an effort to keep the code-coverage high enough to pass PR review. So often, the functions themseleves are correct- it's the interaction between functions which fail. The tests are easier to write, and much faster to execute, but much less usefull, because testing the obvious is, by definition, not really necesssary.
 
 ## React tests, or "This porridge is burnt on the top and frozen on the bottom!"
 
@@ -41,19 +41,18 @@ You can also test React components. You typically mount or render or virtually r
 The art and science of state-management is relatively new to me. I never really appreciated data flow, until I really learned to love redux. But discrete actions changing an store with functions is the RIGHT approach to software. I can think of few applications, web development or otherwise, that would benefit from any other architecture. Back in the old days, we just had data flying around and when we tested our code, we did so by mocking and stubbing variables in our tests. It was a dark dark time- mocking your data properly is crucial to getting acurate test results, yet mocking data properly is near impossible to get right. It often leads to bugs-within-your-tests, a catch 22 where your tests perform more hacks than your 1st order code. It sounds heretical but it's true: Your tests need to be simpler than that which is being tested, but I've yet to use a data-faking tool that wasn't more trouble than it was worth. But with redux, this isn't a problem- just build your state though a series of actions. It's not a mock, or a stub, or any sort of fakery. It's the _actual_ store, built by the same series of actions the app would undergo "in the wild."
 
 ## Whats the worth of a test?
+
 Tests are usefull for 2 reasons. 1) They provide struts for you to develop your features around today and 2) they identify regressions in the future. But not all features and regressions are made the same. Some are trivial- a date formatted incorrectly in an email is easy to identify, find and squash. Other bugs which are not so deterministic are much harder to solve. **If we so desired to measure bugs and features on a scale of difficulty, I'd imagine that the "hardness" would be measured by the number of redux actions required to reproduce it.**
 
 Much like unit tests, react tests don't really help you solve difficult state-based bugs, because any bugs in your functional view will be trivial to solve. Obvious bugs tend to have obvious solutions. This is not always true, but is often true. Integration tests are state based, but are immensly expensive. We need a different kind of test- one that can test the core logic and the state of the app, as it changes, without (necessarily) involving the overhead of the view and without excessive testing apparati.
 
 Good code tends to come in layers- clear, tested and testable APIs handling a known responsibility. And all software has 3 layers. These are 1) the state 2) the logic and 3) the view. The state is the foundation, the possible "ways" an application can be. The logic is the number crunching of which it is vitally important to be correct. The view is all the extra stuff on top to make it easy for humans to handle. Good code will keep these 3 concerns apart. Bad code is usually the mixing of these 3 concerns into an unmaintainable tangle. Each layer needs to be tested, but not all layers are equal. The view, as stated before, needs to be functional. It needs to be a function of the selected state, because that makes it easy to test.
 
-
-
 ## Selected State tests, or "This porridge is juuuuust right!"
 
 The web development community has pretty much concluded what I said earlier- your state should be a redux store, fed to a functional view. The bridge between the 2 is the "selector" provided by reselect. Selectors take the store's state, the minimal representation of your app, and apply some computed fields, then pass this "expanded", de-normalized data to the view. It's a natural chokepoint for data flowing through the application and it's also the natural place to test your application.
 
-The implementation of the test is quite straightforward. We make the store, apply some actions, then take the new state, feed it to the selector, then finally make some assertions about the result of that selector. 
+The implementation of the test is quite straightforward. We make the store, apply some actions, then take the new state, feed it to the selector, then finally make some assertions about the result of that selector.
 
 <div id="firstCodeSection">
 <div class="tab">
@@ -74,8 +73,10 @@ The implementation of the test is quite straightforward. We make the store, appl
     store.dispatch({ type: "SELECT_INGREDIENT_TO_PUSH", payload: { sandwichName: sandwichName, ingredientId: 5 } })
     store.dispatch({ type: "PUSH_INGREDIENT", payload: 0 })
     assert.equal(NewOrderSelector(store.getState()).sandwiches[0].cost, 5);
-  });
+
+});
 </code></pre>
+
 </div>
 
 <div id="store" class="tabcontent">
@@ -140,53 +141,57 @@ The implementation of the test is quite straightforward. We make the store, appl
 
     default:
       return state
-  }
+
+}
 }, initialState)
 </code></pre>
+
 </div>
 
 <div id="selector" class="tabcontent">
   <pre><code>export const NewOrderSelector = createSelector([baseSelector], (base) => {
 
-  const subTotal = base.sandwiches.reduce((mm, sandwich) => {
-    return mm + sandwich.recipe.reduce((mm2, recipeIngredientId) => {
-      return (mm2 + (base.ingredients.find((ingredient) => ingredient.id === recipeIngredientId).cost) )
-    }, 0)
-  }, 0)
+const subTotal = base.sandwiches.reduce((mm, sandwich) => {
+return mm + sandwich.recipe.reduce((mm2, recipeIngredientId) => {
+return (mm2 + (base.ingredients.find((ingredient) => ingredient.id === recipeIngredientId).cost) )
+}, 0)
+}, 0)
 
-  const grandTotal = (subTotal * (1 + (base.gratuity / 100))).toFixed(2);
+const grandTotal = (subTotal \* (1 + (base.gratuity / 100))).toFixed(2);
 
-  const runningTally = {};
-  base.ingredients.forEach((ingredient) => runningTally[ingredient.id] = ingredient.amount)
-  base.sandwiches.forEach((sandwich) => {
-    sandwich.recipe.forEach((recipeIngredientId) => {
-      runningTally[recipeIngredientId] = runningTally[recipeIngredientId] -1
-    })
-  })
+const runningTally = {};
+base.ingredients.forEach((ingredient) => runningTally[ingredient.id] = ingredient.amount)
+base.sandwiches.forEach((sandwich) => {
+sandwich.recipe.forEach((recipeIngredientId) => {
+runningTally[recipeIngredientId] = runningTally[recipeIngredientId] -1
+})
+})
 
-  return {
-    orders: base.orders,
-    sandwiches: base.sandwiches.map((sandwich) => {
-      return {
-        ...sandwich,
-        cost: sandwich.recipe.reduce((mm, id) => { return mm + base.ingredients.find((ingredient) => ingredient.id === id).cost }, 0)
-      }
-    }),
-    ingredients: base.ingredients,
+return {
+orders: base.orders,
+sandwiches: base.sandwiches.map((sandwich) => {
+return {
+...sandwich,
+cost: sandwich.recipe.reduce((mm, id) => { return mm + base.ingredients.find((ingredient) => ingredient.id === id).cost }, 0)
+}
+}),
+ingredients: base.ingredients,
 
     gratuity: base.gratuity || 0,
     stagedSandwich: base.stagedSandwich,
 
     subTotal, grandTotal, runningTally,
 
-    orderDisabled: base.sandwiches.length === 0 
-  }
+    orderDisabled: base.sandwiches.length === 0
+
+}
 });
 </code></pre>
+
 </div>
 </div>
 
-We are getting a LOT of bang for our buck here. As long as we keep business logic out of the view, this test will hit all the important points, statefully, and without rendering any view. It's just a single node process unlike integration tests which must run full systems. There's no virtual events to trip over, and data setup is simple- no mocking or stubbing required. And this pattern can be used in node applications too- there's nothing about about redux and reselect preventing you from using them on the server-side. These "selector-store tests" or maybe "redux-reselect" tests or whatever you want to call them, hit the sweet spot. They enforce good architecture, they are _usefull_, rather than an obligation, they are fast as unit test and, can be, as expressive as integration tests. And if you _must_ do react-specific testing, that can be accomodated as well, and at you don't need to worry about incorrectly-mocked data throwing things off. Traditional unit tests can benefit from this as well- indeed, at the bottom of it all, this approach *is* a kind unit test! _This testing strategy does not replace other strategies as much as it complements them._
+We are getting a LOT of bang for our buck here. As long as we keep business logic out of the view, this test will hit all the important points, statefully, and without rendering any view. It's just a single node process unlike integration tests which must run full systems. There's no virtual events to trip over, and data setup is simple- no mocking or stubbing required. And this pattern can be used in node applications too- there's nothing about about redux and reselect preventing you from using them on the server-side. These "selector-store tests" or maybe "redux-reselect" tests or whatever you want to call them, hit the sweet spot. They enforce good architecture, they are _usefull_, rather than an obligation, they are fast as unit test and, can be, as expressive as integration tests. And if you _must_ do react-specific testing, that can be accomodated as well, and at you don't need to worry about incorrectly-mocked data throwing things off. Traditional unit tests can benefit from this as well- indeed, at the bottom of it all, this approach _is_ a kind unit test! _This testing strategy does not replace other strategies as much as it complements them._
 
 There's one more thing this testing strategy needs- our tests ought to be accesible to coders and non-coders alike.
 
@@ -316,37 +321,37 @@ export default [
     }
   },
 
-  {
-    matcher: /sandwich #(.*) should have (.*) ingredients/gm,
-    assert: (match, computed) => {
-      assert.equal(
-        computed.sandwiches[parseInt(match[0][1])].recipe.length,
-        parseInt(match[0][2])
-      )
-    }
-  },
+{
+matcher: /sandwich #(._) should have (._) ingredients/gm,
+assert: (match, computed) => {
+assert.equal(
+computed.sandwiches[parseInt(match[0][1])].recipe.length,
+parseInt(match[0][2])
+)
+}
+},
 
-  {
-    matcher: /the running tally for ingredient '(.*)' should be '(.*)'/gm,
-    assert: (match, computed) => { assert.equal(computed.runningTally[match[0][1]], parseInt(match[0][2])) }
-  },
-  {
-    matcher: /the gratuity should be '(.*)'/gm,
-    assert: (match, computed) => assert.equal(computed.gratuity, parseInt(match[0][1]))
-  },
-  {
-    matcher: /sandwich #(.*) should have name '(.*)'/gm,
-    assert: (match, computed) => {
-      assert.equal(computed.sandwiches[parseInt(match[0][1])].name, match[0][2] )
-    }
-  }
+{
+matcher: /the running tally for ingredient '(._)' should be '(._)'/gm,
+assert: (match, computed) => { assert.equal(computed.runningTally[match[0][1]], parseInt(match[0][2])) }
+},
+{
+matcher: /the gratuity should be '(._)'/gm,
+assert: (match, computed) => assert.equal(computed.gratuity, parseInt(match[0][1]))
+},
+{
+matcher: /sandwich #(._) should have name '(.\*)'/gm,
+assert: (match, computed) => {
+assert.equal(computed.sandwiches[parseInt(match[0][1])].name, match[0][2] )
+}
+}
 
 ]
 </code></pre>
-</div>
 
 </div>
 
+</div>
 
 ## Pros and Cons
 
@@ -356,11 +361,11 @@ This is perhaps the most pertinent benefit, because tests are more than a begrud
 
 ## What kind of test is this?
 
-The say one of the hardest parts of programming is naming the thing. I'm open to ideas- I thought maybe it should involve the prefix 're' a la "redux", "react", and "reselect", but in other languages, you might adopt similar strategies for different implementations of selectors and stores. So I'm hoping that a new testing strategy called "Selected State tests" will now sit on the shelf, between "Unit tests" and "Integration tests". One of the conclusions I hope you take away is that this approach can be adapted to other software, not just frontend javascript apps using redux and reselect. __Any software that uses a store with discrete actions and a core of business logic can be tested using this strategy.__ A Rails app fits the description, where the store is the database and the tests are executed upon controller actions, without rendering the view. But it's important to identify the different layers of your app- the base state, the computed business logic and the layer of "fluff" that is known as the "view". _You need to identify these layers and keep them separate._ Selected State tests make this point realizable, rather than theoretical, and make sure you are testing the really important parts- the business logic, as a function of a reproducible state. 
+The say one of the hardest parts of programming is naming the thing. I'm open to ideas- I thought maybe it should involve the prefix 're' a la "redux", "react", and "reselect", but in other languages, you might adopt similar strategies for different implementations of selectors and stores. So I'm hoping that a new testing strategy called "Selected State tests" will now sit on the shelf, between "Unit tests" and "Integration tests". One of the conclusions I hope you take away is that this approach can be adapted to other software, not just frontend javascript apps using redux and reselect. **Any software that uses a store with discrete actions and a core of business logic can be tested using this strategy.** A Rails app fits the description, where the store is the database and the tests are executed upon controller actions, without rendering the view. But it's important to identify the different layers of your app- the base state, the computed business logic and the layer of "fluff" that is known as the "view". _You need to identify these layers and keep them separate._ Selected State tests make this point realizable, rather than theoretical, and make sure you are testing the really important parts- the business logic, as a function of a reproducible state.
 
 ## Coda
 
-Developers are lazy, for good or for bad. If they _must_ write tests, often they write silly tests. I know I did. Our CI process would kickback any PR that didn't meet the testing threshold and I'd be forced to write a test, _any_ test, to get the PR merged. Not a usefull test, mind you. Just a test which was previously NOT tested. 
+Developers are lazy, for good or for bad. If they _must_ write tests, often they write silly tests. I know I did. Our CI process would kickback any PR that didn't meet the testing threshold and I'd be forced to write a test, _any_ test, to get the PR merged. Not a usefull test, mind you. Just a test which was previously NOT tested.
 
 This is not good. It's not _supposed_ to be like that, at all!
 

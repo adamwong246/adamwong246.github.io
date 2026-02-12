@@ -3,7 +3,7 @@ title: Building a social network from the ground up
 publishedAt: Fri Nov 21 2025 07:37:30 GMT-0800 (Pacific Standard Time)
 ---
 
-![bender](bender.jpg "bender")
+![bender](bender.jpg 'bender')
 
 What if I told you I was making a social network from scratch? Something that could rival both Facebook and Twitter, stealing the best bits from both, and discarding the rest, to create the most humane and benevolent platform possible? And what if we assumed, for the moment, a simple proposition- users would pay directly for such a product. What if indeed. It sound ludicrous at face value. A realistic challenger of the twin titans is nearly unthinkable. And asking users to simply pay for the service? Outrageous!
 
@@ -12,8 +12,3 @@ I love AI driven development. It lets me code at the speed of thought. As a code
 This network is called Indra, btw. As in, [Indra's Net](https://en.wikipedia.org/wiki/Indra%27s_net)
 
 So yeah, that's the plan. I'm gonna make a better social network, and charge people 5 bucks a month to use it, directly challenging 2 of the richest men on earth. Wish me luck!
-
-
-
-
-

@@ -1,10 +1,12 @@
 # Adam Wong
 
 ## Contact
+
 - 971-207-1376
 - adamwong246@gmail.com
 
 ## Location
+
 Portland, OR
 
 ## Technical Skills
@@ -73,5 +75,7 @@ I developed Android apps as part of an Agile team that spanned across Android, i
 - examples of work include the well received Postcard on the Run Android app
 
 ## Education
-###  University of South Carolina
-#### Bachelors of Computer Science,  May 2010
+
+### University of South Carolina
+
+#### Bachelors of Computer Science, May 2010

@@ -7,5 +7,6 @@ publish: false
 Today, I add 'lwip', or 'lightweight image processor' which optimizes images. The test results are [here](/blog/8-image-pipeline-test/)
 
 It also preserves the originals.
+
 - [original roboWarrior](/blog/8-image-pipeline-test/orig-roboWarrior.jpg)
 - [original videoPattern](/blog/8-image-pipeline-test/orig-videoPattern.jpg)

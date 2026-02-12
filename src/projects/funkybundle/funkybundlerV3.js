@@ -2,10 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const babel = require('@babel/core');
 
-function build({
-	entryFile,
-	outputFolder
-}) {
+function build({entryFile, outputFolder}) {
 	return bundle(createDependencyGraph(entryFile));
 }
 
@@ -42,41 +39,33 @@ class Module {
 			.map(absolutePath => createModule(absolutePath));
 	}
 	transformModuleInterface() {
-		const {
-			types: t
-		} = babel;
-		const {
-			filePath
-		} = this;
-		const {
-			ast,
-			code
-		} = babel.transformFromAstSync(this.ast, this.content, {
+		const {types: t} = babel;
+		const {filePath} = this;
+		const {ast, code} = babel.transformFromAstSync(this.ast, this.content, {
 			ast: true,
 			plugins: [
-				function() {
+				function () {
 					return {
 						visitor: {
 							ImportDeclaration(path) {
-								const newIdentifier = path.scope.generateUidIdentifier(
-									'imported'
-								);
+								const newIdentifier =
+									path.scope.generateUidIdentifier('imported');
 
 								for (const specifier of path.get('specifiers')) {
 									const binding = specifier.scope.getBinding(
-										specifier.node.local.name
+										specifier.node.local.name,
 									);
-									const importedKey = specifier.isImportDefaultSpecifier() ?
-										'default' :
-										specifier.get('imported.name').node;
+									const importedKey = specifier.isImportDefaultSpecifier()
+										? 'default'
+										: specifier.get('imported.name').node;
 
 									for (const referencePath of binding.referencePaths) {
 										referencePath.replaceWith(
 											t.memberExpression(
 												newIdentifier,
 												t.stringLiteral(importedKey),
-												true
-											)
+												true,
+											),
 										);
 									}
 								}
@@ -89,12 +78,12 @@ class Module {
 												t.stringLiteral(
 													resolveRequest(
 														filePath,
-														path.get('source.value').node
-													)
+														path.get('source.value').node,
+													),
 												),
-											])
+											]),
 										),
-									])
+									]),
 								);
 							},
 							ExportDefaultDeclaration(path) {
@@ -105,11 +94,11 @@ class Module {
 											t.memberExpression(
 												t.identifier('exports'),
 												t.identifier('default'),
-												false
+												false,
 											),
-											t.toExpression(path.get('declaration').node)
-										)
-									)
+											t.toExpression(path.get('declaration').node),
+										),
+									),
 								);
 							},
 							ExportNamedDeclaration(path) {
@@ -146,12 +135,12 @@ class Module {
 												t.memberExpression(
 													t.identifier('exports'),
 													decl.name,
-													false
+													false,
 												),
-												decl.value
-											)
-										)
-									)
+												decl.value,
+											),
+										),
+									),
 								);
 							},
 						},
@@ -174,10 +163,12 @@ function bundle(graph) {
 	const modules = collectModules(graph);
 	const moduleMap = toModuleMap(modules);
 	const moduleCode = addRuntime(moduleMap, modules[0].filePath);
-	return [{
-		name: 'bundle.js',
-		content: moduleCode
-	}];
+	return [
+		{
+			name: 'bundle.js',
+			content: moduleCode,
+		},
+	];
 }
 
 function collectModules(graph) {
@@ -243,10 +234,10 @@ function trim(str) {
 }
 
 module.exports = {
-	build: (file) => {
+	build: file => {
 		return build({
 			entryFile: path.join(__dirname, file),
 			outputFolder: path.join(__dirname, './output'),
-		})
-	}
-}
+		});
+	},
+};

@@ -1,25 +1,24 @@
-import jade from "jade";
+import jade from 'jade';
 
 export const jadeRender = (content, pageLayout, locals) => {
 	return jade.render(content, {
 		filename: pageLayout.src,
-		...locals
-	})
-}
+		...locals,
+	});
+};
 
 export const jadeRenderPageLayout = (content, pageLayout, locals) => {
-
 	const l = {
 		filename: pageLayout.src,
 		page: {
-			content: content
+			content: content,
 		},
 
-		...locals
-	}
+		...locals,
+	};
 
-	return jade.render(pageLayout.content, l)
-}
+	return jade.render(pageLayout.content, l);
+};
 
 export const jadeRenderBlogEntry = (blogEntry, blogEntryLayout, locals) => {
 	return jade.render(blogEntryLayout.content, {
@@ -28,6 +27,6 @@ export const jadeRenderBlogEntry = (blogEntry, blogEntryLayout, locals) => {
 		page: {
 			content: blogEntry.markdownContent,
 		},
-		...locals
-	})
-}
+		...locals,
+	});
+};

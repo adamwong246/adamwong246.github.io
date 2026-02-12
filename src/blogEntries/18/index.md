@@ -14,12 +14,11 @@ We camped at Dick Creek, which is quite beautiful and has several nearby trails.
 ![dickCreek](IMG_20170821_095452.jpg)
 ![panorama](PANO_20170821_101044.jpg)
 
- Along the way, we met Swedish hippies and a NASA engineer Shawn Quinn! His hobby of astrophotography had brought him to our camp site, concluding that of all the places to view the eclipse, given weather and light pollution,  *this exact hillside* was the best place to view the eclipse! (Kudos to my friend Dr. James Cleveland for computing this using his work at Terra Stride)
+Along the way, we met Swedish hippies and a NASA engineer Shawn Quinn! His hobby of astrophotography had brought him to our camp site, concluding that of all the places to view the eclipse, given weather and light pollution, _this exact hillside_ was the best place to view the eclipse! (Kudos to my friend Dr. James Cleveland for computing this using his work at Terra Stride)
 
 ![watching the eclipse](DickCreekEclipseViewers4.jpg)
 ![astrophotography setup with Jimmy](IMG_20170821_090040.jpg)
 ![astrophotography setup](IMG_20170821_110311.jpg)
-
 
 The transit begins
 ![The transit begins](C1-C2-Partial-SMQ_3532.jpg)

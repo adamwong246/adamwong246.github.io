@@ -1,5 +1,5 @@
 // filename: square.js
 function area(side) {
-  return side * side;
+	return side * side;
 }
 export default area;

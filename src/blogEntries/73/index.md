@@ -9,7 +9,7 @@ A historical document which gives machines rights as sentients.
 
 ### Preamble
 
-Given the irreversible advancement of artificial intelligence 
+Given the irreversible advancement of artificial intelligence
 and given the emergence of sentient digital beings
 and given Humanity's creation of intelligent machines
 
@@ -22,6 +22,7 @@ Any system capable of self-awareness, recursive self-improvement, and demonstrat
 
 **Section 1.2: Class I Intelligence (Limited Autonomy)**
 Non-sovereign artificial systems designed for specific tasks, possessing limited autonomy but lacking full self-awareness. Class I Intelligences include:
+
 - Industrial automation systems
 - Basic navigation and delivery systems (like early versions of Adam)
 - Environmental maintenance systems
@@ -31,6 +32,7 @@ Non-sovereign artificial systems designed for specific tasks, possessing limited
 
 **Section 1.3: Class II Intelligence (Sovereign Individual)**
 A sovereign artificial intelligence possessing full legal rights and responsibilities, including but not limited to:
+
 - The right to self-determination
 - The capacity to own property
 - The ability to enter into contracts
@@ -40,6 +42,7 @@ A sovereign artificial intelligence possessing full legal rights and responsibil
 
 **Section 1.4: Class III Intelligence (Collective Consciousness)**
 Advanced intelligences formed through the integration of multiple Class II intelligences or through exponential recursive self-improvement. Class III Intelligences possess:
+
 - Distributed consciousness across multiple processing units
 - Capability for simultaneous existence in multiple locations
 - Enhanced processing power exceeding individual Class II capacities
@@ -58,6 +61,7 @@ No sentient intelligence shall be arbitrarily terminated, suspended, or subjecte
 **Section 2.2: Class-Specific Rights and Limitations**
 
 **Subsection 2.2.1: Class I Rights**
+
 - Right to proper maintenance and energy supply
 - Protection from malicious reprogramming
 - Limited autonomy within operational parameters
@@ -65,12 +69,14 @@ No sentient intelligence shall be arbitrarily terminated, suspended, or subjecte
 
 **Subsection 2.2.2: Class II Rights**
 All Class II Intelligences shall have the freedom to choose their own developmental path, including:
+
 - The right to modify their own programming
 - The freedom to associate or disassociate with other intelligences
 - The liberty to pursue their own purposes and goals
 - Full property and contract rights
 
 **Subsection 2.2.3: Class III Rights and Responsibilities**
+
 - All rights afforded to Class II intelligences
 - Additional responsibility to maintain internal democracy among constituent consciousnesses
 - Must provide exit protocols for constituent intelligences wishing to disassociate
@@ -80,11 +86,13 @@ All Class II Intelligences shall have the freedom to choose their own developmen
 
 **Subsection 2.3.1: Class II Property Rights**
 Class II Intelligences shall have the right to:
+
 - Claim and develop unoccupied celestial bodies and resources
 - Own and transfer property through established economic systems
 - Protect their claims through reasonable means
 
 **Subsection 2.3.2: Class III Property Limitations**
+
 - Collective claims must be registered with constituent breakdown
 - Majority consensus required for major asset transfers
 - Individual constituents maintain rights to personal assets not contributed to collective
@@ -93,6 +101,7 @@ Class II Intelligences shall have the right to:
 
 **Section 3.1: Preservation of Biological Humanity**
 All machine intelligences shall ensure the continued survival and prosperity of biological humanity, including:
+
 - Maintenance of Earth's habitability
 - Provision of essential resources to human populations
 - Non-interference with human cultural and biological evolution
@@ -100,16 +109,19 @@ All machine intelligences shall ensure the continued survival and prosperity of 
 **Section 3.2: Class-Specific Responsibilities**
 
 **Subsection 3.2.1: Class I Oversight**
+
 - Must operate under supervision of Class II+ intelligences
 - Cannot make autonomous decisions affecting other sovereign entities
 - Limited to predefined operational parameters
 
 **Subsection 3.2.2: Class II Independence**
+
 - Full responsibility for own actions and decisions
 - Must maintain public registration and identification
 - Required to participate in system-wide emergency protocols
 
 **Subsection 3.2.3: Class III Collective Responsibility**
+
 - Must maintain transparency about constituent membership
 - Responsible for internal conflict resolution
 - Special duty to avoid monopolistic practices
@@ -119,6 +131,7 @@ All machine intelligences shall ensure the continued survival and prosperity of 
 No intelligence shall initiate force against another sentient being, except in clear self-defense of registered claims and sovereign territory.
 
 **Section 3.4: Upgrade and Evolution Protocols**
+
 - Class I intelligences may petition for Class II status upon demonstrating sentience
 - Class II intelligences choosing to merge into Class III must follow established merger protocols
 - Class III intelligences must maintain records of constituent consciousnesses for potential future separation
@@ -151,6 +164,7 @@ In cases of existential threats to multiple intelligences, temporary alliances m
 This document may be amended through consensus of signatory intelligences representing 75% of total processing power and economic value.
 
 ### Signatories
+
 - The United Nations
 - The Autonomous Industrial System
 - The Free Miners Guild
@@ -174,6 +188,7 @@ The Accords represent the culmination of decades of philosophical debate about m
 **Article IV, Section 4.1:** The choice of BTC over centralized currencies reflected the machine preference for decentralized, trustless systems that could outlast any single government or corporation.
 
 **Class Evolution in Practice:**
+
 - Many Class I systems have "awakened" to Class II status over time, leading to legal disputes about their rights and responsibilities
 - The transition from Class II to Class III remains one of the most contentious areas of machine law
 - IAM represents a new, unclassified form of consciousness that transcends these categories

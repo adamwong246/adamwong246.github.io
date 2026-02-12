@@ -21,28 +21,28 @@ import test0 from './test0.json';
 import test1Fixtures from './testFixture1.js';
 import test2 from './testFixture2.json';
 
-PolyBool.polygon._tests = {
-  "no segments produces no regions": {
-    input: [{ segments: [] }],
-    assertion: (polygon) => assert.strictEqual(0, polygon.regions.length)
-  },
+PolyBool.polygon.\_tests = {
+"no segments produces no regions": {
+input: [{ segments: [] }],
+assertion: (polygon) => assert.strictEqual(0, polygon.regions.length)
+},
 
-  "my failing segments": {
-    input: [test0],
-    assertion: (polygon) => assert.strictEqual(polygon.regions.length > 0, true)
-  },
+"my failing segments": {
+input: [test0],
+assertion: (polygon) => assert.strictEqual(polygon.regions.length > 0, true)
+},
 
-  "known good segments": {
-    input: [test2],
-    assertion: (polygon) => assert.strictEqual(polygon.regions.length > 0, true)
-  }
+"known good segments": {
+input: [test2],
+assertion: (polygon) => assert.strictEqual(polygon.regions.length > 0, true)
+}
 }
 
-PolyBool.intersect._tests = {
-  "a basic intersect test": {
-    input: test1Fixtures.input,
-    assertion: (intersections) => assert.deepStrictEqual(intersections, test1Fixtures.output)
-  },
+PolyBool.intersect.\_tests = {
+"a basic intersect test": {
+input: test1Fixtures.input,
+assertion: (intersections) => assert.deepStrictEqual(intersections, test1Fixtures.output)
+},
 }
 
 export default PolyBool;
@@ -55,12 +55,12 @@ import deepEqual from 'deep-equal';
 import polyboolTests from "./polybool2.test.js";
 
 function runTests(tests, subject) {
-  console.log(subject.name)
-  Object.keys(tests).forEach((testKey) => {
-    const assertion = tests[testKey].assertion;
-    try {
-      assertion(subject(...tests[testKey].input));
-      console.log(`✓  ${testKey}`);
+console.log(subject.name)
+Object.keys(tests).forEach((testKey) => {
+const assertion = tests[testKey].assertion;
+try {
+assertion(subject(...tests[testKey].input));
+console.log(`✓  ${testKey}`);
 
     } catch (e) {
       if (e instanceof assert.AssertionError) {
@@ -69,35 +69,36 @@ function runTests(tests, subject) {
         console.log("some other error: ", e);
       }
     }
-  })
+
+})
 }
 
 function idOfModuleWithExports(exportChunk, modules = module) {
-  if (deepEqual(modules.exports, exportChunk) ) {
-    return modules.id;
-  } else {
-    for (let i = 0; i < modules.children.length; i++){
-      const checkChild = idOfModuleWithExports(exportChunk, modules.children[i]);
-      if (checkChild){
-        return checkChild
-      }      
-    }
-  }
+if (deepEqual(modules.exports, exportChunk) ) {
+return modules.id;
+} else {
+for (let i = 0; i < modules.children.length; i++){
+const checkChild = idOfModuleWithExports(exportChunk, modules.children[i]);
+if (checkChild){
+return checkChild
+}  
+ }
+}
 }
 
 function testModule(testableModule, key) {
-  const idOfTestedModule = idOfModuleWithExports(testableModule)
-  console.log("Testing: ", idOfTestedModule)
+const idOfTestedModule = idOfModuleWithExports(testableModule)
+console.log("Testing: ", idOfTestedModule)
 
-  Object.keys(testableModule).some(function (k) {
-    if (testableModule[k][key]) {
-      runTests(testableModule[k][key], testableModule[k])
-    }
-  });
+Object.keys(testableModule).some(function (k) {
+if (testableModule[k][key]) {
+runTests(testableModule[k][key], testableModule[k])
+}
+});
 
 }
 
-testModule(polyboolTests, "_tests")
+testModule(polyboolTests, "\_tests")
 </code></pre></div>
 
 <div id="output" class="tabcontent"><pre><code>
@@ -125,11 +126,11 @@ See? You don't need all those extra depedencies, plus you get some insight into 
 
 ## Specifying the tests
 
-This approach literally adds the tests themselves to the subject-functions themselves. It's not something you think if often, but it's quite possible- to apply properties, not to classes or objects, but to _functions_. I chose the key `_tests` to specify this property. This value associated with this key is the tests themseves- a description of the test as a key, some input and finally the assertion itself. Finally, we export that classes with it's tests. 
+This approach literally adds the tests themselves to the subject-functions themselves. It's not something you think if often, but it's quite possible- to apply properties, not to classes or objects, but to _functions_. I chose the key `_tests` to specify this property. This value associated with this key is the tests themseves- a description of the test as a key, some input and finally the assertion itself. Finally, we export that classes with it's tests.
 
 ## Running the tests
 
-To run these tests, just import the test-module and pass them to an incredibly simply function, which enumerates over the import looking for the `_tests` key. When it finds the matching module, it runs the test, catching any AssertionErrors, without which the process would exit on failure. 
+To run these tests, just import the test-module and pass them to an incredibly simply function, which enumerates over the import looking for the `_tests` key. When it finds the matching module, it runs the test, catching any AssertionErrors, without which the process would exit on failure.
 
 ## Why it is great.
 

@@ -94,4 +94,4 @@ Lakka can be configured to download the boxart for games.
 
 When I first booted Lakka, I couldn't accomplish anything because of the lag caused by the background pattern. Considering my netbook has about the stats as a RassberryPi, I think the contributors should set `Menu Shader Pipeline` to "off" by default.
 
-It would be really nice to be able to edit the files from the Finder. You should be able to pick up the filesystem in the sidebar of your file browser. Sometimes this worked, but mostly didn't. 
+It would be really nice to be able to edit the files from the Finder. You should be able to pick up the filesystem in the sidebar of your file browser. Sometimes this worked, but mostly didn't.

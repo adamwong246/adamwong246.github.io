@@ -11,15 +11,15 @@ Sorry for the AI slop but I thought it was well and good to let the LLM describe
 ---
 
 # 🚀 Testeranto 0.143.0: The Future of AI-Powered Testing is Here!
+
 ## 🤖 Tests That Write Themselves? Meet Testeranto!
 
-
 We're thrilled to announce Testeranto 0.143.0 - the most advanced version yet of our groundbreaking AI-powered testing framework! If you're tired of writing tedious tests or struggling to keep your test suite up-to-date with your codebase, Testeranto is about to become your new best friend.
-
 
 ## 🎯 What Makes Testeranto Special?
 
 ### 1️⃣ Self-Testing Architecture
+
 Testeranto is now verified by its own testing infrastructure. This milestone proves that Testeranto's architecture is robust enough to imagine what it can do for your projects!
 
 ### 2️⃣ Beautiful BDD Interface
@@ -34,7 +34,7 @@ Say goodbye to messy test files! Testeranto's Behavior-Driven Development (BDD) 
      [Then.verifyLoggedIn(), Then.verifySessionCreated()]
    )
  });
- ```
+```
 
 Clean, readable tests that document your system's behavior while verifying its correctness.
 
@@ -48,7 +48,6 @@ Here's where things get really exciting:
    assistant
 
 This means when tests fail, you can send the exact right context to your AI coding assistant to get perfect fixes every time!
-
 
 ## 🔥 The Testeranto Value Proposition
 
@@ -69,7 +68,6 @@ foundation that makes Testeranto's AI integration so powerful. Huge
 kudos to the Aider team for pushing the boundaries of what's possible
 with LLMs in software development!
 
-
 ## 🛠️ Getting Started is Easy
 
 ```
@@ -82,7 +80,6 @@ Try it today and experience:
 - More maintainable test suites
 - AI-assisted test maintenance
 - Confidence that your tests actually test what matters
-
 
 ## 🌟 The Future of Testing is Here
 

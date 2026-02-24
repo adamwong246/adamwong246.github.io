@@ -1,140 +1,166 @@
-# Adam Wong
-
-#### Portland, OR
-
-#### BA of Computer Science, USC
-
-###### [adamwong246@gmail.com](adamwong246@gmail.com) [LinkedIn](https://www.linkedin.com/in/adam-wong-4634421b) [GitHub](http://github.com/adamwong246)
-
-- Typescript, JavaScript, Node, Golang, Java, Kotlin, Ruby, Rust, Lua,
-  Solidity
-- React, Nextjs, Tailwind, Rails, Android
-- Kubernetes, Docker
-- BDD and TDD methodologies
-- certified Scrum Master
-- AWS Certified Cloud Practitioner
+#### Adam Wong
 
 ------------------------------------------------------------------------
 
-##### [Testeranto](https://www.npmjs.com/package/testeranto)
+###### 971-207-1376
 
-##### freelance developer
+###### [adamwong246@gmail.com](adamwong246@gmail.com)
 
-###### January 2024
+###### [LinkedIn](https://www.linkedin.com/in/adam-wong-4634421b) | [GitHub](http://github.com/adamwong246)
 
-I developed an AI-first, Acceptance Test Driven Development Typescript
-test framework.
+###### Portland, OR
 
-------------------------------------------------------------------------
+###### BA of Computer Science, USC
 
-##### [Piton Labs](https://pitonlabs.com/)
-
-##### software engineer
-
-###### February 2023
-
-###### January 2025
-
-I joined Piton Labs to manage the development of the Accion Opportunity
-Fund.
-
-- integrated a serverless NextJs app with AWS services
-- managed a cross-team collaboration between PitonLabs and AOF
-- developed a integration test suite as part of the CICD system
-- managed the i18n translation project
+Senior software engineer with 15 years of experience building scalable,
+maintainable systems across web, mobile, and blockchain domains. Proven
+expertise in full‑stack development, modern JavaScript/TypeScript
+ecosystems, and cloud‑native architecture. Passionate about leveraging
+TDD, AI‑first approaches to solve complex problems while maintaining
+strong engineering fundamentals.
 
 ------------------------------------------------------------------------
 
-##### freelance web3 developer
-
-###### August 2022
-
-###### January 2023
-
-I worked with [liquid collections](https://liquidcollections.com/) to
-develop NFTs which are redeemable for consumer goods.
-
-- maintained an extensive set of frontend and backend TS infrastructure
-- wrote and tested custom solidity code to create [dynamic on-chain
-  metadata](https://opensea.io/assets/ethereum/0xa983d04c0fca6ab46452fe6281a1fcd7f982e3f5/0).
+###### Technical Skills
 
 ------------------------------------------------------------------------
 
-##### Chroma Signet
+###### Languages
 
-##### engineer & customer success
+TypeScript, JavaScript, Golang, Java, Kotlin, Ruby, Rust, Solidity
 
-###### January 2021
+###### Frameworks
 
-###### August 2022
+React, Next.js, Tailwind, Rails, Android, Redux
 
-I returned to Chroma to develop Signet.code, a cannabis packaging
-application.
+###### Tools & Platforms
 
-- managed a Rewards programs wherein customer-claimable NFTs were
-  attached to cannabis products
-- implemented a PDF generator capable of producing unique labels at high
-  scale
-- managed customer relations to produce dynamic labels
-- integrated node with multiple external APIs and our cross-platform
-  react-native app with external SDKs
+Kubernetes, Docker, AWS, Jenkins, D3.js, Google Cloud
 
-------------------------------------------------------------------------
+###### Methodologies
 
-##### [OpenGov](http://www.opengov.com/)
+BDD, TDD, Scrum, Agile
 
-##### software engineer
+###### Certifications
 
-###### November 2016
-
-###### March 2020
-
-I worked with a team to decompose a monolithic Rails app into a series
-of Typescript microservices.
-
-- designed an open-source, functional and type-safe framework used
-  across multiple teams with our organization
-- migrated a Rails monolith into a series of micro-services
-- wrote frontend SPAs in TS with Redux, Reselect and React
-- implemented charts in D3 to visualize financial reports
-- developed a continuous integration and delivery process with Jenkins
-  and Docker
-- deployed our apps to AWS via Kubernetes
+AWS Certified Cloud Practitioner, Certified Scrum Master
 
 ------------------------------------------------------------------------
 
-##### Chroma Fund
-
-##### full stack developer
-
-###### February 2015
-
-###### August 2016
-
-I engineered the Meteor app “Chroma Fund”, a marketplace lending
-platform providing investors with bundles of small business loans.
-
-- responsible for designing UX and UI as well as implementing front-end
-- supported blockchain verifiable transactions
-- attended TechStars Summer 2016 accelerator program in NYC
+###### Work Experience
 
 ------------------------------------------------------------------------
 
-##### Hubbub Health
+###### [Testeranto](https://www.npmjs.com/package/testeranto)
 
-##### Ruby on Rails developer
+###### Freelance Developer
 
-###### May 2013
+####### Jan 2024 – Present
 
-###### February 2015
+Developed an AI-first, Acceptance Test Driven Development (ATDD)
+TypeScript test framework designed to streamline testing workflows and
+improve code quality.
 
-I worked with a large team to incentivize employee wellness with the RoR
-app, [hubbubhealth.com](hubbubhealth.com).
+- Created a modern testing framework that integrates AI suggestions for
+  test generation
+- Implemented support for various testing paradigms within a unified
+  TypeScript ecosystem
+- Published and maintained as an open-source npm package
 
-- developed Javascript for both modern and legacy browsers
-- debugged user-submitted errors with New Relic and Papertrail
-- managed assets via Amazon S3
-- revived an out of date Rspec and Cucumber test suite for continuous
-  integration
-- optimized high traffic queries by replacing ActiveRecord calls with
+###### [Piton Labs](https://pitonlabs.com/)
+
+###### Software Engineer
+
+####### Feb 2023 – Jun 2025
+
+Led development initiatives for the Accion Opportunity Fund platform,
+focusing on scalability and maintainability.
+
+- Integrated a serverless Next.js application with AWS services (Lambda,
+  S3, DynamoDB)
+- Managed cross‑team collaboration between Piton Labs and client
+  stakeholders
+- Developed a comprehensive integration test suite integrated into CI/CD
+  pipelines
+- Oversaw i18n translation project to support multiple languages
+
+###### Freelance Web3 Developer
+
+####### Aug 2022 – Jan 2023
+
+Collaborated with [Liquid Collections](https://liquidcollections.com/)
+to create NFTs redeemable for physical consumer goods.
+
+- Maintained extensive frontend and backend TypeScript infrastructure
+- Wrote and tested custom Solidity smart contracts for dynamic on‑chain
+  metadata
+- Delivered a secure, scalable NFT minting and redemption platform
+
+###### Chroma Signet
+
+###### Engineer & Customer Success
+
+####### Jan 2021 – Aug 2022
+
+Spearheaded development of Signet.code, a cannabis packaging and
+compliance application.
+
+- Managed a rewards program linking customer‑claimable NFTs to physical
+  cannabis products
+- Built a high‑performance PDF generator capable of producing thousands
+  of unique labels per hour
+- Handled customer relations and requirements gathering for dynamic
+  label generation
+- Integrated Node.js services with multiple external APIs and React
+  Native mobile apps
+
+###### [OpenGov](http://www.opengov.com/)
+
+###### Software Engineer
+
+####### Nov 2016 – Mar 2020
+
+Contributed to the decomposition of a monolithic Rails application into
+TypeScript‑based microservices.
+
+- Designed an open‑source, functional, type‑safe framework adopted by
+  multiple engineering teams
+- Migrated critical business logic from Rails to scalable microservices
+- Developed frontend SPAs using TypeScript, Redux, Reselect, and React
+- Created interactive D3.js charts for financial data visualization
+- Established CI/CD pipelines with Jenkins and Docker, deploying to AWS
+  via Kubernetes
+
+###### Chroma Fund
+
+###### Full Stack Developer
+
+####### Feb 2015 – Aug 2016
+
+Engineered “Chroma Fund,” a Meteor‑based marketplace lending platform
+that bundled small‑business loans for investors.
+
+- Designed and implemented UX/UI for both investor and borrower
+  experiences
+- Integrated blockchain‑verifiable transaction records
+- Participated in the TechStars Summer 2016 accelerator program in New
+  York City
+
+###### Hubbub Health
+
+###### Ruby on Rails Developer
+
+####### May 2013 – Feb 2015
+
+Worked on a large‑scale Rails application
+([hubbubhealth.com](hubbubhealth.com)) that incentivized employee
+wellness.
+
+- Developed JavaScript features supporting both modern and legacy
+  browsers
+- Debugged production issues using New Relic and Papertrail
+- Managed static assets via Amazon S3
+- Revived and expanded an outdated RSpec and Cucumber test suite for
+  reliable CI
+- Optimized high‑traffic database queries by replacing ActiveRecord with
   raw SQL

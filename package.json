@@ -31,7 +31,8 @@
 		"shipIt!": "yarn cleanBuild && git add --all && git push origin dev && git commit && yarn deploy",
 		"resume:pdf": "pandoc src/resume.rmd -o dist/resume.pdf -t html --embed-resources --standalone --css node_modules/typebase.css/typebase.css --css dist/resume.pdf.css",
 		"resume:html": "pandoc src/resume.rmd -o dist/resume.html -t html --embed-resources --standalone --css node_modules/typebase.css/typebase.css --css dist/resume.html.css",
-		"resume:md": "pandoc src/resume.rmd -o dist/resume.md -t markdown_strict"
+		"resume:md": "pandoc src/resume.rmd -o dist/resume.md -t markdown_strict",
+		"resume:docx": "pandoc src/resume.rmd -o dist/resume.docx"
 	},
 	"dependencies": {
 		"@types/clean-css": "^4.2.11",
